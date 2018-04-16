@@ -10,8 +10,10 @@
 
 #include <commons/log.h>
 #include <stdlib.h>
+#include "config_coordinador.h"
 
 extern t_log *logger;
+extern config *configuracion;
 
 void exit_error_with_msg(char* msg);
 

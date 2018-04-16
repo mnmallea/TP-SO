@@ -10,16 +10,17 @@
 
 #include "algoritmos_distribucion.h"
 
-extern t_log *logger;
-
 typedef struct{
-	int puerto;
+	char* puerto;
 	tipo_algoritmo_dist algoritmo;
 	int cant_entradas;
 	int entrada_size;
 	int retardo;
 } config;
 
-config configurar(char *ruta);
+extern t_log *logger;
+
+config* configuar(char *ruta);
+void eliminar_configuracion(config* configuracion);
 
 #endif /* CONFIG_H_ */
