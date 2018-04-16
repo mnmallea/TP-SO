@@ -10,6 +10,8 @@
 
 #include "algoritmos_distribucion.h"
 
+extern t_log *logger;
+
 typedef struct{
 	int puerto;
 	tipo_algoritmo_dist algoritmo;
