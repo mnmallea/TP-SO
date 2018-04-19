@@ -66,3 +66,60 @@ int crear_socket_escucha(char *puerto_escucha,int max_comm){
     }
 
 //---------------------------------------------------------------------
+#define id_verificador 1111
+
+void esperar_mensaje(int socket){
+    int id;
+    int res_recv= recv(socket,&id,sizeof(id),MSG_WAITALL);
+    if(id != id_verificador){ //chequeo por contenido
+        salir_con_error(socket,"No coincide lo recibido con lo esperado");
+    }
+    else if (sizeof(id)!=res_recv){ //chequeo por tamaño
+        salir_con_error(socket,"No coincide lo recibido con lo esperado");
+    }
+
+log_info(logger, "Mensaje recibido");
+free(id);
+}
+
+void mandar_mensaje(int socket){
+    int id=id_verificador;
+    int res_send = send(socket, &id, sizeof(id), 0);
+    if(res_send != sizeof(id)){
+        salir_con_error(socket,"No se pudo mandar mensaje");
+    }
+log_info(logger, "Mensaje enviado");
+free(id);    
+}
+
+void recibir_confirmacion (int socket){
+    int  resultado=1;
+    if (recv(socket,&resultado,sizeof(int),0)<=0){
+        salir_con_error(socket,"no se pudo recibir confirmación");
+    }
+    log_info(logger, "confirmación recibida");
+    close(socket);
+}
+
+void mandar_confirmacion(int socket) {
+    int resultado=1;
+	if (send(socket, &resultado, sizeof(resultado), 0)<=0) {
+        salir_con_error(socket,"no se pudo mandar confirmación");
+	}
+    log_info(logger, "confirmación enviada");
+    close(socket);
+}
+
+
+
+void salir_con_eror(int socket, char* error_msg){
+        log_error(logger, error_msg);
+        close(socket);
+  exit_gracefully(1);
+}
+
+
+void exit_gracefully(int return_nr) {
+  log_destroy(logger);
+  exit(return_nr);
+}
