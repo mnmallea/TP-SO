@@ -9,7 +9,6 @@
 void exit_error_with_msg(char* msg){
 	log_error(logger,msg);
 	log_destroy(logger);
-	eliminar_configuracion(configuracion);
 	exit(1);
 }
 
