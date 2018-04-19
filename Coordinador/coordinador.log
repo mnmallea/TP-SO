@@ -23,3 +23,13 @@
 [INFO] 18:22:18:245 Coordinador/(7815:7815): Configurando coordinador
 [INFO] 18:23:23:992 Coordinador/(7888:7888): Configurando coordinador
 [INFO] 18:25:25:990 Coordinador/(8016:8016): Configurando coordinador
+[INFO] 15:45:33:339 Coordinador/(8664:8664): Configurando coordinador
+[INFO] 15:55:11:177 Coordinador/(9028:9028): Configurando coordinador
+[INFO] 15:55:37:530 Coordinador/(9047:9047): Configurando coordinador
+[INFO] 15:56:42:654 Coordinador/(9095:9095): Configurando coordinador
+[INFO] 15:57:28:702 Coordinador/(9108:9108): Configurando coordinador
+[INFO] 15:57:41:235 Coordinador/(9115:9115): Configurando coordinador
+[ERROR] 15:57:41:270 Coordinador/(9115:9115): No se pudo crear la configuración (no se encuentra el archivo)
+[INFO] 15:57:55:458 Coordinador/(9125:9125): Configurando coordinador
+[ERROR] 15:57:55:515 Coordinador/(9125:9125): El archivo de configuracion esta incorrecto
+[INFO] 16:00:11:941 Coordinador/(9202:9202): Configurando coordinador
