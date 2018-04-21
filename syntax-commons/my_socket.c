@@ -1,8 +1,4 @@
-
-#include "mysocket.h"
-#include <commons/log.h>
-
-
+#include "my_socket.h"
 
 void configure_logger() {
   logger = log_create("mysocket.log", "socket",true , LOG_LEVEL_INFO);
@@ -18,7 +14,7 @@ int crear_socket_cliente(char *ip, char *puerto){
 
     
     if (getaddrinfo(ip, puerto, &hints, &serverInfo) < 0){
-        salir_con_error(NULL,"Error en getaddrinfo");
+        salir_con_error(0,"Error en getaddrinfo");
     }
     my_socket=socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
     if(my_socket <0){
@@ -44,7 +40,7 @@ int crear_socket_escucha(char *puerto_escucha,int max_comm){
     hints.ai_socktype=SOCK_STREAM;
 
     if(getaddrinfo(NULL,puerto_escucha,&hints,&serverInfo)!=0){
-    	salir_con_error(NULL,"Error en el getaddrinfo");
+    	salir_con_error(0,"Error en el getaddrinfo");
     }
     
     int my_socket = socket(AF_UNSPEC, SOCK_STREAM, 0);
@@ -67,7 +63,7 @@ int crear_socket_escucha(char *puerto_escucha,int max_comm){
         salir_con_error(my_socket,"error en el bind");
 	}
 
-    if (listen(serverInfo, max_comm) == -1) {
+    if (listen(my_socket, max_comm) == -1) {
 		salir_con_error(my_socket,"no se pudo escuchar");
 	}
 	return my_socket ;
@@ -87,7 +83,6 @@ void esperar_mensaje(int my_socket){
     }
 
 log_info(logger, "Mensaje recibido");
-free(id);
 }
 
 void mandar_mensaje(int my_socket){
@@ -96,8 +91,7 @@ void mandar_mensaje(int my_socket){
     if(res_send != sizeof(id)){
         salir_con_error(my_socket,"No se pudo mandar mensaje");
     }
-log_info(logger, "Mensaje enviado");
-free(id);
+    log_info(logger, "Mensaje enviado");
 }
 
 void recibir_confirmacion (int my_socket){
@@ -112,7 +106,7 @@ void recibir_confirmacion (int my_socket){
 void mandar_confirmacion(int my_socket) {
     int resultado=1;
 	if (send(my_socket, &resultado, sizeof(resultado), 0)<=0) {
-        salir_con_error(socket,"no se pudo mandar confirmación");
+        salir_con_error(my_socket,"no se pudo mandar confirmación");
 	}
     log_info(logger, "confirmación enviada");
     close(my_socket);
@@ -121,8 +115,10 @@ void mandar_confirmacion(int my_socket) {
 
 
 void salir_con_error(int my_socket, char* error_msg){
-        log_error(logger, error_msg);
-        close(my_socket);
+  log_error(logger, error_msg);
+  if(my_socket) {
+	  close(my_socket);
+  }
   exit_gracefully(1);
 }
 
