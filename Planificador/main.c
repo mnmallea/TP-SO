@@ -10,8 +10,7 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
-
-
+#include "../syntax-commons/my_socket.h"
 
 void *menu(void *ptr){
 
