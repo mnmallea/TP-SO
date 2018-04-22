@@ -6,11 +6,13 @@
  */
 
 #include "main.h"
-#include <stdio.h>
-#include <pthread.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../syntax-commons/my_socket.h"
+int *c;
+
+
+#define ipCord "127.0.0.1"
+#define portCord "8000"
+#define port "8001"
+#define LOG_LEVEL LOG_LEVEL_TRACE
 
 void *menu(void *ptr){
 
@@ -88,7 +90,8 @@ void *menu(void *ptr){
 }
 
 int main(void){
-
+	logger = log_create("planificador.log","ESI",true,LOG_LEVEL);
+/*
 	 pthread_t consola_planificador;
 	 const char *message1 = "Inicializacion de la consola";
 
@@ -103,6 +106,20 @@ int main(void){
 		fprintf(stderr, "Error al joinear el hilo de la consola\n");
 		return 1;
 	}
+*/
+	int local_socket=crear_socket_escucha(port,5);
+
+
+    int socketCoord=crear_socket_cliente(ipCord,portCord);
+		mandar_confirmacion(socketCoord);
+		recibir_confirmacion(socketCoord);
+
+	int client_socket=accept(local_socket,NULL,NULL);
+	log_info(logger, "Conexion aceptada");
+		recibir_confirmacion(client_socket);
+		mandar_confirmacion(client_socket);
+
+
 
 
 	// menu();

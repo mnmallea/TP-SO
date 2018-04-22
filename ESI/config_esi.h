@@ -8,12 +8,11 @@
 #ifndef CONFIG_ESI_H_
 #define CONFIG_ESI_H_
 
-
 typedef struct{
 	char* ipCord;
-	int portCord;
+	char* portCord;
 	char* ipPlan;
-	int portPlan;
+	char* portPlan;
 } config;
 
 config configurar(char *ruta);
