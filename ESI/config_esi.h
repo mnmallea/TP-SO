@@ -8,6 +8,11 @@
 #ifndef CONFIG_ESI_H_
 #define CONFIG_ESI_H_
 
+#include <stdlib.h>
+#include <commons/config.h>
+#include <commons/string.h>
+#include <commons/log.h>
+
 typedef struct{
 	char* ipCord;
 	char* portCord;
@@ -15,6 +20,10 @@ typedef struct{
 	char* portPlan;
 } config;
 
+extern config configuracion;
+extern t_log *logger;
+
 config configurar(char *ruta);
+void limpiar_configuracion(void);
 
 #endif /* CONFIG_H_ */
