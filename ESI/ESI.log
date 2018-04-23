@@ -9,3 +9,7 @@
 [DEBUG] 21:53:08:463 ESI/(16012:16012): Ruta de configuracion: ESI.cfg
 [DEBUG] 21:53:12:809 ESI/(16012:16012): IP del coordinador: 127.0.0.1
 [ERROR] 21:53:27:79 ESI/(16012:16012): Error al conectar el socket
+[DEBUG] 22:23:17:394 ESI/(17092:17092): Ruta de configuracion: ESI.cfg
+[DEBUG] 22:23:17:418 ESI/(17092:17092): IP del coordinador: 127.0.0.1
+[INFO] 22:23:17:418 ESI/(17092:17092): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8000
+[ERROR] 22:23:17:418 ESI/(17092:17092): Error al conectar el socket

@@ -1,1 +1,5 @@
 [ERROR] 20:57:30:158 ESI/(13530:13530): Error al conectar el socket
+[ERROR] 21:57:08:754 ESI/(16218:16218): Error al conectar el socket
+[ERROR] 21:58:20:931 ESI/(16282:16282): Error al conectar el socket
+[INFO] 23:02:38:778 ESI/(18673:18673): Escuchando en puerto: 8001
+[ERROR] 23:02:47:13 ESI/(18673:18673): Error al conectar el socket

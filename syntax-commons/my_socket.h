@@ -9,6 +9,7 @@
 #include <netdb.h>
 #include <unistd.h>
 #include <commons/log.h>
+#include <errno.h>
 
 
 t_log * logger;

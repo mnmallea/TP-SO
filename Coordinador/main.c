@@ -20,8 +20,10 @@ config configuracion;
 int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de configuracion como parametro
 	logger = log_create("coordinador.log","Coordinador", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
+	log_trace(logger, "Coordinador correctamente configurado");
 
 	int local_socket = crear_socket_escucha(configuracion.puerto, BACKLOG);
+	log_info(logger, "Escuchando en puerto: %s", configuracion.puerto);
 
 	int client_socket = accept(local_socket,NULL,NULL);
 	log_info(logger, "Conexion aceptada");
