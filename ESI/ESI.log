@@ -1,0 +1,11 @@
+[INFO] 21:00:48:410 ESI/(13608:13608): Cantidad incorrecta de parametros
+[ERROR] 21:33:43:251 ESI/(15076:15076): Cantidad incorrecta de parametros
+[ERROR] 21:38:56:554 ESI/(15382:15382): No existe la ruta del archivo de configuracion
+[ERROR] 21:43:36:574 ESI/(15446:15446): No existe la ruta del archivo de configuracion
+[DEBUG] 21:45:37:249 ESI/(15655:15655): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:47:38:246 ESI/(15721:15721): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:46:414 ESI/(15910:15910): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:52:17:153 ESI/(15910:15910): IP del coordinador: (null)
+[DEBUG] 21:53:08:463 ESI/(16012:16012): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:53:12:809 ESI/(16012:16012): IP del coordinador: 127.0.0.1
+[ERROR] 21:53:27:79 ESI/(16012:16012): Error al conectar el socket

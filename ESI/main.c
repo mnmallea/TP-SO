@@ -5,17 +5,19 @@
 #define portCord "8000"
 #define ipPlanif "127.0.0.2"
 #define portPlanif "8001"
+#define CANT_ARGUMENTOS_MAIN 2
 
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 
 t_log* logger;
 
-config reg;
+config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
 
 #include "config_esi.h"
 
-int *c;
+int *c;//para que carajo sirve esto???
+
 
 
 /*#include <parser.h>*/
@@ -24,13 +26,13 @@ int *c;
 int main(int argc, char* argv[]){
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 	//char* j;
-	//reg = configurar("/home/utnso/workspace/TP/tp-2018-1c-SyntaxError/ESI/config_esi");
-
-	if(argc!=2){
-			log_info(logger, "Cantidad incorrecta de parametros");
+	if(argc != CANT_ARGUMENTOS_MAIN){
+			log_error(logger, "Cantidad incorrecta de parametros");
 			exit_gracefully(1);
 		return -1;
-		}
+	}
+	log_debug(logger, "Ruta de configuracion: %s", argv[1]);
+	configuracion = configurar(argv[1]);
 
 	int socketCoord=crear_socket_cliente(ipCord,portCord);
 	int socketPlan=crear_socket_cliente(ipPlanif,portPlanif);

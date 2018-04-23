@@ -33,3 +33,10 @@
 [INFO] 15:57:55:458 Coordinador/(9125:9125): Configurando coordinador
 [ERROR] 15:57:55:515 Coordinador/(9125:9125): El archivo de configuracion esta incorrecto
 [INFO] 16:00:11:941 Coordinador/(9202:9202): Configurando coordinador
+[INFO] 20:22:45:764 Coordinador/(12058:12058): Configurando coordinador
+[ERROR] 20:22:45:773 Coordinador/(12058:12058): error en el bind
+[INFO] 20:23:13:272 Coordinador/(12198:12198): Configurando coordinador
+[INFO] 20:23:43:155 Coordinador/(12232:12232): Configurando coordinador
+[INFO] 20:43:16:646 Coordinador/(13060:13060): Configurando coordinador
+[INFO] 20:44:44:35 Coordinador/(13102:13102): Configurando coordinador
+[INFO] 20:52:41:261 Coordinador/(13428:13428): Configurando coordinador
