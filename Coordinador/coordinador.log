@@ -40,3 +40,23 @@
 [INFO] 20:43:16:646 Coordinador/(13060:13060): Configurando coordinador
 [INFO] 20:44:44:35 Coordinador/(13102:13102): Configurando coordinador
 [INFO] 20:52:41:261 Coordinador/(13428:13428): Configurando coordinador
+[INFO] 21:56:54:959 Coordinador/(16203:16203): Configurando coordinador
+[INFO] 21:57:53:771 Coordinador/(16245:16245): Configurando coordinador
+[INFO] 22:31:25:978 Coordinador/(17487:17487): Configurando coordinador
+[TRACE] 22:31:25:996 Coordinador/(17487:17487): Coordinador correctamente configurado
+[ERROR] 22:34:18:349 Coordinador/(17487:17487): error en el bind
+[INFO] 22:38:42:353 Coordinador/(17890:17890): Configurando coordinador
+[TRACE] 22:38:42:353 Coordinador/(17890:17890): Coordinador correctamente configurado
+[ERROR] 22:39:09:236 Coordinador/(17890:17890): Address already in use
+[INFO] 22:46:08:705 Coordinador/(18071:18071): Configurando coordinador
+[TRACE] 22:46:08:706 Coordinador/(18071:18071): Coordinador correctamente configurado
+[ERROR] 22:46:51:3 Coordinador/(18071:18071): Address already in use
+[INFO] 22:49:43:974 Coordinador/(18222:18222): Configurando coordinador
+[TRACE] 22:49:43:975 Coordinador/(18222:18222): Coordinador correctamente configurado
+[ERROR] 22:49:59:944 Coordinador/(18222:18222): Address already in use
+[INFO] 22:55:05:458 Coordinador/(18416:18416): Configurando coordinador
+[TRACE] 22:55:05:458 Coordinador/(18416:18416): Coordinador correctamente configurado
+[ERROR] 22:56:04:787 Coordinador/(18416:18416): Invalid argument
+[INFO] 23:01:04:364 Coordinador/(18590:18590): Configurando coordinador
+[TRACE] 23:01:04:364 Coordinador/(18590:18590): Coordinador correctamente configurado
+[INFO] 23:02:06:12 Coordinador/(18590:18590): Escuchando en puerto: 8080

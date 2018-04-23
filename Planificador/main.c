@@ -10,9 +10,10 @@ int *c;
 
 
 #define ipCord "127.0.0.1"
-#define portCord "8000"
+#define portCord "8080"
 #define port "8001"
 #define LOG_LEVEL LOG_LEVEL_TRACE
+#define BACKLOG 5
 
 void *menu(void *ptr){
 
@@ -107,9 +108,10 @@ int main(void){
 		return 1;
 	}
 */
-	int local_socket=crear_socket_escucha(port,5);
+	int local_socket=crear_socket_escucha(port,BACKLOG);
+	log_info(logger,"Escuchando en puerto: %s", port);
 
-
+	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", ipCord, portCord);
     int socketCoord=crear_socket_cliente(ipCord,portCord);
 		mandar_confirmacion(socketCoord);
 		recibir_confirmacion(socketCoord);
