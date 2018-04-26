@@ -15,6 +15,11 @@ int *c;
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
 
+struct nodoEsi{
+	esi Esi;
+	nodoEsi *nodoSig;
+};
+
 void *menu(void *ptr){
 
 	char *message;
@@ -22,7 +27,7 @@ void *menu(void *ptr){
 	printf("%s \n", message);
 
 	int opcion_seleccionada;
-	int clave;
+	char *clave = (char*)malloc(40);
 	int recurso;
 	int id;
 
@@ -46,18 +51,19 @@ void *menu(void *ptr){
 				printf("Ingreso pausar/despausar la consola");
 				break;
 			case 2:
-				printf("Ingreso bloquear un proceso, ingrese <clave> ");
+				printf("Ingreso bloquear un proceso, ingrese <clave>");
 
-				scanf("%d", &clave);
+				//ACA ME TIRA UN WARNING de que clave es char **
+				scanf("%s", &clave);
 
-				printf("Ingreso bloquear un proceso, ingrese <ID> ");
+				printf("Ingreso bloquear un proceso, ingrese <ID>");
 
 				scanf("%d", &id);
 				break;
 			case 3:
 				printf("Ingreso desbloquear un proceso, ingrese <clave>");
 
-				scanf("%d", &clave);
+				scanf("%s", &clave);
 				break;
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
@@ -73,12 +79,14 @@ void *menu(void *ptr){
 			case 6:
 				printf("Ingreso matar un proceso, ingrese <clave>");
 
-				scanf("%d", &clave);
+				scanf("%s", &clave);
 				break;
 			case 7:
 				printf("Ingreso solucionar problemas de deadlock");
 				break;
 			case 0:
+				break;
+			default:
 				break;
 			}
 
@@ -86,13 +94,16 @@ void *menu(void *ptr){
 
 		}
 
+	printf("Ha salido de la consola");
+	free(clave);
 	return NULL;
 
 }
 
 int main(void){
-	logger = log_create("planificador.log","ESI",true,LOG_LEVEL);
-/*
+
+	/*logger = log_create("planificador.log","ESI",true,LOG_LEVEL);*/
+
 	 pthread_t consola_planificador;
 	 const char *message1 = "Inicializacion de la consola";
 
@@ -107,8 +118,8 @@ int main(void){
 		fprintf(stderr, "Error al joinear el hilo de la consola\n");
 		return 1;
 	}
-*/
-	int local_socket=crear_socket_escucha(port,BACKLOG);
+
+	/*int local_socket=crear_socket_escucha(port,BACKLOG);
 	log_info(logger,"Escuchando en puerto: %s", port);
 
 	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", ipCord, portCord);
@@ -124,9 +135,18 @@ int main(void){
 
 
 
-	// menu();
+	// menu();*/
 	return 0;
 }
+
+
+esi elegirProximoEsiAEjecutar(esi *NodosEsi){
+
+	esiElegido =
+	return esiElegido;
+}
+
+
 
 
 
