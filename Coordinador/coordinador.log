@@ -72,3 +72,608 @@
 [INFO] 16:11:20:651 Coordinador/(6693:6693): Conexion aceptada
 [INFO] 16:11:20:651 Coordinador/(6693:6693): confirmación recibida
 [INFO] 16:11:20:651 Coordinador/(6693:6693): confirmación enviada
+[INFO] 16:16:26:200 Coordinador/(6969:6969): Configurando coordinador
+[TRACE] 16:16:26:200 Coordinador/(6969:6969): Coordinador correctamente configurado
+[INFO] 16:16:26:776 Coordinador/(6969:6969): Escuchando en puerto: 8080
+[INFO] 16:16:34:504 Coordinador/(6969:6969): Conexion aceptada
+[INFO] 16:16:34:506 Coordinador/(6969:6969): confirmación recibida
+[INFO] 16:16:34:506 Coordinador/(6969:6969): confirmación enviada
+[INFO] 17:46:44:701 Coordinador/(9423:9423): Configurando coordinador
+[TRACE] 17:46:44:701 Coordinador/(9423:9423): Coordinador correctamente configurado
+[INFO] 17:46:48:991 Coordinador/(9423:9423): Escuchando en puerto: 8080
+[INFO] 17:53:00:50 Coordinador/(9573:9573): Configurando coordinador
+[TRACE] 17:53:00:50 Coordinador/(9573:9573): Coordinador correctamente configurado
+[ERROR] 17:53:00:50 Coordinador/(9573:9573): Address already in use
+[ERROR] 17:53:00:50 Coordinador/(9573:9573): Address already in use
+[ERROR] 17:53:00:51 Coordinador/(9573:9573): no se pudo escuchar
+[INFO] 17:53:15:185 Coordinador/(9611:9611): Configurando coordinador
+[TRACE] 17:53:15:185 Coordinador/(9611:9611): Coordinador correctamente configurado
+[INFO] 17:53:15:186 Coordinador/(9611:9611): Escuchando en puerto: 8080
+[INFO] 17:55:47:528 Coordinador/(9611:9611): Nueva conexion recibida
+[ERROR] 17:56:30:130 Coordinador/(9611:9706): no se pudo recibir confirmación
+[INFO] 17:59:19:164 Coordinador/(9775:9775): Configurando coordinador
+[TRACE] 17:59:19:165 Coordinador/(9775:9775): Coordinador correctamente configurado
+[INFO] 17:59:19:165 Coordinador/(9775:9775): Escuchando en puerto: 8080
+[INFO] 17:59:47:76 Coordinador/(9775:9775): Nueva conexion recibida
+[ERROR] 17:59:47:97 Coordinador/(9775:9830): no se pudo recibir confirmación
+[INFO] 18:02:32:982 Coordinador/(9892:9892): Configurando coordinador
+[TRACE] 18:02:32:0 Coordinador/(9892:9892): Coordinador correctamente configurado
+[INFO] 18:02:32:0 Coordinador/(9892:9892): Escuchando en puerto: 8080
+[INFO] 18:02:44:111 Coordinador/(9892:9892): Nueva conexion recibida
+[ERROR] 18:02:44:122 Coordinador/(9892:9915): no se pudo recibir confirmación
+[INFO] 18:04:02:770 Coordinador/(10011:10011): Configurando coordinador
+[TRACE] 18:04:02:771 Coordinador/(10011:10011): Coordinador correctamente configurado
+[INFO] 18:04:02:771 Coordinador/(10011:10011): Escuchando en puerto: 8080
+[INFO] 18:05:19:707 Coordinador/(10011:10011): Nueva conexion recibida
+[ERROR] 18:05:39:860 Coordinador/(10011:10081): Bad file descriptor
+[INFO] 18:06:12:273 Coordinador/(10108:10108): Configurando coordinador
+[TRACE] 18:06:12:273 Coordinador/(10108:10108): Coordinador correctamente configurado
+[INFO] 18:06:12:274 Coordinador/(10108:10108): Escuchando en puerto: 8080
+[INFO] 18:07:38:760 Coordinador/(10188:10188): Configurando coordinador
+[TRACE] 18:07:38:761 Coordinador/(10188:10188): Coordinador correctamente configurado
+[INFO] 18:07:38:761 Coordinador/(10188:10188): Escuchando en puerto: 8080
+[INFO] 18:08:10:641 Coordinador/(10188:10188): Nueva conexion recibida
+[ERROR] 18:08:10:647 Coordinador/(10188:10248): Bad file descriptor
+[INFO] 18:10:02:991 Coordinador/(10328:10328): Configurando coordinador
+[TRACE] 18:10:02:991 Coordinador/(10328:10328): Coordinador correctamente configurado
+[INFO] 18:10:02:992 Coordinador/(10328:10328): Escuchando en puerto: 8080
+[INFO] 18:41:36:850 Coordinador/(11970:11970): Configurando coordinador
+[TRACE] 18:41:36:850 Coordinador/(11970:11970): Coordinador correctamente configurado
+[INFO] 18:41:36:850 Coordinador/(11970:11970): Escuchando en puerto: 8080
+[INFO] 18:41:43:943 Coordinador/(11970:11970): Nueva conexion recibida
+[DEBUG] 18:41:43:944 Coordinador/(11970:11970): Socket creado: 5
+[DEBUG] 18:41:43:951 Coordinador/(11970:11984): socketFD = 5
+[INFO] 18:41:43:951 Coordinador/(11970:11984): Mensaje de 4 bytes recibido
+[INFO] 18:41:43:954 Coordinador/(11970:11984): Mensaje enviado
+[INFO] 18:42:18:633 Coordinador/(11970:11970): Nueva conexion recibida
+[DEBUG] 18:42:18:633 Coordinador/(11970:11970): Socket creado: 6
+[INFO] 18:42:18:639 Coordinador/(11970:11984): Se ha conectado un ESI
+[DEBUG] 18:42:18:640 Coordinador/(11970:11995): socketFD = 6
+[INFO] 18:42:18:640 Coordinador/(11970:11995): Mensaje de 4 bytes recibido
+[INFO] 18:42:18:643 Coordinador/(11970:11995): Mensaje enviado
+[INFO] 18:42:50:2 Coordinador/(11970:11995): Se ha conectado un ESI
+[INFO] 18:43:10:633 Coordinador/(12031:12031): Configurando coordinador
+[TRACE] 18:43:10:633 Coordinador/(12031:12031): Coordinador correctamente configurado
+[ERROR] 18:43:10:633 Coordinador/(12031:12031): Address already in use
+[ERROR] 18:43:10:633 Coordinador/(12031:12031): Address already in use
+[ERROR] 18:43:10:633 Coordinador/(12031:12031): no se pudo escuchar
+[INFO] 18:43:39:640 Coordinador/(12056:12056): Configurando coordinador
+[TRACE] 18:43:39:647 Coordinador/(12056:12056): Coordinador correctamente configurado
+[INFO] 18:43:39:648 Coordinador/(12056:12056): Escuchando en puerto: 8080
+[INFO] 18:43:56:334 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:43:56:334 Coordinador/(12056:12056): Socket creado: 5
+[DEBUG] 18:43:56:335 Coordinador/(12056:12065): socketFD = 5
+[INFO] 18:43:56:335 Coordinador/(12056:12065): Mensaje de 4 bytes recibido
+[INFO] 18:43:56:336 Coordinador/(12056:12065): Mensaje enviado
+[INFO] 18:43:56:336 Coordinador/(12056:12065): Se ha conectado un ESI
+[INFO] 18:44:00:89 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:00:90 Coordinador/(12056:12056): Socket creado: 6
+[DEBUG] 18:44:00:90 Coordinador/(12056:12070): socketFD = 6
+[INFO] 18:44:00:90 Coordinador/(12056:12070): Mensaje de 4 bytes recibido
+[INFO] 18:44:00:91 Coordinador/(12056:12070): Mensaje enviado
+[INFO] 18:44:00:91 Coordinador/(12056:12070): Se ha conectado un ESI
+[INFO] 18:44:01:795 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:01:795 Coordinador/(12056:12056): Socket creado: 7
+[DEBUG] 18:44:01:795 Coordinador/(12056:12073): socketFD = 7
+[INFO] 18:44:01:795 Coordinador/(12056:12073): Mensaje de 4 bytes recibido
+[INFO] 18:44:01:796 Coordinador/(12056:12073): Mensaje enviado
+[INFO] 18:44:01:796 Coordinador/(12056:12073): Se ha conectado un ESI
+[INFO] 18:44:03:258 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:03:258 Coordinador/(12056:12056): Socket creado: 8
+[DEBUG] 18:44:03:258 Coordinador/(12056:12076): socketFD = 8
+[INFO] 18:44:03:258 Coordinador/(12056:12076): Mensaje de 4 bytes recibido
+[INFO] 18:44:03:260 Coordinador/(12056:12076): Mensaje enviado
+[INFO] 18:44:03:260 Coordinador/(12056:12076): Se ha conectado un ESI
+[INFO] 18:44:12:49 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:12:49 Coordinador/(12056:12056): Socket creado: 9
+[DEBUG] 18:44:12:50 Coordinador/(12056:12081): socketFD = 9
+[INFO] 18:44:12:50 Coordinador/(12056:12081): Mensaje de 4 bytes recibido
+[INFO] 18:44:12:52 Coordinador/(12056:12081): Mensaje enviado
+[INFO] 18:44:12:52 Coordinador/(12056:12081): Se ha conectado un ESI
+[INFO] 18:44:12:679 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:12:680 Coordinador/(12056:12056): Socket creado: 10
+[DEBUG] 18:44:12:680 Coordinador/(12056:12084): socketFD = 10
+[INFO] 18:44:12:681 Coordinador/(12056:12084): Mensaje de 4 bytes recibido
+[INFO] 18:44:12:685 Coordinador/(12056:12084): Mensaje enviado
+[INFO] 18:44:12:685 Coordinador/(12056:12084): Se ha conectado un ESI
+[INFO] 18:44:12:963 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:12:964 Coordinador/(12056:12056): Socket creado: 11
+[DEBUG] 18:44:12:964 Coordinador/(12056:12086): socketFD = 11
+[INFO] 18:44:12:964 Coordinador/(12056:12086): Mensaje de 4 bytes recibido
+[INFO] 18:44:12:965 Coordinador/(12056:12086): Mensaje enviado
+[INFO] 18:44:12:965 Coordinador/(12056:12086): Se ha conectado un ESI
+[INFO] 18:44:13:242 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:13:242 Coordinador/(12056:12056): Socket creado: 12
+[DEBUG] 18:44:13:242 Coordinador/(12056:12088): socketFD = 12
+[INFO] 18:44:13:242 Coordinador/(12056:12088): Mensaje de 4 bytes recibido
+[INFO] 18:44:13:244 Coordinador/(12056:12088): Mensaje enviado
+[INFO] 18:44:13:247 Coordinador/(12056:12088): Se ha conectado un ESI
+[INFO] 18:44:13:498 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:13:498 Coordinador/(12056:12056): Socket creado: 13
+[DEBUG] 18:44:13:499 Coordinador/(12056:12090): socketFD = 13
+[INFO] 18:44:13:499 Coordinador/(12056:12090): Mensaje de 4 bytes recibido
+[INFO] 18:44:13:502 Coordinador/(12056:12090): Mensaje enviado
+[INFO] 18:44:13:502 Coordinador/(12056:12090): Se ha conectado un ESI
+[INFO] 18:44:13:738 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:13:739 Coordinador/(12056:12056): Socket creado: 14
+[DEBUG] 18:44:13:740 Coordinador/(12056:12092): socketFD = 14
+[INFO] 18:44:13:740 Coordinador/(12056:12092): Mensaje de 4 bytes recibido
+[INFO] 18:44:13:740 Coordinador/(12056:12092): Mensaje enviado
+[INFO] 18:44:13:741 Coordinador/(12056:12092): Se ha conectado un ESI
+[INFO] 18:44:13:2 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:13:2 Coordinador/(12056:12056): Socket creado: 15
+[DEBUG] 18:44:13:2 Coordinador/(12056:12094): socketFD = 15
+[INFO] 18:44:13:2 Coordinador/(12056:12094): Mensaje de 4 bytes recibido
+[INFO] 18:44:14:5 Coordinador/(12056:12094): Mensaje enviado
+[INFO] 18:44:14:5 Coordinador/(12056:12094): Se ha conectado un ESI
+[INFO] 18:44:14:228 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:14:228 Coordinador/(12056:12056): Socket creado: 16
+[DEBUG] 18:44:14:228 Coordinador/(12056:12096): socketFD = 16
+[INFO] 18:44:14:228 Coordinador/(12056:12096): Mensaje de 4 bytes recibido
+[INFO] 18:44:14:230 Coordinador/(12056:12096): Mensaje enviado
+[INFO] 18:44:14:230 Coordinador/(12056:12096): Se ha conectado un ESI
+[INFO] 18:44:14:474 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:14:474 Coordinador/(12056:12056): Socket creado: 17
+[DEBUG] 18:44:14:474 Coordinador/(12056:12099): socketFD = 17
+[INFO] 18:44:14:474 Coordinador/(12056:12099): Mensaje de 4 bytes recibido
+[INFO] 18:44:14:476 Coordinador/(12056:12099): Mensaje enviado
+[INFO] 18:44:14:476 Coordinador/(12056:12099): Se ha conectado un ESI
+[INFO] 18:44:14:754 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:14:754 Coordinador/(12056:12056): Socket creado: 18
+[DEBUG] 18:44:14:754 Coordinador/(12056:12101): socketFD = 18
+[INFO] 18:44:14:754 Coordinador/(12056:12101): Mensaje de 4 bytes recibido
+[INFO] 18:44:14:756 Coordinador/(12056:12101): Mensaje enviado
+[INFO] 18:44:14:756 Coordinador/(12056:12101): Se ha conectado un ESI
+[INFO] 18:44:15:10 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:15:10 Coordinador/(12056:12056): Socket creado: 19
+[DEBUG] 18:44:15:10 Coordinador/(12056:12103): socketFD = 19
+[INFO] 18:44:15:10 Coordinador/(12056:12103): Mensaje de 4 bytes recibido
+[INFO] 18:44:15:12 Coordinador/(12056:12103): Mensaje enviado
+[INFO] 18:44:15:12 Coordinador/(12056:12103): Se ha conectado un ESI
+[INFO] 18:44:15:250 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:15:250 Coordinador/(12056:12056): Socket creado: 20
+[DEBUG] 18:44:15:250 Coordinador/(12056:12105): socketFD = 20
+[INFO] 18:44:15:250 Coordinador/(12056:12105): Mensaje de 4 bytes recibido
+[INFO] 18:44:15:252 Coordinador/(12056:12105): Mensaje enviado
+[INFO] 18:44:15:252 Coordinador/(12056:12105): Se ha conectado un ESI
+[INFO] 18:44:15:498 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:15:498 Coordinador/(12056:12056): Socket creado: 21
+[DEBUG] 18:44:15:499 Coordinador/(12056:12107): socketFD = 21
+[INFO] 18:44:15:499 Coordinador/(12056:12107): Mensaje de 4 bytes recibido
+[INFO] 18:44:15:500 Coordinador/(12056:12107): Mensaje enviado
+[INFO] 18:44:15:500 Coordinador/(12056:12107): Se ha conectado un ESI
+[INFO] 18:44:15:746 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:15:746 Coordinador/(12056:12056): Socket creado: 22
+[DEBUG] 18:44:15:747 Coordinador/(12056:12109): socketFD = 22
+[INFO] 18:44:15:747 Coordinador/(12056:12109): Mensaje de 4 bytes recibido
+[INFO] 18:44:15:748 Coordinador/(12056:12109): Mensaje enviado
+[INFO] 18:44:15:748 Coordinador/(12056:12109): Se ha conectado un ESI
+[INFO] 18:44:16:10 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:16:10 Coordinador/(12056:12056): Socket creado: 23
+[DEBUG] 18:44:16:10 Coordinador/(12056:12111): socketFD = 23
+[INFO] 18:44:16:10 Coordinador/(12056:12111): Mensaje de 4 bytes recibido
+[INFO] 18:44:16:12 Coordinador/(12056:12111): Mensaje enviado
+[INFO] 18:44:16:12 Coordinador/(12056:12111): Se ha conectado un ESI
+[INFO] 18:44:16:258 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:16:258 Coordinador/(12056:12056): Socket creado: 24
+[DEBUG] 18:44:16:259 Coordinador/(12056:12113): socketFD = 24
+[INFO] 18:44:16:259 Coordinador/(12056:12113): Mensaje de 4 bytes recibido
+[INFO] 18:44:16:260 Coordinador/(12056:12113): Mensaje enviado
+[INFO] 18:44:16:260 Coordinador/(12056:12113): Se ha conectado un ESI
+[INFO] 18:44:16:921 Coordinador/(12056:12056): Nueva conexion recibida
+[DEBUG] 18:44:16:921 Coordinador/(12056:12056): Socket creado: 25
+[DEBUG] 18:44:16:921 Coordinador/(12056:12116): socketFD = 25
+[INFO] 18:44:16:921 Coordinador/(12056:12116): Mensaje de 4 bytes recibido
+[INFO] 18:44:16:923 Coordinador/(12056:12116): Mensaje enviado
+[INFO] 18:44:16:923 Coordinador/(12056:12116): Se ha conectado un ESI
+[INFO] 18:46:26:697 Coordinador/(12214:12214): Configurando coordinador
+[TRACE] 18:46:26:697 Coordinador/(12214:12214): Coordinador correctamente configurado
+[INFO] 18:46:26:698 Coordinador/(12214:12214): Escuchando en puerto: 8080
+[INFO] 18:46:48:642 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:48:642 Coordinador/(12214:12214): Socket creado: 5
+[DEBUG] 18:46:48:643 Coordinador/(12214:12254): socketFD = 5
+[INFO] 18:46:48:643 Coordinador/(12214:12254): Mensaje de 4 bytes recibido
+[INFO] 18:46:48:644 Coordinador/(12214:12254): Mensaje enviado
+[INFO] 18:46:48:644 Coordinador/(12214:12254): Se ha conectado un ESI
+[INFO] 18:46:50:320 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:50:320 Coordinador/(12214:12214): Socket creado: 6
+[DEBUG] 18:46:50:320 Coordinador/(12214:12257): socketFD = 6
+[INFO] 18:46:50:320 Coordinador/(12214:12257): Mensaje de 4 bytes recibido
+[INFO] 18:46:50:322 Coordinador/(12214:12257): Mensaje enviado
+[INFO] 18:46:50:322 Coordinador/(12214:12257): Se ha conectado un ESI
+[INFO] 18:46:52:128 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:52:128 Coordinador/(12214:12214): Socket creado: 7
+[DEBUG] 18:46:52:128 Coordinador/(12214:12260): socketFD = 7
+[INFO] 18:46:52:128 Coordinador/(12214:12260): Mensaje de 4 bytes recibido
+[INFO] 18:46:52:130 Coordinador/(12214:12260): Mensaje enviado
+[INFO] 18:46:52:130 Coordinador/(12214:12260): Se ha conectado un ESI
+[INFO] 18:46:53:175 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:53:176 Coordinador/(12214:12214): Socket creado: 8
+[DEBUG] 18:46:53:176 Coordinador/(12214:12263): socketFD = 8
+[INFO] 18:46:53:176 Coordinador/(12214:12263): Mensaje de 4 bytes recibido
+[INFO] 18:46:53:177 Coordinador/(12214:12263): Mensaje enviado
+[INFO] 18:46:53:177 Coordinador/(12214:12263): Se ha conectado un ESI
+[INFO] 18:46:53:896 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:53:896 Coordinador/(12214:12214): Socket creado: 9
+[DEBUG] 18:46:53:897 Coordinador/(12214:12266): socketFD = 9
+[INFO] 18:46:53:897 Coordinador/(12214:12266): Mensaje de 4 bytes recibido
+[INFO] 18:46:53:898 Coordinador/(12214:12266): Mensaje enviado
+[INFO] 18:46:53:898 Coordinador/(12214:12266): Se ha conectado un ESI
+[INFO] 18:46:54:448 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:54:448 Coordinador/(12214:12214): Socket creado: 10
+[DEBUG] 18:46:54:448 Coordinador/(12214:12268): socketFD = 10
+[INFO] 18:46:54:448 Coordinador/(12214:12268): Mensaje de 4 bytes recibido
+[INFO] 18:46:54:450 Coordinador/(12214:12268): Mensaje enviado
+[INFO] 18:46:54:450 Coordinador/(12214:12268): Se ha conectado un ESI
+[INFO] 18:46:54:864 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:54:864 Coordinador/(12214:12214): Socket creado: 11
+[DEBUG] 18:46:54:864 Coordinador/(12214:12270): socketFD = 11
+[INFO] 18:46:54:864 Coordinador/(12214:12270): Mensaje de 4 bytes recibido
+[INFO] 18:46:54:866 Coordinador/(12214:12270): Mensaje enviado
+[INFO] 18:46:54:866 Coordinador/(12214:12270): Se ha conectado un ESI
+[INFO] 18:46:55:168 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:55:168 Coordinador/(12214:12214): Socket creado: 12
+[DEBUG] 18:46:55:169 Coordinador/(12214:12272): socketFD = 12
+[INFO] 18:46:55:169 Coordinador/(12214:12272): Mensaje de 4 bytes recibido
+[INFO] 18:46:55:170 Coordinador/(12214:12272): Mensaje enviado
+[INFO] 18:46:55:170 Coordinador/(12214:12272): Se ha conectado un ESI
+[INFO] 18:46:55:432 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:55:432 Coordinador/(12214:12214): Socket creado: 13
+[DEBUG] 18:46:55:432 Coordinador/(12214:12274): socketFD = 13
+[INFO] 18:46:55:433 Coordinador/(12214:12274): Mensaje de 4 bytes recibido
+[INFO] 18:46:55:434 Coordinador/(12214:12274): Mensaje enviado
+[INFO] 18:46:55:434 Coordinador/(12214:12274): Se ha conectado un ESI
+[INFO] 18:46:55:728 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:55:728 Coordinador/(12214:12214): Socket creado: 14
+[DEBUG] 18:46:55:729 Coordinador/(12214:12276): socketFD = 14
+[INFO] 18:46:55:729 Coordinador/(12214:12276): Mensaje de 4 bytes recibido
+[INFO] 18:46:55:730 Coordinador/(12214:12276): Mensaje enviado
+[INFO] 18:46:55:730 Coordinador/(12214:12276): Se ha conectado un ESI
+[INFO] 18:46:56:24 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:56:24 Coordinador/(12214:12214): Socket creado: 15
+[DEBUG] 18:46:56:24 Coordinador/(12214:12278): socketFD = 15
+[INFO] 18:46:56:25 Coordinador/(12214:12278): Mensaje de 4 bytes recibido
+[INFO] 18:46:56:26 Coordinador/(12214:12278): Mensaje enviado
+[INFO] 18:46:56:26 Coordinador/(12214:12278): Se ha conectado un ESI
+[INFO] 18:46:56:312 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:56:312 Coordinador/(12214:12214): Socket creado: 16
+[DEBUG] 18:46:56:313 Coordinador/(12214:12280): socketFD = 16
+[INFO] 18:46:56:313 Coordinador/(12214:12280): Mensaje de 4 bytes recibido
+[INFO] 18:46:56:314 Coordinador/(12214:12280): Mensaje enviado
+[INFO] 18:46:56:314 Coordinador/(12214:12280): Se ha conectado un ESI
+[INFO] 18:46:56:632 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:56:632 Coordinador/(12214:12214): Socket creado: 17
+[DEBUG] 18:46:56:633 Coordinador/(12214:12282): socketFD = 17
+[INFO] 18:46:56:633 Coordinador/(12214:12282): Mensaje de 4 bytes recibido
+[INFO] 18:46:56:634 Coordinador/(12214:12282): Mensaje enviado
+[INFO] 18:46:56:634 Coordinador/(12214:12282): Se ha conectado un ESI
+[INFO] 18:46:56:928 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:56:928 Coordinador/(12214:12214): Socket creado: 18
+[DEBUG] 18:46:56:928 Coordinador/(12214:12284): socketFD = 18
+[INFO] 18:46:56:929 Coordinador/(12214:12284): Mensaje de 4 bytes recibido
+[INFO] 18:46:56:930 Coordinador/(12214:12284): Mensaje enviado
+[INFO] 18:46:56:930 Coordinador/(12214:12284): Se ha conectado un ESI
+[INFO] 18:46:57:219 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:57:219 Coordinador/(12214:12214): Socket creado: 19
+[DEBUG] 18:46:57:220 Coordinador/(12214:12286): socketFD = 19
+[INFO] 18:46:57:220 Coordinador/(12214:12286): Mensaje de 4 bytes recibido
+[INFO] 18:46:57:221 Coordinador/(12214:12286): Mensaje enviado
+[INFO] 18:46:57:221 Coordinador/(12214:12286): Se ha conectado un ESI
+[INFO] 18:46:57:496 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:57:496 Coordinador/(12214:12214): Socket creado: 20
+[DEBUG] 18:46:57:496 Coordinador/(12214:12288): socketFD = 20
+[INFO] 18:46:57:497 Coordinador/(12214:12288): Mensaje de 4 bytes recibido
+[INFO] 18:46:57:498 Coordinador/(12214:12288): Mensaje enviado
+[INFO] 18:46:57:498 Coordinador/(12214:12288): Se ha conectado un ESI
+[INFO] 18:46:57:800 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:57:800 Coordinador/(12214:12214): Socket creado: 21
+[DEBUG] 18:46:57:801 Coordinador/(12214:12290): socketFD = 21
+[INFO] 18:46:57:801 Coordinador/(12214:12290): Mensaje de 4 bytes recibido
+[INFO] 18:46:57:802 Coordinador/(12214:12290): Mensaje enviado
+[INFO] 18:46:57:802 Coordinador/(12214:12290): Se ha conectado un ESI
+[INFO] 18:46:58:104 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:58:104 Coordinador/(12214:12214): Socket creado: 22
+[DEBUG] 18:46:58:105 Coordinador/(12214:12292): socketFD = 22
+[INFO] 18:46:58:105 Coordinador/(12214:12292): Mensaje de 4 bytes recibido
+[INFO] 18:46:58:106 Coordinador/(12214:12292): Mensaje enviado
+[INFO] 18:46:58:106 Coordinador/(12214:12292): Se ha conectado un ESI
+[INFO] 18:46:58:408 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:58:408 Coordinador/(12214:12214): Socket creado: 23
+[DEBUG] 18:46:58:409 Coordinador/(12214:12294): socketFD = 23
+[INFO] 18:46:58:409 Coordinador/(12214:12294): Mensaje de 4 bytes recibido
+[INFO] 18:46:58:410 Coordinador/(12214:12294): Mensaje enviado
+[INFO] 18:46:58:410 Coordinador/(12214:12294): Se ha conectado un ESI
+[INFO] 18:46:58:680 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:58:680 Coordinador/(12214:12214): Socket creado: 24
+[DEBUG] 18:46:58:680 Coordinador/(12214:12296): socketFD = 24
+[INFO] 18:46:58:680 Coordinador/(12214:12296): Mensaje de 4 bytes recibido
+[INFO] 18:46:58:682 Coordinador/(12214:12296): Mensaje enviado
+[INFO] 18:46:58:682 Coordinador/(12214:12296): Se ha conectado un ESI
+[INFO] 18:46:58:937 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:58:937 Coordinador/(12214:12214): Socket creado: 25
+[DEBUG] 18:46:58:937 Coordinador/(12214:12298): socketFD = 25
+[INFO] 18:46:58:937 Coordinador/(12214:12298): Mensaje de 4 bytes recibido
+[INFO] 18:46:58:939 Coordinador/(12214:12298): Mensaje enviado
+[INFO] 18:46:58:939 Coordinador/(12214:12298): Se ha conectado un ESI
+[INFO] 18:46:59:312 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:59:312 Coordinador/(12214:12214): Socket creado: 26
+[DEBUG] 18:46:59:312 Coordinador/(12214:12300): socketFD = 26
+[INFO] 18:46:59:312 Coordinador/(12214:12300): Mensaje de 4 bytes recibido
+[INFO] 18:46:59:314 Coordinador/(12214:12300): Mensaje enviado
+[INFO] 18:46:59:314 Coordinador/(12214:12300): Se ha conectado un ESI
+[INFO] 18:46:59:888 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:46:59:888 Coordinador/(12214:12214): Socket creado: 27
+[DEBUG] 18:46:59:888 Coordinador/(12214:12302): socketFD = 27
+[INFO] 18:46:59:889 Coordinador/(12214:12302): Mensaje de 4 bytes recibido
+[INFO] 18:46:59:890 Coordinador/(12214:12302): Mensaje enviado
+[INFO] 18:46:59:890 Coordinador/(12214:12302): Se ha conectado un ESI
+[INFO] 18:47:00:176 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:00:176 Coordinador/(12214:12214): Socket creado: 28
+[DEBUG] 18:47:00:176 Coordinador/(12214:12304): socketFD = 28
+[INFO] 18:47:00:176 Coordinador/(12214:12304): Mensaje de 4 bytes recibido
+[INFO] 18:47:00:178 Coordinador/(12214:12304): Mensaje enviado
+[INFO] 18:47:00:178 Coordinador/(12214:12304): Se ha conectado un ESI
+[INFO] 18:47:00:408 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:00:409 Coordinador/(12214:12214): Socket creado: 29
+[DEBUG] 18:47:00:409 Coordinador/(12214:12306): socketFD = 29
+[INFO] 18:47:00:409 Coordinador/(12214:12306): Mensaje de 4 bytes recibido
+[INFO] 18:47:00:410 Coordinador/(12214:12306): Mensaje enviado
+[INFO] 18:47:00:410 Coordinador/(12214:12306): Se ha conectado un ESI
+[INFO] 18:47:00:632 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:00:632 Coordinador/(12214:12214): Socket creado: 30
+[DEBUG] 18:47:00:632 Coordinador/(12214:12308): socketFD = 30
+[INFO] 18:47:00:632 Coordinador/(12214:12308): Mensaje de 4 bytes recibido
+[INFO] 18:47:00:634 Coordinador/(12214:12308): Mensaje enviado
+[INFO] 18:47:00:634 Coordinador/(12214:12308): Se ha conectado un ESI
+[INFO] 18:47:00:920 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:00:920 Coordinador/(12214:12214): Socket creado: 31
+[DEBUG] 18:47:00:921 Coordinador/(12214:12310): socketFD = 31
+[INFO] 18:47:00:921 Coordinador/(12214:12310): Mensaje de 4 bytes recibido
+[INFO] 18:47:00:922 Coordinador/(12214:12310): Mensaje enviado
+[INFO] 18:47:00:922 Coordinador/(12214:12310): Se ha conectado un ESI
+[INFO] 18:47:01:320 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:01:320 Coordinador/(12214:12214): Socket creado: 32
+[DEBUG] 18:47:01:321 Coordinador/(12214:12312): socketFD = 32
+[INFO] 18:47:01:321 Coordinador/(12214:12312): Mensaje de 4 bytes recibido
+[INFO] 18:47:01:322 Coordinador/(12214:12312): Mensaje enviado
+[INFO] 18:47:01:322 Coordinador/(12214:12312): Se ha conectado un ESI
+[INFO] 18:47:01:632 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:01:632 Coordinador/(12214:12214): Socket creado: 33
+[DEBUG] 18:47:01:632 Coordinador/(12214:12314): socketFD = 33
+[INFO] 18:47:01:632 Coordinador/(12214:12314): Mensaje de 4 bytes recibido
+[INFO] 18:47:01:634 Coordinador/(12214:12314): Mensaje enviado
+[INFO] 18:47:01:634 Coordinador/(12214:12314): Se ha conectado un ESI
+[INFO] 18:47:01:936 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:01:936 Coordinador/(12214:12214): Socket creado: 34
+[DEBUG] 18:47:01:936 Coordinador/(12214:12316): socketFD = 34
+[INFO] 18:47:01:936 Coordinador/(12214:12316): Mensaje de 4 bytes recibido
+[INFO] 18:47:01:938 Coordinador/(12214:12316): Mensaje enviado
+[INFO] 18:47:01:938 Coordinador/(12214:12316): Se ha conectado un ESI
+[INFO] 18:47:02:233 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:02:233 Coordinador/(12214:12214): Socket creado: 35
+[DEBUG] 18:47:02:235 Coordinador/(12214:12318): socketFD = 35
+[INFO] 18:47:02:235 Coordinador/(12214:12318): Mensaje de 4 bytes recibido
+[INFO] 18:47:02:237 Coordinador/(12214:12318): Mensaje enviado
+[INFO] 18:47:02:237 Coordinador/(12214:12318): Se ha conectado un ESI
+[INFO] 18:47:02:496 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:02:496 Coordinador/(12214:12214): Socket creado: 36
+[DEBUG] 18:47:02:496 Coordinador/(12214:12320): socketFD = 36
+[INFO] 18:47:02:496 Coordinador/(12214:12320): Mensaje de 4 bytes recibido
+[INFO] 18:47:02:498 Coordinador/(12214:12320): Mensaje enviado
+[INFO] 18:47:02:498 Coordinador/(12214:12320): Se ha conectado un ESI
+[INFO] 18:47:02:760 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:02:760 Coordinador/(12214:12214): Socket creado: 37
+[DEBUG] 18:47:02:761 Coordinador/(12214:12322): socketFD = 37
+[INFO] 18:47:02:761 Coordinador/(12214:12322): Mensaje de 4 bytes recibido
+[INFO] 18:47:02:762 Coordinador/(12214:12322): Mensaje enviado
+[INFO] 18:47:02:762 Coordinador/(12214:12322): Se ha conectado un ESI
+[INFO] 18:47:03:8 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:03:8 Coordinador/(12214:12214): Socket creado: 38
+[DEBUG] 18:47:03:8 Coordinador/(12214:12324): socketFD = 38
+[INFO] 18:47:03:9 Coordinador/(12214:12324): Mensaje de 4 bytes recibido
+[INFO] 18:47:03:10 Coordinador/(12214:12324): Mensaje enviado
+[INFO] 18:47:03:10 Coordinador/(12214:12324): Se ha conectado un ESI
+[INFO] 18:47:03:289 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:03:289 Coordinador/(12214:12214): Socket creado: 39
+[DEBUG] 18:47:03:289 Coordinador/(12214:12326): socketFD = 39
+[INFO] 18:47:03:289 Coordinador/(12214:12326): Mensaje de 4 bytes recibido
+[INFO] 18:47:03:290 Coordinador/(12214:12326): Mensaje enviado
+[INFO] 18:47:03:291 Coordinador/(12214:12326): Se ha conectado un ESI
+[INFO] 18:47:03:600 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:03:600 Coordinador/(12214:12214): Socket creado: 40
+[DEBUG] 18:47:03:600 Coordinador/(12214:12328): socketFD = 40
+[INFO] 18:47:03:600 Coordinador/(12214:12328): Mensaje de 4 bytes recibido
+[INFO] 18:47:03:602 Coordinador/(12214:12328): Mensaje enviado
+[INFO] 18:47:03:602 Coordinador/(12214:12328): Se ha conectado un ESI
+[INFO] 18:47:04:48 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:04:48 Coordinador/(12214:12214): Socket creado: 41
+[DEBUG] 18:47:04:49 Coordinador/(12214:12330): socketFD = 41
+[INFO] 18:47:04:49 Coordinador/(12214:12330): Mensaje de 4 bytes recibido
+[INFO] 18:47:04:50 Coordinador/(12214:12330): Mensaje enviado
+[INFO] 18:47:04:50 Coordinador/(12214:12330): Se ha conectado un ESI
+[INFO] 18:47:04:320 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:04:320 Coordinador/(12214:12214): Socket creado: 42
+[DEBUG] 18:47:04:320 Coordinador/(12214:12332): socketFD = 42
+[INFO] 18:47:04:320 Coordinador/(12214:12332): Mensaje de 4 bytes recibido
+[INFO] 18:47:04:322 Coordinador/(12214:12332): Mensaje enviado
+[INFO] 18:47:04:322 Coordinador/(12214:12332): Se ha conectado un ESI
+[INFO] 18:47:04:600 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:04:601 Coordinador/(12214:12214): Socket creado: 43
+[DEBUG] 18:47:04:601 Coordinador/(12214:12335): socketFD = 43
+[INFO] 18:47:04:601 Coordinador/(12214:12335): Mensaje de 4 bytes recibido
+[INFO] 18:47:04:603 Coordinador/(12214:12335): Mensaje enviado
+[INFO] 18:47:04:603 Coordinador/(12214:12335): Se ha conectado un ESI
+[INFO] 18:47:04:872 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:04:872 Coordinador/(12214:12214): Socket creado: 44
+[DEBUG] 18:47:04:872 Coordinador/(12214:12337): socketFD = 44
+[INFO] 18:47:04:873 Coordinador/(12214:12337): Mensaje de 4 bytes recibido
+[INFO] 18:47:04:874 Coordinador/(12214:12337): Mensaje enviado
+[INFO] 18:47:04:874 Coordinador/(12214:12337): Se ha conectado un ESI
+[INFO] 18:47:05:152 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:05:152 Coordinador/(12214:12214): Socket creado: 45
+[DEBUG] 18:47:05:153 Coordinador/(12214:12339): socketFD = 45
+[INFO] 18:47:05:153 Coordinador/(12214:12339): Mensaje de 4 bytes recibido
+[INFO] 18:47:05:154 Coordinador/(12214:12339): Mensaje enviado
+[INFO] 18:47:05:154 Coordinador/(12214:12339): Se ha conectado un ESI
+[INFO] 18:47:05:520 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:05:520 Coordinador/(12214:12214): Socket creado: 46
+[DEBUG] 18:47:05:520 Coordinador/(12214:12341): socketFD = 46
+[INFO] 18:47:05:520 Coordinador/(12214:12341): Mensaje de 4 bytes recibido
+[INFO] 18:47:05:522 Coordinador/(12214:12341): Mensaje enviado
+[INFO] 18:47:05:522 Coordinador/(12214:12341): Se ha conectado un ESI
+[INFO] 18:47:05:808 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:05:808 Coordinador/(12214:12214): Socket creado: 47
+[DEBUG] 18:47:05:809 Coordinador/(12214:12343): socketFD = 47
+[INFO] 18:47:05:809 Coordinador/(12214:12343): Mensaje de 4 bytes recibido
+[INFO] 18:47:05:810 Coordinador/(12214:12343): Mensaje enviado
+[INFO] 18:47:05:810 Coordinador/(12214:12343): Se ha conectado un ESI
+[INFO] 18:47:06:120 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:06:120 Coordinador/(12214:12214): Socket creado: 48
+[DEBUG] 18:47:06:121 Coordinador/(12214:12345): socketFD = 48
+[INFO] 18:47:06:121 Coordinador/(12214:12345): Mensaje de 4 bytes recibido
+[INFO] 18:47:06:122 Coordinador/(12214:12345): Mensaje enviado
+[INFO] 18:47:06:122 Coordinador/(12214:12345): Se ha conectado un ESI
+[INFO] 18:47:07:224 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:07:224 Coordinador/(12214:12214): Socket creado: 49
+[DEBUG] 18:47:07:224 Coordinador/(12214:12348): socketFD = 49
+[INFO] 18:47:07:224 Coordinador/(12214:12348): Mensaje de 4 bytes recibido
+[INFO] 18:47:07:226 Coordinador/(12214:12348): Mensaje enviado
+[INFO] 18:47:07:226 Coordinador/(12214:12348): Se ha conectado un ESI
+[INFO] 18:47:07:552 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:07:552 Coordinador/(12214:12214): Socket creado: 50
+[DEBUG] 18:47:07:552 Coordinador/(12214:12350): socketFD = 50
+[INFO] 18:47:07:552 Coordinador/(12214:12350): Mensaje de 4 bytes recibido
+[INFO] 18:47:07:554 Coordinador/(12214:12350): Mensaje enviado
+[INFO] 18:47:07:554 Coordinador/(12214:12350): Se ha conectado un ESI
+[INFO] 18:47:07:840 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:07:840 Coordinador/(12214:12214): Socket creado: 51
+[DEBUG] 18:47:07:841 Coordinador/(12214:12352): socketFD = 51
+[INFO] 18:47:07:841 Coordinador/(12214:12352): Mensaje de 4 bytes recibido
+[INFO] 18:47:07:842 Coordinador/(12214:12352): Mensaje enviado
+[INFO] 18:47:07:842 Coordinador/(12214:12352): Se ha conectado un ESI
+[INFO] 18:47:08:120 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:08:120 Coordinador/(12214:12214): Socket creado: 52
+[DEBUG] 18:47:08:120 Coordinador/(12214:12354): socketFD = 52
+[INFO] 18:47:08:120 Coordinador/(12214:12354): Mensaje de 4 bytes recibido
+[INFO] 18:47:08:122 Coordinador/(12214:12354): Mensaje enviado
+[INFO] 18:47:08:122 Coordinador/(12214:12354): Se ha conectado un ESI
+[INFO] 18:47:08:392 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:08:392 Coordinador/(12214:12214): Socket creado: 53
+[DEBUG] 18:47:08:392 Coordinador/(12214:12356): socketFD = 53
+[INFO] 18:47:08:392 Coordinador/(12214:12356): Mensaje de 4 bytes recibido
+[INFO] 18:47:08:394 Coordinador/(12214:12356): Mensaje enviado
+[INFO] 18:47:08:394 Coordinador/(12214:12356): Se ha conectado un ESI
+[INFO] 18:47:08:696 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:08:696 Coordinador/(12214:12214): Socket creado: 54
+[DEBUG] 18:47:08:696 Coordinador/(12214:12358): socketFD = 54
+[INFO] 18:47:08:696 Coordinador/(12214:12358): Mensaje de 4 bytes recibido
+[INFO] 18:47:08:698 Coordinador/(12214:12358): Mensaje enviado
+[INFO] 18:47:08:698 Coordinador/(12214:12358): Se ha conectado un ESI
+[INFO] 18:47:09:351 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:09:352 Coordinador/(12214:12214): Socket creado: 55
+[DEBUG] 18:47:09:352 Coordinador/(12214:12361): socketFD = 55
+[INFO] 18:47:09:352 Coordinador/(12214:12361): Mensaje de 4 bytes recibido
+[INFO] 18:47:09:353 Coordinador/(12214:12361): Mensaje enviado
+[INFO] 18:47:09:353 Coordinador/(12214:12361): Se ha conectado un ESI
+[INFO] 18:47:09:600 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:09:601 Coordinador/(12214:12214): Socket creado: 56
+[DEBUG] 18:47:09:601 Coordinador/(12214:12363): socketFD = 56
+[INFO] 18:47:09:601 Coordinador/(12214:12363): Mensaje de 4 bytes recibido
+[INFO] 18:47:09:602 Coordinador/(12214:12363): Mensaje enviado
+[INFO] 18:47:09:602 Coordinador/(12214:12363): Se ha conectado un ESI
+[INFO] 18:47:09:872 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:09:872 Coordinador/(12214:12214): Socket creado: 57
+[DEBUG] 18:47:09:872 Coordinador/(12214:12365): socketFD = 57
+[INFO] 18:47:09:873 Coordinador/(12214:12365): Mensaje de 4 bytes recibido
+[INFO] 18:47:09:874 Coordinador/(12214:12365): Mensaje enviado
+[INFO] 18:47:09:874 Coordinador/(12214:12365): Se ha conectado un ESI
+[INFO] 18:47:10:144 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:10:144 Coordinador/(12214:12214): Socket creado: 58
+[DEBUG] 18:47:10:144 Coordinador/(12214:12367): socketFD = 58
+[INFO] 18:47:10:144 Coordinador/(12214:12367): Mensaje de 4 bytes recibido
+[INFO] 18:47:10:146 Coordinador/(12214:12367): Mensaje enviado
+[INFO] 18:47:10:146 Coordinador/(12214:12367): Se ha conectado un ESI
+[INFO] 18:47:10:408 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:10:408 Coordinador/(12214:12214): Socket creado: 59
+[DEBUG] 18:47:10:408 Coordinador/(12214:12371): socketFD = 59
+[INFO] 18:47:10:408 Coordinador/(12214:12371): Mensaje de 4 bytes recibido
+[INFO] 18:47:10:410 Coordinador/(12214:12371): Mensaje enviado
+[INFO] 18:47:10:410 Coordinador/(12214:12371): Se ha conectado un ESI
+[INFO] 18:47:10:696 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:10:696 Coordinador/(12214:12214): Socket creado: 60
+[DEBUG] 18:47:10:696 Coordinador/(12214:12373): socketFD = 60
+[INFO] 18:47:10:696 Coordinador/(12214:12373): Mensaje de 4 bytes recibido
+[INFO] 18:47:10:698 Coordinador/(12214:12373): Mensaje enviado
+[INFO] 18:47:10:698 Coordinador/(12214:12373): Se ha conectado un ESI
+[INFO] 18:47:10:0 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:10:0 Coordinador/(12214:12214): Socket creado: 61
+[DEBUG] 18:47:10:0 Coordinador/(12214:12375): socketFD = 61
+[INFO] 18:47:10:0 Coordinador/(12214:12375): Mensaje de 4 bytes recibido
+[INFO] 18:47:10:2 Coordinador/(12214:12375): Mensaje enviado
+[INFO] 18:47:10:2 Coordinador/(12214:12375): Se ha conectado un ESI
+[INFO] 18:47:11:759 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:11:760 Coordinador/(12214:12214): Socket creado: 62
+[DEBUG] 18:47:11:760 Coordinador/(12214:12378): socketFD = 62
+[INFO] 18:47:11:760 Coordinador/(12214:12378): Mensaje de 4 bytes recibido
+[INFO] 18:47:11:761 Coordinador/(12214:12378): Mensaje enviado
+[INFO] 18:47:11:761 Coordinador/(12214:12378): Se ha conectado un ESI
+[INFO] 18:47:12:32 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:12:32 Coordinador/(12214:12214): Socket creado: 63
+[DEBUG] 18:47:12:33 Coordinador/(12214:12380): socketFD = 63
+[INFO] 18:47:12:33 Coordinador/(12214:12380): Mensaje de 4 bytes recibido
+[INFO] 18:47:12:34 Coordinador/(12214:12380): Mensaje enviado
+[INFO] 18:47:12:34 Coordinador/(12214:12380): Se ha conectado un ESI
+[INFO] 18:47:12:328 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:12:328 Coordinador/(12214:12214): Socket creado: 64
+[DEBUG] 18:47:12:328 Coordinador/(12214:12382): socketFD = 64
+[INFO] 18:47:12:329 Coordinador/(12214:12382): Mensaje de 4 bytes recibido
+[INFO] 18:47:12:330 Coordinador/(12214:12382): Mensaje enviado
+[INFO] 18:47:12:330 Coordinador/(12214:12382): Se ha conectado un ESI
+[INFO] 18:47:12:568 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:12:568 Coordinador/(12214:12214): Socket creado: 65
+[DEBUG] 18:47:12:568 Coordinador/(12214:12384): socketFD = 65
+[INFO] 18:47:12:568 Coordinador/(12214:12384): Mensaje de 4 bytes recibido
+[INFO] 18:47:12:570 Coordinador/(12214:12384): Mensaje enviado
+[INFO] 18:47:12:570 Coordinador/(12214:12384): Se ha conectado un ESI
+[INFO] 18:47:12:872 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:12:872 Coordinador/(12214:12214): Socket creado: 66
+[DEBUG] 18:47:12:872 Coordinador/(12214:12386): socketFD = 66
+[INFO] 18:47:12:872 Coordinador/(12214:12386): Mensaje de 4 bytes recibido
+[INFO] 18:47:12:873 Coordinador/(12214:12386): Mensaje enviado
+[INFO] 18:47:12:874 Coordinador/(12214:12386): Se ha conectado un ESI
+[INFO] 18:47:13:168 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:13:168 Coordinador/(12214:12214): Socket creado: 67
+[DEBUG] 18:47:13:169 Coordinador/(12214:12388): socketFD = 67
+[INFO] 18:47:13:169 Coordinador/(12214:12388): Mensaje de 4 bytes recibido
+[INFO] 18:47:13:170 Coordinador/(12214:12388): Mensaje enviado
+[INFO] 18:47:13:170 Coordinador/(12214:12388): Se ha conectado un ESI
+[INFO] 18:47:13:903 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:13:903 Coordinador/(12214:12214): Socket creado: 68
+[DEBUG] 18:47:13:903 Coordinador/(12214:12391): socketFD = 68
+[INFO] 18:47:13:904 Coordinador/(12214:12391): Mensaje de 4 bytes recibido
+[INFO] 18:47:13:905 Coordinador/(12214:12391): Mensaje enviado
+[INFO] 18:47:13:905 Coordinador/(12214:12391): Se ha conectado un ESI
+[INFO] 18:47:14:752 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:14:752 Coordinador/(12214:12214): Socket creado: 69
+[DEBUG] 18:47:14:753 Coordinador/(12214:12394): socketFD = 69
+[INFO] 18:47:14:753 Coordinador/(12214:12394): Mensaje de 4 bytes recibido
+[INFO] 18:47:14:753 Coordinador/(12214:12394): Mensaje enviado
+[INFO] 18:47:14:754 Coordinador/(12214:12394): Se ha conectado un ESI
+[INFO] 18:47:15:87 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:15:87 Coordinador/(12214:12214): Socket creado: 70
+[DEBUG] 18:47:15:88 Coordinador/(12214:12396): socketFD = 70
+[INFO] 18:47:15:88 Coordinador/(12214:12396): Mensaje de 4 bytes recibido
+[INFO] 18:47:15:89 Coordinador/(12214:12396): Mensaje enviado
+[INFO] 18:47:15:89 Coordinador/(12214:12396): Se ha conectado un ESI
+[INFO] 18:47:15:320 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:15:320 Coordinador/(12214:12214): Socket creado: 71
+[DEBUG] 18:47:15:320 Coordinador/(12214:12398): socketFD = 71
+[INFO] 18:47:15:320 Coordinador/(12214:12398): Mensaje de 4 bytes recibido
+[INFO] 18:47:15:322 Coordinador/(12214:12398): Mensaje enviado
+[INFO] 18:47:15:322 Coordinador/(12214:12398): Se ha conectado un ESI
+[INFO] 18:47:15:576 Coordinador/(12214:12214): Nueva conexion recibida
+[DEBUG] 18:47:15:576 Coordinador/(12214:12214): Socket creado: 72
+[DEBUG] 18:47:15:576 Coordinador/(12214:12400): socketFD = 72
+[INFO] 18:47:15:576 Coordinador/(12214:12400): Mensaje de 4 bytes recibido
+[INFO] 18:47:15:578 Coordinador/(12214:12400): Mensaje enviado
+[INFO] 18:47:15:578 Coordinador/(12214:12400): Se ha conectado un ESI

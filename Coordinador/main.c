@@ -8,6 +8,7 @@
 #include "../syntax-commons/my_socket.h"
 #include "config_coordinador.h"
 #include "algoritmos_distribucion.h"
+#include "servidor.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
@@ -23,22 +24,21 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	log_trace(logger, "Coordinador correctamente configurado");
 
 	int local_socket = crear_socket_escucha(configuracion.puerto, BACKLOG);
+
 	log_info(logger, "Escuchando en puerto: %s", configuracion.puerto);
 
-	int client_socket = accept(local_socket,NULL,NULL);
-	log_info(logger, "Conexion aceptada");
-		recibir_confirmacion(client_socket);
-		mandar_confirmacion(client_socket);
+	esperar_nuevas_conexiones(local_socket);
+//	int client_socket = accept(local_socket,NULL,NULL);
+//	log_info(logger, "Conexion aceptada");
+//		recibir_confirmacion(client_socket);
+//		mandar_confirmacion(client_socket);
+//
+//	int client_socket2 = accept(local_socket,NULL,NULL);
+//	log_info(logger, "Conexion aceptada");
+//		recibir_confirmacion(client_socket2);
+//		mandar_confirmacion(client_socket2);
 
-	int client_socket2 = accept(local_socket,NULL,NULL);
-	log_info(logger, "Conexion aceptada");
-		recibir_confirmacion(client_socket2);
-		mandar_confirmacion(client_socket2);
-
-	//printf("Puerto: %s\n", configuracion.puerto);
-	//printf("Si, esto todavia no hace nada.. \n");
-
-	//log_destroy(logger);
+	log_destroy(logger);
 	exit(0);
 }
 
