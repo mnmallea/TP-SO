@@ -3,3 +3,8 @@
 [ERROR] 21:58:20:931 ESI/(16282:16282): Error al conectar el socket
 [INFO] 23:02:38:778 ESI/(18673:18673): Escuchando en puerto: 8001
 [ERROR] 23:02:47:13 ESI/(18673:18673): Error al conectar el socket
+[INFO] 16:01:51:400 ESI/(6353:6353): Escuchando en puerto: 8001
+[TRACE] 16:02:32:543 ESI/(6353:6353): Intentando conectarse al Coordinador. IP: 127.0.0.1  Puerto: 8080
+[INFO] 16:02:32:544 ESI/(6353:6353): Socket conectado
+[INFO] 16:02:32:544 ESI/(6353:6353): confirmación enviada
+[INFO] 16:02:32:544 ESI/(6353:6353): confirmación recibida

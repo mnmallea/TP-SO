@@ -60,3 +60,15 @@
 [INFO] 23:01:04:364 Coordinador/(18590:18590): Configurando coordinador
 [TRACE] 23:01:04:364 Coordinador/(18590:18590): Coordinador correctamente configurado
 [INFO] 23:02:06:12 Coordinador/(18590:18590): Escuchando en puerto: 8080
+[INFO] 16:01:26:536 Coordinador/(6316:6316): Configurando coordinador
+[TRACE] 16:01:26:553 Coordinador/(6316:6316): Coordinador correctamente configurado
+[INFO] 16:01:29:889 Coordinador/(6316:6316): Escuchando en puerto: 8080
+[INFO] 16:02:32:543 Coordinador/(6316:6316): Conexion aceptada
+[INFO] 16:02:32:544 Coordinador/(6316:6316): confirmación recibida
+[INFO] 16:02:32:544 Coordinador/(6316:6316): confirmación enviada
+[INFO] 16:10:28:75 Coordinador/(6693:6693): Configurando coordinador
+[TRACE] 16:10:28:76 Coordinador/(6693:6693): Coordinador correctamente configurado
+[INFO] 16:10:29:851 Coordinador/(6693:6693): Escuchando en puerto: 8080
+[INFO] 16:11:20:651 Coordinador/(6693:6693): Conexion aceptada
+[INFO] 16:11:20:651 Coordinador/(6693:6693): confirmación recibida
+[INFO] 16:11:20:651 Coordinador/(6693:6693): confirmación enviada
