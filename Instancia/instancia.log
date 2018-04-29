@@ -1,0 +1,6 @@
+[ERROR] 16:09:37:694 instancia/(6614:6614): Error al conectar el socket
+[ERROR] 16:09:59:89 Instancia/(6658:6658): Error al conectar el socket
+[ERROR] 16:10:44:395 Instancia/(6723:6723): Error al conectar el socket
+[INFO] 16:11:20:651 Instancia/(6776:6776): Socket conectado
+[INFO] 16:11:20:651 Instancia/(6776:6776): Mensaje enviado
+[INFO] 16:11:20:651 Instancia/(6776:6776): confirmación recibida

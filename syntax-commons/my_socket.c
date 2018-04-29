@@ -43,30 +43,9 @@ int crear_socket_escucha(char *puerto_escucha, int max_comm) {
 	hints.ai_flags = AI_PASSIVE;
 	hints.ai_socktype = SOCK_STREAM;
 
-	/* Todo esto esta al pedo porque en el memset ya te pone todo en 0
-	 hints.ai_protocol = 0;
-	 hints.ai_canonname = NULL;
-	 hints.ai_addr = NULL;
-	 hints.ai_next = NULL;
-	 */
-
 	if (getaddrinfo(NULL, puerto_escucha, &hints, &serverInfo) != 0)
 		salir_con_error(0, "Error en el getaddrinfo");
 
-//	int my_socket = socket(serverInfo->ai_family, serverInfo->ai_socktype,
-//			serverInfo->ai_protocol);
-//
-//	if (my_socket < 0)
-//		salir_con_error(my_socket, "error al crear el socket");
-//
-//	if (setsockopt(my_socket, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int)) == -1) {
-//		salir_con_error(my_socket, strerror(errno));
-//	}
-//
-//	if (bind(my_socket, serverInfo->ai_addr, serverInfo->ai_addrlen) == -1)
-//		salir_con_error(my_socket, strerror(errno));
-
-	// loop through all the results and bind to the first we can
 	for (p = serverInfo; p != NULL; p = p->ai_next) {
 		if ((sockfd = socket(p->ai_family, p->ai_socktype, p->ai_protocol)) == -1) {
 			log_error(logger, strerror(errno));
