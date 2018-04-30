@@ -22,6 +22,7 @@ int *c;
 t_log *logger;
 config configuracion;
 
+
 t_list* lista_esis_listos;
 t_list* lista_esis_corriendo;
 t_list* lista_esis_bloq_consola;
