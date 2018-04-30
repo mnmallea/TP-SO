@@ -22,7 +22,6 @@ int *c;
 t_log *logger;
 config configuracion;
 
-//NO SE COMO HACERLE UN MALLOC A LA LISTA
 t_list* lista_esis_listos;
 t_list* lista_esis_corriendo;
 t_list* lista_esis_bloq_consola;
@@ -115,6 +114,13 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	configuracion = configurar(argv[1]);
 	log_trace(logger, "Planificador correctamente configurado");
 
+	lista_esis_listos = list_create();
+	lista_esis_corriendo = list_create();
+	lista_esis_bloq_consola = list_create();
+	lista_esis_bloq_rec = list_create();
+	lista_esis_finalizados = list_create();
+	log_trace(logger, "Lista de Esis creadas correctamente");
+
 	int local_socket=crear_socket_escucha(port,BACKLOG);
 		log_info(logger,"Escuchando en puerto: %s", port);
 
@@ -153,7 +159,7 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 }
 
 
-void obtener_proximo_segun_fifo(t_list lista_esis_actual, t_list lista_esis_nueva){
+void obtener_proximo_segun_fifo(t_list* lista_esis_actual, t_list* lista_esis_nueva){
 
 	t_esi* esi_elegido = malloc(sizeof(t_esi));
 	esi_elegido = list_remove(lista_esis_actual, 0);
