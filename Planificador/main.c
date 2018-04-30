@@ -6,6 +6,9 @@
  */
 
 #include "main.h"
+#include "config_planificador.h"
+#include "algoritmos_planificacion.h"
+#include <commons/collections/list.h>
 int *c;
 
 
@@ -15,6 +18,17 @@ int *c;
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
 
+
+t_log *logger;
+config configuracion;
+
+//NO SE COMO HACERLE UN MALLOC A LA LISTA
+t_list* lista_esis_listos;
+t_list* lista_esis_corriendo;
+t_list* lista_esis_bloq_consola;
+t_list* lista_esis_bloq_rec;
+t_list* lista_esis_finalizados;
+
 void *menu(void *ptr){
 
 	char *message;
@@ -22,7 +36,7 @@ void *menu(void *ptr){
 	printf("%s \n", message);
 
 	int opcion_seleccionada;
-	int clave;
+	char *clave = (char*)malloc(40);
 	int recurso;
 	int id;
 
@@ -46,18 +60,19 @@ void *menu(void *ptr){
 				printf("Ingreso pausar/despausar la consola");
 				break;
 			case 2:
-				printf("Ingreso bloquear un proceso, ingrese <clave> ");
+				printf("Ingreso bloquear un proceso, ingrese <clave>");
 
-				scanf("%d", &clave);
+				//ACA ME TIRA UN WARNING de que clave es char **
+				scanf("%s", &clave);
 
-				printf("Ingreso bloquear un proceso, ingrese <ID> ");
+				printf("Ingreso bloquear un proceso, ingrese <ID>");
 
 				scanf("%d", &id);
 				break;
 			case 3:
 				printf("Ingreso desbloquear un proceso, ingrese <clave>");
 
-				scanf("%d", &clave);
+				scanf("%s", &clave);
 				break;
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
@@ -73,12 +88,14 @@ void *menu(void *ptr){
 			case 6:
 				printf("Ingreso matar un proceso, ingrese <clave>");
 
-				scanf("%d", &clave);
+				scanf("%s", &clave);
 				break;
 			case 7:
 				printf("Ingreso solucionar problemas de deadlock");
 				break;
 			case 0:
+				break;
+			default:
 				break;
 			}
 
@@ -86,12 +103,33 @@ void *menu(void *ptr){
 
 		}
 
+	printf("Ha salido de la consola");
+	free(clave);
 	return NULL;
 
 }
 
-int main(void){
-	logger = log_create("planificador.log","ESI",true,LOG_LEVEL);
+int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de configuracion como parametro
+
+	logger = log_create("planificador.log","Planificador",true,LOG_LEVEL);
+	configuracion = configurar(argv[1]);
+	log_trace(logger, "Planificador correctamente configurado");
+
+	int local_socket=crear_socket_escucha(port,BACKLOG);
+		log_info(logger,"Escuchando en puerto: %s", port);
+
+		log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", ipCord, portCord);
+	    int socketCoord=crear_socket_cliente(ipCord,portCord);
+			mandar_confirmacion(socketCoord);
+			recibir_confirmacion(socketCoord);
+
+		int client_socket=accept(local_socket,NULL,NULL);
+		log_info(logger, "Conexion aceptada");
+			recibir_confirmacion(client_socket);
+			mandar_confirmacion(client_socket);
+
+
+
 /*
 	 pthread_t consola_planificador;
 	 const char *message1 = "Inicializacion de la consola";
@@ -108,26 +146,19 @@ int main(void){
 		return 1;
 	}
 */
-	int local_socket=crear_socket_escucha(port,BACKLOG);
-	log_info(logger,"Escuchando en puerto: %s", port);
-
-	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", ipCord, portCord);
-    int socketCoord=crear_socket_cliente(ipCord,portCord);
-		mandar_confirmacion(socketCoord);
-		recibir_confirmacion(socketCoord);
-
-	int client_socket=accept(local_socket,NULL,NULL);
-	log_info(logger, "Conexion aceptada");
-		recibir_confirmacion(client_socket);
-		mandar_confirmacion(client_socket);
 
 
 
-
-	// menu();
 	return 0;
 }
 
 
+void obtener_proximo_segun_fifo(t_list lista_esis_actual, t_list lista_esis_nueva){
+
+	t_esi* esi_elegido = malloc(sizeof(t_esi));
+	esi_elegido = list_remove(lista_esis_actual, 0);
+	list_add(lista_esis_nueva, esi_elegido);
+
+}
 
 
