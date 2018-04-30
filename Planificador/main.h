@@ -24,6 +24,7 @@ typedef struct{
 } t_esi;
 
 
+
 void *menu(void *ptr);
 
 
