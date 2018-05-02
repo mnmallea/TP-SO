@@ -18,7 +18,7 @@ extern t_log* logger;
 
 
 void esperar_nuevas_conexiones(int sockfd);
-void* atender_nueva_conexion(void* sockfd_ptr);
+void atender_nueva_conexion(void* sockfd_ptr);
 
 
 #endif /* SERVIDOR_H_ */

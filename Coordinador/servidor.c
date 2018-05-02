@@ -21,13 +21,14 @@ void esperar_nuevas_conexiones(int sockfd){
 		}
 		log_info(logger,"Nueva conexion recibida");
 		log_debug(logger, "Socket creado: %d", new_sockfd);
-		if(pthread_create(&thread, NULL, atender_nueva_conexion, &new_sockfd)){
+		if(pthread_create(&thread, NULL, (void*)atender_nueva_conexion, &new_sockfd)){
 			log_error(logger, "Error creando thread");
 		}
+		pthread_detach(thread);
 	}
 }
 
-void* atender_nueva_conexion(void* sockfd_ptr) {
+void atender_nueva_conexion(void* sockfd_ptr) {
 	log_debug(logger, "socketFD = %d", *(int*)sockfd_ptr);
 	t_identidad* buffer = safe_recv(*(int*)sockfd_ptr, sizeof(t_identidad));
 	int handshake_msg = COORDINADOR;
@@ -45,6 +46,6 @@ void* atender_nueva_conexion(void* sockfd_ptr) {
 		default:
 			log_error(logger, "Conexion desconocida");
 	}
-	return sockfd_ptr;
+	close(*(int*)sockfd_ptr);//hay que ver si aca se cerraria el socket o se cerraria antes
 }
 

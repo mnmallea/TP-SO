@@ -8,6 +8,7 @@
 #include <commons/log.h>
 #include "config_instancia.h"
 #include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/conexiones.h"
 
 #define LOG_LEVEL LOG_LEVEL_DEBUG
 
@@ -15,14 +16,16 @@ config configuracion;
 t_log *logger;
 
 int main(int argc, char** argv){
-	int sockfd;
+//	int sockfd;
 
 	logger = log_create("instancia.log", "Instancia", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
 
-	sockfd = crear_socket_cliente(configuracion.ip_coordinador, configuracion.puerto_coordinador);
-	mandar_mensaje(sockfd);
-	recibir_confirmacion(sockfd);
+	conectarse_a_coordinador(configuracion.ip_coordinador, configuracion.puerto_coordinador, INSTANCIA);
+
+//	sockfd = crear_socket_cliente(configuracion.ip_coordinador, configuracion.puerto_coordinador);
+//	mandar_mensaje(sockfd);
+//	recibir_confirmacion(sockfd);
 
 	limpiar_configuracion();
 	log_destroy(logger);
