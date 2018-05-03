@@ -12,9 +12,9 @@ int crear_socket_cliente(char *ip, char *puerto){
     hints.ai_flags=AI_PASSIVE;
     hints.ai_socktype=SOCK_STREAM;
     
-    if (getaddrinfo(ip,puerto, &hints, &serverInfo) < 0)
-        salir_con_error(0,"Error en getaddrinfo");
-
+    if (getaddrinfo(ip,puerto, &hints, &serverInfo) < 0){
+    	salir_con_error(0,"Error en getaddrinfo");
+    }
     my_socket=socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
 
     if(my_socket <0)
@@ -134,6 +134,7 @@ void* safe_recv(int my_socket, int msg_len) {
 	void *buffer = malloc(msg_len);
 	int res = recv(my_socket, buffer, msg_len, MSG_WAITALL);
 	if (res <= 0) {
+		free(buffer);
 		salir_con_error(my_socket, strerror(errno));
 	}
 	log_info(logger, "Mensaje de %d bytes recibido", res);
