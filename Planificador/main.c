@@ -15,6 +15,10 @@ int *c;
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
 
+void limpiar_configuracion(void){
+	//va a haber que implementar esto
+}
+
 void *menu(void *ptr){
 
 	char *message;
@@ -91,40 +95,42 @@ void *menu(void *ptr){
 }
 
 int main(void){
-	logger = log_create("planificador.log","ESI",true,LOG_LEVEL);
-/*
-	 pthread_t consola_planificador;
-	 const char *message1 = "Inicializacion de la consola";
+	logger = log_create("planificador.log","Planificador",true,LOG_LEVEL);
 
-	if(pthread_create(&consola_planificador, NULL, menu, (void*) message1)) {
+	pthread_t consola_planificador;
+	const char *message1 = "Inicializacion de la consola";
+
+	if (pthread_create(&consola_planificador, NULL, menu, (void*) message1)) {
 
 		fprintf(stderr, "Error creando el hilo de la consola\n");
 		return 1;
 	}
 
-	if(pthread_join(consola_planificador, NULL)) {
 
-		fprintf(stderr, "Error al joinear el hilo de la consola\n");
-		return 1;
-	}
-*/
+	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", ipCord, portCord);
+    conectarse_a_coordinador(ipCord, portCord, PLANIFICADOR);
+
+    /* Aca tendria que crear su servidor para ESIs */
 	int local_socket=crear_socket_escucha(port,BACKLOG);
 	log_info(logger,"Escuchando en puerto: %s", port);
 
-	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", ipCord, portCord);
-    int socketCoord=crear_socket_cliente(ipCord,portCord);
-		mandar_confirmacion(socketCoord);
-		recibir_confirmacion(socketCoord);
-
-	int client_socket=accept(local_socket,NULL,NULL);
-	log_info(logger, "Conexion aceptada");
-		recibir_confirmacion(client_socket);
-		mandar_confirmacion(client_socket);
+	/*Y aca lo que va a hacer es atender las ESIs */
+//	int client_socket=accept(local_socket,NULL,NULL);
+//	log_info(logger, "Conexion aceptada");
+//		recibir_confirmacion(client_socket);
+//		mandar_confirmacion(client_socket);
 
 
 
 
 	// menu();
+
+
+	if (pthread_join(consola_planificador, NULL)) {
+
+		fprintf(stderr, "Error al joinear el hilo de la consola\n");
+		return 1;
+	}
 	return 0;
 }
 

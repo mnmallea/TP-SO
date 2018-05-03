@@ -28,15 +28,6 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	log_info(logger, "Escuchando en puerto: %s", configuracion.puerto);
 
 	esperar_nuevas_conexiones(local_socket);
-//	int client_socket = accept(local_socket,NULL,NULL);
-//	log_info(logger, "Conexion aceptada");
-//		recibir_confirmacion(client_socket);
-//		mandar_confirmacion(client_socket);
-//
-//	int client_socket2 = accept(local_socket,NULL,NULL);
-//	log_info(logger, "Conexion aceptada");
-//		recibir_confirmacion(client_socket2);
-//		mandar_confirmacion(client_socket2);
 
 	log_destroy(logger);
 	exit(0);

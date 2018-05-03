@@ -68,6 +68,7 @@ int main(int argc, char* argv[]){
 
 	free(j);
 */
+	log_destroy(logger);
 	limpiar_configuracion();
 	exit(1);
 }
