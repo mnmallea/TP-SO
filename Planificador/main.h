@@ -10,6 +10,9 @@
 
 #include <pthread.h>
 #include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/protocol.h"
+#include "../syntax-commons/conexiones.h"
+
 void *menu(void *ptr);
 
 

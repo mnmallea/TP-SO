@@ -8,3 +8,43 @@
 [INFO] 16:02:32:544 ESI/(6353:6353): Socket conectado
 [INFO] 16:02:32:544 ESI/(6353:6353): confirmación enviada
 [INFO] 16:02:32:544 ESI/(6353:6353): confirmación recibida
+[INFO] 09:56:47:216 ESI/(6156:6156): Escuchando en puerto: 8001
+[TRACE] 09:56:47:226 ESI/(6156:6156): Intentando conectarse al Coordinador. IP: 127.0.0.1  Puerto: 8080
+[INFO] 09:56:47:226 ESI/(6156:6156): Socket conectado
+[INFO] 09:56:47:226 ESI/(6156:6156): confirmación enviada
+[INFO] 09:56:47:232 ESI/(6156:6156): confirmación recibida
+[ERROR] 09:57:25:139 ESI/(6184:6184): Address already in use
+[ERROR] 09:57:25:140 ESI/(6184:6184): Address already in use
+[ERROR] 09:57:25:140 ESI/(6184:6184): no se pudo escuchar
+[ERROR] 09:57:52:234 Planificador/(6222:6222): Address already in use
+[ERROR] 09:57:52:236 Planificador/(6222:6222): Address already in use
+[ERROR] 09:57:52:236 Planificador/(6222:6222): no se pudo escuchar
+[TRACE] 09:58:44:773 Planificador/(6294:6294): Intentando conectarse al Coordinador. IP: 127.0.0.1  Puerto: 8080
+[INFO] 09:58:44:774 Planificador/(6294:6294): Socket conectado
+[INFO] 09:58:44:774 Planificador/(6294:6294): confirmación enviada
+[INFO] 09:58:44:774 Planificador/(6294:6294): confirmación recibida
+[TRACE] 10:03:16:222 Planificador/(6466:6466): Intentando conectarse al Coordinador. IP: 127.0.0.1  Puerto: 8080
+[INFO] 10:03:16:223 Planificador/(6466:6466): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 10:03:16:224 Planificador/(6466:6466): Socket conectado
+[INFO] 10:03:16:224 Planificador/(6466:6466): Mensaje enviado
+[INFO] 10:03:16:227 Planificador/(6466:6466): Mensaje de 4 bytes recibido
+[INFO] 10:03:16:227 Planificador/(6466:6466): Se ha conectado al coordinador correctamente!!
+[ERROR] 10:03:16:228 Planificador/(6466:6466): Address already in use
+[ERROR] 10:03:16:228 Planificador/(6466:6466): Address already in use
+[ERROR] 10:03:16:228 Planificador/(6466:6466): no se pudo escuchar
+[TRACE] 10:03:50:479 Planificador/(6484:6484): Intentando conectarse al Coordinador. IP: 127.0.0.1  Puerto: 8080
+[INFO] 10:03:50:490 Planificador/(6484:6484): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 10:03:50:495 Planificador/(6484:6484): Socket conectado
+[INFO] 10:03:50:495 Planificador/(6484:6484): Mensaje enviado
+[INFO] 10:03:50:501 Planificador/(6484:6484): Mensaje de 4 bytes recibido
+[INFO] 10:03:50:501 Planificador/(6484:6484): Se ha conectado al coordinador correctamente!!
+[ERROR] 10:03:50:502 Planificador/(6484:6484): Address already in use
+[ERROR] 10:03:50:502 Planificador/(6484:6484): Address already in use
+[ERROR] 10:03:50:502 Planificador/(6484:6484): no se pudo escuchar
+[TRACE] 10:04:26:736 Planificador/(6512:6512): Intentando conectarse al Coordinador. IP: 127.0.0.1  Puerto: 8080
+[INFO] 10:04:26:736 Planificador/(6512:6512): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 10:04:26:736 Planificador/(6512:6512): Socket conectado
+[INFO] 10:04:26:736 Planificador/(6512:6512): Mensaje enviado
+[INFO] 10:04:26:740 Planificador/(6512:6512): Mensaje de 4 bytes recibido
+[INFO] 10:04:26:740 Planificador/(6512:6512): Se ha conectado al coordinador correctamente!!
+[INFO] 10:04:26:740 Planificador/(6512:6512): Escuchando en puerto: 8001

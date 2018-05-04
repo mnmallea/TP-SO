@@ -12,9 +12,9 @@ int crear_socket_cliente(char *ip, char *puerto){
     hints.ai_flags=AI_PASSIVE;
     hints.ai_socktype=SOCK_STREAM;
     
-    if (getaddrinfo(ip,puerto, &hints, &serverInfo) < 0)
-        salir_con_error(0,"Error en getaddrinfo");
-
+    if (getaddrinfo(ip,puerto, &hints, &serverInfo) < 0){
+    	salir_con_error(0,"Error en getaddrinfo");
+    }
     my_socket=socket(serverInfo->ai_family, serverInfo->ai_socktype, serverInfo->ai_protocol);
 
     if(my_socket <0)
@@ -117,6 +117,29 @@ void mandar_confirmacion(int my_socket) {
     //close(my_socket);
 }
 
+void safe_send(int my_socket, void* msg, int msg_len) {
+	int res_send = send(my_socket, msg, msg_len, 0);
+	if (res_send != msg_len) {
+		salir_con_error(my_socket, "No se pudo mandar mensaje");
+	}
+	log_info(logger, "Mensaje enviado");
+}
+
+
+/*
+ * Recibe un mensaje de tamaño msg_len a traves del socket my_socket
+ * Devuelve un puntero a un buffer que contiene el mensaje recibido
+*/
+void* safe_recv(int my_socket, int msg_len) {
+	void *buffer = malloc(msg_len);
+	int res = recv(my_socket, buffer, msg_len, MSG_WAITALL);
+	if (res <= 0) {
+		free(buffer);
+		salir_con_error(my_socket, strerror(errno));
+	}
+	log_info(logger, "Mensaje de %d bytes recibido", res);
+	return buffer;
+}
 
 
 void salir_con_error(int my_socket, char* error_msg){
