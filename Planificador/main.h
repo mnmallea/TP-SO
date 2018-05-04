@@ -32,10 +32,5 @@ typedef struct{
 void *menu(void *ptr);
 
 
-void obtener_proximo_segun_fifo(t_list* lista_esis_actual, t_list* lista_esis_nueva);
-void obtener_proximo_segun_sjfsd(t_list* lista_esis_actual, t_list* lista_esis_nueva);
-void obtener_proximo_segun_sjfcd(t_list* lista_esis_actual, t_list* lista_esis_nueva);
-void obtener_proximo_segun_hrrn(t_list* lista_esis_actual, t_list* lista_esis_nueva);
-
 
 #endif /* MAIN_H_ */
