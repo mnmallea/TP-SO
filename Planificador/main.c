@@ -136,6 +136,12 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 			mandar_confirmacion(client_socket);
 
 
+	/*aca iria el select
+	 * el select debe: crear un nuevo esi, instanciandole la ip y el puerto
+	 * debe agregarlo a la lista de esis nuevos con la funcion list_add
+	 * */
+
+
 
 /*
 	 pthread_t consola_planificador;
