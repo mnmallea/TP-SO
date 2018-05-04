@@ -17,7 +17,11 @@
 
 typedef struct{
 
-	/*informacion del socket*/
+	//info del socket
+	char *ip;
+	char *puerto;
+
+	//info para calcular HRRN, SJF
 	int dur_ult_raf;
 	int estim_anter;
 	int viene_esperando;

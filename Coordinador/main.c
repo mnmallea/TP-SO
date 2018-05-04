@@ -8,7 +8,6 @@
 #include "../syntax-commons/my_socket.h"
 #include "config_coordinador.h"
 #include "algoritmos_distribucion.h"
-#include <commons/list.h>
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
@@ -17,12 +16,6 @@ int *c;
 
 t_log *logger;
 config configuracion;
-
-t_list lista_esis_listos;
-t_list lista_esis_corriendo;
-t_list lista_esis_bloq_consola;
-t_list lista_esis_bloq_rec;
-t_list lista_esis_finalizados;
 
 
 int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de configuracion como parametro
