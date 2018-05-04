@@ -166,12 +166,6 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 }
 
 
-void obtener_proximo_segun_fifo(t_list* lista_esis_actual, t_list* lista_esis_nueva){
 
-	t_esi* esi_elegido = malloc(sizeof(t_esi));
-	esi_elegido = list_remove(lista_esis_actual, 0);
-	list_add(lista_esis_nueva, esi_elegido);
-
-}
 
 
