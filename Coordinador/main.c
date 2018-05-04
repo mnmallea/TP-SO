@@ -8,6 +8,7 @@
 #include "../syntax-commons/my_socket.h"
 #include "config_coordinador.h"
 #include "algoritmos_distribucion.h"
+#include "main.h"
 #include "servidor.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
@@ -28,6 +29,9 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	log_info(logger, "Escuchando en puerto: %s", configuracion.puerto);
 
 	esperar_nuevas_conexiones(local_socket);
+
+	lista_instancias_disponibles = list_create();
+	log_info(logger, "Lista instancias creada correctamente");
 
 	log_destroy(logger);
 	exit(0);

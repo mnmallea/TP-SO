@@ -11,9 +11,14 @@
 
 typedef struct {
 
+	//info del socket
+	char* ip;
+	char* puerto;
+
 	//info gral
 	int cant_entradas;
 	int tam_total;
+
 
 	//para lsu
 	int cant_entradas_vacias;
@@ -25,6 +30,6 @@ typedef struct {
 
 } instancia;
 
-t_list instancias_disponibles;
+t_list lista_instancias_disponibles;
 
 #endif /* MAIN_H_ */
