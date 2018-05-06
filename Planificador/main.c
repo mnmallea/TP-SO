@@ -23,11 +23,11 @@ t_log *logger;
 config configuracion;
 
 
-t_list* lista_esis_listos;
-t_list* lista_esis_corriendo;
-t_list* lista_esis_bloq_consola;
-t_list* lista_esis_bloq_rec;
-t_list* lista_esis_finalizados;
+t_list lista_esis_listos;
+t_list lista_esis_corriendo;
+t_list lista_esis_bloq_consola;
+t_list lista_esis_bloq_rec;
+t_list lista_esis_finalizados;
 
 void *menu(void *ptr){
 
@@ -115,11 +115,11 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	configuracion = configurar(argv[1]);
 	log_trace(logger, "Planificador correctamente configurado");
 
-	lista_esis_listos = list_create();
-	lista_esis_corriendo = list_create();
-	lista_esis_bloq_consola = list_create();
-	lista_esis_bloq_rec = list_create();
-	lista_esis_finalizados = list_create();
+	lista_esis_listos = *list_create();
+	lista_esis_corriendo = *list_create();
+	lista_esis_bloq_consola = *list_create();
+	lista_esis_bloq_rec = *list_create();
+	lista_esis_finalizados = *list_create();
 	log_trace(logger, "Lista de Esis creadas correctamente");
 
 	int local_socket=crear_socket_escucha(port,BACKLOG);
