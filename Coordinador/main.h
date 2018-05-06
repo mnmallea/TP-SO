@@ -28,7 +28,7 @@ typedef struct {
 	char ult_letra;
 
 
-} instancia;
+} t_instancia;
 
 t_list lista_instancias_disponibles;
 

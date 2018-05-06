@@ -30,7 +30,7 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 
 	esperar_nuevas_conexiones(local_socket);
 
-	lista_instancias_disponibles = list_create();
+	lista_instancias_disponibles = *list_create();
 	log_info(logger, "Lista instancias creada correctamente");
 
 	log_destroy(logger);
