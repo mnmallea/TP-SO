@@ -3,6 +3,8 @@
 #include "config_esi.h"
 #include "../syntax-commons/protocol.h"
 #include "../syntax-commons/conexiones.h"
+#include <parsi/parser.h>
+
 
 #define CANT_ARGUMENTOS_MAIN 2
 #define LOG_LEVEL LOG_LEVEL_TRACE
@@ -10,14 +12,17 @@
 t_log* logger;
 config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
 
-int *c;//para que carajo sirve esto???
-
-/*#include <parser.h>*/
 
 
 int main(int argc, char* argv[]){
+
+	FILE * fp;
+	char * line = NULL;
+	size_t len = 0;
+	ssize_t read;
+
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
-	//char* j;
+
 	if(argc != CANT_ARGUMENTOS_MAIN){
 			log_error(logger, "Cantidad incorrecta de parametros");
 			exit_gracefully(1);
@@ -28,25 +33,6 @@ int main(int argc, char* argv[]){
 
 	conectarse_a_coordinador(configuracion.ipCord, configuracion.portCord, ESI);
 
-/*
- *Refactor -> extract method je
-*/
-//	log_info(logger, "Conectandose al Coordinador, IP: %s\tPuerto: %s", configuracion.ipCord, configuracion.portCord);
-//	int socketCoord= crear_socket_cliente(configuracion.ipCord,configuracion.portCord);
-//
-//	t_identidad handshake_msg = ESI;
-//
-//	safe_send(socketCoord, &handshake_msg, sizeof(handshake_msg));
-//
-//	t_identidad *respuesta = safe_recv(socketCoord, sizeof(*respuesta));
-//
-//	if(*respuesta == COORDINADOR){
-//		log_info(logger, "Se ha conectado al coordinador correctamente!!");
-//	}else{
-//		log_error(logger, "No se pudo conectar al coordinador");
-//	}
-//Hasta aca
-
 
 	log_info(logger, "Conectandose al Planificador, IP: %s\tPuerto: %s", configuracion.ipPlan, configuracion.portPlan);
 	int socketPlan= crear_socket_cliente(configuracion.ipCord,configuracion.portPlan);
@@ -54,20 +40,50 @@ int main(int argc, char* argv[]){
 	mandar_confirmacion(socketPlan);
 	recibir_confirmacion(socketPlan);
 
+	fp = fopen(argv[1], "r");
+	    if (fp == NULL){
+	        perror("Error al abrir el archivo: ");
+	        exit(EXIT_FAILURE);
+	    }
 
-/*
-	if((j=malloc(sizeof(char)*50))==NULL){
-		printf("No pudo alocar en memoria.\n");
-		return -1;
-	}
-	FILE * f;
-	f=fopen(argv[1],"r");
-	fscanf(f,"%s",j);
-	//parser(f)
-	printf("La cadena es: %s\n",j);
+	    while ((read = getline(&line, &len, fp)) != -1)
+	    {
+	        t_esi_operacion parsed = parse(line);
 
-	free(j);
-*/
+	        if(parsed.valido)
+	        {
+	            switch(parsed.keyword)
+	            {
+	                case GET:
+	                    printf("GET\tclave: <%s>\n", parsed.argumentos.GET.clave);
+	                    break;
+	                case SET:
+	                    printf("SET\tclave: <%s>\tvalor: <%s>\n", parsed.argumentos.SET.clave, parsed.argumentos.SET.valor);
+	                    break;
+	                case STORE:
+	                    printf("STORE\tclave: <%s>\n", parsed.argumentos.STORE.clave);
+	                    break;
+	                default:
+	                    fprintf(stderr, "No pude interpretar <%s>\n", line);
+	                    exit(EXIT_FAILURE);
+	            }
+
+	            destruir_operacion(parsed);
+	        }
+
+	        else
+	        {
+	            fprintf(stderr, "La linea <%s> no es valida\n", line);
+	            exit(EXIT_FAILURE);
+	        }
+	    }
+
+	    fclose(fp);
+	    if (line)
+	        free(line);
+
+
+
 	log_destroy(logger);
 	limpiar_configuracion();
 	exit(1);
