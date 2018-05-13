@@ -16,12 +16,18 @@ config configuracion;
 
 int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de configuracion como parametro
 
+	lista_esis_listos = *list_create();
+	lista_esis_corriendo = *list_create();
+	lista_esis_bloq_consola = *list_create();
+	lista_esis_bloq_rec = *list_create();
+	lista_esis_finalizados = *list_create();
+
 	logger = log_create("planificador.log","Planificador",true,LOG_LEVEL);
 	configuracion = configurar(argv[1]);
 	log_trace(logger, "Planificador correctamente configurado");
 
 
-	log_trace(logger, "Lista de Esis creadas correctamente");
+
 
 	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", configuracion.ipCoord, configuracion.portCoord);
 	int socketCoord=crear_socket_cliente(configuracion.ipCoord,configuracion.portCoord);
@@ -40,7 +46,7 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	const char *message0 = "Inicializacion el selector";
 	if(pthread_create(&selector_planificador, NULL, selector, (void*) message0)) {
 
-					fprintf(stderr, "Error creando el hilo de la consola\n");
+					fprintf(stderr, "Error creando el hilo del select\n");
 					return 1;
 				}
 

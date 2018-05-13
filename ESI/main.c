@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
 
 	fp = fopen(argv[1], "r");
 	    if (fp == NULL){
-	        perror("Error al abrir el archivo: ");
+	    	log_error(logger, "Cantidad incorrecta de parametros");
 	        exit(EXIT_FAILURE);
 	    }
 
