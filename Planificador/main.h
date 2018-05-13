@@ -20,17 +20,22 @@
 #include "selector.h"
 #include "consola.h"
 
+t_list lista_esis_listos;
+t_list lista_esis_corriendo;
+t_list lista_esis_bloq_consola;
+t_list lista_esis_bloq_rec;
+t_list lista_esis_finalizados;
 
 typedef struct{
 
 	//info del socket
-	char *ip;
-	char *puerto;
+	int socket;
 
 	//info para calcular HRRN, SJF
 	int dur_ult_raf;
 	int estim_anter;
 	int viene_esperando;
+	char *clave_bloq;
 } t_esi;
 
 
