@@ -11,8 +11,10 @@
 #include <pthread.h>
 #include "../syntax-commons/my_socket.h"
 #include <commons/log.h>
-#include <commons/collections/list.h>
-
+#include "config_planificador.h"
+#include "algoritmos_planificacion.h"
+#include "selector.h"
+#include "consola.h"
 
 
 typedef struct{
