@@ -7,11 +7,7 @@
 
 #include "main.h"
 
-#define ipCord "127.0.0.1"
-#define portCord "8080"
-#define port "8001"
-#define LOG_LEVEL LOG_LEVEL_TRACE
-#define BACKLOG 5
+
 
 
 t_log *logger;
@@ -27,18 +23,12 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 
 	log_trace(logger, "Lista de Esis creadas correctamente");
 
-	int local_socket=crear_socket_escucha(port,BACKLOG);
-		log_info(logger,"Escuchando en puerto: %s", port);
-
-		log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", ipCord, portCord);
-	    int socketCoord=crear_socket_cliente(ipCord,portCord);
+	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", configuracion.ipCoord, configuracion.portCoord);
+	int socketCoord=crear_socket_cliente(configuracion.ipCoord,configuracion.portCoord);
 			mandar_confirmacion(socketCoord);
 			recibir_confirmacion(socketCoord);
 
-		int client_socket=accept(local_socket,NULL,NULL);
-		log_info(logger, "Conexion aceptada");
-			recibir_confirmacion(client_socket);
-			mandar_confirmacion(client_socket);
+
 
 
 	/*aca iria el select

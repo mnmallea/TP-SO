@@ -4,11 +4,12 @@
  *  Created on: 29 abr. 2018
  *      Author: utnso
  */
-#include <commons/collections/list.h>
-#include "main.h"
+
 
 #ifndef ALGORITMOS_PLANIFICACION_H_
 #define ALGORITMOS_PLANIFICACION_H_
+
+#include <commons/collections/list.h>
 
 typedef enum {FIFO, SJFsD, SJFcD, HRRN } tipo_algoritmo_planif;
 /* FIFO, SHORT JOB FIRST SIN DESALOJO, SHORT JOB FIRST CON DESALOJO, HRRN*/

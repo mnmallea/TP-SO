@@ -8,11 +8,15 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#define LOG_LEVEL LOG_LEVEL_TRACE
+#define BACKLOG 5
+
+#include <stdlib.h>
 #include <pthread.h>
 #include "../syntax-commons/my_socket.h"
 #include <commons/log.h>
-#include "config_planificador.h"
 #include "algoritmos_planificacion.h"
+#include "config_planificador.h"
 #include "selector.h"
 #include "consola.h"
 
