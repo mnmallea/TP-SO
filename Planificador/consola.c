@@ -7,7 +7,7 @@
 
 #include "consola.h"
 
-void menu(void *ptr){
+void *menu(void *ptr){
 
 	char *message;
 	message = (char *) ptr;
@@ -84,4 +84,5 @@ void menu(void *ptr){
 	printf("Ha salido de la consola");
 	free(clave);
 
+	return NULL;
 }

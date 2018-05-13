@@ -6,8 +6,6 @@
  */
 
 #include "algoritmos_planificacion.h"
-#include <commons/collections/list.h>
-#include "main.h"
 
 t_esi obtener_proximo_segun_fifo(t_list* lista_esis_actual, t_list* lista_esis_nueva){
 
