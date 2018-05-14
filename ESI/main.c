@@ -10,6 +10,7 @@ int main(int argc, char* argv[]){
 
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 
+
 	if(argc != CANT_ARGUMENTOS_MAIN){
 			log_error(logger, "Cantidad incorrecta de parametros");
 			exit_gracefully(1);
