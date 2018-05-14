@@ -47,7 +47,8 @@ void *listener(void *ptr){
 
 						if (nbytes == 0) {
 							log_error(logger, "La conexion del socket %d finalizo inesperadamente\n", i);
-
+							socketAEliminar=i;
+							list_remove_and_destroy_by_condition(lista_esis_listos,(void*)socketProceso,(void*)free);
 						}
 						else {
 							log_error(logger, "El mensaje recivido por socket %d tiene errores\n", i);
@@ -64,7 +65,7 @@ void *listener(void *ptr){
 		}
 	}
 //	void list_destroy_and_destroy_elements(lista_esis_listos,n_esi); ver e tipo del elementos
-
+//list_remove_and_destroy_by_condition(lista_esis_listos,(void*)socketProceso,(void*)free);
 	return NULL;
 
 }
@@ -79,4 +80,8 @@ t_esi *crear_nodo_esi(int socket){
 			   p -> viene_esperando=0;
 
 		return p;
+}
+
+int socketProceso(t_esi* n_esi){
+	return (n_esi->socket==socketAEliminar);
 }

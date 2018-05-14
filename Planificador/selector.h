@@ -25,6 +25,7 @@ int socketServer;
 int newfd;
 socklen_t addrlen;
 int i,j;
+int socketAEliminar;
 struct sockaddr_storage remoteaddr;
 
 extern t_list *lista_esis_listos;
@@ -33,7 +34,7 @@ extern config configuracion;
 
 void *listener(void *ptr);
 t_esi *crear_nodo_esi(int socket);
-
+int socketProceso(t_esi *n_esi);
 
 
 #endif /* SELECTOR_H_ */

@@ -22,12 +22,17 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;
-	//pthread_t consola_planificador;
+	pthread_t consola_planificador;
 
 	const char *message0 = "Inicializacion el selector";
 	if(pthread_create(&selector_planificador, NULL, listener, (void*) message0)) {
 		log_error(logger, "Cantidad incorrecta de parametros");
 			exit(EXIT_FAILURE);
+	}
+	const char *message1 = "Inicializacion de la consola";
+	if(pthread_create(&consola_planificador, NULL, menu, (void*) message1)) {
+		log_error(logger, "Error creando el hilo de la consola\n");
+		 exit(EXIT_FAILURE);
 	}
 
 	/*Join threads*/
@@ -35,21 +40,10 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 		log_error(logger, "Error al joinear el hilo del selector\n");
 			exit(EXIT_FAILURE);
 	}
-/*
-	const char *message1 = "Inicializacion de la consola";
-	if(pthread_create(&consola_planificador, NULL, menu, (void*) message1)) {
-		log_error(logger, "Error creando el hilo de la consola\n");
-		 exit(EXIT_FAILURE);
-	}
-
 	if(pthread_join(consola_planificador, NULL)) {
 		log_error(logger, "Error al joinear el hilo de la consola\n");
 		 exit(EXIT_FAILURE);
 	}
-*/
-
-
-
 	return 0;
 }
 
