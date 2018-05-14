@@ -2,7 +2,7 @@
 
 #include "selector.h"
 
-void *selector(void){
+void *listening(){
 
 
 	FD_ZERO(&master);
@@ -10,7 +10,7 @@ void *selector(void){
 	char remoteIP[INET_ADDRSTRLEN];
 	char buf[50];
 	int nbytes;
-	t_esi esi;
+
 	listener=crear_socket_escucha(configuracion.portCoord,BACKLOG);
 	log_info(logger,"Escuchando en puerto: %s", configuracion.puerto);
 
@@ -20,7 +20,7 @@ void *selector(void){
 	for(;;) {
 		read_fds = master;
 		if (select(fdmax+1, &read_fds, NULL, NULL, NULL) == -1) {
-			log_error(logger, "No se pudo seleccionar una conexion\n");
+			log_error(logger, "No se pudo seleccionar conexiones\n");
 		}
 
 		for(i = 0; i <= fdmax; i++) {
@@ -37,7 +37,8 @@ void *selector(void){
 						if (newfd > fdmax) {
 							fdmax = newfd;
 					}
-					log_info(logger, "Conectandose al Planificador, IP: %s\tPuerto: %s", inet_ntop(remoteaddr.ss_family,get_in_addr((struct sockaddr*)&remoteaddr),
+					log_info(logger, "Conectandose al Planificador, IP: %s\tPuerto: %s",
+							inet_ntop(remoteaddr.ss_family,get_in_addr((struct sockaddr*)&remoteaddr),
 							remoteIP, INET_ADDRSTRLEN),newfd);
 					}
 				}
@@ -56,20 +57,23 @@ void *selector(void){
 							FD_CLR(i, &master);
 					}
 				}
+
 				esi.socket=newfd;
 				esi.estim_anter=configuracion.estimacion_inicial;
 				esi.clave_bloq=configuracion.claves_bloqueadas;
+				esi.dur_ult_raf=0;
+				esi.viene_esperando=0;
 
 				list_add(lista_esis_listos,esi);
+
+
+
 			}
+			log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
 		}
 	}
+	void list_destroy_and_destroy_elements(lista_esis_listos, void(*element_destroyer)(void*));
 
-			/*int client_socket=accept(listener,NULL,NULL);
-							log_info(logger, "Conexion aceptada");
-								recibir_confirmacion(client_socket);
-								mandar_confirmacion(client_socket);
-*/
 	return NULL;
 
 }

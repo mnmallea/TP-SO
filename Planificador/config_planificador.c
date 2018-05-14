@@ -18,13 +18,13 @@ config configurar(char *ruta){
 		exit_error_with_msg("No se pudo crear la configuración (no se encuentra el archivo)");
 	}
 
-	if(		config_has_property(config_dictionary, "PORT") &&
+	if(		config_has_property(config_dictionary, "LOCALPORT") &&
 			config_has_property(config_dictionary, "ALGORITMO") &&
 			config_has_property(config_dictionary, "ESTADO_INICIAL") &&
 			config_has_property(config_dictionary, "IP_COORD") &&
 			config_has_property(config_dictionary, "PORT_COORD") &&
 			config_has_property(config_dictionary, "CLAVES_BLOQUEADAS")){
-		strncpy(configuracion.puerto, config_get_string_value(config_dictionary, "PORT"),PORT_MAX_STRING_LENGTH);//hay que copiarselo porque al final borras el diccionario
+		strncpy(configuracion.puerto, config_get_string_value(config_dictionary, "LOCALPORT"),PORT_MAX_STRING_LENGTH);//hay que copiarselo porque al final borras el diccionario
 		configuracion.puerto[5] = '\0';
 		configuracion.algoritmo = config_get_int_value(config_dictionary, "ALGORITMO");
 		configuracion.estimacion_inicial = config_get_int_value(config_dictionary, "ESTADO_INICIAL");
@@ -33,7 +33,8 @@ config configurar(char *ruta){
 		configuracion.claves_bloqueadas = config_get_int_value(config_dictionary, "CLAVES_BLOQUEADAS");
 	}else{
 		config_destroy(config_dictionary);
-		exit_error_with_msg("El archivo de configuracion esta incorrecto");
+		log_error(logger, "El archivo de configuracion es incorrecto\n");
+		exit(EXIT_FAILURE);
 	}
 
 	config_destroy(config_dictionary);

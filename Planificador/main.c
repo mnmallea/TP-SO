@@ -8,15 +8,9 @@
 #include "main.h"
 
 
-
-
-t_log *logger;
-config configuracion;
-
-
 int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de configuracion como parametro
 
-	lista_esis_listos = *list_create();
+	lista_esis_listos = list_create();
 	lista_esis_corriendo = *list_create();
 	lista_esis_bloq_consola = *list_create();
 	lista_esis_bloq_rec = *list_create();
@@ -27,14 +21,14 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	log_trace(logger, "Planificador correctamente configurado");
 
 
-
+/*
 
 	log_trace(logger,"Intentando conectarse al Coordinador. IP: %s  Puerto: %s", configuracion.ipCoord, configuracion.portCoord);
 	int socketCoord=crear_socket_cliente(configuracion.ipCoord,configuracion.portCoord);
 			mandar_confirmacion(socketCoord);
 			recibir_confirmacion(socketCoord);
 
-
+*/
 
 
 	/*aca iria el select
@@ -45,29 +39,33 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	pthread_t selector_planificador;
 	const char *message0 = "Inicializacion el selector";
 	if(pthread_create(&selector_planificador, NULL, selector, (void*) message0)) {
-
-					fprintf(stderr, "Error creando el hilo del select\n");
-					return 1;
-				}
-
+		log_error(logger, "Cantidad incorrecta de parametros");
+			exit(EXIT_FAILURE);
+	}
 
 
+/*
 	pthread_t consola_planificador;
 	const char *message1 = "Inicializacion de la consola";
 
 	if(pthread_create(&consola_planificador, NULL, menu, (void*) message1)) {
 
-		fprintf(stderr, "Error creando el hilo de la consola\n");
-		return 1;
+		log_error(logger, "Error creando el hilo de la consola\n");
+		 exit(EXIT_FAILURE);
 	}
-
+*/
+	if(pthread_join(selector_planificador, NULL)) {
+		log_error(logger, "Error al joinear el hilo del selector\n");
+			exit(EXIT_FAILURE);
+	}
+/*
 	if(pthread_join(consola_planificador, NULL)) {
 
-		fprintf(stderr, "Error al joinear el hilo de la consola\n");
-		return 1;
+		log_error(logger, "Error al joinear el hilo de la consola\n");
+		 exit(EXIT_FAILURE);
 	}
 
-
+*/
 
 
 	return 0;
