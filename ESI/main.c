@@ -15,8 +15,8 @@ int main(int argc, char* argv[]){
 			exit_gracefully(1);
 		return -1;
 	}
-	log_debug(logger, "Ruta de configuracion: %s", argv[1]);
-	configuracion = configurar(argv[2]);
+
+	configuracion = configurar(argv[1]);
 
 	//conectarse_a_coordinador(configuracion.ipCord, configuracion.portCord, ESI);
 	//log_info(logger, "Conectandose al Planificador, IP: %s\tPuerto: %s", configuracion.ipPlan, configuracion.portPlan);

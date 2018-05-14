@@ -9,7 +9,7 @@
 
 
 config configurar(char *ruta){
-	log_info(logger,"Configurando coordinador");
+	log_debug(logger,"Configurando coordinador");
 	config configuracion;
 
 	t_config *config_dictionary = config_create(ruta);
@@ -29,15 +29,16 @@ config configurar(char *ruta){
 		configuracion.puerto[5] = '\0';
 		configuracion.algoritmo = config_get_int_value(config_dictionary, "ALGORITMO");
 		configuracion.estimacion_inicial = config_get_int_value(config_dictionary, "ESTADO_INICIAL");
-		configuracion.ipCoord = config_get_int_value(config_dictionary, "IP_COORD");
-		configuracion.portCoord = config_get_int_value(config_dictionary, "PORT_COORD");
-		configuracion.claves_bloqueadas = config_get_int_value(config_dictionary, "CLAVES_BLOQUEADAS");
-	}else{
+		configuracion.ipCoord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
+		configuracion.portCoord = string_duplicate(config_get_string_value(config_dictionary, "PORT_COORD"));
+		configuracion.claves_bloqueadas = string_duplicate(config_get_string_value(config_dictionary, "CLAVES_BLOQUEADAS"));
+	}
+	else{
 		config_destroy(config_dictionary);
 		log_error(logger, "El archivo de configuracion es incorrecto\n");
 		exit(EXIT_FAILURE);
 	}
-
+	log_debug(logger, "Planificador correctamente configurado");
 	config_destroy(config_dictionary);
 	return configuracion;
 }
