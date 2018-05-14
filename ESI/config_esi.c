@@ -7,10 +7,8 @@
 #include "config_esi.h"
 
 
-
 config configurar(char *ruta){
-
-
+	log_debug(logger,"Configurando ESI");
 	config configuracion;
 
 	t_config *config_dictionary = config_create(ruta);
@@ -20,16 +18,16 @@ config configurar(char *ruta){
 		exit(1);
 	}
 
-	if(		config_has_property(config_dictionary,"IP_CORD") &&
-			config_has_property(config_dictionary,"PUERTO_CORD") &&
+	if(		config_has_property(config_dictionary,"IP_COORD") &&
+			config_has_property(config_dictionary,"PUERTO_COORD") &&
 			config_has_property(config_dictionary,"IP_PLANIF") &&
 			config_has_property(config_dictionary,"PUERTO_PLANIF")){
-		log_debug(logger,"IP del coordinador: %s", config_get_string_value(config_dictionary, "IP_CORD"));
-	    configuracion.ipCord = string_duplicate(config_get_string_value(config_dictionary, "IP_CORD"));
-		configuracion.portCord = string_duplicate(config_get_string_value(config_dictionary, "PUERTO_CORD"));
+		configuracion.ipCord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
+		configuracion.portCord = string_duplicate(config_get_string_value(config_dictionary, "PUERTO_COORD"));
 		configuracion.ipPlan = string_duplicate(config_get_string_value(config_dictionary, "IP_PLANIF"));
 		configuracion.portPlan = string_duplicate(config_get_string_value(config_dictionary, "PUERTO_PLANIF"));
-	}else{
+	}
+	else{
 		config_destroy(config_dictionary);
 		log_error(logger, "No se pudo realizar la configuracion");
 		exit(1);

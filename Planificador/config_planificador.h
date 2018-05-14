@@ -8,15 +8,13 @@
 #ifndef CONFIG_PLANIFICADOR_H_
 #define CONFIG_PLANIFICADOR_H_
 
-
+#include <stdlib.h>
 #include <string.h>
 #include <commons/config.h>
 #include <commons/log.h>
 #include <commons/string.h>
 #include "error.h"
 #include "algoritmos_planificacion.h"
-
-#include "typescommons.h"
 
 
 #define PORT_MAX_STRING_LENGTH 5

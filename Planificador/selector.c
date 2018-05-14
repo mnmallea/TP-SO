@@ -1,6 +1,6 @@
 #include "selector.h"
 
-void *listening(void *ptr){
+void *listener(void *ptr){
 
 	FD_ZERO(&master);
 	FD_ZERO(&read_fds);
@@ -9,12 +9,12 @@ void *listening(void *ptr){
 	int nbytes;
 	t_esi *n_esi;
 
-	listener=crear_socket_escucha(configuracion.portCoord,BACKLOG);
+	socketServer=crear_socket_escucha(configuracion.portCoord,BACKLOG);
 	log_info(logger,"Escuchando en puerto: %s", configuracion.puerto);
 
-	FD_SET(listener, &master);
+	FD_SET(socketServer, &master);
 
-	fdmax = listener;
+	fdmax = socketServer;
 	for(;;) {
 		read_fds = master;
 		if (select(fdmax+1, &read_fds, NULL, NULL, NULL) == -1) {
@@ -23,10 +23,10 @@ void *listening(void *ptr){
 
 		for(i = 0; i <= fdmax; i++) {
 			if (FD_ISSET(i, &read_fds)) {
-				if (i == listener) {
+				if (i == socketServer) {
 
 					addrlen = sizeof remoteaddr;
-					newfd = accept(listener, (struct sockaddr *)&remoteaddr, &addrlen);
+					newfd = accept(socketServer, (struct sockaddr *)&remoteaddr, &addrlen);
 					if (newfd == -1) {
 						log_error(logger, "No se pudo aceptar la conexion\n");
 					}
@@ -34,14 +34,11 @@ void *listening(void *ptr){
 						FD_SET(newfd, &master);
 						if (newfd > fdmax) {
 							fdmax = newfd;
-					}
+						}
 						log_trace(logger, "Nueva conexion por el socket %d\n",newfd);
-						/*printf("selectserver: Nueva conexuib %s on "
-						"socket %d\n",
-						inet_ntop(remoteaddr.ss_family,
-						get_in_addr((struct sockaddr*)&remoteaddr),
-						remoteIP, INET6_ADDRSTRLEN),
-						newfd);*/
+						n_esi=crear_nodo_esi(newfd);
+						list_add(lista_esis_listos,n_esi);
+						log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
 					}
 				}
 				else {
@@ -60,11 +57,10 @@ void *listening(void *ptr){
 					}
 				}
 
-				n_esi=crear_nodo_esi(newfd);
-				list_add(lista_esis_listos,n_esi);
+
 
 			}
-			log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
+
 		}
 	}
 //	void list_destroy_and_destroy_elements(lista_esis_listos,n_esi); ver e tipo del elementos

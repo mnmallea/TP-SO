@@ -21,7 +21,7 @@
 fd_set master;
 fd_set read_fds;
 int fdmax;
-int listener;
+int socketServer;
 int newfd;
 socklen_t addrlen;
 int i,j;
@@ -31,7 +31,7 @@ extern t_list *lista_esis_listos;
 extern t_esi esi;
 extern config configuracion;
 
-void *listening(void *ptr);
+void *listener(void *ptr);
 t_esi *crear_nodo_esi(int socket);
 
 
