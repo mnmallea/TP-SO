@@ -9,19 +9,21 @@
 #define CONFIG_PLANIFICADOR_H_
 
 
-#include <stdlib.h>
 #include <string.h>
 #include <commons/config.h>
 #include <commons/log.h>
 #include <commons/string.h>
 #include "error.h"
+#include "algoritmos_planificacion.h"
+
+#include "typescommons.h"
+
 
 #define PORT_MAX_STRING_LENGTH 5
 
-
 typedef struct{
 	char puerto[PORT_MAX_STRING_LENGTH + 1]; //el maximo es 65535 mas el '\0'
-	tipo_algoritmo_planif algoritmo;
+	int algoritmo;
 	int estimacion_inicial;
 	char *ipCoord;
 	char *portCoord;

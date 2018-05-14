@@ -8,7 +8,7 @@
 #ifndef CONSOLA_H_
 #define CONSOLA_H_
 
-#include <stdlib.h>
+#include "algoritmos_planificacion.h"
 
 void *menu(void *ptr);
 

@@ -11,8 +11,8 @@
 #include <commons/log.h>
 #include "../syntax-commons/my_socket.h"
 #include "config_esi.h"
-#include "../syntax-commons/protocol.h"
-#include "../syntax-commons/conexiones.h"
+//#include "../syntax-commons/protocol.h"
+//#include "../syntax-commons/conexiones.h"
 #include <parsi/parser.h>
 
 

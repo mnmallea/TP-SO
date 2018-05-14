@@ -5,8 +5,8 @@ int main(int argc, char* argv[]){
 
 	FILE * fp;
 	char * line = NULL;
-	size_t len = 0;
-	ssize_t read;
+	//size_t len = 0;
+	//ssize_t read;
 
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 
@@ -18,14 +18,12 @@ int main(int argc, char* argv[]){
 	log_debug(logger, "Ruta de configuracion: %s", argv[1]);
 	configuracion = configurar(argv[2]);
 
-	conectarse_a_coordinador(configuracion.ipCord, configuracion.portCord, ESI);
+	//conectarse_a_coordinador(configuracion.ipCord, configuracion.portCord, ESI);
+	//log_info(logger, "Conectandose al Planificador, IP: %s\tPuerto: %s", configuracion.ipPlan, configuracion.portPlan);
 
-
-	log_info(logger, "Conectandose al Planificador, IP: %s\tPuerto: %s", configuracion.ipPlan, configuracion.portPlan);
-	int socketPlan= crear_socket_cliente(configuracion.ipCord,configuracion.portPlan);
+	int socketPlan= crear_socket_cliente(configuracion.ipPlan,configuracion.portPlan);
 
 	mandar_confirmacion(socketPlan);
-	recibir_confirmacion(socketPlan);
 
 	fp = fopen(argv[1], "r");
 	    if (fp == NULL){
@@ -33,6 +31,7 @@ int main(int argc, char* argv[]){
 	        exit(EXIT_FAILURE);
 	    }
 
+/*
 	    while ((read = getline(&line, &len, fp)) != -1)
 	    {
 	        t_esi_operacion parsed = parse(line);
@@ -63,7 +62,9 @@ int main(int argc, char* argv[]){
 	            fprintf(stderr, "La linea <%s> no es valida\n", line);
 	            exit(EXIT_FAILURE);
 	        }
-	    }
+	    }*/
+
+	    recibir_confirmacion(socketPlan);
 
 	    fclose(fp);
 	    if (line)
