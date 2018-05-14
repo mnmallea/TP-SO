@@ -1,15 +1,13 @@
-
-
 #include "selector.h"
 
-void *listening(){
-
+void *listening(void *ptr){
 
 	FD_ZERO(&master);
 	FD_ZERO(&read_fds);
-	char remoteIP[INET_ADDRSTRLEN];
+	//char remoteIP[INET_ADDRSTRLEN];
 	char buf[50];
 	int nbytes;
+	t_esi *n_esi;
 
 	listener=crear_socket_escucha(configuracion.portCoord,BACKLOG);
 	log_info(logger,"Escuchando en puerto: %s", configuracion.puerto);
@@ -37,9 +35,13 @@ void *listening(){
 						if (newfd > fdmax) {
 							fdmax = newfd;
 					}
-					log_info(logger, "Conectandose al Planificador, IP: %s\tPuerto: %s",
-							inet_ntop(remoteaddr.ss_family,get_in_addr((struct sockaddr*)&remoteaddr),
-							remoteIP, INET_ADDRSTRLEN),newfd);
+						log_trace(logger, "Nueva conexion por el socket %d\n",newfd);
+						/*printf("selectserver: Nueva conexuib %s on "
+						"socket %d\n",
+						inet_ntop(remoteaddr.ss_family,
+						get_in_addr((struct sockaddr*)&remoteaddr),
+						remoteIP, INET6_ADDRSTRLEN),
+						newfd);*/
 					}
 				}
 				else {
@@ -58,22 +60,27 @@ void *listening(){
 					}
 				}
 
-				esi.socket=newfd;
-				esi.estim_anter=configuracion.estimacion_inicial;
-				esi.clave_bloq=configuracion.claves_bloqueadas;
-				esi.dur_ult_raf=0;
-				esi.viene_esperando=0;
-
-				list_add(lista_esis_listos,esi);
-
-
+				n_esi=crear_nodo_esi(newfd);
+				list_add(lista_esis_listos,n_esi);
 
 			}
 			log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
 		}
 	}
-	void list_destroy_and_destroy_elements(lista_esis_listos, void(*element_destroyer)(void*));
+//	void list_destroy_and_destroy_elements(lista_esis_listos,n_esi); ver e tipo del elementos
 
 	return NULL;
 
+}
+
+
+t_esi *crear_nodo_esi(int socket){
+		t_esi *p=malloc(sizeof(esi));
+			   p -> socket=newfd;
+			   p -> estim_anter=configuracion.estimacion_inicial;
+			   p -> clave_bloq=configuracion.claves_bloqueadas;
+			   p -> dur_ult_raf=0;
+			   p -> viene_esperando=0;
+
+		return p;
 }

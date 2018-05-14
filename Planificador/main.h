@@ -21,10 +21,10 @@
 config configuracion;
 
 t_list *lista_esis_listos;
-t_list lista_esis_corriendo;
-t_list lista_esis_bloq_consola;
-t_list lista_esis_bloq_rec;
-t_list lista_esis_finalizados;
+t_list *lista_esis_corriendo;
+t_list *lista_esis_bloq_consola;
+t_list *lista_esis_bloq_rec;
+t_list *lista_esis_finalizados;
 
 //#include "typescommons.h"
 
