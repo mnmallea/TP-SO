@@ -27,11 +27,13 @@ socklen_t addrlen;
 int i,j;
 struct sockaddr_storage remoteaddr;
 
-extern t_list lista_esis_listos;
+extern t_list *lista_esis_listos;
 extern t_esi esi;
 extern config configuracion;
 
-int selector();
+void *listening(void *ptr);
+t_esi *crear_nodo_esi(int socket);
+
 
 
 #endif /* SELECTOR_H_ */

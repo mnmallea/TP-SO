@@ -15,7 +15,8 @@ config configurar(char *ruta){
 	t_config *config_dictionary = config_create(ruta);
 
 	if(config_dictionary == NULL){
-		exit_error_with_msg("No se pudo crear la configuración (no se encuentra el archivo)");
+		log_error(logger, "No existe la ruta del archivo de configuracion");
+		exit(EXIT_FAILURE);
 	}
 
 	if(		config_has_property(config_dictionary, "LOCALPORT") &&
