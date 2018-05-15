@@ -9,6 +9,9 @@
 #define CONSOLA_H_
 
 #include "algoritmos_planificacion.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 void *menu(void *ptr);
 
