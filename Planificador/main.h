@@ -21,10 +21,18 @@
 config configuracion;
 
 t_list *lista_esis_listos;
-t_list *lista_esis_corriendo;
-t_list *lista_esis_bloq_consola;
-t_list *lista_esis_bloq_rec;
+t_esi *esi_corriendo;
 t_list *lista_esis_finalizados;
+t_dictionary *dic_esis_bloqueados;
+
+
+void obtener_nuevo_esi_a_correr();
+void bloquear_esi(t_esi* esi, char* clave);
+void finalizar_esi(t_esi* esi);
+void pasar_esi_bloqueado_a_listo(t_esi* esi);
+void se_desbloqueo_un_recurso(char* clave);
+void nuevo_esi(t_esi* esi);
+
 
 //#include "typescommons.h"
 

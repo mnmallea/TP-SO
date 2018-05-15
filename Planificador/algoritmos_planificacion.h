@@ -13,7 +13,6 @@
 #include <commons/collections/list.h>
 
 typedef enum {FIFO, SJFsD, SJFcD, HRRN } tipo_algoritmo_planif;
-/* FIFO, SHORT JOB FIRST SIN DESALOJO, SHORT JOB FIRST CON DESALOJO, HRRN*/
 
 typedef struct{
 
@@ -22,14 +21,16 @@ typedef struct{
 
 	//info para calcular HRRN, SJF
 	int dur_ult_raf;
-	int estim_anter;
+	int estim_anter; //HAY QUE CAMBIAR ESTO A DOUBLE
+	double estim_actual;
+
 	int viene_esperando;
+	double response_ratio;
 	char *clave_bloq;
 } t_esi;
 
-t_esi obtener_proximo_segun_fifo(t_list* lista_esis_actual, t_list* lista_esis_nueva);
-t_esi obtener_proximo_segun_sjfsd(t_list* lista_esis_actual, t_list* lista_esis_nueva);
-t_esi obtener_proximo_segun_sjfcd(t_list* lista_esis_actual, t_list* lista_esis_nueva);
-t_esi obtener_proximo_segun_hrrn(t_list* lista_esis_actual, t_list* lista_esis_nueva);
+t_esi *obtener_proximo_segun_fifo(t_list *lista_esis);
+t_esi *obtener_proximo_segun_sjf(t_list *lista_esis);
+t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis);
 
 #endif /* ALGORITMOS_PLANIFICACION_H_ */
