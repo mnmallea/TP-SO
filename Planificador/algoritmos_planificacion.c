@@ -77,6 +77,7 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis){
 		int alfa = 0.5;
 
 		for(int i=0; i< cant_elementos; i++){
+
 			t_esi *esi_actual = list_get(lista_duplic, i);
 
 			double estim_actual= alfa * esi_actual->estim_anter + (1-alfa) * esi_actual->dur_ult_raf;
