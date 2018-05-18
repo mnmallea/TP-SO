@@ -10,7 +10,11 @@
 
 #define PORT_MAX_STRING_LENGTH 5
 
+
+#include "main.h"
 #include "algoritmos_distribucion.h"
+
+
 
 typedef struct{
 	char puerto[PORT_MAX_STRING_LENGTH + 1]; //el maximo es 65535 mas el '\0'

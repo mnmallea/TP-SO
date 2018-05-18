@@ -7,29 +7,15 @@
 
 #ifndef MAIN_H_
 #define MAIN_H_
-#include <commons/collections/list.h>
-
-typedef struct {
-
-	//info del socket
-	char* ip;
-	char* puerto;
-
-	//info gral
-	int cant_entradas;
-	int tam_total;
+#include "../syntax-commons/my_socket.h"
+#include "config_coordinador.h"
+#include "algoritmos_distribucion.h"
+#include "main.h"
+#include "servidor.h"
 
 
-	//para lsu
-	int cant_entradas_vacias;
-
-	//para ke
-	char primer_letra;
-	char ult_letra;
-
-
-} t_instancia;
-
-t_list lista_instancias_disponibles;
+t_list *lista_instancias_disponibles;
+config configuracion;
+t_log *logger;
 
 #endif /* MAIN_H_ */
