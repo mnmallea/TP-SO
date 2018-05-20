@@ -1,16 +1,17 @@
-
 #include "main.h"
 
 int main(int argc, char* argv[]){
-
 	FILE * fp;
 	char * line = NULL;
 	//size_t len = 0;
 	//ssize_t read;
-
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 
-
+	FILE * fp;
+	char * line = NULL;
+	size_t len = 0;
+	ssize_t read;
+  
 	if(argc != CANT_ARGUMENTOS_MAIN){
 			log_error(logger, "Cantidad incorrecta de parametros");
 			exit_gracefully(1);
@@ -33,6 +34,7 @@ int main(int argc, char* argv[]){
 	    }
 
 /*
+
 	    while ((read = getline(&line, &len, fp)) != -1)
 	    {
 	        t_esi_operacion parsed = parse(line);
@@ -63,14 +65,14 @@ int main(int argc, char* argv[]){
 	            fprintf(stderr, "La linea <%s> no es valida\n", line);
 	            exit(EXIT_FAILURE);
 	        }
-	    }*/
 
 	    recibir_confirmacion(socketPlan);
+
 
 	    fclose(fp);
 	    if (line)
 	        free(line);
-
+*/
 
 
 	log_destroy(logger);

@@ -1,0 +1,33 @@
+Esi -> Planificador
+
+1. Mensaje que indica si se pudo ejecutar bien o no la instruccion que se le mando a leer
+
+Esi -> Coordinador
+
+1. GET de algun recurso
+2. SET de algun recurso con un valor
+3. STORE de algun recurso
+
+Planificador -> Esi
+
+1. Lectura de proxima instruccion
+
+Planificador -> Coordinador
+
+Coordinador -> Esi
+
+1. Falla/Exito de una instruccion que el ESI le envio a realizar
+
+Coordinador -> Planificador
+
+1. Una solicitud por parte de un ESI no puede ser ejecutada( porque la instancia no existe más en el sistema, o porque el recurso al que intenta acceder se encuentra tomado)
+
+
+Coordinador -> Instancia
+
+1. SET un valor (en una celda?)
+2. STORE (de una celda?)
+
+Instancia -> Coordinador
+
+1. Falla/Exito de una instruccion que el Coordinador le envio a realizar

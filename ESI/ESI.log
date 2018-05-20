@@ -13,3 +13,149 @@
 [DEBUG] 22:23:17:418 ESI/(17092:17092): IP del coordinador: 127.0.0.1
 [INFO] 22:23:17:418 ESI/(17092:17092): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8000
 [ERROR] 22:23:17:418 ESI/(17092:17092): Error al conectar el socket
+[DEBUG] 17:47:44:435 ESI/(9487:9487): Ruta de configuracion: ESI.cfg
+[DEBUG] 17:47:44:454 ESI/(9487:9487): IP del coordinador: 127.0.0.1
+[INFO] 17:47:44:454 ESI/(9487:9487): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:47:44:455 ESI/(9487:9487): Socket conectado
+[INFO] 17:47:44:455 ESI/(9487:9487): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 17:47:44:455 ESI/(9487:9487): Error al conectar el socket
+[DEBUG] 17:54:05:540 ESI/(9653:9653): Ruta de configuracion: ESI.cfg
+[DEBUG] 17:54:06:60 ESI/(9653:9653): IP del coordinador: 127.0.0.1
+[INFO] 17:54:15:185 ESI/(9653:9653): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:55:13:953 ESI/(9653:9653): Socket conectado
+[INFO] 17:59:07:988 ESI/(9653:9653): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 17:59:07:988 ESI/(9653:9653): Error al conectar el socket
+[DEBUG] 17:59:47:76 ESI/(9821:9821): Ruta de configuracion: ESI.cfg
+[DEBUG] 17:59:47:76 ESI/(9821:9821): IP del coordinador: 127.0.0.1
+[INFO] 17:59:47:76 ESI/(9821:9821): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:59:47:76 ESI/(9821:9821): Socket conectado
+[ERROR] 17:59:47:77 ESI/(9821:9821): No se pudo mandar mensaje
+[DEBUG] 18:02:44:101 ESI/(9910:9910): Ruta de configuracion: ESI.cfg
+[DEBUG] 18:02:44:107 ESI/(9910:9910): IP del coordinador: 127.0.0.1
+[INFO] 18:02:44:111 ESI/(9910:9910): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 18:02:44:117 ESI/(9910:9910): Socket conectado
+[ERROR] 18:02:44:117 ESI/(9910:9910): No se pudo mandar mensaje
+[DEBUG] 18:04:36:66 ESI/(10060:10060): Ruta de configuracion: ESI.cfg
+[DEBUG] 18:04:36:66 ESI/(10060:10060): IP del coordinador: 127.0.0.1
+[INFO] 18:04:36:66 ESI/(10060:10060): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 18:04:36:66 ESI/(10060:10060): Socket conectado
+[ERROR] 18:04:36:66 ESI/(10060:10060): No se pudo mandar mensaje
+[DEBUG] 18:06:31:762 ESI/(10142:10142): Ruta de configuracion: ESI.cfg
+[DEBUG] 18:06:31:762 ESI/(10142:10142): IP del coordinador: 127.0.0.1
+[INFO] 18:06:31:763 ESI/(10142:10142): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 18:06:31:764 ESI/(10142:10142): Socket conectado
+[ERROR] 18:06:31:764 ESI/(10142:10142): No se pudo mandar mensaje
+[DEBUG] 18:08:03:938 ESI/(10223:10223): Ruta de configuracion: ESI.cfg
+[DEBUG] 18:08:04:405 ESI/(10223:10223): IP del coordinador: 127.0.0.1
+[INFO] 18:08:06:25 ESI/(10223:10223): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 18:08:10:642 ESI/(10223:10223): Socket conectado
+[DEBUG] 21:47:16:536 ESI/(3823:3823): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:47:16:618 ESI/(3823:3823): IP del coordinador: 127.0.0.1
+[INFO] 21:47:16:625 ESI/(3823:3823): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:47:16:652 ESI/(3823:3823): Socket conectado
+[INFO] 21:47:16:658 ESI/(3823:3823): Mensaje enviado
+[INFO] 21:47:16:682 ESI/(3823:3823): Mensaje de 4 bytes recibido
+[INFO] 21:47:16:683 ESI/(3823:3823): Se ha conectado al coordinador correctamente!!
+[INFO] 21:47:16:683 ESI/(3823:3823): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:47:16:697 ESI/(3823:3823): Error al conectar el socket
+[DEBUG] 21:51:19:991 ESI/(4012:4012): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:20:91 ESI/(4012:4012): IP del coordinador: 127.0.0.1
+[INFO] 21:51:20:110 ESI/(4012:4012): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:20:148 ESI/(4012:4012): Socket conectado
+[INFO] 21:51:20:159 ESI/(4012:4012): Mensaje enviado
+[INFO] 21:51:20:194 ESI/(4012:4012): Mensaje de 4 bytes recibido
+[INFO] 21:51:20:195 ESI/(4012:4012): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:20:196 ESI/(4012:4012): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:20:198 ESI/(4012:4012): Error al conectar el socket
+[DEBUG] 21:51:33:698 ESI/(4024:4024): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:33:701 ESI/(4024:4024): IP del coordinador: 127.0.0.1
+[INFO] 21:51:33:701 ESI/(4024:4024): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:33:705 ESI/(4024:4024): Socket conectado
+[INFO] 21:51:33:705 ESI/(4024:4024): Mensaje enviado
+[INFO] 21:51:33:708 ESI/(4024:4024): Mensaje de 4 bytes recibido
+[INFO] 21:51:33:708 ESI/(4024:4024): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:33:708 ESI/(4024:4024): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:33:708 ESI/(4024:4024): Error al conectar el socket
+[DEBUG] 21:51:36:843 ESI/(4035:4035): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:36:846 ESI/(4035:4035): IP del coordinador: 127.0.0.1
+[INFO] 21:51:36:847 ESI/(4035:4035): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:36:848 ESI/(4035:4035): Socket conectado
+[INFO] 21:51:36:848 ESI/(4035:4035): Mensaje enviado
+[INFO] 21:51:36:849 ESI/(4035:4035): Mensaje de 4 bytes recibido
+[INFO] 21:51:36:849 ESI/(4035:4035): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:36:849 ESI/(4035:4035): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:36:849 ESI/(4035:4035): Error al conectar el socket
+[DEBUG] 21:51:39:652 ESI/(4046:4046): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:39:657 ESI/(4046:4046): IP del coordinador: 127.0.0.1
+[INFO] 21:51:39:657 ESI/(4046:4046): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:39:658 ESI/(4046:4046): Socket conectado
+[INFO] 21:51:39:659 ESI/(4046:4046): Mensaje enviado
+[INFO] 21:51:39:661 ESI/(4046:4046): Mensaje de 4 bytes recibido
+[INFO] 21:51:39:663 ESI/(4046:4046): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:39:663 ESI/(4046:4046): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:39:663 ESI/(4046:4046): Error al conectar el socket
+[DEBUG] 21:51:42:125 ESI/(4057:4057): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:42:129 ESI/(4057:4057): IP del coordinador: 127.0.0.1
+[INFO] 21:51:42:130 ESI/(4057:4057): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:42:132 ESI/(4057:4057): Socket conectado
+[INFO] 21:51:42:132 ESI/(4057:4057): Mensaje enviado
+[INFO] 21:51:42:134 ESI/(4057:4057): Mensaje de 4 bytes recibido
+[INFO] 21:51:42:134 ESI/(4057:4057): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:42:134 ESI/(4057:4057): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:42:134 ESI/(4057:4057): Error al conectar el socket
+[DEBUG] 21:51:44:669 ESI/(4068:4068): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:44:674 ESI/(4068:4068): IP del coordinador: 127.0.0.1
+[INFO] 21:51:44:674 ESI/(4068:4068): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:44:676 ESI/(4068:4068): Socket conectado
+[INFO] 21:51:44:676 ESI/(4068:4068): Mensaje enviado
+[INFO] 21:51:44:682 ESI/(4068:4068): Mensaje de 4 bytes recibido
+[INFO] 21:51:44:682 ESI/(4068:4068): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:44:682 ESI/(4068:4068): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:44:682 ESI/(4068:4068): Error al conectar el socket
+[DEBUG] 21:51:46:780 ESI/(4079:4079): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:46:781 ESI/(4079:4079): IP del coordinador: 127.0.0.1
+[INFO] 21:51:46:781 ESI/(4079:4079): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:46:782 ESI/(4079:4079): Socket conectado
+[INFO] 21:51:46:782 ESI/(4079:4079): Mensaje enviado
+[INFO] 21:51:46:783 ESI/(4079:4079): Mensaje de 4 bytes recibido
+[INFO] 21:51:46:786 ESI/(4079:4079): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:46:786 ESI/(4079:4079): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:46:786 ESI/(4079:4079): Error al conectar el socket
+[DEBUG] 21:51:48:702 ESI/(4090:4090): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:51:48:703 ESI/(4090:4090): IP del coordinador: 127.0.0.1
+[INFO] 21:51:48:704 ESI/(4090:4090): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:51:48:705 ESI/(4090:4090): Socket conectado
+[INFO] 21:51:48:709 ESI/(4090:4090): Mensaje enviado
+[INFO] 21:51:48:714 ESI/(4090:4090): Mensaje de 4 bytes recibido
+[INFO] 21:51:48:714 ESI/(4090:4090): Se ha conectado al coordinador correctamente!!
+[INFO] 21:51:48:714 ESI/(4090:4090): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:51:48:714 ESI/(4090:4090): Error al conectar el socket
+[DEBUG] 21:52:13:553 ESI/(4157:4157): Ruta de configuracion: ESI.cfg
+[DEBUG] 21:52:13:561 ESI/(4157:4157): IP del coordinador: 127.0.0.1
+[INFO] 21:52:13:561 ESI/(4157:4157): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 21:52:13:562 ESI/(4157:4157): Socket conectado
+[INFO] 21:52:13:562 ESI/(4157:4157): Mensaje enviado
+[INFO] 21:52:13:574 ESI/(4157:4157): Mensaje de 4 bytes recibido
+[INFO] 21:52:13:574 ESI/(4157:4157): Se ha conectado al coordinador correctamente!!
+[INFO] 21:52:13:574 ESI/(4157:4157): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 21:52:13:575 ESI/(4157:4157): Error al conectar el socket
+[DEBUG] 10:09:56:3 ESI/(6775:6775): Ruta de configuracion: ESI.cfg
+[DEBUG] 10:09:57:527 ESI/(6775:6775): IP del coordinador: 127.0.0.1
+[INFO] 10:10:06:250 ESI/(6775:6775): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 10:10:09:10 ESI/(6775:6775): Socket conectado
+[INFO] 10:10:20:746 ESI/(6775:6775): Mensaje enviado
+[INFO] 10:10:26:682 ESI/(6775:6775): Mensaje de 4 bytes recibido
+[INFO] 10:10:32:283 ESI/(6775:6775): Se ha conectado al coordinador correctamente!!
+[INFO] 10:10:38:428 ESI/(6775:6775): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[ERROR] 10:10:43:330 ESI/(6775:6775): Error al conectar el socket
+[DEBUG] 10:11:35:256 ESI/(6884:6884): Ruta de configuracion: ESI.cfg
+[DEBUG] 10:11:35:256 ESI/(6884:6884): IP del coordinador: 127.0.0.1
+[INFO] 10:11:35:256 ESI/(6884:6884): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 10:11:35:257 ESI/(6884:6884): Socket conectado
+[INFO] 10:11:35:257 ESI/(6884:6884): Mensaje enviado
+[INFO] 10:11:35:262 ESI/(6884:6884): Mensaje de 4 bytes recibido
+[INFO] 10:11:35:262 ESI/(6884:6884): Se ha conectado al coordinador correctamente!!
+[INFO] 10:12:03:938 ESI/(6884:6884): Conectandose al Planificador, IP: 127.0.0.2	Puerto: 8001
+[INFO] 10:12:20:528 ESI/(6884:6884): Socket conectado
+[INFO] 10:12:24:392 ESI/(6884:6884): confirmación enviada
+[ERROR] 10:13:31:789 ESI/(6884:6884): no se pudo recibir confirmación
