@@ -7,11 +7,6 @@ int main(int argc, char* argv[]){
 	//ssize_t read;
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 
-	FILE * fp;
-	char * line = NULL;
-	size_t len = 0;
-	ssize_t read;
-  
 	if(argc != CANT_ARGUMENTOS_MAIN){
 			log_error(logger, "Cantidad incorrecta de parametros");
 			exit_gracefully(1);
