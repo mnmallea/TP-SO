@@ -1,13 +1,14 @@
 #ifndef DESERIALIZADOR_H_
 #define DESERIALIZADOR_H_
-#include <my_socket.h>
+
+#include "../syntax-commons/my_socket.h"
 #include <stdlib.h>
 
 
 
 t_log * logger;
 
-void configure_logger();
+void configure_logger_deser();
 
 int recibirpaquete(int my_socket, void* rcp, size_t tamanio);
 

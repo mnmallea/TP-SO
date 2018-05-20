@@ -1,11 +1,11 @@
 #include "deserializador.h"
 
-void configure_logger() {
+void configure_logger_deser() {
   logger = log_create("serializador.log", "serializador",true, LOG_LEVEL_INFO);
 }
 
 
-void recibirPaquete(int my_socket, void* id, size_t tamanio) {
+int recibirPaquete(int my_socket, void* id, size_t tamanio) {
 	int res_recv = recv(my_socket, id, tamanio, MSG_WAITALL);
 
 	if(res_recv < 0) {
@@ -13,7 +13,8 @@ void recibirPaquete(int my_socket, void* id, size_t tamanio) {
 	}
 
 	log_info(logger, "Mensaje recibido");
-	}
+	return res_recv;
+}
 
 int recibirPaqueteVariable(int my_socket, void** id) {
 	int res_recv;
