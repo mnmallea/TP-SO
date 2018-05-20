@@ -10,6 +10,7 @@
 
 int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de configuracion como parametro
 
+
 	lista_esis_listos = list_create();
 	lista_esis_corriendo = list_create();
 	lista_esis_bloq_consola = list_create();
@@ -20,7 +21,6 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	logger = log_create("planificador.log","Planificador",true,LOG_LEVEL);
 	logger -> is_active_console=0;
 	configuracion = configurar(argv[1]);
-
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;
 	pthread_t consola_planificador;
