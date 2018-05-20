@@ -5,15 +5,21 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../conexiones.c \
-../my_socket.c 
+../deserializador.c \
+../my_socket.c \
+../serializador.c 
 
 OBJS += \
 ./conexiones.o \
-./my_socket.o 
+./deserializador.o \
+./my_socket.o \
+./serializador.o 
 
 C_DEPS += \
 ./conexiones.d \
-./my_socket.d 
+./deserializador.d \
+./my_socket.d \
+./serializador.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
