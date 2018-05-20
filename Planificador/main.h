@@ -8,12 +8,24 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#define LOG_LEVEL LOG_LEVEL_TRACE
+#define BACKLOG 5
+
+#include <stdlib.h>
 #include <pthread.h>
-#include "../syntax-commons/my_socket.h"
-#include "../syntax-commons/protocol.h"
-#include "../syntax-commons/conexiones.h"
+#include <commons/log.h>
+#include "config_planificador.h"
+#include "selector.h"
+#include "consola.h"
 
-void *menu(void *ptr);
+config configuracion;
 
+t_list *lista_esis_listos;
+t_list *lista_esis_corriendo;
+t_list *lista_esis_bloq_consola;
+t_list *lista_esis_bloq_rec;
+t_list *lista_esis_finalizados;
+
+//#include "typescommons.h"
 
 #endif /* MAIN_H_ */

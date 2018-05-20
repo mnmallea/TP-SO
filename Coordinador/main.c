@@ -19,6 +19,7 @@ int *c;
 t_log *logger;
 config configuracion;
 
+
 int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de configuracion como parametro
 	logger = log_create("coordinador.log","Coordinador", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
