@@ -1608,3 +1608,939 @@
 [INFO] 10:04:26:740 Coordinador/(6145:6532): Mensaje de 4 bytes recibido
 [INFO] 10:04:26:740 Coordinador/(6145:6532): Mensaje enviado
 [INFO] 10:04:26:741 Coordinador/(6145:6532): Se ha conectado el Planificador
+[INFO] 21:03:38:486 Coordinador/(5684:5684): Configurando coordinador
+[TRACE] 21:03:38:499 Coordinador/(5684:5684): Coordinador correctamente configurado
+[INFO] 21:03:38:500 Coordinador/(5684:5684): Escuchando en puerto: 8080
+[INFO] 21:04:33:808 Coordinador/(5726:5726): Configurando coordinador
+[TRACE] 21:04:33:815 Coordinador/(5726:5726): Coordinador correctamente configurado
+[INFO] 21:04:33:819 Coordinador/(5726:5726): Escuchando en puerto: 8080
+[INFO] 21:06:09:98 Coordinador/(5788:5788): Configurando coordinador
+[TRACE] 21:06:09:103 Coordinador/(5788:5788): Coordinador correctamente configurado
+[INFO] 21:06:09:103 Coordinador/(5788:5788): Escuchando en puerto: 8080
+[INFO] 21:11:03:32 Coordinador/(6007:6007): Configurando coordinador
+[TRACE] 21:11:03:982 Coordinador/(6007:6007): Coordinador correctamente configurado
+[INFO] 21:11:07:552 Coordinador/(6007:6007): Escuchando en puerto: 8080
+[INFO] 21:12:36:275 Coordinador/(6066:6066): Configurando coordinador
+[TRACE] 21:12:37:340 Coordinador/(6066:6066): Coordinador correctamente configurado
+[INFO] 21:12:48:413 Coordinador/(6066:6066): Escuchando en puerto: 8080
+[INFO] 21:13:48:228 Coordinador/(6127:6127): Configurando coordinador
+[TRACE] 21:13:48:228 Coordinador/(6127:6127): Coordinador correctamente configurado
+[INFO] 21:13:48:228 Coordinador/(6127:6127): Escuchando en puerto: 8080
+[INFO] 21:13:57:916 Coordinador/(6127:6135): Nueva conexion recibida
+[DEBUG] 21:13:57:916 Coordinador/(6127:6135): Socket creado: 5
+[DEBUG] 21:13:57:924 Coordinador/(6127:6176): socketFD = 5
+[INFO] 21:13:57:924 Coordinador/(6127:6176): Mensaje de 4 bytes recibido
+[INFO] 21:13:57:928 Coordinador/(6127:6176): Mensaje enviado
+[INFO] 21:13:57:928 Coordinador/(6127:6176): Se ha conectado una Instancia
+[INFO] 21:14:31:436 Coordinador/(6127:6135): Nueva conexion recibida
+[DEBUG] 21:14:31:436 Coordinador/(6127:6135): Socket creado: 6
+[DEBUG] 21:14:31:450 Coordinador/(6127:6214): socketFD = 6
+[INFO] 21:14:31:450 Coordinador/(6127:6214): Mensaje de 4 bytes recibido
+[INFO] 21:14:31:451 Coordinador/(6127:6214): Mensaje enviado
+[INFO] 21:14:31:451 Coordinador/(6127:6214): Se ha conectado una Instancia
+[INFO] 21:18:10:502 Coordinador/(6344:6344): Configurando coordinador
+[TRACE] 21:18:10:963 Coordinador/(6344:6344): Coordinador correctamente configurado
+[INFO] 21:18:15:817 Coordinador/(6344:6344): Escuchando en puerto: 8080
+[INFO] 21:19:07:353 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:07:353 Coordinador/(6344:6360): Socket creado: 5
+[DEBUG] 21:19:07:359 Coordinador/(6344:6435): socketFD = 5
+[INFO] 21:19:07:360 Coordinador/(6344:6435): Mensaje de 4 bytes recibido
+[INFO] 21:19:07:361 Coordinador/(6344:6435): Mensaje enviado
+[INFO] 21:19:07:361 Coordinador/(6344:6435): Se ha conectado una Instancia
+[INFO] 21:19:14:188 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:14:188 Coordinador/(6344:6360): Socket creado: 6
+[DEBUG] 21:19:14:196 Coordinador/(6344:6445): socketFD = 6
+[INFO] 21:19:14:196 Coordinador/(6344:6445): Mensaje de 4 bytes recibido
+[INFO] 21:19:14:197 Coordinador/(6344:6445): Mensaje enviado
+[INFO] 21:19:14:197 Coordinador/(6344:6445): Se ha conectado una Instancia
+[INFO] 21:19:15:98 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:15:99 Coordinador/(6344:6360): Socket creado: 7
+[DEBUG] 21:19:15:112 Coordinador/(6344:6448): socketFD = 7
+[INFO] 21:19:15:112 Coordinador/(6344:6448): Mensaje de 4 bytes recibido
+[INFO] 21:19:15:113 Coordinador/(6344:6448): Mensaje enviado
+[INFO] 21:19:15:114 Coordinador/(6344:6448): Se ha conectado una Instancia
+[INFO] 21:19:15:667 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:15:667 Coordinador/(6344:6360): Socket creado: 8
+[DEBUG] 21:19:15:690 Coordinador/(6344:6450): socketFD = 8
+[INFO] 21:19:15:691 Coordinador/(6344:6450): Mensaje de 4 bytes recibido
+[INFO] 21:19:15:692 Coordinador/(6344:6450): Mensaje enviado
+[INFO] 21:19:15:692 Coordinador/(6344:6450): Se ha conectado una Instancia
+[INFO] 21:19:16:47 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:16:47 Coordinador/(6344:6360): Socket creado: 9
+[DEBUG] 21:19:16:60 Coordinador/(6344:6452): socketFD = 9
+[INFO] 21:19:16:64 Coordinador/(6344:6452): Mensaje de 4 bytes recibido
+[INFO] 21:19:16:64 Coordinador/(6344:6452): Mensaje enviado
+[INFO] 21:19:16:67 Coordinador/(6344:6452): Se ha conectado una Instancia
+[INFO] 21:19:16:573 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:16:573 Coordinador/(6344:6360): Socket creado: 10
+[DEBUG] 21:19:16:603 Coordinador/(6344:6454): socketFD = 10
+[INFO] 21:19:16:603 Coordinador/(6344:6454): Mensaje de 4 bytes recibido
+[INFO] 21:19:16:603 Coordinador/(6344:6454): Mensaje enviado
+[INFO] 21:19:16:604 Coordinador/(6344:6454): Se ha conectado una Instancia
+[INFO] 21:19:17:103 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:17:104 Coordinador/(6344:6360): Socket creado: 11
+[DEBUG] 21:19:17:118 Coordinador/(6344:6456): socketFD = 11
+[INFO] 21:19:17:121 Coordinador/(6344:6456): Mensaje de 4 bytes recibido
+[INFO] 21:19:17:127 Coordinador/(6344:6456): Mensaje enviado
+[INFO] 21:19:17:128 Coordinador/(6344:6456): Se ha conectado una Instancia
+[INFO] 21:19:17:585 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:17:586 Coordinador/(6344:6360): Socket creado: 12
+[DEBUG] 21:19:17:596 Coordinador/(6344:6458): socketFD = 12
+[INFO] 21:19:17:597 Coordinador/(6344:6458): Mensaje de 4 bytes recibido
+[INFO] 21:19:17:597 Coordinador/(6344:6458): Mensaje enviado
+[INFO] 21:19:17:607 Coordinador/(6344:6458): Se ha conectado una Instancia
+[INFO] 21:19:18:3 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:18:3 Coordinador/(6344:6360): Socket creado: 13
+[DEBUG] 21:19:18:19 Coordinador/(6344:6460): socketFD = 13
+[INFO] 21:19:18:19 Coordinador/(6344:6460): Mensaje de 4 bytes recibido
+[INFO] 21:19:18:20 Coordinador/(6344:6460): Mensaje enviado
+[INFO] 21:19:18:21 Coordinador/(6344:6460): Se ha conectado una Instancia
+[INFO] 21:19:18:386 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:18:386 Coordinador/(6344:6360): Socket creado: 14
+[DEBUG] 21:19:18:403 Coordinador/(6344:6462): socketFD = 14
+[INFO] 21:19:18:403 Coordinador/(6344:6462): Mensaje de 4 bytes recibido
+[INFO] 21:19:18:403 Coordinador/(6344:6462): Mensaje enviado
+[INFO] 21:19:18:404 Coordinador/(6344:6462): Se ha conectado una Instancia
+[INFO] 21:19:18:720 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:18:720 Coordinador/(6344:6360): Socket creado: 15
+[DEBUG] 21:19:18:734 Coordinador/(6344:6464): socketFD = 15
+[INFO] 21:19:18:739 Coordinador/(6344:6464): Mensaje de 4 bytes recibido
+[INFO] 21:19:18:739 Coordinador/(6344:6464): Mensaje enviado
+[INFO] 21:19:18:740 Coordinador/(6344:6464): Se ha conectado una Instancia
+[INFO] 21:19:18:979 Coordinador/(6344:6360): Nueva conexion recibida
+[DEBUG] 21:19:18:979 Coordinador/(6344:6360): Socket creado: 16
+[DEBUG] 21:19:18:995 Coordinador/(6344:6466): socketFD = 16
+[INFO] 21:19:18:995 Coordinador/(6344:6466): Mensaje de 4 bytes recibido
+[INFO] 21:19:18:995 Coordinador/(6344:6466): Mensaje enviado
+[INFO] 21:19:18:996 Coordinador/(6344:6466): Se ha conectado una Instancia
+[INFO] 21:23:03:281 Coordinador/(6515:6515): Configurando coordinador
+[TRACE] 21:23:03:281 Coordinador/(6515:6515): Coordinador correctamente configurado
+[INFO] 21:23:03:281 Coordinador/(6515:6515): Escuchando en puerto: 8080
+[INFO] 21:23:12:337 Coordinador/(6501:6501): Configurando coordinador
+[TRACE] 21:23:12:338 Coordinador/(6501:6501): Coordinador correctamente configurado
+[INFO] 21:23:12:338 Coordinador/(6501:6501): Escuchando en puerto: 8080
+[INFO] 21:23:56:142 Coordinador/(6501:6522): Nueva conexion recibida
+[DEBUG] 21:23:56:142 Coordinador/(6501:6522): Socket creado: 5
+[DEBUG] 21:23:56:151 Coordinador/(6501:6552): socketFD = 5
+[INFO] 21:23:56:151 Coordinador/(6501:6552): Mensaje de 4 bytes recibido
+[INFO] 21:23:56:152 Coordinador/(6501:6552): Mensaje enviado
+[INFO] 21:23:56:152 Coordinador/(6501:6552): Se ha conectado una Instancia
+[INFO] 21:24:49:416 Coordinador/(6501:6522): Nueva conexion recibida
+[DEBUG] 21:24:49:417 Coordinador/(6501:6522): Socket creado: 6
+[DEBUG] 21:24:49:426 Coordinador/(6501:6562): socketFD = 6
+[INFO] 21:24:49:426 Coordinador/(6501:6562): Mensaje de 4 bytes recibido
+[INFO] 21:24:49:426 Coordinador/(6501:6562): Mensaje enviado
+[INFO] 21:24:49:427 Coordinador/(6501:6562): Se ha conectado una Instancia
+[INFO] 21:25:08:616 Coordinador/(6501:6522): Nueva conexion recibida
+[DEBUG] 21:25:08:617 Coordinador/(6501:6522): Socket creado: 7
+[DEBUG] 21:25:08:626 Coordinador/(6501:6568): socketFD = 7
+[INFO] 21:25:08:626 Coordinador/(6501:6568): Mensaje de 4 bytes recibido
+[INFO] 21:25:08:628 Coordinador/(6501:6568): Mensaje enviado
+[INFO] 21:25:08:628 Coordinador/(6501:6568): Se ha conectado una Instancia
+[INFO] 21:29:25:521 Coordinador/(6644:6644): Configurando coordinador
+[TRACE] 21:29:25:521 Coordinador/(6644:6644): Coordinador correctamente configurado
+[INFO] 21:29:25:521 Coordinador/(6644:6644): Escuchando en puerto: 8080
+[INFO] 21:29:41:885 Coordinador/(6644:6652): Nueva conexion recibida
+[DEBUG] 21:29:41:885 Coordinador/(6644:6652): Socket creado: 5
+[DEBUG] 21:29:41:898 Coordinador/(6644:6656): socketFD = 5
+[INFO] 21:29:41:899 Coordinador/(6644:6656): Mensaje de 4 bytes recibido
+[INFO] 21:29:41:900 Coordinador/(6644:6656): Mensaje enviado
+[INFO] 21:29:41:900 Coordinador/(6644:6656): Se ha conectado una Instancia
+[INFO] 21:30:18:847 Coordinador/(6644:6652): Nueva conexion recibida
+[TRACE] 21:30:18:847 Coordinador/(6644:6656): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 21:30:18:847 Coordinador/(6644:6652): Socket creado: 6
+[DEBUG] 21:30:18:853 Coordinador/(6644:6675): socketFD = 6
+[INFO] 21:30:18:854 Coordinador/(6644:6675): Mensaje de 4 bytes recibido
+[INFO] 21:30:18:861 Coordinador/(6644:6675): Mensaje enviado
+[INFO] 21:30:18:863 Coordinador/(6644:6675): Se ha conectado una Instancia
+[TRACE] 21:30:44:246 Coordinador/(6644:6675): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:30:51:447 Coordinador/(6644:6652): Nueva conexion recibida
+[DEBUG] 21:30:51:449 Coordinador/(6644:6652): Socket creado: 5
+[DEBUG] 21:30:51:457 Coordinador/(6644:6683): socketFD = 5
+[INFO] 21:30:51:457 Coordinador/(6644:6683): Mensaje de 4 bytes recibido
+[INFO] 21:30:51:458 Coordinador/(6644:6683): Mensaje enviado
+[INFO] 21:30:51:458 Coordinador/(6644:6683): Se ha conectado una Instancia
+[TRACE] 21:31:40:874 Coordinador/(6644:6683): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:31:49:331 Coordinador/(6644:6652): Nueva conexion recibida
+[DEBUG] 21:31:49:331 Coordinador/(6644:6652): Socket creado: 6
+[DEBUG] 21:31:49:339 Coordinador/(6644:6697): socketFD = 6
+[INFO] 21:31:49:339 Coordinador/(6644:6697): Mensaje de 4 bytes recibido
+[INFO] 21:31:49:347 Coordinador/(6644:6697): Mensaje enviado
+[INFO] 21:31:49:347 Coordinador/(6644:6697): Se ha conectado una Instancia
+[TRACE] 21:33:05:849 Coordinador/(6644:6697): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:33:37:395 Coordinador/(6644:6652): Nueva conexion recibida
+[DEBUG] 21:33:37:395 Coordinador/(6644:6652): Socket creado: 5
+[DEBUG] 21:33:37:399 Coordinador/(6644:6717): socketFD = 5
+[INFO] 21:33:37:399 Coordinador/(6644:6717): Mensaje de 4 bytes recibido
+[INFO] 21:33:37:401 Coordinador/(6644:6717): Mensaje enviado
+[INFO] 21:33:37:401 Coordinador/(6644:6717): Se ha conectado una Instancia
+[TRACE] 21:33:45:924 Coordinador/(6644:6717): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:40:39:756 Coordinador/(6930:6930): Configurando coordinador
+[TRACE] 21:40:39:888 Coordinador/(6930:6930): Coordinador correctamente configurado
+[INFO] 21:40:42:271 Coordinador/(6930:6930): Escuchando en puerto: 8080
+[INFO] 21:41:19:393 Coordinador/(6990:6990): Configurando coordinador
+[TRACE] 21:41:19:691 Coordinador/(6990:6990): Coordinador correctamente configurado
+[INFO] 21:41:21:607 Coordinador/(6990:6990): Escuchando en puerto: 8080
+[INFO] 21:41:57:106 Coordinador/(6990:7007): Nueva conexion recibida
+[DEBUG] 21:41:57:106 Coordinador/(6990:7007): Socket creado: 5
+[INFO] 21:58:11:347 Coordinador/(7442:7442): Configurando coordinador
+[TRACE] 21:58:11:347 Coordinador/(7442:7442): Coordinador correctamente configurado
+[INFO] 21:58:11:348 Coordinador/(7442:7442): Escuchando en puerto: 8080
+[INFO] 21:58:15:73 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:15:73 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:15:80 Coordinador/(7442:7455): socketFD = 5
+[INFO] 21:58:15:80 Coordinador/(7442:7455): Mensaje de 4 bytes recibido
+[INFO] 21:58:15:81 Coordinador/(7442:7455): Mensaje enviado
+[INFO] 21:58:15:81 Coordinador/(7442:7455): Se ha conectado una Instancia
+[DEBUG] 21:58:15:81 Coordinador/(7442:7455): Instancia Nº:0 agregada a la lista
+[DEBUG] 21:58:15:81 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:15:81 Coordinador/(7442:7455): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:26:689 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:26:689 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:26:693 Coordinador/(7442:7459): socketFD = 6
+[INFO] 21:58:26:693 Coordinador/(7442:7459): Mensaje de 4 bytes recibido
+[INFO] 21:58:26:695 Coordinador/(7442:7459): Mensaje enviado
+[INFO] 21:58:26:695 Coordinador/(7442:7459): Se ha conectado una Instancia
+[DEBUG] 21:58:26:695 Coordinador/(7442:7459): Instancia Nº:1 agregada a la lista
+[DEBUG] 21:58:26:695 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:26:695 Coordinador/(7442:7459): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:28:196 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:28:196 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:28:200 Coordinador/(7442:7463): socketFD = 5
+[INFO] 21:58:28:200 Coordinador/(7442:7463): Mensaje de 4 bytes recibido
+[INFO] 21:58:28:201 Coordinador/(7442:7463): Mensaje enviado
+[INFO] 21:58:28:201 Coordinador/(7442:7463): Se ha conectado una Instancia
+[DEBUG] 21:58:28:201 Coordinador/(7442:7463): Instancia Nº:2 agregada a la lista
+[DEBUG] 21:58:28:201 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:28:201 Coordinador/(7442:7463): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:29:139 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:29:139 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:29:148 Coordinador/(7442:7466): socketFD = 6
+[INFO] 21:58:29:148 Coordinador/(7442:7466): Mensaje de 4 bytes recibido
+[INFO] 21:58:29:150 Coordinador/(7442:7466): Mensaje enviado
+[INFO] 21:58:29:150 Coordinador/(7442:7466): Se ha conectado una Instancia
+[DEBUG] 21:58:29:150 Coordinador/(7442:7466): Instancia Nº:3 agregada a la lista
+[DEBUG] 21:58:29:150 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:29:150 Coordinador/(7442:7466): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:29:907 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:29:908 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:29:912 Coordinador/(7442:7469): socketFD = 5
+[INFO] 21:58:29:912 Coordinador/(7442:7469): Mensaje de 4 bytes recibido
+[INFO] 21:58:29:913 Coordinador/(7442:7469): Mensaje enviado
+[INFO] 21:58:29:913 Coordinador/(7442:7469): Se ha conectado una Instancia
+[DEBUG] 21:58:29:913 Coordinador/(7442:7469): Instancia Nº:4 agregada a la lista
+[DEBUG] 21:58:29:913 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:29:914 Coordinador/(7442:7469): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:30:452 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:30:452 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:30:456 Coordinador/(7442:7471): socketFD = 6
+[INFO] 21:58:30:456 Coordinador/(7442:7471): Mensaje de 4 bytes recibido
+[INFO] 21:58:30:457 Coordinador/(7442:7471): Mensaje enviado
+[INFO] 21:58:30:464 Coordinador/(7442:7471): Se ha conectado una Instancia
+[DEBUG] 21:58:30:464 Coordinador/(7442:7471): Instancia Nº:5 agregada a la lista
+[DEBUG] 21:58:30:465 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:30:465 Coordinador/(7442:7471): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:30:780 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:30:780 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:30:795 Coordinador/(7442:7473): socketFD = 5
+[INFO] 21:58:30:795 Coordinador/(7442:7473): Mensaje de 4 bytes recibido
+[INFO] 21:58:30:796 Coordinador/(7442:7473): Mensaje enviado
+[INFO] 21:58:30:796 Coordinador/(7442:7473): Se ha conectado una Instancia
+[DEBUG] 21:58:30:796 Coordinador/(7442:7473): Instancia Nº:6 agregada a la lista
+[DEBUG] 21:58:30:796 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:30:796 Coordinador/(7442:7473): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:31:30 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:31:30 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:31:36 Coordinador/(7442:7475): socketFD = 6
+[INFO] 21:58:31:36 Coordinador/(7442:7475): Mensaje de 4 bytes recibido
+[INFO] 21:58:31:38 Coordinador/(7442:7475): Mensaje enviado
+[INFO] 21:58:31:38 Coordinador/(7442:7475): Se ha conectado una Instancia
+[DEBUG] 21:58:31:38 Coordinador/(7442:7475): Instancia Nº:7 agregada a la lista
+[DEBUG] 21:58:31:38 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:31:38 Coordinador/(7442:7475): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:31:284 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:31:284 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:31:288 Coordinador/(7442:7477): socketFD = 5
+[INFO] 21:58:31:288 Coordinador/(7442:7477): Mensaje de 4 bytes recibido
+[INFO] 21:58:31:295 Coordinador/(7442:7477): Mensaje enviado
+[INFO] 21:58:31:295 Coordinador/(7442:7477): Se ha conectado una Instancia
+[DEBUG] 21:58:31:296 Coordinador/(7442:7477): Instancia Nº:8 agregada a la lista
+[DEBUG] 21:58:31:296 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:31:296 Coordinador/(7442:7477): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:31:548 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:31:548 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:31:558 Coordinador/(7442:7479): socketFD = 6
+[INFO] 21:58:31:558 Coordinador/(7442:7479): Mensaje de 4 bytes recibido
+[INFO] 21:58:31:559 Coordinador/(7442:7479): Mensaje enviado
+[INFO] 21:58:31:559 Coordinador/(7442:7479): Se ha conectado una Instancia
+[DEBUG] 21:58:31:559 Coordinador/(7442:7479): Instancia Nº:9 agregada a la lista
+[DEBUG] 21:58:31:559 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:31:559 Coordinador/(7442:7479): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:31:828 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:31:828 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:31:837 Coordinador/(7442:7481): socketFD = 5
+[INFO] 21:58:31:837 Coordinador/(7442:7481): Mensaje de 4 bytes recibido
+[INFO] 21:58:31:838 Coordinador/(7442:7481): Mensaje enviado
+[INFO] 21:58:31:838 Coordinador/(7442:7481): Se ha conectado una Instancia
+[DEBUG] 21:58:31:838 Coordinador/(7442:7481): Instancia Nº:10 agregada a la lista
+[DEBUG] 21:58:31:838 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:31:838 Coordinador/(7442:7481): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:32:84 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:32:84 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:32:95 Coordinador/(7442:7483): socketFD = 6
+[INFO] 21:58:32:95 Coordinador/(7442:7483): Mensaje de 4 bytes recibido
+[INFO] 21:58:32:96 Coordinador/(7442:7483): Mensaje enviado
+[INFO] 21:58:32:96 Coordinador/(7442:7483): Se ha conectado una Instancia
+[DEBUG] 21:58:32:96 Coordinador/(7442:7483): Instancia Nº:11 agregada a la lista
+[DEBUG] 21:58:32:96 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:32:96 Coordinador/(7442:7483): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:32:348 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:32:348 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:32:352 Coordinador/(7442:7485): socketFD = 5
+[INFO] 21:58:32:352 Coordinador/(7442:7485): Mensaje de 4 bytes recibido
+[INFO] 21:58:32:353 Coordinador/(7442:7485): Mensaje enviado
+[INFO] 21:58:32:353 Coordinador/(7442:7485): Se ha conectado una Instancia
+[DEBUG] 21:58:32:354 Coordinador/(7442:7485): Instancia Nº:12 agregada a la lista
+[DEBUG] 21:58:32:354 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:32:354 Coordinador/(7442:7485): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:32:588 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:32:588 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:32:592 Coordinador/(7442:7487): socketFD = 6
+[INFO] 21:58:32:592 Coordinador/(7442:7487): Mensaje de 4 bytes recibido
+[INFO] 21:58:32:593 Coordinador/(7442:7487): Mensaje enviado
+[INFO] 21:58:32:593 Coordinador/(7442:7487): Se ha conectado una Instancia
+[DEBUG] 21:58:32:593 Coordinador/(7442:7487): Instancia Nº:13 agregada a la lista
+[DEBUG] 21:58:32:593 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:32:593 Coordinador/(7442:7487): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:32:828 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:32:828 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:32:832 Coordinador/(7442:7489): socketFD = 5
+[INFO] 21:58:32:832 Coordinador/(7442:7489): Mensaje de 4 bytes recibido
+[INFO] 21:58:32:839 Coordinador/(7442:7489): Mensaje enviado
+[INFO] 21:58:32:839 Coordinador/(7442:7489): Se ha conectado una Instancia
+[DEBUG] 21:58:32:839 Coordinador/(7442:7489): Instancia Nº:14 agregada a la lista
+[DEBUG] 21:58:32:839 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:32:839 Coordinador/(7442:7489): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:33:84 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:33:84 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:33:93 Coordinador/(7442:7491): socketFD = 6
+[INFO] 21:58:33:93 Coordinador/(7442:7491): Mensaje de 4 bytes recibido
+[INFO] 21:58:33:96 Coordinador/(7442:7491): Mensaje enviado
+[INFO] 21:58:33:96 Coordinador/(7442:7491): Se ha conectado una Instancia
+[DEBUG] 21:58:33:96 Coordinador/(7442:7491): Instancia Nº:15 agregada a la lista
+[DEBUG] 21:58:33:96 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:33:96 Coordinador/(7442:7491): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:33:324 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:33:325 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:33:329 Coordinador/(7442:7493): socketFD = 5
+[INFO] 21:58:33:329 Coordinador/(7442:7493): Mensaje de 4 bytes recibido
+[INFO] 21:58:33:336 Coordinador/(7442:7493): Mensaje enviado
+[INFO] 21:58:33:336 Coordinador/(7442:7493): Se ha conectado una Instancia
+[DEBUG] 21:58:33:336 Coordinador/(7442:7493): Instancia Nº:16 agregada a la lista
+[DEBUG] 21:58:33:336 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:33:336 Coordinador/(7442:7493): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:33:564 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:33:564 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:33:568 Coordinador/(7442:7495): socketFD = 6
+[INFO] 21:58:33:568 Coordinador/(7442:7495): Mensaje de 4 bytes recibido
+[INFO] 21:58:33:569 Coordinador/(7442:7495): Mensaje enviado
+[INFO] 21:58:33:569 Coordinador/(7442:7495): Se ha conectado una Instancia
+[DEBUG] 21:58:33:570 Coordinador/(7442:7495): Instancia Nº:17 agregada a la lista
+[DEBUG] 21:58:33:570 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:33:570 Coordinador/(7442:7495): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:33:804 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:33:804 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:33:808 Coordinador/(7442:7497): socketFD = 5
+[INFO] 21:58:33:808 Coordinador/(7442:7497): Mensaje de 4 bytes recibido
+[INFO] 21:58:33:809 Coordinador/(7442:7497): Mensaje enviado
+[INFO] 21:58:33:809 Coordinador/(7442:7497): Se ha conectado una Instancia
+[DEBUG] 21:58:33:809 Coordinador/(7442:7497): Instancia Nº:18 agregada a la lista
+[DEBUG] 21:58:33:809 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:33:809 Coordinador/(7442:7497): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:34:44 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:34:44 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:34:52 Coordinador/(7442:7499): socketFD = 6
+[INFO] 21:58:34:52 Coordinador/(7442:7499): Mensaje de 4 bytes recibido
+[INFO] 21:58:34:54 Coordinador/(7442:7499): Mensaje enviado
+[INFO] 21:58:34:54 Coordinador/(7442:7499): Se ha conectado una Instancia
+[DEBUG] 21:58:34:54 Coordinador/(7442:7499): Instancia Nº:19 agregada a la lista
+[DEBUG] 21:58:34:55 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:34:55 Coordinador/(7442:7499): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:34:277 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:34:277 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:34:291 Coordinador/(7442:7501): socketFD = 5
+[INFO] 21:58:34:291 Coordinador/(7442:7501): Mensaje de 4 bytes recibido
+[INFO] 21:58:34:292 Coordinador/(7442:7501): Mensaje enviado
+[INFO] 21:58:34:292 Coordinador/(7442:7501): Se ha conectado una Instancia
+[DEBUG] 21:58:34:292 Coordinador/(7442:7501): Instancia Nº:20 agregada a la lista
+[DEBUG] 21:58:34:292 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:34:292 Coordinador/(7442:7501): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:34:516 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:34:516 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:34:521 Coordinador/(7442:7503): socketFD = 6
+[INFO] 21:58:34:521 Coordinador/(7442:7503): Mensaje de 4 bytes recibido
+[INFO] 21:58:34:523 Coordinador/(7442:7503): Mensaje enviado
+[INFO] 21:58:34:524 Coordinador/(7442:7503): Se ha conectado una Instancia
+[DEBUG] 21:58:34:524 Coordinador/(7442:7503): Instancia Nº:21 agregada a la lista
+[DEBUG] 21:58:34:524 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:34:524 Coordinador/(7442:7503): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:34:758 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:34:758 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:34:764 Coordinador/(7442:7505): socketFD = 5
+[INFO] 21:58:34:764 Coordinador/(7442:7505): Mensaje de 4 bytes recibido
+[INFO] 21:58:34:766 Coordinador/(7442:7505): Mensaje enviado
+[INFO] 21:58:34:766 Coordinador/(7442:7505): Se ha conectado una Instancia
+[DEBUG] 21:58:34:766 Coordinador/(7442:7505): Instancia Nº:22 agregada a la lista
+[DEBUG] 21:58:34:766 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:34:767 Coordinador/(7442:7505): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:34:996 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:34:996 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:34:0 Coordinador/(7442:7507): socketFD = 6
+[INFO] 21:58:34:0 Coordinador/(7442:7507): Mensaje de 4 bytes recibido
+[INFO] 21:58:35:9 Coordinador/(7442:7507): Mensaje enviado
+[INFO] 21:58:35:9 Coordinador/(7442:7507): Se ha conectado una Instancia
+[DEBUG] 21:58:35:9 Coordinador/(7442:7507): Instancia Nº:23 agregada a la lista
+[DEBUG] 21:58:35:9 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:35:9 Coordinador/(7442:7507): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:35:231 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:35:231 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:35:235 Coordinador/(7442:7509): socketFD = 5
+[INFO] 21:58:35:237 Coordinador/(7442:7509): Mensaje de 4 bytes recibido
+[INFO] 21:58:35:239 Coordinador/(7442:7509): Mensaje enviado
+[INFO] 21:58:35:239 Coordinador/(7442:7509): Se ha conectado una Instancia
+[DEBUG] 21:58:35:239 Coordinador/(7442:7509): Instancia Nº:24 agregada a la lista
+[DEBUG] 21:58:35:240 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:35:240 Coordinador/(7442:7509): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:35:463 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:35:463 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:35:469 Coordinador/(7442:7511): socketFD = 6
+[INFO] 21:58:35:469 Coordinador/(7442:7511): Mensaje de 4 bytes recibido
+[INFO] 21:58:35:472 Coordinador/(7442:7511): Mensaje enviado
+[INFO] 21:58:35:472 Coordinador/(7442:7511): Se ha conectado una Instancia
+[DEBUG] 21:58:35:472 Coordinador/(7442:7511): Instancia Nº:25 agregada a la lista
+[DEBUG] 21:58:35:472 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:35:472 Coordinador/(7442:7511): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:36:132 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:36:132 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:36:137 Coordinador/(7442:7514): socketFD = 5
+[INFO] 21:58:36:137 Coordinador/(7442:7514): Mensaje de 4 bytes recibido
+[INFO] 21:58:36:142 Coordinador/(7442:7514): Mensaje enviado
+[INFO] 21:58:36:142 Coordinador/(7442:7514): Se ha conectado una Instancia
+[DEBUG] 21:58:36:142 Coordinador/(7442:7514): Instancia Nº:26 agregada a la lista
+[DEBUG] 21:58:36:142 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:36:142 Coordinador/(7442:7514): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:36:356 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:36:356 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:36:361 Coordinador/(7442:7516): socketFD = 6
+[INFO] 21:58:36:361 Coordinador/(7442:7516): Mensaje de 4 bytes recibido
+[INFO] 21:58:36:368 Coordinador/(7442:7516): Mensaje enviado
+[INFO] 21:58:36:368 Coordinador/(7442:7516): Se ha conectado una Instancia
+[DEBUG] 21:58:36:368 Coordinador/(7442:7516): Instancia Nº:27 agregada a la lista
+[DEBUG] 21:58:36:368 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:36:368 Coordinador/(7442:7516): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:36:596 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:36:596 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:36:607 Coordinador/(7442:7518): socketFD = 5
+[INFO] 21:58:36:607 Coordinador/(7442:7518): Mensaje de 4 bytes recibido
+[INFO] 21:58:36:608 Coordinador/(7442:7518): Mensaje enviado
+[INFO] 21:58:36:608 Coordinador/(7442:7518): Se ha conectado una Instancia
+[DEBUG] 21:58:36:608 Coordinador/(7442:7518): Instancia Nº:28 agregada a la lista
+[DEBUG] 21:58:36:608 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:36:608 Coordinador/(7442:7518): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:36:804 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:36:804 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:36:809 Coordinador/(7442:7521): socketFD = 6
+[INFO] 21:58:36:810 Coordinador/(7442:7521): Mensaje de 4 bytes recibido
+[INFO] 21:58:36:815 Coordinador/(7442:7521): Mensaje enviado
+[INFO] 21:58:36:815 Coordinador/(7442:7521): Se ha conectado una Instancia
+[DEBUG] 21:58:36:815 Coordinador/(7442:7521): Instancia Nº:29 agregada a la lista
+[DEBUG] 21:58:36:815 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:36:815 Coordinador/(7442:7521): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:37:356 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:37:357 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:37:361 Coordinador/(7442:7523): socketFD = 5
+[INFO] 21:58:37:361 Coordinador/(7442:7523): Mensaje de 4 bytes recibido
+[INFO] 21:58:37:364 Coordinador/(7442:7523): Mensaje enviado
+[INFO] 21:58:37:364 Coordinador/(7442:7523): Se ha conectado una Instancia
+[DEBUG] 21:58:37:364 Coordinador/(7442:7523): Instancia Nº:30 agregada a la lista
+[DEBUG] 21:58:37:364 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:37:364 Coordinador/(7442:7523): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:58:37:604 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:37:604 Coordinador/(7442:7451): Socket creado: 6
+[DEBUG] 21:58:37:608 Coordinador/(7442:7525): socketFD = 6
+[INFO] 21:58:37:608 Coordinador/(7442:7525): Mensaje de 4 bytes recibido
+[INFO] 21:58:37:615 Coordinador/(7442:7525): Mensaje enviado
+[INFO] 21:58:37:615 Coordinador/(7442:7525): Se ha conectado una Instancia
+[DEBUG] 21:58:37:615 Coordinador/(7442:7525): Instancia Nº:31 agregada a la lista
+[DEBUG] 21:58:37:616 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:37:616 Coordinador/(7442:7525): Se termino de atender una Instancia, sockfd = 6
+[INFO] 21:58:37:884 Coordinador/(7442:7451): Nueva conexion recibida
+[DEBUG] 21:58:37:884 Coordinador/(7442:7451): Socket creado: 5
+[DEBUG] 21:58:37:894 Coordinador/(7442:7527): socketFD = 5
+[INFO] 21:58:37:894 Coordinador/(7442:7527): Mensaje de 4 bytes recibido
+[INFO] 21:58:37:895 Coordinador/(7442:7527): Mensaje enviado
+[INFO] 21:58:37:895 Coordinador/(7442:7527): Se ha conectado una Instancia
+[DEBUG] 21:58:37:896 Coordinador/(7442:7527): Instancia Nº:32 agregada a la lista
+[DEBUG] 21:58:37:896 Coordinador/(7442:7442): Instancia elegida con socket &d
+[TRACE] 21:58:37:896 Coordinador/(7442:7527): Se termino de atender una Instancia, sockfd = 5
+[INFO] 21:59:19:490 Coordinador/(7574:7574): Configurando coordinador
+[TRACE] 21:59:19:491 Coordinador/(7574:7574): Coordinador correctamente configurado
+[INFO] 21:59:19:491 Coordinador/(7574:7574): Escuchando en puerto: 8080
+[INFO] 21:59:43:747 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 21:59:44:335 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 21:59:53:415 Coordinador/(7574:7593): socketFD = 5
+[INFO] 21:59:53:415 Coordinador/(7574:7593): Mensaje de 4 bytes recibido
+[INFO] 21:59:53:416 Coordinador/(7574:7593): Mensaje enviado
+[INFO] 21:59:53:417 Coordinador/(7574:7593): Se ha conectado una Instancia
+[DEBUG] 21:59:53:417 Coordinador/(7574:7593): Instancia Nº:0 agregada a la lista
+[TRACE] 21:59:54:618 Coordinador/(7574:7593): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 22:00:07:586 Coordinador/(7574:7574): Instancia elegida Nº 0
+[INFO] 22:00:56:175 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:00:56:175 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:00:56:181 Coordinador/(7574:7610): socketFD = 5
+[INFO] 22:00:56:181 Coordinador/(7574:7610): Mensaje de 4 bytes recibido
+[INFO] 22:00:56:182 Coordinador/(7574:7610): Mensaje enviado
+[INFO] 22:00:56:182 Coordinador/(7574:7610): Se ha conectado una Instancia
+[DEBUG] 22:00:56:182 Coordinador/(7574:7610): Instancia Nº:1 agregada a la lista
+[DEBUG] 22:00:56:182 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:00:56:182 Coordinador/(7574:7610): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:00:59:83 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:00:59:83 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:00:59:89 Coordinador/(7574:7614): socketFD = 6
+[INFO] 22:00:59:89 Coordinador/(7574:7614): Mensaje de 4 bytes recibido
+[INFO] 22:00:59:90 Coordinador/(7574:7614): Mensaje enviado
+[INFO] 22:00:59:91 Coordinador/(7574:7614): Se ha conectado una Instancia
+[DEBUG] 22:00:59:91 Coordinador/(7574:7614): Instancia Nº:2 agregada a la lista
+[DEBUG] 22:00:59:91 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:00:59:91 Coordinador/(7574:7614): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:00:59:993 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:00:59:993 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:00:59:998 Coordinador/(7574:7617): socketFD = 5
+[INFO] 22:00:59:998 Coordinador/(7574:7617): Mensaje de 4 bytes recibido
+[INFO] 22:01:00:7 Coordinador/(7574:7617): Mensaje enviado
+[INFO] 22:01:00:7 Coordinador/(7574:7617): Se ha conectado una Instancia
+[DEBUG] 22:01:00:7 Coordinador/(7574:7617): Instancia Nº:3 agregada a la lista
+[DEBUG] 22:01:00:7 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:00:7 Coordinador/(7574:7617): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:00:665 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:00:665 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:00:669 Coordinador/(7574:7620): socketFD = 6
+[INFO] 22:01:00:670 Coordinador/(7574:7620): Mensaje de 4 bytes recibido
+[INFO] 22:01:00:671 Coordinador/(7574:7620): Mensaje enviado
+[INFO] 22:01:00:671 Coordinador/(7574:7620): Se ha conectado una Instancia
+[DEBUG] 22:01:00:671 Coordinador/(7574:7620): Instancia Nº:4 agregada a la lista
+[DEBUG] 22:01:00:671 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:00:671 Coordinador/(7574:7620): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:01:314 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:01:314 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:01:319 Coordinador/(7574:7623): socketFD = 5
+[INFO] 22:01:01:319 Coordinador/(7574:7623): Mensaje de 4 bytes recibido
+[INFO] 22:01:01:322 Coordinador/(7574:7623): Mensaje enviado
+[INFO] 22:01:01:322 Coordinador/(7574:7623): Se ha conectado una Instancia
+[DEBUG] 22:01:01:322 Coordinador/(7574:7623): Instancia Nº:5 agregada a la lista
+[DEBUG] 22:01:01:322 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:01:322 Coordinador/(7574:7623): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:01:786 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:01:786 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:01:790 Coordinador/(7574:7625): socketFD = 6
+[INFO] 22:01:01:790 Coordinador/(7574:7625): Mensaje de 4 bytes recibido
+[INFO] 22:01:01:799 Coordinador/(7574:7625): Mensaje enviado
+[INFO] 22:01:01:799 Coordinador/(7574:7625): Se ha conectado una Instancia
+[DEBUG] 22:01:01:799 Coordinador/(7574:7625): Instancia Nº:6 agregada a la lista
+[DEBUG] 22:01:01:799 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:01:799 Coordinador/(7574:7625): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:02:170 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:02:170 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:02:174 Coordinador/(7574:7627): socketFD = 5
+[INFO] 22:01:02:174 Coordinador/(7574:7627): Mensaje de 4 bytes recibido
+[INFO] 22:01:02:175 Coordinador/(7574:7627): Mensaje enviado
+[INFO] 22:01:02:175 Coordinador/(7574:7627): Se ha conectado una Instancia
+[DEBUG] 22:01:02:175 Coordinador/(7574:7627): Instancia Nº:7 agregada a la lista
+[DEBUG] 22:01:02:175 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:02:175 Coordinador/(7574:7627): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:02:442 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:02:442 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:02:450 Coordinador/(7574:7629): socketFD = 6
+[INFO] 22:01:02:451 Coordinador/(7574:7629): Mensaje de 4 bytes recibido
+[INFO] 22:01:02:452 Coordinador/(7574:7629): Mensaje enviado
+[INFO] 22:01:02:452 Coordinador/(7574:7629): Se ha conectado una Instancia
+[DEBUG] 22:01:02:452 Coordinador/(7574:7629): Instancia Nº:8 agregada a la lista
+[DEBUG] 22:01:02:452 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:02:452 Coordinador/(7574:7629): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:02:714 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:02:714 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:02:718 Coordinador/(7574:7631): socketFD = 5
+[INFO] 22:01:02:718 Coordinador/(7574:7631): Mensaje de 4 bytes recibido
+[INFO] 22:01:02:727 Coordinador/(7574:7631): Mensaje enviado
+[INFO] 22:01:02:727 Coordinador/(7574:7631): Se ha conectado una Instancia
+[DEBUG] 22:01:02:728 Coordinador/(7574:7631): Instancia Nº:9 agregada a la lista
+[DEBUG] 22:01:02:728 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:02:728 Coordinador/(7574:7631): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:02:962 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:02:962 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:02:966 Coordinador/(7574:7633): socketFD = 6
+[INFO] 22:01:02:966 Coordinador/(7574:7633): Mensaje de 4 bytes recibido
+[INFO] 22:01:02:973 Coordinador/(7574:7633): Mensaje enviado
+[INFO] 22:01:02:973 Coordinador/(7574:7633): Se ha conectado una Instancia
+[DEBUG] 22:01:02:974 Coordinador/(7574:7633): Instancia Nº:10 agregada a la lista
+[DEBUG] 22:01:02:974 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:02:974 Coordinador/(7574:7633): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:03:218 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:03:218 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:03:222 Coordinador/(7574:7635): socketFD = 5
+[INFO] 22:01:03:222 Coordinador/(7574:7635): Mensaje de 4 bytes recibido
+[INFO] 22:01:03:231 Coordinador/(7574:7635): Mensaje enviado
+[INFO] 22:01:03:231 Coordinador/(7574:7635): Se ha conectado una Instancia
+[DEBUG] 22:01:03:231 Coordinador/(7574:7635): Instancia Nº:11 agregada a la lista
+[DEBUG] 22:01:03:232 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:03:232 Coordinador/(7574:7635): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:03:458 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:03:458 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:03:462 Coordinador/(7574:7637): socketFD = 6
+[INFO] 22:01:03:462 Coordinador/(7574:7637): Mensaje de 4 bytes recibido
+[INFO] 22:01:03:471 Coordinador/(7574:7637): Mensaje enviado
+[INFO] 22:01:03:471 Coordinador/(7574:7637): Se ha conectado una Instancia
+[DEBUG] 22:01:03:471 Coordinador/(7574:7637): Instancia Nº:12 agregada a la lista
+[DEBUG] 22:01:03:471 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:03:471 Coordinador/(7574:7637): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:03:690 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:03:690 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:03:699 Coordinador/(7574:7639): socketFD = 5
+[INFO] 22:01:03:699 Coordinador/(7574:7639): Mensaje de 4 bytes recibido
+[INFO] 22:01:03:700 Coordinador/(7574:7639): Mensaje enviado
+[INFO] 22:01:03:700 Coordinador/(7574:7639): Se ha conectado una Instancia
+[DEBUG] 22:01:03:700 Coordinador/(7574:7639): Instancia Nº:13 agregada a la lista
+[DEBUG] 22:01:03:700 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:03:700 Coordinador/(7574:7639): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:03:946 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:03:946 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:03:950 Coordinador/(7574:7641): socketFD = 6
+[INFO] 22:01:03:950 Coordinador/(7574:7641): Mensaje de 4 bytes recibido
+[INFO] 22:01:03:959 Coordinador/(7574:7641): Mensaje enviado
+[INFO] 22:01:03:959 Coordinador/(7574:7641): Se ha conectado una Instancia
+[DEBUG] 22:01:03:959 Coordinador/(7574:7641): Instancia Nº:14 agregada a la lista
+[DEBUG] 22:01:03:959 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:03:959 Coordinador/(7574:7641): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:04:186 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:04:186 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:04:198 Coordinador/(7574:7643): socketFD = 5
+[INFO] 22:01:04:199 Coordinador/(7574:7643): Mensaje de 4 bytes recibido
+[INFO] 22:01:04:200 Coordinador/(7574:7643): Mensaje enviado
+[INFO] 22:01:04:200 Coordinador/(7574:7643): Se ha conectado una Instancia
+[DEBUG] 22:01:04:200 Coordinador/(7574:7643): Instancia Nº:15 agregada a la lista
+[DEBUG] 22:01:04:200 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:04:200 Coordinador/(7574:7643): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:04:434 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:04:434 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:04:438 Coordinador/(7574:7645): socketFD = 6
+[INFO] 22:01:04:438 Coordinador/(7574:7645): Mensaje de 4 bytes recibido
+[INFO] 22:01:04:448 Coordinador/(7574:7645): Mensaje enviado
+[INFO] 22:01:04:448 Coordinador/(7574:7645): Se ha conectado una Instancia
+[DEBUG] 22:01:04:448 Coordinador/(7574:7645): Instancia Nº:16 agregada a la lista
+[DEBUG] 22:01:04:448 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:04:448 Coordinador/(7574:7645): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:04:674 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:04:674 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:04:679 Coordinador/(7574:7647): socketFD = 5
+[INFO] 22:01:04:679 Coordinador/(7574:7647): Mensaje de 4 bytes recibido
+[INFO] 22:01:04:681 Coordinador/(7574:7647): Mensaje enviado
+[INFO] 22:01:04:681 Coordinador/(7574:7647): Se ha conectado una Instancia
+[DEBUG] 22:01:04:682 Coordinador/(7574:7647): Instancia Nº:17 agregada a la lista
+[DEBUG] 22:01:04:682 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:04:682 Coordinador/(7574:7647): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:04:930 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:04:930 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:04:935 Coordinador/(7574:7649): socketFD = 6
+[INFO] 22:01:04:935 Coordinador/(7574:7649): Mensaje de 4 bytes recibido
+[INFO] 22:01:04:937 Coordinador/(7574:7649): Mensaje enviado
+[INFO] 22:01:04:938 Coordinador/(7574:7649): Se ha conectado una Instancia
+[DEBUG] 22:01:04:938 Coordinador/(7574:7649): Instancia Nº:18 agregada a la lista
+[DEBUG] 22:01:04:938 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:04:938 Coordinador/(7574:7649): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:05:194 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:05:194 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:05:198 Coordinador/(7574:7651): socketFD = 5
+[INFO] 22:01:05:198 Coordinador/(7574:7651): Mensaje de 4 bytes recibido
+[INFO] 22:01:05:205 Coordinador/(7574:7651): Mensaje enviado
+[INFO] 22:01:05:205 Coordinador/(7574:7651): Se ha conectado una Instancia
+[DEBUG] 22:01:05:205 Coordinador/(7574:7651): Instancia Nº:19 agregada a la lista
+[DEBUG] 22:01:05:205 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:05:206 Coordinador/(7574:7651): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:05:442 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:05:442 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:05:446 Coordinador/(7574:7653): socketFD = 6
+[INFO] 22:01:05:446 Coordinador/(7574:7653): Mensaje de 4 bytes recibido
+[INFO] 22:01:05:453 Coordinador/(7574:7653): Mensaje enviado
+[INFO] 22:01:05:453 Coordinador/(7574:7653): Se ha conectado una Instancia
+[DEBUG] 22:01:05:454 Coordinador/(7574:7653): Instancia Nº:20 agregada a la lista
+[DEBUG] 22:01:05:454 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:05:454 Coordinador/(7574:7653): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:05:706 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:05:706 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:05:718 Coordinador/(7574:7655): socketFD = 5
+[INFO] 22:01:05:719 Coordinador/(7574:7655): Mensaje de 4 bytes recibido
+[INFO] 22:01:05:721 Coordinador/(7574:7655): Mensaje enviado
+[INFO] 22:01:05:721 Coordinador/(7574:7655): Se ha conectado una Instancia
+[DEBUG] 22:01:05:721 Coordinador/(7574:7655): Instancia Nº:21 agregada a la lista
+[DEBUG] 22:01:05:721 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:05:721 Coordinador/(7574:7655): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:05:962 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:05:962 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:05:966 Coordinador/(7574:7657): socketFD = 6
+[INFO] 22:01:05:966 Coordinador/(7574:7657): Mensaje de 4 bytes recibido
+[INFO] 22:01:05:974 Coordinador/(7574:7657): Mensaje enviado
+[INFO] 22:01:05:974 Coordinador/(7574:7657): Se ha conectado una Instancia
+[DEBUG] 22:01:05:974 Coordinador/(7574:7657): Instancia Nº:22 agregada a la lista
+[DEBUG] 22:01:05:974 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:05:974 Coordinador/(7574:7657): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:06:218 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:06:218 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:06:222 Coordinador/(7574:7659): socketFD = 5
+[INFO] 22:01:06:222 Coordinador/(7574:7659): Mensaje de 4 bytes recibido
+[INFO] 22:01:06:230 Coordinador/(7574:7659): Mensaje enviado
+[INFO] 22:01:06:230 Coordinador/(7574:7659): Se ha conectado una Instancia
+[DEBUG] 22:01:06:230 Coordinador/(7574:7659): Instancia Nº:23 agregada a la lista
+[DEBUG] 22:01:06:230 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:06:230 Coordinador/(7574:7659): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:06:467 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:06:467 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:06:471 Coordinador/(7574:7661): socketFD = 6
+[INFO] 22:01:06:471 Coordinador/(7574:7661): Mensaje de 4 bytes recibido
+[INFO] 22:01:06:473 Coordinador/(7574:7661): Mensaje enviado
+[INFO] 22:01:06:473 Coordinador/(7574:7661): Se ha conectado una Instancia
+[DEBUG] 22:01:06:473 Coordinador/(7574:7661): Instancia Nº:24 agregada a la lista
+[DEBUG] 22:01:06:473 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:06:474 Coordinador/(7574:7661): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:06:730 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:06:730 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:06:739 Coordinador/(7574:7663): socketFD = 5
+[INFO] 22:01:06:739 Coordinador/(7574:7663): Mensaje de 4 bytes recibido
+[INFO] 22:01:06:740 Coordinador/(7574:7663): Mensaje enviado
+[INFO] 22:01:06:740 Coordinador/(7574:7663): Se ha conectado una Instancia
+[DEBUG] 22:01:06:740 Coordinador/(7574:7663): Instancia Nº:25 agregada a la lista
+[DEBUG] 22:01:06:740 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:06:740 Coordinador/(7574:7663): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:01:06:970 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:06:970 Coordinador/(7574:7582): Socket creado: 6
+[DEBUG] 22:01:06:974 Coordinador/(7574:7665): socketFD = 6
+[INFO] 22:01:06:974 Coordinador/(7574:7665): Mensaje de 4 bytes recibido
+[INFO] 22:01:06:982 Coordinador/(7574:7665): Mensaje enviado
+[INFO] 22:01:06:983 Coordinador/(7574:7665): Se ha conectado una Instancia
+[DEBUG] 22:01:06:983 Coordinador/(7574:7665): Instancia Nº:26 agregada a la lista
+[DEBUG] 22:01:06:983 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:06:983 Coordinador/(7574:7665): Se termino de atender una Instancia, sockfd = 6
+[INFO] 22:01:07:778 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:01:07:778 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:01:07:783 Coordinador/(7574:7668): socketFD = 5
+[INFO] 22:01:07:783 Coordinador/(7574:7668): Mensaje de 4 bytes recibido
+[INFO] 22:01:07:790 Coordinador/(7574:7668): Mensaje enviado
+[INFO] 22:01:07:790 Coordinador/(7574:7668): Se ha conectado una Instancia
+[DEBUG] 22:01:07:790 Coordinador/(7574:7668): Instancia Nº:27 agregada a la lista
+[DEBUG] 22:01:07:790 Coordinador/(7574:7574): Instancia elegida Nº 0
+[TRACE] 22:01:07:790 Coordinador/(7574:7668): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:02:14:786 Coordinador/(7574:7582): Nueva conexion recibida
+[DEBUG] 22:02:15:297 Coordinador/(7574:7582): Socket creado: 5
+[DEBUG] 22:02:18:480 Coordinador/(7574:7688): socketFD = 5
+[INFO] 22:02:18:480 Coordinador/(7574:7688): Mensaje de 4 bytes recibido
+[INFO] 22:02:18:480 Coordinador/(7574:7688): Mensaje enviado
+[INFO] 22:02:18:481 Coordinador/(7574:7688): Se ha conectado una Instancia
+[DEBUG] 22:02:18:481 Coordinador/(7574:7688): Instancia Nº:28 agregada a la lista
+[TRACE] 22:02:18:481 Coordinador/(7574:7688): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 22:02:18:482 Coordinador/(7574:7574): Instancia elegida Nº 0
+[INFO] 22:06:18:503 Coordinador/(7747:7747): Configurando coordinador
+[TRACE] 22:06:18:749 Coordinador/(7747:7747): Coordinador correctamente configurado
+[INFO] 22:06:24:85 Coordinador/(7747:7747): Escuchando en puerto: 8080
+[INFO] 22:08:05:680 Coordinador/(7747:7767): Nueva conexion recibida
+[DEBUG] 22:08:08:456 Coordinador/(7747:7767): Socket creado: 5
+[DEBUG] 22:08:52:779 Coordinador/(7747:7787): socketFD = 5
+[INFO] 22:08:53:338 Coordinador/(7747:7787): Mensaje de 4 bytes recibido
+[INFO] 22:08:55:139 Coordinador/(7747:7787): Mensaje enviado
+[INFO] 22:08:58:282 Coordinador/(7747:7787): Se ha conectado una Instancia
+[DEBUG] 22:09:01:210 Coordinador/(7747:7787): Instancia Nº:0 agregada a la lista
+[DEBUG] 22:09:01:210 Coordinador/(7747:7747): Instancia elegida Nº 0
+[TRACE] 22:09:16:591 Coordinador/(7747:7787): Se termino de atender una Instancia, sockfd = 5
+[INFO] 22:10:49:489 Coordinador/(7830:7830): Configurando coordinador
+[TRACE] 22:10:49:490 Coordinador/(7830:7830): Coordinador correctamente configurado
+[INFO] 22:10:49:490 Coordinador/(7830:7830): Escuchando en puerto: 8080
+[INFO] 22:10:59:622 Coordinador/(7862:7862): Configurando coordinador
+[TRACE] 22:10:59:622 Coordinador/(7862:7862): Coordinador correctamente configurado
+[INFO] 22:10:59:622 Coordinador/(7862:7862): Escuchando en puerto: 8080
+[INFO] 22:11:57:422 Coordinador/(7862:7871): Nueva conexion recibida
+[DEBUG] 22:12:00:684 Coordinador/(7862:7871): Socket creado: 5
+[DEBUG] 22:12:36:641 Coordinador/(7862:7888): socketFD = 5
+[INFO] 22:12:36:642 Coordinador/(7862:7888): Mensaje de 4 bytes recibido
+[INFO] 22:12:36:642 Coordinador/(7862:7888): Mensaje enviado
+[INFO] 22:12:36:643 Coordinador/(7862:7888): Se ha conectado una Instancia
+[DEBUG] 22:12:36:643 Coordinador/(7862:7888): Instancia Nº:0 agregada a la lista
+[TRACE] 22:12:36:643 Coordinador/(7862:7888): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 22:13:19:585 Coordinador/(7862:7862): Instancia elegida Nº 0
+[INFO] 22:13:37:97 Coordinador/(7862:7871): Nueva conexion recibida
+[DEBUG] 22:13:40:435 Coordinador/(7862:7871): Socket creado: 5
+[DEBUG] 22:14:28:407 Coordinador/(7862:7917): socketFD = 5
+[INFO] 22:14:28:407 Coordinador/(7862:7917): Mensaje de 4 bytes recibido
+[INFO] 22:14:28:407 Coordinador/(7862:7917): Mensaje enviado
+[INFO] 22:14:28:409 Coordinador/(7862:7917): Se ha conectado una Instancia
+[DEBUG] 22:14:28:409 Coordinador/(7862:7917): Instancia Nº:1 agregada a la lista
+[TRACE] 22:14:28:409 Coordinador/(7862:7917): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 22:14:55:307 Coordinador/(7862:7862): Instancia elegida Nº 0
+[INFO] 22:18:56:832 Coordinador/(8013:8013): Configurando coordinador
+[TRACE] 22:18:57:142 Coordinador/(8013:8013): Coordinador correctamente configurado
+[INFO] 22:19:42:864 Coordinador/(8013:8013): Escuchando en puerto: 8080
+[INFO] 22:20:29:725 Coordinador/(8013:8047): Nueva conexion recibida
+[DEBUG] 22:20:30:173 Coordinador/(8013:8047): Socket creado: 5
+[DEBUG] 22:21:13:700 Coordinador/(8013:8065): socketFD = 5
+[INFO] 22:21:14:956 Coordinador/(8013:8065): Mensaje de 4 bytes recibido
+[INFO] 22:21:20:925 Coordinador/(8013:8065): Mensaje enviado
+[INFO] 22:21:22:117 Coordinador/(8013:8065): Se ha conectado una Instancia
+[DEBUG] 22:21:22:613 Coordinador/(8013:8065): Instancia Nº:0 agregada a la lista
+[TRACE] 22:21:50:564 Coordinador/(8013:8065): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 22:21:50:565 Coordinador/(8013:8013): Instancia elegida Nº 0
+[INFO] 22:22:08:108 Coordinador/(8013:8047): Nueva conexion recibida
+[DEBUG] 22:22:08:580 Coordinador/(8013:8047): Socket creado: 6
+[DEBUG] 22:22:17:156 Coordinador/(8013:8106): socketFD = 6
+[INFO] 22:22:18:92 Coordinador/(8013:8106): Mensaje de 4 bytes recibido
+[INFO] 22:22:24:935 Coordinador/(8013:8106): Mensaje enviado
+[INFO] 22:22:27:236 Coordinador/(8013:8106): Se ha conectado una Instancia
+[DEBUG] 22:22:28:588 Coordinador/(8013:8106): Instancia Nº:1 agregada a la lista
+[TRACE] 22:22:28:588 Coordinador/(8013:8106): Se termino de atender una Instancia, sockfd = 6
+[DEBUG] 22:23:07:621 Coordinador/(8013:8013): Instancia elegida Nº 0
+[INFO] 22:25:02:298 Coordinador/(8013:8047): Nueva conexion recibida
+[DEBUG] 22:25:03:187 Coordinador/(8013:8047): Socket creado: 5
+[DEBUG] 22:25:21:26 Coordinador/(8013:8177): socketFD = 5
+[INFO] 22:25:21:26 Coordinador/(8013:8177): Mensaje de 4 bytes recibido
+[INFO] 22:25:21:26 Coordinador/(8013:8177): Mensaje enviado
+[INFO] 22:25:21:27 Coordinador/(8013:8177): Se ha conectado una Instancia
+[DEBUG] 22:25:21:27 Coordinador/(8013:8177): Instancia Nº:2 agregada a la lista
+[TRACE] 22:25:21:27 Coordinador/(8013:8177): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 22:25:30:154 Coordinador/(8013:8013): Instancia elegida Nº 0
+[INFO] 15:07:40:148 Coordinador/(9322:9322): Configurando coordinador
+[TRACE] 15:07:40:450 Coordinador/(9322:9322): Coordinador correctamente configurado
+[INFO] 15:08:00:871 Coordinador/(9322:9322): Escuchando en puerto: 8080
+[INFO] 15:09:11:776 Coordinador/(9322:9346): Nueva conexion recibida
+[DEBUG] 15:09:12:257 Coordinador/(9322:9346): Socket creado: 5
+[DEBUG] 15:09:20:16 Coordinador/(9322:9393): socketFD = 5
+[INFO] 15:09:20:16 Coordinador/(9322:9393): Mensaje de 4 bytes recibido
+[INFO] 15:09:20:16 Coordinador/(9322:9393): Mensaje enviado
+[INFO] 15:09:20:17 Coordinador/(9322:9393): Se ha conectado una Instancia
+[DEBUG] 15:09:20:17 Coordinador/(9322:9393): Instancia Nº:0 agregada a la lista
+[TRACE] 15:09:20:17 Coordinador/(9322:9393): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:09:31:671 Coordinador/(9322:9322): Instancia elegida Nº 0
+[DEBUG] 15:09:44:581 Coordinador/(9322:9322): Instancia elegida Nº 0
+[INFO] 15:09:45:606 Coordinador/(9322:9346): Nueva conexion recibida
+[DEBUG] 15:09:45:607 Coordinador/(9322:9346): Socket creado: 5
+[DEBUG] 15:10:03:442 Coordinador/(9322:9322): Instancia elegida Nº 0
+[DEBUG] 15:10:06:806 Coordinador/(9322:9322): Instancia elegida Nº 0
+[DEBUG] 15:10:08:100 Coordinador/(9322:9413): socketFD = 5
+[INFO] 15:10:08:100 Coordinador/(9322:9413): Mensaje de 4 bytes recibido
+[INFO] 15:10:08:100 Coordinador/(9322:9413): Mensaje enviado
+[INFO] 15:10:08:101 Coordinador/(9322:9413): Se ha conectado una Instancia
+[DEBUG] 15:10:08:101 Coordinador/(9322:9413): Instancia Nº:1 agregada a la lista
+[TRACE] 15:10:08:101 Coordinador/(9322:9413): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:10:13:437 Coordinador/(9322:9322): Instancia elegida Nº 0
+[DEBUG] 15:10:49:211 Coordinador/(9322:9322): Instancia elegida Nº 0
+[DEBUG] 15:11:00:458 Coordinador/(9322:9322): Instancia elegida Nº 1
+[DEBUG] 15:11:02:426 Coordinador/(9322:9322): Instancia elegida Nº 0
+[INFO] 15:11:36:447 Coordinador/(9518:9518): Configurando coordinador
+[TRACE] 15:11:36:447 Coordinador/(9518:9518): Coordinador correctamente configurado
+[INFO] 15:11:36:447 Coordinador/(9518:9518): Escuchando en puerto: 8080
+[INFO] 15:11:58:783 Coordinador/(9518:9528): Nueva conexion recibida
+[DEBUG] 15:11:59:378 Coordinador/(9518:9528): Socket creado: 5
+[DEBUG] 15:12:26:212 Coordinador/(9518:9541): socketFD = 5
+[INFO] 15:12:26:212 Coordinador/(9518:9541): Mensaje de 4 bytes recibido
+[INFO] 15:12:26:212 Coordinador/(9518:9541): Mensaje enviado
+[INFO] 15:12:26:213 Coordinador/(9518:9541): Se ha conectado una Instancia
+[DEBUG] 15:12:26:217 Coordinador/(9518:9541): Instancia Nº:0 agregada a la lista
+[TRACE] 15:12:26:217 Coordinador/(9518:9541): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:12:40:861 Coordinador/(9518:9518): Instancia elegida Nº 0
+[INFO] 15:13:01:159 Coordinador/(9518:9528): Nueva conexion recibida
+[DEBUG] 15:13:01:477 Coordinador/(9518:9528): Socket creado: 5
+[DEBUG] 15:13:05:898 Coordinador/(9518:9572): socketFD = 5
+[INFO] 15:13:06:802 Coordinador/(9518:9572): Mensaje de 4 bytes recibido
+[INFO] 15:13:07:883 Coordinador/(9518:9572): Mensaje enviado
+[INFO] 15:13:09:2 Coordinador/(9518:9572): Se ha conectado una Instancia
+[DEBUG] 15:13:09:682 Coordinador/(9518:9572): Instancia Nº:1 agregada a la lista
+[TRACE] 15:13:13:105 Coordinador/(9518:9572): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:13:18:42 Coordinador/(9518:9518): Instancia elegida Nº 0
+[INFO] 15:16:29:201 Coordinador/(9723:9723): Configurando coordinador
+[TRACE] 15:16:29:201 Coordinador/(9723:9723): Coordinador correctamente configurado
+[INFO] 15:16:29:201 Coordinador/(9723:9723): Escuchando en puerto: 8080
+[INFO] 15:17:02:687 Coordinador/(9762:9762): Configurando coordinador
+[TRACE] 15:17:02:687 Coordinador/(9762:9762): Coordinador correctamente configurado
+[INFO] 15:17:02:687 Coordinador/(9762:9762): Escuchando en puerto: 8080
+[INFO] 15:17:34:154 Coordinador/(9810:9810): Configurando coordinador
+[TRACE] 15:17:34:283 Coordinador/(9810:9810): Coordinador correctamente configurado
+[INFO] 15:17:36:622 Coordinador/(9810:9810): Escuchando en puerto: 8080
+[INFO] 15:18:31:85 Coordinador/(9810:9829): Nueva conexion recibida
+[DEBUG] 15:18:31:86 Coordinador/(9810:9829): Socket creado: 5
+[DEBUG] 15:19:05:412 Coordinador/(9810:9843): socketFD = 5
+[INFO] 15:19:05:412 Coordinador/(9810:9843): Mensaje de 4 bytes recibido
+[INFO] 15:19:05:412 Coordinador/(9810:9843): Mensaje enviado
+[INFO] 15:19:05:413 Coordinador/(9810:9843): Se ha conectado una Instancia
+[DEBUG] 15:19:05:413 Coordinador/(9810:9843): Instancia Nº:0 agregada a la lista
+[TRACE] 15:19:05:413 Coordinador/(9810:9843): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:19:05:413 Coordinador/(9810:9810): Instancia elegida Nº 0
+[INFO] 15:19:31:754 Coordinador/(9810:9829): Nueva conexion recibida
+[DEBUG] 15:19:31:754 Coordinador/(9810:9829): Socket creado: 5
+[DEBUG] 15:20:03:126 Coordinador/(9810:9870): socketFD = 5
+[INFO] 15:20:03:565 Coordinador/(9810:9870): Mensaje de 4 bytes recibido
+[INFO] 15:20:04:285 Coordinador/(9810:9870): Mensaje enviado
+[INFO] 15:20:06:389 Coordinador/(9810:9870): Se ha conectado una Instancia
+[DEBUG] 15:20:06:932 Coordinador/(9810:9870): Instancia Nº:1 agregada a la lista
+[TRACE] 15:20:12:452 Coordinador/(9810:9870): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:20:14:253 Coordinador/(9810:9810): Instancia elegida Nº 0
+[INFO] 15:20:24:659 Coordinador/(9810:9829): Nueva conexion recibida
+[DEBUG] 15:20:24:814 Coordinador/(9810:9829): Socket creado: 5
+[DEBUG] 15:20:26:168 Coordinador/(9810:9906): socketFD = 5
+[INFO] 15:20:26:373 Coordinador/(9810:9906): Mensaje de 4 bytes recibido
+[INFO] 15:20:26:716 Coordinador/(9810:9906): Mensaje enviado
+[INFO] 15:20:27:68 Coordinador/(9810:9906): Se ha conectado una Instancia
+[DEBUG] 15:20:27:260 Coordinador/(9810:9906): Instancia Nº:2 agregada a la lista
+[TRACE] 15:20:27:655 Coordinador/(9810:9906): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:20:45:572 Coordinador/(9810:9810): Instancia elegida Nº 1
+[INFO] 15:22:11:280 Coordinador/(10007:10007): Configurando coordinador
+[TRACE] 15:22:11:280 Coordinador/(10007:10007): Coordinador correctamente configurado
+[INFO] 15:22:11:281 Coordinador/(10007:10007): Escuchando en puerto: 8080
+[INFO] 15:22:23:651 Coordinador/(10007:10015): Nueva conexion recibida
+[DEBUG] 15:22:23:651 Coordinador/(10007:10015): Socket creado: 5
+[DEBUG] 15:22:38:801 Coordinador/(10007:10024): socketFD = 5
+[INFO] 15:22:38:802 Coordinador/(10007:10024): Mensaje de 4 bytes recibido
+[INFO] 15:22:38:802 Coordinador/(10007:10024): Mensaje enviado
+[INFO] 15:22:38:803 Coordinador/(10007:10024): Se ha conectado una Instancia
+[DEBUG] 15:22:38:803 Coordinador/(10007:10024): Instancia Nº:0 agregada a la lista
+[TRACE] 15:22:38:803 Coordinador/(10007:10024): Se termino de atender una Instancia, sockfd = 5
+[INFO] 15:22:53:885 Coordinador/(10007:10015): Nueva conexion recibida
+[DEBUG] 15:22:53:885 Coordinador/(10007:10015): Socket creado: 5
+[DEBUG] 15:22:53:889 Coordinador/(10007:10007): Instancia elegida Nº 0
+[DEBUG] 15:23:03:641 Coordinador/(10007:10050): socketFD = 5
+[INFO] 15:23:03:641 Coordinador/(10007:10050): Mensaje de 4 bytes recibido
+[INFO] 15:23:03:641 Coordinador/(10007:10050): Mensaje enviado
+[INFO] 15:23:03:642 Coordinador/(10007:10050): Se ha conectado una Instancia
+[DEBUG] 15:23:03:642 Coordinador/(10007:10050): Instancia Nº:1 agregada a la lista
+[TRACE] 15:23:03:642 Coordinador/(10007:10050): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:23:03:643 Coordinador/(10007:10007): Instancia elegida Nº 0
+[INFO] 15:23:08:723 Coordinador/(10007:10015): Nueva conexion recibida
+[DEBUG] 15:23:08:723 Coordinador/(10007:10015): Socket creado: 5
+[DEBUG] 15:23:08:727 Coordinador/(10007:10007): Instancia elegida Nº 1
+[DEBUG] 15:23:49:373 Coordinador/(10007:10062): socketFD = 5
+[INFO] 15:23:49:373 Coordinador/(10007:10062): Mensaje de 4 bytes recibido
+[INFO] 15:23:49:373 Coordinador/(10007:10062): Mensaje enviado
+[INFO] 15:23:49:375 Coordinador/(10007:10062): Se ha conectado una Instancia
+[DEBUG] 15:23:49:375 Coordinador/(10007:10062): Instancia Nº:2 agregada a la lista
+[TRACE] 15:23:49:375 Coordinador/(10007:10062): Se termino de atender una Instancia, sockfd = 5
+[DEBUG] 15:23:49:375 Coordinador/(10007:10007): Instancia elegida Nº 0
+[DEBUG] 15:24:11:203 Coordinador/(10007:10007): Instancia elegida Nº 1
+[DEBUG] 15:24:15:454 Coordinador/(10007:10007): Instancia elegida Nº 2
+[DEBUG] 15:24:17:345 Coordinador/(10007:10007): Instancia elegida Nº 0
+[DEBUG] 15:24:18:654 Coordinador/(10007:10007): Instancia elegida Nº 1
+[DEBUG] 15:24:20:46 Coordinador/(10007:10007): Instancia elegida Nº 2
+[DEBUG] 15:24:21:87 Coordinador/(10007:10007): Instancia elegida Nº 0
+[DEBUG] 15:24:22:63 Coordinador/(10007:10007): Instancia elegida Nº 1
+[DEBUG] 15:24:23:160 Coordinador/(10007:10007): Instancia elegida Nº 2
+[DEBUG] 15:24:24:112 Coordinador/(10007:10007): Instancia elegida Nº 0
+[DEBUG] 15:24:24:0 Coordinador/(10007:10007): Instancia elegida Nº 1
+[DEBUG] 15:24:25:905 Coordinador/(10007:10007): Instancia elegida Nº 2
+[DEBUG] 15:24:26:866 Coordinador/(10007:10007): Instancia elegida Nº 0
+[DEBUG] 15:24:28:186 Coordinador/(10007:10007): Instancia elegida Nº 1
+[DEBUG] 15:24:29:178 Coordinador/(10007:10007): Instancia elegida Nº 2
+[DEBUG] 15:24:30:228 Coordinador/(10007:10007): Instancia elegida Nº 0
+[DEBUG] 15:24:31:659 Coordinador/(10007:10007): Instancia elegida Nº 1

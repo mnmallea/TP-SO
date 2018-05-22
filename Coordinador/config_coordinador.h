@@ -14,7 +14,7 @@
 
 typedef struct{
 	char puerto[PORT_MAX_STRING_LENGTH + 1]; //el maximo es 65535 mas el '\0'
-	tipo_algoritmo_dist algoritmo;
+	t_algoritmo algoritmo;
 	int cant_entradas;
 	int entrada_size;
 	int retardo;
