@@ -10,9 +10,10 @@
 #include <stdlib.h>
 #include <commons/collections/list.h>
 #include "../syntax-commons/my_socket.h"
-#include "config_coordinador.h"
 #include "algoritmos_distribucion.h"
+#include "config_coordinador.h"
 #include "servidor.h"
+#include "sincronizacion.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5

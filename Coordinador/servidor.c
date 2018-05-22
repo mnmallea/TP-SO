@@ -12,7 +12,6 @@ void esperar_nuevas_conexiones(int *sockfd) {
 	socklen_t addr_size;
 	struct sockaddr_storage their_addr;
 	pthread_t thread;
-	sem_init(&semaforo_binario, 0, 1);
 	while (1) {
 		addr_size = sizeof(their_addr);
 
@@ -68,6 +67,7 @@ void atender_instancia(int sockfd) {
 	t_instancia* instancia = calloc(1, sizeof(instancia));
 	instancia->socket = sockfd;
 	instancia->cant_entradas_vacias = configuracion.cant_entradas;
+	instancia->claves_almacenadas = list_create();
 
 	pthread_mutex_lock(&mutex_instancias_disponibles);
 	instancia->id = cant_instancias;

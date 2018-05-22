@@ -7,27 +7,22 @@
 
 #ifndef ALGORITMOS_DISTRIBUCION_H_
 #define ALGORITMOS_DISTRIBUCION_H_
+#include <stdlib.h>
 #include <commons/collections/list.h>
+#include "sincronizacion.h"
+#include "config_coordinador.h"
 
-typedef enum {
-	LSU, EL, KE
-} t_algoritmo;
 
-typedef struct {
-	//info del socket
-	int socket;
-	unsigned id;
-	//para lsu
-	int cant_entradas_vacias;
+#define CANT_LETRAS_ALFABETO 26
 
-	//para ke
-	char primer_letra;
-	char ult_letra;
+extern config configuracion;
 
-} t_instancia;
 
-t_instancia* obtener_instancia_segun_EL(t_list* instancias);
-t_instancia* obtener_instancia_segun_LSU(t_list* instancias);
-t_instancia* obtener_instancia_segun_KE(t_list* instancias);
+t_instancia* obtener_instancia_siguiente(t_list* instancias, char* clave);
+t_instancia* obtener_instancia_segun_EL(t_list* instancias, char* clave);
+t_instancia* obtener_instancia_segun_LSU(t_list* instancias, char* clave);
+t_instancia* obtener_instancia_segun_KE(t_list* instancias, char* clave);
+bool tieneMasEspacioLibre(void*, void*);
+int get_nro_letra(char letra);
 
 #endif /* ALGORITMOS_DISTRIBUCION_H_ */
