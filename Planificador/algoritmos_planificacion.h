@@ -17,6 +17,7 @@ typedef enum {FIFO, SJFsD, SJFcD, HRRN } tipo_algoritmo_planif;
 typedef struct{
 
 	//info del socket
+	int id;
 	int socket;
 
 	//info para calcular HRRN, SJF

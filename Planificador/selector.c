@@ -8,6 +8,7 @@ void *listener(void *ptr){
 	char buf[50];
 	int nbytes;
 	t_esi *n_esi;
+	int id=1;
 
 	socketServer=crear_socket_escucha(configuracion.portCoord,BACKLOG);
 	log_info(logger,"Escuchando en puerto: %s", configuracion.puerto);
@@ -37,7 +38,9 @@ void *listener(void *ptr){
 						}
 						log_trace(logger, "Nueva conexion por el socket %d\n",newfd);
 						n_esi=crear_nodo_esi(newfd);
+						n_esi->id=id;
 						list_add(lista_esis_listos,n_esi);
+						id++;
 						log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
 					}
 				}
