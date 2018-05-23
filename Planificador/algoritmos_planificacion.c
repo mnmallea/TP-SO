@@ -8,7 +8,6 @@
 #include "algoritmos_planificacion.h"
 #include <stdbool.h>
 
-
 bool menor_estimacion(t_esi *esi1, t_esi *esi2){
 	return esi1->estim_actual < esi2->estim_actual;
 }
@@ -37,7 +36,6 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 	 * al que elijo le cambio estim_anterior = estim_nueva
 	 * devuelvo ese esi
 	 */
-
 
 	t_list *lista_duplic = list_duplicate(lista_esis);
 	t_list *lista_nueva = list_create();

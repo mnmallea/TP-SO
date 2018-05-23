@@ -75,7 +75,7 @@ int crear_socket_escucha(char *puerto_escucha, int max_comm) {
 }
 
 //---------------------------------------------------------------------
-#define id_verificador 1111
+#define id_verificador 1
 
 void recibir_mensaje(int my_socket){
     int id;
@@ -90,13 +90,17 @@ void recibir_mensaje(int my_socket){
 log_info(logger, "Mensaje recibido");
 }
 
-void mandar_mensaje(int my_socket){
-    int id=id_verificador;
-    int res_send = send(my_socket, &id, sizeof(id), 0);
-    if(res_send != sizeof(id)){
-        salir_con_error(my_socket,"No se pudo mandar mensaje");
+int recibir_info(int my_socket,void** element){
+    int res_recv= recv(my_socket,&element,sizeof(element),MSG_WAITALL);
+    if(element != id_verificador){ //chequeo por contenido
+        return -1;
     }
-    log_info(logger, "Mensaje enviado");
+    else if (sizeof(element)!=res_recv){ //chequeo por tamaño
+        return -1;
+    }
+    return 1;
+
+log_info(logger, "Mensaje recibido");
 }
 
 void recibir_confirmacion (int my_socket){
@@ -108,6 +112,26 @@ void recibir_confirmacion (int my_socket){
     //close(my_socket);
 }
 
+void mandar_mensaje(int my_socket){
+    int id=id_verificador;
+    int res_send = send(my_socket, &id, sizeof(id), 0);
+    if(res_send != sizeof(id)){
+        salir_con_error(my_socket,"No se pudo mandar mensaje");
+    }
+    log_info(logger, "Mensaje enviado");
+}
+
+void mandar_info(int my_socket, void* element){
+    int id=id_verificador;
+    int res_send = send(my_socket, &element, sizeof(element), 0);
+    if(res_send != sizeof(element)){
+        salir_con_error(my_socket,"No se pudo mandar mensaje");
+    }
+    //log_info(logger, "Mensaje enviado");
+}
+
+
+
 void mandar_confirmacion(int my_socket) {
     int resultado=1;
 	if (send(my_socket, &resultado, sizeof(resultado), 0)<=0) {
@@ -116,8 +140,6 @@ void mandar_confirmacion(int my_socket) {
     log_info(logger, "confirmación enviada");
     //close(my_socket);
 }
-
-
 
 void salir_con_error(int my_socket, char* error_msg){
   log_error(logger, error_msg);
