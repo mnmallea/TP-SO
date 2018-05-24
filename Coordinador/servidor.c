@@ -44,7 +44,7 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 	switch (*buffer) {
 	case ESI:
 		log_info(logger, "Se ha conectado un ESI");
-		sleep(15);
+		atender_esi(socket);
 		log_trace(logger, "Se termino de atender un ESI, sockfd = %d", socket);
 		break;
 	case INSTANCIA:
@@ -76,4 +76,8 @@ void atender_instancia(int sockfd) {
 	log_debug(logger,"Instancia Nº:%d agregada a la lista", instancia->id);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	sem_post(&contador_instancias_disponibles);
+}
+
+void atender_esi(socket){
+
 }
