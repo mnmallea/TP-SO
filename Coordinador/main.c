@@ -28,9 +28,7 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 
 	while (1) {
 		sem_wait(&contador_instancias_disponibles);
-		pthread_mutex_lock(&mutex_instancias_disponibles);
-		t_instancia* elegida = obtener_instancia_segun_EL(lista_instancias_disponibles, "");
-		pthread_mutex_unlock(&mutex_instancias_disponibles);
+		t_instancia* elegida = obtener_instancia_siguiente("");
 		sem_post(&contador_instancias_disponibles);//porque en realidad no la sacaste de la lista a la instancia
 		log_debug(logger, "Instancia elegida Nº %d", elegida->id);
 
