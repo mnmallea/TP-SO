@@ -23,10 +23,6 @@ typedef struct {
 	int cant_entradas_vacias;
 
 	t_list* claves_almacenadas;
-	//para ke
-	char primer_letra;
-	char ult_letra;
-
 } t_instancia;
 
 
