@@ -2544,3 +2544,12 @@
 [DEBUG] 15:24:29:178 Coordinador/(10007:10007): Instancia elegida Nº 2
 [DEBUG] 15:24:30:228 Coordinador/(10007:10007): Instancia elegida Nº 0
 [DEBUG] 15:24:31:659 Coordinador/(10007:10007): Instancia elegida Nº 1
+[INFO] 17:36:48:752 Coordinador/(13225:13225): Configurando coordinador
+[ERROR] 17:36:48:757 Coordinador/(13225:13225): No se pudo crear la configuración (no se encuentra el archivo)
+[INFO] 17:36:58:467 Coordinador/(13240:13240): Configurando coordinador
+[TRACE] 17:36:58:472 Coordinador/(13240:13240): Coordinador correctamente configurado
+[INFO] 17:36:58:472 Coordinador/(13240:13240): Escuchando en puerto: 8080
+[INFO] 17:38:06:946 Coordinador/(13287:13287): Configurando coordinador
+[ERROR] 17:38:06:953 Coordinador/(13287:13287): No se pudo crear la configuración (no se encuentra el archivo)
+[INFO] 17:39:09:578 Coordinador/(13393:13393): Configurando coordinador
+[ERROR] 17:39:09:579 Coordinador/(13393:13393): No se pudo crear la configuración (no se encuentra el archivo)

@@ -16,12 +16,13 @@
 #define CANT_LETRAS_ALFABETO 26
 
 extern config configuracion;
+extern t_list* lista_instancias_disponibles;
 
 
-t_instancia* obtener_instancia_siguiente(t_list* instancias, char* clave);
-t_instancia* obtener_instancia_segun_EL(t_list* instancias, char* clave);
-t_instancia* obtener_instancia_segun_LSU(t_list* instancias, char* clave);
-t_instancia* obtener_instancia_segun_KE(t_list* instancias, char* clave);
+t_instancia* obtener_instancia_siguiente(char* clave);
+t_instancia* obtener_instancia_segun_EL(char* clave);
+t_instancia* obtener_instancia_segun_LSU(char* clave);
+t_instancia* obtener_instancia_segun_KE(char* clave);
 bool tieneMasEspacioLibre(void*, void*);
 int get_nro_letra(char letra);
 
