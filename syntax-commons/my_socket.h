@@ -27,4 +27,6 @@ void recibir_confirmacion (int my_socket);
 void mandar_confirmacion(int my_socket);
 void salir_con_error(int my_socket, char* error_msg);
 void exit_gracefully(int return_nr);
+
+
 #endif
