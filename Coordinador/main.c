@@ -7,9 +7,9 @@
 #include "main.h"
 
 int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de configuracion como parametro
+	crear_log_operaciones();
 	logger = log_create("coordinador.log", "Coordinador", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
-
 	log_trace(logger, "Coordinador correctamente configurado");
 	lista_instancias_disponibles = list_create();
 	cant_instancias = 0;
@@ -41,6 +41,7 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 		exit(EXIT_FAILURE);
 	}
 
+	destruir_log_operaciones();
 	log_destroy(logger);
 	exit(0);
 }

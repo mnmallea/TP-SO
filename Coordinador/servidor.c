@@ -78,6 +78,6 @@ void atender_instancia(int sockfd) {
 	sem_post(&contador_instancias_disponibles);
 }
 
-void atender_esi(socket){
+void atender_esi(int socket){
 
 }
