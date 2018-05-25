@@ -36,6 +36,8 @@ void obtener_nuevo_esi_a_correr(){
 	 * LA SIGUIENTE LINEA
 	 */
 
+
+
 }
 
 void nuevo_esi(t_esi* esi){
