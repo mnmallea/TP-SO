@@ -7,93 +7,109 @@
 
 #include "consola.h"
 
-void *menu(void *ptr){
+void *menu(void *ptr) {
 
 	char *message;
 	message = (char *) ptr;
 	printf("%s \n", message);
 
 	int opcion_seleccionada;
-	char *clave = (char*)malloc(40);
-	int recurso;
+	char *clave = (char*) malloc(40);
+	char *recurso = (char*) malloc(40);
 	int id;
-	int flag=0;
+	int flag = 0;
 
-		do{
+	do {
 
-			printf("Ingrese la opcion que desea ejecutar: "
-								"\n 1: para pausar/continuar la ejecucion del planificador "
-								"\n 2 <clave> <ID>: para bloquear un proceso"
-								"\n 3 <clave>: para desbloquear un proceso bloqueado "
-								"\n 4 <recurso>: listar procesos esperando al recurso"
-								"\n 5 <ID>: para matar un proceso"
-								"\n 6 <clave>: para conocer el status de la clave"
-								"\n 7: para solucionar conflictos de deadlock "
-								"\n 0: para salir de la consola \n"
-								);
+		printf("Ingrese la opcion que desea ejecutar: "
+				"\n 1: para pausar/continuar la ejecucion del planificador "
+				"\n 2 <clave> <ID>: para bloquear un proceso"
+				"\n 3 <clave>: para desbloquear un proceso bloqueado "
+				"\n 4 <recurso>: listar procesos esperando al recurso"
+				"\n 5 <ID>: para matar un proceso"
+				"\n 6 <clave>: para conocer el status de la clave"
+				"\n 7: para solucionar conflictos de deadlock "
+				"\n 0: para salir de la consola \n");
 
-			scanf("%d", &opcion_seleccionada);
+		scanf("%d", &opcion_seleccionada);
 
-			switch(opcion_seleccionada){
-			case 1:
-				if(flag==0){
-					printf("Planificador pausado\n");
-					flag++;
-					break;
-				}
-				else{
-					printf("Continuando con la planificacion\n");
-					flag--;
-					break;
-				}
-
-
-			case 2:
-				printf("Ingreso bloquear un proceso, ingrese <clave>");
-
-				//ACA ME TIRA UN WARNING de que clave es char **
-				scanf("%s", clave);
-
-				printf("Ingreso bloquear un proceso, ingrese <ID>");
-
-				scanf("%d", &id);
+		switch (opcion_seleccionada) {
+		case 1:
+			if (flag == 0) {
+				printf("Planificador pausado\n");
+				flag++;
 				break;
-			case 3:
-				printf("Ingreso desbloquear un proceso, ingrese <clave>");
-
-				scanf("%s", clave);
+			} else {
+				printf("Continuando con la planificacion\n");
+				flag--;
 				break;
-			case 4:
-				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
-
-				scanf("%d", &recurso);
-				break;
-			case 5:
-
-				printf("Ingreso matar un proceso, ingrese <ID>");
-
-				scanf("%d", &id);
-				break;
-			case 6:
-				printf("Ingreso matar un proceso, ingrese <clave>");
-
-				scanf("%s", clave);
-				break;
-			case 7:
-				printf("Ingreso solucionar problemas de deadlock");
-				break;
-			case 0:
-				break;
-			default:
-				break;
-
 			}
 
+		case 2:
+			printf("Ingreso bloquear un proceso, ingrese <clave>");
 
-		}while(opcion_seleccionada != 0);
+			//ACA ME TIRA UN WARNING de que clave es char **
+			scanf("%s", clave);
+
+			printf("Ingreso bloquear un proceso, ingrese <ID>");
+
+			scanf("%d", &id);
+
+			bloquear(clave, id);
+			break;
+		case 3:
+			printf("Ingreso desbloquear un proceso, ingrese <clave>");
+
+			scanf("%s", clave);
+			desbloquear(clave);
+			break;
+		case 4:
+			printf(
+					"Ingreso listar procesos esperando un recurso, ingrese <recurso>");
+			scanf("%s", recurso);
+			listar(recurso);
+			break;
+		case 5:
+
+			printf("Ingreso matar un proceso, ingrese <ID>");
+
+			scanf("%d", &id);
+			break;
+		case 6:
+			printf("Ingreso matar un proceso, ingrese <clave>");
+
+			scanf("%s", clave);
+			break;
+		case 7:
+			printf("Ingreso solucionar problemas de deadlock");
+			break;
+		case 0:
+			break;
+		default:
+			break;
+
+		}
+
+	} while (opcion_seleccionada != 0);
 
 	printf("Ha salido de la consola");
 	free(clave);
 
 	return NULL;
+}
+
+void listar(char* rec) {
+
+	/*supongo q voy al diccionario y hago dictionary_get(clave)
+	 * despues muestro por pantalla la lista
+	 */
+}
+
+void bloquear(char* clave, int id) {
+
+	/*id creo q debe ir en struct t_esi*/
+}
+
+void desbloquear(char* clave) {
+
 }
