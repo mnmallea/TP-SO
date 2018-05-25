@@ -15,7 +15,7 @@ void *menu(void *ptr){
 
 	int opcion_seleccionada;
 	char *clave = (char*)malloc(40);
-	int recurso;
+	char *recurso = (char*)malloc(40);
 	int id;
 	int flag=0;
 
@@ -57,16 +57,20 @@ void *menu(void *ptr){
 				printf("Ingreso bloquear un proceso, ingrese <ID>");
 
 				scanf("%d", &id);
+
+				bloquear(clave, id);
 				break;
 			case 3:
 				printf("Ingreso desbloquear un proceso, ingrese <clave>");
 
 				scanf("%s", &clave);
+				desbloquear(clave);
 				break;
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
 
-				scanf("%d", &recurso);
+				scanf("%s", &recurso);
+				listar(recurso);
 				break;
 			case 5:
 
@@ -96,4 +100,21 @@ void *menu(void *ptr){
 	free(clave);
 
 	return NULL;
+}
+
+
+void listar(char* rec){
+
+	/*supongo q voy al diccionario y hago dictionary_get(clave)
+	 * despues muestro por pantalla la lista
+	 */
+}
+
+void bloquear(char* clave, int id){
+
+
+}
+
+void desbloquear(char* clave){
+
 }
