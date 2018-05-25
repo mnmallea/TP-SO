@@ -7,7 +7,7 @@ int main(int argc, char* argv[]){
 	char * line = NULL;
 	size_t len = 0;
 	ssize_t read;
-	int semEsi=0;
+	t_operacion oper;
 
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 
@@ -31,35 +31,56 @@ int main(int argc, char* argv[]){
 	mandar_confirmacion(socketCord);
 	mandar_confirmacion(socketPlan);
 
+	recibir_confirmacion(socketPlan);
 
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
-		recibir_confirmacion(socketPlan);
-		t_esi_operacion parsed = parse(line);
 
-	    if(parsed.valido)
+		t_esi_operacion parsed = parse(line);
+		paquete *pkg_esi;
+
+
+		if(parsed.valido)
 	    {
+			pkg_esi=crearPaquete();
 	    	switch(parsed.keyword){
 	        	case GET:
-	        		parsed.argumentos.GET.clave;
-	        		//mandar_info(socketCord,t_parsed); enviar al coordinador t_esi_operaciones
-	                break;
+
+	        		agregar(pkg_esi,parsed,sizeof(parsed));
+	        		eviarPaquete(socketCord,pkg_esi);
+
+	        		break;
 	            case SET:
-	                parsed.argumentos.SET.clave;
-	                parsed.argumentos.SET.valor;
-	                //mandar_info(socketCord,t_operacion); enviar al coordinador t_esi_operaciones
-	                break;
+	            	if(strlen(parsed.argumentos.SET.valor)<40){
+	            		agregar(pkg_esi,parsed,sizeof(parsed));
+	            		eviarPaquete(socketCord,pkg_esi);
+	            	}
+	            	else{
+	            		log_error(logger, "El tamaño del valor <%s> es superior al permitido\n", line);
+	            		exit_gracefully(1);
+	            		//error valor mayor a 40
+	            	}
+
+	            	break;
 	            case STORE:
-	                parsed.argumentos.STORE.clave;
-	                //mandar_info(socketCord,t_parsed); enviar al coordinador t_esi_operaciones
-	                break;
+
+	            	agregar(pkg_esi,oper,sizeof(oper));
+	            	eviarPaquete(socketCord,pkg_esi);
+
+	            	break;
 	            default:
 	            	log_error(logger, "No pude interpretar <%s>\n", line);
 	            	//enviar respuesta al planificador, error de linea(?)
 	            	exit_gracefully(1);
 	    	}
 
-	    destruir_operacion(parsed);
+	    	if(recibir_mensaje(socketCord)==1)
+	    		mandar_confirmacion(socketPlan);
+	    	else
+	    		mandar_error(socketPlan);
+
+	    	destruirPaquete(pkg_esi);
+	    	destruir_operacion(parsed);
 	    }
 	    else
 	    {
@@ -67,6 +88,7 @@ int main(int argc, char* argv[]){
 	    	//enviar respuesta al planificador, error de linea(?)
 	    	exit_gracefully(1);
 	    }
+	    recibir_confirmacion(socketPlan);
 	}
 
 /*

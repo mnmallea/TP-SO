@@ -16,11 +16,21 @@
 #include <parsi/parser.h>
 
 
-#define CANT_ARGUMENTOS_MAIN 2
+#define CANT_ARGUMENTOS_MAIN 3
 #define LOG_LEVEL LOG_LEVEL_TRACE
 
 t_log* logger;
-config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
 
+typedef struct //no usarse
+{
+int keyword;
+char* clave[40];
+size_t sizeClave;
+char* valor[40];
+int sizeValor;
+}t_operacion;
+
+config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
+t_operacion *n_operacion;
 
 #endif /* MAIN_H_ */

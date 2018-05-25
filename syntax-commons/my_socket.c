@@ -77,34 +77,19 @@ int crear_socket_escucha(char *puerto_escucha, int max_comm) {
 //---------------------------------------------------------------------
 #define id_verificador 1
 
-void recibir_mensaje(int my_socket){
+
+int recibir_mensaje(int my_socket){
     int id;
     int res_recv= recv(my_socket,&id,sizeof(id),MSG_WAITALL);
     if(id != id_verificador){ //chequeo por contenido
-        salir_con_error(my_socket,"No coincide lo recibido con lo esperado");
+        return 0;
     }
-    else if (sizeof(id)!=res_recv){ //chequeo por tamaño
-        salir_con_error(my_socket,"No coincide lo recibido con lo esperado");
-    }
-
-log_info(logger, "Mensaje recibido");
-}
-
-int recibir_info(int my_socket,void** element){
-    int res_recv= recv(my_socket,&element,sizeof(element),MSG_WAITALL);
-    if(element != id_verificador){ //chequeo por contenido
-        return -1;
-    }
-    else if (sizeof(element)!=res_recv){ //chequeo por tamaño
-        return -1;
-    }
+    log_info(logger, "Ejecuto bien el coord");
     return 1;
-
-log_info(logger, "Mensaje recibido");
 }
 
-void recibir_confirmacion (int my_socket){
-    int  resultado=1;
+void recibir_confirmacion (int my_socket){ //wait confirmacion
+    int resultado=1;
     if (recv(my_socket,&resultado,sizeof(int),0)<=0){
         salir_con_error(my_socket,"no se pudo recibir confirmación");
     }
@@ -121,24 +106,30 @@ void mandar_mensaje(int my_socket){
     log_info(logger, "Mensaje enviado");
 }
 
-void mandar_info(int my_socket, void* element){
-    int id=id_verificador;
-    int res_send = send(my_socket, &element, sizeof(element), 0);
-    if(res_send != sizeof(element)){
-        salir_con_error(my_socket,"No se pudo mandar mensaje");
-    }
-    //log_info(logger, "Mensaje enviado");
-}
-
-
-
-void mandar_confirmacion(int my_socket) {
+void mandar_confirmacion(int my_socket) { //mandar signal
     int resultado=1;
-	if (send(my_socket, &resultado, sizeof(resultado), 0)<=0) {
+	if (send(my_socket, &resultado, sizeof(resultado),MSG_NOSIGNAL)<=0) {
         salir_con_error(my_socket,"no se pudo mandar confirmación");
 	}
     log_info(logger, "confirmación enviada");
     //close(my_socket);
+}
+
+void mandar_error(int my_socket) {
+    int resultado=0;
+	if (send(my_socket, &resultado, sizeof(resultado),MSG_NOSIGNAL)<=0) {
+        salir_con_error(my_socket,"no se pudo mandar confirmación");
+	}
+    log_error(logger, "Eror enviado");
+    //close(my_socket);
+}
+
+void eviarPaquete(int my_socket, void* element){
+    int res_send = send(my_socket, &element, sizeof(element),MSG_NOSIGNAL);
+    if(res_send != sizeof(element)){
+        salir_con_error(my_socket,"No se pudo mandar mensaje");
+    }
+    //log_info(logger, "Mensaje enviado");
 }
 
 void salir_con_error(int my_socket, char* error_msg){
