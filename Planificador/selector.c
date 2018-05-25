@@ -10,7 +10,7 @@ void *listener(void *ptr){
 	t_esi *n_esi;
 	int id=1;
 
-	socketServer=crear_socket_escucha(configuracion.portCoord,BACKLOG);
+	socketServer=crear_socket_escucha(configuracion.puerto,BACKLOG);
 	log_info(logger,"Escuchando en puerto: %s", configuracion.puerto);
 
 	FD_SET(socketServer, &master);
@@ -42,6 +42,8 @@ void *listener(void *ptr){
 						list_add(lista_esis_listos,n_esi);
 						id++;
 						log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
+						//mandar_confirmacion(newfd);
+
 					}
 				}
 				else {
@@ -76,7 +78,7 @@ void *listener(void *ptr){
 
 t_esi *crear_nodo_esi(int socket){
 		t_esi *p=malloc(sizeof(esi));
-			   p -> socket=newfd;
+			   p -> socket=socket;
 			   p -> estim_anter=configuracion.estimacion_inicial;
 			   p -> clave_bloq=configuracion.claves_bloqueadas;
 			   p -> dur_ult_raf=0;

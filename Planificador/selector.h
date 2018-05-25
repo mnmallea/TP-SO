@@ -32,6 +32,7 @@ extern t_list *lista_esis_listos;
 extern t_esi esi;
 extern config configuracion;
 
+
 void *listener(void *ptr);
 t_esi *crear_nodo_esi(int socket);
 int socketProceso(t_esi *n_esi);
