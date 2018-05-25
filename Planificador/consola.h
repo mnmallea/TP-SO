@@ -15,7 +15,7 @@
 
 void *menu(void *ptr);
 void listar(char* rec);
-void bloquear(char* clave, int id);
+void bloquear(char* clave,  int id);
 void desbloquear(char* clave);
 
 #endif /* CONSOLA_H_ */
