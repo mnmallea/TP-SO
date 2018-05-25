@@ -12,7 +12,7 @@ void crear_log_operaciones() {
 	log_info(log_operaciones, "%-15s%s", "ESI", "Operación");
 }
 void destruir_log_operaciones() {
-	log_info(log_operaciones, "\n\n");
+	log_info(log_operaciones, "------------------------------------\n");
 	log_destroy(log_operaciones);
 }
 

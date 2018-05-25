@@ -14,7 +14,6 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 	lista_instancias_disponibles = list_create();
 	cant_instancias = 0;
 	inicializar_semaforos();
-
 	int local_socket = crear_socket_escucha(configuracion.puerto, BACKLOG);
 
 	log_info(logger, "Escuchando en puerto: %s", configuracion.puerto);
