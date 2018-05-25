@@ -10,7 +10,7 @@
 
 
 bool menor_estimacion(void* esi1, void *esi2){
-	return ((t_esi*)esi1)->estim_actual <= ((t_esi*)esi2)->estim_actual;
+	return ((t_esi*)esi1)->estim_actual <= ((t_esi*)esi2)->estim_actual ;
 
 }
 

@@ -13,7 +13,7 @@
 #include <stdlib.h>
 
 
-typedef enum {FIFO, SJFsD, SJFcD, HRRN } tipo_algoritmo_planif;
+typedef enum {FIFO, SJFsD, SJFcD, HRRN } tipo_algoritmo_planif ;
 
 typedef struct{
 

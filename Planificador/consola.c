@@ -14,7 +14,7 @@ void *menu(void *ptr){
 	printf("%s \n", message);
 
 	int opcion_seleccionada;
-	char *clave = (char*)malloc(40);
+	char *clave = (char*)malloc(40) ;
 	char *recurso = (char*)malloc(40);
 	int id;
 	int flag=0;
