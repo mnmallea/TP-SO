@@ -14,6 +14,7 @@
 #include "config_coordinador.h"
 #include "servidor.h"
 #include "sincronizacion.h"
+#include "log_operaciones.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5

@@ -2553,3 +2553,27 @@
 [ERROR] 17:38:06:953 Coordinador/(13287:13287): No se pudo crear la configuración (no se encuentra el archivo)
 [INFO] 17:39:09:578 Coordinador/(13393:13393): Configurando coordinador
 [ERROR] 17:39:09:579 Coordinador/(13393:13393): No se pudo crear la configuración (no se encuentra el archivo)
+[INFO] 12:39:37:19 Coordinador/(5650:5650): Configurando coordinador
+[TRACE] 12:39:37:26 Coordinador/(5650:5650): Coordinador correctamente configurado
+[INFO] 12:39:37:29 Coordinador/(5650:5650): Escuchando en puerto: 8080
+[INFO] 12:40:44:559 Coordinador/(5729:5729): Configurando coordinador
+[TRACE] 12:40:44:560 Coordinador/(5729:5729): Coordinador correctamente configurado
+[INFO] 12:40:44:560 Coordinador/(5729:5729): Escuchando en puerto: 8080
+[INFO] 12:41:49:69 Coordinador/(5775:5775): Configurando coordinador
+[TRACE] 12:41:49:70 Coordinador/(5775:5775): Coordinador correctamente configurado
+[INFO] 12:41:49:70 Coordinador/(5775:5775): Escuchando en puerto: 8080
+[INFO] 12:42:28:679 Coordinador/(5817:5817): Configurando coordinador
+[TRACE] 12:42:28:682 Coordinador/(5817:5817): Coordinador correctamente configurado
+[INFO] 12:42:28:683 Coordinador/(5817:5817): Escuchando en puerto: 8080
+[INFO] 12:49:32:296 Coordinador/(6115:6115): Configurando coordinador
+[TRACE] 12:49:32:296 Coordinador/(6115:6115): Coordinador correctamente configurado
+[INFO] 12:49:32:297 Coordinador/(6115:6115): Escuchando en puerto: 8080
+[INFO] 12:50:25:555 Coordinador/(6179:6179): Configurando coordinador
+[TRACE] 12:50:25:557 Coordinador/(6179:6179): Coordinador correctamente configurado
+[INFO] 12:50:25:558 Coordinador/(6179:6179): Escuchando en puerto: 8080
+[INFO] 12:52:24:197 Coordinador/(6469:6469): Configurando coordinador
+[TRACE] 12:52:24:198 Coordinador/(6469:6469): Coordinador correctamente configurado
+[INFO] 12:52:24:198 Coordinador/(6469:6469): Escuchando en puerto: 8080
+[INFO] 12:54:49:139 Coordinador/(6568:6568): Configurando coordinador
+[TRACE] 12:54:49:140 Coordinador/(6568:6568): Coordinador correctamente configurado
+[INFO] 12:54:49:140 Coordinador/(6568:6568): Escuchando en puerto: 8080
