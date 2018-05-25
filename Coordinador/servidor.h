@@ -33,5 +33,6 @@ void esperar_nuevas_conexiones(int* sockfd);
 void atender_nueva_conexion(int* sockfd_ptr);
 
 void atender_instancia(int sockfd);
+void atender_esi(int socket);
 
 #endif /* SERVIDOR_H_ */
