@@ -11,13 +11,14 @@
 
 bool menor_estimacion(void* esi1, void *esi2){
 	return ((t_esi*)esi1)->estim_actual <= ((t_esi*)esi2)->estim_actual;
+
 }
 
 bool mayor_response_ratio(void* esi1, void* esi2){
 	return ((t_esi*)esi1)->response_ratio >= ((t_esi*)esi1)->response_ratio;
 }
 
-void destruir_esi(void* esi){
+void matar_nodo_esi(void* esi){
 	free(((t_esi*)esi));
 }
 
@@ -47,9 +48,10 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 	t_list *lista_nueva = list_duplicate(lista_esis);
 	list_iterate(lista_nueva, obtener_proximas_rafagas);
 	list_sort(lista_nueva, menor_estimacion);
+
 	t_esi *esi_elegido = list_remove(lista_nueva, 0);
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
-	list_destroy_and_destroy_elements(lista_nueva, destruir_esi);
+	list_destroy_and_destroy_elements(lista_nueva, matar_nodo_esi);
 
 	return esi_elegido;
 

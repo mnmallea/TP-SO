@@ -16,7 +16,7 @@
  * SI USO SJF
  * -SE BLOQUEA UN PROCESO
  * -FINALIZA UN PROCESO
- * -NUEVO PROCESO LLEGA
+ * -NUEVO PROCESO LLEGA (o uno se desbloquea)
  */
 
 void obtener_nuevo_esi_a_correr(){
@@ -61,13 +61,14 @@ void bloquear_esi(char* clave){
 	}else{ //Existe la clave, agrego el esi a la lista de bloq
 
 		t_list *lista_esis_bloq_esta_clave = dictionary_remove(dic_esis_bloqueados,clave);
-		//PREGUNTAR: el remove me saca esta linea????
 
 		list_add(lista_esis_bloq_esta_clave, esi_corriendo);
 
 		dictionary_put(dic_esis_bloqueados,clave,lista_esis_bloq_esta_clave);
 
 	}
+
+	obtener_nuevo_esi_a_correr();
 
 
 
@@ -76,20 +77,14 @@ void bloquear_esi(char* clave){
 void se_desbloqueo_un_recurso(char* clave){
 
 	t_list *lista_esis_bloq_esta_clave =  dictionary_get(dic_esis_bloqueados,clave);
+	t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
+	nuevo_esi(esi_desbloq);
+	dictionary_put(clave,lista_esis_bloq_esta_clave);
 
-	int cant_esis_bloq = list_size(lista_esis_bloq_esta_clave);
-
-	for(int i=0; i< cant_esis_bloq; i++){
-		t_esi *esi_bloqueado = (list_get(lista_esis_bloq_esta_clave, i));
-		list_add(lista_esis_listos, esi_bloqueado);
-	}
-
-	list_destroy_and_destroy_elements(lista_esis_bloq_esta_clave, (void*)free);
-
-	//COMO ELIMINO UNA LINEA DEL DICCIONARIO???
-	dictionary_remove_and_destroy(dic_esis_bloqueados, clave, (void*)free);
-
-	obtener_nuevo_esi_a_correr();
+	nuevo_esi(esi_desbloq);
 
 }
+
+
+
 
