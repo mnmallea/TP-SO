@@ -15,4 +15,6 @@ sem_t semaforo_binario;
 pthread_mutex_t mutex_instancias_disponibles;
 sem_t contador_instancias_disponibles;
 
+void inicializar_semaforos();
+
 #endif /* SINCRONIZACION_H_ */
