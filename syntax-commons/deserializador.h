@@ -4,8 +4,6 @@
 #include "../syntax-commons/my_socket.h"
 #include <stdlib.h>
 
-
-
 t_log * logger;
 
 void configure_logger_deser();

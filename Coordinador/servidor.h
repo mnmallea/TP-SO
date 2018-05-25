@@ -15,6 +15,7 @@
 #include <commons/collections/list.h>
 #include "../syntax-commons/protocol.h"
 #include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/conexiones.h"
 #include "algoritmos_distribucion.h"
 #include "config_coordinador.h"
 #include "sincronizacion.h"

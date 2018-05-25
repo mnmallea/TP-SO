@@ -101,3 +101,706 @@
 [INFO] 15:23:06:248 Instancia/(10060:10060): Mensaje enviado
 [INFO] 15:23:49:373 Instancia/(10060:10060): Mensaje de 4 bytes recibido
 [INFO] 15:23:49:374 Instancia/(10060:10060): Se ha conectado al coordinador correctamente!!
+[INFO] 17:01:33:469 Instancia/(19158:19158): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:01:33:469 Instancia/(19158:19158): Socket conectado
+[INFO] 17:01:33:469 Instancia/(19158:19158): Mensaje enviado
+[INFO] 17:01:33:470 Instancia/(19158:19158): Mensaje de 4 bytes recibido
+[INFO] 17:01:33:470 Instancia/(19158:19158): Se ha conectado al coordinador correctamente!!
+[ERROR] 17:01:33:477 Instancia/(19158:19158): Error al recibir codigo de operacion
+[INFO] 17:05:57:233 Instancia/(19425:19425): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:05:57:234 Instancia/(19425:19425): Socket conectado
+[INFO] 17:05:57:234 Instancia/(19425:19425): Mensaje enviado
+[INFO] 17:05:57:243 Instancia/(19425:19425): Mensaje de 4 bytes recibido
+[INFO] 17:05:57:243 Instancia/(19425:19425): Se ha conectado al coordinador correctamente!!
+[ERROR] 17:06:07:653 Instancia/(19425:19425): Error al recibir codigo de operacion
+[INFO] 17:07:22:884 Instancia/(19553:19553): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:07:22:884 Instancia/(19553:19553): Socket conectado
+[INFO] 17:07:22:885 Instancia/(19553:19553): Mensaje enviado
+[INFO] 17:07:41:234 Instancia/(19553:19553): Mensaje de 4 bytes recibido
+[INFO] 17:07:41:234 Instancia/(19553:19553): Se ha conectado al coordinador correctamente!!
+[ERROR] 17:09:00:324 Instancia/(19553:19553): Error al recibir codigo de operacion
+[INFO] 17:12:30:112 Instancia/(19872:19872): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:12:30:113 Instancia/(19872:19872): Socket conectado
+[INFO] 17:12:30:113 Instancia/(19872:19872): Mensaje enviado
+[INFO] 17:12:30:113 Instancia/(19872:19872): Mensaje de 4 bytes recibido
+[INFO] 17:12:30:113 Instancia/(19872:19872): Se ha conectado al coordinador correctamente!!
+[INFO] 17:13:06:718 Instancia/(19881:19881): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:13:06:719 Instancia/(19881:19881): Socket conectado
+[INFO] 17:13:06:719 Instancia/(19881:19881): Mensaje enviado
+[INFO] 17:13:06:719 Instancia/(19881:19881): Mensaje de 4 bytes recibido
+[INFO] 17:13:06:719 Instancia/(19881:19881): Se ha conectado al coordinador correctamente!!
+[INFO] 17:13:56:331 Instancia/(19960:19960): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:13:56:332 Instancia/(19960:19960): Socket conectado
+[INFO] 17:13:56:332 Instancia/(19960:19960): Mensaje enviado
+[INFO] 17:13:59:121 Instancia/(19960:19960): Mensaje de 4 bytes recibido
+[INFO] 17:13:59:121 Instancia/(19960:19960): Se ha conectado al coordinador correctamente!!
+[INFO] 17:15:45:476 Instancia/(20143:20143): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:15:45:477 Instancia/(20143:20143): Socket conectado
+[INFO] 17:15:45:477 Instancia/(20143:20143): Mensaje enviado
+[INFO] 17:15:50:888 Instancia/(20143:20143): Mensaje de 4 bytes recibido
+[INFO] 17:15:50:888 Instancia/(20143:20143): Se ha conectado al coordinador correctamente!!
+[INFO] 17:16:54:293 Instancia/(20231:20231): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:16:54:293 Instancia/(20231:20231): Socket conectado
+[INFO] 17:16:54:294 Instancia/(20231:20231): Mensaje enviado
+[INFO] 17:17:43:661 Instancia/(20231:20231): Mensaje de 4 bytes recibido
+[INFO] 17:17:47:941 Instancia/(20231:20231): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:25:285 Instancia/(20455:20455): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:25:286 Instancia/(20455:20455): Socket conectado
+[INFO] 17:20:25:286 Instancia/(20455:20455): Mensaje enviado
+[INFO] 17:20:25:286 Instancia/(20455:20455): Mensaje de 4 bytes recibido
+[INFO] 17:20:25:286 Instancia/(20455:20455): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:34:180 Instancia/(20461:20461): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:34:192 Instancia/(20461:20461): Socket conectado
+[INFO] 17:20:34:192 Instancia/(20461:20461): Mensaje enviado
+[INFO] 17:20:34:199 Instancia/(20461:20461): Mensaje de 4 bytes recibido
+[INFO] 17:20:34:199 Instancia/(20461:20461): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:35:910 Instancia/(20471:20471): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:35:925 Instancia/(20471:20471): Socket conectado
+[INFO] 17:20:35:925 Instancia/(20471:20471): Mensaje enviado
+[INFO] 17:20:35:931 Instancia/(20471:20471): Mensaje de 4 bytes recibido
+[INFO] 17:20:35:931 Instancia/(20471:20471): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:37:287 Instancia/(20475:20475): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:37:303 Instancia/(20475:20475): Socket conectado
+[INFO] 17:20:37:303 Instancia/(20475:20475): Mensaje enviado
+[INFO] 17:20:37:309 Instancia/(20475:20475): Mensaje de 4 bytes recibido
+[INFO] 17:20:37:309 Instancia/(20475:20475): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:39:344 Instancia/(20479:20479): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:39:348 Instancia/(20479:20479): Socket conectado
+[INFO] 17:20:39:348 Instancia/(20479:20479): Mensaje enviado
+[INFO] 17:20:39:379 Instancia/(20479:20479): Mensaje de 4 bytes recibido
+[INFO] 17:20:39:379 Instancia/(20479:20479): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:41:970 Instancia/(20483:20483): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:41:976 Instancia/(20483:20483): Socket conectado
+[INFO] 17:20:41:977 Instancia/(20483:20483): Mensaje enviado
+[INFO] 17:20:41:982 Instancia/(20483:20483): Mensaje de 4 bytes recibido
+[INFO] 17:20:41:982 Instancia/(20483:20483): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:42:852 Instancia/(20492:20492): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:42:863 Instancia/(20492:20492): Socket conectado
+[INFO] 17:20:42:863 Instancia/(20492:20492): Mensaje enviado
+[INFO] 17:20:42:873 Instancia/(20492:20492): Mensaje de 4 bytes recibido
+[INFO] 17:20:42:873 Instancia/(20492:20492): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:43:492 Instancia/(20516:20516): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:43:496 Instancia/(20516:20516): Socket conectado
+[INFO] 17:20:43:496 Instancia/(20516:20516): Mensaje enviado
+[INFO] 17:20:43:524 Instancia/(20516:20516): Mensaje de 4 bytes recibido
+[INFO] 17:20:43:524 Instancia/(20516:20516): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:43:948 Instancia/(20519:20519): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:43:953 Instancia/(20519:20519): Socket conectado
+[INFO] 17:20:43:953 Instancia/(20519:20519): Mensaje enviado
+[INFO] 17:20:43:983 Instancia/(20519:20519): Mensaje de 4 bytes recibido
+[INFO] 17:20:43:983 Instancia/(20519:20519): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:44:311 Instancia/(20545:20545): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:44:317 Instancia/(20545:20545): Socket conectado
+[INFO] 17:20:44:318 Instancia/(20545:20545): Mensaje enviado
+[INFO] 17:20:44:344 Instancia/(20545:20545): Mensaje de 4 bytes recibido
+[INFO] 17:20:44:344 Instancia/(20545:20545): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:44:634 Instancia/(20555:20555): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:44:655 Instancia/(20555:20555): Socket conectado
+[INFO] 17:20:44:656 Instancia/(20555:20555): Mensaje enviado
+[INFO] 17:20:44:658 Instancia/(20555:20555): Mensaje de 4 bytes recibido
+[INFO] 17:20:44:658 Instancia/(20555:20555): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:44:964 Instancia/(20558:20558): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:44:967 Instancia/(20558:20558): Socket conectado
+[INFO] 17:20:44:967 Instancia/(20558:20558): Mensaje enviado
+[INFO] 17:20:44:983 Instancia/(20558:20558): Mensaje de 4 bytes recibido
+[INFO] 17:20:44:983 Instancia/(20558:20558): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:45:288 Instancia/(20561:20561): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:45:294 Instancia/(20561:20561): Socket conectado
+[INFO] 17:20:45:294 Instancia/(20561:20561): Mensaje enviado
+[INFO] 17:20:45:319 Instancia/(20561:20561): Mensaje de 4 bytes recibido
+[INFO] 17:20:45:319 Instancia/(20561:20561): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:45:601 Instancia/(20564:20564): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:45:605 Instancia/(20564:20564): Socket conectado
+[INFO] 17:20:45:605 Instancia/(20564:20564): Mensaje enviado
+[INFO] 17:20:45:628 Instancia/(20564:20564): Mensaje de 4 bytes recibido
+[INFO] 17:20:45:629 Instancia/(20564:20564): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:45:922 Instancia/(20567:20567): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:45:926 Instancia/(20567:20567): Socket conectado
+[INFO] 17:20:45:926 Instancia/(20567:20567): Mensaje enviado
+[INFO] 17:20:45:943 Instancia/(20567:20567): Mensaje de 4 bytes recibido
+[INFO] 17:20:45:943 Instancia/(20567:20567): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:46:242 Instancia/(20570:20570): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:46:246 Instancia/(20570:20570): Socket conectado
+[INFO] 17:20:46:246 Instancia/(20570:20570): Mensaje enviado
+[INFO] 17:20:46:271 Instancia/(20570:20570): Mensaje de 4 bytes recibido
+[INFO] 17:20:46:271 Instancia/(20570:20570): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:46:581 Instancia/(20573:20573): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:46:588 Instancia/(20573:20573): Socket conectado
+[INFO] 17:20:46:589 Instancia/(20573:20573): Mensaje enviado
+[INFO] 17:20:46:597 Instancia/(20573:20573): Mensaje de 4 bytes recibido
+[INFO] 17:20:46:597 Instancia/(20573:20573): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:46:905 Instancia/(20576:20576): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:46:912 Instancia/(20576:20576): Socket conectado
+[INFO] 17:20:46:913 Instancia/(20576:20576): Mensaje enviado
+[INFO] 17:20:46:927 Instancia/(20576:20576): Mensaje de 4 bytes recibido
+[INFO] 17:20:46:927 Instancia/(20576:20576): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:47:277 Instancia/(20597:20597): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:47:286 Instancia/(20597:20597): Socket conectado
+[INFO] 17:20:47:287 Instancia/(20597:20597): Mensaje enviado
+[INFO] 17:20:47:301 Instancia/(20597:20597): Mensaje de 4 bytes recibido
+[INFO] 17:20:47:301 Instancia/(20597:20597): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:47:575 Instancia/(20604:20604): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:47:580 Instancia/(20604:20604): Socket conectado
+[INFO] 17:20:47:580 Instancia/(20604:20604): Mensaje enviado
+[INFO] 17:20:47:606 Instancia/(20604:20604): Mensaje de 4 bytes recibido
+[INFO] 17:20:47:606 Instancia/(20604:20604): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:47:849 Instancia/(20607:20607): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:47:853 Instancia/(20607:20607): Socket conectado
+[INFO] 17:20:47:853 Instancia/(20607:20607): Mensaje enviado
+[INFO] 17:20:47:882 Instancia/(20607:20607): Mensaje de 4 bytes recibido
+[INFO] 17:20:47:882 Instancia/(20607:20607): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:48:126 Instancia/(20610:20610): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:48:130 Instancia/(20610:20610): Socket conectado
+[INFO] 17:20:48:131 Instancia/(20610:20610): Mensaje enviado
+[INFO] 17:20:48:159 Instancia/(20610:20610): Mensaje de 4 bytes recibido
+[INFO] 17:20:48:159 Instancia/(20610:20610): Se ha conectado al coordinador correctamente!!
+[INFO] 17:20:48:406 Instancia/(20613:20613): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:20:48:410 Instancia/(20613:20613): Socket conectado
+[INFO] 17:20:48:410 Instancia/(20613:20613): Mensaje enviado
+[INFO] 17:20:48:435 Instancia/(20613:20613): Mensaje de 4 bytes recibido
+[INFO] 17:20:48:435 Instancia/(20613:20613): Se ha conectado al coordinador correctamente!!
+[INFO] 17:22:47:947 Instancia/(20743:20743): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:22:47:948 Instancia/(20743:20743): Socket conectado
+[INFO] 17:22:47:948 Instancia/(20743:20743): Mensaje enviado
+[INFO] 17:22:47:951 Instancia/(20743:20743): Mensaje de 4 bytes recibido
+[INFO] 17:22:47:951 Instancia/(20743:20743): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:33:786 Instancia/(20895:20895): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:33:787 Instancia/(20895:20895): Socket conectado
+[INFO] 17:26:33:787 Instancia/(20895:20895): Mensaje enviado
+[INFO] 17:26:33:788 Instancia/(20895:20895): Mensaje de 4 bytes recibido
+[INFO] 17:26:33:788 Instancia/(20895:20895): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:56:455 Instancia/(20915:20915): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:56:456 Instancia/(20915:20915): Socket conectado
+[INFO] 17:26:56:456 Instancia/(20915:20915): Mensaje enviado
+[INFO] 17:26:56:457 Instancia/(20915:20915): Mensaje de 4 bytes recibido
+[INFO] 17:26:56:457 Instancia/(20915:20915): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:57:530 Instancia/(20920:20920): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:57:536 Instancia/(20920:20920): Socket conectado
+[INFO] 17:26:57:537 Instancia/(20920:20920): Mensaje enviado
+[INFO] 17:26:57:545 Instancia/(20920:20920): Mensaje de 4 bytes recibido
+[INFO] 17:26:57:545 Instancia/(20920:20920): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:58:105 Instancia/(20923:20923): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:58:110 Instancia/(20923:20923): Socket conectado
+[INFO] 17:26:58:110 Instancia/(20923:20923): Mensaje enviado
+[INFO] 17:26:58:141 Instancia/(20923:20923): Mensaje de 4 bytes recibido
+[INFO] 17:26:58:141 Instancia/(20923:20923): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:58:407 Instancia/(20925:20925): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:58:418 Instancia/(20925:20925): Socket conectado
+[INFO] 17:26:58:418 Instancia/(20925:20925): Mensaje enviado
+[INFO] 17:26:58:423 Instancia/(20925:20925): Mensaje de 4 bytes recibido
+[INFO] 17:26:58:423 Instancia/(20925:20925): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:58:641 Instancia/(20927:20927): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:58:653 Instancia/(20927:20927): Socket conectado
+[INFO] 17:26:58:653 Instancia/(20927:20927): Mensaje enviado
+[INFO] 17:26:58:663 Instancia/(20927:20927): Mensaje de 4 bytes recibido
+[INFO] 17:26:58:663 Instancia/(20927:20927): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:58:873 Instancia/(20929:20929): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:58:877 Instancia/(20929:20929): Socket conectado
+[INFO] 17:26:58:877 Instancia/(20929:20929): Mensaje enviado
+[INFO] 17:26:58:906 Instancia/(20929:20929): Mensaje de 4 bytes recibido
+[INFO] 17:26:58:906 Instancia/(20929:20929): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:59:110 Instancia/(20931:20931): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:59:117 Instancia/(20931:20931): Socket conectado
+[INFO] 17:26:59:117 Instancia/(20931:20931): Mensaje enviado
+[INFO] 17:26:59:126 Instancia/(20931:20931): Mensaje de 4 bytes recibido
+[INFO] 17:26:59:126 Instancia/(20931:20931): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:59:361 Instancia/(20933:20933): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:59:366 Instancia/(20933:20933): Socket conectado
+[INFO] 17:26:59:366 Instancia/(20933:20933): Mensaje enviado
+[INFO] 17:26:59:398 Instancia/(20933:20933): Mensaje de 4 bytes recibido
+[INFO] 17:26:59:398 Instancia/(20933:20933): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:59:609 Instancia/(20935:20935): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:59:614 Instancia/(20935:20935): Socket conectado
+[INFO] 17:26:59:614 Instancia/(20935:20935): Mensaje enviado
+[INFO] 17:26:59:642 Instancia/(20935:20935): Mensaje de 4 bytes recibido
+[INFO] 17:26:59:642 Instancia/(20935:20935): Se ha conectado al coordinador correctamente!!
+[INFO] 17:26:59:874 Instancia/(20937:20937): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:26:59:879 Instancia/(20937:20937): Socket conectado
+[INFO] 17:26:59:879 Instancia/(20937:20937): Mensaje enviado
+[INFO] 17:26:59:889 Instancia/(20937:20937): Mensaje de 4 bytes recibido
+[INFO] 17:26:59:889 Instancia/(20937:20937): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:00:127 Instancia/(20939:20939): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:00:133 Instancia/(20939:20939): Socket conectado
+[INFO] 17:27:00:134 Instancia/(20939:20939): Mensaje enviado
+[INFO] 17:27:00:141 Instancia/(20939:20939): Mensaje de 4 bytes recibido
+[INFO] 17:27:00:141 Instancia/(20939:20939): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:00:362 Instancia/(20941:20941): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:00:368 Instancia/(20941:20941): Socket conectado
+[INFO] 17:27:00:368 Instancia/(20941:20941): Mensaje enviado
+[INFO] 17:27:00:377 Instancia/(20941:20941): Mensaje de 4 bytes recibido
+[INFO] 17:27:00:377 Instancia/(20941:20941): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:00:614 Instancia/(20943:20943): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:00:621 Instancia/(20943:20943): Socket conectado
+[INFO] 17:27:00:622 Instancia/(20943:20943): Mensaje enviado
+[INFO] 17:27:00:627 Instancia/(20943:20943): Mensaje de 4 bytes recibido
+[INFO] 17:27:00:627 Instancia/(20943:20943): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:00:858 Instancia/(20945:20945): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:00:862 Instancia/(20945:20945): Socket conectado
+[INFO] 17:27:00:862 Instancia/(20945:20945): Mensaje enviado
+[INFO] 17:27:00:892 Instancia/(20945:20945): Mensaje de 4 bytes recibido
+[INFO] 17:27:00:892 Instancia/(20945:20945): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:01:102 Instancia/(20947:20947): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:01:107 Instancia/(20947:20947): Socket conectado
+[INFO] 17:27:01:107 Instancia/(20947:20947): Mensaje enviado
+[INFO] 17:27:01:136 Instancia/(20947:20947): Mensaje de 4 bytes recibido
+[INFO] 17:27:01:136 Instancia/(20947:20947): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:01:354 Instancia/(20949:20949): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:01:359 Instancia/(20949:20949): Socket conectado
+[INFO] 17:27:01:359 Instancia/(20949:20949): Mensaje enviado
+[INFO] 17:27:01:382 Instancia/(20949:20949): Mensaje de 4 bytes recibido
+[INFO] 17:27:01:382 Instancia/(20949:20949): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:01:602 Instancia/(20951:20951): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:01:607 Instancia/(20951:20951): Socket conectado
+[INFO] 17:27:01:607 Instancia/(20951:20951): Mensaje enviado
+[INFO] 17:27:01:628 Instancia/(20951:20951): Mensaje de 4 bytes recibido
+[INFO] 17:27:01:628 Instancia/(20951:20951): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:01:869 Instancia/(20953:20953): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:01:875 Instancia/(20953:20953): Socket conectado
+[INFO] 17:27:01:875 Instancia/(20953:20953): Mensaje enviado
+[INFO] 17:27:01:883 Instancia/(20953:20953): Mensaje de 4 bytes recibido
+[INFO] 17:27:01:883 Instancia/(20953:20953): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:02:106 Instancia/(20955:20955): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:02:112 Instancia/(20955:20955): Socket conectado
+[INFO] 17:27:02:112 Instancia/(20955:20955): Mensaje enviado
+[INFO] 17:27:02:120 Instancia/(20955:20955): Mensaje de 4 bytes recibido
+[INFO] 17:27:02:120 Instancia/(20955:20955): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:02:331 Instancia/(20957:20957): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:02:335 Instancia/(20957:20957): Socket conectado
+[INFO] 17:27:02:335 Instancia/(20957:20957): Mensaje enviado
+[INFO] 17:27:02:359 Instancia/(20957:20957): Mensaje de 4 bytes recibido
+[INFO] 17:27:02:360 Instancia/(20957:20957): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:02:593 Instancia/(20959:20959): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:02:603 Instancia/(20959:20959): Socket conectado
+[INFO] 17:27:02:603 Instancia/(20959:20959): Mensaje enviado
+[INFO] 17:27:02:608 Instancia/(20959:20959): Mensaje de 4 bytes recibido
+[INFO] 17:27:02:608 Instancia/(20959:20959): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:02:843 Instancia/(20961:20961): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:02:847 Instancia/(20961:20961): Socket conectado
+[INFO] 17:27:02:847 Instancia/(20961:20961): Mensaje enviado
+[INFO] 17:27:02:879 Instancia/(20961:20961): Mensaje de 4 bytes recibido
+[INFO] 17:27:02:879 Instancia/(20961:20961): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:03:82 Instancia/(20963:20963): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:03:88 Instancia/(20963:20963): Socket conectado
+[INFO] 17:27:03:88 Instancia/(20963:20963): Mensaje enviado
+[INFO] 17:27:03:97 Instancia/(20963:20963): Mensaje de 4 bytes recibido
+[INFO] 17:27:03:97 Instancia/(20963:20963): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:04:604 Instancia/(20965:20965): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:04:608 Instancia/(20965:20965): Socket conectado
+[INFO] 17:27:04:608 Instancia/(20965:20965): Mensaje enviado
+[INFO] 17:27:04:635 Instancia/(20965:20965): Mensaje de 4 bytes recibido
+[INFO] 17:27:04:635 Instancia/(20965:20965): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:05:154 Instancia/(20968:20968): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:05:160 Instancia/(20968:20968): Socket conectado
+[INFO] 17:27:05:161 Instancia/(20968:20968): Mensaje enviado
+[INFO] 17:27:05:166 Instancia/(20968:20968): Mensaje de 4 bytes recibido
+[INFO] 17:27:05:166 Instancia/(20968:20968): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:05:405 Instancia/(20970:20970): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:05:409 Instancia/(20970:20970): Socket conectado
+[INFO] 17:27:05:409 Instancia/(20970:20970): Mensaje enviado
+[INFO] 17:27:05:434 Instancia/(20970:20970): Mensaje de 4 bytes recibido
+[INFO] 17:27:05:434 Instancia/(20970:20970): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:05:677 Instancia/(20972:20972): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:05:684 Instancia/(20972:20972): Socket conectado
+[INFO] 17:27:05:684 Instancia/(20972:20972): Mensaje enviado
+[INFO] 17:27:05:692 Instancia/(20972:20972): Mensaje de 4 bytes recibido
+[INFO] 17:27:05:692 Instancia/(20972:20972): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:05:869 Instancia/(20974:20974): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:05:885 Instancia/(20974:20974): Socket conectado
+[INFO] 17:27:05:885 Instancia/(20974:20974): Mensaje enviado
+[INFO] 17:27:05:891 Instancia/(20974:20974): Mensaje de 4 bytes recibido
+[INFO] 17:27:05:891 Instancia/(20974:20974): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:06:936 Instancia/(20976:20976): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:06:943 Instancia/(20976:20976): Socket conectado
+[INFO] 17:27:06:943 Instancia/(20976:20976): Mensaje enviado
+[INFO] 17:27:06:949 Instancia/(20976:20976): Mensaje de 4 bytes recibido
+[INFO] 17:27:06:949 Instancia/(20976:20976): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:07:150 Instancia/(20979:20979): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:07:154 Instancia/(20979:20979): Socket conectado
+[INFO] 17:27:07:155 Instancia/(20979:20979): Mensaje enviado
+[INFO] 17:27:07:180 Instancia/(20979:20979): Mensaje de 4 bytes recibido
+[INFO] 17:27:07:180 Instancia/(20979:20979): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:07:382 Instancia/(20981:20981): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:07:388 Instancia/(20981:20981): Socket conectado
+[INFO] 17:27:07:388 Instancia/(20981:20981): Mensaje enviado
+[INFO] 17:27:07:398 Instancia/(20981:20981): Mensaje de 4 bytes recibido
+[INFO] 17:27:07:399 Instancia/(20981:20981): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:07:556 Instancia/(20983:20983): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:07:572 Instancia/(20983:20983): Socket conectado
+[INFO] 17:27:07:572 Instancia/(20983:20983): Mensaje enviado
+[INFO] 17:27:07:577 Instancia/(20983:20983): Mensaje de 4 bytes recibido
+[INFO] 17:27:07:577 Instancia/(20983:20983): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:08:166 Instancia/(20985:20985): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:08:170 Instancia/(20985:20985): Socket conectado
+[INFO] 17:27:08:170 Instancia/(20985:20985): Mensaje enviado
+[INFO] 17:27:08:189 Instancia/(20985:20985): Mensaje de 4 bytes recibido
+[INFO] 17:27:08:189 Instancia/(20985:20985): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:08:398 Instancia/(20987:20987): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:08:403 Instancia/(20987:20987): Socket conectado
+[INFO] 17:27:08:403 Instancia/(20987:20987): Mensaje enviado
+[INFO] 17:27:08:432 Instancia/(20987:20987): Mensaje de 4 bytes recibido
+[INFO] 17:27:08:432 Instancia/(20987:20987): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:08:623 Instancia/(20989:20989): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:08:639 Instancia/(20989:20989): Socket conectado
+[INFO] 17:27:08:640 Instancia/(20989:20989): Mensaje enviado
+[INFO] 17:27:08:644 Instancia/(20989:20989): Mensaje de 4 bytes recibido
+[INFO] 17:27:08:644 Instancia/(20989:20989): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:09:223 Instancia/(20991:20991): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:09:227 Instancia/(20991:20991): Socket conectado
+[INFO] 17:27:09:227 Instancia/(20991:20991): Mensaje enviado
+[INFO] 17:27:09:260 Instancia/(20991:20991): Mensaje de 4 bytes recibido
+[INFO] 17:27:09:260 Instancia/(20991:20991): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:09:487 Instancia/(20993:20993): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:09:499 Instancia/(20993:20993): Socket conectado
+[INFO] 17:27:09:499 Instancia/(20993:20993): Mensaje enviado
+[INFO] 17:27:09:510 Instancia/(20993:20993): Mensaje de 4 bytes recibido
+[INFO] 17:27:09:510 Instancia/(20993:20993): Se ha conectado al coordinador correctamente!!
+[INFO] 17:27:09:677 Instancia/(20995:20995): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:27:09:684 Instancia/(20995:20995): Socket conectado
+[INFO] 17:27:09:685 Instancia/(20995:20995): Mensaje enviado
+[INFO] 17:27:09:693 Instancia/(20995:20995): Mensaje de 4 bytes recibido
+[INFO] 17:27:09:693 Instancia/(20995:20995): Se ha conectado al coordinador correctamente!!
+[INFO] 17:47:25:513 Instancia/(22001:22001): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:47:25:514 Instancia/(22001:22001): Socket conectado
+[INFO] 17:47:25:514 Instancia/(22001:22001): Mensaje enviado
+[INFO] 17:47:25:514 Instancia/(22001:22001): Mensaje de 4 bytes recibido
+[INFO] 17:47:25:514 Instancia/(22001:22001): Se ha conectado al coordinador correctamente!!
+[INFO] 17:47:25:521 Instancia/(22001:22001): Mensaje recibido
+[INFO] 17:47:25:522 Instancia/(22001:22001): Mensaje recibido
+[INFO] 17:47:25:522 Instancia/(22001:22001): Mensaje recibido
+[INFO] 17:47:25:522 Instancia/(22001:22001): Mensaje recibido
+[INFO] 17:48:19:292 Instancia/(22053:22053): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:48:19:293 Instancia/(22053:22053): Socket conectado
+[INFO] 17:48:19:293 Instancia/(22053:22053): Mensaje enviado
+[INFO] 17:48:19:293 Instancia/(22053:22053): Mensaje de 4 bytes recibido
+[INFO] 17:48:19:294 Instancia/(22053:22053): Se ha conectado al coordinador correctamente!!
+[INFO] 17:48:19:301 Instancia/(22053:22053): Mensaje recibido
+[INFO] 17:48:19:301 Instancia/(22053:22053): Mensaje recibido
+[INFO] 17:48:19:301 Instancia/(22053:22053): Mensaje recibido
+[INFO] 17:48:19:301 Instancia/(22053:22053): Mensaje recibido
+[INFO] 17:48:36:592 Instancia/(22070:22070): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:48:36:633 Instancia/(22070:22070): Socket conectado
+[INFO] 17:48:36:648 Instancia/(22070:22070): Mensaje enviado
+[INFO] 17:48:36:653 Instancia/(22070:22070): Mensaje de 4 bytes recibido
+[INFO] 17:48:36:657 Instancia/(22070:22070): Se ha conectado al coordinador correctamente!!
+[INFO] 17:48:36:661 Instancia/(22070:22070): Mensaje recibido
+[INFO] 17:48:36:669 Instancia/(22070:22070): Mensaje recibido
+[INFO] 17:48:36:672 Instancia/(22070:22070): Mensaje recibido
+[INFO] 17:48:36:673 Instancia/(22070:22070): Mensaje recibido
+[INFO] 17:50:13:675 Instancia/(22137:22137): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:13:716 Instancia/(22137:22137): Socket conectado
+[INFO] 17:50:13:727 Instancia/(22137:22137): Mensaje enviado
+[INFO] 17:50:13:736 Instancia/(22137:22137): Mensaje de 4 bytes recibido
+[INFO] 17:50:13:741 Instancia/(22137:22137): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:13:744 Instancia/(22137:22137): Mensaje recibido
+[INFO] 17:50:13:752 Instancia/(22137:22137): Mensaje recibido
+[INFO] 17:50:13:754 Instancia/(22137:22137): Mensaje recibido
+[INFO] 17:50:13:756 Instancia/(22137:22137): Mensaje recibido
+[INFO] 17:50:16:436 Instancia/(22146:22146): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:16:519 Instancia/(22146:22146): Socket conectado
+[INFO] 17:50:16:525 Instancia/(22146:22146): Mensaje enviado
+[INFO] 17:50:16:546 Instancia/(22146:22146): Mensaje de 4 bytes recibido
+[INFO] 17:50:16:547 Instancia/(22146:22146): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:16:554 Instancia/(22146:22146): Mensaje recibido
+[INFO] 17:50:16:563 Instancia/(22146:22146): Mensaje recibido
+[INFO] 17:50:16:564 Instancia/(22146:22146): Mensaje recibido
+[INFO] 17:50:16:566 Instancia/(22146:22146): Mensaje recibido
+[INFO] 17:50:18:558 Instancia/(22149:22149): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:18:622 Instancia/(22149:22149): Socket conectado
+[INFO] 17:50:18:640 Instancia/(22149:22149): Mensaje enviado
+[INFO] 17:50:18:643 Instancia/(22149:22149): Mensaje de 4 bytes recibido
+[INFO] 17:50:18:646 Instancia/(22149:22149): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:18:649 Instancia/(22149:22149): Mensaje recibido
+[INFO] 17:50:18:656 Instancia/(22149:22149): Mensaje recibido
+[INFO] 17:50:18:661 Instancia/(22149:22149): Mensaje recibido
+[INFO] 17:50:18:663 Instancia/(22149:22149): Mensaje recibido
+[INFO] 17:50:20:561 Instancia/(22152:22152): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:20:609 Instancia/(22152:22152): Socket conectado
+[INFO] 17:50:20:621 Instancia/(22152:22152): Mensaje enviado
+[INFO] 17:50:20:632 Instancia/(22152:22152): Mensaje de 4 bytes recibido
+[INFO] 17:50:20:633 Instancia/(22152:22152): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:20:641 Instancia/(22152:22152): Mensaje recibido
+[INFO] 17:50:20:649 Instancia/(22152:22152): Mensaje recibido
+[INFO] 17:50:20:650 Instancia/(22152:22152): Mensaje recibido
+[INFO] 17:50:20:651 Instancia/(22152:22152): Mensaje recibido
+[INFO] 17:50:22:572 Instancia/(22161:22161): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:22:641 Instancia/(22161:22161): Socket conectado
+[INFO] 17:50:22:657 Instancia/(22161:22161): Mensaje enviado
+[INFO] 17:50:22:660 Instancia/(22161:22161): Mensaje de 4 bytes recibido
+[INFO] 17:50:22:666 Instancia/(22161:22161): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:22:674 Instancia/(22161:22161): Mensaje recibido
+[INFO] 17:50:22:678 Instancia/(22161:22161): Mensaje recibido
+[INFO] 17:50:22:685 Instancia/(22161:22161): Mensaje recibido
+[INFO] 17:50:22:686 Instancia/(22161:22161): Mensaje recibido
+[INFO] 17:50:24:492 Instancia/(22169:22169): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:24:585 Instancia/(22169:22169): Socket conectado
+[INFO] 17:50:24:599 Instancia/(22169:22169): Mensaje enviado
+[INFO] 17:50:24:602 Instancia/(22169:22169): Mensaje de 4 bytes recibido
+[INFO] 17:50:24:608 Instancia/(22169:22169): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:24:611 Instancia/(22169:22169): Mensaje recibido
+[INFO] 17:50:24:612 Instancia/(22169:22169): Mensaje recibido
+[INFO] 17:50:24:612 Instancia/(22169:22169): Mensaje recibido
+[INFO] 17:50:24:613 Instancia/(22169:22169): Mensaje recibido
+[INFO] 17:50:26:363 Instancia/(22172:22172): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:26:447 Instancia/(22172:22172): Socket conectado
+[INFO] 17:50:26:456 Instancia/(22172:22172): Mensaje enviado
+[INFO] 17:50:26:478 Instancia/(22172:22172): Mensaje de 4 bytes recibido
+[INFO] 17:50:26:480 Instancia/(22172:22172): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:26:489 Instancia/(22172:22172): Mensaje recibido
+[INFO] 17:50:26:492 Instancia/(22172:22172): Mensaje recibido
+[INFO] 17:50:26:495 Instancia/(22172:22172): Mensaje recibido
+[INFO] 17:50:26:500 Instancia/(22172:22172): Mensaje recibido
+[INFO] 17:50:28:120 Instancia/(22175:22175): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:28:206 Instancia/(22175:22175): Socket conectado
+[INFO] 17:50:28:210 Instancia/(22175:22175): Mensaje enviado
+[INFO] 17:50:28:233 Instancia/(22175:22175): Mensaje de 4 bytes recibido
+[INFO] 17:50:28:235 Instancia/(22175:22175): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:28:238 Instancia/(22175:22175): Mensaje recibido
+[INFO] 17:50:28:246 Instancia/(22175:22175): Mensaje recibido
+[INFO] 17:50:28:247 Instancia/(22175:22175): Mensaje recibido
+[INFO] 17:50:28:249 Instancia/(22175:22175): Mensaje recibido
+[INFO] 17:50:29:966 Instancia/(22178:22178): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:30:29 Instancia/(22178:22178): Socket conectado
+[INFO] 17:50:30:50 Instancia/(22178:22178): Mensaje enviado
+[INFO] 17:50:30:53 Instancia/(22178:22178): Mensaje de 4 bytes recibido
+[INFO] 17:50:30:55 Instancia/(22178:22178): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:30:59 Instancia/(22178:22178): Mensaje recibido
+[INFO] 17:50:30:70 Instancia/(22178:22178): Mensaje recibido
+[INFO] 17:50:30:73 Instancia/(22178:22178): Mensaje recibido
+[INFO] 17:50:30:83 Instancia/(22178:22178): Mensaje recibido
+[INFO] 17:50:31:827 Instancia/(22181:22181): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:31:927 Instancia/(22181:22181): Socket conectado
+[INFO] 17:50:31:941 Instancia/(22181:22181): Mensaje enviado
+[INFO] 17:50:31:945 Instancia/(22181:22181): Mensaje de 4 bytes recibido
+[INFO] 17:50:31:945 Instancia/(22181:22181): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:31:948 Instancia/(22181:22181): Mensaje recibido
+[INFO] 17:50:31:949 Instancia/(22181:22181): Mensaje recibido
+[INFO] 17:50:31:949 Instancia/(22181:22181): Mensaje recibido
+[INFO] 17:50:31:949 Instancia/(22181:22181): Mensaje recibido
+[INFO] 17:50:33:758 Instancia/(22184:22184): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:33:833 Instancia/(22184:22184): Socket conectado
+[INFO] 17:50:33:849 Instancia/(22184:22184): Mensaje enviado
+[INFO] 17:50:33:854 Instancia/(22184:22184): Mensaje de 4 bytes recibido
+[INFO] 17:50:33:854 Instancia/(22184:22184): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:33:857 Instancia/(22184:22184): Mensaje recibido
+[INFO] 17:50:33:858 Instancia/(22184:22184): Mensaje recibido
+[INFO] 17:50:33:858 Instancia/(22184:22184): Mensaje recibido
+[INFO] 17:50:33:858 Instancia/(22184:22184): Mensaje recibido
+[INFO] 17:50:35:579 Instancia/(22187:22187): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:35:661 Instancia/(22187:22187): Socket conectado
+[INFO] 17:50:35:668 Instancia/(22187:22187): Mensaje enviado
+[INFO] 17:50:35:688 Instancia/(22187:22187): Mensaje de 4 bytes recibido
+[INFO] 17:50:35:695 Instancia/(22187:22187): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:35:698 Instancia/(22187:22187): Mensaje recibido
+[INFO] 17:50:35:706 Instancia/(22187:22187): Mensaje recibido
+[INFO] 17:50:35:708 Instancia/(22187:22187): Mensaje recibido
+[INFO] 17:50:35:710 Instancia/(22187:22187): Mensaje recibido
+[INFO] 17:50:37:389 Instancia/(22190:22190): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:37:469 Instancia/(22190:22190): Socket conectado
+[INFO] 17:50:37:479 Instancia/(22190:22190): Mensaje enviado
+[INFO] 17:50:37:481 Instancia/(22190:22190): Mensaje de 4 bytes recibido
+[INFO] 17:50:37:484 Instancia/(22190:22190): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:37:489 Instancia/(22190:22190): Mensaje recibido
+[INFO] 17:50:37:490 Instancia/(22190:22190): Mensaje recibido
+[INFO] 17:50:37:490 Instancia/(22190:22190): Mensaje recibido
+[INFO] 17:50:37:491 Instancia/(22190:22190): Mensaje recibido
+[INFO] 17:50:39:206 Instancia/(22193:22193): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:39:267 Instancia/(22193:22193): Socket conectado
+[INFO] 17:50:39:282 Instancia/(22193:22193): Mensaje enviado
+[INFO] 17:50:39:290 Instancia/(22193:22193): Mensaje de 4 bytes recibido
+[INFO] 17:50:39:291 Instancia/(22193:22193): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:39:294 Instancia/(22193:22193): Mensaje recibido
+[INFO] 17:50:39:303 Instancia/(22193:22193): Mensaje recibido
+[INFO] 17:50:39:305 Instancia/(22193:22193): Mensaje recibido
+[INFO] 17:50:39:305 Instancia/(22193:22193): Mensaje recibido
+[INFO] 17:50:40:45 Instancia/(22196:22196): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:41:104 Instancia/(22196:22196): Socket conectado
+[INFO] 17:50:41:108 Instancia/(22196:22196): Mensaje enviado
+[INFO] 17:50:41:129 Instancia/(22196:22196): Mensaje de 4 bytes recibido
+[INFO] 17:50:41:130 Instancia/(22196:22196): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:41:133 Instancia/(22196:22196): Mensaje recibido
+[INFO] 17:50:41:137 Instancia/(22196:22196): Mensaje recibido
+[INFO] 17:50:41:139 Instancia/(22196:22196): Mensaje recibido
+[INFO] 17:50:41:140 Instancia/(22196:22196): Mensaje recibido
+[INFO] 17:50:42:789 Instancia/(22199:22199): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:42:860 Instancia/(22199:22199): Socket conectado
+[INFO] 17:50:42:874 Instancia/(22199:22199): Mensaje enviado
+[INFO] 17:50:42:878 Instancia/(22199:22199): Mensaje de 4 bytes recibido
+[INFO] 17:50:42:882 Instancia/(22199:22199): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:42:884 Instancia/(22199:22199): Mensaje recibido
+[INFO] 17:50:42:887 Instancia/(22199:22199): Mensaje recibido
+[INFO] 17:50:42:888 Instancia/(22199:22199): Mensaje recibido
+[INFO] 17:50:42:888 Instancia/(22199:22199): Mensaje recibido
+[INFO] 17:50:44:578 Instancia/(22202:22202): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:44:630 Instancia/(22202:22202): Socket conectado
+[INFO] 17:50:44:649 Instancia/(22202:22202): Mensaje enviado
+[INFO] 17:50:44:656 Instancia/(22202:22202): Mensaje de 4 bytes recibido
+[INFO] 17:50:44:658 Instancia/(22202:22202): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:44:662 Instancia/(22202:22202): Mensaje recibido
+[INFO] 17:50:44:675 Instancia/(22202:22202): Mensaje recibido
+[INFO] 17:50:44:676 Instancia/(22202:22202): Mensaje recibido
+[INFO] 17:50:44:677 Instancia/(22202:22202): Mensaje recibido
+[INFO] 17:50:46:241 Instancia/(22205:22205): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:46:293 Instancia/(22205:22205): Socket conectado
+[INFO] 17:50:46:310 Instancia/(22205:22205): Mensaje enviado
+[INFO] 17:50:46:318 Instancia/(22205:22205): Mensaje de 4 bytes recibido
+[INFO] 17:50:46:321 Instancia/(22205:22205): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:46:331 Instancia/(22205:22205): Mensaje recibido
+[INFO] 17:50:46:332 Instancia/(22205:22205): Mensaje recibido
+[INFO] 17:50:46:333 Instancia/(22205:22205): Mensaje recibido
+[INFO] 17:50:46:336 Instancia/(22205:22205): Mensaje recibido
+[INFO] 17:50:53:701 Instancia/(22210:22210): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:53:786 Instancia/(22210:22210): Socket conectado
+[INFO] 17:50:53:789 Instancia/(22210:22210): Mensaje enviado
+[INFO] 17:50:53:813 Instancia/(22210:22210): Mensaje de 4 bytes recibido
+[INFO] 17:50:53:814 Instancia/(22210:22210): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:53:818 Instancia/(22210:22210): Mensaje recibido
+[INFO] 17:50:53:826 Instancia/(22210:22210): Mensaje recibido
+[INFO] 17:50:53:828 Instancia/(22210:22210): Mensaje recibido
+[INFO] 17:50:53:830 Instancia/(22210:22210): Mensaje recibido
+[INFO] 17:50:55:573 Instancia/(22213:22213): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:55:630 Instancia/(22213:22213): Socket conectado
+[INFO] 17:50:55:650 Instancia/(22213:22213): Mensaje enviado
+[INFO] 17:50:55:654 Instancia/(22213:22213): Mensaje de 4 bytes recibido
+[INFO] 17:50:55:659 Instancia/(22213:22213): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:55:670 Instancia/(22213:22213): Mensaje recibido
+[INFO] 17:50:55:673 Instancia/(22213:22213): Mensaje recibido
+[INFO] 17:50:55:673 Instancia/(22213:22213): Mensaje recibido
+[INFO] 17:50:55:678 Instancia/(22213:22213): Mensaje recibido
+[INFO] 17:50:57:818 Instancia/(22217:22217): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:57:870 Instancia/(22217:22217): Socket conectado
+[INFO] 17:50:57:888 Instancia/(22217:22217): Mensaje enviado
+[INFO] 17:50:57:895 Instancia/(22217:22217): Mensaje de 4 bytes recibido
+[INFO] 17:50:57:900 Instancia/(22217:22217): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:57:907 Instancia/(22217:22217): Mensaje recibido
+[INFO] 17:50:57:911 Instancia/(22217:22217): Mensaje recibido
+[INFO] 17:50:57:918 Instancia/(22217:22217): Mensaje recibido
+[INFO] 17:50:57:918 Instancia/(22217:22217): Mensaje recibido
+[INFO] 17:50:59:518 Instancia/(22225:22225): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:50:59:582 Instancia/(22225:22225): Socket conectado
+[INFO] 17:50:59:601 Instancia/(22225:22225): Mensaje enviado
+[INFO] 17:50:59:605 Instancia/(22225:22225): Mensaje de 4 bytes recibido
+[INFO] 17:50:59:607 Instancia/(22225:22225): Se ha conectado al coordinador correctamente!!
+[INFO] 17:50:59:610 Instancia/(22225:22225): Mensaje recibido
+[INFO] 17:50:59:621 Instancia/(22225:22225): Mensaje recibido
+[INFO] 17:50:59:623 Instancia/(22225:22225): Mensaje recibido
+[INFO] 17:50:59:625 Instancia/(22225:22225): Mensaje recibido
+[INFO] 17:51:01:273 Instancia/(22228:22228): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:51:01:338 Instancia/(22228:22228): Socket conectado
+[INFO] 17:51:01:357 Instancia/(22228:22228): Mensaje enviado
+[INFO] 17:51:01:362 Instancia/(22228:22228): Mensaje de 4 bytes recibido
+[INFO] 17:51:01:362 Instancia/(22228:22228): Se ha conectado al coordinador correctamente!!
+[INFO] 17:51:01:366 Instancia/(22228:22228): Mensaje recibido
+[INFO] 17:51:01:376 Instancia/(22228:22228): Mensaje recibido
+[INFO] 17:51:01:379 Instancia/(22228:22228): Mensaje recibido
+[INFO] 17:51:01:381 Instancia/(22228:22228): Mensaje recibido
+[INFO] 17:51:02:64 Instancia/(22231:22231): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:51:03:145 Instancia/(22231:22231): Socket conectado
+[INFO] 17:51:03:157 Instancia/(22231:22231): Mensaje enviado
+[INFO] 17:51:03:185 Instancia/(22231:22231): Mensaje de 4 bytes recibido
+[INFO] 17:51:03:189 Instancia/(22231:22231): Se ha conectado al coordinador correctamente!!
+[INFO] 17:51:03:195 Instancia/(22231:22231): Mensaje recibido
+[INFO] 17:51:03:209 Instancia/(22231:22231): Mensaje recibido
+[INFO] 17:51:03:211 Instancia/(22231:22231): Mensaje recibido
+[INFO] 17:51:03:213 Instancia/(22231:22231): Mensaje recibido
+[INFO] 17:51:04:915 Instancia/(22234:22234): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:51:04:992 Instancia/(22234:22234): Socket conectado
+[INFO] 17:51:05:6 Instancia/(22234:22234): Mensaje enviado
+[INFO] 17:51:05:16 Instancia/(22234:22234): Mensaje de 4 bytes recibido
+[INFO] 17:51:05:19 Instancia/(22234:22234): Se ha conectado al coordinador correctamente!!
+[INFO] 17:51:05:27 Instancia/(22234:22234): Mensaje recibido
+[INFO] 17:51:05:30 Instancia/(22234:22234): Mensaje recibido
+[INFO] 17:51:05:32 Instancia/(22234:22234): Mensaje recibido
+[INFO] 17:51:05:33 Instancia/(22234:22234): Mensaje recibido
+[INFO] 17:51:06:659 Instancia/(22237:22237): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:51:06:710 Instancia/(22237:22237): Socket conectado
+[INFO] 17:51:06:727 Instancia/(22237:22237): Mensaje enviado
+[INFO] 17:51:06:734 Instancia/(22237:22237): Mensaje de 4 bytes recibido
+[INFO] 17:51:06:739 Instancia/(22237:22237): Se ha conectado al coordinador correctamente!!
+[INFO] 17:51:06:747 Instancia/(22237:22237): Mensaje recibido
+[INFO] 17:51:06:755 Instancia/(22237:22237): Mensaje recibido
+[INFO] 17:51:06:757 Instancia/(22237:22237): Mensaje recibido
+[INFO] 17:51:06:758 Instancia/(22237:22237): Mensaje recibido
+[INFO] 17:54:58:357 Instancia/(22487:22487): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:54:58:398 Instancia/(22487:22487): Socket conectado
+[INFO] 17:54:58:414 Instancia/(22487:22487): Mensaje enviado
+[INFO] 17:54:58:418 Instancia/(22487:22487): Mensaje de 4 bytes recibido
+[INFO] 17:54:58:422 Instancia/(22487:22487): Se ha conectado al coordinador correctamente!!
+[INFO] 17:54:58:426 Instancia/(22487:22487): Mensaje recibido
+[INFO] 17:54:58:433 Instancia/(22487:22487): Mensaje recibido
+[INFO] 17:55:55:22 Instancia/(22533:22533): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:55:56:62 Instancia/(22533:22533): Socket conectado
+[INFO] 17:55:56:74 Instancia/(22533:22533): Mensaje enviado
+[INFO] 17:55:56:78 Instancia/(22533:22533): Mensaje de 4 bytes recibido
+[INFO] 17:55:56:86 Instancia/(22533:22533): Se ha conectado al coordinador correctamente!!
+[INFO] 17:55:56:90 Instancia/(22533:22533): Mensaje recibido
+[INFO] 17:55:56:97 Instancia/(22533:22533): Mensaje recibido
+[INFO] 17:56:02:477 Instancia/(22538:22538): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:56:02:540 Instancia/(22538:22538): Socket conectado
+[INFO] 17:56:02:555 Instancia/(22538:22538): Mensaje enviado
+[INFO] 17:56:02:563 Instancia/(22538:22538): Mensaje de 4 bytes recibido
+[INFO] 17:56:02:565 Instancia/(22538:22538): Se ha conectado al coordinador correctamente!!
+[INFO] 17:56:02:575 Instancia/(22538:22538): Mensaje recibido
+[INFO] 17:56:02:576 Instancia/(22538:22538): Mensaje recibido
+[INFO] 17:56:04:8 Instancia/(22541:22541): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:56:05:76 Instancia/(22541:22541): Socket conectado
+[INFO] 17:56:05:92 Instancia/(22541:22541): Mensaje enviado
+[INFO] 17:56:05:94 Instancia/(22541:22541): Mensaje de 4 bytes recibido
+[INFO] 17:56:05:97 Instancia/(22541:22541): Se ha conectado al coordinador correctamente!!
+[INFO] 17:56:05:110 Instancia/(22541:22541): Mensaje recibido
+[INFO] 17:56:05:112 Instancia/(22541:22541): Mensaje recibido
+[INFO] 17:56:15:14 Instancia/(22545:22545): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:56:16:87 Instancia/(22545:22545): Socket conectado
+[INFO] 17:56:16:103 Instancia/(22545:22545): Mensaje enviado
+[INFO] 17:56:16:107 Instancia/(22545:22545): Mensaje de 4 bytes recibido
+[INFO] 17:56:16:108 Instancia/(22545:22545): Se ha conectado al coordinador correctamente!!
+[INFO] 17:56:16:110 Instancia/(22545:22545): Mensaje recibido
+[INFO] 17:56:16:111 Instancia/(22545:22545): Mensaje recibido
+[INFO] 17:56:17:992 Instancia/(22549:22549): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:56:18:74 Instancia/(22549:22549): Socket conectado
+[INFO] 17:56:18:83 Instancia/(22549:22549): Mensaje enviado
+[INFO] 17:56:18:107 Instancia/(22549:22549): Mensaje de 4 bytes recibido
+[INFO] 17:56:18:108 Instancia/(22549:22549): Se ha conectado al coordinador correctamente!!
+[INFO] 17:56:18:119 Instancia/(22549:22549): Mensaje recibido
+[INFO] 17:56:18:122 Instancia/(22549:22549): Mensaje recibido
+[INFO] 17:57:26:738 Instancia/(22590:22590): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:57:26:779 Instancia/(22590:22590): Socket conectado
+[INFO] 17:57:26:790 Instancia/(22590:22590): Mensaje enviado
+[INFO] 17:57:26:802 Instancia/(22590:22590): Mensaje de 4 bytes recibido
+[INFO] 17:57:26:802 Instancia/(22590:22590): Se ha conectado al coordinador correctamente!!
+[INFO] 17:57:26:806 Instancia/(22590:22590): Mensaje recibido
+[INFO] 17:57:26:813 Instancia/(22590:22590): Mensaje recibido
+[INFO] 17:57:53:673 Instancia/(22601:22601): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:57:53:713 Instancia/(22601:22601): Socket conectado
+[INFO] 17:57:53:717 Instancia/(22601:22601): Mensaje enviado
+[INFO] 17:57:58:894 Instancia/(22601:22601): Mensaje de 4 bytes recibido
+[INFO] 17:57:58:895 Instancia/(22601:22601): Se ha conectado al coordinador correctamente!!
+[INFO] 17:57:58:898 Instancia/(22601:22601): Mensaje recibido
+[INFO] 17:57:58:905 Instancia/(22601:22601): Mensaje recibido
+[INFO] 17:58:09:109 Instancia/(22613:22613): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:58:09:183 Instancia/(22613:22613): Socket conectado
+[INFO] 17:58:09:202 Instancia/(22613:22613): Mensaje enviado
+[INFO] 17:58:09:205 Instancia/(22613:22613): Mensaje de 4 bytes recibido
+[INFO] 17:58:09:207 Instancia/(22613:22613): Se ha conectado al coordinador correctamente!!
+[INFO] 17:58:09:210 Instancia/(22613:22613): Mensaje recibido
+[INFO] 17:58:09:210 Instancia/(22613:22613): Mensaje recibido
+[INFO] 17:58:11:869 Instancia/(22617:22617): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:58:11:958 Instancia/(22617:22617): Socket conectado
+[INFO] 17:58:11:979 Instancia/(22617:22617): Mensaje enviado
+[INFO] 17:58:11:983 Instancia/(22617:22617): Mensaje de 4 bytes recibido
+[INFO] 17:58:11:984 Instancia/(22617:22617): Se ha conectado al coordinador correctamente!!
+[INFO] 17:58:11:991 Instancia/(22617:22617): Mensaje recibido
+[INFO] 17:58:11:997 Instancia/(22617:22617): Mensaje recibido
+[INFO] 17:58:15:559 Instancia/(22620:22620): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:58:15:638 Instancia/(22620:22620): Socket conectado
+[INFO] 17:58:15:652 Instancia/(22620:22620): Mensaje enviado
+[INFO] 17:58:15:654 Instancia/(22620:22620): Mensaje de 4 bytes recibido
+[INFO] 17:58:15:655 Instancia/(22620:22620): Se ha conectado al coordinador correctamente!!
+[INFO] 17:58:15:658 Instancia/(22620:22620): Mensaje recibido
+[INFO] 17:58:15:658 Instancia/(22620:22620): Mensaje recibido
+[INFO] 17:58:22:411 Instancia/(22623:22623): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 17:58:22:482 Instancia/(22623:22623): Socket conectado
+[INFO] 17:58:22:497 Instancia/(22623:22623): Mensaje enviado
+[INFO] 17:58:22:502 Instancia/(22623:22623): Mensaje de 4 bytes recibido
+[INFO] 17:58:22:511 Instancia/(22623:22623): Se ha conectado al coordinador correctamente!!
+[INFO] 17:58:22:514 Instancia/(22623:22623): Mensaje recibido
+[INFO] 17:58:22:516 Instancia/(22623:22623): Mensaje recibido

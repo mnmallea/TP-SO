@@ -76,6 +76,9 @@ void atender_instancia(int sockfd) {
 	log_debug(logger,"Instancia Nº:%d agregada a la lista", instancia->id);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	sem_post(&contador_instancias_disponibles);
+
+	//Lo que viene es una prueba
+	enviar_operacion_unaria(sockfd, STORE, "MESSI");
 }
 
 void atender_esi(int socket){
