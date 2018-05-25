@@ -112,7 +112,7 @@ void listar(char* rec){
 
 void bloquear(char* clave, int id){
 
-
+/*id creo q debe ir en struct t_esi*/
 }
 
 void desbloquear(char* clave){

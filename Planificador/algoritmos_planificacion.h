@@ -41,7 +41,7 @@ void obtener_rr(void* esi);
 bool menor_estimacion(void* esi1, void *esi2);
 bool mayor_response_ratio(void* esi1, void* esi2);
 
-void destruir_esi(void* esi);
+void matar_nodo_esi(void* esi);
 
 
 #endif /* ALGORITMOS_PLANIFICACION_H_ */
