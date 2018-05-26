@@ -102,8 +102,18 @@ void bloquear_esi_por_consola(char* clave, int id_esi){
 
 
 t_esi buscar_esi_por_id(int id_esi){
-	t_esi esi= list_find(lista_esis_listos, esi_con_este_id);
-	return esi;
+
+	//me fijo si es el esi que esta corriendo
+	if(esi_corriendo->id == id){
+		return esi_corriendo; //COMO HAGO QUE ESPERE HASTA QUE TERMINE DE CORRER?
+
+	}else{
+		//si no es el q esta corriendo lo busco en la lista de esis listos
+		t_esi esi= list_find(lista_esis_listos, esi_con_este_id);
+		return esi;
+	}
+
+
 }
 
 bool esi_con_este_id(void* esi){
