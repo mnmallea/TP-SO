@@ -51,7 +51,7 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 
 	t_esi *esi_elegido = list_remove(lista_nueva, 0);
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
-	list_destroy_and_destroy_elements(lista_nueva, matar_nodo_esi);
+	list_destroy(lista_nueva);
 
 	return esi_elegido;
 
@@ -80,7 +80,7 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis){
 	list_sort(lista_nueva, mayor_response_ratio);
 	t_esi *esi_elegido = list_remove(lista_nueva, 0);
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
-	list_destroy_and_destroy_elements(lista_nueva, matar_nodo_esi);
+	list_destroy(lista_nueva);
 
 	return esi_elegido;
 
