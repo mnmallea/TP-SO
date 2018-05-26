@@ -1,0 +1,16 @@
+Secuencia:
+
+1.Planif le indica a ESI correr una linea
+2.ESI parsea y le indica al coordinador lo que hacer
+3.Coordinador interactua con instancia pidiendole lo que tiene que hacer
+4.Instancia hace
+5.Instancia devuelve al coordinador el resultado
+6.Coordinador le devuelve al esi el resultado
+7.Esi le devuelve al planificador el resultado
+
+
+Casos de error:
+3. En caso de que el recurso este bloqueado el coordinador le avisa al planificador
+
+Dudas:
+7. Que pasa si el resultado es una falla en la escritura? Que hace el planif con esa info?

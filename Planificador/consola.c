@@ -52,7 +52,7 @@ void *menu(void *ptr){
 				printf("Ingreso bloquear un proceso, ingrese <clave>");
 
 				//ACA ME TIRA UN WARNING de que clave es char **
-				scanf("%s", &clave);
+				scanf("%s", clave);
 
 				printf("Ingreso bloquear un proceso, ingrese <ID>");
 
@@ -65,6 +65,7 @@ void *menu(void *ptr){
 
 				scanf("%s", &clave);
 				desbloquear(clave);
+
 				break;
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
@@ -81,7 +82,7 @@ void *menu(void *ptr){
 			case 6:
 				printf("Ingreso matar un proceso, ingrese <clave>");
 
-				scanf("%s", &clave);
+				scanf("%s", clave);
 				break;
 			case 7:
 				printf("Ingreso solucionar problemas de deadlock");
