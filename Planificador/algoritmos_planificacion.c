@@ -31,7 +31,7 @@ t_esi *obtener_proximo_segun_fifo(t_list *lista_esis){
 }
 
 void obtener_proximas_rafagas(void* esi){
-	int alfa = 0.5; //ACA HAY QUE USAR EL DEL ARCHIVO DE CONFIGURACION
+	int alfa = configuracion.alfa;
 	((t_esi*)esi)->estim_actual = alfa * ((t_esi*)esi)->estim_anter + (1-alfa) * ((t_esi*)esi)->dur_ult_raf;
 
 }
@@ -59,7 +59,7 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 
 
 void obtener_rr(void* esi){
-	int alfa = 0.5;//aca hay q usar el configg
+	int alfa = configuracion.alfa;
 
 	double estim_actual= alfa * ((t_esi*)esi)->estim_anter + (1-alfa) *( (t_esi*)esi)->dur_ult_raf;
 	((t_esi*)esi)->response_ratio = (((t_esi*)esi)->viene_esperando + estim_actual)/ estim_actual;

@@ -24,7 +24,9 @@ config configurar(char *ruta){
 			config_has_property(config_dictionary, "ESTADO_INICIAL") &&
 			config_has_property(config_dictionary, "IP_COORD") &&
 			config_has_property(config_dictionary, "PORT_COORD") &&
-			config_has_property(config_dictionary, "CLAVES_BLOQUEADAS")){
+			config_has_property(config_dictionary, "CLAVES_BLOQUEADAS") &&
+			config_has_property(config_dictionary, "ALFA")){
+
 		strncpy(configuracion.puerto, config_get_string_value(config_dictionary, "LOCALPORT"),PORT_MAX_STRING_LENGTH);//hay que copiarselo porque al final borras el diccionario
 		configuracion.puerto[5] = '\0';
 		configuracion.algoritmo = config_get_int_value(config_dictionary, "ALGORITMO");
@@ -32,6 +34,7 @@ config configurar(char *ruta){
 		configuracion.ipCoord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
 		configuracion.portCoord = string_duplicate(config_get_string_value(config_dictionary, "PORT_COORD"));
 		configuracion.claves_bloqueadas = string_duplicate(config_get_string_value(config_dictionary, "CLAVES_BLOQUEADAS"));
+		configuracion.alfa = string_duplicate(config_get_string_value(config_dictionary, "ALFA"));
 	}
 	else{
 		config_destroy(config_dictionary);

@@ -19,17 +19,26 @@
  * -NUEVO PROCESO LLEGA (o uno se desbloquea)
  */
 
+flag = 0;
+
 void obtener_nuevo_esi_a_correr() {
 
-	if(configuracion.algoritmo == FIFO){
-		esi_corriendo = obtener_proximo_segun_fifo(lista_esis_listos);
-	}else if(configuracion.algoritmo == SJFsD){
-		esi_corriendo = obtener_proximo_segun_sjf(lista_esis_listos);
-	}else if(configuracion.algoritmo == SJFcD){
-		esi_corriendo = obtener_proximo_segun_sjf(lista_esis_listos);
-	}else{
-		esi_corriendo = obtener_proximo_segun_hrrn(lista_esis_listos);
+	pthread_mutex_lock(&mutex_flag_pausa_despausa);
+	if(flag==0){
+		if(configuracion.algoritmo == FIFO){
+			esi_corriendo = obtener_proximo_segun_fifo(lista_esis_listos);
+		}else if(configuracion.algoritmo == SJFsD){
+			esi_corriendo = obtener_proximo_segun_sjf(lista_esis_listos);
+		}else if(configuracion.algoritmo == SJFcD){
+			esi_corriendo = obtener_proximo_segun_sjf(lista_esis_listos);
+		}else{
+			esi_corriendo = obtener_proximo_segun_hrrn(lista_esis_listos);
+		}
+
 	}
+
+	pthread_mutex_unlock(&mutex_flag_pausa_despausa);
+
 
 
 	/*ACA SE DE LE DEBE MANDAR AL ESI_CORRIENDO POR SOCKETS QUE MANDE A EJECUTAR
@@ -63,17 +72,42 @@ void bloquear_esi(char* clave){
 	}else{ //Existe la clave, agrego el esi a la lista de bloq
 
 		t_list *lista_esis_bloq_esta_clave = dictionary_remove(dic_esis_bloqueados,clave);
-
 		list_add(lista_esis_bloq_esta_clave, esi_corriendo);
-
 		dictionary_put(dic_esis_bloqueados,clave,lista_esis_bloq_esta_clave);
 
 	}
 
 	obtener_nuevo_esi_a_correr();
+}
+
+int id;
+void bloquear_esi_por_consola(char* clave, int id_esi){
+
+	id = id_esi;
+
+	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
+	//No existe la clave, agrego esta nueva linea
+		if(!dictionary_has_key(dic_esis_bloqueados, clave)){
+			dictionary_put(dic_esis_bloqueados, clave, esi_afectado);
+
+		}else{ //Existe la clave, agrego el esi a la lista de bloq
+
+			t_list *lista_esis_bloq_esta_clave = dictionary_remove(dic_esis_bloqueados,clave);
+			list_add(lista_esis_bloq_esta_clave, esi_afectado);
+			dictionary_put(dic_esis_bloqueados,clave,lista_esis_bloq_esta_clave);
+
+		}
+
+}
 
 
+t_esi buscar_esi_por_id(int id_esi){
+	t_esi esi= list_find(lista_esis_listos, esi_con_este_id);
+	return esi;
+}
 
+bool esi_con_este_id(void* esi){
+	return ((t_esi*)esi)->id == id;
 }
 
 void se_desbloqueo_un_recurso(char* clave){

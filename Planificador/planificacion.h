@@ -13,10 +13,12 @@
 #include <commons/log.h>
 #include "config_planificador.h"
 #include "algoritmos_planificacion.h"
+#include "sincronizacion.h"
 #include "selector.h"
-#include "consola.h"
 #include "main.h"
 
+
+int flag;
 
 /* Nombre: obtener_nuevo_esi_a_correr();
  * Desc: obtiene el proximo esi a correr a partir del algoritmo elegido
@@ -29,6 +31,13 @@ void obtener_nuevo_esi_a_correr();
  * Agarro al esi que esta ejecutando y lo agrego al diccionario de bloqueados
  */
 void bloquear_esi(char* clave);
+
+/* Nombre: bloquear_esi_por_consola(char* clave, int id_esi)
+ * Desc: por consola me bloquean un esi para un recurso
+ * busco al esi con ese id dentro de la lista de listos
+ * lo meto en el diccionario de esis bloqueados por clave
+ */
+void bloquear_esi_por_consola(char* clave, int id_esi);
 
 
 /* Nombre: finalizar_esi()
@@ -48,5 +57,10 @@ void se_desbloqueo_un_recurso(char* clave);
  * Desc: Agrego un nuevo esi a la lista de listos
  */
 void nuevo_esi(t_esi* esi);
+
+
+t_esi buscar_esi_por_id(int id_esi);
+
+bool esi_con_este_id(void* esi);
 
 #endif /* PLANIFICACION_H_ */

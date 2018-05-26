@@ -10,8 +10,10 @@
 #define ALGORITMOS_PLANIFICACION_H_
 
 #include <commons/collections/list.h>
+#include "config_planificador.h"
 #include <stdlib.h>
 
+extern config configuracion;
 
 typedef enum {FIFO, SJFsD, SJFcD, HRRN } tipo_algoritmo_planif ;
 

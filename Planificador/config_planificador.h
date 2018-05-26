@@ -26,6 +26,7 @@ typedef struct{
 	char *ipCoord;
 	char *portCoord;
 	char *claves_bloqueadas;
+	int alfa;
 } config;
 
 extern t_log *logger;
