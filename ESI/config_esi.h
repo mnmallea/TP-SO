@@ -23,6 +23,7 @@ typedef struct{
 extern config configuracion;
 extern t_log *logger;
 
+
 config configurar(char *ruta);
 void limpiar_configuracion(void);
 
