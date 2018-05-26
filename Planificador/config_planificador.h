@@ -31,5 +31,6 @@ typedef struct{
 extern t_log *logger;
 
 config configurar(char *ruta);
+void limpiar_configuracion();
 
 #endif /* CONFIG_PLANIFICADOR_H_ */

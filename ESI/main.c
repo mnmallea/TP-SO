@@ -1,16 +1,14 @@
-
 #include "main.h"
 
 int main(int argc, char* argv[]){
-
 	FILE * fp;
 	char * line = NULL;
+
 	size_t len = 0;
 	ssize_t read;
 	t_operacion oper;
 
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
-
 
 	if(argc != CANT_ARGUMENTOS_MAIN){
 			log_error(logger, "Cantidad incorrecta de parametros");
@@ -90,24 +88,21 @@ int main(int argc, char* argv[]){
 	    }
 	    recibir_confirmacion(socketPlan);
 	}
-
+  
 /*
-	        	 destruir_operacion(parsed);
+  destruir_operacion(parsed);
 	        	//hace falta el wait?
 	        	//o con un recv(socketCord) para el ok o nook ya queda esperando?
- 	 	 	 	if(recv
+  */
 
- */
-
-	log_info(logger, "No quedan mas lineas en el archivo");
+log_info(logger, "No quedan mas lineas en el archivo");
 	//enviar respuesta al planificador , no habia mas lineas(?)
 
 	fclose(fp);
 	if (line)
 		free(line);
 
-
-	log_destroy(logger);
+  log_destroy(logger);
 	limpiar_configuracion();
 	exit(1);
 }

@@ -41,3 +41,9 @@ config configurar(char *ruta){
 	config_destroy(config_dictionary);
 	return configuracion;
 }
+
+void limpiar_configuracion(void){
+	/*
+	 * Polimorfismo(?
+	 */
+}
