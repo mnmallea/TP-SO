@@ -22,8 +22,8 @@ void configure_logger();
 int crear_socket_cliente(char *ip, char *puerto);
 int crear_socket_escucha(char *puerto_escucha, int max_comm);
 void esperar_mensaje(int my_socket); 
-int recibir_mensaje(int my_socket)
-void mandar_mensaje(int my_socket);
+int recibir_mensaje(int my_socket);
+void mandar_mensaje(int my_socket,int id);
 void recibir_confirmacion (int my_socket); //wait
 void mandar_confirmacion(int my_socket);   //signal
 void mandar_error(int my_socket);

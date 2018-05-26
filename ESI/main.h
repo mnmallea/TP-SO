@@ -10,6 +10,7 @@
 
 #include <commons/log.h>
 #include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/serializador.h"
 #include "config_esi.h"
 //#include "../syntax-commons/protocol.h"
 //#include "../syntax-commons/conexiones.h"
@@ -21,13 +22,13 @@
 
 t_log* logger;
 
-typedef struct //no usarse
+paquete *pkg_esi;
+
+typedef struct
 {
 int keyword;
-char* clave[40];
-size_t sizeClave;
-char* valor[40];
-int sizeValor;
+char *clave[40];
+char *valor[40];
 }t_operacion;
 
 config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla

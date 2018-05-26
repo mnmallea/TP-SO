@@ -80,7 +80,8 @@ int crear_socket_escucha(char *puerto_escucha, int max_comm) {
 
 int recibir_mensaje(int my_socket){
     int id;
-    int res_recv= recv(my_socket,&id,sizeof(id),MSG_WAITALL);
+    if(recv(my_socket,&id,sizeof(id),MSG_WAITALL)<=0)
+    	  salir_con_error(my_socket,"no se pudo recibir confirmación");
     if(id != id_verificador){ //chequeo por contenido
         return 0;
     }
@@ -97,8 +98,8 @@ void recibir_confirmacion (int my_socket){ //wait confirmacion
     //close(my_socket);
 }
 
-void mandar_mensaje(int my_socket){
-    int id=id_verificador;
+void mandar_mensaje(int my_socket,int id){
+    //int id=id_verificador;
     int res_send = send(my_socket, &id, sizeof(id), 0);
     if(res_send != sizeof(id)){
         salir_con_error(my_socket,"No se pudo mandar mensaje");
@@ -122,6 +123,7 @@ void mandar_error(int my_socket) {
 	}
     log_error(logger, "Eror enviado");
     //close(my_socket);
+}
 
  void safe_send(int my_socket, void* msg, int msg_len) {
 	int res_send = send(my_socket, msg, msg_len, 0);
@@ -146,13 +148,7 @@ void* safe_recv(int my_socket, int msg_len) {
 	return buffer;
 }
 
-void eviarPaquete(int my_socket, void* element){
-    int res_send = send(my_socket, &element, sizeof(element),MSG_NOSIGNAL);
-    if(res_send != sizeof(element)){
-        salir_con_error(my_socket,"No se pudo mandar mensaje");
-    }
-    //log_info(logger, "Mensaje enviado");
-}
+
 
 void salir_con_error(int my_socket, char* error_msg){
   log_error(logger, error_msg);
@@ -162,8 +158,8 @@ void salir_con_error(int my_socket, char* error_msg){
   exit_gracefully(1);
 }
 
-
-void exit_gracefully(int return_nr) {
+void exit_gracefully(int return_nr){
   log_destroy(logger);
   exit(return_nr);
-}
+};
+

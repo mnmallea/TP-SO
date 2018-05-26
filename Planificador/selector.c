@@ -40,10 +40,10 @@ void *listener(void *ptr){
 						n_esi=crear_nodo_esi(newfd);
 						n_esi->id=id;
 						list_add(lista_esis_listos,n_esi);
+						mandar_mensaje(newfd,id);
 						id++;
 						log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
 						//mandar_confirmacion(newfd);
-
 					}
 				}
 				else {
