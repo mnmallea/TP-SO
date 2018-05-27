@@ -34,7 +34,7 @@ config configurar(char *ruta){
 		configuracion.ipCoord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
 		configuracion.portCoord = string_duplicate(config_get_string_value(config_dictionary, "PORT_COORD"));
 		configuracion.claves_bloqueadas = string_duplicate(config_get_string_value(config_dictionary, "CLAVES_BLOQUEADAS"));
-		configuracion.alfa = (config_get_int_value(config_get_string_value(config_dictionary, "ALFA")))/100;
+		configuracion.alfa = (config_get_int_value(config_dictionary, "ALFA"))/100;
 	}
 	else{
 		config_destroy(config_dictionary);

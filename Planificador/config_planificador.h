@@ -14,7 +14,7 @@
 #include <commons/log.h>
 #include <commons/string.h>
 #include "error.h"
-#include "algoritmos_planificacion.h"
+
 
 
 #define PORT_MAX_STRING_LENGTH 5

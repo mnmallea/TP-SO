@@ -9,6 +9,7 @@
 #include <stdbool.h>
 
 
+
 bool menor_estimacion(void* esi1, void *esi2){
 	return ((t_esi*)esi1)->estim_actual <= ((t_esi*)esi2)->estim_actual ;
 
@@ -26,6 +27,7 @@ void matar_nodo_esi(void* esi){
 t_esi *obtener_proximo_segun_fifo(t_list *lista_esis){
 
 	t_esi *esi_elegido = list_remove(lista_esis, 0);
+	log_debug(logger, "Esi elegido: %d \n", esi_elegido->id);
 	return esi_elegido;
 
 }
@@ -53,6 +55,7 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
 	list_destroy(lista_nueva);
 
+	log_debug(logger, "Esi elegido: %d \n", esi_elegido->id);
 	return esi_elegido;
 
 }
@@ -81,8 +84,9 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis){
 	t_esi *esi_elegido = list_remove(lista_nueva, 0);
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
 	list_destroy(lista_nueva);
-
+	log_debug(logger, "Esi elegido: %d \n", esi_elegido->id);
 	return esi_elegido;
 
 }
+
 

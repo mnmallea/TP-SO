@@ -38,7 +38,7 @@ void obtener_nuevo_esi_a_correr() {
 	}
 
 	pthread_mutex_unlock(&mutex_flag_pausa_despausa);
-
+	log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 
 
 	/*ACA SE DE LE DEBE MANDAR AL ESI_CORRIENDO POR SOCKETS QUE MANDE A EJECUTAR
@@ -52,14 +52,17 @@ void obtener_nuevo_esi_a_correr() {
 void nuevo_esi(t_esi* esi){
 	list_add(lista_esis_listos, esi);
 
+	log_debug(logger, "Llego/se desbloqueo un nuevo esi: %d \n", esi>id);
 	if(configuracion.algoritmo == SJFcD){
 			obtener_nuevo_esi_a_correr();
 		}
+
 
 }
 
 void finalizar_esi(){
 	list_add(lista_esis_finalizados, esi_corriendo);
+	log_debug(logger, "Termino un esi: %d \n", esi->id);
 	obtener_nuevo_esi_a_correr();
 }
 
@@ -77,6 +80,7 @@ void bloquear_esi(char* clave){
 
 	}
 
+	log_debug(logger, "Se bloqueo el esi: %d para la clave: %s \n", esi_corriendo->id, clave);
 	obtener_nuevo_esi_a_correr();
 }
 
@@ -97,6 +101,7 @@ void bloquear_esi_por_consola(char* clave, int id_esi){
 			dictionary_put(dic_esis_bloqueados,clave,lista_esis_bloq_esta_clave);
 
 		}
+	log_debug(logger, "Se bloqueo por consola el esi: %d para la clave: %s \n", esi_corriendo->id, clave);
 
 }
 
@@ -130,7 +135,6 @@ void se_desbloqueo_un_recurso(char* clave){
 	nuevo_esi(esi_desbloq);
 
 }
-
 
 
 

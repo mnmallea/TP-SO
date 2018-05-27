@@ -8,7 +8,6 @@
 #ifndef CONSOLA_H_
 #define CONSOLA_H_
 
-#include "algoritmos_planificacion.h"
 #include "sincronizacion.h"
 #include "planificacion.h"
 #include <stdio.h>
