@@ -63,14 +63,14 @@ void *menu(void *ptr){
 			case 3:
 				printf("Ingreso desbloquear un proceso, ingrese <clave>");
 
-				scanf("%s", &clave);
+				scanf("%s", clave);
 				desbloquear(clave);
 
 				break;
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
 
-				scanf("%s", &recurso);
+				scanf("%s", recurso);
 				listar(recurso);
 				break;
 			case 5:
