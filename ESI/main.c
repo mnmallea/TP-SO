@@ -23,12 +23,12 @@ int main(int argc, char* argv[]){
 		    }
 
 	configuracion = configurar(argv[2]);
+	int handshake_msg = ESI;
 
-	int socketCord = crear_socket_cliente(configuracion.ipCoord,configuracion.portCoord);
+	int socketCord = conectarse_a_coordinador(configuracion.ipPlan, configuracion.portCoord, handshake_msg);
 	int socketPlan = crear_socket_cliente(configuracion.ipPlan,configuracion.portPlan);
 
-	int handshake_msg = ESI;
-	safe_send(socketCord, &handshake_msg, sizeof(handshake_msg));
+//	safe_send(socketCord, &handshake_msg, sizeof(handshake_msg));
 	int *esi_id=safe_recv(socketPlan, sizeof(int)); //hay q hacer free
 	log_debug(logger, "el id del esi es: %d", *esi_id);
 	//int esi_id=recibir_mensaje(socketPlan);

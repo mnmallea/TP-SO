@@ -159,3 +159,141 @@
 [INFO] 10:12:20:528 ESI/(6884:6884): Socket conectado
 [INFO] 10:12:24:392 ESI/(6884:6884): confirmación enviada
 [ERROR] 10:13:31:789 ESI/(6884:6884): no se pudo recibir confirmación
+[ERROR] 15:19:52:296 ESI/(7610:7610): Cantidad incorrecta de parametros
+[DEBUG] 15:20:27:979 ESI/(7719:7719): Configurando ESI
+[ERROR] 15:20:27:980 ESI/(7719:7719): No se pudo realizar la configuracion
+[DEBUG] 15:20:47:328 ESI/(7726:7726): Configurando ESI
+[INFO] 15:20:47:329 ESI/(7726:7726): Socket conectado
+[INFO] 15:20:47:329 ESI/(7726:7726): Socket conectado
+[INFO] 15:20:47:329 ESI/(7726:7726): Mensaje enviado
+[ERROR] 15:21:39:35 ESI/(7726:7726): Success
+[DEBUG] 15:21:54:236 ESI/(7754:7754): Configurando ESI
+[INFO] 15:21:54:237 ESI/(7754:7754): Socket conectado
+[INFO] 15:21:54:237 ESI/(7754:7754): Socket conectado
+[INFO] 15:21:54:237 ESI/(7754:7754): Mensaje enviado
+[ERROR] 15:22:21:784 ESI/(7754:7754): Success
+[DEBUG] 15:32:41:302 ESI/(8358:8358): Configurando ESI
+[INFO] 15:32:41:303 ESI/(8358:8358): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:32:41:303 ESI/(8358:8358): Socket conectado
+[INFO] 15:32:41:303 ESI/(8358:8358): Mensaje enviado
+[DEBUG] 15:33:46:796 ESI/(8384:8384): Configurando ESI
+[INFO] 15:33:46:796 ESI/(8384:8384): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[ERROR] 15:33:46:796 ESI/(8384:8384): Error al conectar el socket
+[DEBUG] 15:34:02:909 ESI/(8393:8393): Configurando ESI
+[ERROR] 15:34:02:909 ESI/(8393:8393): No se pudo realizar la configuracion
+[DEBUG] 15:34:06:479 ESI/(8394:8394): Configurando ESI
+[ERROR] 15:34:06:480 ESI/(8394:8394): No se pudo realizar la configuracion
+[DEBUG] 15:34:08:272 ESI/(8395:8395): Configurando ESI
+[ERROR] 15:34:08:272 ESI/(8395:8395): No se pudo realizar la configuracion
+[DEBUG] 15:34:08:945 ESI/(8396:8396): Configurando ESI
+[ERROR] 15:34:08:945 ESI/(8396:8396): No se pudo realizar la configuracion
+[DEBUG] 15:34:09:361 ESI/(8397:8397): Configurando ESI
+[ERROR] 15:34:09:361 ESI/(8397:8397): No se pudo realizar la configuracion
+[DEBUG] 15:34:09:601 ESI/(8398:8398): Configurando ESI
+[ERROR] 15:34:09:602 ESI/(8398:8398): No se pudo realizar la configuracion
+[DEBUG] 15:34:22:833 ESI/(8410:8410): Configurando ESI
+[ERROR] 15:34:22:833 ESI/(8410:8410): No se pudo realizar la configuracion
+[DEBUG] 15:34:49:610 ESI/(8425:8425): Configurando ESI
+[INFO] 15:34:49:610 ESI/(8425:8425): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:34:49:610 ESI/(8425:8425): Socket conectado
+[INFO] 15:34:49:610 ESI/(8425:8425): Mensaje enviado
+[DEBUG] 15:38:52:996 ESI/(8628:8628): Configurando ESI
+[INFO] 15:38:52:996 ESI/(8628:8628): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[ERROR] 15:38:52:996 ESI/(8628:8628): Error al conectar el socket
+[DEBUG] 15:39:01:681 ESI/(8632:8632): Configurando ESI
+[INFO] 15:39:01:682 ESI/(8632:8632): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:39:01:682 ESI/(8632:8632): Socket conectado
+[INFO] 15:39:01:682 ESI/(8632:8632): Mensaje enviado
+[ERROR] 15:45:43:37 ESI/(8632:8632): Success
+[DEBUG] 15:45:50:764 ESI/(8999:8999): Configurando ESI
+[INFO] 15:45:50:764 ESI/(8999:8999): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:45:50:764 ESI/(8999:8999): Socket conectado
+[INFO] 15:45:50:764 ESI/(8999:8999): Mensaje enviado
+[INFO] 15:45:50:765 ESI/(8999:8999): Mensaje de 4 bytes recibido
+[INFO] 15:45:50:765 ESI/(8999:8999): Se ha conectado al coordinador correctamente!!
+[INFO] 15:45:50:765 ESI/(8999:8999): Socket conectado
+[INFO] 15:45:50:765 ESI/(8999:8999): Mensaje de 4 bytes recibido
+[DEBUG] 15:45:50:765 ESI/(8999:8999): el id del esi es: 1
+[INFO] 15:45:50:765 ESI/(8999:8999): Mensaje enviado
+[DEBUG] 15:46:05:734 ESI/(9019:9019): Configurando ESI
+[INFO] 15:46:05:734 ESI/(9019:9019): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:46:05:735 ESI/(9019:9019): Socket conectado
+[INFO] 15:46:05:735 ESI/(9019:9019): Mensaje enviado
+[INFO] 15:46:05:735 ESI/(9019:9019): Mensaje de 4 bytes recibido
+[INFO] 15:46:05:735 ESI/(9019:9019): Se ha conectado al coordinador correctamente!!
+[INFO] 15:46:05:735 ESI/(9019:9019): Socket conectado
+[INFO] 15:46:05:735 ESI/(9019:9019): Mensaje de 4 bytes recibido
+[DEBUG] 15:46:05:735 ESI/(9019:9019): el id del esi es: 2
+[INFO] 15:46:05:736 ESI/(9019:9019): Mensaje enviado
+[DEBUG] 15:46:13:19 ESI/(9023:9023): Configurando ESI
+[INFO] 15:46:13:19 ESI/(9023:9023): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:46:13:20 ESI/(9023:9023): Socket conectado
+[INFO] 15:46:13:20 ESI/(9023:9023): Mensaje enviado
+[INFO] 15:46:13:20 ESI/(9023:9023): Mensaje de 4 bytes recibido
+[INFO] 15:46:13:20 ESI/(9023:9023): Se ha conectado al coordinador correctamente!!
+[INFO] 15:46:13:20 ESI/(9023:9023): Socket conectado
+[INFO] 15:46:13:21 ESI/(9023:9023): Mensaje de 4 bytes recibido
+[DEBUG] 15:46:13:21 ESI/(9023:9023): el id del esi es: 3
+[INFO] 15:46:13:21 ESI/(9023:9023): Mensaje enviado
+[DEBUG] 15:46:31:400 ESI/(9030:9030): Configurando ESI
+[INFO] 15:46:31:400 ESI/(9030:9030): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:46:31:401 ESI/(9030:9030): Socket conectado
+[INFO] 15:46:31:401 ESI/(9030:9030): Mensaje enviado
+[INFO] 15:46:31:401 ESI/(9030:9030): Mensaje de 4 bytes recibido
+[INFO] 15:46:31:401 ESI/(9030:9030): Se ha conectado al coordinador correctamente!!
+[INFO] 15:46:31:401 ESI/(9030:9030): Socket conectado
+[INFO] 15:46:31:401 ESI/(9030:9030): Mensaje de 4 bytes recibido
+[DEBUG] 15:46:31:401 ESI/(9030:9030): el id del esi es: 4
+[INFO] 15:46:31:401 ESI/(9030:9030): Mensaje enviado
+[DEBUG] 15:46:33:650 ESI/(9032:9032): Configurando ESI
+[INFO] 15:46:33:650 ESI/(9032:9032): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:46:33:650 ESI/(9032:9032): Socket conectado
+[INFO] 15:46:33:650 ESI/(9032:9032): Mensaje enviado
+[INFO] 15:46:33:651 ESI/(9032:9032): Mensaje de 4 bytes recibido
+[INFO] 15:46:33:651 ESI/(9032:9032): Se ha conectado al coordinador correctamente!!
+[INFO] 15:46:33:651 ESI/(9032:9032): Socket conectado
+[INFO] 15:46:33:651 ESI/(9032:9032): Mensaje de 4 bytes recibido
+[DEBUG] 15:46:33:651 ESI/(9032:9032): el id del esi es: 5
+[INFO] 15:46:33:651 ESI/(9032:9032): Mensaje enviado
+[DEBUG] 15:46:35:219 ESI/(9034:9034): Configurando ESI
+[INFO] 15:46:35:219 ESI/(9034:9034): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:46:35:219 ESI/(9034:9034): Socket conectado
+[INFO] 15:46:35:220 ESI/(9034:9034): Mensaje enviado
+[INFO] 15:46:35:220 ESI/(9034:9034): Mensaje de 4 bytes recibido
+[INFO] 15:46:35:220 ESI/(9034:9034): Se ha conectado al coordinador correctamente!!
+[INFO] 15:46:35:220 ESI/(9034:9034): Socket conectado
+[INFO] 15:46:35:220 ESI/(9034:9034): Mensaje de 4 bytes recibido
+[DEBUG] 15:46:35:220 ESI/(9034:9034): el id del esi es: 6
+[INFO] 15:46:35:220 ESI/(9034:9034): Mensaje enviado
+[DEBUG] 15:46:36:772 ESI/(9037:9037): Configurando ESI
+[INFO] 15:46:36:772 ESI/(9037:9037): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:46:36:773 ESI/(9037:9037): Socket conectado
+[INFO] 15:46:36:773 ESI/(9037:9037): Mensaje enviado
+[INFO] 15:46:36:773 ESI/(9037:9037): Mensaje de 4 bytes recibido
+[INFO] 15:46:36:773 ESI/(9037:9037): Se ha conectado al coordinador correctamente!!
+[INFO] 15:46:36:773 ESI/(9037:9037): Socket conectado
+[INFO] 15:46:36:774 ESI/(9037:9037): Mensaje de 4 bytes recibido
+[DEBUG] 15:46:36:774 ESI/(9037:9037): el id del esi es: 7
+[INFO] 15:46:36:774 ESI/(9037:9037): Mensaje enviado
+[DEBUG] 15:46:40:126 ESI/(9039:9039): Configurando ESI
+[INFO] 15:46:40:127 ESI/(9039:9039): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:46:40:127 ESI/(9039:9039): Socket conectado
+[INFO] 15:46:40:127 ESI/(9039:9039): Mensaje enviado
+[INFO] 15:46:40:127 ESI/(9039:9039): Mensaje de 4 bytes recibido
+[INFO] 15:46:40:127 ESI/(9039:9039): Se ha conectado al coordinador correctamente!!
+[INFO] 15:46:40:128 ESI/(9039:9039): Socket conectado
+[INFO] 15:46:40:128 ESI/(9039:9039): Mensaje de 4 bytes recibido
+[DEBUG] 15:46:40:128 ESI/(9039:9039): el id del esi es: 8
+[INFO] 15:46:40:128 ESI/(9039:9039): Mensaje enviado
+[ERROR] 15:48:24:481 ESI/(9039:9039): no se pudo recibir confirmación
+[DEBUG] 15:50:23:236 ESI/(9133:9133): Configurando ESI
+[INFO] 15:50:23:237 ESI/(9133:9133): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8080
+[INFO] 15:50:23:237 ESI/(9133:9133): Socket conectado
+[INFO] 15:50:23:237 ESI/(9133:9133): Mensaje enviado
+[INFO] 15:50:23:237 ESI/(9133:9133): Mensaje de 4 bytes recibido
+[INFO] 15:50:23:237 ESI/(9133:9133): Se ha conectado al coordinador correctamente!!
+[INFO] 15:50:23:238 ESI/(9133:9133): Socket conectado
+[INFO] 15:50:23:238 ESI/(9133:9133): Mensaje de 4 bytes recibido
+[DEBUG] 15:50:23:238 ESI/(9133:9133): el id del esi es: 1
+[INFO] 15:50:23:238 ESI/(9133:9133): Mensaje enviado
+[ERROR] 15:50:34:387 ESI/(9133:9133): no se pudo recibir confirmación

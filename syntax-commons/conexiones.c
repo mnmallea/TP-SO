@@ -7,7 +7,14 @@
 
 #include "conexiones.h"
 
-void conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente) {
+
+/*
+ * Sirve para conectarse al coordinador y realizar un handshake.
+ * En el remitente debe ir quien es el que lo llama.
+ * Si falla, finaliza el proceso.
+ * Retorna el socket por el que se conecto
+ */
+int conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente) {
 	log_info(logger, "Conectandose al Coordinador, IP: %s\tPuerto: %s", ip, puerto);
 	int socket_coord = crear_socket_cliente(ip, puerto);
 
@@ -26,4 +33,5 @@ void conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente) {
 		exit(1);
 	}
 	free(respuesta);
+	return socket_coord;
 }

@@ -48,3 +48,77 @@
 [INFO] 10:04:26:740 Planificador/(6512:6512): Mensaje de 4 bytes recibido
 [INFO] 10:04:26:740 Planificador/(6512:6512): Se ha conectado al coordinador correctamente!!
 [INFO] 10:04:26:740 Planificador/(6512:6512): Escuchando en puerto: 8001
+[DEBUG] 15:18:17:897 Planificador/(7528:7528): Configurando coordinador
+[DEBUG] 15:18:17:921 Planificador/(7528:7528): Planificador correctamente configurado
+[INFO] 15:18:17:927 Planificador/(7528:7531): Escuchando en puerto: 8001
+[TRACE] 15:20:47:329 Planificador/(7528:7531): Nueva conexion por el socket 5
+
+[INFO] 15:20:47:329 Planificador/(7528:7531): Cantidad de elementos en la lista: 1
+[DEBUG] 15:21:50:618 Planificador/(7750:7750): Configurando coordinador
+[DEBUG] 15:21:50:618 Planificador/(7750:7750): Planificador correctamente configurado
+[INFO] 15:21:50:619 Planificador/(7750:7751): Escuchando en puerto: 8001
+[TRACE] 15:21:54:237 Planificador/(7750:7751): Nueva conexion por el socket 5
+
+[INFO] 15:21:54:237 Planificador/(7750:7751): Cantidad de elementos en la lista: 1
+[DEBUG] 15:32:35:291 Planificador/(8353:8353): Configurando coordinador
+[DEBUG] 15:32:35:291 Planificador/(8353:8353): Planificador correctamente configurado
+[INFO] 15:32:35:293 Planificador/(8353:8354): Escuchando en puerto: 8001
+[DEBUG] 15:34:21:224 Planificador/(8404:8404): Configurando coordinador
+[DEBUG] 15:34:21:224 Planificador/(8404:8404): Planificador correctamente configurado
+[INFO] 15:34:21:229 Planificador/(8404:8406): Escuchando en puerto: 8001
+[DEBUG] 15:45:48:114 Planificador/(8993:8993): Configurando coordinador
+[DEBUG] 15:45:48:114 Planificador/(8993:8993): Planificador correctamente configurado
+[INFO] 15:45:48:119 Planificador/(8993:8995): Escuchando en puerto: 8001
+[TRACE] 15:45:50:765 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:45:50:765 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:45:50:765 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[ERROR] 15:46:04:446 Planificador/(8993:8995): La conexion del socket 5 finalizo inesperadamente
+
+[TRACE] 15:46:05:735 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:46:05:735 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:46:05:735 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[ERROR] 15:46:12:171 Planificador/(8993:8995): La conexion del socket 5 finalizo inesperadamente
+
+[TRACE] 15:46:13:20 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:46:13:20 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:46:13:20 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[ERROR] 15:46:30:921 Planificador/(8993:8995): La conexion del socket 5 finalizo inesperadamente
+
+[TRACE] 15:46:31:401 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:46:31:401 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:46:31:401 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[ERROR] 15:46:33:42 Planificador/(8993:8995): La conexion del socket 5 finalizo inesperadamente
+
+[TRACE] 15:46:33:651 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:46:33:651 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:46:33:651 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[ERROR] 15:46:34:547 Planificador/(8993:8995): La conexion del socket 5 finalizo inesperadamente
+
+[TRACE] 15:46:35:220 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:46:35:220 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:46:35:220 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[ERROR] 15:46:35:940 Planificador/(8993:8995): La conexion del socket 5 finalizo inesperadamente
+
+[TRACE] 15:46:36:773 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:46:36:773 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:46:36:773 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[ERROR] 15:46:38:518 Planificador/(8993:8995): La conexion del socket 5 finalizo inesperadamente
+
+[TRACE] 15:46:40:127 Planificador/(8993:8995): Nueva conexion por el socket 5
+
+[INFO] 15:46:40:128 Planificador/(8993:8995): Mensaje enviado
+[INFO] 15:46:40:128 Planificador/(8993:8995): Cantidad de elementos en la lista: 1
+[DEBUG] 15:50:20:830 Planificador/(9127:9127): Configurando coordinador
+[DEBUG] 15:50:20:830 Planificador/(9127:9127): Planificador correctamente configurado
+[INFO] 15:50:20:835 Planificador/(9127:9129): Escuchando en puerto: 8001
+[TRACE] 15:50:23:238 Planificador/(9127:9129): Nueva conexion por el socket 5
+
+[INFO] 15:50:23:238 Planificador/(9127:9129): Mensaje enviado
+[INFO] 15:50:23:238 Planificador/(9127:9129): Cantidad de elementos en la lista: 1
