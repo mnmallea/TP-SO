@@ -6,7 +6,7 @@ int main(int argc, char* argv[]){
 
 	size_t len = 0;
 	ssize_t read;
-	t_operacion oper;
+	t_operacion *n_esi_operacion;
 
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 
@@ -24,21 +24,26 @@ int main(int argc, char* argv[]){
 
 	configuracion = configurar(argv[2]);
 
-	int socketCord= crear_socket_cliente(configuracion.portCord,configuracion.portCord);
-	int socketPlan= crear_socket_cliente(configuracion.ipPlan,configuracion.portPlan);
+	int socketCord = crear_socket_cliente(configuracion.ipCoord,configuracion.portCoord);
+	int socketPlan = crear_socket_cliente(configuracion.ipPlan,configuracion.portPlan);
 
-	mandar_confirmacion(socketPlan);
-	int id=recibir_mensaje(socketPlan);
-	mandar_mensaje(socketCord,id);
-	recibir_confirmacion(socketPlan);
+	int handshake_msg = ESI;
+	safe_send(socketCord, &handshake_msg, sizeof(handshake_msg));
+	int *esi_id=safe_recv(socketPlan, sizeof(int)); //hay q hacer free
+	log_debug(logger, "el id del esi es: %d", *esi_id);
+	//int esi_id=recibir_mensaje(socketPlan);
+	safe_send(socketCord, esi_id, sizeof(int));
+
+
+	recibir_confirmacion(socketPlan); //signal para ejecutar
 
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
 
 		t_esi_operacion parsed = parse(line);
-		t_operacion *n_esi_operacion;
 
-		if((n_esi_operacion=malloc(sizeof(t_operacion)))==NULL){
+
+		if((n_esi_operacion=malloc(sizeof(parsed)))==NULL){
 			log_error(logger, "No se puede alocar memoria");
 				            	//enviar respuesta al planificador, error de linea(?)
 			exit_gracefully(1);
@@ -78,14 +83,14 @@ int main(int argc, char* argv[]){
 	    	}
 
 	    	agregar(pkg_esi,n_esi_operacion,sizeof(n_operacion));
-       		eviarPaquete(socketCord,pkg_esi);
+       		//eviarPaquete(socketCord,pkg_esi);
 
-
+/*
 	    	if(recibir_mensaje(socketCord)==1)
 	    		mandar_confirmacion(socketPlan);
 	    	else
 	    		mandar_error(socketPlan);
-
+*/
 	    	destruirPaquete(pkg_esi);
 	    	destruir_operacion(parsed);
 	    }
@@ -110,6 +115,8 @@ log_info(logger, "No quedan mas lineas en el archivo");
 	fclose(fp);
 	if (line)
 		free(line);
+
+	free(esi_id);
 
   log_destroy(logger);
 	limpiar_configuracion();

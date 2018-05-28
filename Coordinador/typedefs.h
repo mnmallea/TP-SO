@@ -34,5 +34,20 @@ typedef struct{
 	int retardo;
 } config;
 
+typedef struct //para recibir al esi
+{
+int keyword;
+char *clave;
+char *valor;
+}t_operacion;
+
+typedef struct //para guardar al esi
+{
+int *id;
+int socket;
+t_operacion *valores;
+}t_esi;
+
+
 
 #endif /* TYPEDEFS_H_ */

@@ -18,10 +18,13 @@
 #include "algoritmos_distribucion.h"
 #include "config_coordinador.h"
 #include "sincronizacion.h"
+#include "../syntax-commons/serializador.h"
+#include "../syntax-commons/deserializador.h"
 
 extern t_log* logger;
 extern t_list *lista_instancias_disponibles;
 extern config configuracion;
+extern t_list *lista_esis_disponibles;
 
 unsigned cant_instancias;
 

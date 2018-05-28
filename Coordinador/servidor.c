@@ -39,8 +39,8 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 
 	log_debug(logger, "socketFD = %d", socket);
 	t_identidad* buffer = safe_recv(socket, sizeof(t_identidad));
-	int handshake_msg = COORDINADOR;
-	safe_send(socket, &handshake_msg, sizeof(handshake_msg));
+	//int handshake_msg = COORDINADOR; //hace falta? todos los que se conectan al coordinador ya saben de antemano a quien se conectan
+	//safe_send(socket, &handshake_msg, sizeof(handshake_msg));
 	switch (*buffer) {
 	case ESI:
 		log_info(logger, "Se ha conectado un ESI");
@@ -80,4 +80,21 @@ void atender_instancia(int sockfd) {
 
 void atender_esi(int socket){
 
+	t_esi *n_esi=malloc(sizeof(t_esi));
+	n_esi->socket=socket;
+	n_esi->id=safe_recv(socket, sizeof(int));
+	log_debug(logger,"Esi id: %d agregada a la lista", *(n_esi->id));
+
+	//n_esi->valores=malloc(0); //hay que acordarse de hacer free a los valores cuando termine de atender al ESI
+	pthread_mutex_lock(&mutex_esi_disponibles);
+	list_add(lista_esis_disponibles, n_esi);
+	log_debug(logger,"Esi id:%d agregada a la lista", *(n_esi->id));
+	pthread_mutex_unlock(&mutex_esi_disponibles);
+
+/* para el hilo
+	t_operacion *valores_esi;
+	recibirPaqueteVariable(socket, valores_esi);
+	n_esi->valores=valores_esi;
+	para el free de n_esi primero hay hacer free a los punteros de valores e id
+*/
 }

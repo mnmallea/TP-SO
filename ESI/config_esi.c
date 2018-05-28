@@ -22,8 +22,8 @@ config configurar(char *ruta){
 			config_has_property(config_dictionary,"PUERTO_COORD") &&
 			config_has_property(config_dictionary,"IP_PLANIF") &&
 			config_has_property(config_dictionary,"PUERTO_PLANIF")){
-		configuracion.ipCord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
-		configuracion.portCord = string_duplicate(config_get_string_value(config_dictionary, "PUERTO_COORD"));
+		configuracion.ipCoord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
+		configuracion.portCoord = string_duplicate(config_get_string_value(config_dictionary, "PUERTO_COORD"));
 		configuracion.ipPlan = string_duplicate(config_get_string_value(config_dictionary, "IP_PLANIF"));
 		configuracion.portPlan = string_duplicate(config_get_string_value(config_dictionary, "PUERTO_PLANIF"));
 	}
@@ -40,8 +40,8 @@ config configurar(char *ruta){
 }
 
 void limpiar_configuracion(){
-	free(configuracion.ipCord);
+	free(configuracion.ipCoord);
 	free(configuracion.ipPlan);
-	free(configuracion.portCord);
+	free(configuracion.portCoord);
 	free(configuracion.portPlan);
 }
