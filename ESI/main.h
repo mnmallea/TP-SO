@@ -11,6 +11,7 @@
 #include <commons/log.h>
 #include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/serializador.h"
+#include "../syntax-commons/protocol.h"
 #include "config_esi.h"
 //#include "../syntax-commons/protocol.h"
 //#include "../syntax-commons/conexiones.h"
@@ -27,11 +28,13 @@ paquete *pkg_esi;
 typedef struct
 {
 int keyword;
-char *clave[40];
-char *valor[40];
+char *clave;
+char *valor;
 }t_operacion;
 
-config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
 t_operacion *n_operacion;
+
+config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
+
 
 #endif /* MAIN_H_ */

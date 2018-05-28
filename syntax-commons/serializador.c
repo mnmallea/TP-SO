@@ -26,17 +26,17 @@ void eviarPaquete(int my_socket, void* element){
 }
 
 void agregar(paquete *pqt,void* contenido, size_t tamanioContenido){
-	//pqt->carga = realloc(pqt->carga,pqt->tamanioActual + tamanioContenido );
-	//memcpy(pqt->carga + pqt->tamanioActual,contenido,tamanioContenido);
-	pqt->carga=contenido;
+	pqt->carga = realloc(pqt->carga,pqt->tamanioActual + tamanioContenido );
+	memcpy(pqt->carga + pqt->tamanioActual,contenido,tamanioContenido);
 	pqt->tamanioActual += tamanioContenido;
-	log_error(logger,"paquete de tamanio fijo agregado");
+	free(contenido); //libera el espacio del struct original
+	log_debug(logger,"paquete de tamanio fijo agregado");
 };
 
 void agregarTamanioVariable(paquete* pqt, void* contenido, size_t tamanioContenido){
 	agregar(pqt, &tamanioContenido, sizeof(tamanioContenido));
 	agregar(pqt,contenido, tamanioContenido);
-	log_error(logger," paquete tamanio variable agregado");
+	log_debug(logger," paquete tamanio variable agregado");
 };
 
 void* construirPaquete(paquete* pqt) {

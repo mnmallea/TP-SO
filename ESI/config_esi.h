@@ -14,8 +14,8 @@
 #include <commons/log.h>
 
 typedef struct{
-	char* ipCord;
-	char* portCord;
+	char* ipCoord;
+	char* portCoord;
 	char* ipPlan;
 	char* portPlan;
 } config;
