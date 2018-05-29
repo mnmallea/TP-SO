@@ -15,7 +15,7 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	esi_corriendo=(t_esi *)malloc(sizeof(t_esi));
 	lista_esis_finalizados = list_create();
 	dic_esis_bloqueados = dictionary_create();
-	dic_esi_recurso_bloq = dictionary_create();
+	dic_clave_x_esi = dictionary_create();
 
 	/*Config*/
 	logger = log_create("planificador.log","Planificador",true,LOG_LEVEL);
