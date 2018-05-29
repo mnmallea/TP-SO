@@ -32,6 +32,8 @@ void obtener_nuevo_esi_a_correr();
  */
 void bloquear_esi(char* clave);
 
+void bloquear_esi_por_consola(char* clave, int id_esi){
+
 
 /* Nombre: finalizar_esi()
  * Desc: El esi corriendo me avisa que termino
@@ -46,6 +48,8 @@ void finalizar_esi();
  */
 void se_desbloqueo_un_recurso(char* clave);
 
+void desbloquear_por_consola(char* clave);
+
 /* Nombre: nuevo_esi(t_esi* esi)
  * Desc: Agrego un nuevo esi a la lista de listos
  */
@@ -54,5 +58,10 @@ void nuevo_esi(t_esi* esi);
 t_esi buscar_esi_por_id(int id_esi);
 
 bool esi_con_este_id(void* esi);
+
+/* Nombre: esi_tiene_clave(t_esi* esi, char* clave)
+ * Desc: Indica si el esi mencionado tiene tomada la clave mencionada
+ */
+bool esi_tiene_clave(t_esi* esi, char* clave);
 
 #endif /* PLANIFICACION_H_ */

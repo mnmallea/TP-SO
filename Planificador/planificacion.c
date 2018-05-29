@@ -106,6 +106,10 @@ void bloquear_esi_por_consola(char* clave, int id_esi){
 
 }
 
+void desbloquear_por_consola(clave){
+	se_desbloqueo_un_recurso(clave);
+}
+
 
 t_esi *buscar_esi_por_id(int id_esi){
 
@@ -124,6 +128,7 @@ t_esi *buscar_esi_por_id(int id_esi){
 
 }
 
+
 bool esi_con_este_id(void* esi){
 	return ((t_esi*)esi)->id == id;
 }
@@ -136,6 +141,17 @@ void se_desbloqueo_un_recurso(char* clave){
 	dictionary_put(dic_esis_bloqueados,clave,lista_esis_bloq_esta_clave);
 
 	nuevo_esi(esi_desbloq);
+
+}
+
+bool esi_tiene_clave(t_esi* esi, char* clave){
+
+	if(!dictionary_has_key(dic_clave_x_esi, clave)){
+		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi,clave);
+		return (esi_que_la_tomo->id == esi->id);
+	}else{
+		return false;
+	}
 
 }
 
