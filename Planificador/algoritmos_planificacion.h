@@ -10,6 +10,7 @@
 #define ALGORITMOS_PLANIFICACION_H_
 
 #include <commons/collections/list.h>
+#include "config_planificador.h"
 #include <stdlib.h>
 
 
@@ -22,14 +23,16 @@ typedef struct{
 	int socket;
 
 	//info para calcular HRRN, SJF
-	int dur_ult_raf;
-	int estim_anter; //HAY QUE CAMBIAR ESTO A DOUBLE
+	int dur_ult_raf; //Se suma uno cada vez que si soy esi corriendo finalizo una rafaga
+	double estim_anter;
 	double estim_actual;
 
-	int viene_esperando;
+	int viene_esperando; //Se suma uno cada vez que un esi que no es el finaliza una linea
 	double response_ratio;
 	char *clave_bloq;
 } t_esi;
+
+extern config configuracion;
 
 t_esi *obtener_proximo_segun_fifo(t_list *lista_esis);
 t_esi *obtener_proximo_segun_sjf(t_list *lista_esis);
