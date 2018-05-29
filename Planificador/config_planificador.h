@@ -14,7 +14,7 @@
 #include <commons/log.h>
 #include <commons/string.h>
 #include "error.h"
-#include "algoritmos_planificacion.h"
+
 
 
 #define PORT_MAX_STRING_LENGTH 5
@@ -26,6 +26,7 @@ typedef struct{
 	char *ipCoord;
 	char *portCoord;
 	char *claves_bloqueadas;
+	double alfa;
 } config;
 
 extern t_log *logger;
