@@ -13,10 +13,12 @@
 #include <commons/log.h>
 #include "config_planificador.h"
 #include "algoritmos_planificacion.h"
+#include "sincronizacion.h"
 #include "selector.h"
 #include "consola.h"
 #include "main.h"
 
+int flag;
 
 /* Nombre: obtener_nuevo_esi_a_correr();
  * Desc: obtiene el proximo esi a correr a partir del algoritmo elegido
@@ -48,5 +50,9 @@ void se_desbloqueo_un_recurso(char* clave);
  * Desc: Agrego un nuevo esi a la lista de listos
  */
 void nuevo_esi(t_esi* esi);
+
+t_esi buscar_esi_por_id(int id_esi);
+
+bool esi_con_este_id(void* esi);
 
 #endif /* PLANIFICACION_H_ */
