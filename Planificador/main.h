@@ -19,6 +19,7 @@
 #include "consola.h"
 
 config configuracion;
+t_log *logger;
 
 t_list *lista_esis_listos;
 t_esi *esi_corriendo;
