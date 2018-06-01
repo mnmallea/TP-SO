@@ -20,7 +20,6 @@ int recibirPaqueteVariable(int my_socket, void** id) {
 	int res_recv;
 	size_t tamanio;
 
-
 	res_recv = recibirPaquete(my_socket, &tamanio, sizeof(tamanio));
 
 	if(res_recv < 0) {

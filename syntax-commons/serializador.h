@@ -5,7 +5,7 @@
 #include <stddef.h>
 #include <commons/log.h>
 #include <string.h>
-#include "../syntax-commons/my_socket.h"
+#include <sys/socket.h>
 
 typedef struct {void* carga;size_t tamanioActual;} paquete;
 
@@ -21,8 +21,6 @@ void agregarTamanioVariable(paquete* pqt, void* contenido, size_t tamanioConteni
 
 void* construirPaquete(paquete* p);
 
-void destruirPaquete(paquete* unPaquete);
-
-void eviarPaquete(int my_socket, void* element);
+void  enviarPaquete(int socket, void* paqueteSerializado, size_t tamanioPaquete);
 
 #endif
