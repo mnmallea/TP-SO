@@ -21,6 +21,8 @@
 #define CANT_ARGUMENTOS_MAIN 3
 #define LOG_LEVEL LOG_LEVEL_TRACE
 
+void *pedirEspacio(size_t size);
+
 t_log* logger;
 
 paquete *pkg_esi;
