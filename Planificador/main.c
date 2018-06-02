@@ -24,7 +24,7 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;
 	pthread_t consola_planificador;
-	pthread_t planificador;
+	//pthread_t planificador;
 
 	const char *message0 = "Inicializacion el selector";
 	if(pthread_create(&selector_planificador, NULL, listener, (void*) message0)) {
@@ -37,11 +37,12 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 		 exit(EXIT_FAILURE);
 	}
 
+	/*
 	const char *message2 = "Inicializacion del planificador";
 		if(pthread_create(&planificador, NULL, menu, (void*) message2)) {
 			log_error(logger, "Error creando el hilo del planificador\n");
 			 exit(EXIT_FAILURE);
-		}
+		}*/
 
 	/*Join threads*/
 	if(pthread_join(selector_planificador, NULL)) {
@@ -52,10 +53,11 @@ int main(int argc, char **argv){//aca recibiriamos la ruta del archivo de config
 		log_error(logger, "Error al joinear el hilo de la consola\n");
 		 exit(EXIT_FAILURE);
 	}
+	/*
 	if(pthread_join(planificador, NULL)) {
 			log_error(logger, "Error al joinear el hilo del planificador\n");
 			 exit(EXIT_FAILURE);
-		}
+		}*/
 	return 0;
 }
 
