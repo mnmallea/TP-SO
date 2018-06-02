@@ -19,6 +19,10 @@
 #include "main.h"
 
 int flag;
+bool primera_vez = false;
+bool hay_nuevo_esi = false;
+bool hay_esi_bloqueado = false;
+bool hay_esi_finalizado = false;
 
 /* Nombre: obtener_nuevo_esi_a_correr();
  * Desc: obtiene el proximo esi a correr a partir del algoritmo elegido
@@ -63,5 +67,11 @@ bool esi_con_este_id(void* esi);
  * Desc: Indica si el esi mencionado tiene tomada la clave mencionada
  */
 bool esi_tiene_clave(t_esi* esi, char* clave);
+
+/* Nombre: nueva_clave_tomada_x_esi(char* clave)
+ * Desc: Cuando el coordinador me dice que un esi pidio una clave llama a esta funcion
+ * Que me agrega esa clave y ese esi al diccionario de claves x esi
+ */
+void nueva_clave_tomada_x_esi(char* clave);
 
 #endif /* PLANIFICACION_H_ */
