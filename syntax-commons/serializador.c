@@ -17,26 +17,18 @@ void destruirPaquete(paquete* unPaquete){
 	free(unPaquete);
 }
 
-void eviarPaquete(int my_socket, void* element){
-    int res_send = send(my_socket, &element, sizeof(element),MSG_NOSIGNAL);
-    if(res_send != sizeof(element)){
-        salir_con_error(my_socket,"No se pudo mandar mensaje");
-    }
-    //log_info(logger, "Mensaje enviado");
-}
 
-void agregar(paquete *pqt,void* contenido, size_t tamanioContenido){
+void agregar(paquete* pqt,void* contenido, size_t tamanioContenido){
 	pqt->carga = realloc(pqt->carga,pqt->tamanioActual + tamanioContenido );
 	memcpy(pqt->carga + pqt->tamanioActual,contenido,tamanioContenido);
 	pqt->tamanioActual += tamanioContenido;
-	free(contenido); //libera el espacio del struct original
-	log_debug(logger,"paquete de tamanio fijo agregado");
+	log_error(logger,"paquete de tamanio fijo agregado");
 };
 
 void agregarTamanioVariable(paquete* pqt, void* contenido, size_t tamanioContenido){
 	agregar(pqt, &tamanioContenido, sizeof(tamanioContenido));
 	agregar(pqt,contenido, tamanioContenido);
-	log_debug(logger," paquete tamanio variable agregado");
+	log_error(logger," paquete tamanio variable agregado");
 };
 
 void* construirPaquete(paquete* pqt) {
@@ -48,4 +40,12 @@ void* construirPaquete(paquete* pqt) {
 
 	return paqueteProcesado;
 }
+
+void  enviarPaquete(int socket, void* paqueteSerializado, size_t tamanioPaquete){
+	int cantEnviada = send(socket, paqueteSerializado,tamanioPaquete, 0);
+
+		if(tamanioPaquete > cantEnviada) {
+			enviarPaquete(socket, paqueteSerializado + cantEnviada, tamanioPaquete - cantEnviada);
+		}
+	}
 

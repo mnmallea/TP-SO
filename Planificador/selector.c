@@ -24,7 +24,8 @@ void *listener(void *ptr){
 
 		for(i = 0; i <= fdmax; i++) {
 			if (FD_ISSET(i, &read_fds)) {
-				if (i == socketServer) {
+				if (i == socketServer)
+				{
 
 					addrlen = sizeof remoteaddr;
 					newfd = accept(socketServer, (struct sockaddr *)&remoteaddr, &addrlen);
@@ -43,12 +44,14 @@ void *listener(void *ptr){
 						mandar_mensaje(newfd,id);
 						id++;
 						log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
-						//mandar_confirmacion(newfd);
+						mandar_confirmacion(newfd);
 					}
 				}
-				else {
+				else
+				{
 
-					if ((nbytes = recv(i, buf, sizeof buf, 0)) <= 0) {
+					if ((nbytes = recv(i, buf, sizeof buf, 0)) <= 0)
+					{
 
 						if (nbytes == 0) {
 							log_error(logger, "La conexion del socket %d finalizo inesperadamente\n", i);
@@ -61,6 +64,9 @@ void *listener(void *ptr){
 							close(i);
 							FD_CLR(i, &master);
 					}
+
+					/* aca iria como tratar la info del buff*/
+
 				}
 
 
