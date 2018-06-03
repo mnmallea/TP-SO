@@ -209,3 +209,22 @@ void correr(t_esi* esi){
 	//LE MANDA AL ESI X SOCKET QUE CORRA
 }
 
+void ya_termino_linea(){
+
+
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+	aumentar_viene_corriendo(esi_corriendo);
+
+	//signal(ṕlanificador)
+}
+
+void aumentar_viene_esperando(void* esi){
+	((t_esi*)esi)->viene_esperando = ((t_esi*)esi)->viene_esperando + 1;
+}
+
+void aumentar_viene_corriendo(void* esi){
+	((t_esi*)esi)->dur_ult_raf = ((t_esi*)esi)->dur_ult_raf + 1;
+}
+
+
+

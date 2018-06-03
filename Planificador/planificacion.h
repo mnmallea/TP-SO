@@ -74,4 +74,11 @@ bool esi_tiene_clave(t_esi* esi, char* clave);
  */
 void nueva_clave_tomada_x_esi(char* clave);
 
+
+
+void correr(t_esi* esi);
+void ya_termino_linea();
+void aumentar_viene_esperando(void* esi);
+void aumentar_viene_corriendo(void* esi);
+
 #endif /* PLANIFICACION_H_ */
