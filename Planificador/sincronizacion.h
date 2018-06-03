@@ -13,6 +13,7 @@
 
 pthread_mutex_t mutex_flag_pausa_despausa; //PAUSAR Y DESPAUSAR CONSOLA
 pthread_mutex_t mutex_lista_esis_listos; //PRODUCTOR CONSUMIDOR QUE AGREGa/SACA ESIS
+sem_t sem_binario_planif;
 
 void inicializar_semaforos();
 
