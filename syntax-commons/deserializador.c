@@ -16,7 +16,7 @@ int recibirPaquete(int my_socket, void* id, size_t tamanio) {
 	return res_recv;
 }
 
-int recibirPaqueteVariable(int my_socket, void** id) {
+int recibirPaqueteVariable(int my_socket, void** buffer) {
 	int res_recv;
 	size_t tamanio;
 	res_recv = recibirPaquete(my_socket, &tamanio, sizeof(tamanio));
@@ -25,10 +25,10 @@ int recibirPaqueteVariable(int my_socket, void** id) {
 		salir_con_error(my_socket,"Error al recibir el tamanio de la información");
 	}
 
-	*id = malloc(tamanio);
-	if(id == NULL) {
+	*buffer = malloc(tamanio);
+	if(*buffer == NULL) {
 		salir_con_error(my_socket,"Error al realizar el malloc");
 	}
-	res_recv = recibirPaquete(my_socket, *id, tamanio);
+	res_recv = recibirPaquete(my_socket, *buffer, tamanio);
 	return res_recv;
 }

@@ -24,20 +24,20 @@ int main(int argc, char** argv) {
 			configuracion.puerto_coordinador, INSTANCIA);
 
 	char* clave;
-	char* valor;
+//	char* valor;
 	switch (recibir_cod_operacion(sockfd)) {
 	case GET:
 	case STORE:
 		recibir_operacion_unaria(sockfd, &clave);
 		break;
 	case SET:
-		recibir_set(sockfd, &clave, &valor);
+//		recibir_set(sockfd, &clave, &valor);
 		break;
 	}
 
 	printf("%s\n", clave);
 	free(clave);
-	free(valor);
+//	free(valor);
 
 //	sockfd = crear_socket_cliente(configuracion.ip_coordinador, configuracion.puerto_coordinador);
 //	mandar_mensaje(sockfd);

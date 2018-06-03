@@ -804,3 +804,29 @@
 [INFO] 17:58:22:511 Instancia/(22623:22623): Se ha conectado al coordinador correctamente!!
 [INFO] 17:58:22:514 Instancia/(22623:22623): Mensaje recibido
 [INFO] 17:58:22:516 Instancia/(22623:22623): Mensaje recibido
+[INFO] 18:07:27:434 Instancia/(4453:4453): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 18:07:27:435 Instancia/(4453:4453): Socket conectado
+[INFO] 18:07:27:435 Instancia/(4453:4453): Mensaje enviado
+[INFO] 18:07:27:439 Instancia/(4453:4453): Mensaje de 4 bytes recibido
+[INFO] 18:07:27:439 Instancia/(4453:4453): Se ha conectado al coordinador correctamente!!
+[INFO] 18:07:27:447 Instancia/(4453:4453): Mensaje recibido
+[INFO] 18:07:27:447 Instancia/(4453:4453): Mensaje recibido
+[INFO] 18:08:53:740 Instancia/(4497:4497): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 18:08:53:740 Instancia/(4497:4497): Error al conectar el socket
+[INFO] 18:08:58:207 Instancia/(4501:4501): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 18:08:58:215 Instancia/(4501:4501): Error al conectar el socket
+[INFO] 18:08:58:836 Instancia/(4503:4503): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 18:08:58:839 Instancia/(4503:4503): Error al conectar el socket
+[INFO] 18:08:59:85 Instancia/(4505:4505): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 18:08:59:89 Instancia/(4505:4505): Error al conectar el socket
+[INFO] 18:08:59:300 Instancia/(4506:4506): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 18:08:59:303 Instancia/(4506:4506): Error al conectar el socket
+[INFO] 18:08:59:508 Instancia/(4512:4512): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 18:08:59:511 Instancia/(4512:4512): Error al conectar el socket
+[INFO] 18:09:07:275 Instancia/(4516:4516): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[INFO] 18:09:07:279 Instancia/(4516:4516): Socket conectado
+[INFO] 18:09:07:279 Instancia/(4516:4516): Mensaje enviado
+[INFO] 18:09:07:279 Instancia/(4516:4516): Mensaje de 4 bytes recibido
+[INFO] 18:09:07:279 Instancia/(4516:4516): Se ha conectado al coordinador correctamente!!
+[INFO] 18:09:07:288 Instancia/(4516:4516): Mensaje recibido
+[INFO] 18:09:07:288 Instancia/(4516:4516): Mensaje recibido
