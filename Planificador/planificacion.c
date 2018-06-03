@@ -24,32 +24,35 @@ flag = 0;
 
 void planificar(){
 
-	sem_wait(sem_binario_planif);
-	pthread_mutex_lock(&mutex_flag_pausa_despausa);
-	if(flag==0){ //esta despausada la planificacion
-	pthread_mutex_unlock(&mutex_flag_pausa_despausa);
+	while(1){
+		sem_wait(sem_binario_planif);
+		pthread_mutex_lock(&mutex_flag_pausa_despausa);
+		if(flag==0){ //esta despausada la planificacion
+		pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
-		t_esi* proximo_esi;
-		if(configuracion.algoritmo == SJFcD){ //planifico por desalojo
-			if(hay_nuevo_esi || hay_esi_bloqueado || hay_esi_finalizado){ //ocurrio un evento de replanificacion (en alg. con desalojo)
-				proximo_esi = obtener_nuevo_esi_a_correr();
+			t_esi* proximo_esi;
+			if(configuracion.algoritmo == SJFcD){ //planifico por desalojo
+				if(hay_nuevo_esi || hay_esi_bloqueado || hay_esi_finalizado){ //ocurrio un evento de replanificacion (en alg. con desalojo)
+					proximo_esi = obtener_nuevo_esi_a_correr();
+				}else{
+					proximo_esi = esi_corriendo; //no hubo evento de replanif
+				}
 			}else{
-				proximo_esi = esi_corriendo; //no hubo evento de replanif
-			}
-		}else{
 
-			if(primera_vez || hay_esi_bloqueado || hay_esi_finalizado){//ocurrio un evento de replanificacion (en alg. sin desalojo)
-				proximo_esi = obtener_nuevo_esi_a_correr();
-			}else{
-				proximo_esi = esi_corriendo; //no hubo evento de replanif
+				if(primera_vez || hay_esi_bloqueado || hay_esi_finalizado){//ocurrio un evento de replanificacion (en alg. sin desalojo)
+					proximo_esi = obtener_nuevo_esi_a_correr();
+				}else{
+					proximo_esi = esi_corriendo; //no hubo evento de replanif
+				}
+
 			}
+
+		log_debug(logger, "Proximo esi a correr: %d \n", proximo_esi->id);
+
+		esi_corriendo = proximo_esi;
+		correr(esi_corriendo);
 
 		}
-
-	log_debug(logger, "Proximo esi a correr: %d \n", proximo_esi->id);
-
-	esi_corriendo = proximo_esi;
-	correr(esi_corriendo);
 
 	}
 
@@ -218,11 +221,17 @@ void ya_termino_linea(){
 	aumentar_viene_corriendo(esi_corriendo);
 	log_debug(logger, "El esi %d se termino de leer una nueva linea \n", esi_corriendo->id);
 
-	//si leyo mal la linea
-	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n", esi_corriendo->id);
+
 
 
 	sem_post(sem_binario_planif);
+}
+
+
+void fallo_linea(){
+	//si leyo mal la linea
+	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n", esi_corriendo->id);
+	matar_nodo_esi(esi_corriendo);
 }
 
 void aumentar_viene_esperando(void* esi){

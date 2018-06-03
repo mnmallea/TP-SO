@@ -4,7 +4,9 @@
 
 #include <commons/collections/list.h>
 #include <commons/log.h>
+#include "../syntax-commons/protocol.h"
 #include "../syntax-commons/my_socket.h"
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <sys/socket.h>

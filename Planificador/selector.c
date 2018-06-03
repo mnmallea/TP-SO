@@ -5,7 +5,7 @@ void *listener(void *ptr){
 	FD_ZERO(&master);
 	FD_ZERO(&read_fds);
 	//char remoteIP[INET_ADDRSTRLEN];
-	char buf[50];
+	t_protocolo buf;
 	int nbytes;
 	t_esi *n_esi;
 	int id=1;
@@ -66,6 +66,19 @@ void *listener(void *ptr){
 					}
 
 					/* aca iria como tratar la info del buff*/
+					switch(buf){
+					case EXITO:
+						ya_termino_linea();
+					break;
+					case FALLA:
+						fallo_linea();
+					break;
+					case FIN:
+						finalizo_esi();
+					break;
+					default:
+					break;
+					}
 
 				}
 
