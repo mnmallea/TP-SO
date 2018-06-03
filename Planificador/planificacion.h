@@ -9,13 +9,14 @@
 #define PLANIFICACION_H_
 
 #include <stdlib.h>
+#include <stdbool.h>
 #include <pthread.h>
 #include <commons/log.h>
 #include "config_planificador.h"
 #include "algoritmos_planificacion.h"
 #include "sincronizacion.h"
 #include "selector.h"
-#include "consola.h"
+//#include "consola.h"
 #include "main.h"
 
 int flag;

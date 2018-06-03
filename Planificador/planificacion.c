@@ -24,7 +24,7 @@ flag = 0;
 
 void planificar(){
 
-	//wait(sem_binario_planif)
+	sem_wait(sem_binario_planif);
 	pthread_mutex_lock(&mutex_flag_pausa_despausa);
 	if(flag==0){ //esta despausada la planificacion
 	pthread_mutex_unlock(&mutex_flag_pausa_despausa);
@@ -92,7 +92,7 @@ void finalizar_esi(){
 	log_debug(logger, "Termino un esi: %d \n", esi_corriendo->id);
 
 	hay_esi_finalizado = true;
-	//signal(sem_binario_planif)
+	sem_post(sem_binario_planif);
 }
 
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR ME INDICA UN BLOQUEO
@@ -213,11 +213,16 @@ void correr(t_esi* esi){
 
 void ya_termino_linea(){
 
-
+	//si leyo bien la linea
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 	aumentar_viene_corriendo(esi_corriendo);
+	log_debug(logger, "El esi %d se termino de leer una nueva linea \n", esi_corriendo->id);
 
-	//signal(sem_binario_planif)
+	//si leyo mal la linea
+	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n", esi_corriendo->id);
+
+
+	sem_post(sem_binario_planif);
 }
 
 void aumentar_viene_esperando(void* esi){
