@@ -92,7 +92,6 @@ void atender_esi(int socket) {
 	t_esi *n_esi = malloc(sizeof(t_esi));
 	n_esi->socket = socket;
 	n_esi->id = safe_recv(socket, sizeof(int));
-	log_debug(logger, "Esi id: %d agregada a la lista", *(n_esi->id));
 
 	//n_esi->valores=malloc(0); //hay que acordarse de hacer free a los valores cuando termine de atender al ESI
 	pthread_mutex_lock(&mutex_esi_disponibles);
@@ -100,10 +99,13 @@ void atender_esi(int socket) {
 	log_debug(logger, "Esi id:%d agregada a la lista", *(n_esi->id));
 	pthread_mutex_unlock(&mutex_esi_disponibles);
 
-	/* para el hilo
-	 t_operacion *valores_esi;
-	 recibirPaqueteVariable(socket, valores_esi);
-	 n_esi->valores=valores_esi;
-	 para el free de n_esi primero hay hacer free a los punteros de valores e id
-	 */
+
+	t_operacion *carga=NULL;
+
+	recibirPaqueteVariable(socket,(void**)carga);
+
+	log_debug(logger, "Clave del pkg recivido: %s ", *(carga->clave));
+
+
+
 }

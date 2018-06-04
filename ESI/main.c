@@ -7,6 +7,7 @@ int main(int argc, char* argv[]){
 	size_t len = 0;
 	ssize_t read;
 	t_operacion *n_esi_operacion;
+	t_operacion *paqueteProcesado = NULL;
 
 	logger = log_create("ESI.log","ESI",true,LOG_LEVEL);
 
@@ -33,61 +34,70 @@ int main(int argc, char* argv[]){
 	//int esi_id=recibir_mensaje(socketPlan);
 	safe_send(socketCord, esi_id, sizeof(int));
 
+	if((n_esi_operacion=malloc(sizeof(t_operacion)))==NULL){
+				log_error(logger, "No se puede alocar memoria");
+					            	//enviar respuesta al planificador, error de linea(?)
+				exit_gracefully(1);
+	}
 
 	recibir_confirmacion(socketPlan); //signal para ejecutar
 
 	while ((read = getline(&line, &len, fp)) != -1)
 	{
+
 		size_t s_valor = 0;
 		size_t s_clave = 0;
+		size_t s_carga = 0;
 		t_esi_operacion parsed = parse(line);
 
-		if((n_esi_operacion=malloc(sizeof(t_operacion)))==NULL){
-			log_error(logger, "No se puede alocar memoria");
-				            	//enviar respuesta al planificador, error de linea(?)
-			exit_gracefully(1);
-		}
 
 		if(parsed.valido)
 	    {
 			pkg_esi=crearPaquete();
 	    	log_debug(logger, "Crea pkg");
+
 	    	switch(parsed.keyword){
 	    	 	case GET:
 	    	 		log_debug(logger, "Get");
 	    	 		n_esi_operacion->keyword=0;
+	    	 		n_esi_operacion->clave=&parsed.argumentos.GET.clave;
 
 	    	 		s_clave=sizeof(char)*strlen(parsed.argumentos.GET.clave)+1;
-	    	       	n_esi_operacion->clave=pedirEspacio(s_clave);
-	    	       	strcpy(n_esi_operacion->clave,parsed.argumentos.GET.clave);
+	    	       	s_carga=s_clave+sizeof(t_operacion);
 
-	    	       	cargarPkg(pkg_esi,n_esi_operacion,s_clave+sizeof(int));
+	    	       	agregarTamanioVariable(pkg_esi,n_esi_operacion,s_carga);
 
-	        		free(n_esi_operacion->clave);
+	    	       	paqueteProcesado = construirPaquete(pkg_esi);
+	    	    	log_info(logger, "Espacio de la carga: %d", s_carga);
+            		enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
+            		log_info(logger, "Pkg de tamaño %d enviado", pkg_esi->tamanioActual);
+
+            		free(paqueteProcesado->clave);
 
 	        		break;
+
 	            case SET:
 
 	      	 		log_debug(logger, "Set");
 	            	if(strlen(parsed.argumentos.SET.valor)<40){
 
 	            		n_esi_operacion->keyword=1;
+	            		n_esi_operacion->clave=&parsed.argumentos.SET.clave;
+	            		n_esi_operacion->valor=&parsed.argumentos.SET.valor;
 
 	            		s_clave=sizeof(char)*strlen(parsed.argumentos.SET.clave)+1;
-	            		n_esi_operacion->clave=pedirEspacio(s_clave);
-
 	            		s_valor=sizeof(char)*strlen(parsed.argumentos.SET.valor)+1;
-	            		n_esi_operacion->valor=pedirEspacio(s_valor);
+	            		s_carga=s_clave+s_valor+sizeof(t_operacion);
 
-	            		strcpy(n_esi_operacion->clave,parsed.argumentos.SET.clave);
-	            		strcpy(n_esi_operacion->valor,parsed.argumentos.SET.valor);
+	            		agregarTamanioVariable(pkg_esi,n_esi_operacion,s_carga);
+		    	       	paqueteProcesado = construirPaquete(pkg_esi);
 
-	            		//log_debug(logger, "Size de oper_esi: %d", sizeof(*n_esi_operacion));
+		    	       	log_info(logger, "Espacio de la carga: %d", s_carga);
+	            		enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
+	            		log_info(logger, "Pkg de tamaño %d enviado", pkg_esi->tamanioActual);
 
-	            		cargarPkg(pkg_esi,n_esi_operacion,s_clave+s_valor+sizeof(int));
-
-		        		free(n_esi_operacion->clave);
-		        		free(n_esi_operacion->valor);
+		        		free(paqueteProcesado->clave);
+		        		free(paqueteProcesado->valor);
 
 	            	}
 	            	else{
@@ -99,34 +109,39 @@ int main(int argc, char* argv[]){
 	            	break;
 	            case STORE:
 	      	 		log_debug(logger, "Store");
+
 	            	n_esi_operacion->keyword=2;
+	            	n_esi_operacion->clave=&parsed.argumentos.STORE.clave;
 
 	            	s_clave=sizeof(char)*strlen(parsed.argumentos.STORE.clave)+1;
-	            	n_esi_operacion->clave=pedirEspacio(s_clave);
-	            	strcpy(n_esi_operacion->clave,parsed.argumentos.STORE.clave);
+	            	s_carga=s_clave+sizeof(t_operacion);
 
-            		cargarPkg(pkg_esi,n_esi_operacion,s_clave+sizeof(int));
+	    	       	agregarTamanioVariable(pkg_esi,n_esi_operacion,s_carga);
+	    	       	paqueteProcesado = construirPaquete(pkg_esi);
 
-	        		free(n_esi_operacion->clave);
+	    	    	log_info(logger, "Espacio de la carga: %d", s_carga);
+            		enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
+            		log_info(logger, "Pkg de tamaño %d enviado", pkg_esi->tamanioActual);
+
+            		free(paqueteProcesado->clave);
 
 	            	break;
+
 	            default:
 	            	log_error(logger, "No pude interpretar <%s>\n", line);
 	            	//enviar respuesta al planificador, error de linea(?)
 	            	exit_gracefully(1);
 	    	}
 
-	    	enviarPkg(socketCord,pkg_esi);
+	    	//Respuesta al planificador
+	    	//key = recibir_mensaje(socketCord);
+	    	//mandar_mensaje(socketPlan,key);
 
-/*
-	    	if(recibir_mensaje(socketCord)==1)
-	    		mandar_confirmacion(socketPlan);
-	    	else
-	    		mandar_error(socketPlan);
-*/
-
+	    	//Frees
+	    	free(paqueteProcesado);
 	    	destruirPaquete(pkg_esi);
 	    	destruir_operacion(parsed);
+
 	    }
 	    else
 	    {
@@ -134,16 +149,11 @@ int main(int argc, char* argv[]){
 	    	//enviar respuesta al planificador, error de linea(?)
 	    	exit_gracefully(1);
 	    }
-	   recibir_confirmacion(socketPlan);
+			recibir_confirmacion(socketPlan);
 	}
 
-/*
-  destruir_operacion(parsed);
-	        	//hace falta el wait?
-	        	//o con un recv(socketCord) para el ok o nook ya queda esperando?
-  */
 
-log_info(logger, "No quedan mas lineas en el archivo");
+	log_info(logger, "No quedan mas lineas en el archivo");
 	//enviar respuesta al planificador , no habia mas lineas(?)
 
 	fclose(fp);
@@ -152,17 +162,14 @@ log_info(logger, "No quedan mas lineas en el archivo");
 
 	free(esi_id);
 
-  log_destroy(logger);
+	log_destroy(logger);
 	limpiar_configuracion();
 	exit(1);
 }
 
-void *pedirEspacio(size_t size){
-	t_operacion *p;
-	if((p=malloc(sizeof(size)))==NULL){
-				log_error(logger, "No se puede alocar memoria");
-					            	//enviar respuesta al planificador, error de linea(?)
-				exit_gracefully(1);
-			}
-	return p;
-}
+
+
+
+
+
+
