@@ -13,6 +13,7 @@
 #include <netdb.h>
 #include "config_planificador.h"
 #include "algoritmos_planificacion.h"
+#include "../syntax-commons/protocol.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
