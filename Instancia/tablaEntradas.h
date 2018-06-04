@@ -30,5 +30,6 @@ void removerDeLista(int unaVariable, tablaE* entrada);
 void mostrarTabla();
 void liberarEntrada(tablaE* entrada);
 void	destruirTabla();
+bool tablaEstaVacia(t_list* tabla);
 
 #endif /* TABLAENTRADAS_H_ */

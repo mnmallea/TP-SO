@@ -37,7 +37,7 @@ void inicializarAlmacenamiento(unsigned int entradas,unsigned int tamanioEntrada
 	* 		valor
 	* 		tamanio
 	*/
-void set(int proximaEntrada,void* valor,unsigned int tamanio);
+void setEnAlmacenamiento(int proximaEntrada,void* valor,unsigned int tamanio);
 
 //void store(int entrada,unsigned int tamanioEntrada);//falta hacer
 
@@ -48,7 +48,7 @@ void set(int proximaEntrada,void* valor,unsigned int tamanio);
 	* 		valor
 	* 		tamanio
 	*/
-static char* convertirString(void* valor, size_t tamanio);
+char* convertirString(const void *valor, size_t tamanio);
 /*  *@NAME: mostrarALmacenamiento
 	* @DESC: muestra todo el almacenamiento
 	* @PARAMS:-

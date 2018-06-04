@@ -6,16 +6,24 @@
  */
 #include "cfg_almacenamiento.h"
 
-void configurarAlmacenamiento(char* ip, char* puerto){
-	int socketCoordinador=conectarse_a_coordinador(ip,puerto,INSTANCIA);
+void configurarAlmacenamiento(int socketCoordinador){
 	paquete* pqt = crearPaquete();
 	agregarTamanioVariable(pqt,configuracion.nombre_instancia,string_length(configuracion.nombre_instancia) + 1);
 	pqt = construirPaquete(pqt);
 	enviarPaquete(socketCoordinador, pqt,pqt->tamanioActual);
 	destruirPaquete(pqt);
-	recibirPaquete(socketCoordinador,&cfgAlmacenamiento,sizeof(cfgAlmacenamiento));
-
+	recibirPaquete(socketCoordinador,&cfgAlmacenamiento.tamanioEntrada,sizeof(cfgAlmacenamiento.tamanioEntrada));
+	recibirPaquete(socketCoordinador,&cfgAlmacenamiento.totalEntradas,sizeof(cfgAlmacenamiento.totalEntradas));
+	inicializarAlmacenamiento(cfgAlmacenamiento.totalEntradas,cfgAlmacenamiento.tamanioEntrada);
 	//mostrar que se asigno una cantidad de  x entradas de x tamanio para el ato
-	//faltaria a partir de esto.... inicializar el almacenamiento
 
 }
+unsigned int obtenerEntradasTotales(){
+	return cfgAlmacenamiento.totalEntradas;
+}
+
+unsigned int obtenerTamanioEntrada(){
+	return cfgAlmacenamiento.tamanioEntrada;
+}
+
+

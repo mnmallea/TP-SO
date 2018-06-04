@@ -16,16 +16,11 @@ config configuracion;
 t_log *logger;
 
 int main(int argc, char** argv){
-//	int sockfd;
-
 	logger = log_create("instancia.log", "Instancia", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
+	int socketCoordinador = conectarse_a_coordinador(configuracion.ip_coordinador, configuracion.puerto_coordinador, INSTANCIA);
+	configurarAlmacenamiento(socketCoordinador);
 
-	conectarse_a_coordinador(configuracion.ip_coordinador, configuracion.puerto_coordinador, INSTANCIA);
-
-//	sockfd = crear_socket_cliente(configuracion.ip_coordinador, configuracion.puerto_coordinador);
-//	mandar_mensaje(sockfd);
-//	recibir_confirmacion(sockfd);
 
 	limpiar_configuracion();
 	log_destroy(logger);

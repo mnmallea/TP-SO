@@ -7,17 +7,17 @@
 
 #include <commons/string.h>
 #include <stdlib.h>
-
+#include "../syntax-commons/deserializador.h"
 #include "../syntax-commons/serializador.h"
 #include "../syntax-commons/conexiones.h"
 #include "config_instancia.h"
-#include "../syntax-commons/deserializador.h"
+#include "almacenamiento.h"
+#include <commons/log.h>
 
 typedef struct {
 	unsigned int	tamanioEntrada;
 	unsigned int	totalEntradas;
 } almacenamiento_cfg;
-
 almacenamiento_cfg cfgAlmacenamiento;
 
 extern config configuracion;
@@ -30,8 +30,17 @@ extern config configuracion;
 	* 			ip
 	* 			puerto
 	*/
-
-void configurarAlmacenamiento(char* ip, char* puerto);
+void configurarAlmacenamiento(int socketCoordinador);
+/*  *@NAME: obtenerEntradasTotales()
+	* @DESC: da la cantidad de entradas que me paso el coordinador
+	* @PARAMS:-
+	*/
+unsigned int obtenerEntradasTotales();
+/*  *@NAME: obtenerTamanioEntrada()
+	* @DESC: da el tamaño de las entradas que me paso el coordinador
+	* @PARAMS:-
+	*/
+unsigned int obtenerTamanioEntrada();
 
 
 #endif /* CFG_ALMACENAMIENTO_H_ */

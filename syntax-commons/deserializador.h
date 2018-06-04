@@ -6,12 +6,9 @@
 
 
 
-t_log * logger;
+ extern t_log * logger;
 
-void configure_logger_deser();
-
-int recibirpaquete(int my_socket, void* rcp, size_t tamanio);
-
-int recibirPaqueteVariable(int my_socket, void** rcp);
+unsigned int recibirPaquete(int my_socket, void* buffer, size_t tamanio);
+unsigned int recibirPaqueteVariable(int my_socket, void** buffer);
 
 #endif
