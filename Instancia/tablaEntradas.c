@@ -18,7 +18,7 @@ void crearTablaEntradas() {
 //Creo tabla
 	tabla = list_create();
 //Asigno cuantas entradas libres va a haber para crear la tabla
-	entradasLibres = cfgAlmacenamiento -> totalEntradas;
+	entradasLibres = obtenerEntradasTotales();
 }
 
 //Esta funcion booleana servira para instancia.c, donde se la consultará para insertar el valor o no
@@ -29,7 +29,7 @@ bool agregarEnTabla (int nuevaEntrada, claveEntrada* claveE){
 		list_add(tabla,(void *)nuevaE);
 		list_sort(tabla,ordenAscendente);
 //claveE->tamanio/tamanioEntradas()+1 ----> esto devuelve la cantidad de entradas que necesita
-		entradasLibres -= claveE->tamanio/tamanioEntradas()+1;
+		entradasLibres -= claveE->tamanio/obtenerTamanioEntrada()+1;
 		return true;
 	}
 	return false;
@@ -48,22 +48,22 @@ bool tablaEstaVacia(t_list* tabla){
 	if (tabla == NULL){
 		return true;
 	}
+	return false;
 }
 
 int nombreDeEntradaSiguienteEnTabla(claveEntrada* claveE){
 	tablaE* entrada1;
 	tablaE* entrada2;
 	int cantEntradasUsadas = list_size(tabla);
-	int cantEntradasNecesarias = claveE->tamanio/tamanioEntradas()+1;
+	int cantEntradasNecesarias = claveE->tamanio/obtenerTamanioEntrada()+1;
 	int espacioEntreEntradas = 0;
-	if(entradasLibres >=claveE->tamanio/tamanioEntradas()+1){
-		if(tablaEstaVacia){
+	if(entradasLibres >=claveE->tamanio/obtenerTamanioEntrada()+1){
+		if(tablaEstaVacia(tabla)){
 			if(cantEntradasUsadas == 0){
 				return 0;
 			} else{
 				entrada1 = (tablaE*) list_get(tabla,0);
-				if (entrada1->numero > 0){
-					if (cantEntradasNecesarias <= (entrada1->numero)){
+				if (entrada1->numero > 0 && cantEntradasNecesarias <= (entrada1->numero)){
 						return 0;
 					}
 				}
@@ -71,19 +71,22 @@ int nombreDeEntradaSiguienteEnTabla(claveEntrada* claveE){
 			while (cantEntradasUsadas > a+1){
 				entrada1 = (tablaE*) list_get(tabla,a);
 				entrada2 = (tablaE*) list_get(tabla,a+1);
-				espacioEntreEntradas = (entrada2->numero) - (entrada1->numero + (entrada1->tamanio/tamanioEntradas()+1));
+				espacioEntreEntradas = (entrada2->numero) - (entrada1->numero + (entrada1->tamanio/obtenerTamanioEntrada()+1));
 				if(cantEntradasNecesarias <= espacioEntreEntradas){
-					return a + (entrada1->tamanio/tamanioEntradas()+1);
+					return a + (entrada1->tamanio/obtenerTamanioEntrada()+1);
 				}
+			a++;
 			}
 			entrada2 = (tablaE*) list_get(tabla,list_size(tabla)-1);
-			if(tamanioEntradas()- entrada2->numero>= cantEntradasNecesarias){
-				return (entrada2->tamanio/tamanioEntradas()+ 1) + entrada2->numero;
+			if(obtenerTamanioEntrada()- entrada2->numero>= cantEntradasNecesarias){
+				return (entrada2->tamanio/obtenerTamanioEntrada()+ 1) + entrada2->numero;
 				}
 			}
 		}
+//arreglar tiene que decir que hubo error y exit_gracefully o algo asi
+return -1;
 	}
-}
+
 
 tablaE * adaptoClave(claveEntrada * claveE){
 	tablaE * entrada = malloc(sizeof(tablaE));
@@ -108,7 +111,7 @@ bool quitarDeTabla(claveEntrada * claveE){
 
 void removerDeLista(int unaVariable, tablaE* entrada ){
 	list_remove(tabla,unaVariable);
-	entradasLibres += (entrada->tamanio/tamanioEntradas())+1;
+	entradasLibres += (entrada->tamanio/obtenerTamanioEntrada())+1;
 }
 
 void mostrarTabla(){
@@ -128,5 +131,5 @@ void liberarEntrada(tablaE* entrada){
 	free(entrada->clave);
 	free(entrada->numero);
 	free(entrada->tamanio);
+	free(entrada);
 }
-

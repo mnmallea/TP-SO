@@ -14,7 +14,7 @@ ato->dato=calloc(ato->cantEntradas,ato->tamanioEntrada);
 log_info(logger,"inicio el almacenamiento");
 }
 
-void set(int proximaEntrada,void* valor,unsigned int tamanio){
+void setEnAlmacenamiento(int proximaEntrada,void* valor,unsigned int tamanio){
 if(tamanio <= ato->tamanioEntrada){
 	memcpy(ato->dato + (proximaEntrada * ato->tamanioEntrada),valor,tamanio);
 
@@ -37,7 +37,7 @@ else{
 	char* valorEnString= convertirString(parteAinsertar,ato->tamanioEntrada);
 	free(valorEnString);
 
-	set(++proximaEntrada,parteRestante,resto);
+	setEnAlmacenamiento(++proximaEntrada,parteRestante,resto);
 	free(parteAinsertar);
 	free(parteRestante);
 
@@ -47,10 +47,9 @@ else{
 void store(int entrada,unsigned int tamanioEntrada){
 }
 
-
-static char* convertirString(void* valor, size_t tamanio) {
+char* convertirString(const void *valor, size_t tamanio) {
 	// calloc en vez de malloc y despues inicializar en 0
-	char* valorStr = calloc(tamanio + 1,sizeof(tamanio));
+	char *valorStr = calloc(tamanio + 1,sizeof(tamanio));
 	memcpy(valorStr, valor, tamanio);
 
 	return valorStr;

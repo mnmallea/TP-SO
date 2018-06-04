@@ -9,11 +9,10 @@
 
 typedef struct {void* carga;size_t tamanioActual;} paquete;
 
-t_log * logger;
+extern t_log * logger;
 
 paquete* 	crearPaquete();
 
-void 		configure_logger_ser() ;
 
 void 		agregar(paquete* pqt,void* contenido, size_t tamanioContenido);
 

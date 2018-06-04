@@ -1,10 +1,6 @@
 #include "serializador.h"
 
 
-void configure_logger_ser() {
-  logger = log_create("serializador.log", "serializador",true, LOG_LEVEL_INFO);
-}
-
 paquete* crearPaquete(){
 	paquete* nuevoPaquete = malloc(sizeof(paquete));
 	nuevoPaquete->tamanioActual=0;
@@ -18,7 +14,7 @@ void destruirPaquete(paquete* unPaquete){
 }
 
 
-void agregar(paquete *pqt,void* contenido, size_t tamanioContenido){
+void agregar(paquete* pqt,void* contenido, size_t tamanioContenido){
 	pqt->carga = realloc(pqt->carga,pqt->tamanioActual + tamanioContenido );
 	memcpy(pqt->carga + pqt->tamanioActual,contenido,tamanioContenido);
 	pqt->tamanioActual += tamanioContenido;
