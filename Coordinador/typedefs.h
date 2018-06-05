@@ -18,7 +18,6 @@ typedef enum {
 typedef struct {
 	//info del socket
 	int socket;
-	unsigned id;//esto va a volar en las proximas versiones
 	char* nombre;
 	//para lsu
 	int cant_entradas_vacias;

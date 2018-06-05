@@ -17,14 +17,20 @@
 config configuracion;
 t_log *logger;
 
-int main(int argc, char** argv){
+int main(int argc, char** argv) {
 	logger = log_create("instancia.log", "Instancia", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
-	int socketCoordinador = conectarse_a_coordinador(configuracion.ip_coordinador, configuracion.puerto_coordinador, INSTANCIA);
+	int socketCoordinador = conectarse_a_coordinador(
+			configuracion.ip_coordinador, configuracion.puerto_coordinador,
+			INSTANCIA);
 	configurarAlmacenamiento(socketCoordinador);
-	inicializarAlmacenamiento(cfgAlmacenamiento.totalEntradas,cfgAlmacenamiento.tamanioEntrada);
+	log_trace(logger,
+			"Se va a inicializar el almacenamiento con: cant_entradas = %d y tamaño = %d",
+			cfgAlmacenamiento.totalEntradas, cfgAlmacenamiento.tamanioEntrada);
+	inicializarAlmacenamiento(cfgAlmacenamiento.totalEntradas,
+			cfgAlmacenamiento.tamanioEntrada);
 	crearTablaEntradas();
-	while(1){
+	while (1) {
 		//aca toda la bola de que lleguen cosas las reciba haga set get store
 	}
 	limpiar_configuracion();

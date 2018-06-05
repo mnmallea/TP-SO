@@ -10,16 +10,16 @@
  * Aclaracion, vos te tenes que encargar de que la clave tenga el lugar en memoria.
  * No hacer el free despues porque la vas a borrar y cagas todo
  */
-void agregar_clave_almacenada(t_instancia* instancia, char* clave){
+void agregar_clave_almacenada(t_instancia* instancia, char* clave) {
 	list_add(instancia->claves_almacenadas, clave);
 }
 
 /*
  * Deberia decirte si la instancia almacena una clave
  */
-bool tiene_clave_almacenada(t_instancia* instancia, char* clave){
-	bool esLaClave(void* otraClave){
-		return string_equals_ignore_case(clave,(char*)otraClave);
+bool tiene_clave_almacenada(t_instancia* instancia, char* clave) {
+	bool esLaClave(void* otraClave) {
+		return string_equals_ignore_case(clave, (char*) otraClave);
 	}
 	return list_any_satisfy(instancia->claves_almacenadas, esLaClave);
 }
@@ -27,7 +27,7 @@ bool tiene_clave_almacenada(t_instancia* instancia, char* clave){
 /*
  * Liberar el nombre luego de usar esto porque se lo copia
  */
-t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas){
+t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas) {
 	t_instancia* new_instancia = malloc(sizeof(new_instancia));
 	new_instancia->claves_almacenadas = list_create();
 	new_instancia->nombre = string_duplicate(nombre);
@@ -39,10 +39,25 @@ t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas){
 /*
  * Libera la memoria ocupada por la estructura de la instancia
  */
-void liberar_instancia(t_instancia* instancia){
-	if(instancia != NULL){
+void liberar_instancia(t_instancia* instancia) {
+	if (instancia != NULL) {
 		list_destroy(instancia->claves_almacenadas);
 		free(instancia->nombre);
 		free(instancia);
 	}
+}
+
+bool esta_instancia_en_lista(char* nombre, t_list* lista){
+	bool esLaInstanciaQueBusco(void* instancia) {
+			return string_equals_ignore_case(((t_instancia*)instancia)->nombre, nombre);
+		}
+	return list_any_satisfy(lista, esLaInstanciaQueBusco);
+}
+
+bool esta_activa_instancia(char* nombre) {
+	return esta_instancia_en_lista(nombre, lista_instancias_disponibles);
+}
+
+bool esta_inactiva_instancia(char* nombre){
+	return esta_instancia_en_lista(nombre, lista_instancias_inactivas);
 }
