@@ -6,6 +6,7 @@
 #include <commons/bitarray.h>
 #include <commons/log.h>
 #include <stdio.h>
+#include <string.h>
 
 
 t_log * logger;
@@ -59,5 +60,6 @@ void mostrarAlmacenamiento();
 	* @PARAMS:-
 	*/
 void eliminarAlmacenamiento();
+char* convertirString(const void *valor, size_t tamanio);
 
 #endif /* ALMACENAMIENTO_H_ */
