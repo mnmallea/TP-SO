@@ -19,13 +19,13 @@
  * -NUEVO PROCESO LLEGA (o uno se desbloquea)
  */
 
-flag = 0;
+int flag = 0;
 
 
 void planificar(){
 
 	while(1){
-		sem_wait(sem_binario_planif);
+		sem_wait(&sem_binario_planif);
 		pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if(flag==0){ //esta despausada la planificacion
 		pthread_mutex_unlock(&mutex_flag_pausa_despausa);
@@ -95,7 +95,7 @@ void finalizar_esi(){
 	log_debug(logger, "Termino un esi: %d \n", esi_corriendo->id);
 
 	hay_esi_finalizado = true;
-	sem_post(sem_binario_planif);
+	sem_post(&sem_binario_planif);
 }
 
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR ME INDICA UN BLOQUEO
