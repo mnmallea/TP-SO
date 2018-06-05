@@ -142,8 +142,9 @@ void atender_esi(int socket) {
 
 void atender_planif(int socket){
 
+	while(1){
 	sem_wait(&planif_binario);
 	mandar_confirmacion(socket);
 	recibir_confirmacion(socket);
-
+	}
 };

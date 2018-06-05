@@ -18,7 +18,10 @@ void *listener(void *ptr){
 	FD_SET(socketServer, &master);
 	FD_SET(socketCord, &master);
 
-	fdmax = socketCord;
+	if (socketCord>socketServer)
+		fdmax = socketCord;
+	else
+		fdmax = socketServer;
 
 	for(;;) {
 		read_fds = master;
