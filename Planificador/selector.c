@@ -74,7 +74,7 @@ void *listener(void *ptr){
 						fallo_linea();
 					break;
 					case FIN:
-						finalizo_esi();
+						finalizar_esi();
 					break;
 					default:
 					break;

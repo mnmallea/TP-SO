@@ -15,7 +15,7 @@
 #include "config_planificador.h"
 #include "algoritmos_planificacion.h"
 #include "sincronizacion.h"
-#include "selector.h"
+//#include "selector.h"
 //#include "consola.h"
 #include "main.h"
 
@@ -60,7 +60,7 @@ void desbloquear_por_consola(char* clave);
  */
 void nuevo_esi(t_esi* esi);
 
-t_esi buscar_esi_por_id(int id_esi);
+t_esi *buscar_esi_por_id(int id_esi);
 
 bool esi_con_este_id(void* esi);
 
@@ -79,6 +79,7 @@ void nueva_clave_tomada_x_esi(char* clave);
 
 void correr(t_esi* esi);
 void ya_termino_linea();
+void fallo_linea();
 void aumentar_viene_esperando(void* esi);
 void aumentar_viene_corriendo(void* esi);
 

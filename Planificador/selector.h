@@ -14,6 +14,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include "config_planificador.h"
+#include "planificacion.h"
 #include "algoritmos_planificacion.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
