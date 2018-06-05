@@ -9,20 +9,19 @@
 
 typedef struct {void* carga;size_t tamanioActual;} paquete;
 
-t_log * logger;
+extern t_log * logger;
 
 paquete* 	crearPaquete();
 
-void 		configure_logger_ser() ;
 
 void 		agregar(paquete* pqt,void* contenido, size_t tamanioContenido);
 
 void agregarTamanioVariable(paquete* pqt, void* contenido, size_t tamanioContenido);
 
 void* construirPaquete(paquete* p);
-
+	 
 void destruirPaquete(paquete* unPaquete);
 
-void eviarPaquete(int my_socket, void* element);
+void  enviarPaquete(int socket, void* paqueteSerializado, size_t tamanioPaquete);
 
 #endif
