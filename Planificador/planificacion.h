@@ -29,7 +29,7 @@ bool hay_esi_finalizado = false;
  * Desc: obtiene el proximo esi a correr a partir del algoritmo elegido
  * Le dice al ESI elegido que lea la proxima linea
  */
-void obtener_nuevo_esi_a_correr();
+t_esi *obtener_nuevo_esi_a_correr();
 
 /* Nombre: bloquear_esi(char* clave)
  * Desc: Luego de que el coordinador me indico que un recurso se encuentra bloqueado
@@ -37,7 +37,7 @@ void obtener_nuevo_esi_a_correr();
  */
 void bloquear_esi(char* clave);
 
-void bloquear_esi_por_consola(char* clave, int id_esi){
+void bloquear_esi_por_consola(char* clave, int id_esi);
 
 
 /* Nombre: finalizar_esi()

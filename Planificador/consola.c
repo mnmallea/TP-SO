@@ -54,14 +54,14 @@ void *menu(void *ptr){
 			case 3:
 				printf("Ingreso desbloquear un proceso, ingrese <clave>");
 
-				scanf("%s", &clave);
+				scanf("%s", clave);
 				desbloquear(clave);
 
 				break;
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
 
-				scanf("%s", &recurso);
+				scanf("%s", recurso);
 				listar(recurso);
 				break;
 			case 5:
@@ -130,7 +130,7 @@ void mostrar_esi_en_pantalla(void* esi){
 
 void bloquear(char* clave, int id){
 
-	bloquear_por_consola(clave, id);
+	bloquear_esi_por_consola(clave, id);
 }
 
 void desbloquear(char* clave){
