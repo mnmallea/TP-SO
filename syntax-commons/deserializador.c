@@ -29,3 +29,20 @@ unsigned int recibirPaqueteVariable(int my_socket, void** buffer) {
 	res_recv = recibirPaquete(my_socket, *buffer, tamanio);
 	return res_recv;
 }
+
+unsigned int try_recibirPaqueteVariable(int my_socket, void** buffer) {
+	unsigned int res_recv;
+	uint32_t tamanio;
+
+	if ((res_recv = recv(my_socket, &tamanio, sizeof(tamanio), MSG_WAITALL))
+			<= 0) {
+		log_error(logger, "Error al recibir tamaño del paquete");
+		return res_recv;
+	}
+
+	if ((*buffer = malloc(tamanio)) == NULL) {
+		log_error(logger, "Error al realizar el malloc");
+	}
+	res_recv = recv(my_socket, *buffer, tamanio, MSG_WAITALL);
+	return res_recv;
+}

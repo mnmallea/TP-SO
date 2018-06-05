@@ -8,5 +8,6 @@ extern t_log * logger;
 
 unsigned int recibirPaquete(int my_socket, void* buffer, size_t tamanio);
 unsigned int recibirPaqueteVariable(int my_socket, void** buffer);
+unsigned int try_recibirPaqueteVariable(int my_socket, void** buffer);
 
 #endif

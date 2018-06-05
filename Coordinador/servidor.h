@@ -15,11 +15,12 @@
 #include <commons/collections/list.h>
 #include "../syntax-commons/protocol.h"
 #include "../syntax-commons/my_socket.h"
-#include "algoritmos_distribucion.h"
-#include "config_coordinador.h"
-#include "sincronizacion.h"
 #include "../syntax-commons/serializador.h"
 #include "../syntax-commons/deserializador.h"
+#include "config_coordinador.h"
+#include "sincronizacion.h"
+#include "algoritmos_distribucion.h"
+#include "instancia.h"
 
 extern int socket_planificador;
 extern t_log* logger;

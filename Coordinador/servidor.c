@@ -80,16 +80,35 @@ void atender_planificador(int socket) {
 }
 
 void atender_instancia(int sockfd) {
-	t_instancia* instancia = calloc(1, sizeof(instancia));
-	instancia->socket = sockfd;
-	instancia->cant_entradas_vacias = configuracion.cant_entradas;
-	instancia->claves_almacenadas = list_create();
-
+	char* nombre;
+	if (try_recibirPaqueteVariable(sockfd, (void**) &nombre) <= 0) {
+		log_error(logger, "Error al configurar instancia");
+		close(sockfd);
+		return;
+	}
+	if (send(sockfd, &configuracion.entrada_size,
+			sizeof(configuracion.entrada_size), 0) < 0) {
+		log_error(logger, "Error al configurar instancia");
+		close(sockfd);
+		return;
+	}
+	if (send(sockfd, &configuracion.cant_entradas,
+			sizeof(configuracion.cant_entradas), 0) < 0) {
+		log_error(logger, "Error al configurar instancia");
+		close(sockfd);
+		return;
+	}
+	if (esta_activa_instancia(nombre)) {
+		log_error(logger, "La instancia %s ya se encuentra activa", nombre);
+		close(sockfd);
+		return;
+	}
+	t_instancia* instancia = crear_instancia(sockfd, nombre,
+			configuracion.cant_entradas);
 	pthread_mutex_lock(&mutex_instancias_disponibles);
-	instancia->id = cant_instancias;
 	cant_instancias++;
 	list_add(lista_instancias_disponibles, instancia);
-	log_debug(logger, "Instancia Nº:%d agregada a la lista", instancia->id);
+	log_debug(logger, "Instancia %s agregada a la lista", instancia->nombre);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	sem_post(&contador_instancias_disponibles);
 }

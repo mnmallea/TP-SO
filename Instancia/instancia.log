@@ -101,3 +101,831 @@
 [INFO] 15:23:06:248 Instancia/(10060:10060): Mensaje enviado
 [INFO] 15:23:49:373 Instancia/(10060:10060): Mensaje de 4 bytes recibido
 [INFO] 15:23:49:374 Instancia/(10060:10060): Se ha conectado al coordinador correctamente!!
+[INFO] 14:40:39:837 Instancia/(32489:32489): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 14:40:39:849 Instancia/(32489:32489): Error al conectar el socket
+[INFO] 14:41:55:673 Instancia/(32568:32568): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8080
+[ERROR] 14:41:55:673 Instancia/(32568:32568): Error al conectar el socket
+[INFO] 14:42:58:637 Instancia/(32646:32646): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 14:42:58:639 Instancia/(32646:32646): Socket conectado
+[INFO] 14:42:58:640 Instancia/(32646:32646): Mensaje enviado
+[INFO] 14:42:58:643 Instancia/(32646:32646): Mensaje de 4 bytes recibido
+[INFO] 14:42:58:643 Instancia/(32646:32646): Se ha conectado al coordinador correctamente!!
+[ERROR] 14:43:30:189 Instancia/(32646:32646): paquete de tamanio fijo agregado
+[ERROR] 14:43:30:189 Instancia/(32646:32646): paquete de tamanio fijo agregado
+[ERROR] 14:43:30:189 Instancia/(32646:32646):  paquete tamanio variable agregado
+[INFO] 14:46:28:608 Instancia/(32740:32740): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 14:46:28:615 Instancia/(32740:32740): Socket conectado
+[INFO] 14:46:28:615 Instancia/(32740:32740): Mensaje enviado
+[INFO] 14:46:40:368 Instancia/(32740:32740): Mensaje de 4 bytes recibido
+[INFO] 14:46:40:368 Instancia/(32740:32740): Se ha conectado al coordinador correctamente!!
+[ERROR] 14:46:40:368 Instancia/(32740:32740): paquete de tamanio fijo agregado
+[ERROR] 14:46:40:369 Instancia/(32740:32740): paquete de tamanio fijo agregado
+[ERROR] 14:46:40:369 Instancia/(32740:32740):  paquete tamanio variable agregado
+[INFO] 14:49:42:55 Instancia/(449:449): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 14:49:42:56 Instancia/(449:449): Socket conectado
+[INFO] 14:49:42:56 Instancia/(449:449): Mensaje enviado
+[INFO] 14:49:42:56 Instancia/(449:449): Mensaje de 4 bytes recibido
+[INFO] 14:49:42:56 Instancia/(449:449): Se ha conectado al coordinador correctamente!!
+[ERROR] 14:49:42:56 Instancia/(449:449): paquete de tamanio fijo agregado
+[ERROR] 14:49:42:56 Instancia/(449:449): paquete de tamanio fijo agregado
+[ERROR] 14:49:42:56 Instancia/(449:449):  paquete tamanio variable agregado
+[INFO] 14:50:22:494 Instancia/(485:485): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 14:50:22:495 Instancia/(485:485): Socket conectado
+[INFO] 14:50:22:495 Instancia/(485:485): Mensaje enviado
+[INFO] 14:50:22:498 Instancia/(485:485): Mensaje de 4 bytes recibido
+[INFO] 14:50:22:498 Instancia/(485:485): Se ha conectado al coordinador correctamente!!
+[ERROR] 14:50:22:619 Instancia/(485:485): paquete de tamanio fijo agregado
+[ERROR] 14:50:22:620 Instancia/(485:485): paquete de tamanio fijo agregado
+[ERROR] 14:50:22:620 Instancia/(485:485):  paquete tamanio variable agregado
+[INFO] 15:03:35:425 Instancia/(1010:1010): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:03:35:426 Instancia/(1010:1010): Socket conectado
+[INFO] 15:03:35:426 Instancia/(1010:1010): Mensaje enviado
+[INFO] 15:03:35:427 Instancia/(1010:1010): Mensaje de 4 bytes recibido
+[INFO] 15:03:35:427 Instancia/(1010:1010): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:03:35:427 Instancia/(1010:1010): paquete de tamanio fijo agregado
+[ERROR] 15:03:35:427 Instancia/(1010:1010): paquete de tamanio fijo agregado
+[ERROR] 15:03:35:427 Instancia/(1010:1010):  paquete tamanio variable agregado
+[INFO] 15:03:39:424 Instancia/(1016:1016): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:03:39:429 Instancia/(1016:1016): Socket conectado
+[INFO] 15:03:39:429 Instancia/(1016:1016): Mensaje enviado
+[INFO] 15:03:39:434 Instancia/(1016:1016): Mensaje de 4 bytes recibido
+[INFO] 15:03:39:434 Instancia/(1016:1016): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:03:39:434 Instancia/(1016:1016): paquete de tamanio fijo agregado
+[ERROR] 15:03:39:434 Instancia/(1016:1016): paquete de tamanio fijo agregado
+[ERROR] 15:03:39:434 Instancia/(1016:1016):  paquete tamanio variable agregado
+[INFO] 15:04:28:946 Instancia/(1055:1055): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:04:28:946 Instancia/(1055:1055): Socket conectado
+[INFO] 15:04:28:946 Instancia/(1055:1055): Mensaje enviado
+[INFO] 15:04:28:947 Instancia/(1055:1055): Mensaje de 4 bytes recibido
+[INFO] 15:04:28:947 Instancia/(1055:1055): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:04:28:947 Instancia/(1055:1055): paquete de tamanio fijo agregado
+[ERROR] 15:04:28:947 Instancia/(1055:1055): paquete de tamanio fijo agregado
+[ERROR] 15:04:28:947 Instancia/(1055:1055):  paquete tamanio variable agregado
+[INFO] 15:04:36:283 Instancia/(1060:1060): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:04:36:287 Instancia/(1060:1060): Socket conectado
+[INFO] 15:04:36:288 Instancia/(1060:1060): Mensaje enviado
+[INFO] 15:04:36:288 Instancia/(1060:1060): Mensaje de 4 bytes recibido
+[INFO] 15:04:36:288 Instancia/(1060:1060): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:04:36:288 Instancia/(1060:1060): paquete de tamanio fijo agregado
+[ERROR] 15:04:36:288 Instancia/(1060:1060): paquete de tamanio fijo agregado
+[ERROR] 15:04:36:288 Instancia/(1060:1060):  paquete tamanio variable agregado
+[INFO] 15:05:11:226 Instancia/(1074:1074): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:11:227 Instancia/(1074:1074): Socket conectado
+[INFO] 15:05:11:227 Instancia/(1074:1074): Mensaje enviado
+[INFO] 15:05:11:227 Instancia/(1074:1074): Mensaje de 4 bytes recibido
+[INFO] 15:05:11:227 Instancia/(1074:1074): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:11:227 Instancia/(1074:1074): paquete de tamanio fijo agregado
+[ERROR] 15:05:11:227 Instancia/(1074:1074): paquete de tamanio fijo agregado
+[ERROR] 15:05:11:227 Instancia/(1074:1074):  paquete tamanio variable agregado
+[INFO] 15:05:12:818 Instancia/(1079:1079): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:12:823 Instancia/(1079:1079): Socket conectado
+[INFO] 15:05:12:823 Instancia/(1079:1079): Mensaje enviado
+[INFO] 15:05:12:823 Instancia/(1079:1079): Mensaje de 4 bytes recibido
+[INFO] 15:05:12:823 Instancia/(1079:1079): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:12:823 Instancia/(1079:1079): paquete de tamanio fijo agregado
+[ERROR] 15:05:12:824 Instancia/(1079:1079): paquete de tamanio fijo agregado
+[ERROR] 15:05:12:824 Instancia/(1079:1079):  paquete tamanio variable agregado
+[INFO] 15:05:20:468 Instancia/(1083:1083): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:20:472 Instancia/(1083:1083): Socket conectado
+[INFO] 15:05:20:472 Instancia/(1083:1083): Mensaje enviado
+[INFO] 15:05:20:473 Instancia/(1083:1083): Mensaje de 4 bytes recibido
+[INFO] 15:05:20:473 Instancia/(1083:1083): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:20:473 Instancia/(1083:1083): paquete de tamanio fijo agregado
+[ERROR] 15:05:20:473 Instancia/(1083:1083): paquete de tamanio fijo agregado
+[ERROR] 15:05:20:473 Instancia/(1083:1083):  paquete tamanio variable agregado
+[INFO] 15:05:28:381 Instancia/(1089:1089): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:28:386 Instancia/(1089:1089): Socket conectado
+[INFO] 15:05:28:386 Instancia/(1089:1089): Mensaje enviado
+[INFO] 15:05:28:386 Instancia/(1089:1089): Mensaje de 4 bytes recibido
+[INFO] 15:05:28:386 Instancia/(1089:1089): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:28:386 Instancia/(1089:1089): paquete de tamanio fijo agregado
+[ERROR] 15:05:28:386 Instancia/(1089:1089): paquete de tamanio fijo agregado
+[ERROR] 15:05:28:386 Instancia/(1089:1089):  paquete tamanio variable agregado
+[INFO] 15:05:30:854 Instancia/(1093:1093): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:30:859 Instancia/(1093:1093): Socket conectado
+[INFO] 15:05:30:859 Instancia/(1093:1093): Mensaje enviado
+[INFO] 15:05:30:859 Instancia/(1093:1093): Mensaje de 4 bytes recibido
+[INFO] 15:05:30:859 Instancia/(1093:1093): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:30:860 Instancia/(1093:1093): paquete de tamanio fijo agregado
+[ERROR] 15:05:30:860 Instancia/(1093:1093): paquete de tamanio fijo agregado
+[ERROR] 15:05:30:860 Instancia/(1093:1093):  paquete tamanio variable agregado
+[INFO] 15:05:32:470 Instancia/(1097:1097): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:32:475 Instancia/(1097:1097): Socket conectado
+[INFO] 15:05:32:475 Instancia/(1097:1097): Mensaje enviado
+[INFO] 15:05:32:475 Instancia/(1097:1097): Mensaje de 4 bytes recibido
+[INFO] 15:05:32:475 Instancia/(1097:1097): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:32:475 Instancia/(1097:1097): paquete de tamanio fijo agregado
+[ERROR] 15:05:32:475 Instancia/(1097:1097): paquete de tamanio fijo agregado
+[ERROR] 15:05:32:475 Instancia/(1097:1097):  paquete tamanio variable agregado
+[INFO] 15:05:32:894 Instancia/(1101:1101): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:32:899 Instancia/(1101:1101): Socket conectado
+[INFO] 15:05:32:899 Instancia/(1101:1101): Mensaje enviado
+[INFO] 15:05:32:899 Instancia/(1101:1101): Mensaje de 4 bytes recibido
+[INFO] 15:05:32:899 Instancia/(1101:1101): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:32:899 Instancia/(1101:1101): paquete de tamanio fijo agregado
+[ERROR] 15:05:32:899 Instancia/(1101:1101): paquete de tamanio fijo agregado
+[ERROR] 15:05:32:899 Instancia/(1101:1101):  paquete tamanio variable agregado
+[INFO] 15:05:33:191 Instancia/(1104:1104): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:33:196 Instancia/(1104:1104): Socket conectado
+[INFO] 15:05:33:196 Instancia/(1104:1104): Mensaje enviado
+[INFO] 15:05:33:196 Instancia/(1104:1104): Mensaje de 4 bytes recibido
+[INFO] 15:05:33:196 Instancia/(1104:1104): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:33:196 Instancia/(1104:1104): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:196 Instancia/(1104:1104): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:197 Instancia/(1104:1104):  paquete tamanio variable agregado
+[INFO] 15:05:33:454 Instancia/(1107:1107): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:33:459 Instancia/(1107:1107): Socket conectado
+[INFO] 15:05:33:460 Instancia/(1107:1107): Mensaje enviado
+[INFO] 15:05:33:460 Instancia/(1107:1107): Mensaje de 4 bytes recibido
+[INFO] 15:05:33:460 Instancia/(1107:1107): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:33:460 Instancia/(1107:1107): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:460 Instancia/(1107:1107): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:460 Instancia/(1107:1107):  paquete tamanio variable agregado
+[INFO] 15:05:33:678 Instancia/(1110:1110): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:33:683 Instancia/(1110:1110): Socket conectado
+[INFO] 15:05:33:683 Instancia/(1110:1110): Mensaje enviado
+[INFO] 15:05:33:684 Instancia/(1110:1110): Mensaje de 4 bytes recibido
+[INFO] 15:05:33:684 Instancia/(1110:1110): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:33:684 Instancia/(1110:1110): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:684 Instancia/(1110:1110): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:684 Instancia/(1110:1110):  paquete tamanio variable agregado
+[INFO] 15:05:33:918 Instancia/(1113:1113): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:33:923 Instancia/(1113:1113): Socket conectado
+[INFO] 15:05:33:923 Instancia/(1113:1113): Mensaje enviado
+[INFO] 15:05:33:923 Instancia/(1113:1113): Mensaje de 4 bytes recibido
+[INFO] 15:05:33:924 Instancia/(1113:1113): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:33:924 Instancia/(1113:1113): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:924 Instancia/(1113:1113): paquete de tamanio fijo agregado
+[ERROR] 15:05:33:924 Instancia/(1113:1113):  paquete tamanio variable agregado
+[INFO] 15:05:34:158 Instancia/(1116:1116): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:34:163 Instancia/(1116:1116): Socket conectado
+[INFO] 15:05:34:163 Instancia/(1116:1116): Mensaje enviado
+[INFO] 15:05:34:163 Instancia/(1116:1116): Mensaje de 4 bytes recibido
+[INFO] 15:05:34:164 Instancia/(1116:1116): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:34:164 Instancia/(1116:1116): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:164 Instancia/(1116:1116): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:164 Instancia/(1116:1116):  paquete tamanio variable agregado
+[INFO] 15:05:34:383 Instancia/(1119:1119): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:34:387 Instancia/(1119:1119): Socket conectado
+[INFO] 15:05:34:388 Instancia/(1119:1119): Mensaje enviado
+[INFO] 15:05:34:388 Instancia/(1119:1119): Mensaje de 4 bytes recibido
+[INFO] 15:05:34:388 Instancia/(1119:1119): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:34:388 Instancia/(1119:1119): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:388 Instancia/(1119:1119): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:388 Instancia/(1119:1119):  paquete tamanio variable agregado
+[INFO] 15:05:34:606 Instancia/(1122:1122): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:34:611 Instancia/(1122:1122): Socket conectado
+[INFO] 15:05:34:611 Instancia/(1122:1122): Mensaje enviado
+[INFO] 15:05:34:612 Instancia/(1122:1122): Mensaje de 4 bytes recibido
+[INFO] 15:05:34:612 Instancia/(1122:1122): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:34:612 Instancia/(1122:1122): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:612 Instancia/(1122:1122): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:612 Instancia/(1122:1122):  paquete tamanio variable agregado
+[INFO] 15:05:34:839 Instancia/(1125:1125): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:34:844 Instancia/(1125:1125): Socket conectado
+[INFO] 15:05:34:844 Instancia/(1125:1125): Mensaje enviado
+[INFO] 15:05:34:845 Instancia/(1125:1125): Mensaje de 4 bytes recibido
+[INFO] 15:05:34:845 Instancia/(1125:1125): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:34:845 Instancia/(1125:1125): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:845 Instancia/(1125:1125): paquete de tamanio fijo agregado
+[ERROR] 15:05:34:845 Instancia/(1125:1125):  paquete tamanio variable agregado
+[INFO] 15:05:35:79 Instancia/(1128:1128): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:35:84 Instancia/(1128:1128): Socket conectado
+[INFO] 15:05:35:84 Instancia/(1128:1128): Mensaje enviado
+[INFO] 15:05:35:84 Instancia/(1128:1128): Mensaje de 4 bytes recibido
+[INFO] 15:05:35:84 Instancia/(1128:1128): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:35:84 Instancia/(1128:1128): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:84 Instancia/(1128:1128): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:84 Instancia/(1128:1128):  paquete tamanio variable agregado
+[INFO] 15:05:35:311 Instancia/(1131:1131): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:35:316 Instancia/(1131:1131): Socket conectado
+[INFO] 15:05:35:316 Instancia/(1131:1131): Mensaje enviado
+[INFO] 15:05:35:316 Instancia/(1131:1131): Mensaje de 4 bytes recibido
+[INFO] 15:05:35:316 Instancia/(1131:1131): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:35:316 Instancia/(1131:1131): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:316 Instancia/(1131:1131): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:316 Instancia/(1131:1131):  paquete tamanio variable agregado
+[INFO] 15:05:35:551 Instancia/(1134:1134): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:35:556 Instancia/(1134:1134): Socket conectado
+[INFO] 15:05:35:556 Instancia/(1134:1134): Mensaje enviado
+[INFO] 15:05:35:556 Instancia/(1134:1134): Mensaje de 4 bytes recibido
+[INFO] 15:05:35:556 Instancia/(1134:1134): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:35:556 Instancia/(1134:1134): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:556 Instancia/(1134:1134): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:556 Instancia/(1134:1134):  paquete tamanio variable agregado
+[INFO] 15:05:35:783 Instancia/(1137:1137): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:35:787 Instancia/(1137:1137): Socket conectado
+[INFO] 15:05:35:787 Instancia/(1137:1137): Mensaje enviado
+[INFO] 15:05:35:788 Instancia/(1137:1137): Mensaje de 4 bytes recibido
+[INFO] 15:05:35:788 Instancia/(1137:1137): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:35:788 Instancia/(1137:1137): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:788 Instancia/(1137:1137): paquete de tamanio fijo agregado
+[ERROR] 15:05:35:788 Instancia/(1137:1137):  paquete tamanio variable agregado
+[INFO] 15:05:36:31 Instancia/(1141:1141): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:36:36 Instancia/(1141:1141): Socket conectado
+[INFO] 15:05:36:37 Instancia/(1141:1141): Mensaje enviado
+[INFO] 15:05:36:37 Instancia/(1141:1141): Mensaje de 4 bytes recibido
+[INFO] 15:05:36:37 Instancia/(1141:1141): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:36:37 Instancia/(1141:1141): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:37 Instancia/(1141:1141): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:37 Instancia/(1141:1141):  paquete tamanio variable agregado
+[INFO] 15:05:36:248 Instancia/(1144:1144): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:36:251 Instancia/(1144:1144): Socket conectado
+[INFO] 15:05:36:251 Instancia/(1144:1144): Mensaje enviado
+[INFO] 15:05:36:253 Instancia/(1144:1144): Mensaje de 4 bytes recibido
+[INFO] 15:05:36:253 Instancia/(1144:1144): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:36:253 Instancia/(1144:1144): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:253 Instancia/(1144:1144): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:253 Instancia/(1144:1144):  paquete tamanio variable agregado
+[INFO] 15:05:36:487 Instancia/(1147:1147): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:36:492 Instancia/(1147:1147): Socket conectado
+[INFO] 15:05:36:492 Instancia/(1147:1147): Mensaje enviado
+[INFO] 15:05:36:492 Instancia/(1147:1147): Mensaje de 4 bytes recibido
+[INFO] 15:05:36:492 Instancia/(1147:1147): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:36:492 Instancia/(1147:1147): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:492 Instancia/(1147:1147): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:492 Instancia/(1147:1147):  paquete tamanio variable agregado
+[INFO] 15:05:36:727 Instancia/(1151:1151): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:36:731 Instancia/(1151:1151): Socket conectado
+[INFO] 15:05:36:732 Instancia/(1151:1151): Mensaje enviado
+[INFO] 15:05:36:732 Instancia/(1151:1151): Mensaje de 4 bytes recibido
+[INFO] 15:05:36:732 Instancia/(1151:1151): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:36:732 Instancia/(1151:1151): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:732 Instancia/(1151:1151): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:732 Instancia/(1151:1151):  paquete tamanio variable agregado
+[INFO] 15:05:36:959 Instancia/(1154:1154): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:36:964 Instancia/(1154:1154): Socket conectado
+[INFO] 15:05:36:964 Instancia/(1154:1154): Mensaje enviado
+[INFO] 15:05:36:964 Instancia/(1154:1154): Mensaje de 4 bytes recibido
+[INFO] 15:05:36:964 Instancia/(1154:1154): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:36:964 Instancia/(1154:1154): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:964 Instancia/(1154:1154): paquete de tamanio fijo agregado
+[ERROR] 15:05:36:964 Instancia/(1154:1154):  paquete tamanio variable agregado
+[INFO] 15:05:37:207 Instancia/(1157:1157): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:37:212 Instancia/(1157:1157): Socket conectado
+[INFO] 15:05:37:212 Instancia/(1157:1157): Mensaje enviado
+[INFO] 15:05:37:212 Instancia/(1157:1157): Mensaje de 4 bytes recibido
+[INFO] 15:05:37:212 Instancia/(1157:1157): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:37:212 Instancia/(1157:1157): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:212 Instancia/(1157:1157): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:212 Instancia/(1157:1157):  paquete tamanio variable agregado
+[INFO] 15:05:37:431 Instancia/(1160:1160): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:37:436 Instancia/(1160:1160): Socket conectado
+[INFO] 15:05:37:436 Instancia/(1160:1160): Mensaje enviado
+[INFO] 15:05:37:436 Instancia/(1160:1160): Mensaje de 4 bytes recibido
+[INFO] 15:05:37:436 Instancia/(1160:1160): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:37:436 Instancia/(1160:1160): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:436 Instancia/(1160:1160): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:436 Instancia/(1160:1160):  paquete tamanio variable agregado
+[INFO] 15:05:37:687 Instancia/(1163:1163): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:37:692 Instancia/(1163:1163): Socket conectado
+[INFO] 15:05:37:692 Instancia/(1163:1163): Mensaje enviado
+[INFO] 15:05:37:692 Instancia/(1163:1163): Mensaje de 4 bytes recibido
+[INFO] 15:05:37:692 Instancia/(1163:1163): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:37:692 Instancia/(1163:1163): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:692 Instancia/(1163:1163): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:692 Instancia/(1163:1163):  paquete tamanio variable agregado
+[INFO] 15:05:37:919 Instancia/(1166:1166): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:37:924 Instancia/(1166:1166): Socket conectado
+[INFO] 15:05:37:924 Instancia/(1166:1166): Mensaje enviado
+[INFO] 15:05:37:924 Instancia/(1166:1166): Mensaje de 4 bytes recibido
+[INFO] 15:05:37:924 Instancia/(1166:1166): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:37:924 Instancia/(1166:1166): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:924 Instancia/(1166:1166): paquete de tamanio fijo agregado
+[ERROR] 15:05:37:924 Instancia/(1166:1166):  paquete tamanio variable agregado
+[INFO] 15:05:38:183 Instancia/(1169:1169): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:38:188 Instancia/(1169:1169): Socket conectado
+[INFO] 15:05:38:188 Instancia/(1169:1169): Mensaje enviado
+[INFO] 15:05:38:188 Instancia/(1169:1169): Mensaje de 4 bytes recibido
+[INFO] 15:05:38:188 Instancia/(1169:1169): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:38:189 Instancia/(1169:1169): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:189 Instancia/(1169:1169): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:189 Instancia/(1169:1169):  paquete tamanio variable agregado
+[INFO] 15:05:38:431 Instancia/(1172:1172): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:38:436 Instancia/(1172:1172): Socket conectado
+[INFO] 15:05:38:436 Instancia/(1172:1172): Mensaje enviado
+[INFO] 15:05:38:436 Instancia/(1172:1172): Mensaje de 4 bytes recibido
+[INFO] 15:05:38:436 Instancia/(1172:1172): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:38:436 Instancia/(1172:1172): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:437 Instancia/(1172:1172): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:437 Instancia/(1172:1172):  paquete tamanio variable agregado
+[INFO] 15:05:38:655 Instancia/(1175:1175): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:38:660 Instancia/(1175:1175): Socket conectado
+[INFO] 15:05:38:660 Instancia/(1175:1175): Mensaje enviado
+[INFO] 15:05:38:660 Instancia/(1175:1175): Mensaje de 4 bytes recibido
+[INFO] 15:05:38:660 Instancia/(1175:1175): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:38:660 Instancia/(1175:1175): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:661 Instancia/(1175:1175): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:661 Instancia/(1175:1175):  paquete tamanio variable agregado
+[INFO] 15:05:38:895 Instancia/(1178:1178): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:38:900 Instancia/(1178:1178): Socket conectado
+[INFO] 15:05:38:900 Instancia/(1178:1178): Mensaje enviado
+[INFO] 15:05:38:901 Instancia/(1178:1178): Mensaje de 4 bytes recibido
+[INFO] 15:05:38:901 Instancia/(1178:1178): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:38:901 Instancia/(1178:1178): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:901 Instancia/(1178:1178): paquete de tamanio fijo agregado
+[ERROR] 15:05:38:901 Instancia/(1178:1178):  paquete tamanio variable agregado
+[INFO] 15:05:39:127 Instancia/(1181:1181): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:39:132 Instancia/(1181:1181): Socket conectado
+[INFO] 15:05:39:132 Instancia/(1181:1181): Mensaje enviado
+[INFO] 15:05:39:133 Instancia/(1181:1181): Mensaje de 4 bytes recibido
+[INFO] 15:05:39:133 Instancia/(1181:1181): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:39:133 Instancia/(1181:1181): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:133 Instancia/(1181:1181): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:133 Instancia/(1181:1181):  paquete tamanio variable agregado
+[INFO] 15:05:39:392 Instancia/(1189:1189): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:39:396 Instancia/(1189:1189): Socket conectado
+[INFO] 15:05:39:396 Instancia/(1189:1189): Mensaje enviado
+[INFO] 15:05:39:396 Instancia/(1189:1189): Mensaje de 4 bytes recibido
+[INFO] 15:05:39:397 Instancia/(1189:1189): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:39:397 Instancia/(1189:1189): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:397 Instancia/(1189:1189): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:397 Instancia/(1189:1189):  paquete tamanio variable agregado
+[INFO] 15:05:39:623 Instancia/(1192:1192): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:39:628 Instancia/(1192:1192): Socket conectado
+[INFO] 15:05:39:628 Instancia/(1192:1192): Mensaje enviado
+[INFO] 15:05:39:628 Instancia/(1192:1192): Mensaje de 4 bytes recibido
+[INFO] 15:05:39:629 Instancia/(1192:1192): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:39:629 Instancia/(1192:1192): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:629 Instancia/(1192:1192): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:629 Instancia/(1192:1192):  paquete tamanio variable agregado
+[INFO] 15:05:39:872 Instancia/(1195:1195): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:39:876 Instancia/(1195:1195): Socket conectado
+[INFO] 15:05:39:876 Instancia/(1195:1195): Mensaje enviado
+[INFO] 15:05:39:876 Instancia/(1195:1195): Mensaje de 4 bytes recibido
+[INFO] 15:05:39:877 Instancia/(1195:1195): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:39:877 Instancia/(1195:1195): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:877 Instancia/(1195:1195): paquete de tamanio fijo agregado
+[ERROR] 15:05:39:877 Instancia/(1195:1195):  paquete tamanio variable agregado
+[INFO] 15:05:40:112 Instancia/(1199:1199): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:40:117 Instancia/(1199:1199): Socket conectado
+[INFO] 15:05:40:117 Instancia/(1199:1199): Mensaje enviado
+[INFO] 15:05:40:117 Instancia/(1199:1199): Mensaje de 4 bytes recibido
+[INFO] 15:05:40:117 Instancia/(1199:1199): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:40:117 Instancia/(1199:1199): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:117 Instancia/(1199:1199): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:117 Instancia/(1199:1199):  paquete tamanio variable agregado
+[INFO] 15:05:40:352 Instancia/(1210:1210): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:40:356 Instancia/(1210:1210): Socket conectado
+[INFO] 15:05:40:356 Instancia/(1210:1210): Mensaje enviado
+[INFO] 15:05:40:357 Instancia/(1210:1210): Mensaje de 4 bytes recibido
+[INFO] 15:05:40:357 Instancia/(1210:1210): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:40:357 Instancia/(1210:1210): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:357 Instancia/(1210:1210): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:357 Instancia/(1210:1210):  paquete tamanio variable agregado
+[INFO] 15:05:40:600 Instancia/(1213:1213): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:40:604 Instancia/(1213:1213): Socket conectado
+[INFO] 15:05:40:605 Instancia/(1213:1213): Mensaje enviado
+[INFO] 15:05:40:605 Instancia/(1213:1213): Mensaje de 4 bytes recibido
+[INFO] 15:05:40:605 Instancia/(1213:1213): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:40:605 Instancia/(1213:1213): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:605 Instancia/(1213:1213): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:605 Instancia/(1213:1213):  paquete tamanio variable agregado
+[INFO] 15:05:40:840 Instancia/(1216:1216): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:40:847 Instancia/(1216:1216): Socket conectado
+[INFO] 15:05:40:847 Instancia/(1216:1216): Mensaje enviado
+[INFO] 15:05:40:848 Instancia/(1216:1216): Mensaje de 4 bytes recibido
+[INFO] 15:05:40:848 Instancia/(1216:1216): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:40:848 Instancia/(1216:1216): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:848 Instancia/(1216:1216): paquete de tamanio fijo agregado
+[ERROR] 15:05:40:848 Instancia/(1216:1216):  paquete tamanio variable agregado
+[INFO] 15:05:41:88 Instancia/(1219:1219): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:41:92 Instancia/(1219:1219): Socket conectado
+[INFO] 15:05:41:92 Instancia/(1219:1219): Mensaje enviado
+[INFO] 15:05:41:94 Instancia/(1219:1219): Mensaje de 4 bytes recibido
+[INFO] 15:05:41:94 Instancia/(1219:1219): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:41:94 Instancia/(1219:1219): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:94 Instancia/(1219:1219): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:94 Instancia/(1219:1219):  paquete tamanio variable agregado
+[INFO] 15:05:41:328 Instancia/(1222:1222): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:41:333 Instancia/(1222:1222): Socket conectado
+[INFO] 15:05:41:333 Instancia/(1222:1222): Mensaje enviado
+[INFO] 15:05:41:334 Instancia/(1222:1222): Mensaje de 4 bytes recibido
+[INFO] 15:05:41:334 Instancia/(1222:1222): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:41:334 Instancia/(1222:1222): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:334 Instancia/(1222:1222): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:334 Instancia/(1222:1222):  paquete tamanio variable agregado
+[INFO] 15:05:41:584 Instancia/(1225:1225): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:41:589 Instancia/(1225:1225): Socket conectado
+[INFO] 15:05:41:589 Instancia/(1225:1225): Mensaje enviado
+[INFO] 15:05:41:589 Instancia/(1225:1225): Mensaje de 4 bytes recibido
+[INFO] 15:05:41:589 Instancia/(1225:1225): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:41:589 Instancia/(1225:1225): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:589 Instancia/(1225:1225): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:589 Instancia/(1225:1225):  paquete tamanio variable agregado
+[INFO] 15:05:41:832 Instancia/(1228:1228): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:41:837 Instancia/(1228:1228): Socket conectado
+[INFO] 15:05:41:837 Instancia/(1228:1228): Mensaje enviado
+[INFO] 15:05:41:837 Instancia/(1228:1228): Mensaje de 4 bytes recibido
+[INFO] 15:05:41:837 Instancia/(1228:1228): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:41:837 Instancia/(1228:1228): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:837 Instancia/(1228:1228): paquete de tamanio fijo agregado
+[ERROR] 15:05:41:838 Instancia/(1228:1228):  paquete tamanio variable agregado
+[INFO] 15:05:42:72 Instancia/(1231:1231): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:42:77 Instancia/(1231:1231): Socket conectado
+[INFO] 15:05:42:77 Instancia/(1231:1231): Mensaje enviado
+[INFO] 15:05:42:77 Instancia/(1231:1231): Mensaje de 4 bytes recibido
+[INFO] 15:05:42:77 Instancia/(1231:1231): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:42:77 Instancia/(1231:1231): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:77 Instancia/(1231:1231): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:77 Instancia/(1231:1231):  paquete tamanio variable agregado
+[INFO] 15:05:42:336 Instancia/(1234:1234): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:42:341 Instancia/(1234:1234): Socket conectado
+[INFO] 15:05:42:341 Instancia/(1234:1234): Mensaje enviado
+[INFO] 15:05:42:341 Instancia/(1234:1234): Mensaje de 4 bytes recibido
+[INFO] 15:05:42:341 Instancia/(1234:1234): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:42:341 Instancia/(1234:1234): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:341 Instancia/(1234:1234): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:342 Instancia/(1234:1234):  paquete tamanio variable agregado
+[INFO] 15:05:42:576 Instancia/(1237:1237): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:42:581 Instancia/(1237:1237): Socket conectado
+[INFO] 15:05:42:581 Instancia/(1237:1237): Mensaje enviado
+[INFO] 15:05:42:581 Instancia/(1237:1237): Mensaje de 4 bytes recibido
+[INFO] 15:05:42:581 Instancia/(1237:1237): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:42:581 Instancia/(1237:1237): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:581 Instancia/(1237:1237): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:582 Instancia/(1237:1237):  paquete tamanio variable agregado
+[INFO] 15:05:42:824 Instancia/(1240:1240): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:42:829 Instancia/(1240:1240): Socket conectado
+[INFO] 15:05:42:829 Instancia/(1240:1240): Mensaje enviado
+[INFO] 15:05:42:829 Instancia/(1240:1240): Mensaje de 4 bytes recibido
+[INFO] 15:05:42:829 Instancia/(1240:1240): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:42:829 Instancia/(1240:1240): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:829 Instancia/(1240:1240): paquete de tamanio fijo agregado
+[ERROR] 15:05:42:830 Instancia/(1240:1240):  paquete tamanio variable agregado
+[INFO] 15:05:43:96 Instancia/(1243:1243): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:43:101 Instancia/(1243:1243): Socket conectado
+[INFO] 15:05:43:101 Instancia/(1243:1243): Mensaje enviado
+[INFO] 15:05:43:101 Instancia/(1243:1243): Mensaje de 4 bytes recibido
+[INFO] 15:05:43:102 Instancia/(1243:1243): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:43:102 Instancia/(1243:1243): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:102 Instancia/(1243:1243): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:102 Instancia/(1243:1243):  paquete tamanio variable agregado
+[INFO] 15:05:43:400 Instancia/(1246:1246): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:43:405 Instancia/(1246:1246): Socket conectado
+[INFO] 15:05:43:405 Instancia/(1246:1246): Mensaje enviado
+[INFO] 15:05:43:405 Instancia/(1246:1246): Mensaje de 4 bytes recibido
+[INFO] 15:05:43:405 Instancia/(1246:1246): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:43:406 Instancia/(1246:1246): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:406 Instancia/(1246:1246): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:406 Instancia/(1246:1246):  paquete tamanio variable agregado
+[INFO] 15:05:43:696 Instancia/(1249:1249): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:43:701 Instancia/(1249:1249): Socket conectado
+[INFO] 15:05:43:701 Instancia/(1249:1249): Mensaje enviado
+[INFO] 15:05:43:701 Instancia/(1249:1249): Mensaje de 4 bytes recibido
+[INFO] 15:05:43:701 Instancia/(1249:1249): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:43:701 Instancia/(1249:1249): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:701 Instancia/(1249:1249): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:701 Instancia/(1249:1249):  paquete tamanio variable agregado
+[INFO] 15:05:43:968 Instancia/(1252:1252): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:43:973 Instancia/(1252:1252): Socket conectado
+[INFO] 15:05:43:973 Instancia/(1252:1252): Mensaje enviado
+[INFO] 15:05:43:974 Instancia/(1252:1252): Mensaje de 4 bytes recibido
+[INFO] 15:05:43:974 Instancia/(1252:1252): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:43:974 Instancia/(1252:1252): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:974 Instancia/(1252:1252): paquete de tamanio fijo agregado
+[ERROR] 15:05:43:974 Instancia/(1252:1252):  paquete tamanio variable agregado
+[INFO] 15:05:44:224 Instancia/(1255:1255): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:44:229 Instancia/(1255:1255): Socket conectado
+[INFO] 15:05:44:229 Instancia/(1255:1255): Mensaje enviado
+[INFO] 15:05:44:229 Instancia/(1255:1255): Mensaje de 4 bytes recibido
+[INFO] 15:05:44:230 Instancia/(1255:1255): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:44:230 Instancia/(1255:1255): paquete de tamanio fijo agregado
+[ERROR] 15:05:44:230 Instancia/(1255:1255): paquete de tamanio fijo agregado
+[ERROR] 15:05:44:230 Instancia/(1255:1255):  paquete tamanio variable agregado
+[INFO] 15:05:44:505 Instancia/(1258:1258): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:44:509 Instancia/(1258:1258): Socket conectado
+[INFO] 15:05:44:509 Instancia/(1258:1258): Mensaje enviado
+[INFO] 15:05:44:510 Instancia/(1258:1258): Mensaje de 4 bytes recibido
+[INFO] 15:05:44:510 Instancia/(1258:1258): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:44:510 Instancia/(1258:1258): paquete de tamanio fijo agregado
+[ERROR] 15:05:44:510 Instancia/(1258:1258): paquete de tamanio fijo agregado
+[ERROR] 15:05:44:510 Instancia/(1258:1258):  paquete tamanio variable agregado
+[INFO] 15:05:44:753 Instancia/(1261:1261): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:44:758 Instancia/(1261:1261): Socket conectado
+[INFO] 15:05:44:758 Instancia/(1261:1261): Mensaje enviado
+[INFO] 15:05:44:758 Instancia/(1261:1261): Mensaje de 4 bytes recibido
+[INFO] 15:05:44:758 Instancia/(1261:1261): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:44:758 Instancia/(1261:1261): paquete de tamanio fijo agregado
+[ERROR] 15:05:44:758 Instancia/(1261:1261): paquete de tamanio fijo agregado
+[ERROR] 15:05:44:758 Instancia/(1261:1261):  paquete tamanio variable agregado
+[INFO] 15:05:45:25 Instancia/(1264:1264): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:45:30 Instancia/(1264:1264): Socket conectado
+[INFO] 15:05:45:30 Instancia/(1264:1264): Mensaje enviado
+[INFO] 15:05:45:30 Instancia/(1264:1264): Mensaje de 4 bytes recibido
+[INFO] 15:05:45:30 Instancia/(1264:1264): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:45:30 Instancia/(1264:1264): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:30 Instancia/(1264:1264): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:30 Instancia/(1264:1264):  paquete tamanio variable agregado
+[INFO] 15:05:45:281 Instancia/(1267:1267): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:45:286 Instancia/(1267:1267): Socket conectado
+[INFO] 15:05:45:286 Instancia/(1267:1267): Mensaje enviado
+[INFO] 15:05:45:287 Instancia/(1267:1267): Mensaje de 4 bytes recibido
+[INFO] 15:05:45:287 Instancia/(1267:1267): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:45:287 Instancia/(1267:1267): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:287 Instancia/(1267:1267): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:287 Instancia/(1267:1267):  paquete tamanio variable agregado
+[INFO] 15:05:45:560 Instancia/(1270:1270): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:45:565 Instancia/(1270:1270): Socket conectado
+[INFO] 15:05:45:565 Instancia/(1270:1270): Mensaje enviado
+[INFO] 15:05:45:565 Instancia/(1270:1270): Mensaje de 4 bytes recibido
+[INFO] 15:05:45:566 Instancia/(1270:1270): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:45:566 Instancia/(1270:1270): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:566 Instancia/(1270:1270): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:566 Instancia/(1270:1270):  paquete tamanio variable agregado
+[INFO] 15:05:45:833 Instancia/(1273:1273): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:45:837 Instancia/(1273:1273): Socket conectado
+[INFO] 15:05:45:837 Instancia/(1273:1273): Mensaje enviado
+[INFO] 15:05:45:838 Instancia/(1273:1273): Mensaje de 4 bytes recibido
+[INFO] 15:05:45:838 Instancia/(1273:1273): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:45:838 Instancia/(1273:1273): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:838 Instancia/(1273:1273): paquete de tamanio fijo agregado
+[ERROR] 15:05:45:838 Instancia/(1273:1273):  paquete tamanio variable agregado
+[INFO] 15:05:46:81 Instancia/(1276:1276): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:46:86 Instancia/(1276:1276): Socket conectado
+[INFO] 15:05:46:86 Instancia/(1276:1276): Mensaje enviado
+[INFO] 15:05:46:86 Instancia/(1276:1276): Mensaje de 4 bytes recibido
+[INFO] 15:05:46:86 Instancia/(1276:1276): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:46:87 Instancia/(1276:1276): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:87 Instancia/(1276:1276): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:87 Instancia/(1276:1276):  paquete tamanio variable agregado
+[INFO] 15:05:46:353 Instancia/(1279:1279): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:46:357 Instancia/(1279:1279): Socket conectado
+[INFO] 15:05:46:357 Instancia/(1279:1279): Mensaje enviado
+[INFO] 15:05:46:358 Instancia/(1279:1279): Mensaje de 4 bytes recibido
+[INFO] 15:05:46:358 Instancia/(1279:1279): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:46:358 Instancia/(1279:1279): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:358 Instancia/(1279:1279): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:358 Instancia/(1279:1279):  paquete tamanio variable agregado
+[INFO] 15:05:46:609 Instancia/(1282:1282): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:46:614 Instancia/(1282:1282): Socket conectado
+[INFO] 15:05:46:614 Instancia/(1282:1282): Mensaje enviado
+[INFO] 15:05:46:614 Instancia/(1282:1282): Mensaje de 4 bytes recibido
+[INFO] 15:05:46:614 Instancia/(1282:1282): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:46:614 Instancia/(1282:1282): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:614 Instancia/(1282:1282): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:615 Instancia/(1282:1282):  paquete tamanio variable agregado
+[INFO] 15:05:46:889 Instancia/(1285:1285): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:46:894 Instancia/(1285:1285): Socket conectado
+[INFO] 15:05:46:894 Instancia/(1285:1285): Mensaje enviado
+[INFO] 15:05:46:894 Instancia/(1285:1285): Mensaje de 4 bytes recibido
+[INFO] 15:05:46:894 Instancia/(1285:1285): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:46:894 Instancia/(1285:1285): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:894 Instancia/(1285:1285): paquete de tamanio fijo agregado
+[ERROR] 15:05:46:895 Instancia/(1285:1285):  paquete tamanio variable agregado
+[INFO] 15:05:47:145 Instancia/(1288:1288): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:47:150 Instancia/(1288:1288): Socket conectado
+[INFO] 15:05:47:150 Instancia/(1288:1288): Mensaje enviado
+[INFO] 15:05:47:150 Instancia/(1288:1288): Mensaje de 4 bytes recibido
+[INFO] 15:05:47:150 Instancia/(1288:1288): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:47:150 Instancia/(1288:1288): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:150 Instancia/(1288:1288): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:151 Instancia/(1288:1288):  paquete tamanio variable agregado
+[INFO] 15:05:47:449 Instancia/(1291:1291): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:47:453 Instancia/(1291:1291): Socket conectado
+[INFO] 15:05:47:454 Instancia/(1291:1291): Mensaje enviado
+[INFO] 15:05:47:454 Instancia/(1291:1291): Mensaje de 4 bytes recibido
+[INFO] 15:05:47:454 Instancia/(1291:1291): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:47:454 Instancia/(1291:1291): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:454 Instancia/(1291:1291): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:454 Instancia/(1291:1291):  paquete tamanio variable agregado
+[INFO] 15:05:47:705 Instancia/(1294:1294): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:47:710 Instancia/(1294:1294): Socket conectado
+[INFO] 15:05:47:710 Instancia/(1294:1294): Mensaje enviado
+[INFO] 15:05:47:710 Instancia/(1294:1294): Mensaje de 4 bytes recibido
+[INFO] 15:05:47:711 Instancia/(1294:1294): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:47:711 Instancia/(1294:1294): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:711 Instancia/(1294:1294): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:711 Instancia/(1294:1294):  paquete tamanio variable agregado
+[INFO] 15:05:47:969 Instancia/(1297:1297): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:47:974 Instancia/(1297:1297): Socket conectado
+[INFO] 15:05:47:974 Instancia/(1297:1297): Mensaje enviado
+[INFO] 15:05:47:974 Instancia/(1297:1297): Mensaje de 4 bytes recibido
+[INFO] 15:05:47:974 Instancia/(1297:1297): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:47:974 Instancia/(1297:1297): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:975 Instancia/(1297:1297): paquete de tamanio fijo agregado
+[ERROR] 15:05:47:975 Instancia/(1297:1297):  paquete tamanio variable agregado
+[INFO] 15:05:48:257 Instancia/(1300:1300): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:48:262 Instancia/(1300:1300): Socket conectado
+[INFO] 15:05:48:262 Instancia/(1300:1300): Mensaje enviado
+[INFO] 15:05:48:262 Instancia/(1300:1300): Mensaje de 4 bytes recibido
+[INFO] 15:05:48:262 Instancia/(1300:1300): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:48:262 Instancia/(1300:1300): paquete de tamanio fijo agregado
+[ERROR] 15:05:48:262 Instancia/(1300:1300): paquete de tamanio fijo agregado
+[ERROR] 15:05:48:263 Instancia/(1300:1300):  paquete tamanio variable agregado
+[INFO] 15:05:48:553 Instancia/(1303:1303): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:48:558 Instancia/(1303:1303): Socket conectado
+[INFO] 15:05:48:558 Instancia/(1303:1303): Mensaje enviado
+[INFO] 15:05:48:558 Instancia/(1303:1303): Mensaje de 4 bytes recibido
+[INFO] 15:05:48:558 Instancia/(1303:1303): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:48:558 Instancia/(1303:1303): paquete de tamanio fijo agregado
+[ERROR] 15:05:48:559 Instancia/(1303:1303): paquete de tamanio fijo agregado
+[ERROR] 15:05:48:559 Instancia/(1303:1303):  paquete tamanio variable agregado
+[INFO] 15:05:48:825 Instancia/(1306:1306): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:48:829 Instancia/(1306:1306): Socket conectado
+[INFO] 15:05:48:829 Instancia/(1306:1306): Mensaje enviado
+[INFO] 15:05:48:830 Instancia/(1306:1306): Mensaje de 4 bytes recibido
+[INFO] 15:05:48:830 Instancia/(1306:1306): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:48:830 Instancia/(1306:1306): paquete de tamanio fijo agregado
+[ERROR] 15:05:48:831 Instancia/(1306:1306): paquete de tamanio fijo agregado
+[ERROR] 15:05:48:831 Instancia/(1306:1306):  paquete tamanio variable agregado
+[INFO] 15:05:52:34 Instancia/(1313:1313): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:52:38 Instancia/(1313:1313): Socket conectado
+[INFO] 15:05:52:39 Instancia/(1313:1313): Mensaje enviado
+[INFO] 15:05:52:39 Instancia/(1313:1313): Mensaje de 4 bytes recibido
+[INFO] 15:05:52:39 Instancia/(1313:1313): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:52:39 Instancia/(1313:1313): paquete de tamanio fijo agregado
+[ERROR] 15:05:52:39 Instancia/(1313:1313): paquete de tamanio fijo agregado
+[ERROR] 15:05:52:39 Instancia/(1313:1313):  paquete tamanio variable agregado
+[INFO] 15:05:53:682 Instancia/(1318:1318): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:53:687 Instancia/(1318:1318): Socket conectado
+[INFO] 15:05:53:687 Instancia/(1318:1318): Mensaje enviado
+[INFO] 15:05:53:687 Instancia/(1318:1318): Mensaje de 4 bytes recibido
+[INFO] 15:05:53:687 Instancia/(1318:1318): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:53:687 Instancia/(1318:1318): paquete de tamanio fijo agregado
+[ERROR] 15:05:53:687 Instancia/(1318:1318): paquete de tamanio fijo agregado
+[ERROR] 15:05:53:687 Instancia/(1318:1318):  paquete tamanio variable agregado
+[INFO] 15:05:54:514 Instancia/(1322:1322): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:54:519 Instancia/(1322:1322): Socket conectado
+[INFO] 15:05:54:519 Instancia/(1322:1322): Mensaje enviado
+[INFO] 15:05:54:519 Instancia/(1322:1322): Mensaje de 4 bytes recibido
+[INFO] 15:05:54:519 Instancia/(1322:1322): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:54:519 Instancia/(1322:1322): paquete de tamanio fijo agregado
+[ERROR] 15:05:54:519 Instancia/(1322:1322): paquete de tamanio fijo agregado
+[ERROR] 15:05:54:519 Instancia/(1322:1322):  paquete tamanio variable agregado
+[INFO] 15:05:55:11 Instancia/(1326:1326): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:55:16 Instancia/(1326:1326): Socket conectado
+[INFO] 15:05:55:16 Instancia/(1326:1326): Mensaje enviado
+[INFO] 15:05:55:16 Instancia/(1326:1326): Mensaje de 4 bytes recibido
+[INFO] 15:05:55:16 Instancia/(1326:1326): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:55:16 Instancia/(1326:1326): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:16 Instancia/(1326:1326): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:16 Instancia/(1326:1326):  paquete tamanio variable agregado
+[INFO] 15:05:55:418 Instancia/(1329:1329): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:55:423 Instancia/(1329:1329): Socket conectado
+[INFO] 15:05:55:424 Instancia/(1329:1329): Mensaje enviado
+[INFO] 15:05:55:424 Instancia/(1329:1329): Mensaje de 4 bytes recibido
+[INFO] 15:05:55:424 Instancia/(1329:1329): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:55:424 Instancia/(1329:1329): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:424 Instancia/(1329:1329): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:424 Instancia/(1329:1329):  paquete tamanio variable agregado
+[INFO] 15:05:55:728 Instancia/(1332:1332): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:55:733 Instancia/(1332:1332): Socket conectado
+[INFO] 15:05:55:733 Instancia/(1332:1332): Mensaje enviado
+[INFO] 15:05:55:733 Instancia/(1332:1332): Mensaje de 4 bytes recibido
+[INFO] 15:05:55:733 Instancia/(1332:1332): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:55:733 Instancia/(1332:1332): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:733 Instancia/(1332:1332): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:734 Instancia/(1332:1332):  paquete tamanio variable agregado
+[INFO] 15:05:55:995 Instancia/(1335:1335): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:55:0 Instancia/(1335:1335): Socket conectado
+[INFO] 15:05:55:0 Instancia/(1335:1335): Mensaje enviado
+[INFO] 15:05:55:0 Instancia/(1335:1335): Mensaje de 4 bytes recibido
+[INFO] 15:05:55:1 Instancia/(1335:1335): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:55:1 Instancia/(1335:1335): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:1 Instancia/(1335:1335): paquete de tamanio fijo agregado
+[ERROR] 15:05:55:1 Instancia/(1335:1335):  paquete tamanio variable agregado
+[INFO] 15:05:56:267 Instancia/(1338:1338): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:56:272 Instancia/(1338:1338): Socket conectado
+[INFO] 15:05:56:272 Instancia/(1338:1338): Mensaje enviado
+[INFO] 15:05:56:273 Instancia/(1338:1338): Mensaje de 4 bytes recibido
+[INFO] 15:05:56:273 Instancia/(1338:1338): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:56:273 Instancia/(1338:1338): paquete de tamanio fijo agregado
+[ERROR] 15:05:56:273 Instancia/(1338:1338): paquete de tamanio fijo agregado
+[ERROR] 15:05:56:273 Instancia/(1338:1338):  paquete tamanio variable agregado
+[INFO] 15:05:56:571 Instancia/(1341:1341): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:56:576 Instancia/(1341:1341): Socket conectado
+[INFO] 15:05:56:576 Instancia/(1341:1341): Mensaje enviado
+[INFO] 15:05:56:576 Instancia/(1341:1341): Mensaje de 4 bytes recibido
+[INFO] 15:05:56:577 Instancia/(1341:1341): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:56:577 Instancia/(1341:1341): paquete de tamanio fijo agregado
+[ERROR] 15:05:56:577 Instancia/(1341:1341): paquete de tamanio fijo agregado
+[ERROR] 15:05:56:577 Instancia/(1341:1341):  paquete tamanio variable agregado
+[INFO] 15:05:56:811 Instancia/(1344:1344): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:56:816 Instancia/(1344:1344): Socket conectado
+[INFO] 15:05:56:816 Instancia/(1344:1344): Mensaje enviado
+[INFO] 15:05:56:816 Instancia/(1344:1344): Mensaje de 4 bytes recibido
+[INFO] 15:05:56:817 Instancia/(1344:1344): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:56:817 Instancia/(1344:1344): paquete de tamanio fijo agregado
+[ERROR] 15:05:56:817 Instancia/(1344:1344): paquete de tamanio fijo agregado
+[ERROR] 15:05:56:817 Instancia/(1344:1344):  paquete tamanio variable agregado
+[INFO] 15:05:57:843 Instancia/(1347:1347): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:57:849 Instancia/(1347:1347): Socket conectado
+[INFO] 15:05:57:849 Instancia/(1347:1347): Mensaje enviado
+[INFO] 15:05:57:849 Instancia/(1347:1347): Mensaje de 4 bytes recibido
+[INFO] 15:05:57:849 Instancia/(1347:1347): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:57:849 Instancia/(1347:1347): paquete de tamanio fijo agregado
+[ERROR] 15:05:57:849 Instancia/(1347:1347): paquete de tamanio fijo agregado
+[ERROR] 15:05:57:850 Instancia/(1347:1347):  paquete tamanio variable agregado
+[INFO] 15:05:58:579 Instancia/(1351:1351): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:58:584 Instancia/(1351:1351): Socket conectado
+[INFO] 15:05:58:584 Instancia/(1351:1351): Mensaje enviado
+[INFO] 15:05:58:584 Instancia/(1351:1351): Mensaje de 4 bytes recibido
+[INFO] 15:05:58:584 Instancia/(1351:1351): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:58:584 Instancia/(1351:1351): paquete de tamanio fijo agregado
+[ERROR] 15:05:58:584 Instancia/(1351:1351): paquete de tamanio fijo agregado
+[ERROR] 15:05:58:584 Instancia/(1351:1351):  paquete tamanio variable agregado
+[INFO] 15:05:59:435 Instancia/(1355:1355): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:05:59:440 Instancia/(1355:1355): Socket conectado
+[INFO] 15:05:59:440 Instancia/(1355:1355): Mensaje enviado
+[INFO] 15:05:59:440 Instancia/(1355:1355): Mensaje de 4 bytes recibido
+[INFO] 15:05:59:440 Instancia/(1355:1355): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:05:59:440 Instancia/(1355:1355): paquete de tamanio fijo agregado
+[ERROR] 15:05:59:440 Instancia/(1355:1355): paquete de tamanio fijo agregado
+[ERROR] 15:05:59:440 Instancia/(1355:1355):  paquete tamanio variable agregado
+[INFO] 15:06:00:148 Instancia/(1359:1359): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:00:152 Instancia/(1359:1359): Socket conectado
+[INFO] 15:06:00:152 Instancia/(1359:1359): Mensaje enviado
+[INFO] 15:06:00:152 Instancia/(1359:1359): Mensaje de 4 bytes recibido
+[INFO] 15:06:00:152 Instancia/(1359:1359): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:00:152 Instancia/(1359:1359): paquete de tamanio fijo agregado
+[ERROR] 15:06:00:152 Instancia/(1359:1359): paquete de tamanio fijo agregado
+[ERROR] 15:06:00:152 Instancia/(1359:1359):  paquete tamanio variable agregado
+[INFO] 15:06:00:853 Instancia/(1366:1366): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:00:858 Instancia/(1366:1366): Socket conectado
+[INFO] 15:06:00:859 Instancia/(1366:1366): Mensaje enviado
+[INFO] 15:06:00:859 Instancia/(1366:1366): Mensaje de 4 bytes recibido
+[INFO] 15:06:00:859 Instancia/(1366:1366): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:00:859 Instancia/(1366:1366): paquete de tamanio fijo agregado
+[ERROR] 15:06:00:859 Instancia/(1366:1366): paquete de tamanio fijo agregado
+[ERROR] 15:06:00:859 Instancia/(1366:1366):  paquete tamanio variable agregado
+[INFO] 15:06:01:388 Instancia/(1370:1370): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:01:392 Instancia/(1370:1370): Socket conectado
+[INFO] 15:06:01:392 Instancia/(1370:1370): Mensaje enviado
+[INFO] 15:06:01:393 Instancia/(1370:1370): Mensaje de 4 bytes recibido
+[INFO] 15:06:01:393 Instancia/(1370:1370): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:01:393 Instancia/(1370:1370): paquete de tamanio fijo agregado
+[ERROR] 15:06:01:393 Instancia/(1370:1370): paquete de tamanio fijo agregado
+[ERROR] 15:06:01:393 Instancia/(1370:1370):  paquete tamanio variable agregado
+[INFO] 15:06:01:723 Instancia/(1374:1374): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:01:729 Instancia/(1374:1374): Socket conectado
+[INFO] 15:06:01:729 Instancia/(1374:1374): Mensaje enviado
+[INFO] 15:06:01:729 Instancia/(1374:1374): Mensaje de 4 bytes recibido
+[INFO] 15:06:01:729 Instancia/(1374:1374): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:01:729 Instancia/(1374:1374): paquete de tamanio fijo agregado
+[ERROR] 15:06:01:729 Instancia/(1374:1374): paquete de tamanio fijo agregado
+[ERROR] 15:06:01:729 Instancia/(1374:1374):  paquete tamanio variable agregado
+[INFO] 15:06:02:17 Instancia/(1378:1378): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:02:21 Instancia/(1378:1378): Socket conectado
+[INFO] 15:06:02:22 Instancia/(1378:1378): Mensaje enviado
+[INFO] 15:06:02:22 Instancia/(1378:1378): Mensaje de 4 bytes recibido
+[INFO] 15:06:02:23 Instancia/(1378:1378): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:02:23 Instancia/(1378:1378): paquete de tamanio fijo agregado
+[ERROR] 15:06:02:23 Instancia/(1378:1378): paquete de tamanio fijo agregado
+[ERROR] 15:06:02:23 Instancia/(1378:1378):  paquete tamanio variable agregado
+[INFO] 15:06:02:276 Instancia/(1381:1381): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:02:280 Instancia/(1381:1381): Socket conectado
+[INFO] 15:06:02:281 Instancia/(1381:1381): Mensaje enviado
+[INFO] 15:06:02:281 Instancia/(1381:1381): Mensaje de 4 bytes recibido
+[INFO] 15:06:02:281 Instancia/(1381:1381): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:02:281 Instancia/(1381:1381): paquete de tamanio fijo agregado
+[ERROR] 15:06:02:281 Instancia/(1381:1381): paquete de tamanio fijo agregado
+[ERROR] 15:06:02:281 Instancia/(1381:1381):  paquete tamanio variable agregado
+[INFO] 15:06:03:700 Instancia/(1384:1384): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:03:705 Instancia/(1384:1384): Socket conectado
+[INFO] 15:06:03:705 Instancia/(1384:1384): Mensaje enviado
+[INFO] 15:06:03:705 Instancia/(1384:1384): Mensaje de 4 bytes recibido
+[INFO] 15:06:03:705 Instancia/(1384:1384): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:03:705 Instancia/(1384:1384): paquete de tamanio fijo agregado
+[ERROR] 15:06:03:705 Instancia/(1384:1384): paquete de tamanio fijo agregado
+[ERROR] 15:06:03:705 Instancia/(1384:1384):  paquete tamanio variable agregado
+[INFO] 15:06:04:204 Instancia/(1388:1388): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:04:209 Instancia/(1388:1388): Socket conectado
+[INFO] 15:06:04:209 Instancia/(1388:1388): Mensaje enviado
+[INFO] 15:06:04:209 Instancia/(1388:1388): Mensaje de 4 bytes recibido
+[INFO] 15:06:04:210 Instancia/(1388:1388): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:04:210 Instancia/(1388:1388): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:210 Instancia/(1388:1388): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:210 Instancia/(1388:1388):  paquete tamanio variable agregado
+[INFO] 15:06:04:516 Instancia/(1391:1391): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:04:521 Instancia/(1391:1391): Socket conectado
+[INFO] 15:06:04:521 Instancia/(1391:1391): Mensaje enviado
+[INFO] 15:06:04:522 Instancia/(1391:1391): Mensaje de 4 bytes recibido
+[INFO] 15:06:04:522 Instancia/(1391:1391): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:04:522 Instancia/(1391:1391): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:522 Instancia/(1391:1391): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:522 Instancia/(1391:1391):  paquete tamanio variable agregado
+[INFO] 15:06:04:760 Instancia/(1394:1394): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:04:765 Instancia/(1394:1394): Socket conectado
+[INFO] 15:06:04:765 Instancia/(1394:1394): Mensaje enviado
+[INFO] 15:06:04:766 Instancia/(1394:1394): Mensaje de 4 bytes recibido
+[INFO] 15:06:04:766 Instancia/(1394:1394): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:04:766 Instancia/(1394:1394): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:766 Instancia/(1394:1394): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:766 Instancia/(1394:1394):  paquete tamanio variable agregado
+[INFO] 15:06:04:981 Instancia/(1397:1397): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:04:985 Instancia/(1397:1397): Socket conectado
+[INFO] 15:06:04:985 Instancia/(1397:1397): Mensaje enviado
+[INFO] 15:06:04:986 Instancia/(1397:1397): Mensaje de 4 bytes recibido
+[INFO] 15:06:04:986 Instancia/(1397:1397): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:04:986 Instancia/(1397:1397): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:986 Instancia/(1397:1397): paquete de tamanio fijo agregado
+[ERROR] 15:06:04:986 Instancia/(1397:1397):  paquete tamanio variable agregado
+[INFO] 15:06:05:180 Instancia/(1401:1401): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 15:06:05:181 Instancia/(1401:1401): Socket conectado
+[INFO] 15:06:05:181 Instancia/(1401:1401): Mensaje enviado
+[INFO] 15:06:05:181 Instancia/(1401:1401): Mensaje de 4 bytes recibido
+[INFO] 15:06:05:181 Instancia/(1401:1401): Se ha conectado al coordinador correctamente!!
+[ERROR] 15:06:05:181 Instancia/(1401:1401): paquete de tamanio fijo agregado
+[ERROR] 15:06:05:181 Instancia/(1401:1401): paquete de tamanio fijo agregado
+[ERROR] 15:06:05:181 Instancia/(1401:1401):  paquete tamanio variable agregado

@@ -27,15 +27,15 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 	}
 
 
-	while (1) {
-		sem_wait(&contador_instancias_disponibles);
-		t_instancia* elegida = obtener_instancia_siguiente("");
-		sem_post(&contador_instancias_disponibles);//porque en realidad no la sacaste de la lista a la instancia
-		log_debug(logger, "Instancia elegida Nº %d", elegida->id);
-
-		//instancia.haceTuMagia>>>>>>> 9e71288354523bf2f56d8810ef0f85ee3959260c()
-
-	}
+//	while (1) {
+//		sem_wait(&contador_instancias_disponibles);
+//		t_instancia* elegida = obtener_instancia_siguiente("");
+//		sem_post(&contador_instancias_disponibles);//porque en realidad no la sacaste de la lista a la instancia
+//		log_debug(logger, "Instancia elegida: %s", elegida->nombre);
+//
+//		//instancia.haceTuMagia>>>>>>> 9e71288354523bf2f56d8810ef0f85ee3959260c()
+//
+//	}
 
 	if (pthread_join(thread_listener, NULL)) {
 		log_error(logger, "Error al joinear thread del servidor escucha");
