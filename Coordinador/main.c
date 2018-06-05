@@ -12,6 +12,7 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 	configuracion = configurar(argv[1]);
 	log_trace(logger, "Coordinador correctamente configurado");
 	lista_instancias_disponibles = list_create();
+	lista_instancias_inactivas = list_create();
 	lista_esis_disponibles = list_create();
 	cant_instancias = 0;
 	inicializar_semaforos();
@@ -32,7 +33,7 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 		sem_post(&contador_instancias_disponibles);//porque en realidad no la sacaste de la lista a la instancia
 		log_debug(logger, "Instancia elegida Nº %d", elegida->id);
 
-		//instancia.haceTuMagia()
+		//instancia.haceTuMagia>>>>>>> 9e71288354523bf2f56d8810ef0f85ee3959260c()
 
 	}
 
@@ -43,6 +44,6 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 
 	destruir_log_operaciones();
 	log_destroy(logger);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
