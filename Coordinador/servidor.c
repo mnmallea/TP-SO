@@ -72,6 +72,11 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 	//tambien me preocupa saber si el socket al pasarselo como puntero esta siendo compartido
 }
 
+void atender_planificador(int socket){
+	socket_planificador = socket;
+}
+
+
 void atender_instancia(int sockfd) {
 	t_instancia* instancia = calloc(1, sizeof(instancia));
 	instancia->socket = sockfd;
