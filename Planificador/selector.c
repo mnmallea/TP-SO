@@ -8,13 +8,21 @@ void *listener(void *ptr){
 	int nbytes;
 	t_esi *n_esi;
 	int id=1;
+	int handshake_msg = PLANIFICADOR;
 
 	socketServer=crear_socket_escucha(configuracion.puerto,BACKLOG);
+	int socketCord = conectarse_a_coordinador(configuracion.ipCoord, configuracion.portCoord, handshake_msg);
+
 	log_info(logger,"Escuchando en puerto: %s", configuracion.puerto);
 
 	FD_SET(socketServer, &master);
+	FD_SET(socketCord, &master);
 
-	fdmax = socketServer;
+	if (socketCord>socketServer)
+		fdmax = socketCord;
+	else
+		fdmax = socketServer;
+
 	for(;;) {
 		read_fds = master;
 		if (select(fdmax+1, &read_fds, NULL, NULL, NULL) == -1) {
@@ -36,6 +44,7 @@ void *listener(void *ptr){
 						if (newfd > fdmax) {
 							fdmax = newfd;
 						}
+
 						log_trace(logger, "Nueva conexion por el socket %d\n",newfd);
 						n_esi=crear_nodo_esi(newfd);
 						n_esi->id=id;
@@ -43,68 +52,47 @@ void *listener(void *ptr){
 						mandar_mensaje(newfd,id);
 						id++;
 						log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
-						mandar_confirmacion(newfd);
+						//mandar_confirmacion(newfd);
 					}
 				}
-				else
-				{
 
-					if ((nbytes = recv(i, buf, sizeof buf, 0)) <= 0)
-					{
+			    else{
 
-						if (nbytes == 0) {
-							log_error(logger, "La conexion del socket %d finalizo inesperadamente\n", i);
-							socketAEliminar=i;
-							list_remove_and_destroy_by_condition(lista_esis_listos,(void*)socketProceso,(void*)free);
+						if ((nbytes = recv(i, &buf, sizeof buf, 0)) <= 0)
+						{
+
+							if (nbytes == 0) {
+								log_error(logger, "La conexion del socket %d finalizo inesperadamente\n", i);
+								socketAEliminar=i;
+								list_remove_and_destroy_by_condition(lista_esis_listos,(void*)socketProceso,(void*)free);
+							}
+							else {
+								log_error(logger, "El mensaje recivido por socket %d tiene errores\n", i);
+							}
+								close(i);
+								FD_CLR(i, &master);
+
 						}
-						else {
-							log_error(logger, "El mensaje recivido por socket %d tiene errores\n", i);
+						else
+						{
+					    	if(i==socketCord){
+					    		mandar_confirmacion(socketCord);
+
+					    	}
+							//handlear el valor del buf para los clientes
+
 						}
-							close(i);
-							FD_CLR(i, &master);
-					}
-
-
-					//funcion atenderESI(i,buf); //necesita el id?
-					switch (buf)
-					{
-						case EXITO :
-
-						break;
-
-						case ERROR :
-
-						break;
-
-						case SOLICITUD_CLAVE :
-
-						break;
-
-						case BLOQUEO_CLAVE :
-
-						break;
-
-						case DESBLOQUEO_CLAVE :
-
-						break;
-
-						case BLOQUEO_ESI :
-
-						break;
-
-						case CORRER_ESI :
-
-						break;
 
 					}
-
-				}
 
 
 
 			}
 
 		}
+
+
+
 	}
 //	void list_destroy_and_destroy_elements(lista_esis_listos,n_esi); ver e tipo del elementos
 //list_remove_and_destroy_by_condition(lista_esis_listos,(void*)socketProceso,(void*)free);
@@ -128,7 +116,7 @@ int socketProceso(t_esi* n_esi){
 	return (n_esi->socket==socketAEliminar);
 }
 
-void atenderESI(socket,buf)
+/*void atenderESI(socket,buf)
 {
 
 	switch(buf)
@@ -136,4 +124,4 @@ void atenderESI(socket,buf)
 
 	}
 
-}
+}*/

@@ -14,6 +14,7 @@
 #include "config_planificador.h"
 #include "algoritmos_planificacion.h"
 #include "../syntax-commons/protocol.h"
+#include "../syntax-commons/conexiones.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5

@@ -69,7 +69,7 @@ int main(int argc, char* argv[]){
 
 	    	       	paqueteProcesado = construirPaquete(pkg_esi);
 	    	    	log_info(logger, "Espacio de la carga: %d", s_carga);
-            		enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
+            		//enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
             		log_info(logger, "Pkg de tamaño %d enviado", pkg_esi->tamanioActual);
 
             		free(paqueteProcesado->clave);
@@ -93,7 +93,7 @@ int main(int argc, char* argv[]){
 		    	       	paqueteProcesado = construirPaquete(pkg_esi);
 
 		    	       	log_info(logger, "Espacio de la carga: %d", s_carga);
-	            		enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
+	            		//enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
 	            		log_info(logger, "Pkg de tamaño %d enviado", pkg_esi->tamanioActual);
 
 		        		free(paqueteProcesado->clave);
@@ -120,7 +120,7 @@ int main(int argc, char* argv[]){
 	    	       	paqueteProcesado = construirPaquete(pkg_esi);
 
 	    	    	log_info(logger, "Espacio de la carga: %d", s_carga);
-            		enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
+            		//enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
             		log_info(logger, "Pkg de tamaño %d enviado", pkg_esi->tamanioActual);
 
             		free(paqueteProcesado->clave);

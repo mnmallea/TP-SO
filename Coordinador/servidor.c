@@ -39,14 +39,16 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 
 	log_debug(logger, "socketFD = %d", socket);
 	t_identidad identidad;
-	if(recv(socket, &identidad, sizeof(identidad), MSG_WAITALL) <= 0){
-		log_error(logger, "Error al atender nueva conexion: %s", strerror(errno));
+	if (recv(socket, &identidad, sizeof(identidad), MSG_WAITALL) <= 0) {
+		log_error(logger, "Error al atender nueva conexion: %s",
+				strerror(errno));
 		close(socket);
 		return;
 	}
 	int handshake_msg = COORDINADOR; //hace falta? todos los que se conectan al coordinador ya saben de antemano a quien se conectan
-	if(send(socket, &handshake_msg, sizeof(handshake_msg),0) < 0){
-		log_error(logger, "Error al atender nueva conexion: %s", strerror(errno));
+	if (send(socket, &handshake_msg, sizeof(handshake_msg), 0) < 0) {
+		log_error(logger, "Error al atender nueva conexion: %s",
+				strerror(errno));
 		close(socket);
 		return;
 	}
@@ -64,18 +66,18 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 		break;
 	case PLANIFICADOR:
 		log_info(logger, "Se ha conectado el Planificador");
+		atender_planif(socket);
+		log_trace(logger, "Se termino de atender al Planificador, sockfd = %d",
+				socket);
 		break;
 	default:
 		log_error(logger, "Conexion desconocida");
 	}
-	close(socket); //hay que ver si aca se cerraria el socket o se cerraria antes
-	//tambien me preocupa saber si el socket al pasarselo como puntero esta siendo compartido
 }
 
-void atender_planificador(int socket){
+void atender_planificador(int socket) {
 	socket_planificador = socket;
 }
-
 
 void atender_instancia(int sockfd) {
 	t_instancia* instancia = calloc(1, sizeof(instancia));
@@ -104,13 +106,20 @@ void atender_esi(int socket) {
 	log_debug(logger, "Esi id:%d agregada a la lista", *(n_esi->id));
 	pthread_mutex_unlock(&mutex_esi_disponibles);
 
+	sem_post(&planif_binario);
+	recibir_confirmacion(socket);
 
-	t_operacion *carga=NULL;
+	//t_operacion *carga=NULL; tipo de la carga
+	//recibirPaqueteVariable(socket,(void**)carga);
+	//log_debug(logger, "Clave del pkg recivido: %s ", *(carga->clave));
 
-	recibirPaqueteVariable(socket,(void**)carga);
+}
 
-	log_debug(logger, "Clave del pkg recivido: %s ", *(carga->clave));
+void atender_planif(int socket) {
 
-
-
+	while (1) {
+		sem_wait(&planif_binario);
+		mandar_confirmacion(socket);
+		recibir_confirmacion(socket);
+	}
 }
