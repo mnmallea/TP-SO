@@ -140,7 +140,7 @@ void bloquear_esi_por_consola(char* clave, int id_esi){
 
 }
 
-void desbloquear_por_consola(clave){
+void desbloquear_por_consola(char* clave){
 	se_desbloqueo_un_recurso(clave);
 }
 
@@ -201,9 +201,9 @@ void nueva_clave_tomada_x_esi(char* clave){
 
 			}else{ //Existe la clave, saco al que estaba y pongo al nuevo
 
-				t_esi esi_que_lo_tenia= dictionary_remove(dic_clave_x_esi,clave);
 				dictionary_put(dic_clave_x_esi,clave,esi_corriendo);
-				//lo saco porque si, no se si el dictionary_put me pisa lo que ya tengo
+				//supongo que el put pisa lo que estaba
+
 
 			}
 
@@ -224,7 +224,7 @@ void ya_termino_linea(){
 
 
 
-	sem_post(sem_binario_planif);
+	sem_post(&sem_binario_planif);
 }
 
 
