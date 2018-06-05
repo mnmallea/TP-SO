@@ -21,6 +21,7 @@
 #include "../syntax-commons/serializador.h"
 #include "../syntax-commons/deserializador.h"
 
+extern int socket_planificador;
 extern t_log* logger;
 extern t_list *lista_instancias_disponibles;
 extern config configuracion;
@@ -37,5 +38,6 @@ void atender_nueva_conexion(int* sockfd_ptr);
 
 void atender_instancia(int sockfd);
 void atender_esi(int socket);
+void atender_planificador(int socket);
 
 #endif /* SERVIDOR_H_ */

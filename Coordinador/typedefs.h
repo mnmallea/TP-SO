@@ -18,15 +18,15 @@ typedef enum {
 typedef struct {
 	//info del socket
 	int socket;
-	unsigned id;
+	unsigned id;//esto va a volar en las proximas versiones
+	char* nombre;
 	//para lsu
 	int cant_entradas_vacias;
 
 	t_list* claves_almacenadas;
 } t_instancia;
 
-
-typedef struct{
+typedef struct {
 	char puerto[PORT_MAX_STRING_LENGTH + 1]; //el maximo es 65535 mas el '\0'
 	t_algoritmo algoritmo;
 	int cant_entradas;
@@ -36,18 +36,16 @@ typedef struct{
 
 typedef struct //para recibir al esi
 {
-int keyword;
-char *clave;
-char *valor;
-}t_operacion;
+	int keyword;
+	char *clave;
+	char *valor;
+} t_operacion;
 
 typedef struct //para guardar al esi
 {
-int *id;
-int socket;
-t_operacion *valores;
-}t_esi;
-
-
+	int *id;
+	int socket;
+	t_operacion *valores;
+} t_esi;
 
 #endif /* TYPEDEFS_H_ */
