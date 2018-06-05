@@ -9,7 +9,9 @@
 #include "config_instancia.h"
 #include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/conexiones.h"
-
+#include "cfg_almacenamiento.h"
+#include "almacenamiento.h"
+#include "tabla_entradas.h"
 #define LOG_LEVEL LOG_LEVEL_DEBUG
 
 config configuracion;
@@ -20,8 +22,11 @@ int main(int argc, char** argv){
 	configuracion = configurar(argv[1]);
 	int socketCoordinador = conectarse_a_coordinador(configuracion.ip_coordinador, configuracion.puerto_coordinador, INSTANCIA);
 	configurarAlmacenamiento(socketCoordinador);
-
-
+	inicializarAlmacenamiento(cfgAlmacenamiento.totalEntradas,cfgAlmacenamiento.tamanioEntrada);
+	crearTablaEntradas();
+	while(1){
+		//aca toda la bola de que lleguen cosas las reciba haga set get store
+	}
 	limpiar_configuracion();
 	log_destroy(logger);
 	exit(0);

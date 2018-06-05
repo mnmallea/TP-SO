@@ -14,7 +14,6 @@ void configurarAlmacenamiento(int socketCoordinador){
 	destruirPaquete(pqt);
 	recibirPaquete(socketCoordinador,&cfgAlmacenamiento.tamanioEntrada,sizeof(cfgAlmacenamiento.tamanioEntrada));
 	recibirPaquete(socketCoordinador,&cfgAlmacenamiento.totalEntradas,sizeof(cfgAlmacenamiento.totalEntradas));
-	inicializarAlmacenamiento(cfgAlmacenamiento.totalEntradas,cfgAlmacenamiento.tamanioEntrada);
 	//mostrar que se asigno una cantidad de  x entradas de x tamanio para el ato
 
 }
@@ -25,5 +24,6 @@ unsigned int obtenerEntradasTotales(){
 unsigned int obtenerTamanioEntrada(){
 	return cfgAlmacenamiento.tamanioEntrada;
 }
+
 
 

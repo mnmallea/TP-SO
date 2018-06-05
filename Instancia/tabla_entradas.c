@@ -1,34 +1,17 @@
-#include "tablaEntradas.h"
-#include <stdlib.h>
-#include "almacenamiento.h"
-#include "cfg_almacenamiento.h"
-
-claveEntrada* crearClaveEntrada(char* clave, char* valor) {
-	claveEntrada* claveE = malloc(sizeof(claveEntrada));
-//Copio Valor
-	claveE->valor = valor;
-//Separo cantidad de caracteres menor a 40
-	claveE->clave = string_substring_until(clave, 40);
-//
-	claveE->tamanio = (unsigned int) (string_length(valor) + 1);
-	return claveE;
-}
+#include "tabla_entradas.h"
 
 void crearTablaEntradas() {
-//Creo tabla
 	tabla = list_create();
-//Asigno cuantas entradas libres va a haber para crear la tabla
 	entradasLibres = obtenerEntradasTotales();
 }
 
-//Esta funcion booleana servira para instancia.c, donde se la consultará para insertar el valor o no
+
 bool agregarEnTabla (int nuevaEntrada, claveEntrada* claveE){
 	tablaE * nuevaE = adaptoClave(claveE);
 	nuevaE -> numero = nuevaEntrada;
 	if(nuevaEntrada >= 0){
 		list_add(tabla,(void *)nuevaE);
 		list_sort(tabla,ordenAscendente);
-//claveE->tamanio/tamanioEntradas()+1 ----> esto devuelve la cantidad de entradas que necesita
 		entradasLibres -= claveE->tamanio/obtenerTamanioEntrada()+1;
 		return true;
 	}
@@ -51,28 +34,37 @@ bool tablaEstaVacia(t_list* tabla){
 	return false;
 }
 
-int nombreDeEntradaSiguienteEnTabla(claveEntrada* claveE){
+int entradaSiguienteEnTabla(claveEntrada* claveE){
 	tablaE* entrada1;
 	tablaE* entrada2;
+	// me fijo la cantidad de entradas usadas
 	int cantEntradasUsadas = list_size(tabla);
+	// me fijo cuantas entradas necesitria la clave que llega por parametro
 	int cantEntradasNecesarias = claveE->tamanio/obtenerTamanioEntrada()+1;
+	//defino una variable para chequear el espacio entre entradas de la tabla
 	int espacioEntreEntradas = 0;
-	if(entradasLibres >=claveE->tamanio/obtenerTamanioEntrada()+1){
-		if(tablaEstaVacia(tabla)){
-			if(cantEntradasUsadas == 0){
-				return 0;
-			} else{
+	// si la tabla no esta vacia y las entradas libres me alcanzan para cubrir las que necesito empiezo a ejecutar
+	if(entradasLibres >=cantEntradasNecesarias && !tablaEstaVacia(tabla)){
+			//if(cantEntradasUsadas == 0){
+			//	return 0;
+		//	} else{
 				entrada1 = (tablaE*) list_get(tabla,0);
 				if (entrada1->numero > 0 && cantEntradasNecesarias <= (entrada1->numero)){
 						return 0;
 					}
-				}
+
+
 			int a = 0;
+			//va a ir hasta el anteultimo de la lista
 			while (cantEntradasUsadas > a+1){
+				//tengo una entrada y su siguiente
 				entrada1 = (tablaE*) list_get(tabla,a);
 				entrada2 = (tablaE*) list_get(tabla,a+1);
+				// chequeo el espacio entre la primera y la segunda entrada
 				espacioEntreEntradas = (entrada2->numero) - (entrada1->numero + (entrada1->tamanio/obtenerTamanioEntrada()+1));
+				//si la cantidad de entradas necesarias para meter la que llego por parametro es menor al espacio entre entradas
 				if(cantEntradasNecesarias <= espacioEntreEntradas){
+					//retorno la posicion donde podria insertar esa clave
 					return a + (entrada1->tamanio/obtenerTamanioEntrada()+1);
 				}
 			a++;
@@ -81,7 +73,7 @@ int nombreDeEntradaSiguienteEnTabla(claveEntrada* claveE){
 			if(obtenerTamanioEntrada()- entrada2->numero>= cantEntradasNecesarias){
 				return (entrada2->tamanio/obtenerTamanioEntrada()+ 1) + entrada2->numero;
 				}
-			}
+
 		}
 //arreglar tiene que decir que hubo error y exit_gracefully o algo asi
 return -1;
@@ -129,7 +121,13 @@ void mostrarTabla(){
 
 void liberarEntrada(tablaE* entrada){
 	free(entrada->clave);
-	free(entrada->numero);
-	free(entrada->tamanio);
 	free(entrada);
+}
+
+claveEntrada* crearClaveEntrada(char* clave, char* valor) {
+	claveEntrada* claveE = malloc(sizeof(claveEntrada));
+	claveE->valor = valor;
+	claveE->clave = string_substring_until(clave, 40);
+	claveE->tamanio = (unsigned int) (string_length(valor) + 1);
+	return claveE;
 }
