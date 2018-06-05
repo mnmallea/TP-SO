@@ -26,4 +26,6 @@ t_list *lista_instancias_disponibles;
 t_list *lista_esis_disponibles;
 pthread_t thread_listener;
 
+
+
 #endif /* MAIN_H_ */

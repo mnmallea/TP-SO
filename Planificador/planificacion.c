@@ -60,7 +60,8 @@ void bloquear_esi(char* clave){
 	if(!dictionary_has_key(dic_esis_bloqueados, clave)){
 		dictionary_put(dic_esis_bloqueados, clave, esi_corriendo);
 
-	}else{ //Existe la clave, agrego el esi a la lista de bloq
+	}
+	else{ //Existe la clave, agrego el esi a la lista de bloq
 
 		t_list *lista_esis_bloq_esta_clave = dictionary_remove(dic_esis_bloqueados,clave);
 
