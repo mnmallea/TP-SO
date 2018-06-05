@@ -41,6 +41,8 @@ void *listener(void *ptr){
 						n_esi=crear_nodo_esi(newfd);
 						n_esi->id=id;
 						list_add(lista_esis_listos,n_esi);
+						hay_nuevo_esi = true;
+						if(primera_vez)sem_post(&sem_binario_planif);
 						mandar_mensaje(newfd,id);
 						id++;
 						log_info(logger,"Cantidad de elementos en la lista: %d", list_size(lista_esis_listos));
@@ -65,7 +67,7 @@ void *listener(void *ptr){
 							FD_CLR(i, &master);
 					}
 
-					/* aca iria como tratar la info del buff*/
+					// aca iria como tratar la info del buff
 					switch(buf){
 					case EXITO:
 						ya_termino_linea();

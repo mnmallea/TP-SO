@@ -19,11 +19,6 @@
 //#include "consola.h"
 #include "main.h"
 
-int flag;
-bool primera_vez = false;
-bool hay_nuevo_esi = false;
-bool hay_esi_bloqueado = false;
-bool hay_esi_finalizado = false;
 
 /* Nombre: obtener_nuevo_esi_a_correr();
  * Desc: obtiene el proximo esi a correr a partir del algoritmo elegido
