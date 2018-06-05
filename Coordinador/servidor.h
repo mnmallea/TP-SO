@@ -25,6 +25,8 @@ extern t_log* logger;
 extern t_list *lista_instancias_disponibles;
 extern config configuracion;
 extern t_list *lista_esis_disponibles;
+pthread_t thread_ESI;
+pthread_t thread_Planificador;
 
 unsigned cant_instancias;
 
@@ -37,5 +39,6 @@ void atender_nueva_conexion(int* sockfd_ptr);
 
 void atender_instancia(int sockfd);
 void atender_esi(int socket);
+void atender_planif(int socket);
 
 #endif /* SERVIDOR_H_ */
