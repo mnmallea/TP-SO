@@ -54,6 +54,19 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 	case ESI:
 		log_info(logger, "Se ha conectado un ESI");
 		atender_esi(socket);
+		/*
+		if (pthread_create(&thread_ESI, NULL,
+					(void*) atender_esi, &socket)) {
+				log_error(logger, "Error creando el hilo del servidor escucha\n");
+				exit(EXIT_FAILURE);
+			}
+
+		if (pthread_join(thread_ESI, NULL)) {
+			log_error(logger, "Error al joinear thread del servidor escucha");
+			exit(EXIT_FAILURE);
+		}
+		*/
+
 		log_trace(logger, "Se termino de atender un ESI, sockfd = %d", socket);
 		break;
 	case INSTANCIA:
@@ -64,6 +77,22 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 		break;
 	case PLANIFICADOR:
 		log_info(logger, "Se ha conectado el Planificador");
+		atender_planif(socket);
+		log_trace(logger, "Se termino de atender al Planificador, sockfd = %d",
+				socket);
+		/*
+		if (pthread_create(&thread_Planificador, NULL,
+					(void*) atender_planif, &socket)) {
+				log_error(logger, "Error creando el hilo del servidor escucha\n");
+				exit(EXIT_FAILURE);
+			}
+
+		if (pthread_join(thread_Planificador, NULL)) {
+			log_error(logger, "Error al joinear thread del servidor escucha");
+			exit(EXIT_FAILURE);
+		}
+		*/
+
 		break;
 	default:
 		log_error(logger, "Conexion desconocida");
@@ -89,6 +118,7 @@ void atender_instancia(int sockfd) {
 
 void atender_esi(int socket) {
 
+
 	t_esi *n_esi = malloc(sizeof(t_esi));
 	n_esi->socket = socket;
 	n_esi->id = safe_recv(socket, sizeof(int));
@@ -99,13 +129,21 @@ void atender_esi(int socket) {
 	log_debug(logger, "Esi id:%d agregada a la lista", *(n_esi->id));
 	pthread_mutex_unlock(&mutex_esi_disponibles);
 
+	sem_post(&planif_binario);
+	recibir_confirmacion(socket);
 
-	t_operacion *carga=NULL;
-
-	recibirPaqueteVariable(socket,(void**)carga);
-
-	log_debug(logger, "Clave del pkg recivido: %s ", *(carga->clave));
+	//t_operacion *carga=NULL; tipo de la carga
+	//recibirPaqueteVariable(socket,(void**)carga);
+	//log_debug(logger, "Clave del pkg recivido: %s ", *(carga->clave));
 
 
 
 }
+
+void atender_planif(int socket){
+
+	sem_wait(&planif_binario);
+	mandar_confirmacion(socket);
+	recibir_confirmacion(socket);
+
+};

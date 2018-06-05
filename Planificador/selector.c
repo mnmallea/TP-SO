@@ -10,14 +10,15 @@ void *listener(void *ptr){
 	int id=1;
 	int handshake_msg = PLANIFICADOR;
 
-	int socketCord = conectarse_a_coordinador(configuracion.ipCoord, configuracion.portCoord, handshake_msg);
 	socketServer=crear_socket_escucha(configuracion.puerto,BACKLOG);
+	int socketCord = conectarse_a_coordinador(configuracion.ipCoord, configuracion.portCoord, handshake_msg);
+
 	log_info(logger,"Escuchando en puerto: %s", configuracion.puerto);
 
 	FD_SET(socketServer, &master);
 	FD_SET(socketCord, &master);
 
-	fdmax = socketServer;
+	fdmax = socketCord;
 
 	for(;;) {
 		read_fds = master;
@@ -38,8 +39,7 @@ void *listener(void *ptr){
 					else {
 						FD_SET(newfd, &master);
 						if (newfd > fdmax) {
-							fdmax = newfd+1;
-							FD_SET(fdmax, &master);
+							fdmax = newfd;
 						}
 
 						log_trace(logger, "Nueva conexion por el socket %d\n",newfd);
@@ -52,15 +52,9 @@ void *listener(void *ptr){
 						//mandar_confirmacion(newfd);
 					}
 				}
-				else
-				{
-					if(i == fdmax){ //osea que el mensaje proviene desde el coordinador
 
-						mandar_confirmacion(i);
+			    else{
 
-					}
-
-					else{
 						if ((nbytes = recv(i, &buf, sizeof buf, 0)) <= 0)
 						{
 
@@ -74,44 +68,20 @@ void *listener(void *ptr){
 							}
 								close(i);
 								FD_CLR(i, &master);
+
 						}
+						else
+						{
+					    	if(i==socketCord){
+					    		mandar_confirmacion(socketCord);
+
+					    	}
+							//handlear el valor del buf para los clientes
+
+						}
+
 					}
 
-					//funcion atenderESI(i,buf); //necesita el id?
-					/*switch (buf)
-					{
-						case EXITO :
-
-						break;
-
-						case ERROR :
-
-						break;
-
-						case SOLICITUD_CLAVE :
-
-						break;
-
-						case BLOQUEO_CLAVE :
-
-						break;
-
-						case DESBLOQUEO_CLAVE :
-
-						break;
-
-						case BLOQUEO_ESI :
-
-						break;
-
-						case CORRER_ESI :
-
-						break;
-
-					}*/
-
-
-				}
 
 
 			}
