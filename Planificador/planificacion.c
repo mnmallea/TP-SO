@@ -20,6 +20,10 @@
  */
 
 int flag = 0;
+bool primera_vez = false;
+bool hay_nuevo_esi = false;
+bool hay_esi_bloqueado = false;
+bool hay_esi_finalizado = false;
 
 
 void planificar(){
