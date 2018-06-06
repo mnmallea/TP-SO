@@ -12,7 +12,7 @@
 #include "cfg_almacenamiento.h"
 #include "almacenamiento.h"
 #include "tabla_entradas.h"
-#define LOG_LEVEL LOG_LEVEL_DEBUG
+#define LOG_LEVEL LOG_LEVEL_TRACE
 
 config configuracion;
 t_log *logger;

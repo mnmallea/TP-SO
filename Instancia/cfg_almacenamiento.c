@@ -6,24 +6,32 @@
  */
 #include "cfg_almacenamiento.h"
 
-void configurarAlmacenamiento(int socketCoordinador){
-	paquete* pqt = crearPaquete();
-	agregarTamanioVariable(pqt,configuracion.nombre_instancia,string_length(configuracion.nombre_instancia) + 1);
-	pqt = construirPaquete(pqt);
-	enviarPaquete(socketCoordinador, pqt,pqt->tamanioActual);
-	destruirPaquete(pqt);
-	recibirPaquete(socketCoordinador,&cfgAlmacenamiento.tamanioEntrada,sizeof(cfgAlmacenamiento.tamanioEntrada));
-	recibirPaquete(socketCoordinador,&cfgAlmacenamiento.totalEntradas,sizeof(cfgAlmacenamiento.totalEntradas));
+void configurarAlmacenamiento(int socketCoordinador) {
+//	paquete* pqt = crearPaquete();
+//	agregarTamanioVariable(pqt,configuracion.nombre_instancia,string_length(configuracion.nombre_instancia) + 1);
+//	pqt = construirPaquete(pqt);
+//	enviarPaquete(socketCoordinador, pqt,pqt->tamanioActual);
+//	destruirPaquete(pqt);
+	uint32_t size_nombre = strlen(configuracion.nombre_instancia) + 1;
+	int tamanio_a_enviar = sizeof(size_nombre) + size_nombre;
+	void* buffer = calloc(1, tamanio_a_enviar);
+	memcpy(buffer, &size_nombre, sizeof(size_nombre));
+	memcpy(buffer + sizeof(size_nombre), configuracion.nombre_instancia,
+			size_nombre);
+	safe_send(socketCoordinador, buffer, tamanio_a_enviar);
+	free(buffer);
+	recibirPaquete(socketCoordinador, &cfgAlmacenamiento.tamanioEntrada,
+			sizeof(cfgAlmacenamiento.tamanioEntrada));
+	recibirPaquete(socketCoordinador, &cfgAlmacenamiento.totalEntradas,
+			sizeof(cfgAlmacenamiento.totalEntradas));
 	//mostrar que se asigno una cantidad de  x entradas de x tamanio para el ato
 
 }
-unsigned int obtenerEntradasTotales(){
+unsigned int obtenerEntradasTotales() {
 	return cfgAlmacenamiento.totalEntradas;
 }
 
-unsigned int obtenerTamanioEntrada(){
+unsigned int obtenerTamanioEntrada() {
 	return cfgAlmacenamiento.tamanioEntrada;
 }
-
-
 
