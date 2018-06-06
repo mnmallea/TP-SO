@@ -28,7 +28,7 @@ bool tiene_clave_almacenada(t_instancia* instancia, char* clave) {
  * Liberar el nombre luego de usar esto porque se lo copia
  */
 t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas) {
-	t_instancia* new_instancia = malloc(sizeof(new_instancia));
+	t_instancia* new_instancia = malloc(sizeof(*new_instancia));
 	new_instancia->claves_almacenadas = list_create();
 	new_instancia->nombre = string_duplicate(nombre);
 	new_instancia->socket = sockfd;
