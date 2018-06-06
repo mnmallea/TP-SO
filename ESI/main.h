@@ -25,7 +25,7 @@ void estadoOperacion(int socketCord,int socketPlan,int esi_id);
 
 t_log* logger;
 
-paquete *pkg_esi;
+t_paquete *pkg_esi;
 
 typedef struct
 {
