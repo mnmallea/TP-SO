@@ -19,10 +19,13 @@
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
 
+int socket_planificador;
 t_log *logger;
 config configuracion;
 t_list *lista_instancias_disponibles;
 t_list *lista_esis_disponibles;
 pthread_t thread_listener;
+
+
 
 #endif /* MAIN_H_ */
