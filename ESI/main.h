@@ -17,11 +17,12 @@
 #include "../syntax-commons/conexiones.h"
 #include <parsi/parser.h>
 
-
 #define CANT_ARGUMENTOS_MAIN 3
 #define LOG_LEVEL LOG_LEVEL_TRACE
 
-void *pedirEspacio(size_t size);
+
+
+void estadoOperacion(int socketCord,int socketPlan,int esi_id);
 
 t_log* logger;
 
@@ -34,7 +35,8 @@ char *clave;
 char *valor;
 }t_operacion;
 
-t_operacion *n_operacion;
+t_protocolo key;
+
 
 config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
 

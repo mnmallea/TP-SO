@@ -4,7 +4,6 @@
 
 #include <commons/collections/list.h>
 #include <commons/log.h>
-#include "../syntax-commons/protocol.h"
 #include "../syntax-commons/my_socket.h"
 
 #include <stdio.h>
@@ -16,6 +15,8 @@
 #include "config_planificador.h"
 #include "planificacion.h"
 #include "algoritmos_planificacion.h"
+#include "../syntax-commons/protocol.h"
+#include "../syntax-commons/conexiones.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
