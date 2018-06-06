@@ -66,12 +66,13 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 		break;
 	case PLANIFICADOR:
 		log_info(logger, "Se ha conectado el Planificador");
-		atender_planif(socket);
+		atender_planificador(socket);
 		log_trace(logger, "Se termino de atender al Planificador, sockfd = %d",
 				socket);
 		break;
 	default:
 		log_error(logger, "Conexion desconocida");
+		close(socket);
 	}
 }
 
@@ -126,12 +127,31 @@ void atender_esi(int socket) {
 	pthread_mutex_unlock(&mutex_esi_disponibles);
 
 	sem_post(&planif_binario);
-	recibir_confirmacion(socket);
+//	recibir_confirmacion(socket);
+	char* clave = NULL;
+	char* valor = NULL;
+	while (1) {
+		t_cod_operacion cod_op = recibir_cod_operacion(socket);
+		log_trace(logger, "codigo de operacion recibido");
 
-	//t_operacion *carga=NULL; tipo de la carga
-	//recibirPaqueteVariable(socket,(void**)carga);
-	//log_debug(logger, "Clave del pkg recivido: %s ", *(carga->clave));
-
+		switch (cod_op) {
+		case OP_GET:
+		case OP_STORE:
+			recibir_operacion_unaria(socket, &clave);
+			log_trace(logger, "Recibi Get/store %s", clave);
+			break;
+		case OP_SET:
+			recibir_set(socket, &clave, &valor);
+			log_trace(logger, "Recibi SET %s %s", clave, valor);
+			break;
+		default:
+			log_error(logger, "el esi ha muerto");
+			close(socket);
+			return;
+		}
+	}
+	free(clave);
+	free(valor);
 }
 
 void atender_planif(int socket) {

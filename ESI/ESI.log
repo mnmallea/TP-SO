@@ -297,3 +297,2363 @@
 [DEBUG] 15:50:23:238 ESI/(9133:9133): el id del esi es: 1
 [INFO] 15:50:23:238 ESI/(9133:9133): Mensaje enviado
 [ERROR] 15:50:34:387 ESI/(9133:9133): no se pudo recibir confirmaciÃ³n
+[DEBUG] 02:14:19:570 ESI/(6782:6782): Configurando ESI
+[INFO] 02:14:19:570 ESI/(6782:6782): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[ERROR] 02:14:19:570 ESI/(6782:6782): Error al conectar el socket
+[DEBUG] 02:15:14:457 ESI/(6840:6840): Configurando ESI
+[INFO] 02:15:14:457 ESI/(6840:6840): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:15:14:459 ESI/(6840:6840): Socket conectado
+[INFO] 02:15:14:459 ESI/(6840:6840): Mensaje enviado
+[INFO] 02:15:14:459 ESI/(6840:6840): Mensaje de 4 bytes recibido
+[INFO] 02:15:14:459 ESI/(6840:6840): Se ha conectado al coordinador correctamente!!
+[INFO] 02:15:14:461 ESI/(6840:6840): Socket conectado
+[INFO] 02:15:14:461 ESI/(6840:6840): Mensaje de 4 bytes recibido
+[DEBUG] 02:15:14:462 ESI/(6840:6840): el id del esi es: 1
+[INFO] 02:15:14:462 ESI/(6840:6840): Mensaje enviado
+[DEBUG] 02:29:30:754 ESI/(7232:7232): Configurando ESI
+[INFO] 02:29:30:755 ESI/(7232:7232): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:29:30:756 ESI/(7232:7232): Socket conectado
+[INFO] 02:29:30:756 ESI/(7232:7232): Mensaje enviado
+[INFO] 02:29:30:757 ESI/(7232:7232): Mensaje de 4 bytes recibido
+[INFO] 02:29:30:757 ESI/(7232:7232): Se ha conectado al coordinador correctamente!!
+[INFO] 02:29:30:757 ESI/(7232:7232): Socket conectado
+[INFO] 02:29:30:757 ESI/(7232:7232): Mensaje de 4 bytes recibido
+[DEBUG] 02:29:30:757 ESI/(7232:7232): el id del esi es: 1
+[INFO] 02:29:30:757 ESI/(7232:7232): Mensaje enviado
+[DEBUG] 02:30:36:599 ESI/(7557:7557): Configurando ESI
+[INFO] 02:30:36:599 ESI/(7557:7557): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:30:36:601 ESI/(7557:7557): Socket conectado
+[INFO] 02:30:36:601 ESI/(7557:7557): Mensaje enviado
+[INFO] 02:30:36:601 ESI/(7557:7557): Mensaje de 4 bytes recibido
+[INFO] 02:30:36:602 ESI/(7557:7557): Se ha conectado al coordinador correctamente!!
+[INFO] 02:30:36:602 ESI/(7557:7557): Socket conectado
+[INFO] 02:30:36:602 ESI/(7557:7557): Mensaje de 4 bytes recibido
+[DEBUG] 02:30:36:602 ESI/(7557:7557): el id del esi es: 1
+[INFO] 02:30:36:602 ESI/(7557:7557): Mensaje enviado
+[DEBUG] 02:30:36:602 ESI/(7557:7557): Get
+[DEBUG] 02:30:36:602 ESI/(7557:7557): paquete de tamanio fijo agregado
+[DEBUG] 02:32:13:758 ESI/(7567:7567): Configurando ESI
+[INFO] 02:32:13:758 ESI/(7567:7567): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:13:762 ESI/(7567:7567): Socket conectado
+[INFO] 02:32:13:762 ESI/(7567:7567): Mensaje enviado
+[INFO] 02:32:13:763 ESI/(7567:7567): Mensaje de 4 bytes recibido
+[INFO] 02:32:13:763 ESI/(7567:7567): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:13:763 ESI/(7567:7567): Socket conectado
+[INFO] 02:32:13:763 ESI/(7567:7567): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:13:763 ESI/(7567:7567): el id del esi es: 2
+[INFO] 02:32:13:763 ESI/(7567:7567): Mensaje enviado
+[DEBUG] 02:32:13:763 ESI/(7567:7567): Get
+[DEBUG] 02:32:13:764 ESI/(7567:7567): paquete de tamanio fijo agregado
+[DEBUG] 02:32:17:711 ESI/(7571:7571): Configurando ESI
+[INFO] 02:32:17:711 ESI/(7571:7571): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:17:712 ESI/(7571:7571): Socket conectado
+[INFO] 02:32:17:712 ESI/(7571:7571): Mensaje enviado
+[INFO] 02:32:17:712 ESI/(7571:7571): Mensaje de 4 bytes recibido
+[INFO] 02:32:17:712 ESI/(7571:7571): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:17:713 ESI/(7571:7571): Socket conectado
+[INFO] 02:32:17:713 ESI/(7571:7571): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:17:713 ESI/(7571:7571): el id del esi es: 3
+[INFO] 02:32:17:713 ESI/(7571:7571): Mensaje enviado
+[DEBUG] 02:32:17:713 ESI/(7571:7571): Get
+[DEBUG] 02:32:17:713 ESI/(7571:7571): paquete de tamanio fijo agregado
+[DEBUG] 02:32:20:687 ESI/(7574:7574): Configurando ESI
+[INFO] 02:32:20:687 ESI/(7574:7574): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:20:688 ESI/(7574:7574): Socket conectado
+[INFO] 02:32:20:689 ESI/(7574:7574): Mensaje enviado
+[INFO] 02:32:20:689 ESI/(7574:7574): Mensaje de 4 bytes recibido
+[INFO] 02:32:20:689 ESI/(7574:7574): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:20:689 ESI/(7574:7574): Socket conectado
+[INFO] 02:32:20:689 ESI/(7574:7574): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:20:690 ESI/(7574:7574): el id del esi es: 4
+[INFO] 02:32:20:690 ESI/(7574:7574): Mensaje enviado
+[DEBUG] 02:32:20:690 ESI/(7574:7574): Get
+[DEBUG] 02:32:20:690 ESI/(7574:7574): paquete de tamanio fijo agregado
+[DEBUG] 02:32:23:112 ESI/(7578:7578): Configurando ESI
+[INFO] 02:32:23:112 ESI/(7578:7578): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:23:113 ESI/(7578:7578): Socket conectado
+[INFO] 02:32:23:113 ESI/(7578:7578): Mensaje enviado
+[INFO] 02:32:23:113 ESI/(7578:7578): Mensaje de 4 bytes recibido
+[INFO] 02:32:23:113 ESI/(7578:7578): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:23:114 ESI/(7578:7578): Socket conectado
+[INFO] 02:32:23:114 ESI/(7578:7578): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:23:114 ESI/(7578:7578): el id del esi es: 5
+[INFO] 02:32:23:114 ESI/(7578:7578): Mensaje enviado
+[DEBUG] 02:32:23:114 ESI/(7578:7578): Get
+[DEBUG] 02:32:23:114 ESI/(7578:7578): paquete de tamanio fijo agregado
+[DEBUG] 02:32:24:765 ESI/(7581:7581): Configurando ESI
+[INFO] 02:32:24:765 ESI/(7581:7581): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:24:766 ESI/(7581:7581): Socket conectado
+[INFO] 02:32:24:766 ESI/(7581:7581): Mensaje enviado
+[INFO] 02:32:24:767 ESI/(7581:7581): Mensaje de 4 bytes recibido
+[INFO] 02:32:24:767 ESI/(7581:7581): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:24:768 ESI/(7581:7581): Socket conectado
+[INFO] 02:32:24:768 ESI/(7581:7581): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:24:768 ESI/(7581:7581): el id del esi es: 6
+[INFO] 02:32:24:768 ESI/(7581:7581): Mensaje enviado
+[DEBUG] 02:32:24:768 ESI/(7581:7581): Get
+[DEBUG] 02:32:24:768 ESI/(7581:7581): paquete de tamanio fijo agregado
+[DEBUG] 02:32:26:232 ESI/(7583:7583): Configurando ESI
+[INFO] 02:32:26:232 ESI/(7583:7583): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:26:233 ESI/(7583:7583): Socket conectado
+[INFO] 02:32:26:233 ESI/(7583:7583): Mensaje enviado
+[INFO] 02:32:26:234 ESI/(7583:7583): Mensaje de 4 bytes recibido
+[INFO] 02:32:26:234 ESI/(7583:7583): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:26:234 ESI/(7583:7583): Socket conectado
+[INFO] 02:32:26:234 ESI/(7583:7583): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:26:234 ESI/(7583:7583): el id del esi es: 7
+[INFO] 02:32:26:235 ESI/(7583:7583): Mensaje enviado
+[DEBUG] 02:32:26:235 ESI/(7583:7583): Get
+[DEBUG] 02:32:26:235 ESI/(7583:7583): paquete de tamanio fijo agregado
+[DEBUG] 02:32:27:609 ESI/(7585:7585): Configurando ESI
+[INFO] 02:32:27:609 ESI/(7585:7585): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:27:610 ESI/(7585:7585): Socket conectado
+[INFO] 02:32:27:610 ESI/(7585:7585): Mensaje enviado
+[INFO] 02:32:27:611 ESI/(7585:7585): Mensaje de 4 bytes recibido
+[INFO] 02:32:27:611 ESI/(7585:7585): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:27:611 ESI/(7585:7585): Socket conectado
+[INFO] 02:32:27:611 ESI/(7585:7585): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:27:611 ESI/(7585:7585): el id del esi es: 8
+[INFO] 02:32:27:612 ESI/(7585:7585): Mensaje enviado
+[DEBUG] 02:32:27:612 ESI/(7585:7585): Get
+[DEBUG] 02:32:27:612 ESI/(7585:7585): paquete de tamanio fijo agregado
+[DEBUG] 02:32:28:873 ESI/(7588:7588): Configurando ESI
+[INFO] 02:32:28:873 ESI/(7588:7588): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:28:875 ESI/(7588:7588): Socket conectado
+[INFO] 02:32:28:875 ESI/(7588:7588): Mensaje enviado
+[INFO] 02:32:28:875 ESI/(7588:7588): Mensaje de 4 bytes recibido
+[INFO] 02:32:28:876 ESI/(7588:7588): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:28:876 ESI/(7588:7588): Socket conectado
+[INFO] 02:32:28:876 ESI/(7588:7588): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:28:876 ESI/(7588:7588): el id del esi es: 9
+[INFO] 02:32:28:876 ESI/(7588:7588): Mensaje enviado
+[DEBUG] 02:32:28:876 ESI/(7588:7588): Get
+[DEBUG] 02:32:28:876 ESI/(7588:7588): paquete de tamanio fijo agregado
+[DEBUG] 02:32:30:97 ESI/(7590:7590): Configurando ESI
+[INFO] 02:32:30:97 ESI/(7590:7590): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:30:98 ESI/(7590:7590): Socket conectado
+[INFO] 02:32:30:98 ESI/(7590:7590): Mensaje enviado
+[INFO] 02:32:30:99 ESI/(7590:7590): Mensaje de 4 bytes recibido
+[INFO] 02:32:30:99 ESI/(7590:7590): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:30:99 ESI/(7590:7590): Socket conectado
+[INFO] 02:32:30:99 ESI/(7590:7590): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:30:99 ESI/(7590:7590): el id del esi es: 10
+[INFO] 02:32:30:99 ESI/(7590:7590): Mensaje enviado
+[DEBUG] 02:32:30:99 ESI/(7590:7590): Get
+[DEBUG] 02:32:30:99 ESI/(7590:7590): paquete de tamanio fijo agregado
+[DEBUG] 02:32:31:193 ESI/(7592:7592): Configurando ESI
+[INFO] 02:32:31:193 ESI/(7592:7592): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:31:194 ESI/(7592:7592): Socket conectado
+[INFO] 02:32:31:195 ESI/(7592:7592): Mensaje enviado
+[INFO] 02:32:31:195 ESI/(7592:7592): Mensaje de 4 bytes recibido
+[INFO] 02:32:31:195 ESI/(7592:7592): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:31:195 ESI/(7592:7592): Socket conectado
+[INFO] 02:32:31:195 ESI/(7592:7592): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:31:195 ESI/(7592:7592): el id del esi es: 11
+[INFO] 02:32:31:196 ESI/(7592:7592): Mensaje enviado
+[DEBUG] 02:32:31:196 ESI/(7592:7592): Get
+[DEBUG] 02:32:31:196 ESI/(7592:7592): paquete de tamanio fijo agregado
+[DEBUG] 02:32:32:257 ESI/(7594:7594): Configurando ESI
+[INFO] 02:32:32:257 ESI/(7594:7594): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:32:258 ESI/(7594:7594): Socket conectado
+[INFO] 02:32:32:259 ESI/(7594:7594): Mensaje enviado
+[INFO] 02:32:32:259 ESI/(7594:7594): Mensaje de 4 bytes recibido
+[INFO] 02:32:32:259 ESI/(7594:7594): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:32:259 ESI/(7594:7594): Socket conectado
+[INFO] 02:32:32:259 ESI/(7594:7594): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:32:260 ESI/(7594:7594): el id del esi es: 12
+[INFO] 02:32:32:260 ESI/(7594:7594): Mensaje enviado
+[DEBUG] 02:32:32:260 ESI/(7594:7594): Get
+[DEBUG] 02:32:32:260 ESI/(7594:7594): paquete de tamanio fijo agregado
+[DEBUG] 02:32:33:538 ESI/(7596:7596): Configurando ESI
+[INFO] 02:32:33:538 ESI/(7596:7596): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:33:539 ESI/(7596:7596): Socket conectado
+[INFO] 02:32:33:539 ESI/(7596:7596): Mensaje enviado
+[INFO] 02:32:33:540 ESI/(7596:7596): Mensaje de 4 bytes recibido
+[INFO] 02:32:33:540 ESI/(7596:7596): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:33:540 ESI/(7596:7596): Socket conectado
+[INFO] 02:32:33:540 ESI/(7596:7596): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:33:540 ESI/(7596:7596): el id del esi es: 13
+[INFO] 02:32:33:540 ESI/(7596:7596): Mensaje enviado
+[DEBUG] 02:32:33:540 ESI/(7596:7596): Get
+[DEBUG] 02:32:33:540 ESI/(7596:7596): paquete de tamanio fijo agregado
+[DEBUG] 02:32:34:634 ESI/(7599:7599): Configurando ESI
+[INFO] 02:32:34:634 ESI/(7599:7599): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:34:635 ESI/(7599:7599): Socket conectado
+[INFO] 02:32:34:635 ESI/(7599:7599): Mensaje enviado
+[INFO] 02:32:34:636 ESI/(7599:7599): Mensaje de 4 bytes recibido
+[INFO] 02:32:34:636 ESI/(7599:7599): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:34:636 ESI/(7599:7599): Socket conectado
+[INFO] 02:32:34:636 ESI/(7599:7599): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:34:636 ESI/(7599:7599): el id del esi es: 14
+[INFO] 02:32:34:636 ESI/(7599:7599): Mensaje enviado
+[DEBUG] 02:32:34:636 ESI/(7599:7599): Get
+[DEBUG] 02:32:34:636 ESI/(7599:7599): paquete de tamanio fijo agregado
+[DEBUG] 02:32:35:658 ESI/(7601:7601): Configurando ESI
+[INFO] 02:32:35:658 ESI/(7601:7601): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:35:659 ESI/(7601:7601): Socket conectado
+[INFO] 02:32:35:659 ESI/(7601:7601): Mensaje enviado
+[INFO] 02:32:35:660 ESI/(7601:7601): Mensaje de 4 bytes recibido
+[INFO] 02:32:35:660 ESI/(7601:7601): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:35:660 ESI/(7601:7601): Socket conectado
+[INFO] 02:32:35:660 ESI/(7601:7601): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:35:660 ESI/(7601:7601): el id del esi es: 15
+[INFO] 02:32:35:660 ESI/(7601:7601): Mensaje enviado
+[DEBUG] 02:32:35:661 ESI/(7601:7601): Get
+[DEBUG] 02:32:35:661 ESI/(7601:7601): paquete de tamanio fijo agregado
+[DEBUG] 02:32:36:546 ESI/(7603:7603): Configurando ESI
+[INFO] 02:32:36:547 ESI/(7603:7603): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:36:548 ESI/(7603:7603): Socket conectado
+[INFO] 02:32:36:548 ESI/(7603:7603): Mensaje enviado
+[INFO] 02:32:36:548 ESI/(7603:7603): Mensaje de 4 bytes recibido
+[INFO] 02:32:36:548 ESI/(7603:7603): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:36:549 ESI/(7603:7603): Socket conectado
+[INFO] 02:32:36:549 ESI/(7603:7603): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:36:549 ESI/(7603:7603): el id del esi es: 16
+[INFO] 02:32:36:549 ESI/(7603:7603): Mensaje enviado
+[DEBUG] 02:32:36:549 ESI/(7603:7603): Get
+[DEBUG] 02:32:36:549 ESI/(7603:7603): paquete de tamanio fijo agregado
+[DEBUG] 02:32:37:291 ESI/(7605:7605): Configurando ESI
+[INFO] 02:32:37:291 ESI/(7605:7605): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:37:292 ESI/(7605:7605): Socket conectado
+[INFO] 02:32:37:292 ESI/(7605:7605): Mensaje enviado
+[INFO] 02:32:37:292 ESI/(7605:7605): Mensaje de 4 bytes recibido
+[INFO] 02:32:37:292 ESI/(7605:7605): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:37:293 ESI/(7605:7605): Socket conectado
+[INFO] 02:32:37:293 ESI/(7605:7605): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:37:293 ESI/(7605:7605): el id del esi es: 17
+[INFO] 02:32:37:293 ESI/(7605:7605): Mensaje enviado
+[DEBUG] 02:32:37:293 ESI/(7605:7605): Get
+[DEBUG] 02:32:37:293 ESI/(7605:7605): paquete de tamanio fijo agregado
+[DEBUG] 02:32:37:939 ESI/(7607:7607): Configurando ESI
+[INFO] 02:32:37:939 ESI/(7607:7607): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:37:940 ESI/(7607:7607): Socket conectado
+[INFO] 02:32:37:940 ESI/(7607:7607): Mensaje enviado
+[INFO] 02:32:37:940 ESI/(7607:7607): Mensaje de 4 bytes recibido
+[INFO] 02:32:37:940 ESI/(7607:7607): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:37:941 ESI/(7607:7607): Socket conectado
+[INFO] 02:32:37:941 ESI/(7607:7607): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:37:941 ESI/(7607:7607): el id del esi es: 18
+[INFO] 02:32:37:941 ESI/(7607:7607): Mensaje enviado
+[DEBUG] 02:32:37:941 ESI/(7607:7607): Get
+[DEBUG] 02:32:37:941 ESI/(7607:7607): paquete de tamanio fijo agregado
+[DEBUG] 02:32:38:763 ESI/(7609:7609): Configurando ESI
+[INFO] 02:32:38:763 ESI/(7609:7609): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:38:764 ESI/(7609:7609): Socket conectado
+[INFO] 02:32:38:764 ESI/(7609:7609): Mensaje enviado
+[INFO] 02:32:38:765 ESI/(7609:7609): Mensaje de 4 bytes recibido
+[INFO] 02:32:38:765 ESI/(7609:7609): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:38:765 ESI/(7609:7609): Socket conectado
+[INFO] 02:32:38:765 ESI/(7609:7609): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:38:765 ESI/(7609:7609): el id del esi es: 19
+[INFO] 02:32:38:766 ESI/(7609:7609): Mensaje enviado
+[DEBUG] 02:32:38:766 ESI/(7609:7609): Get
+[DEBUG] 02:32:38:766 ESI/(7609:7609): paquete de tamanio fijo agregado
+[DEBUG] 02:32:39:483 ESI/(7612:7612): Configurando ESI
+[INFO] 02:32:39:483 ESI/(7612:7612): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:39:484 ESI/(7612:7612): Socket conectado
+[INFO] 02:32:39:484 ESI/(7612:7612): Mensaje enviado
+[INFO] 02:32:39:485 ESI/(7612:7612): Mensaje de 4 bytes recibido
+[INFO] 02:32:39:485 ESI/(7612:7612): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:39:485 ESI/(7612:7612): Socket conectado
+[INFO] 02:32:39:485 ESI/(7612:7612): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:39:485 ESI/(7612:7612): el id del esi es: 20
+[INFO] 02:32:39:485 ESI/(7612:7612): Mensaje enviado
+[DEBUG] 02:32:39:485 ESI/(7612:7612): Get
+[DEBUG] 02:32:39:486 ESI/(7612:7612): paquete de tamanio fijo agregado
+[DEBUG] 02:32:40:211 ESI/(7614:7614): Configurando ESI
+[INFO] 02:32:40:212 ESI/(7614:7614): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:40:213 ESI/(7614:7614): Socket conectado
+[INFO] 02:32:40:213 ESI/(7614:7614): Mensaje enviado
+[INFO] 02:32:40:214 ESI/(7614:7614): Mensaje de 4 bytes recibido
+[INFO] 02:32:40:214 ESI/(7614:7614): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:40:214 ESI/(7614:7614): Socket conectado
+[INFO] 02:32:40:214 ESI/(7614:7614): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:40:214 ESI/(7614:7614): el id del esi es: 21
+[INFO] 02:32:40:214 ESI/(7614:7614): Mensaje enviado
+[DEBUG] 02:32:40:214 ESI/(7614:7614): Get
+[DEBUG] 02:32:40:215 ESI/(7614:7614): paquete de tamanio fijo agregado
+[DEBUG] 02:32:40:899 ESI/(7616:7616): Configurando ESI
+[INFO] 02:32:40:899 ESI/(7616:7616): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:40:900 ESI/(7616:7616): Socket conectado
+[INFO] 02:32:40:900 ESI/(7616:7616): Mensaje enviado
+[INFO] 02:32:40:901 ESI/(7616:7616): Mensaje de 4 bytes recibido
+[INFO] 02:32:40:901 ESI/(7616:7616): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:40:901 ESI/(7616:7616): Socket conectado
+[INFO] 02:32:40:901 ESI/(7616:7616): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:40:901 ESI/(7616:7616): el id del esi es: 22
+[INFO] 02:32:40:902 ESI/(7616:7616): Mensaje enviado
+[DEBUG] 02:32:40:902 ESI/(7616:7616): Get
+[DEBUG] 02:32:40:902 ESI/(7616:7616): paquete de tamanio fijo agregado
+[DEBUG] 02:32:41:571 ESI/(7623:7623): Configurando ESI
+[INFO] 02:32:41:572 ESI/(7623:7623): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:41:572 ESI/(7623:7623): Socket conectado
+[INFO] 02:32:41:573 ESI/(7623:7623): Mensaje enviado
+[INFO] 02:32:41:573 ESI/(7623:7623): Mensaje de 4 bytes recibido
+[INFO] 02:32:41:573 ESI/(7623:7623): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:41:573 ESI/(7623:7623): Socket conectado
+[INFO] 02:32:41:573 ESI/(7623:7623): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:41:573 ESI/(7623:7623): el id del esi es: 23
+[INFO] 02:32:41:574 ESI/(7623:7623): Mensaje enviado
+[DEBUG] 02:32:41:574 ESI/(7623:7623): Get
+[DEBUG] 02:32:41:574 ESI/(7623:7623): paquete de tamanio fijo agregado
+[DEBUG] 02:32:42:116 ESI/(7625:7625): Configurando ESI
+[INFO] 02:32:42:116 ESI/(7625:7625): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:42:117 ESI/(7625:7625): Socket conectado
+[INFO] 02:32:42:117 ESI/(7625:7625): Mensaje enviado
+[INFO] 02:32:42:117 ESI/(7625:7625): Mensaje de 4 bytes recibido
+[INFO] 02:32:42:117 ESI/(7625:7625): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:42:118 ESI/(7625:7625): Socket conectado
+[INFO] 02:32:42:118 ESI/(7625:7625): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:42:118 ESI/(7625:7625): el id del esi es: 24
+[INFO] 02:32:42:118 ESI/(7625:7625): Mensaje enviado
+[DEBUG] 02:32:42:118 ESI/(7625:7625): Get
+[DEBUG] 02:32:42:118 ESI/(7625:7625): paquete de tamanio fijo agregado
+[DEBUG] 02:32:42:676 ESI/(7627:7627): Configurando ESI
+[INFO] 02:32:42:676 ESI/(7627:7627): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:42:677 ESI/(7627:7627): Socket conectado
+[INFO] 02:32:42:677 ESI/(7627:7627): Mensaje enviado
+[INFO] 02:32:42:677 ESI/(7627:7627): Mensaje de 4 bytes recibido
+[INFO] 02:32:42:677 ESI/(7627:7627): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:42:677 ESI/(7627:7627): Socket conectado
+[INFO] 02:32:42:678 ESI/(7627:7627): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:42:678 ESI/(7627:7627): el id del esi es: 25
+[INFO] 02:32:42:678 ESI/(7627:7627): Mensaje enviado
+[DEBUG] 02:32:42:678 ESI/(7627:7627): Get
+[DEBUG] 02:32:42:678 ESI/(7627:7627): paquete de tamanio fijo agregado
+[DEBUG] 02:32:43:164 ESI/(7629:7629): Configurando ESI
+[INFO] 02:32:43:164 ESI/(7629:7629): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:43:165 ESI/(7629:7629): Socket conectado
+[INFO] 02:32:43:165 ESI/(7629:7629): Mensaje enviado
+[INFO] 02:32:43:166 ESI/(7629:7629): Mensaje de 4 bytes recibido
+[INFO] 02:32:43:166 ESI/(7629:7629): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:43:166 ESI/(7629:7629): Socket conectado
+[INFO] 02:32:43:166 ESI/(7629:7629): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:43:166 ESI/(7629:7629): el id del esi es: 26
+[INFO] 02:32:43:166 ESI/(7629:7629): Mensaje enviado
+[DEBUG] 02:32:43:166 ESI/(7629:7629): Get
+[DEBUG] 02:32:43:166 ESI/(7629:7629): paquete de tamanio fijo agregado
+[DEBUG] 02:32:43:740 ESI/(7631:7631): Configurando ESI
+[INFO] 02:32:43:740 ESI/(7631:7631): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:32:43:741 ESI/(7631:7631): Socket conectado
+[INFO] 02:32:43:741 ESI/(7631:7631): Mensaje enviado
+[INFO] 02:32:43:742 ESI/(7631:7631): Mensaje de 4 bytes recibido
+[INFO] 02:32:43:742 ESI/(7631:7631): Se ha conectado al coordinador correctamente!!
+[INFO] 02:32:43:742 ESI/(7631:7631): Socket conectado
+[INFO] 02:32:43:742 ESI/(7631:7631): Mensaje de 4 bytes recibido
+[DEBUG] 02:32:43:742 ESI/(7631:7631): el id del esi es: 27
+[INFO] 02:32:43:742 ESI/(7631:7631): Mensaje enviado
+[DEBUG] 02:32:43:742 ESI/(7631:7631): Get
+[DEBUG] 02:32:43:742 ESI/(7631:7631): paquete de tamanio fijo agregado
+[ERROR] 02:34:32:38 ESI/(7727:7727): Cantidad incorrecta de parametros
+[DEBUG] 02:35:19:115 ESI/(7770:7770): Configurando ESI
+[INFO] 02:35:22:24 ESI/(7770:7770): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:35:22:26 ESI/(7770:7770): Socket conectado
+[INFO] 02:35:22:26 ESI/(7770:7770): Mensaje enviado
+[INFO] 02:35:22:31 ESI/(7770:7770): Mensaje de 4 bytes recibido
+[INFO] 02:35:22:31 ESI/(7770:7770): Se ha conectado al coordinador correctamente!!
+[INFO] 02:35:41:132 ESI/(7770:7770): Socket conectado
+[INFO] 02:35:54:406 ESI/(7770:7770): Mensaje de 4 bytes recibido
+[DEBUG] 02:35:57:665 ESI/(7770:7770): el id del esi es: 28
+[INFO] 02:36:00:584 ESI/(7770:7770): Mensaje enviado
+[DEBUG] 02:36:26:165 ESI/(7770:7770): Get
+[DEBUG] 02:38:22:0 ESI/(7770:7770): paquete de tamanio fijo agregado
+[DEBUG] 02:39:54:475 ESI/(7880:7880): Configurando ESI
+[INFO] 02:39:54:491 ESI/(7880:7880): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[ERROR] 02:39:54:491 ESI/(7880:7880): Error al conectar el socket
+[DEBUG] 02:40:14:183 ESI/(7930:7930): Configurando ESI
+[INFO] 02:40:14:183 ESI/(7930:7930): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:40:14:184 ESI/(7930:7930): Socket conectado
+[INFO] 02:40:14:184 ESI/(7930:7930): Mensaje enviado
+[INFO] 02:40:14:198 ESI/(7930:7930): Mensaje de 4 bytes recibido
+[INFO] 02:40:14:198 ESI/(7930:7930): Se ha conectado al coordinador correctamente!!
+[INFO] 02:40:14:198 ESI/(7930:7930): Socket conectado
+[INFO] 02:40:14:198 ESI/(7930:7930): Mensaje de 4 bytes recibido
+[DEBUG] 02:40:14:198 ESI/(7930:7930): el id del esi es: 29
+[INFO] 02:40:14:198 ESI/(7930:7930): Mensaje enviado
+[DEBUG] 02:40:14:198 ESI/(7930:7930): Get
+[DEBUG] 02:40:14:198 ESI/(7930:7930): paquete de tamanio fijo agregado
+[DEBUG] 02:42:20:528 ESI/(7953:7953): Configurando ESI
+[INFO] 02:42:20:529 ESI/(7953:7953): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:42:20:529 ESI/(7953:7953): Socket conectado
+[INFO] 02:42:20:529 ESI/(7953:7953): Mensaje enviado
+[INFO] 02:42:20:534 ESI/(7953:7953): Mensaje de 4 bytes recibido
+[INFO] 02:42:20:534 ESI/(7953:7953): Se ha conectado al coordinador correctamente!!
+[INFO] 02:42:20:534 ESI/(7953:7953): Socket conectado
+[INFO] 02:42:20:534 ESI/(7953:7953): Mensaje de 4 bytes recibido
+[DEBUG] 02:42:20:534 ESI/(7953:7953): el id del esi es: 30
+[INFO] 02:42:20:535 ESI/(7953:7953): Mensaje enviado
+[DEBUG] 02:42:20:535 ESI/(7953:7953): Get
+[DEBUG] 02:42:20:535 ESI/(7953:7953): paquete de tamanio fijo agregado
+[DEBUG] 02:42:25:279 ESI/(7960:7960): Configurando ESI
+[INFO] 02:42:25:283 ESI/(7960:7960): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:42:25:283 ESI/(7960:7960): Socket conectado
+[INFO] 02:42:25:283 ESI/(7960:7960): Mensaje enviado
+[INFO] 02:42:25:288 ESI/(7960:7960): Mensaje de 4 bytes recibido
+[INFO] 02:42:25:288 ESI/(7960:7960): Se ha conectado al coordinador correctamente!!
+[INFO] 02:42:25:289 ESI/(7960:7960): Socket conectado
+[INFO] 02:42:25:290 ESI/(7960:7960): Mensaje de 4 bytes recibido
+[DEBUG] 02:42:25:290 ESI/(7960:7960): el id del esi es: 31
+[INFO] 02:42:25:290 ESI/(7960:7960): Mensaje enviado
+[DEBUG] 02:42:25:290 ESI/(7960:7960): Get
+[DEBUG] 02:42:25:290 ESI/(7960:7960): paquete de tamanio fijo agregado
+[DEBUG] 02:42:28:206 ESI/(7964:7964): Configurando ESI
+[INFO] 02:42:28:210 ESI/(7964:7964): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:42:28:210 ESI/(7964:7964): Socket conectado
+[INFO] 02:42:28:211 ESI/(7964:7964): Mensaje enviado
+[INFO] 02:42:28:222 ESI/(7964:7964): Mensaje de 4 bytes recibido
+[INFO] 02:42:28:222 ESI/(7964:7964): Se ha conectado al coordinador correctamente!!
+[INFO] 02:42:28:222 ESI/(7964:7964): Socket conectado
+[INFO] 02:42:28:222 ESI/(7964:7964): Mensaje de 4 bytes recibido
+[DEBUG] 02:42:28:223 ESI/(7964:7964): el id del esi es: 32
+[INFO] 02:42:28:223 ESI/(7964:7964): Mensaje enviado
+[DEBUG] 02:42:28:223 ESI/(7964:7964): Get
+[DEBUG] 02:42:28:223 ESI/(7964:7964): paquete de tamanio fijo agregado
+[DEBUG] 02:44:55:2 ESI/(8029:8029): Configurando ESI
+[INFO] 02:44:55:2 ESI/(8029:8029): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:44:56:6 ESI/(8029:8029): Socket conectado
+[INFO] 02:44:56:6 ESI/(8029:8029): Mensaje enviado
+[INFO] 02:44:56:19 ESI/(8029:8029): Mensaje de 4 bytes recibido
+[INFO] 02:44:56:19 ESI/(8029:8029): Se ha conectado al coordinador correctamente!!
+[INFO] 02:44:56:19 ESI/(8029:8029): Socket conectado
+[INFO] 02:44:56:20 ESI/(8029:8029): Mensaje de 4 bytes recibido
+[DEBUG] 02:44:56:20 ESI/(8029:8029): el id del esi es: 33
+[INFO] 02:44:56:20 ESI/(8029:8029): Mensaje enviado
+[DEBUG] 02:44:56:20 ESI/(8029:8029): Get
+[DEBUG] 02:44:56:20 ESI/(8029:8029): paquete de tamanio fijo agregado
+[DEBUG] 02:45:19:971 ESI/(8072:8072): Configurando ESI
+[INFO] 02:45:19:971 ESI/(8072:8072): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[ERROR] 02:45:19:972 ESI/(8072:8072): Error al conectar el socket
+[DEBUG] 02:45:32:415 ESI/(8080:8080): Configurando ESI
+[INFO] 02:45:32:415 ESI/(8080:8080): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:45:32:419 ESI/(8080:8080): Socket conectado
+[INFO] 02:45:32:419 ESI/(8080:8080): Mensaje enviado
+[INFO] 02:45:32:432 ESI/(8080:8080): Mensaje de 4 bytes recibido
+[INFO] 02:45:32:432 ESI/(8080:8080): Se ha conectado al coordinador correctamente!!
+[INFO] 02:45:32:432 ESI/(8080:8080): Socket conectado
+[INFO] 02:45:32:432 ESI/(8080:8080): Mensaje de 4 bytes recibido
+[DEBUG] 02:45:32:432 ESI/(8080:8080): el id del esi es: 34
+[INFO] 02:45:32:433 ESI/(8080:8080): Mensaje enviado
+[DEBUG] 02:45:32:433 ESI/(8080:8080): Get
+[DEBUG] 02:45:32:433 ESI/(8080:8080): paquete de tamanio fijo agregado
+[DEBUG] 02:47:22:982 ESI/(8145:8145): Configurando ESI
+[INFO] 02:47:22:982 ESI/(8145:8145): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:47:22:986 ESI/(8145:8145): Socket conectado
+[INFO] 02:47:22:986 ESI/(8145:8145): Mensaje enviado
+[INFO] 02:47:22:999 ESI/(8145:8145): Mensaje de 4 bytes recibido
+[INFO] 02:47:22:999 ESI/(8145:8145): Se ha conectado al coordinador correctamente!!
+[INFO] 02:47:22:999 ESI/(8145:8145): Socket conectado
+[INFO] 02:47:22:999 ESI/(8145:8145): Mensaje de 4 bytes recibido
+[DEBUG] 02:47:22:999 ESI/(8145:8145): el id del esi es: 35
+[INFO] 02:47:22:999 ESI/(8145:8145): Mensaje enviado
+[DEBUG] 02:47:22:0 ESI/(8145:8145): Get (null)
+[DEBUG] 02:47:22:0 ESI/(8145:8145): paquete de tamanio fijo agregado
+[DEBUG] 02:47:53:71 ESI/(8185:8185): Configurando ESI
+[INFO] 02:47:53:75 ESI/(8185:8185): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:47:53:79 ESI/(8185:8185): Socket conectado
+[INFO] 02:47:53:79 ESI/(8185:8185): Mensaje enviado
+[INFO] 02:47:53:80 ESI/(8185:8185): Mensaje de 4 bytes recibido
+[INFO] 02:47:53:80 ESI/(8185:8185): Se ha conectado al coordinador correctamente!!
+[INFO] 02:47:53:86 ESI/(8185:8185): Socket conectado
+[INFO] 02:47:53:86 ESI/(8185:8185): Mensaje de 4 bytes recibido
+[DEBUG] 02:47:53:86 ESI/(8185:8185): el id del esi es: 36
+[INFO] 02:47:53:86 ESI/(8185:8185): Mensaje enviado
+[DEBUG] 02:47:53:86 ESI/(8185:8185): Get jugador
+[DEBUG] 02:47:53:86 ESI/(8185:8185): paquete de tamanio fijo agregado
+[DEBUG] 02:51:10:488 ESI/(8256:8256): Configurando ESI
+[INFO] 02:51:10:488 ESI/(8256:8256): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:51:10:492 ESI/(8256:8256): Socket conectado
+[INFO] 02:51:10:492 ESI/(8256:8256): Mensaje enviado
+[INFO] 02:51:10:505 ESI/(8256:8256): Mensaje de 4 bytes recibido
+[INFO] 02:51:10:505 ESI/(8256:8256): Se ha conectado al coordinador correctamente!!
+[INFO] 02:51:10:506 ESI/(8256:8256): Socket conectado
+[INFO] 02:51:10:506 ESI/(8256:8256): Mensaje de 4 bytes recibido
+[DEBUG] 02:51:10:506 ESI/(8256:8256): el id del esi es: 37
+[INFO] 02:51:10:506 ESI/(8256:8256): Mensaje enviado
+[DEBUG] 02:51:10:506 ESI/(8256:8256): Get jugador
+[DEBUG] 02:51:10:506 ESI/(8256:8256): paquete de tamanio fijo agregado
+[DEBUG] 02:51:23:963 ESI/(8266:8266): Configurando ESI
+[INFO] 02:51:23:966 ESI/(8266:8266): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:51:23:970 ESI/(8266:8266): Socket conectado
+[INFO] 02:51:23:970 ESI/(8266:8266): Mensaje enviado
+[INFO] 02:51:23:980 ESI/(8266:8266): Mensaje de 4 bytes recibido
+[INFO] 02:51:23:980 ESI/(8266:8266): Se ha conectado al coordinador correctamente!!
+[INFO] 02:51:23:980 ESI/(8266:8266): Socket conectado
+[INFO] 02:51:23:980 ESI/(8266:8266): Mensaje de 4 bytes recibido
+[DEBUG] 02:51:23:980 ESI/(8266:8266): el id del esi es: 38
+[INFO] 02:51:23:980 ESI/(8266:8266): Mensaje enviado
+[DEBUG] 02:51:23:980 ESI/(8266:8266): Get jugador
+[DEBUG] 02:51:23:980 ESI/(8266:8266): paquete de tamanio fijo agregado
+[DEBUG] 02:51:46:495 ESI/(8288:8288): Configurando ESI
+[INFO] 02:51:46:496 ESI/(8288:8288): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:51:46:500 ESI/(8288:8288): Socket conectado
+[INFO] 02:51:46:500 ESI/(8288:8288): Mensaje enviado
+[INFO] 02:51:46:510 ESI/(8288:8288): Mensaje de 4 bytes recibido
+[INFO] 02:51:46:510 ESI/(8288:8288): Se ha conectado al coordinador correctamente!!
+[INFO] 02:51:46:510 ESI/(8288:8288): Socket conectado
+[INFO] 02:51:46:510 ESI/(8288:8288): Mensaje de 4 bytes recibido
+[DEBUG] 02:51:46:510 ESI/(8288:8288): el id del esi es: 39
+[INFO] 02:51:46:510 ESI/(8288:8288): Mensaje enviado
+[DEBUG] 02:51:46:510 ESI/(8288:8288): Get jugador
+[DEBUG] 02:51:46:510 ESI/(8288:8288): paquete de tamanio fijo agregado
+[DEBUG] 02:52:34:977 ESI/(8430:8430): Configurando ESI
+[INFO] 02:52:34:978 ESI/(8430:8430): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:52:34:981 ESI/(8430:8430): Socket conectado
+[INFO] 02:52:34:982 ESI/(8430:8430): Mensaje enviado
+[INFO] 02:52:35:10 ESI/(8430:8430): Mensaje de 4 bytes recibido
+[INFO] 02:52:35:10 ESI/(8430:8430): Se ha conectado al coordinador correctamente!!
+[INFO] 02:52:35:10 ESI/(8430:8430): Socket conectado
+[INFO] 02:52:35:10 ESI/(8430:8430): Mensaje de 4 bytes recibido
+[DEBUG] 02:52:35:10 ESI/(8430:8430): el id del esi es: 40
+[INFO] 02:52:35:10 ESI/(8430:8430): Mensaje enviado
+[DEBUG] 02:52:35:10 ESI/(8430:8430): Get jugador
+[DEBUG] 02:52:35:10 ESI/(8430:8430): paquete de tamanio fijo agregado
+[DEBUG] 02:53:01:38 ESI/(8447:8447): Configurando ESI
+[INFO] 02:53:01:38 ESI/(8447:8447): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:53:01:40 ESI/(8447:8447): Socket conectado
+[INFO] 02:53:01:40 ESI/(8447:8447): Mensaje enviado
+[INFO] 02:53:01:41 ESI/(8447:8447): Mensaje de 4 bytes recibido
+[INFO] 02:53:01:41 ESI/(8447:8447): Se ha conectado al coordinador correctamente!!
+[INFO] 02:53:01:41 ESI/(8447:8447): Socket conectado
+[INFO] 02:53:01:41 ESI/(8447:8447): Mensaje de 4 bytes recibido
+[DEBUG] 02:53:01:41 ESI/(8447:8447): el id del esi es: 1
+[INFO] 02:53:01:41 ESI/(8447:8447): Mensaje enviado
+[DEBUG] 02:53:01:41 ESI/(8447:8447): Get jugador
+[DEBUG] 02:53:01:41 ESI/(8447:8447): paquete de tamanio fijo agregado
+[DEBUG] 02:54:40:738 ESI/(8501:8501): Configurando ESI
+[INFO] 02:54:40:739 ESI/(8501:8501): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:54:40:740 ESI/(8501:8501): Socket conectado
+[INFO] 02:54:40:741 ESI/(8501:8501): Mensaje enviado
+[INFO] 02:54:40:741 ESI/(8501:8501): Mensaje de 4 bytes recibido
+[INFO] 02:54:40:741 ESI/(8501:8501): Se ha conectado al coordinador correctamente!!
+[INFO] 02:54:40:741 ESI/(8501:8501): Socket conectado
+[INFO] 02:54:40:742 ESI/(8501:8501): Mensaje de 4 bytes recibido
+[DEBUG] 02:54:40:742 ESI/(8501:8501): el id del esi es: 1
+[INFO] 02:54:40:742 ESI/(8501:8501): Mensaje enviado
+[DEBUG] 02:54:40:742 ESI/(8501:8501): Get jugador
+[DEBUG] 02:54:40:742 ESI/(8501:8501): paquete de tamanio fijo agregado
+[DEBUG] 02:58:19:706 ESI/(8950:8950): Configurando ESI
+[INFO] 02:58:19:707 ESI/(8950:8950): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 02:58:19:710 ESI/(8950:8950): Socket conectado
+[INFO] 02:58:19:710 ESI/(8950:8950): Mensaje enviado
+[INFO] 02:58:19:711 ESI/(8950:8950): Mensaje de 4 bytes recibido
+[INFO] 02:58:19:711 ESI/(8950:8950): Se ha conectado al coordinador correctamente!!
+[INFO] 02:58:19:711 ESI/(8950:8950): Socket conectado
+[INFO] 02:58:19:711 ESI/(8950:8950): Mensaje de 4 bytes recibido
+[DEBUG] 02:58:19:711 ESI/(8950:8950): el id del esi es: 1
+[INFO] 02:58:19:712 ESI/(8950:8950): Mensaje enviado
+[DEBUG] 02:58:19:712 ESI/(8950:8950): Get jugador
+[DEBUG] 02:58:19:712 ESI/(8950:8950): paquete de tamanio fijo agregado
+[DEBUG] 03:00:02:116 ESI/(9022:9022): Configurando ESI
+[INFO] 03:00:02:116 ESI/(9022:9022): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:00:02:116 ESI/(9022:9022): Socket conectado
+[INFO] 03:00:02:116 ESI/(9022:9022): Mensaje enviado
+[INFO] 03:00:17:758 ESI/(9022:9022): Mensaje de 4 bytes recibido
+[INFO] 03:00:17:758 ESI/(9022:9022): Se ha conectado al coordinador correctamente!!
+[INFO] 03:00:17:758 ESI/(9022:9022): Socket conectado
+[INFO] 03:00:17:758 ESI/(9022:9022): Mensaje de 4 bytes recibido
+[DEBUG] 03:00:17:759 ESI/(9022:9022): el id del esi es: 2
+[INFO] 03:00:17:759 ESI/(9022:9022): Mensaje enviado
+[DEBUG] 03:00:17:759 ESI/(9022:9022): Get jugador
+[DEBUG] 03:00:17:759 ESI/(9022:9022): paquete de tamanio fijo agregado
+[DEBUG] 03:02:49:761 ESI/(9112:9112): Configurando ESI
+[INFO] 03:02:49:762 ESI/(9112:9112): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:02:49:765 ESI/(9112:9112): Socket conectado
+[INFO] 03:02:49:766 ESI/(9112:9112): Mensaje enviado
+[INFO] 03:02:49:780 ESI/(9112:9112): Mensaje de 4 bytes recibido
+[INFO] 03:02:49:780 ESI/(9112:9112): Se ha conectado al coordinador correctamente!!
+[INFO] 03:02:49:780 ESI/(9112:9112): Socket conectado
+[INFO] 03:02:49:780 ESI/(9112:9112): Mensaje de 4 bytes recibido
+[DEBUG] 03:02:49:780 ESI/(9112:9112): el id del esi es: 3
+[INFO] 03:02:49:780 ESI/(9112:9112): Mensaje enviado
+[DEBUG] 03:02:49:780 ESI/(9112:9112): Get jugador
+[DEBUG] 03:02:49:780 ESI/(9112:9112): paquete de tamanio fijo agregado
+[DEBUG] 03:03:56:244 ESI/(9154:9154): Configurando ESI
+[INFO] 03:03:56:244 ESI/(9154:9154): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:03:56:248 ESI/(9154:9154): Socket conectado
+[INFO] 03:03:56:248 ESI/(9154:9154): Mensaje enviado
+[INFO] 03:03:56:252 ESI/(9154:9154): Mensaje de 4 bytes recibido
+[INFO] 03:03:56:252 ESI/(9154:9154): Se ha conectado al coordinador correctamente!!
+[INFO] 03:03:56:252 ESI/(9154:9154): Socket conectado
+[INFO] 03:03:56:252 ESI/(9154:9154): Mensaje de 4 bytes recibido
+[DEBUG] 03:03:56:252 ESI/(9154:9154): el id del esi es: 4
+[INFO] 03:03:56:253 ESI/(9154:9154): Mensaje enviado
+[DEBUG] 03:03:56:253 ESI/(9154:9154): Get jugador
+[DEBUG] 03:03:56:253 ESI/(9154:9154): paquete de tamanio fijo agregado
+[DEBUG] 03:03:56:253 ESI/(9154:9154): Set messi
+[DEBUG] 03:03:56:253 ESI/(9154:9154): paquete de tamanio fijo agregado
+[DEBUG] 03:03:56:253 ESI/(9154:9154): paquete de tamanio fijo agregado
+[DEBUG] 03:03:56:253 ESI/(9154:9154): Store ˆ$­ûML×ML× L× L× L× L× L× \×: parsed.argumentos.STORE.clave
+[DEBUG] 03:03:56:253 ESI/(9154:9154): paquete de tamanio fijo agregado
+[INFO] 03:03:56:256 ESI/(9154:9154): No quedan mas lineas en el archivo
+[DEBUG] 03:06:28:921 ESI/(9239:9239): Configurando ESI
+[INFO] 03:06:28:922 ESI/(9239:9239): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:28:926 ESI/(9239:9239): Socket conectado
+[INFO] 03:06:28:926 ESI/(9239:9239): Mensaje enviado
+[INFO] 03:06:28:938 ESI/(9239:9239): Mensaje de 4 bytes recibido
+[INFO] 03:06:28:938 ESI/(9239:9239): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:28:939 ESI/(9239:9239): Socket conectado
+[INFO] 03:06:28:939 ESI/(9239:9239): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:28:939 ESI/(9239:9239): el id del esi es: 5
+[INFO] 03:06:28:939 ESI/(9239:9239): Mensaje enviado
+[DEBUG] 03:06:28:939 ESI/(9239:9239): Get jugador
+[DEBUG] 03:06:28:939 ESI/(9239:9239): paquete de tamanio fijo agregado
+[DEBUG] 03:06:28:939 ESI/(9239:9239): Set messi
+[DEBUG] 03:06:28:939 ESI/(9239:9239): paquete de tamanio fijo agregado
+[DEBUG] 03:06:28:939 ESI/(9239:9239): paquete de tamanio fijo agregado
+[DEBUG] 03:06:28:939 ESI/(9239:9239): Store ˆ$­ûM,d	M,d	 ,d	 ,d	 ,d	 ,d	 ,d	 <d	: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:28:939 ESI/(9239:9239): paquete de tamanio fijo agregado
+[INFO] 03:06:28:939 ESI/(9239:9239): No quedan mas lineas en el archivo
+[DEBUG] 03:06:55:981 ESI/(9245:9245): Configurando ESI
+[INFO] 03:06:55:982 ESI/(9245:9245): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:55:985 ESI/(9245:9245): Socket conectado
+[INFO] 03:06:55:985 ESI/(9245:9245): Mensaje enviado
+[INFO] 03:06:55:992 ESI/(9245:9245): Mensaje de 4 bytes recibido
+[INFO] 03:06:55:992 ESI/(9245:9245): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:55:993 ESI/(9245:9245): Socket conectado
+[INFO] 03:06:55:993 ESI/(9245:9245): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:55:993 ESI/(9245:9245): el id del esi es: 6
+[INFO] 03:06:55:993 ESI/(9245:9245): Mensaje enviado
+[DEBUG] 03:06:55:993 ESI/(9245:9245): Get jugador
+[DEBUG] 03:06:55:993 ESI/(9245:9245): paquete de tamanio fijo agregado
+[DEBUG] 03:06:55:993 ESI/(9245:9245): Set messi
+[DEBUG] 03:06:55:993 ESI/(9245:9245): paquete de tamanio fijo agregado
+[DEBUG] 03:06:55:993 ESI/(9245:9245): paquete de tamanio fijo agregado
+[DEBUG] 03:06:55:993 ESI/(9245:9245): Store ˆ$­ûM,Ò	M,Ò	 ,Ò	 ,Ò	 ,Ò	 ,Ò	 ,Ò	 <Ò	: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:55:994 ESI/(9245:9245): paquete de tamanio fijo agregado
+[INFO] 03:06:55:994 ESI/(9245:9245): No quedan mas lineas en el archivo
+[DEBUG] 03:06:57:328 ESI/(9249:9249): Configurando ESI
+[INFO] 03:06:57:332 ESI/(9249:9249): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:57:333 ESI/(9249:9249): Socket conectado
+[INFO] 03:06:57:333 ESI/(9249:9249): Mensaje enviado
+[INFO] 03:06:57:334 ESI/(9249:9249): Mensaje de 4 bytes recibido
+[INFO] 03:06:57:334 ESI/(9249:9249): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:57:335 ESI/(9249:9249): Socket conectado
+[INFO] 03:06:57:335 ESI/(9249:9249): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:57:335 ESI/(9249:9249): el id del esi es: 7
+[INFO] 03:06:57:335 ESI/(9249:9249): Mensaje enviado
+[DEBUG] 03:06:57:335 ESI/(9249:9249): Get jugador
+[DEBUG] 03:06:57:335 ESI/(9249:9249): paquete de tamanio fijo agregado
+[DEBUG] 03:06:57:335 ESI/(9249:9249): Set messi
+[DEBUG] 03:06:57:335 ESI/(9249:9249): paquete de tamanio fijo agregado
+[DEBUG] 03:06:57:335 ESI/(9249:9249): paquete de tamanio fijo agregado
+[DEBUG] 03:06:57:335 ESI/(9249:9249): Store ˆ$­ûMÌ\	MÌ\	 Ì\	 Ì\	 Ì\	 Ì\	 Ì\	 Ü\	: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:57:336 ESI/(9249:9249): paquete de tamanio fijo agregado
+[INFO] 03:06:57:336 ESI/(9249:9249): No quedan mas lineas en el archivo
+[DEBUG] 03:06:57:912 ESI/(9252:9252): Configurando ESI
+[INFO] 03:06:57:916 ESI/(9252:9252): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:57:917 ESI/(9252:9252): Socket conectado
+[INFO] 03:06:57:917 ESI/(9252:9252): Mensaje enviado
+[INFO] 03:06:57:918 ESI/(9252:9252): Mensaje de 4 bytes recibido
+[INFO] 03:06:57:918 ESI/(9252:9252): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:57:918 ESI/(9252:9252): Socket conectado
+[INFO] 03:06:57:918 ESI/(9252:9252): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:57:918 ESI/(9252:9252): el id del esi es: 8
+[INFO] 03:06:57:919 ESI/(9252:9252): Mensaje enviado
+[DEBUG] 03:06:57:919 ESI/(9252:9252): Get jugador
+[DEBUG] 03:06:57:919 ESI/(9252:9252): paquete de tamanio fijo agregado
+[DEBUG] 03:06:57:919 ESI/(9252:9252): Set messi
+[DEBUG] 03:06:57:919 ESI/(9252:9252): paquete de tamanio fijo agregado
+[DEBUG] 03:06:57:919 ESI/(9252:9252): paquete de tamanio fijo agregado
+[DEBUG] 03:06:57:919 ESI/(9252:9252): Store ˆ$­ûMüoMüo üo üo üo üo üo p: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:57:919 ESI/(9252:9252): paquete de tamanio fijo agregado
+[INFO] 03:06:57:919 ESI/(9252:9252): No quedan mas lineas en el archivo
+[DEBUG] 03:06:58:200 ESI/(9254:9254): Configurando ESI
+[INFO] 03:06:58:204 ESI/(9254:9254): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:58:205 ESI/(9254:9254): Socket conectado
+[INFO] 03:06:58:205 ESI/(9254:9254): Mensaje enviado
+[INFO] 03:06:58:205 ESI/(9254:9254): Mensaje de 4 bytes recibido
+[INFO] 03:06:58:206 ESI/(9254:9254): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:58:206 ESI/(9254:9254): Socket conectado
+[INFO] 03:06:58:206 ESI/(9254:9254): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:58:206 ESI/(9254:9254): el id del esi es: 9
+[INFO] 03:06:58:206 ESI/(9254:9254): Mensaje enviado
+[DEBUG] 03:06:58:206 ESI/(9254:9254): Get jugador
+[DEBUG] 03:06:58:206 ESI/(9254:9254): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:206 ESI/(9254:9254): Set messi
+[DEBUG] 03:06:58:206 ESI/(9254:9254): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:207 ESI/(9254:9254): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:207 ESI/(9254:9254): Store ˆ$­ûMœMœ œ œ œ œ œ ¬: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:58:207 ESI/(9254:9254): paquete de tamanio fijo agregado
+[INFO] 03:06:58:207 ESI/(9254:9254): No quedan mas lineas en el archivo
+[DEBUG] 03:06:58:479 ESI/(9256:9256): Configurando ESI
+[INFO] 03:06:58:484 ESI/(9256:9256): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:58:485 ESI/(9256:9256): Socket conectado
+[INFO] 03:06:58:485 ESI/(9256:9256): Mensaje enviado
+[INFO] 03:06:58:485 ESI/(9256:9256): Mensaje de 4 bytes recibido
+[INFO] 03:06:58:485 ESI/(9256:9256): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:58:486 ESI/(9256:9256): Socket conectado
+[INFO] 03:06:58:486 ESI/(9256:9256): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:58:486 ESI/(9256:9256): el id del esi es: 10
+[INFO] 03:06:58:486 ESI/(9256:9256): Mensaje enviado
+[DEBUG] 03:06:58:486 ESI/(9256:9256): Get jugador
+[DEBUG] 03:06:58:486 ESI/(9256:9256): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:486 ESI/(9256:9256): Set messi
+[DEBUG] 03:06:58:486 ESI/(9256:9256): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:487 ESI/(9256:9256): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:487 ESI/(9256:9256): Store ˆ$­ûMÌdMÌd Ìd Ìd Ìd Ìd Ìd Üd: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:58:487 ESI/(9256:9256): paquete de tamanio fijo agregado
+[INFO] 03:06:58:487 ESI/(9256:9256): No quedan mas lineas en el archivo
+[DEBUG] 03:06:58:743 ESI/(9258:9258): Configurando ESI
+[INFO] 03:06:58:748 ESI/(9258:9258): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:58:749 ESI/(9258:9258): Socket conectado
+[INFO] 03:06:58:749 ESI/(9258:9258): Mensaje enviado
+[INFO] 03:06:58:749 ESI/(9258:9258): Mensaje de 4 bytes recibido
+[INFO] 03:06:58:749 ESI/(9258:9258): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:58:750 ESI/(9258:9258): Socket conectado
+[INFO] 03:06:58:750 ESI/(9258:9258): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:58:750 ESI/(9258:9258): el id del esi es: 11
+[INFO] 03:06:58:750 ESI/(9258:9258): Mensaje enviado
+[DEBUG] 03:06:58:750 ESI/(9258:9258): Get jugador
+[DEBUG] 03:06:58:750 ESI/(9258:9258): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:750 ESI/(9258:9258): Set messi
+[DEBUG] 03:06:58:750 ESI/(9258:9258): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:750 ESI/(9258:9258): paquete de tamanio fijo agregado
+[DEBUG] 03:06:58:751 ESI/(9258:9258): Store ˆ$­ûMÌûMÌû Ìû Ìû Ìû Ìû Ìû Üû: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:58:751 ESI/(9258:9258): paquete de tamanio fijo agregado
+[INFO] 03:06:58:751 ESI/(9258:9258): No quedan mas lineas en el archivo
+[DEBUG] 03:06:59:39 ESI/(9260:9260): Configurando ESI
+[INFO] 03:06:59:43 ESI/(9260:9260): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:59:44 ESI/(9260:9260): Socket conectado
+[INFO] 03:06:59:45 ESI/(9260:9260): Mensaje enviado
+[INFO] 03:06:59:45 ESI/(9260:9260): Mensaje de 4 bytes recibido
+[INFO] 03:06:59:45 ESI/(9260:9260): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:59:45 ESI/(9260:9260): Socket conectado
+[INFO] 03:06:59:45 ESI/(9260:9260): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:59:46 ESI/(9260:9260): el id del esi es: 12
+[INFO] 03:06:59:46 ESI/(9260:9260): Mensaje enviado
+[DEBUG] 03:06:59:46 ESI/(9260:9260): Get jugador
+[DEBUG] 03:06:59:46 ESI/(9260:9260): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:46 ESI/(9260:9260): Set messi
+[DEBUG] 03:06:59:46 ESI/(9260:9260): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:46 ESI/(9260:9260): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:46 ESI/(9260:9260): Store ˆ$­ûM<K	M<K	 <K	 <K	 <K	 <K	 <K	 LK	: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:59:47 ESI/(9260:9260): paquete de tamanio fijo agregado
+[INFO] 03:06:59:47 ESI/(9260:9260): No quedan mas lineas en el archivo
+[DEBUG] 03:06:59:305 ESI/(9262:9262): Configurando ESI
+[INFO] 03:06:59:309 ESI/(9262:9262): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:59:310 ESI/(9262:9262): Socket conectado
+[INFO] 03:06:59:310 ESI/(9262:9262): Mensaje enviado
+[INFO] 03:06:59:311 ESI/(9262:9262): Mensaje de 4 bytes recibido
+[INFO] 03:06:59:311 ESI/(9262:9262): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:59:311 ESI/(9262:9262): Socket conectado
+[INFO] 03:06:59:311 ESI/(9262:9262): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:59:311 ESI/(9262:9262): el id del esi es: 13
+[INFO] 03:06:59:311 ESI/(9262:9262): Mensaje enviado
+[DEBUG] 03:06:59:311 ESI/(9262:9262): Get jugador
+[DEBUG] 03:06:59:312 ESI/(9262:9262): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:312 ESI/(9262:9262): Set messi
+[DEBUG] 03:06:59:312 ESI/(9262:9262): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:312 ESI/(9262:9262): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:312 ESI/(9262:9262): Store ˆ$­ûMì¶Mì¶ ì¶ ì¶ ì¶ ì¶ ì¶ ü¶: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:59:312 ESI/(9262:9262): paquete de tamanio fijo agregado
+[INFO] 03:06:59:312 ESI/(9262:9262): No quedan mas lineas en el archivo
+[DEBUG] 03:06:59:575 ESI/(9264:9264): Configurando ESI
+[INFO] 03:06:59:579 ESI/(9264:9264): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:59:581 ESI/(9264:9264): Socket conectado
+[INFO] 03:06:59:581 ESI/(9264:9264): Mensaje enviado
+[INFO] 03:06:59:581 ESI/(9264:9264): Mensaje de 4 bytes recibido
+[INFO] 03:06:59:582 ESI/(9264:9264): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:59:582 ESI/(9264:9264): Socket conectado
+[INFO] 03:06:59:582 ESI/(9264:9264): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:59:582 ESI/(9264:9264): el id del esi es: 14
+[INFO] 03:06:59:582 ESI/(9264:9264): Mensaje enviado
+[DEBUG] 03:06:59:582 ESI/(9264:9264): Get jugador
+[DEBUG] 03:06:59:582 ESI/(9264:9264): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:583 ESI/(9264:9264): Set messi
+[DEBUG] 03:06:59:583 ESI/(9264:9264): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:583 ESI/(9264:9264): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:583 ESI/(9264:9264): Store ˆ$­ûM\¿	M\¿	 \¿	 \¿	 \¿	 \¿	 \¿	 l¿	: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:59:583 ESI/(9264:9264): paquete de tamanio fijo agregado
+[INFO] 03:06:59:583 ESI/(9264:9264): No quedan mas lineas en el archivo
+[DEBUG] 03:06:59:856 ESI/(9266:9266): Configurando ESI
+[INFO] 03:06:59:861 ESI/(9266:9266): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:06:59:862 ESI/(9266:9266): Socket conectado
+[INFO] 03:06:59:862 ESI/(9266:9266): Mensaje enviado
+[INFO] 03:06:59:862 ESI/(9266:9266): Mensaje de 4 bytes recibido
+[INFO] 03:06:59:862 ESI/(9266:9266): Se ha conectado al coordinador correctamente!!
+[INFO] 03:06:59:863 ESI/(9266:9266): Socket conectado
+[INFO] 03:06:59:863 ESI/(9266:9266): Mensaje de 4 bytes recibido
+[DEBUG] 03:06:59:863 ESI/(9266:9266): el id del esi es: 15
+[INFO] 03:06:59:863 ESI/(9266:9266): Mensaje enviado
+[DEBUG] 03:06:59:863 ESI/(9266:9266): Get jugador
+[DEBUG] 03:06:59:863 ESI/(9266:9266): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:871 ESI/(9266:9266): Set messi
+[DEBUG] 03:06:59:871 ESI/(9266:9266): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:871 ESI/(9266:9266): paquete de tamanio fijo agregado
+[DEBUG] 03:06:59:871 ESI/(9266:9266): Store ˆ$­ûMÜ÷MÜ÷ Ü÷ Ü÷ Ü÷ Ü÷ Ü÷ ì÷: parsed.argumentos.STORE.clave
+[DEBUG] 03:06:59:871 ESI/(9266:9266): paquete de tamanio fijo agregado
+[INFO] 03:06:59:871 ESI/(9266:9266): No quedan mas lineas en el archivo
+[DEBUG] 03:07:00:103 ESI/(9268:9268): Configurando ESI
+[INFO] 03:07:00:108 ESI/(9268:9268): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:00:109 ESI/(9268:9268): Socket conectado
+[INFO] 03:07:00:109 ESI/(9268:9268): Mensaje enviado
+[INFO] 03:07:00:109 ESI/(9268:9268): Mensaje de 4 bytes recibido
+[INFO] 03:07:00:110 ESI/(9268:9268): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:00:110 ESI/(9268:9268): Socket conectado
+[INFO] 03:07:00:110 ESI/(9268:9268): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:00:110 ESI/(9268:9268): el id del esi es: 16
+[INFO] 03:07:00:110 ESI/(9268:9268): Mensaje enviado
+[DEBUG] 03:07:00:110 ESI/(9268:9268): Get jugador
+[DEBUG] 03:07:00:110 ESI/(9268:9268): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:110 ESI/(9268:9268): Set messi
+[DEBUG] 03:07:00:111 ESI/(9268:9268): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:111 ESI/(9268:9268): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:111 ESI/(9268:9268): Store ˆ$­ûMì‡	Mì‡	 ì‡	 ì‡	 ì‡	 ì‡	 ì‡	 ü‡	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:00:111 ESI/(9268:9268): paquete de tamanio fijo agregado
+[INFO] 03:07:00:111 ESI/(9268:9268): No quedan mas lineas en el archivo
+[DEBUG] 03:07:00:419 ESI/(9270:9270): Configurando ESI
+[INFO] 03:07:00:423 ESI/(9270:9270): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:00:424 ESI/(9270:9270): Socket conectado
+[INFO] 03:07:00:425 ESI/(9270:9270): Mensaje enviado
+[INFO] 03:07:00:425 ESI/(9270:9270): Mensaje de 4 bytes recibido
+[INFO] 03:07:00:425 ESI/(9270:9270): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:00:425 ESI/(9270:9270): Socket conectado
+[INFO] 03:07:00:425 ESI/(9270:9270): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:00:426 ESI/(9270:9270): el id del esi es: 17
+[INFO] 03:07:00:426 ESI/(9270:9270): Mensaje enviado
+[DEBUG] 03:07:00:426 ESI/(9270:9270): Get jugador
+[DEBUG] 03:07:00:426 ESI/(9270:9270): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:426 ESI/(9270:9270): Set messi
+[DEBUG] 03:07:00:426 ESI/(9270:9270): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:426 ESI/(9270:9270): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:426 ESI/(9270:9270): Store ˆ$­ûMüíMüí üí üí üí üí üí î: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:00:427 ESI/(9270:9270): paquete de tamanio fijo agregado
+[INFO] 03:07:00:427 ESI/(9270:9270): No quedan mas lineas en el archivo
+[DEBUG] 03:07:00:679 ESI/(9272:9272): Configurando ESI
+[INFO] 03:07:00:683 ESI/(9272:9272): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:00:685 ESI/(9272:9272): Socket conectado
+[INFO] 03:07:00:685 ESI/(9272:9272): Mensaje enviado
+[INFO] 03:07:00:685 ESI/(9272:9272): Mensaje de 4 bytes recibido
+[INFO] 03:07:00:685 ESI/(9272:9272): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:00:686 ESI/(9272:9272): Socket conectado
+[INFO] 03:07:00:686 ESI/(9272:9272): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:00:686 ESI/(9272:9272): el id del esi es: 18
+[INFO] 03:07:00:686 ESI/(9272:9272): Mensaje enviado
+[DEBUG] 03:07:00:686 ESI/(9272:9272): Get jugador
+[DEBUG] 03:07:00:686 ESI/(9272:9272): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:686 ESI/(9272:9272): Set messi
+[DEBUG] 03:07:00:686 ESI/(9272:9272): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:687 ESI/(9272:9272): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:687 ESI/(9272:9272): Store ˆ$­ûM<ÑM<Ñ <Ñ <Ñ <Ñ <Ñ <Ñ LÑ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:00:687 ESI/(9272:9272): paquete de tamanio fijo agregado
+[INFO] 03:07:00:687 ESI/(9272:9272): No quedan mas lineas en el archivo
+[DEBUG] 03:07:00:972 ESI/(9274:9274): Configurando ESI
+[INFO] 03:07:00:977 ESI/(9274:9274): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:00:978 ESI/(9274:9274): Socket conectado
+[INFO] 03:07:00:978 ESI/(9274:9274): Mensaje enviado
+[INFO] 03:07:00:978 ESI/(9274:9274): Mensaje de 4 bytes recibido
+[INFO] 03:07:00:978 ESI/(9274:9274): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:00:979 ESI/(9274:9274): Socket conectado
+[INFO] 03:07:00:979 ESI/(9274:9274): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:00:979 ESI/(9274:9274): el id del esi es: 19
+[INFO] 03:07:00:979 ESI/(9274:9274): Mensaje enviado
+[DEBUG] 03:07:00:979 ESI/(9274:9274): Get jugador
+[DEBUG] 03:07:00:979 ESI/(9274:9274): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:979 ESI/(9274:9274): Set messi
+[DEBUG] 03:07:00:979 ESI/(9274:9274): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:979 ESI/(9274:9274): paquete de tamanio fijo agregado
+[DEBUG] 03:07:00:979 ESI/(9274:9274): Store ˆ$­ûM,á	M,á	 ,á	 ,á	 ,á	 ,á	 ,á	 <á	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:00:980 ESI/(9274:9274): paquete de tamanio fijo agregado
+[INFO] 03:07:00:980 ESI/(9274:9274): No quedan mas lineas en el archivo
+[DEBUG] 03:07:01:247 ESI/(9276:9276): Configurando ESI
+[INFO] 03:07:01:251 ESI/(9276:9276): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:01:252 ESI/(9276:9276): Socket conectado
+[INFO] 03:07:01:252 ESI/(9276:9276): Mensaje enviado
+[INFO] 03:07:01:253 ESI/(9276:9276): Mensaje de 4 bytes recibido
+[INFO] 03:07:01:253 ESI/(9276:9276): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:01:253 ESI/(9276:9276): Socket conectado
+[INFO] 03:07:01:253 ESI/(9276:9276): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:01:253 ESI/(9276:9276): el id del esi es: 20
+[INFO] 03:07:01:253 ESI/(9276:9276): Mensaje enviado
+[DEBUG] 03:07:01:253 ESI/(9276:9276): Get jugador
+[DEBUG] 03:07:01:253 ESI/(9276:9276): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:254 ESI/(9276:9276): Set messi
+[DEBUG] 03:07:01:254 ESI/(9276:9276): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:254 ESI/(9276:9276): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:254 ESI/(9276:9276): Store ˆ$­ûMìyMìy ìy ìy ìy ìy ìy üy: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:01:254 ESI/(9276:9276): paquete de tamanio fijo agregado
+[INFO] 03:07:01:254 ESI/(9276:9276): No quedan mas lineas en el archivo
+[DEBUG] 03:07:01:511 ESI/(9278:9278): Configurando ESI
+[INFO] 03:07:01:515 ESI/(9278:9278): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:01:516 ESI/(9278:9278): Socket conectado
+[INFO] 03:07:01:516 ESI/(9278:9278): Mensaje enviado
+[INFO] 03:07:01:517 ESI/(9278:9278): Mensaje de 4 bytes recibido
+[INFO] 03:07:01:517 ESI/(9278:9278): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:01:517 ESI/(9278:9278): Socket conectado
+[INFO] 03:07:01:517 ESI/(9278:9278): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:01:517 ESI/(9278:9278): el id del esi es: 21
+[INFO] 03:07:01:518 ESI/(9278:9278): Mensaje enviado
+[DEBUG] 03:07:01:518 ESI/(9278:9278): Get jugador
+[DEBUG] 03:07:01:518 ESI/(9278:9278): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:518 ESI/(9278:9278): Set messi
+[DEBUG] 03:07:01:518 ESI/(9278:9278): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:518 ESI/(9278:9278): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:518 ESI/(9278:9278): Store ˆ$­ûMŒZMŒZ ŒZ ŒZ ŒZ ŒZ ŒZ œZ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:01:518 ESI/(9278:9278): paquete de tamanio fijo agregado
+[INFO] 03:07:01:518 ESI/(9278:9278): No quedan mas lineas en el archivo
+[DEBUG] 03:07:01:776 ESI/(9280:9280): Configurando ESI
+[INFO] 03:07:01:780 ESI/(9280:9280): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:01:781 ESI/(9280:9280): Socket conectado
+[INFO] 03:07:01:781 ESI/(9280:9280): Mensaje enviado
+[INFO] 03:07:01:782 ESI/(9280:9280): Mensaje de 4 bytes recibido
+[INFO] 03:07:01:782 ESI/(9280:9280): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:01:782 ESI/(9280:9280): Socket conectado
+[INFO] 03:07:01:782 ESI/(9280:9280): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:01:782 ESI/(9280:9280): el id del esi es: 22
+[INFO] 03:07:01:782 ESI/(9280:9280): Mensaje enviado
+[DEBUG] 03:07:01:782 ESI/(9280:9280): Get jugador
+[DEBUG] 03:07:01:783 ESI/(9280:9280): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:783 ESI/(9280:9280): Set messi
+[DEBUG] 03:07:01:783 ESI/(9280:9280): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:783 ESI/(9280:9280): paquete de tamanio fijo agregado
+[DEBUG] 03:07:01:783 ESI/(9280:9280): Store ˆ$­ûMLMMLM LM LM LM LM LM \M: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:01:783 ESI/(9280:9280): paquete de tamanio fijo agregado
+[INFO] 03:07:01:783 ESI/(9280:9280): No quedan mas lineas en el archivo
+[DEBUG] 03:07:02:15 ESI/(9282:9282): Configurando ESI
+[INFO] 03:07:02:19 ESI/(9282:9282): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:02:20 ESI/(9282:9282): Socket conectado
+[INFO] 03:07:02:20 ESI/(9282:9282): Mensaje enviado
+[INFO] 03:07:02:21 ESI/(9282:9282): Mensaje de 4 bytes recibido
+[INFO] 03:07:02:21 ESI/(9282:9282): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:02:21 ESI/(9282:9282): Socket conectado
+[INFO] 03:07:02:21 ESI/(9282:9282): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:02:21 ESI/(9282:9282): el id del esi es: 23
+[INFO] 03:07:02:21 ESI/(9282:9282): Mensaje enviado
+[DEBUG] 03:07:02:21 ESI/(9282:9282): Get jugador
+[DEBUG] 03:07:02:22 ESI/(9282:9282): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:22 ESI/(9282:9282): Set messi
+[DEBUG] 03:07:02:22 ESI/(9282:9282): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:22 ESI/(9282:9282): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:22 ESI/(9282:9282): Store ˆ$­ûM<–	M<–	 <–	 <–	 <–	 <–	 <–	 L–	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:02:25 ESI/(9282:9282): paquete de tamanio fijo agregado
+[INFO] 03:07:02:25 ESI/(9282:9282): No quedan mas lineas en el archivo
+[DEBUG] 03:07:02:284 ESI/(9284:9284): Configurando ESI
+[INFO] 03:07:02:288 ESI/(9284:9284): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:02:289 ESI/(9284:9284): Socket conectado
+[INFO] 03:07:02:289 ESI/(9284:9284): Mensaje enviado
+[INFO] 03:07:02:289 ESI/(9284:9284): Mensaje de 4 bytes recibido
+[INFO] 03:07:02:289 ESI/(9284:9284): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:02:290 ESI/(9284:9284): Socket conectado
+[INFO] 03:07:02:290 ESI/(9284:9284): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:02:290 ESI/(9284:9284): el id del esi es: 24
+[INFO] 03:07:02:290 ESI/(9284:9284): Mensaje enviado
+[DEBUG] 03:07:02:290 ESI/(9284:9284): Get jugador
+[DEBUG] 03:07:02:290 ESI/(9284:9284): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:290 ESI/(9284:9284): Set messi
+[DEBUG] 03:07:02:290 ESI/(9284:9284): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:291 ESI/(9284:9284): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:291 ESI/(9284:9284): Store ˆ$­ûMœrMœr œr œr œr œr œr ¬r: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:02:291 ESI/(9284:9284): paquete de tamanio fijo agregado
+[INFO] 03:07:02:291 ESI/(9284:9284): No quedan mas lineas en el archivo
+[DEBUG] 03:07:02:544 ESI/(9286:9286): Configurando ESI
+[INFO] 03:07:02:548 ESI/(9286:9286): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:02:549 ESI/(9286:9286): Socket conectado
+[INFO] 03:07:02:549 ESI/(9286:9286): Mensaje enviado
+[INFO] 03:07:02:550 ESI/(9286:9286): Mensaje de 4 bytes recibido
+[INFO] 03:07:02:550 ESI/(9286:9286): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:02:550 ESI/(9286:9286): Socket conectado
+[INFO] 03:07:02:550 ESI/(9286:9286): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:02:550 ESI/(9286:9286): el id del esi es: 25
+[INFO] 03:07:02:551 ESI/(9286:9286): Mensaje enviado
+[DEBUG] 03:07:02:551 ESI/(9286:9286): Get jugador
+[DEBUG] 03:07:02:551 ESI/(9286:9286): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:551 ESI/(9286:9286): Set messi
+[DEBUG] 03:07:02:551 ESI/(9286:9286): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:551 ESI/(9286:9286): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:551 ESI/(9286:9286): Store ˆ$­ûM<)M<) <) <) <) <) <) L): parsed.argumentos.STORE.clave
+[DEBUG] 03:07:02:551 ESI/(9286:9286): paquete de tamanio fijo agregado
+[INFO] 03:07:02:551 ESI/(9286:9286): No quedan mas lineas en el archivo
+[DEBUG] 03:07:02:791 ESI/(9288:9288): Configurando ESI
+[INFO] 03:07:02:795 ESI/(9288:9288): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:02:796 ESI/(9288:9288): Socket conectado
+[INFO] 03:07:02:796 ESI/(9288:9288): Mensaje enviado
+[INFO] 03:07:02:797 ESI/(9288:9288): Mensaje de 4 bytes recibido
+[INFO] 03:07:02:797 ESI/(9288:9288): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:02:797 ESI/(9288:9288): Socket conectado
+[INFO] 03:07:02:797 ESI/(9288:9288): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:02:797 ESI/(9288:9288): el id del esi es: 26
+[INFO] 03:07:02:797 ESI/(9288:9288): Mensaje enviado
+[DEBUG] 03:07:02:797 ESI/(9288:9288): Get jugador
+[DEBUG] 03:07:02:798 ESI/(9288:9288): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:798 ESI/(9288:9288): Set messi
+[DEBUG] 03:07:02:798 ESI/(9288:9288): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:798 ESI/(9288:9288): paquete de tamanio fijo agregado
+[DEBUG] 03:07:02:798 ESI/(9288:9288): Store ˆ$­ûM<ì	M<ì	 <ì	 <ì	 <ì	 <ì	 <ì	 Lì	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:02:799 ESI/(9288:9288): paquete de tamanio fijo agregado
+[INFO] 03:07:02:799 ESI/(9288:9288): No quedan mas lineas en el archivo
+[DEBUG] 03:07:03:70 ESI/(9290:9290): Configurando ESI
+[INFO] 03:07:03:74 ESI/(9290:9290): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:03:75 ESI/(9290:9290): Socket conectado
+[INFO] 03:07:03:76 ESI/(9290:9290): Mensaje enviado
+[INFO] 03:07:03:76 ESI/(9290:9290): Mensaje de 4 bytes recibido
+[INFO] 03:07:03:76 ESI/(9290:9290): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:03:76 ESI/(9290:9290): Socket conectado
+[INFO] 03:07:03:76 ESI/(9290:9290): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:03:76 ESI/(9290:9290): el id del esi es: 27
+[INFO] 03:07:03:77 ESI/(9290:9290): Mensaje enviado
+[DEBUG] 03:07:03:77 ESI/(9290:9290): Get jugador
+[DEBUG] 03:07:03:77 ESI/(9290:9290): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:77 ESI/(9290:9290): Set messi
+[DEBUG] 03:07:03:77 ESI/(9290:9290): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:77 ESI/(9290:9290): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:77 ESI/(9290:9290): Store ˆ$­ûMì¼Mì¼ ì¼ ì¼ ì¼ ì¼ ì¼ ü¼: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:03:77 ESI/(9290:9290): paquete de tamanio fijo agregado
+[INFO] 03:07:03:77 ESI/(9290:9290): No quedan mas lineas en el archivo
+[DEBUG] 03:07:03:318 ESI/(9292:9292): Configurando ESI
+[INFO] 03:07:03:322 ESI/(9292:9292): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:03:324 ESI/(9292:9292): Socket conectado
+[INFO] 03:07:03:324 ESI/(9292:9292): Mensaje enviado
+[INFO] 03:07:03:324 ESI/(9292:9292): Mensaje de 4 bytes recibido
+[INFO] 03:07:03:324 ESI/(9292:9292): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:03:324 ESI/(9292:9292): Socket conectado
+[INFO] 03:07:03:325 ESI/(9292:9292): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:03:325 ESI/(9292:9292): el id del esi es: 28
+[INFO] 03:07:03:325 ESI/(9292:9292): Mensaje enviado
+[DEBUG] 03:07:03:325 ESI/(9292:9292): Get jugador
+[DEBUG] 03:07:03:325 ESI/(9292:9292): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:325 ESI/(9292:9292): Set messi
+[DEBUG] 03:07:03:325 ESI/(9292:9292): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:325 ESI/(9292:9292): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:325 ESI/(9292:9292): Store ˆ$­ûM¼Ê	M¼Ê	 ¼Ê	 ¼Ê	 ¼Ê	 ¼Ê	 ¼Ê	 ÌÊ	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:03:326 ESI/(9292:9292): paquete de tamanio fijo agregado
+[INFO] 03:07:03:326 ESI/(9292:9292): No quedan mas lineas en el archivo
+[DEBUG] 03:07:03:902 ESI/(9294:9294): Configurando ESI
+[INFO] 03:07:03:906 ESI/(9294:9294): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:03:907 ESI/(9294:9294): Socket conectado
+[INFO] 03:07:03:907 ESI/(9294:9294): Mensaje enviado
+[INFO] 03:07:03:907 ESI/(9294:9294): Mensaje de 4 bytes recibido
+[INFO] 03:07:03:907 ESI/(9294:9294): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:03:908 ESI/(9294:9294): Socket conectado
+[INFO] 03:07:03:908 ESI/(9294:9294): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:03:908 ESI/(9294:9294): el id del esi es: 29
+[INFO] 03:07:03:908 ESI/(9294:9294): Mensaje enviado
+[DEBUG] 03:07:03:908 ESI/(9294:9294): Get jugador
+[DEBUG] 03:07:03:908 ESI/(9294:9294): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:908 ESI/(9294:9294): Set messi
+[DEBUG] 03:07:03:908 ESI/(9294:9294): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:908 ESI/(9294:9294): paquete de tamanio fijo agregado
+[DEBUG] 03:07:03:909 ESI/(9294:9294): Store ˆ$­ûM¼ªM¼ª ¼ª ¼ª ¼ª ¼ª ¼ª Ìª: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:03:909 ESI/(9294:9294): paquete de tamanio fijo agregado
+[INFO] 03:07:03:909 ESI/(9294:9294): No quedan mas lineas en el archivo
+[DEBUG] 03:07:04:590 ESI/(9296:9296): Configurando ESI
+[INFO] 03:07:04:593 ESI/(9296:9296): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:04:595 ESI/(9296:9296): Socket conectado
+[INFO] 03:07:04:595 ESI/(9296:9296): Mensaje enviado
+[INFO] 03:07:04:595 ESI/(9296:9296): Mensaje de 4 bytes recibido
+[INFO] 03:07:04:595 ESI/(9296:9296): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:04:595 ESI/(9296:9296): Socket conectado
+[INFO] 03:07:04:596 ESI/(9296:9296): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:04:596 ESI/(9296:9296): el id del esi es: 30
+[INFO] 03:07:04:596 ESI/(9296:9296): Mensaje enviado
+[DEBUG] 03:07:04:596 ESI/(9296:9296): Get jugador
+[DEBUG] 03:07:04:596 ESI/(9296:9296): paquete de tamanio fijo agregado
+[DEBUG] 03:07:04:596 ESI/(9296:9296): Set messi
+[DEBUG] 03:07:04:596 ESI/(9296:9296): paquete de tamanio fijo agregado
+[DEBUG] 03:07:04:596 ESI/(9296:9296): paquete de tamanio fijo agregado
+[DEBUG] 03:07:04:596 ESI/(9296:9296): Store ˆ$­ûMü8	Mü8	 ü8	 ü8	 ü8	 ü8	 ü8	 9	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:04:597 ESI/(9296:9296): paquete de tamanio fijo agregado
+[INFO] 03:07:04:597 ESI/(9296:9296): No quedan mas lineas en el archivo
+[DEBUG] 03:07:04:886 ESI/(9299:9299): Configurando ESI
+[INFO] 03:07:04:890 ESI/(9299:9299): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:04:891 ESI/(9299:9299): Socket conectado
+[INFO] 03:07:04:891 ESI/(9299:9299): Mensaje enviado
+[INFO] 03:07:04:892 ESI/(9299:9299): Mensaje de 4 bytes recibido
+[INFO] 03:07:04:892 ESI/(9299:9299): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:04:892 ESI/(9299:9299): Socket conectado
+[INFO] 03:07:04:892 ESI/(9299:9299): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:04:892 ESI/(9299:9299): el id del esi es: 31
+[INFO] 03:07:04:892 ESI/(9299:9299): Mensaje enviado
+[DEBUG] 03:07:04:893 ESI/(9299:9299): Get jugador
+[DEBUG] 03:07:04:893 ESI/(9299:9299): paquete de tamanio fijo agregado
+[DEBUG] 03:07:04:893 ESI/(9299:9299): Set messi
+[DEBUG] 03:07:04:893 ESI/(9299:9299): paquete de tamanio fijo agregado
+[DEBUG] 03:07:04:893 ESI/(9299:9299): paquete de tamanio fijo agregado
+[DEBUG] 03:07:04:893 ESI/(9299:9299): Store ˆ$­ûMÜrMÜr Ür Ür Ür Ür Ür ìr: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:04:893 ESI/(9299:9299): paquete de tamanio fijo agregado
+[INFO] 03:07:04:893 ESI/(9299:9299): No quedan mas lineas en el archivo
+[DEBUG] 03:07:05:122 ESI/(9301:9301): Configurando ESI
+[INFO] 03:07:05:126 ESI/(9301:9301): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:05:127 ESI/(9301:9301): Socket conectado
+[INFO] 03:07:05:127 ESI/(9301:9301): Mensaje enviado
+[INFO] 03:07:05:128 ESI/(9301:9301): Mensaje de 4 bytes recibido
+[INFO] 03:07:05:128 ESI/(9301:9301): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:05:128 ESI/(9301:9301): Socket conectado
+[INFO] 03:07:05:128 ESI/(9301:9301): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:05:128 ESI/(9301:9301): el id del esi es: 32
+[INFO] 03:07:05:128 ESI/(9301:9301): Mensaje enviado
+[DEBUG] 03:07:05:128 ESI/(9301:9301): Get jugador
+[DEBUG] 03:07:05:128 ESI/(9301:9301): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:128 ESI/(9301:9301): Set messi
+[DEBUG] 03:07:05:129 ESI/(9301:9301): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:129 ESI/(9301:9301): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:129 ESI/(9301:9301): Store ˆ$­ûM¬ÚM¬Ú ¬Ú ¬Ú ¬Ú ¬Ú ¬Ú ¼Ú: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:05:129 ESI/(9301:9301): paquete de tamanio fijo agregado
+[INFO] 03:07:05:129 ESI/(9301:9301): No quedan mas lineas en el archivo
+[DEBUG] 03:07:05:350 ESI/(9303:9303): Configurando ESI
+[INFO] 03:07:05:354 ESI/(9303:9303): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:05:355 ESI/(9303:9303): Socket conectado
+[INFO] 03:07:05:355 ESI/(9303:9303): Mensaje enviado
+[INFO] 03:07:05:356 ESI/(9303:9303): Mensaje de 4 bytes recibido
+[INFO] 03:07:05:356 ESI/(9303:9303): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:05:356 ESI/(9303:9303): Socket conectado
+[INFO] 03:07:05:356 ESI/(9303:9303): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:05:356 ESI/(9303:9303): el id del esi es: 33
+[INFO] 03:07:05:356 ESI/(9303:9303): Mensaje enviado
+[DEBUG] 03:07:05:356 ESI/(9303:9303): Get jugador
+[DEBUG] 03:07:05:357 ESI/(9303:9303): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:357 ESI/(9303:9303): Set messi
+[DEBUG] 03:07:05:357 ESI/(9303:9303): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:357 ESI/(9303:9303): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:357 ESI/(9303:9303): Store ˆ$­ûMl	Ml	 l	 l	 l	 l	 l	 |	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:05:357 ESI/(9303:9303): paquete de tamanio fijo agregado
+[INFO] 03:07:05:358 ESI/(9303:9303): No quedan mas lineas en el archivo
+[DEBUG] 03:07:05:613 ESI/(9305:9305): Configurando ESI
+[INFO] 03:07:05:618 ESI/(9305:9305): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:05:619 ESI/(9305:9305): Socket conectado
+[INFO] 03:07:05:619 ESI/(9305:9305): Mensaje enviado
+[INFO] 03:07:05:620 ESI/(9305:9305): Mensaje de 4 bytes recibido
+[INFO] 03:07:05:620 ESI/(9305:9305): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:05:620 ESI/(9305:9305): Socket conectado
+[INFO] 03:07:05:620 ESI/(9305:9305): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:05:620 ESI/(9305:9305): el id del esi es: 34
+[INFO] 03:07:05:621 ESI/(9305:9305): Mensaje enviado
+[DEBUG] 03:07:05:621 ESI/(9305:9305): Get jugador
+[DEBUG] 03:07:05:621 ESI/(9305:9305): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:621 ESI/(9305:9305): Set messi
+[DEBUG] 03:07:05:621 ESI/(9305:9305): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:621 ESI/(9305:9305): paquete de tamanio fijo agregado
+[DEBUG] 03:07:05:621 ESI/(9305:9305): Store ˆ$­ûMÜB	MÜB	 ÜB	 ÜB	 ÜB	 ÜB	 ÜB	 ìB	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:05:622 ESI/(9305:9305): paquete de tamanio fijo agregado
+[INFO] 03:07:05:622 ESI/(9305:9305): No quedan mas lineas en el archivo
+[DEBUG] 03:07:06:261 ESI/(9307:9307): Configurando ESI
+[INFO] 03:07:06:265 ESI/(9307:9307): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:06:266 ESI/(9307:9307): Socket conectado
+[INFO] 03:07:06:266 ESI/(9307:9307): Mensaje enviado
+[INFO] 03:07:06:267 ESI/(9307:9307): Mensaje de 4 bytes recibido
+[INFO] 03:07:06:267 ESI/(9307:9307): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:06:267 ESI/(9307:9307): Socket conectado
+[INFO] 03:07:06:267 ESI/(9307:9307): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:06:267 ESI/(9307:9307): el id del esi es: 35
+[INFO] 03:07:06:267 ESI/(9307:9307): Mensaje enviado
+[DEBUG] 03:07:06:268 ESI/(9307:9307): Get jugador
+[DEBUG] 03:07:06:268 ESI/(9307:9307): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:268 ESI/(9307:9307): Set messi
+[DEBUG] 03:07:06:268 ESI/(9307:9307): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:268 ESI/(9307:9307): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:268 ESI/(9307:9307): Store ˆ$­ûMLÑMLÑ LÑ LÑ LÑ LÑ LÑ \Ñ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:06:268 ESI/(9307:9307): paquete de tamanio fijo agregado
+[INFO] 03:07:06:268 ESI/(9307:9307): No quedan mas lineas en el archivo
+[DEBUG] 03:07:06:509 ESI/(9310:9310): Configurando ESI
+[INFO] 03:07:06:513 ESI/(9310:9310): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:06:514 ESI/(9310:9310): Socket conectado
+[INFO] 03:07:06:514 ESI/(9310:9310): Mensaje enviado
+[INFO] 03:07:06:515 ESI/(9310:9310): Mensaje de 4 bytes recibido
+[INFO] 03:07:06:515 ESI/(9310:9310): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:06:515 ESI/(9310:9310): Socket conectado
+[INFO] 03:07:06:515 ESI/(9310:9310): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:06:515 ESI/(9310:9310): el id del esi es: 36
+[INFO] 03:07:06:515 ESI/(9310:9310): Mensaje enviado
+[DEBUG] 03:07:06:516 ESI/(9310:9310): Get jugador
+[DEBUG] 03:07:06:516 ESI/(9310:9310): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:516 ESI/(9310:9310): Set messi
+[DEBUG] 03:07:06:516 ESI/(9310:9310): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:516 ESI/(9310:9310): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:516 ESI/(9310:9310): Store ˆ$­ûMdMd d d d d d d: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:06:516 ESI/(9310:9310): paquete de tamanio fijo agregado
+[INFO] 03:07:06:516 ESI/(9310:9310): No quedan mas lineas en el archivo
+[DEBUG] 03:07:06:765 ESI/(9312:9312): Configurando ESI
+[INFO] 03:07:06:769 ESI/(9312:9312): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:06:771 ESI/(9312:9312): Socket conectado
+[INFO] 03:07:06:771 ESI/(9312:9312): Mensaje enviado
+[INFO] 03:07:06:771 ESI/(9312:9312): Mensaje de 4 bytes recibido
+[INFO] 03:07:06:772 ESI/(9312:9312): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:06:772 ESI/(9312:9312): Socket conectado
+[INFO] 03:07:06:772 ESI/(9312:9312): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:06:772 ESI/(9312:9312): el id del esi es: 37
+[INFO] 03:07:06:772 ESI/(9312:9312): Mensaje enviado
+[DEBUG] 03:07:06:772 ESI/(9312:9312): Get jugador
+[DEBUG] 03:07:06:772 ESI/(9312:9312): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:772 ESI/(9312:9312): Set messi
+[DEBUG] 03:07:06:772 ESI/(9312:9312): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:772 ESI/(9312:9312): paquete de tamanio fijo agregado
+[DEBUG] 03:07:06:773 ESI/(9312:9312): Store ˆ$­ûMÜ	MÜ	 Ü	 Ü	 Ü	 Ü	 Ü	 ì	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:06:773 ESI/(9312:9312): paquete de tamanio fijo agregado
+[INFO] 03:07:06:773 ESI/(9312:9312): No quedan mas lineas en el archivo
+[DEBUG] 03:07:08:61 ESI/(9314:9314): Configurando ESI
+[INFO] 03:07:08:64 ESI/(9314:9314): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:08:65 ESI/(9314:9314): Socket conectado
+[INFO] 03:07:08:65 ESI/(9314:9314): Mensaje enviado
+[INFO] 03:07:08:67 ESI/(9314:9314): Mensaje de 4 bytes recibido
+[INFO] 03:07:08:67 ESI/(9314:9314): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:08:67 ESI/(9314:9314): Socket conectado
+[INFO] 03:07:08:67 ESI/(9314:9314): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:08:68 ESI/(9314:9314): el id del esi es: 38
+[INFO] 03:07:08:68 ESI/(9314:9314): Mensaje enviado
+[DEBUG] 03:07:08:68 ESI/(9314:9314): Get jugador
+[DEBUG] 03:07:08:68 ESI/(9314:9314): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:68 ESI/(9314:9314): Set messi
+[DEBUG] 03:07:08:68 ESI/(9314:9314): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:68 ESI/(9314:9314): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:68 ESI/(9314:9314): Store ˆ$­ûMÜ	MÜ	 Ü	 Ü	 Ü	 Ü	 Ü	 ì	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:08:72 ESI/(9314:9314): paquete de tamanio fijo agregado
+[INFO] 03:07:08:72 ESI/(9314:9314): No quedan mas lineas en el archivo
+[DEBUG] 03:07:08:340 ESI/(9317:9317): Configurando ESI
+[INFO] 03:07:08:344 ESI/(9317:9317): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:08:345 ESI/(9317:9317): Socket conectado
+[INFO] 03:07:08:346 ESI/(9317:9317): Mensaje enviado
+[INFO] 03:07:08:346 ESI/(9317:9317): Mensaje de 4 bytes recibido
+[INFO] 03:07:08:346 ESI/(9317:9317): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:08:346 ESI/(9317:9317): Socket conectado
+[INFO] 03:07:08:346 ESI/(9317:9317): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:08:347 ESI/(9317:9317): el id del esi es: 39
+[INFO] 03:07:08:347 ESI/(9317:9317): Mensaje enviado
+[DEBUG] 03:07:08:347 ESI/(9317:9317): Get jugador
+[DEBUG] 03:07:08:347 ESI/(9317:9317): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:347 ESI/(9317:9317): Set messi
+[DEBUG] 03:07:08:347 ESI/(9317:9317): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:347 ESI/(9317:9317): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:347 ESI/(9317:9317): Store ˆ$­ûM
+M
+ 
+ 
+ 
+ 
+ 
+ ,
+: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:08:348 ESI/(9317:9317): paquete de tamanio fijo agregado
+[INFO] 03:07:08:348 ESI/(9317:9317): No quedan mas lineas en el archivo
+[DEBUG] 03:07:08:572 ESI/(9319:9319): Configurando ESI
+[INFO] 03:07:08:576 ESI/(9319:9319): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:08:577 ESI/(9319:9319): Socket conectado
+[INFO] 03:07:08:577 ESI/(9319:9319): Mensaje enviado
+[INFO] 03:07:08:578 ESI/(9319:9319): Mensaje de 4 bytes recibido
+[INFO] 03:07:08:578 ESI/(9319:9319): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:08:578 ESI/(9319:9319): Socket conectado
+[INFO] 03:07:08:578 ESI/(9319:9319): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:08:578 ESI/(9319:9319): el id del esi es: 40
+[INFO] 03:07:08:578 ESI/(9319:9319): Mensaje enviado
+[DEBUG] 03:07:08:579 ESI/(9319:9319): Get jugador
+[DEBUG] 03:07:08:579 ESI/(9319:9319): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:579 ESI/(9319:9319): Set messi
+[DEBUG] 03:07:08:579 ESI/(9319:9319): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:579 ESI/(9319:9319): paquete de tamanio fijo agregado
+[DEBUG] 03:07:08:579 ESI/(9319:9319): Store ˆ$­ûML#ML# L# L# L# L# L# \#: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:08:579 ESI/(9319:9319): paquete de tamanio fijo agregado
+[INFO] 03:07:08:579 ESI/(9319:9319): No quedan mas lineas en el archivo
+[DEBUG] 03:07:09:156 ESI/(9321:9321): Configurando ESI
+[INFO] 03:07:09:161 ESI/(9321:9321): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:09:162 ESI/(9321:9321): Socket conectado
+[INFO] 03:07:09:162 ESI/(9321:9321): Mensaje enviado
+[INFO] 03:07:09:162 ESI/(9321:9321): Mensaje de 4 bytes recibido
+[INFO] 03:07:09:162 ESI/(9321:9321): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:09:163 ESI/(9321:9321): Socket conectado
+[INFO] 03:07:09:163 ESI/(9321:9321): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:09:163 ESI/(9321:9321): el id del esi es: 41
+[INFO] 03:07:09:163 ESI/(9321:9321): Mensaje enviado
+[DEBUG] 03:07:09:163 ESI/(9321:9321): Get jugador
+[DEBUG] 03:07:09:163 ESI/(9321:9321): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:163 ESI/(9321:9321): Set messi
+[DEBUG] 03:07:09:163 ESI/(9321:9321): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:163 ESI/(9321:9321): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:163 ESI/(9321:9321): Store ˆ$­ûMìMì ì ì ì ì ì ü: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:09:164 ESI/(9321:9321): paquete de tamanio fijo agregado
+[INFO] 03:07:09:164 ESI/(9321:9321): No quedan mas lineas en el archivo
+[DEBUG] 03:07:09:416 ESI/(9323:9323): Configurando ESI
+[INFO] 03:07:09:420 ESI/(9323:9323): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:09:421 ESI/(9323:9323): Socket conectado
+[INFO] 03:07:09:421 ESI/(9323:9323): Mensaje enviado
+[INFO] 03:07:09:422 ESI/(9323:9323): Mensaje de 4 bytes recibido
+[INFO] 03:07:09:422 ESI/(9323:9323): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:09:422 ESI/(9323:9323): Socket conectado
+[INFO] 03:07:09:422 ESI/(9323:9323): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:09:422 ESI/(9323:9323): el id del esi es: 42
+[INFO] 03:07:09:422 ESI/(9323:9323): Mensaje enviado
+[DEBUG] 03:07:09:422 ESI/(9323:9323): Get jugador
+[DEBUG] 03:07:09:423 ESI/(9323:9323): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:423 ESI/(9323:9323): Set messi
+[DEBUG] 03:07:09:423 ESI/(9323:9323): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:423 ESI/(9323:9323): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:423 ESI/(9323:9323): Store ˆ$­ûM,	M,	 ,	 ,	 ,	 ,	 ,	 <	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:09:423 ESI/(9323:9323): paquete de tamanio fijo agregado
+[INFO] 03:07:09:423 ESI/(9323:9323): No quedan mas lineas en el archivo
+[DEBUG] 03:07:09:668 ESI/(9325:9325): Configurando ESI
+[INFO] 03:07:09:672 ESI/(9325:9325): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:09:673 ESI/(9325:9325): Socket conectado
+[INFO] 03:07:09:673 ESI/(9325:9325): Mensaje enviado
+[INFO] 03:07:09:674 ESI/(9325:9325): Mensaje de 4 bytes recibido
+[INFO] 03:07:09:674 ESI/(9325:9325): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:09:674 ESI/(9325:9325): Socket conectado
+[INFO] 03:07:09:674 ESI/(9325:9325): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:09:674 ESI/(9325:9325): el id del esi es: 43
+[INFO] 03:07:09:674 ESI/(9325:9325): Mensaje enviado
+[DEBUG] 03:07:09:674 ESI/(9325:9325): Get jugador
+[DEBUG] 03:07:09:675 ESI/(9325:9325): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:675 ESI/(9325:9325): Set messi
+[DEBUG] 03:07:09:675 ESI/(9325:9325): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:675 ESI/(9325:9325): paquete de tamanio fijo agregado
+[DEBUG] 03:07:09:675 ESI/(9325:9325): Store ˆ$­ûM\˜M\˜ \˜ \˜ \˜ \˜ \˜ l˜: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:09:675 ESI/(9325:9325): paquete de tamanio fijo agregado
+[INFO] 03:07:09:675 ESI/(9325:9325): No quedan mas lineas en el archivo
+[DEBUG] 03:07:10:348 ESI/(9327:9327): Configurando ESI
+[INFO] 03:07:10:352 ESI/(9327:9327): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:10:353 ESI/(9327:9327): Socket conectado
+[INFO] 03:07:10:353 ESI/(9327:9327): Mensaje enviado
+[INFO] 03:07:10:353 ESI/(9327:9327): Mensaje de 4 bytes recibido
+[INFO] 03:07:10:354 ESI/(9327:9327): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:10:354 ESI/(9327:9327): Socket conectado
+[INFO] 03:07:10:354 ESI/(9327:9327): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:10:354 ESI/(9327:9327): el id del esi es: 44
+[INFO] 03:07:10:354 ESI/(9327:9327): Mensaje enviado
+[DEBUG] 03:07:10:354 ESI/(9327:9327): Get jugador
+[DEBUG] 03:07:10:354 ESI/(9327:9327): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:354 ESI/(9327:9327): Set messi
+[DEBUG] 03:07:10:354 ESI/(9327:9327): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:355 ESI/(9327:9327): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:355 ESI/(9327:9327): Store ˆ$­ûMl\Ml\ l\ l\ l\ l\ l\ |\: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:10:355 ESI/(9327:9327): paquete de tamanio fijo agregado
+[INFO] 03:07:10:355 ESI/(9327:9327): No quedan mas lineas en el archivo
+[DEBUG] 03:07:10:620 ESI/(9330:9330): Configurando ESI
+[INFO] 03:07:10:624 ESI/(9330:9330): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:10:625 ESI/(9330:9330): Socket conectado
+[INFO] 03:07:10:625 ESI/(9330:9330): Mensaje enviado
+[INFO] 03:07:10:626 ESI/(9330:9330): Mensaje de 4 bytes recibido
+[INFO] 03:07:10:626 ESI/(9330:9330): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:10:626 ESI/(9330:9330): Socket conectado
+[INFO] 03:07:10:626 ESI/(9330:9330): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:10:626 ESI/(9330:9330): el id del esi es: 45
+[INFO] 03:07:10:626 ESI/(9330:9330): Mensaje enviado
+[DEBUG] 03:07:10:627 ESI/(9330:9330): Get jugador
+[DEBUG] 03:07:10:627 ESI/(9330:9330): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:627 ESI/(9330:9330): Set messi
+[DEBUG] 03:07:10:627 ESI/(9330:9330): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:627 ESI/(9330:9330): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:627 ESI/(9330:9330): Store ˆ$­ûMÌMÌ Ì Ì Ì Ì Ì Ü: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:10:627 ESI/(9330:9330): paquete de tamanio fijo agregado
+[INFO] 03:07:10:627 ESI/(9330:9330): No quedan mas lineas en el archivo
+[DEBUG] 03:07:10:828 ESI/(9332:9332): Configurando ESI
+[INFO] 03:07:10:832 ESI/(9332:9332): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:10:833 ESI/(9332:9332): Socket conectado
+[INFO] 03:07:10:833 ESI/(9332:9332): Mensaje enviado
+[INFO] 03:07:10:834 ESI/(9332:9332): Mensaje de 4 bytes recibido
+[INFO] 03:07:10:834 ESI/(9332:9332): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:10:834 ESI/(9332:9332): Socket conectado
+[INFO] 03:07:10:834 ESI/(9332:9332): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:10:834 ESI/(9332:9332): el id del esi es: 46
+[INFO] 03:07:10:835 ESI/(9332:9332): Mensaje enviado
+[DEBUG] 03:07:10:835 ESI/(9332:9332): Get jugador
+[DEBUG] 03:07:10:835 ESI/(9332:9332): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:835 ESI/(9332:9332): Set messi
+[DEBUG] 03:07:10:835 ESI/(9332:9332): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:835 ESI/(9332:9332): paquete de tamanio fijo agregado
+[DEBUG] 03:07:10:835 ESI/(9332:9332): Store ˆ$­ûM\ù	M\ù	 \ù	 \ù	 \ù	 \ù	 \ù	 lù	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:10:836 ESI/(9332:9332): paquete de tamanio fijo agregado
+[INFO] 03:07:10:836 ESI/(9332:9332): No quedan mas lineas en el archivo
+[DEBUG] 03:07:11:76 ESI/(9334:9334): Configurando ESI
+[INFO] 03:07:11:80 ESI/(9334:9334): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:11:81 ESI/(9334:9334): Socket conectado
+[INFO] 03:07:11:81 ESI/(9334:9334): Mensaje enviado
+[INFO] 03:07:11:82 ESI/(9334:9334): Mensaje de 4 bytes recibido
+[INFO] 03:07:11:82 ESI/(9334:9334): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:11:82 ESI/(9334:9334): Socket conectado
+[INFO] 03:07:11:82 ESI/(9334:9334): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:11:82 ESI/(9334:9334): el id del esi es: 47
+[INFO] 03:07:11:82 ESI/(9334:9334): Mensaje enviado
+[DEBUG] 03:07:11:82 ESI/(9334:9334): Get jugador
+[DEBUG] 03:07:11:83 ESI/(9334:9334): paquete de tamanio fijo agregado
+[DEBUG] 03:07:11:83 ESI/(9334:9334): Set messi
+[DEBUG] 03:07:11:83 ESI/(9334:9334): paquete de tamanio fijo agregado
+[DEBUG] 03:07:11:83 ESI/(9334:9334): paquete de tamanio fijo agregado
+[DEBUG] 03:07:11:83 ESI/(9334:9334): Store ˆ$­ûMÌÀ	MÌÀ	 ÌÀ	 ÌÀ	 ÌÀ	 ÌÀ	 ÌÀ	 ÜÀ	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:11:83 ESI/(9334:9334): paquete de tamanio fijo agregado
+[INFO] 03:07:11:83 ESI/(9334:9334): No quedan mas lineas en el archivo
+[DEBUG] 03:07:20:888 ESI/(9336:9336): Configurando ESI
+[INFO] 03:07:20:892 ESI/(9336:9336): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:20:893 ESI/(9336:9336): Socket conectado
+[INFO] 03:07:20:893 ESI/(9336:9336): Mensaje enviado
+[INFO] 03:07:20:894 ESI/(9336:9336): Mensaje de 4 bytes recibido
+[INFO] 03:07:20:894 ESI/(9336:9336): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:20:894 ESI/(9336:9336): Socket conectado
+[INFO] 03:07:20:894 ESI/(9336:9336): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:20:894 ESI/(9336:9336): el id del esi es: 48
+[INFO] 03:07:20:894 ESI/(9336:9336): Mensaje enviado
+[DEBUG] 03:07:20:894 ESI/(9336:9336): Get jugador
+[DEBUG] 03:07:20:895 ESI/(9336:9336): paquete de tamanio fijo agregado
+[DEBUG] 03:07:20:895 ESI/(9336:9336): Set messi
+[DEBUG] 03:07:20:895 ESI/(9336:9336): paquete de tamanio fijo agregado
+[DEBUG] 03:07:20:895 ESI/(9336:9336): paquete de tamanio fijo agregado
+[DEBUG] 03:07:20:895 ESI/(9336:9336): Store ˆ$­ûM¼	M¼	 ¼	 ¼	 ¼	 ¼	 ¼	 Ì	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:20:895 ESI/(9336:9336): paquete de tamanio fijo agregado
+[INFO] 03:07:20:896 ESI/(9336:9336): No quedan mas lineas en el archivo
+[DEBUG] 03:07:21:200 ESI/(9339:9339): Configurando ESI
+[INFO] 03:07:21:204 ESI/(9339:9339): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:21:205 ESI/(9339:9339): Socket conectado
+[INFO] 03:07:21:205 ESI/(9339:9339): Mensaje enviado
+[INFO] 03:07:21:206 ESI/(9339:9339): Mensaje de 4 bytes recibido
+[INFO] 03:07:21:206 ESI/(9339:9339): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:21:206 ESI/(9339:9339): Socket conectado
+[INFO] 03:07:21:206 ESI/(9339:9339): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:21:207 ESI/(9339:9339): el id del esi es: 49
+[INFO] 03:07:21:207 ESI/(9339:9339): Mensaje enviado
+[DEBUG] 03:07:21:207 ESI/(9339:9339): Get jugador
+[DEBUG] 03:07:21:207 ESI/(9339:9339): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:207 ESI/(9339:9339): Set messi
+[DEBUG] 03:07:21:207 ESI/(9339:9339): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:207 ESI/(9339:9339): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:207 ESI/(9339:9339): Store ˆ$­ûM|¯	M|¯	 |¯	 |¯	 |¯	 |¯	 |¯	 Œ¯	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:21:208 ESI/(9339:9339): paquete de tamanio fijo agregado
+[INFO] 03:07:21:208 ESI/(9339:9339): No quedan mas lineas en el archivo
+[DEBUG] 03:07:21:456 ESI/(9341:9341): Configurando ESI
+[INFO] 03:07:21:460 ESI/(9341:9341): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:21:461 ESI/(9341:9341): Socket conectado
+[INFO] 03:07:21:461 ESI/(9341:9341): Mensaje enviado
+[INFO] 03:07:21:462 ESI/(9341:9341): Mensaje de 4 bytes recibido
+[INFO] 03:07:21:462 ESI/(9341:9341): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:21:462 ESI/(9341:9341): Socket conectado
+[INFO] 03:07:21:462 ESI/(9341:9341): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:21:463 ESI/(9341:9341): el id del esi es: 50
+[INFO] 03:07:21:463 ESI/(9341:9341): Mensaje enviado
+[DEBUG] 03:07:21:463 ESI/(9341:9341): Get jugador
+[DEBUG] 03:07:21:463 ESI/(9341:9341): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:463 ESI/(9341:9341): Set messi
+[DEBUG] 03:07:21:463 ESI/(9341:9341): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:463 ESI/(9341:9341): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:463 ESI/(9341:9341): Store ˆ$­ûML4	ML4	 L4	 L4	 L4	 L4	 L4	 \4	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:21:464 ESI/(9341:9341): paquete de tamanio fijo agregado
+[INFO] 03:07:21:464 ESI/(9341:9341): No quedan mas lineas en el archivo
+[DEBUG] 03:07:21:699 ESI/(9343:9343): Configurando ESI
+[INFO] 03:07:21:703 ESI/(9343:9343): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:21:704 ESI/(9343:9343): Socket conectado
+[INFO] 03:07:21:704 ESI/(9343:9343): Mensaje enviado
+[INFO] 03:07:21:704 ESI/(9343:9343): Mensaje de 4 bytes recibido
+[INFO] 03:07:21:704 ESI/(9343:9343): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:21:705 ESI/(9343:9343): Socket conectado
+[INFO] 03:07:21:705 ESI/(9343:9343): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:21:705 ESI/(9343:9343): el id del esi es: 51
+[INFO] 03:07:21:705 ESI/(9343:9343): Mensaje enviado
+[DEBUG] 03:07:21:705 ESI/(9343:9343): Get jugador
+[DEBUG] 03:07:21:705 ESI/(9343:9343): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:705 ESI/(9343:9343): Set messi
+[DEBUG] 03:07:21:705 ESI/(9343:9343): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:705 ESI/(9343:9343): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:706 ESI/(9343:9343): Store ˆ$­ûMLí	MLí	 Lí	 Lí	 Lí	 Lí	 Lí	 \í	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:21:706 ESI/(9343:9343): paquete de tamanio fijo agregado
+[INFO] 03:07:21:706 ESI/(9343:9343): No quedan mas lineas en el archivo
+[DEBUG] 03:07:21:992 ESI/(9345:9345): Configurando ESI
+[INFO] 03:07:21:996 ESI/(9345:9345): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:21:997 ESI/(9345:9345): Socket conectado
+[INFO] 03:07:21:997 ESI/(9345:9345): Mensaje enviado
+[INFO] 03:07:21:998 ESI/(9345:9345): Mensaje de 4 bytes recibido
+[INFO] 03:07:21:998 ESI/(9345:9345): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:21:998 ESI/(9345:9345): Socket conectado
+[INFO] 03:07:21:998 ESI/(9345:9345): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:21:998 ESI/(9345:9345): el id del esi es: 52
+[INFO] 03:07:21:999 ESI/(9345:9345): Mensaje enviado
+[DEBUG] 03:07:21:999 ESI/(9345:9345): Get jugador
+[DEBUG] 03:07:21:999 ESI/(9345:9345): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:999 ESI/(9345:9345): Set messi
+[DEBUG] 03:07:21:999 ESI/(9345:9345): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:999 ESI/(9345:9345): paquete de tamanio fijo agregado
+[DEBUG] 03:07:21:999 ESI/(9345:9345): Store ˆ$­ûM(	M(	 (	 (	 (	 (	 (	 (	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:21:0 ESI/(9345:9345): paquete de tamanio fijo agregado
+[INFO] 03:07:21:0 ESI/(9345:9345): No quedan mas lineas en el archivo
+[DEBUG] 03:07:22:269 ESI/(9347:9347): Configurando ESI
+[INFO] 03:07:22:273 ESI/(9347:9347): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:22:274 ESI/(9347:9347): Socket conectado
+[INFO] 03:07:22:274 ESI/(9347:9347): Mensaje enviado
+[INFO] 03:07:22:275 ESI/(9347:9347): Mensaje de 4 bytes recibido
+[INFO] 03:07:22:275 ESI/(9347:9347): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:22:275 ESI/(9347:9347): Socket conectado
+[INFO] 03:07:22:275 ESI/(9347:9347): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:22:275 ESI/(9347:9347): el id del esi es: 53
+[INFO] 03:07:22:275 ESI/(9347:9347): Mensaje enviado
+[DEBUG] 03:07:22:276 ESI/(9347:9347): Get jugador
+[DEBUG] 03:07:22:276 ESI/(9347:9347): paquete de tamanio fijo agregado
+[DEBUG] 03:07:22:276 ESI/(9347:9347): Set messi
+[DEBUG] 03:07:22:276 ESI/(9347:9347): paquete de tamanio fijo agregado
+[DEBUG] 03:07:22:276 ESI/(9347:9347): paquete de tamanio fijo agregado
+[DEBUG] 03:07:22:276 ESI/(9347:9347): Store ˆ$­ûM\Œ	M\Œ	 \Œ	 \Œ	 \Œ	 \Œ	 \Œ	 lŒ	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:22:277 ESI/(9347:9347): paquete de tamanio fijo agregado
+[INFO] 03:07:22:277 ESI/(9347:9347): No quedan mas lineas en el archivo
+[DEBUG] 03:07:23:48 ESI/(9349:9349): Configurando ESI
+[INFO] 03:07:23:52 ESI/(9349:9349): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:23:53 ESI/(9349:9349): Socket conectado
+[INFO] 03:07:23:53 ESI/(9349:9349): Mensaje enviado
+[INFO] 03:07:23:53 ESI/(9349:9349): Mensaje de 4 bytes recibido
+[INFO] 03:07:23:53 ESI/(9349:9349): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:23:53 ESI/(9349:9349): Socket conectado
+[INFO] 03:07:23:54 ESI/(9349:9349): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:23:54 ESI/(9349:9349): el id del esi es: 54
+[INFO] 03:07:23:54 ESI/(9349:9349): Mensaje enviado
+[DEBUG] 03:07:23:54 ESI/(9349:9349): Get jugador
+[DEBUG] 03:07:23:54 ESI/(9349:9349): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:54 ESI/(9349:9349): Set messi
+[DEBUG] 03:07:23:54 ESI/(9349:9349): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:54 ESI/(9349:9349): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:54 ESI/(9349:9349): Store ˆ$­ûM,û	M,û	 ,û	 ,û	 ,û	 ,û	 ,û	 <û	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:23:55 ESI/(9349:9349): paquete de tamanio fijo agregado
+[INFO] 03:07:23:55 ESI/(9349:9349): No quedan mas lineas en el archivo
+[DEBUG] 03:07:23:311 ESI/(9352:9352): Configurando ESI
+[INFO] 03:07:23:316 ESI/(9352:9352): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:23:317 ESI/(9352:9352): Socket conectado
+[INFO] 03:07:23:317 ESI/(9352:9352): Mensaje enviado
+[INFO] 03:07:23:317 ESI/(9352:9352): Mensaje de 4 bytes recibido
+[INFO] 03:07:23:317 ESI/(9352:9352): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:23:318 ESI/(9352:9352): Socket conectado
+[INFO] 03:07:23:318 ESI/(9352:9352): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:23:318 ESI/(9352:9352): el id del esi es: 55
+[INFO] 03:07:23:318 ESI/(9352:9352): Mensaje enviado
+[DEBUG] 03:07:23:318 ESI/(9352:9352): Get jugador
+[DEBUG] 03:07:23:318 ESI/(9352:9352): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:318 ESI/(9352:9352): Set messi
+[DEBUG] 03:07:23:319 ESI/(9352:9352): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:319 ESI/(9352:9352): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:319 ESI/(9352:9352): Store ˆ$­ûMÌ;MÌ; Ì; Ì; Ì; Ì; Ì; Ü;: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:23:319 ESI/(9352:9352): paquete de tamanio fijo agregado
+[INFO] 03:07:23:319 ESI/(9352:9352): No quedan mas lineas en el archivo
+[DEBUG] 03:07:23:528 ESI/(9354:9354): Configurando ESI
+[INFO] 03:07:23:532 ESI/(9354:9354): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:23:533 ESI/(9354:9354): Socket conectado
+[INFO] 03:07:23:533 ESI/(9354:9354): Mensaje enviado
+[INFO] 03:07:23:534 ESI/(9354:9354): Mensaje de 4 bytes recibido
+[INFO] 03:07:23:534 ESI/(9354:9354): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:23:534 ESI/(9354:9354): Socket conectado
+[INFO] 03:07:23:534 ESI/(9354:9354): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:23:534 ESI/(9354:9354): el id del esi es: 56
+[INFO] 03:07:23:535 ESI/(9354:9354): Mensaje enviado
+[DEBUG] 03:07:23:535 ESI/(9354:9354): Get jugador
+[DEBUG] 03:07:23:535 ESI/(9354:9354): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:535 ESI/(9354:9354): Set messi
+[DEBUG] 03:07:23:535 ESI/(9354:9354): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:535 ESI/(9354:9354): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:535 ESI/(9354:9354): Store ˆ$­ûMìÁMìÁ ìÁ ìÁ ìÁ ìÁ ìÁ üÁ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:23:535 ESI/(9354:9354): paquete de tamanio fijo agregado
+[INFO] 03:07:23:536 ESI/(9354:9354): No quedan mas lineas en el archivo
+[DEBUG] 03:07:23:816 ESI/(9356:9356): Configurando ESI
+[INFO] 03:07:23:820 ESI/(9356:9356): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:23:821 ESI/(9356:9356): Socket conectado
+[INFO] 03:07:23:821 ESI/(9356:9356): Mensaje enviado
+[INFO] 03:07:23:821 ESI/(9356:9356): Mensaje de 4 bytes recibido
+[INFO] 03:07:23:821 ESI/(9356:9356): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:23:822 ESI/(9356:9356): Socket conectado
+[INFO] 03:07:23:822 ESI/(9356:9356): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:23:822 ESI/(9356:9356): el id del esi es: 57
+[INFO] 03:07:23:822 ESI/(9356:9356): Mensaje enviado
+[DEBUG] 03:07:23:822 ESI/(9356:9356): Get jugador
+[DEBUG] 03:07:23:822 ESI/(9356:9356): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:822 ESI/(9356:9356): Set messi
+[DEBUG] 03:07:23:823 ESI/(9356:9356): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:823 ESI/(9356:9356): paquete de tamanio fijo agregado
+[DEBUG] 03:07:23:823 ESI/(9356:9356): Store ˆ$­ûM¼ëM¼ë ¼ë ¼ë ¼ë ¼ë ¼ë Ìë: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:23:823 ESI/(9356:9356): paquete de tamanio fijo agregado
+[INFO] 03:07:23:823 ESI/(9356:9356): No quedan mas lineas en el archivo
+[DEBUG] 03:07:24:207 ESI/(9358:9358): Configurando ESI
+[INFO] 03:07:24:211 ESI/(9358:9358): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:24:212 ESI/(9358:9358): Socket conectado
+[INFO] 03:07:24:212 ESI/(9358:9358): Mensaje enviado
+[INFO] 03:07:24:213 ESI/(9358:9358): Mensaje de 4 bytes recibido
+[INFO] 03:07:24:213 ESI/(9358:9358): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:24:213 ESI/(9358:9358): Socket conectado
+[INFO] 03:07:24:213 ESI/(9358:9358): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:24:213 ESI/(9358:9358): el id del esi es: 58
+[INFO] 03:07:24:214 ESI/(9358:9358): Mensaje enviado
+[DEBUG] 03:07:24:214 ESI/(9358:9358): Get jugador
+[DEBUG] 03:07:24:214 ESI/(9358:9358): paquete de tamanio fijo agregado
+[DEBUG] 03:07:24:214 ESI/(9358:9358): Set messi
+[DEBUG] 03:07:24:214 ESI/(9358:9358): paquete de tamanio fijo agregado
+[DEBUG] 03:07:24:214 ESI/(9358:9358): paquete de tamanio fijo agregado
+[DEBUG] 03:07:24:214 ESI/(9358:9358): Store ˆ$­ûM|tM|t |t |t |t |t |t Œt: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:24:214 ESI/(9358:9358): paquete de tamanio fijo agregado
+[INFO] 03:07:24:214 ESI/(9358:9358): No quedan mas lineas en el archivo
+[DEBUG] 03:07:24:439 ESI/(9360:9360): Configurando ESI
+[INFO] 03:07:24:443 ESI/(9360:9360): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:24:444 ESI/(9360:9360): Socket conectado
+[INFO] 03:07:24:445 ESI/(9360:9360): Mensaje enviado
+[INFO] 03:07:24:445 ESI/(9360:9360): Mensaje de 4 bytes recibido
+[INFO] 03:07:24:445 ESI/(9360:9360): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:24:445 ESI/(9360:9360): Socket conectado
+[INFO] 03:07:24:446 ESI/(9360:9360): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:24:446 ESI/(9360:9360): el id del esi es: 59
+[INFO] 03:07:24:446 ESI/(9360:9360): Mensaje enviado
+[DEBUG] 03:07:24:446 ESI/(9360:9360): Get jugador
+[DEBUG] 03:07:24:446 ESI/(9360:9360): paquete de tamanio fijo agregado
+[DEBUG] 03:07:24:446 ESI/(9360:9360): Set messi
+[DEBUG] 03:07:24:446 ESI/(9360:9360): paquete de tamanio fijo agregado
+[DEBUG] 03:07:24:446 ESI/(9360:9360): paquete de tamanio fijo agregado
+[DEBUG] 03:07:24:447 ESI/(9360:9360): Store ˆ$­ûM¬hM¬h ¬h ¬h ¬h ¬h ¬h ¼h: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:24:447 ESI/(9360:9360): paquete de tamanio fijo agregado
+[INFO] 03:07:24:447 ESI/(9360:9360): No quedan mas lineas en el archivo
+[DEBUG] 03:07:25:175 ESI/(9364:9364): Configurando ESI
+[INFO] 03:07:25:179 ESI/(9364:9364): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:25:180 ESI/(9364:9364): Socket conectado
+[INFO] 03:07:25:180 ESI/(9364:9364): Mensaje enviado
+[INFO] 03:07:25:180 ESI/(9364:9364): Mensaje de 4 bytes recibido
+[INFO] 03:07:25:180 ESI/(9364:9364): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:25:181 ESI/(9364:9364): Socket conectado
+[INFO] 03:07:25:181 ESI/(9364:9364): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:25:181 ESI/(9364:9364): el id del esi es: 60
+[INFO] 03:07:25:181 ESI/(9364:9364): Mensaje enviado
+[DEBUG] 03:07:25:181 ESI/(9364:9364): Get jugador
+[DEBUG] 03:07:25:181 ESI/(9364:9364): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:181 ESI/(9364:9364): Set messi
+[DEBUG] 03:07:25:181 ESI/(9364:9364): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:182 ESI/(9364:9364): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:182 ESI/(9364:9364): Store ˆ$­ûMlÑMlÑ lÑ lÑ lÑ lÑ lÑ |Ñ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:25:182 ESI/(9364:9364): paquete de tamanio fijo agregado
+[INFO] 03:07:25:182 ESI/(9364:9364): No quedan mas lineas en el archivo
+[DEBUG] 03:07:25:495 ESI/(9367:9367): Configurando ESI
+[INFO] 03:07:25:499 ESI/(9367:9367): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:25:500 ESI/(9367:9367): Socket conectado
+[INFO] 03:07:25:501 ESI/(9367:9367): Mensaje enviado
+[INFO] 03:07:25:501 ESI/(9367:9367): Mensaje de 4 bytes recibido
+[INFO] 03:07:25:501 ESI/(9367:9367): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:25:501 ESI/(9367:9367): Socket conectado
+[INFO] 03:07:25:501 ESI/(9367:9367): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:25:502 ESI/(9367:9367): el id del esi es: 61
+[INFO] 03:07:25:502 ESI/(9367:9367): Mensaje enviado
+[DEBUG] 03:07:25:502 ESI/(9367:9367): Get jugador
+[DEBUG] 03:07:25:502 ESI/(9367:9367): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:502 ESI/(9367:9367): Set messi
+[DEBUG] 03:07:25:502 ESI/(9367:9367): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:502 ESI/(9367:9367): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:502 ESI/(9367:9367): Store ˆ$­ûM<a	M<a	 <a	 <a	 <a	 <a	 <a	 La	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:25:503 ESI/(9367:9367): paquete de tamanio fijo agregado
+[INFO] 03:07:25:503 ESI/(9367:9367): No quedan mas lineas en el archivo
+[DEBUG] 03:07:25:759 ESI/(9369:9369): Configurando ESI
+[INFO] 03:07:25:764 ESI/(9369:9369): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:25:765 ESI/(9369:9369): Socket conectado
+[INFO] 03:07:25:765 ESI/(9369:9369): Mensaje enviado
+[INFO] 03:07:25:766 ESI/(9369:9369): Mensaje de 4 bytes recibido
+[INFO] 03:07:25:766 ESI/(9369:9369): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:25:767 ESI/(9369:9369): Socket conectado
+[INFO] 03:07:25:768 ESI/(9369:9369): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:25:768 ESI/(9369:9369): el id del esi es: 62
+[INFO] 03:07:25:768 ESI/(9369:9369): Mensaje enviado
+[DEBUG] 03:07:25:768 ESI/(9369:9369): Get jugador
+[DEBUG] 03:07:25:770 ESI/(9369:9369): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:770 ESI/(9369:9369): Set messi
+[DEBUG] 03:07:25:770 ESI/(9369:9369): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:770 ESI/(9369:9369): paquete de tamanio fijo agregado
+[DEBUG] 03:07:25:770 ESI/(9369:9369): Store ˆ$­ûM\\M\\ \\ \\ \\ \\ \\ l\: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:25:770 ESI/(9369:9369): paquete de tamanio fijo agregado
+[INFO] 03:07:25:770 ESI/(9369:9369): No quedan mas lineas en el archivo
+[DEBUG] 03:07:26:225 ESI/(9371:9371): Configurando ESI
+[INFO] 03:07:26:229 ESI/(9371:9371): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:26:230 ESI/(9371:9371): Socket conectado
+[INFO] 03:07:26:230 ESI/(9371:9371): Mensaje enviado
+[INFO] 03:07:26:230 ESI/(9371:9371): Mensaje de 4 bytes recibido
+[INFO] 03:07:26:230 ESI/(9371:9371): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:26:231 ESI/(9371:9371): Socket conectado
+[INFO] 03:07:26:231 ESI/(9371:9371): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:26:231 ESI/(9371:9371): el id del esi es: 63
+[INFO] 03:07:26:231 ESI/(9371:9371): Mensaje enviado
+[DEBUG] 03:07:26:231 ESI/(9371:9371): Get jugador
+[DEBUG] 03:07:26:231 ESI/(9371:9371): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:231 ESI/(9371:9371): Set messi
+[DEBUG] 03:07:26:231 ESI/(9371:9371): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:231 ESI/(9371:9371): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:232 ESI/(9371:9371): Store ˆ$­ûM\ZM\Z \Z \Z \Z \Z \Z lZ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:26:232 ESI/(9371:9371): paquete de tamanio fijo agregado
+[INFO] 03:07:26:232 ESI/(9371:9371): No quedan mas lineas en el archivo
+[DEBUG] 03:07:26:519 ESI/(9373:9373): Configurando ESI
+[INFO] 03:07:26:523 ESI/(9373:9373): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:26:524 ESI/(9373:9373): Socket conectado
+[INFO] 03:07:26:524 ESI/(9373:9373): Mensaje enviado
+[INFO] 03:07:26:524 ESI/(9373:9373): Mensaje de 4 bytes recibido
+[INFO] 03:07:26:525 ESI/(9373:9373): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:26:525 ESI/(9373:9373): Socket conectado
+[INFO] 03:07:26:525 ESI/(9373:9373): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:26:525 ESI/(9373:9373): el id del esi es: 64
+[INFO] 03:07:26:525 ESI/(9373:9373): Mensaje enviado
+[DEBUG] 03:07:26:525 ESI/(9373:9373): Get jugador
+[DEBUG] 03:07:26:525 ESI/(9373:9373): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:525 ESI/(9373:9373): Set messi
+[DEBUG] 03:07:26:525 ESI/(9373:9373): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:525 ESI/(9373:9373): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:526 ESI/(9373:9373): Store ˆ$­ûMüÉMüÉ üÉ üÉ üÉ üÉ üÉ Ê: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:26:526 ESI/(9373:9373): paquete de tamanio fijo agregado
+[INFO] 03:07:26:526 ESI/(9373:9373): No quedan mas lineas en el archivo
+[DEBUG] 03:07:26:881 ESI/(9375:9375): Configurando ESI
+[INFO] 03:07:26:885 ESI/(9375:9375): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:26:886 ESI/(9375:9375): Socket conectado
+[INFO] 03:07:26:886 ESI/(9375:9375): Mensaje enviado
+[INFO] 03:07:26:887 ESI/(9375:9375): Mensaje de 4 bytes recibido
+[INFO] 03:07:26:887 ESI/(9375:9375): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:26:887 ESI/(9375:9375): Socket conectado
+[INFO] 03:07:26:887 ESI/(9375:9375): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:26:887 ESI/(9375:9375): el id del esi es: 65
+[INFO] 03:07:26:887 ESI/(9375:9375): Mensaje enviado
+[DEBUG] 03:07:26:887 ESI/(9375:9375): Get jugador
+[DEBUG] 03:07:26:887 ESI/(9375:9375): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:888 ESI/(9375:9375): Set messi
+[DEBUG] 03:07:26:888 ESI/(9375:9375): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:888 ESI/(9375:9375): paquete de tamanio fijo agregado
+[DEBUG] 03:07:26:888 ESI/(9375:9375): Store ˆ$­ûMŒ„MŒ„ Œ„ Œ„ Œ„ Œ„ Œ„ œ„: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:26:888 ESI/(9375:9375): paquete de tamanio fijo agregado
+[INFO] 03:07:26:888 ESI/(9375:9375): No quedan mas lineas en el archivo
+[DEBUG] 03:07:27:206 ESI/(9377:9377): Configurando ESI
+[INFO] 03:07:27:210 ESI/(9377:9377): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:27:211 ESI/(9377:9377): Socket conectado
+[INFO] 03:07:27:212 ESI/(9377:9377): Mensaje enviado
+[INFO] 03:07:27:212 ESI/(9377:9377): Mensaje de 4 bytes recibido
+[INFO] 03:07:27:212 ESI/(9377:9377): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:27:212 ESI/(9377:9377): Socket conectado
+[INFO] 03:07:27:212 ESI/(9377:9377): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:27:213 ESI/(9377:9377): el id del esi es: 66
+[INFO] 03:07:27:213 ESI/(9377:9377): Mensaje enviado
+[DEBUG] 03:07:27:213 ESI/(9377:9377): Get jugador
+[DEBUG] 03:07:27:213 ESI/(9377:9377): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:213 ESI/(9377:9377): Set messi
+[DEBUG] 03:07:27:213 ESI/(9377:9377): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:213 ESI/(9377:9377): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:213 ESI/(9377:9377): Store ˆ$­ûMì§	Mì§	 ì§	 ì§	 ì§	 ì§	 ì§	 ü§	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:27:214 ESI/(9377:9377): paquete de tamanio fijo agregado
+[INFO] 03:07:27:214 ESI/(9377:9377): No quedan mas lineas en el archivo
+[DEBUG] 03:07:27:494 ESI/(9379:9379): Configurando ESI
+[INFO] 03:07:27:498 ESI/(9379:9379): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:27:499 ESI/(9379:9379): Socket conectado
+[INFO] 03:07:27:499 ESI/(9379:9379): Mensaje enviado
+[INFO] 03:07:27:500 ESI/(9379:9379): Mensaje de 4 bytes recibido
+[INFO] 03:07:27:500 ESI/(9379:9379): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:27:500 ESI/(9379:9379): Socket conectado
+[INFO] 03:07:27:500 ESI/(9379:9379): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:27:500 ESI/(9379:9379): el id del esi es: 67
+[INFO] 03:07:27:500 ESI/(9379:9379): Mensaje enviado
+[DEBUG] 03:07:27:500 ESI/(9379:9379): Get jugador
+[DEBUG] 03:07:27:500 ESI/(9379:9379): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:501 ESI/(9379:9379): Set messi
+[DEBUG] 03:07:27:501 ESI/(9379:9379): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:501 ESI/(9379:9379): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:501 ESI/(9379:9379): Store ˆ$­ûMM      : parsed.argumentos.STORE.clave
+[DEBUG] 03:07:27:501 ESI/(9379:9379): paquete de tamanio fijo agregado
+[INFO] 03:07:27:501 ESI/(9379:9379): No quedan mas lineas en el archivo
+[DEBUG] 03:07:27:766 ESI/(9381:9381): Configurando ESI
+[INFO] 03:07:27:770 ESI/(9381:9381): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:27:772 ESI/(9381:9381): Socket conectado
+[INFO] 03:07:27:772 ESI/(9381:9381): Mensaje enviado
+[INFO] 03:07:27:772 ESI/(9381:9381): Mensaje de 4 bytes recibido
+[INFO] 03:07:27:772 ESI/(9381:9381): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:27:773 ESI/(9381:9381): Socket conectado
+[INFO] 03:07:27:773 ESI/(9381:9381): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:27:773 ESI/(9381:9381): el id del esi es: 68
+[INFO] 03:07:27:773 ESI/(9381:9381): Mensaje enviado
+[DEBUG] 03:07:27:773 ESI/(9381:9381): Get jugador
+[DEBUG] 03:07:27:773 ESI/(9381:9381): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:773 ESI/(9381:9381): Set messi
+[DEBUG] 03:07:27:773 ESI/(9381:9381): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:773 ESI/(9381:9381): paquete de tamanio fijo agregado
+[DEBUG] 03:07:27:773 ESI/(9381:9381): Store ˆ$­ûMl?Ml? l? l? l? l? l? |?: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:27:774 ESI/(9381:9381): paquete de tamanio fijo agregado
+[INFO] 03:07:27:774 ESI/(9381:9381): No quedan mas lineas en el archivo
+[DEBUG] 03:07:28:66 ESI/(9383:9383): Configurando ESI
+[INFO] 03:07:28:70 ESI/(9383:9383): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:28:71 ESI/(9383:9383): Socket conectado
+[INFO] 03:07:28:71 ESI/(9383:9383): Mensaje enviado
+[INFO] 03:07:28:71 ESI/(9383:9383): Mensaje de 4 bytes recibido
+[INFO] 03:07:28:72 ESI/(9383:9383): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:28:72 ESI/(9383:9383): Socket conectado
+[INFO] 03:07:28:72 ESI/(9383:9383): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:28:72 ESI/(9383:9383): el id del esi es: 69
+[INFO] 03:07:28:72 ESI/(9383:9383): Mensaje enviado
+[DEBUG] 03:07:28:72 ESI/(9383:9383): Get jugador
+[DEBUG] 03:07:28:72 ESI/(9383:9383): paquete de tamanio fijo agregado
+[DEBUG] 03:07:28:72 ESI/(9383:9383): Set messi
+[DEBUG] 03:07:28:72 ESI/(9383:9383): paquete de tamanio fijo agregado
+[DEBUG] 03:07:28:72 ESI/(9383:9383): paquete de tamanio fijo agregado
+[DEBUG] 03:07:28:73 ESI/(9383:9383): Store ˆ$­ûM<ÖM<Ö <Ö <Ö <Ö <Ö <Ö LÖ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:28:73 ESI/(9383:9383): paquete de tamanio fijo agregado
+[INFO] 03:07:28:73 ESI/(9383:9383): No quedan mas lineas en el archivo
+[DEBUG] 03:07:28:346 ESI/(9385:9385): Configurando ESI
+[INFO] 03:07:28:350 ESI/(9385:9385): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:28:352 ESI/(9385:9385): Socket conectado
+[INFO] 03:07:28:352 ESI/(9385:9385): Mensaje enviado
+[INFO] 03:07:28:352 ESI/(9385:9385): Mensaje de 4 bytes recibido
+[INFO] 03:07:28:352 ESI/(9385:9385): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:28:353 ESI/(9385:9385): Socket conectado
+[INFO] 03:07:28:353 ESI/(9385:9385): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:28:353 ESI/(9385:9385): el id del esi es: 70
+[INFO] 03:07:28:353 ESI/(9385:9385): Mensaje enviado
+[DEBUG] 03:07:28:353 ESI/(9385:9385): Get jugador
+[DEBUG] 03:07:28:353 ESI/(9385:9385): paquete de tamanio fijo agregado
+[DEBUG] 03:07:28:353 ESI/(9385:9385): Set messi
+[DEBUG] 03:07:28:353 ESI/(9385:9385): paquete de tamanio fijo agregado
+[DEBUG] 03:07:28:353 ESI/(9385:9385): paquete de tamanio fijo agregado
+[DEBUG] 03:07:28:353 ESI/(9385:9385): Store ˆ$­ûMìýMìý ìý ìý ìý ìý ìý üý: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:28:354 ESI/(9385:9385): paquete de tamanio fijo agregado
+[INFO] 03:07:28:354 ESI/(9385:9385): No quedan mas lineas en el archivo
+[DEBUG] 03:07:29:214 ESI/(9387:9387): Configurando ESI
+[INFO] 03:07:29:218 ESI/(9387:9387): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:29:219 ESI/(9387:9387): Socket conectado
+[INFO] 03:07:29:219 ESI/(9387:9387): Mensaje enviado
+[INFO] 03:07:29:220 ESI/(9387:9387): Mensaje de 4 bytes recibido
+[INFO] 03:07:29:220 ESI/(9387:9387): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:29:220 ESI/(9387:9387): Socket conectado
+[INFO] 03:07:29:220 ESI/(9387:9387): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:29:220 ESI/(9387:9387): el id del esi es: 71
+[INFO] 03:07:29:220 ESI/(9387:9387): Mensaje enviado
+[DEBUG] 03:07:29:221 ESI/(9387:9387): Get jugador
+[DEBUG] 03:07:29:221 ESI/(9387:9387): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:221 ESI/(9387:9387): Set messi
+[DEBUG] 03:07:29:221 ESI/(9387:9387): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:221 ESI/(9387:9387): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:221 ESI/(9387:9387): Store ˆ$­ûMœ¶Mœ¶ œ¶ œ¶ œ¶ œ¶ œ¶ ¬¶: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:29:221 ESI/(9387:9387): paquete de tamanio fijo agregado
+[INFO] 03:07:29:221 ESI/(9387:9387): No quedan mas lineas en el archivo
+[DEBUG] 03:07:29:478 ESI/(9390:9390): Configurando ESI
+[INFO] 03:07:29:483 ESI/(9390:9390): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:29:484 ESI/(9390:9390): Socket conectado
+[INFO] 03:07:29:484 ESI/(9390:9390): Mensaje enviado
+[INFO] 03:07:29:485 ESI/(9390:9390): Mensaje de 4 bytes recibido
+[INFO] 03:07:29:485 ESI/(9390:9390): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:29:485 ESI/(9390:9390): Socket conectado
+[INFO] 03:07:29:485 ESI/(9390:9390): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:29:485 ESI/(9390:9390): el id del esi es: 72
+[INFO] 03:07:29:485 ESI/(9390:9390): Mensaje enviado
+[DEBUG] 03:07:29:486 ESI/(9390:9390): Get jugador
+[DEBUG] 03:07:29:486 ESI/(9390:9390): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:486 ESI/(9390:9390): Set messi
+[DEBUG] 03:07:29:486 ESI/(9390:9390): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:486 ESI/(9390:9390): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:486 ESI/(9390:9390): Store ˆ$­ûMÜ–	MÜ–	 Ü–	 Ü–	 Ü–	 Ü–	 Ü–	 ì–	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:29:487 ESI/(9390:9390): paquete de tamanio fijo agregado
+[INFO] 03:07:29:487 ESI/(9390:9390): No quedan mas lineas en el archivo
+[DEBUG] 03:07:29:709 ESI/(9392:9392): Configurando ESI
+[INFO] 03:07:29:714 ESI/(9392:9392): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:29:715 ESI/(9392:9392): Socket conectado
+[INFO] 03:07:29:715 ESI/(9392:9392): Mensaje enviado
+[INFO] 03:07:29:715 ESI/(9392:9392): Mensaje de 4 bytes recibido
+[INFO] 03:07:29:715 ESI/(9392:9392): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:29:716 ESI/(9392:9392): Socket conectado
+[INFO] 03:07:29:716 ESI/(9392:9392): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:29:716 ESI/(9392:9392): el id del esi es: 73
+[INFO] 03:07:29:716 ESI/(9392:9392): Mensaje enviado
+[DEBUG] 03:07:29:716 ESI/(9392:9392): Get jugador
+[DEBUG] 03:07:29:716 ESI/(9392:9392): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:716 ESI/(9392:9392): Set messi
+[DEBUG] 03:07:29:716 ESI/(9392:9392): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:716 ESI/(9392:9392): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:716 ESI/(9392:9392): Store ˆ$­ûMë	Më	 ë	 ë	 ë	 ë	 ë	 ë	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:29:717 ESI/(9392:9392): paquete de tamanio fijo agregado
+[INFO] 03:07:29:717 ESI/(9392:9392): No quedan mas lineas en el archivo
+[DEBUG] 03:07:29:981 ESI/(9394:9394): Configurando ESI
+[INFO] 03:07:29:985 ESI/(9394:9394): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:29:986 ESI/(9394:9394): Socket conectado
+[INFO] 03:07:29:986 ESI/(9394:9394): Mensaje enviado
+[INFO] 03:07:29:987 ESI/(9394:9394): Mensaje de 4 bytes recibido
+[INFO] 03:07:29:987 ESI/(9394:9394): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:29:987 ESI/(9394:9394): Socket conectado
+[INFO] 03:07:29:987 ESI/(9394:9394): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:29:987 ESI/(9394:9394): el id del esi es: 74
+[INFO] 03:07:29:987 ESI/(9394:9394): Mensaje enviado
+[DEBUG] 03:07:29:987 ESI/(9394:9394): Get jugador
+[DEBUG] 03:07:29:987 ESI/(9394:9394): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:988 ESI/(9394:9394): Set messi
+[DEBUG] 03:07:29:988 ESI/(9394:9394): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:988 ESI/(9394:9394): paquete de tamanio fijo agregado
+[DEBUG] 03:07:29:988 ESI/(9394:9394): Store ˆ$­ûMüÎMüÎ üÎ üÎ üÎ üÎ üÎ Ï: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:29:988 ESI/(9394:9394): paquete de tamanio fijo agregado
+[INFO] 03:07:29:988 ESI/(9394:9394): No quedan mas lineas en el archivo
+[DEBUG] 03:07:30:461 ESI/(9396:9396): Configurando ESI
+[INFO] 03:07:30:465 ESI/(9396:9396): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:30:467 ESI/(9396:9396): Socket conectado
+[INFO] 03:07:30:467 ESI/(9396:9396): Mensaje enviado
+[INFO] 03:07:30:467 ESI/(9396:9396): Mensaje de 4 bytes recibido
+[INFO] 03:07:30:467 ESI/(9396:9396): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:30:468 ESI/(9396:9396): Socket conectado
+[INFO] 03:07:30:468 ESI/(9396:9396): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:30:468 ESI/(9396:9396): el id del esi es: 75
+[INFO] 03:07:30:468 ESI/(9396:9396): Mensaje enviado
+[DEBUG] 03:07:30:468 ESI/(9396:9396): Get jugador
+[DEBUG] 03:07:30:468 ESI/(9396:9396): paquete de tamanio fijo agregado
+[DEBUG] 03:07:30:468 ESI/(9396:9396): Set messi
+[DEBUG] 03:07:30:468 ESI/(9396:9396): paquete de tamanio fijo agregado
+[DEBUG] 03:07:30:468 ESI/(9396:9396): paquete de tamanio fijo agregado
+[DEBUG] 03:07:30:468 ESI/(9396:9396): Store ˆ$­ûM\)M\) \) \) \) \) \) l): parsed.argumentos.STORE.clave
+[DEBUG] 03:07:30:469 ESI/(9396:9396): paquete de tamanio fijo agregado
+[INFO] 03:07:30:469 ESI/(9396:9396): No quedan mas lineas en el archivo
+[DEBUG] 03:07:30:741 ESI/(9398:9398): Configurando ESI
+[INFO] 03:07:30:745 ESI/(9398:9398): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:30:746 ESI/(9398:9398): Socket conectado
+[INFO] 03:07:30:746 ESI/(9398:9398): Mensaje enviado
+[INFO] 03:07:30:747 ESI/(9398:9398): Mensaje de 4 bytes recibido
+[INFO] 03:07:30:747 ESI/(9398:9398): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:30:747 ESI/(9398:9398): Socket conectado
+[INFO] 03:07:30:747 ESI/(9398:9398): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:30:747 ESI/(9398:9398): el id del esi es: 76
+[INFO] 03:07:30:747 ESI/(9398:9398): Mensaje enviado
+[DEBUG] 03:07:30:747 ESI/(9398:9398): Get jugador
+[DEBUG] 03:07:30:748 ESI/(9398:9398): paquete de tamanio fijo agregado
+[DEBUG] 03:07:30:748 ESI/(9398:9398): Set messi
+[DEBUG] 03:07:30:748 ESI/(9398:9398): paquete de tamanio fijo agregado
+[DEBUG] 03:07:30:748 ESI/(9398:9398): paquete de tamanio fijo agregado
+[DEBUG] 03:07:30:748 ESI/(9398:9398): Store ˆ$­ûMüÂ	MüÂ	 üÂ	 üÂ	 üÂ	 üÂ	 üÂ	 Ã	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:30:748 ESI/(9398:9398): paquete de tamanio fijo agregado
+[INFO] 03:07:30:748 ESI/(9398:9398): No quedan mas lineas en el archivo
+[DEBUG] 03:07:31:317 ESI/(9400:9400): Configurando ESI
+[INFO] 03:07:31:321 ESI/(9400:9400): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:31:322 ESI/(9400:9400): Socket conectado
+[INFO] 03:07:31:323 ESI/(9400:9400): Mensaje enviado
+[INFO] 03:07:31:323 ESI/(9400:9400): Mensaje de 4 bytes recibido
+[INFO] 03:07:31:323 ESI/(9400:9400): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:31:324 ESI/(9400:9400): Socket conectado
+[INFO] 03:07:31:324 ESI/(9400:9400): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:31:324 ESI/(9400:9400): el id del esi es: 77
+[INFO] 03:07:31:324 ESI/(9400:9400): Mensaje enviado
+[DEBUG] 03:07:31:324 ESI/(9400:9400): Get jugador
+[DEBUG] 03:07:31:324 ESI/(9400:9400): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:324 ESI/(9400:9400): Set messi
+[DEBUG] 03:07:31:324 ESI/(9400:9400): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:324 ESI/(9400:9400): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:324 ESI/(9400:9400): Store ˆ$­ûMò	Mò	 ò	 ò	 ò	 ò	 ò	 ò	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:31:325 ESI/(9400:9400): paquete de tamanio fijo agregado
+[INFO] 03:07:31:325 ESI/(9400:9400): No quedan mas lineas en el archivo
+[DEBUG] 03:07:31:685 ESI/(9402:9402): Configurando ESI
+[INFO] 03:07:31:689 ESI/(9402:9402): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:31:690 ESI/(9402:9402): Socket conectado
+[INFO] 03:07:31:691 ESI/(9402:9402): Mensaje enviado
+[INFO] 03:07:31:691 ESI/(9402:9402): Mensaje de 4 bytes recibido
+[INFO] 03:07:31:691 ESI/(9402:9402): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:31:691 ESI/(9402:9402): Socket conectado
+[INFO] 03:07:31:692 ESI/(9402:9402): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:31:692 ESI/(9402:9402): el id del esi es: 78
+[INFO] 03:07:31:692 ESI/(9402:9402): Mensaje enviado
+[DEBUG] 03:07:31:692 ESI/(9402:9402): Get jugador
+[DEBUG] 03:07:31:692 ESI/(9402:9402): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:692 ESI/(9402:9402): Set messi
+[DEBUG] 03:07:31:692 ESI/(9402:9402): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:692 ESI/(9402:9402): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:692 ESI/(9402:9402): Store ˆ$­ûMì	Mì	 ì	 ì	 ì	 ì	 ì	 ü	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:31:693 ESI/(9402:9402): paquete de tamanio fijo agregado
+[INFO] 03:07:31:693 ESI/(9402:9402): No quedan mas lineas en el archivo
+[DEBUG] 03:07:31:989 ESI/(9404:9404): Configurando ESI
+[INFO] 03:07:31:993 ESI/(9404:9404): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:31:994 ESI/(9404:9404): Socket conectado
+[INFO] 03:07:31:994 ESI/(9404:9404): Mensaje enviado
+[INFO] 03:07:31:995 ESI/(9404:9404): Mensaje de 4 bytes recibido
+[INFO] 03:07:31:995 ESI/(9404:9404): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:31:995 ESI/(9404:9404): Socket conectado
+[INFO] 03:07:31:995 ESI/(9404:9404): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:31:995 ESI/(9404:9404): el id del esi es: 79
+[INFO] 03:07:31:995 ESI/(9404:9404): Mensaje enviado
+[DEBUG] 03:07:31:995 ESI/(9404:9404): Get jugador
+[DEBUG] 03:07:31:995 ESI/(9404:9404): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:995 ESI/(9404:9404): Set messi
+[DEBUG] 03:07:31:996 ESI/(9404:9404): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:996 ESI/(9404:9404): paquete de tamanio fijo agregado
+[DEBUG] 03:07:31:996 ESI/(9404:9404): Store ˆ$­ûM,'M,' ,' ,' ,' ,' ,' <': parsed.argumentos.STORE.clave
+[DEBUG] 03:07:31:996 ESI/(9404:9404): paquete de tamanio fijo agregado
+[INFO] 03:07:31:996 ESI/(9404:9404): No quedan mas lineas en el archivo
+[DEBUG] 03:07:32:277 ESI/(9406:9406): Configurando ESI
+[INFO] 03:07:32:281 ESI/(9406:9406): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:32:282 ESI/(9406:9406): Socket conectado
+[INFO] 03:07:32:282 ESI/(9406:9406): Mensaje enviado
+[INFO] 03:07:32:283 ESI/(9406:9406): Mensaje de 4 bytes recibido
+[INFO] 03:07:32:283 ESI/(9406:9406): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:32:283 ESI/(9406:9406): Socket conectado
+[INFO] 03:07:32:283 ESI/(9406:9406): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:32:283 ESI/(9406:9406): el id del esi es: 80
+[INFO] 03:07:32:283 ESI/(9406:9406): Mensaje enviado
+[DEBUG] 03:07:32:283 ESI/(9406:9406): Get jugador
+[DEBUG] 03:07:32:283 ESI/(9406:9406): paquete de tamanio fijo agregado
+[DEBUG] 03:07:32:284 ESI/(9406:9406): Set messi
+[DEBUG] 03:07:32:284 ESI/(9406:9406): paquete de tamanio fijo agregado
+[DEBUG] 03:07:32:284 ESI/(9406:9406): paquete de tamanio fijo agregado
+[DEBUG] 03:07:32:284 ESI/(9406:9406): Store ˆ$­ûML‘	ML‘	 L‘	 L‘	 L‘	 L‘	 L‘	 \‘	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:32:284 ESI/(9406:9406): paquete de tamanio fijo agregado
+[INFO] 03:07:32:284 ESI/(9406:9406): No quedan mas lineas en el archivo
+[DEBUG] 03:07:32:829 ESI/(9408:9408): Configurando ESI
+[INFO] 03:07:32:833 ESI/(9408:9408): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:32:834 ESI/(9408:9408): Socket conectado
+[INFO] 03:07:32:834 ESI/(9408:9408): Mensaje enviado
+[INFO] 03:07:32:835 ESI/(9408:9408): Mensaje de 4 bytes recibido
+[INFO] 03:07:32:835 ESI/(9408:9408): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:32:835 ESI/(9408:9408): Socket conectado
+[INFO] 03:07:32:835 ESI/(9408:9408): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:32:835 ESI/(9408:9408): el id del esi es: 81
+[INFO] 03:07:32:835 ESI/(9408:9408): Mensaje enviado
+[DEBUG] 03:07:32:835 ESI/(9408:9408): Get jugador
+[DEBUG] 03:07:32:835 ESI/(9408:9408): paquete de tamanio fijo agregado
+[DEBUG] 03:07:32:835 ESI/(9408:9408): Set messi
+[DEBUG] 03:07:32:836 ESI/(9408:9408): paquete de tamanio fijo agregado
+[DEBUG] 03:07:32:836 ESI/(9408:9408): paquete de tamanio fijo agregado
+[DEBUG] 03:07:32:836 ESI/(9408:9408): Store ˆ$­ûM"M" " " " " " ": parsed.argumentos.STORE.clave
+[DEBUG] 03:07:32:836 ESI/(9408:9408): paquete de tamanio fijo agregado
+[INFO] 03:07:32:836 ESI/(9408:9408): No quedan mas lineas en el archivo
+[DEBUG] 03:07:33:172 ESI/(9410:9410): Configurando ESI
+[INFO] 03:07:33:177 ESI/(9410:9410): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:33:178 ESI/(9410:9410): Socket conectado
+[INFO] 03:07:33:178 ESI/(9410:9410): Mensaje enviado
+[INFO] 03:07:33:178 ESI/(9410:9410): Mensaje de 4 bytes recibido
+[INFO] 03:07:33:179 ESI/(9410:9410): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:33:179 ESI/(9410:9410): Socket conectado
+[INFO] 03:07:33:179 ESI/(9410:9410): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:33:179 ESI/(9410:9410): el id del esi es: 82
+[INFO] 03:07:33:179 ESI/(9410:9410): Mensaje enviado
+[DEBUG] 03:07:33:179 ESI/(9410:9410): Get jugador
+[DEBUG] 03:07:33:179 ESI/(9410:9410): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:179 ESI/(9410:9410): Set messi
+[DEBUG] 03:07:33:180 ESI/(9410:9410): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:180 ESI/(9410:9410): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:180 ESI/(9410:9410): Store ˆ$­ûMLÝ	MLÝ	 LÝ	 LÝ	 LÝ	 LÝ	 LÝ	 \Ý	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:33:180 ESI/(9410:9410): paquete de tamanio fijo agregado
+[INFO] 03:07:33:180 ESI/(9410:9410): No quedan mas lineas en el archivo
+[DEBUG] 03:07:33:452 ESI/(9412:9412): Configurando ESI
+[INFO] 03:07:33:456 ESI/(9412:9412): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:33:457 ESI/(9412:9412): Socket conectado
+[INFO] 03:07:33:457 ESI/(9412:9412): Mensaje enviado
+[INFO] 03:07:33:458 ESI/(9412:9412): Mensaje de 4 bytes recibido
+[INFO] 03:07:33:458 ESI/(9412:9412): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:33:458 ESI/(9412:9412): Socket conectado
+[INFO] 03:07:33:458 ESI/(9412:9412): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:33:458 ESI/(9412:9412): el id del esi es: 83
+[INFO] 03:07:33:458 ESI/(9412:9412): Mensaje enviado
+[DEBUG] 03:07:33:459 ESI/(9412:9412): Get jugador
+[DEBUG] 03:07:33:459 ESI/(9412:9412): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:459 ESI/(9412:9412): Set messi
+[DEBUG] 03:07:33:459 ESI/(9412:9412): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:459 ESI/(9412:9412): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:459 ESI/(9412:9412): Store ˆ$­ûMŒÝMŒÝ ŒÝ ŒÝ ŒÝ ŒÝ ŒÝ œÝ: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:33:459 ESI/(9412:9412): paquete de tamanio fijo agregado
+[INFO] 03:07:33:459 ESI/(9412:9412): No quedan mas lineas en el archivo
+[DEBUG] 03:07:33:716 ESI/(9414:9414): Configurando ESI
+[INFO] 03:07:33:720 ESI/(9414:9414): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:33:721 ESI/(9414:9414): Socket conectado
+[INFO] 03:07:33:722 ESI/(9414:9414): Mensaje enviado
+[INFO] 03:07:33:722 ESI/(9414:9414): Mensaje de 4 bytes recibido
+[INFO] 03:07:33:722 ESI/(9414:9414): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:33:722 ESI/(9414:9414): Socket conectado
+[INFO] 03:07:33:723 ESI/(9414:9414): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:33:723 ESI/(9414:9414): el id del esi es: 84
+[INFO] 03:07:33:723 ESI/(9414:9414): Mensaje enviado
+[DEBUG] 03:07:33:723 ESI/(9414:9414): Get jugador
+[DEBUG] 03:07:33:723 ESI/(9414:9414): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:723 ESI/(9414:9414): Set messi
+[DEBUG] 03:07:33:723 ESI/(9414:9414): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:723 ESI/(9414:9414): paquete de tamanio fijo agregado
+[DEBUG] 03:07:33:723 ESI/(9414:9414): Store ˆ$­ûM¬RM¬R ¬R ¬R ¬R ¬R ¬R ¼R: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:33:723 ESI/(9414:9414): paquete de tamanio fijo agregado
+[INFO] 03:07:33:724 ESI/(9414:9414): No quedan mas lineas en el archivo
+[DEBUG] 03:07:34:21 ESI/(9416:9416): Configurando ESI
+[INFO] 03:07:34:25 ESI/(9416:9416): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:34:26 ESI/(9416:9416): Socket conectado
+[INFO] 03:07:34:26 ESI/(9416:9416): Mensaje enviado
+[INFO] 03:07:34:27 ESI/(9416:9416): Mensaje de 4 bytes recibido
+[INFO] 03:07:34:27 ESI/(9416:9416): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:34:27 ESI/(9416:9416): Socket conectado
+[INFO] 03:07:34:27 ESI/(9416:9416): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:34:27 ESI/(9416:9416): el id del esi es: 85
+[INFO] 03:07:34:27 ESI/(9416:9416): Mensaje enviado
+[DEBUG] 03:07:34:27 ESI/(9416:9416): Get jugador
+[DEBUG] 03:07:34:28 ESI/(9416:9416): paquete de tamanio fijo agregado
+[DEBUG] 03:07:34:28 ESI/(9416:9416): Set messi
+[DEBUG] 03:07:34:28 ESI/(9416:9416): paquete de tamanio fijo agregado
+[DEBUG] 03:07:34:28 ESI/(9416:9416): paquete de tamanio fijo agregado
+[DEBUG] 03:07:34:28 ESI/(9416:9416): Store ˆ$­ûM, 	M, 	 , 	 , 	 , 	 , 	 , 	 < 	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:34:28 ESI/(9416:9416): paquete de tamanio fijo agregado
+[INFO] 03:07:34:29 ESI/(9416:9416): No quedan mas lineas en el archivo
+[DEBUG] 03:07:34:268 ESI/(9418:9418): Configurando ESI
+[INFO] 03:07:34:273 ESI/(9418:9418): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:07:34:274 ESI/(9418:9418): Socket conectado
+[INFO] 03:07:34:275 ESI/(9418:9418): Mensaje enviado
+[INFO] 03:07:34:275 ESI/(9418:9418): Mensaje de 4 bytes recibido
+[INFO] 03:07:34:275 ESI/(9418:9418): Se ha conectado al coordinador correctamente!!
+[INFO] 03:07:34:276 ESI/(9418:9418): Socket conectado
+[INFO] 03:07:34:276 ESI/(9418:9418): Mensaje de 4 bytes recibido
+[DEBUG] 03:07:34:276 ESI/(9418:9418): el id del esi es: 86
+[INFO] 03:07:34:276 ESI/(9418:9418): Mensaje enviado
+[DEBUG] 03:07:34:276 ESI/(9418:9418): Get jugador
+[DEBUG] 03:07:34:276 ESI/(9418:9418): paquete de tamanio fijo agregado
+[DEBUG] 03:07:34:276 ESI/(9418:9418): Set messi
+[DEBUG] 03:07:34:276 ESI/(9418:9418): paquete de tamanio fijo agregado
+[DEBUG] 03:07:34:276 ESI/(9418:9418): paquete de tamanio fijo agregado
+[DEBUG] 03:07:34:276 ESI/(9418:9418): Store ˆ$­ûM<ß	M<ß	 <ß	 <ß	 <ß	 <ß	 <ß	 Lß	: parsed.argumentos.STORE.clave
+[DEBUG] 03:07:34:277 ESI/(9418:9418): paquete de tamanio fijo agregado
+[INFO] 03:07:34:277 ESI/(9418:9418): No quedan mas lineas en el archivo
+[DEBUG] 03:08:12:727 ESI/(9434:9434): Configurando ESI
+[INFO] 03:08:12:728 ESI/(9434:9434): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:12:729 ESI/(9434:9434): Socket conectado
+[INFO] 03:08:12:729 ESI/(9434:9434): Mensaje enviado
+[INFO] 03:08:12:729 ESI/(9434:9434): Mensaje de 4 bytes recibido
+[INFO] 03:08:12:730 ESI/(9434:9434): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:12:730 ESI/(9434:9434): Socket conectado
+[INFO] 03:08:12:730 ESI/(9434:9434): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:12:730 ESI/(9434:9434): el id del esi es: 87
+[INFO] 03:08:12:730 ESI/(9434:9434): Mensaje enviado
+[DEBUG] 03:08:12:730 ESI/(9434:9434): Get jugador
+[DEBUG] 03:08:12:730 ESI/(9434:9434): paquete de tamanio fijo agregado
+[DEBUG] 03:08:12:730 ESI/(9434:9434): Set messi
+[DEBUG] 03:08:12:730 ESI/(9434:9434): paquete de tamanio fijo agregado
+[DEBUG] 03:08:12:731 ESI/(9434:9434): paquete de tamanio fijo agregado
+[DEBUG] 03:08:12:731 ESI/(9434:9434): Store ˆ$­ûM\	M\	 \	 \	 \	 \	 \	 l	: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:12:731 ESI/(9434:9434): paquete de tamanio fijo agregado
+[INFO] 03:08:12:731 ESI/(9434:9434): No quedan mas lineas en el archivo
+[DEBUG] 03:08:24:324 ESI/(9439:9439): Configurando ESI
+[INFO] 03:08:24:324 ESI/(9439:9439): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:24:325 ESI/(9439:9439): Socket conectado
+[INFO] 03:08:24:325 ESI/(9439:9439): Mensaje enviado
+[INFO] 03:08:24:326 ESI/(9439:9439): Mensaje de 4 bytes recibido
+[INFO] 03:08:24:326 ESI/(9439:9439): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:24:326 ESI/(9439:9439): Socket conectado
+[INFO] 03:08:24:326 ESI/(9439:9439): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:24:326 ESI/(9439:9439): el id del esi es: 88
+[INFO] 03:08:24:326 ESI/(9439:9439): Mensaje enviado
+[DEBUG] 03:08:24:327 ESI/(9439:9439): Get jugador
+[DEBUG] 03:08:24:327 ESI/(9439:9439): paquete de tamanio fijo agregado
+[DEBUG] 03:08:24:327 ESI/(9439:9439): Set messi
+[DEBUG] 03:08:24:327 ESI/(9439:9439): paquete de tamanio fijo agregado
+[DEBUG] 03:08:24:327 ESI/(9439:9439): paquete de tamanio fijo agregado
+[DEBUG] 03:08:24:327 ESI/(9439:9439): Store ˆ$­ûMÇ	MÇ	 Ç	 Ç	 Ç	 Ç	 Ç	 ,Ç	: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:24:327 ESI/(9439:9439): paquete de tamanio fijo agregado
+[INFO] 03:08:24:328 ESI/(9439:9439): No quedan mas lineas en el archivo
+[DEBUG] 03:08:25:372 ESI/(9445:9445): Configurando ESI
+[INFO] 03:08:25:375 ESI/(9445:9445): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:25:377 ESI/(9445:9445): Socket conectado
+[INFO] 03:08:25:377 ESI/(9445:9445): Mensaje enviado
+[INFO] 03:08:25:377 ESI/(9445:9445): Mensaje de 4 bytes recibido
+[INFO] 03:08:25:377 ESI/(9445:9445): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:25:378 ESI/(9445:9445): Socket conectado
+[INFO] 03:08:25:378 ESI/(9445:9445): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:25:378 ESI/(9445:9445): el id del esi es: 89
+[INFO] 03:08:25:378 ESI/(9445:9445): Mensaje enviado
+[DEBUG] 03:08:25:378 ESI/(9445:9445): Get jugador
+[DEBUG] 03:08:25:378 ESI/(9445:9445): paquete de tamanio fijo agregado
+[DEBUG] 03:08:25:378 ESI/(9445:9445): Set messi
+[DEBUG] 03:08:25:378 ESI/(9445:9445): paquete de tamanio fijo agregado
+[DEBUG] 03:08:25:379 ESI/(9445:9445): paquete de tamanio fijo agregado
+[DEBUG] 03:08:25:379 ESI/(9445:9445): Store ˆ$­ûMüRMüR üR üR üR üR üR S: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:25:379 ESI/(9445:9445): paquete de tamanio fijo agregado
+[INFO] 03:08:25:379 ESI/(9445:9445): No quedan mas lineas en el archivo
+[DEBUG] 03:08:26:179 ESI/(9448:9448): Configurando ESI
+[INFO] 03:08:26:183 ESI/(9448:9448): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:26:184 ESI/(9448:9448): Socket conectado
+[INFO] 03:08:26:184 ESI/(9448:9448): Mensaje enviado
+[INFO] 03:08:26:185 ESI/(9448:9448): Mensaje de 4 bytes recibido
+[INFO] 03:08:26:185 ESI/(9448:9448): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:26:185 ESI/(9448:9448): Socket conectado
+[INFO] 03:08:26:185 ESI/(9448:9448): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:26:185 ESI/(9448:9448): el id del esi es: 90
+[INFO] 03:08:26:185 ESI/(9448:9448): Mensaje enviado
+[DEBUG] 03:08:26:185 ESI/(9448:9448): Get jugador
+[DEBUG] 03:08:26:185 ESI/(9448:9448): paquete de tamanio fijo agregado
+[DEBUG] 03:08:26:185 ESI/(9448:9448): Set messi
+[DEBUG] 03:08:26:186 ESI/(9448:9448): paquete de tamanio fijo agregado
+[DEBUG] 03:08:26:186 ESI/(9448:9448): paquete de tamanio fijo agregado
+[DEBUG] 03:08:26:186 ESI/(9448:9448): Store ˆ$­ûM\hM\h \h \h \h \h \h lh: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:26:186 ESI/(9448:9448): paquete de tamanio fijo agregado
+[INFO] 03:08:26:186 ESI/(9448:9448): No quedan mas lineas en el archivo
+[DEBUG] 03:08:26:839 ESI/(9451:9451): Configurando ESI
+[INFO] 03:08:26:843 ESI/(9451:9451): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:26:847 ESI/(9451:9451): Socket conectado
+[INFO] 03:08:26:847 ESI/(9451:9451): Mensaje enviado
+[INFO] 03:08:26:848 ESI/(9451:9451): Mensaje de 4 bytes recibido
+[INFO] 03:08:26:848 ESI/(9451:9451): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:26:848 ESI/(9451:9451): Socket conectado
+[INFO] 03:08:26:848 ESI/(9451:9451): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:26:848 ESI/(9451:9451): el id del esi es: 91
+[INFO] 03:08:26:848 ESI/(9451:9451): Mensaje enviado
+[DEBUG] 03:08:26:848 ESI/(9451:9451): Get jugador
+[DEBUG] 03:08:26:848 ESI/(9451:9451): paquete de tamanio fijo agregado
+[DEBUG] 03:08:26:849 ESI/(9451:9451): Set messi
+[DEBUG] 03:08:26:849 ESI/(9451:9451): paquete de tamanio fijo agregado
+[DEBUG] 03:08:26:849 ESI/(9451:9451): paquete de tamanio fijo agregado
+[DEBUG] 03:08:26:849 ESI/(9451:9451): Store ˆ$­ûML°	ML°	 L°	 L°	 L°	 L°	 L°	 \°	: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:26:849 ESI/(9451:9451): paquete de tamanio fijo agregado
+[INFO] 03:08:26:849 ESI/(9451:9451): No quedan mas lineas en el archivo
+[DEBUG] 03:08:27:379 ESI/(9454:9454): Configurando ESI
+[INFO] 03:08:27:383 ESI/(9454:9454): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:27:384 ESI/(9454:9454): Socket conectado
+[INFO] 03:08:27:384 ESI/(9454:9454): Mensaje enviado
+[INFO] 03:08:27:385 ESI/(9454:9454): Mensaje de 4 bytes recibido
+[INFO] 03:08:27:385 ESI/(9454:9454): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:27:385 ESI/(9454:9454): Socket conectado
+[INFO] 03:08:27:385 ESI/(9454:9454): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:27:385 ESI/(9454:9454): el id del esi es: 92
+[INFO] 03:08:27:385 ESI/(9454:9454): Mensaje enviado
+[DEBUG] 03:08:27:385 ESI/(9454:9454): Get jugador
+[DEBUG] 03:08:27:385 ESI/(9454:9454): paquete de tamanio fijo agregado
+[DEBUG] 03:08:27:385 ESI/(9454:9454): Set messi
+[DEBUG] 03:08:27:386 ESI/(9454:9454): paquete de tamanio fijo agregado
+[DEBUG] 03:08:27:386 ESI/(9454:9454): paquete de tamanio fijo agregado
+[DEBUG] 03:08:27:386 ESI/(9454:9454): Store ˆ$­ûM	M	 	 	 	 	 	 	: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:27:386 ESI/(9454:9454): paquete de tamanio fijo agregado
+[INFO] 03:08:27:386 ESI/(9454:9454): No quedan mas lineas en el archivo
+[DEBUG] 03:08:27:946 ESI/(9456:9456): Configurando ESI
+[INFO] 03:08:27:951 ESI/(9456:9456): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:27:952 ESI/(9456:9456): Socket conectado
+[INFO] 03:08:27:952 ESI/(9456:9456): Mensaje enviado
+[INFO] 03:08:27:952 ESI/(9456:9456): Mensaje de 4 bytes recibido
+[INFO] 03:08:27:952 ESI/(9456:9456): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:27:953 ESI/(9456:9456): Socket conectado
+[INFO] 03:08:27:953 ESI/(9456:9456): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:27:953 ESI/(9456:9456): el id del esi es: 93
+[INFO] 03:08:27:953 ESI/(9456:9456): Mensaje enviado
+[DEBUG] 03:08:27:953 ESI/(9456:9456): Get jugador
+[DEBUG] 03:08:27:953 ESI/(9456:9456): paquete de tamanio fijo agregado
+[DEBUG] 03:08:27:953 ESI/(9456:9456): Set messi
+[DEBUG] 03:08:27:953 ESI/(9456:9456): paquete de tamanio fijo agregado
+[DEBUG] 03:08:27:953 ESI/(9456:9456): paquete de tamanio fijo agregado
+[DEBUG] 03:08:27:954 ESI/(9456:9456): Store ˆ$­ûMü×	Mü×	 ü×	 ü×	 ü×	 ü×	 ü×	 Ø	: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:27:954 ESI/(9456:9456): paquete de tamanio fijo agregado
+[INFO] 03:08:27:954 ESI/(9456:9456): No quedan mas lineas en el archivo
+[DEBUG] 03:08:28:458 ESI/(9458:9458): Configurando ESI
+[INFO] 03:08:28:463 ESI/(9458:9458): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:28:464 ESI/(9458:9458): Socket conectado
+[INFO] 03:08:28:464 ESI/(9458:9458): Mensaje enviado
+[INFO] 03:08:28:464 ESI/(9458:9458): Mensaje de 4 bytes recibido
+[INFO] 03:08:28:464 ESI/(9458:9458): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:28:464 ESI/(9458:9458): Socket conectado
+[INFO] 03:08:28:465 ESI/(9458:9458): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:28:465 ESI/(9458:9458): el id del esi es: 94
+[INFO] 03:08:28:465 ESI/(9458:9458): Mensaje enviado
+[DEBUG] 03:08:28:465 ESI/(9458:9458): Get jugador
+[DEBUG] 03:08:28:465 ESI/(9458:9458): paquete de tamanio fijo agregado
+[DEBUG] 03:08:28:465 ESI/(9458:9458): Set messi
+[DEBUG] 03:08:28:465 ESI/(9458:9458): paquete de tamanio fijo agregado
+[DEBUG] 03:08:28:465 ESI/(9458:9458): paquete de tamanio fijo agregado
+[DEBUG] 03:08:28:465 ESI/(9458:9458): Store ˆ$­ûMÜÒMÜÒ ÜÒ ÜÒ ÜÒ ÜÒ ÜÒ ìÒ: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:28:465 ESI/(9458:9458): paquete de tamanio fijo agregado
+[INFO] 03:08:28:465 ESI/(9458:9458): No quedan mas lineas en el archivo
+[DEBUG] 03:08:29:170 ESI/(9460:9460): Configurando ESI
+[INFO] 03:08:29:174 ESI/(9460:9460): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:08:29:175 ESI/(9460:9460): Socket conectado
+[INFO] 03:08:29:175 ESI/(9460:9460): Mensaje enviado
+[INFO] 03:08:29:176 ESI/(9460:9460): Mensaje de 4 bytes recibido
+[INFO] 03:08:29:176 ESI/(9460:9460): Se ha conectado al coordinador correctamente!!
+[INFO] 03:08:29:176 ESI/(9460:9460): Socket conectado
+[INFO] 03:08:29:176 ESI/(9460:9460): Mensaje de 4 bytes recibido
+[DEBUG] 03:08:29:176 ESI/(9460:9460): el id del esi es: 95
+[INFO] 03:08:29:176 ESI/(9460:9460): Mensaje enviado
+[DEBUG] 03:08:29:177 ESI/(9460:9460): Get jugador
+[DEBUG] 03:08:29:177 ESI/(9460:9460): paquete de tamanio fijo agregado
+[DEBUG] 03:08:29:177 ESI/(9460:9460): Set messi
+[DEBUG] 03:08:29:177 ESI/(9460:9460): paquete de tamanio fijo agregado
+[DEBUG] 03:08:29:177 ESI/(9460:9460): paquete de tamanio fijo agregado
+[DEBUG] 03:08:29:177 ESI/(9460:9460): Store ˆ$­ûMlMl l l l l l |: parsed.argumentos.STORE.clave
+[DEBUG] 03:08:29:177 ESI/(9460:9460): paquete de tamanio fijo agregado
+[INFO] 03:08:29:177 ESI/(9460:9460): No quedan mas lineas en el archivo
+[DEBUG] 03:09:57:925 ESI/(9521:9521): Configurando ESI
+[INFO] 03:09:57:926 ESI/(9521:9521): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:09:57:929 ESI/(9521:9521): Socket conectado
+[INFO] 03:09:57:929 ESI/(9521:9521): Mensaje enviado
+[INFO] 03:09:57:942 ESI/(9521:9521): Mensaje de 4 bytes recibido
+[INFO] 03:09:57:943 ESI/(9521:9521): Se ha conectado al coordinador correctamente!!
+[INFO] 03:09:57:943 ESI/(9521:9521): Socket conectado
+[INFO] 03:09:57:943 ESI/(9521:9521): Mensaje de 4 bytes recibido
+[DEBUG] 03:09:57:943 ESI/(9521:9521): el id del esi es: 96
+[INFO] 03:09:57:943 ESI/(9521:9521): Mensaje enviado
+[DEBUG] 03:09:57:943 ESI/(9521:9521): Get jugador
+[DEBUG] 03:09:57:943 ESI/(9521:9521): paquete de tamanio fijo agregado
+[DEBUG] 03:09:57:943 ESI/(9521:9521): Set messi
+[DEBUG] 03:09:57:943 ESI/(9521:9521): paquete de tamanio fijo agregado
+[DEBUG] 03:09:57:943 ESI/(9521:9521): paquete de tamanio fijo agregado
+[DEBUG] 03:09:57:943 ESI/(9521:9521): Store ˆ$­ûMŒbMŒb Œb Œb Œb Œb Œb œb: parsed.argumentos.STORE.clave
+[DEBUG] 03:09:57:943 ESI/(9521:9521): paquete de tamanio fijo agregado
+[INFO] 03:09:57:943 ESI/(9521:9521): No quedan mas lineas en el archivo
+[DEBUG] 03:11:54:927 ESI/(9584:9584): Configurando ESI
+[INFO] 03:11:54:927 ESI/(9584:9584): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:11:54:928 ESI/(9584:9584): Socket conectado
+[INFO] 03:11:54:928 ESI/(9584:9584): Mensaje enviado
+[INFO] 03:11:54:932 ESI/(9584:9584): Mensaje de 4 bytes recibido
+[INFO] 03:11:54:932 ESI/(9584:9584): Se ha conectado al coordinador correctamente!!
+[INFO] 03:11:54:932 ESI/(9584:9584): Socket conectado
+[INFO] 03:11:54:932 ESI/(9584:9584): Mensaje de 4 bytes recibido
+[DEBUG] 03:11:54:933 ESI/(9584:9584): el id del esi es: 97
+[INFO] 03:11:54:933 ESI/(9584:9584): Mensaje enviado
+[DEBUG] 03:11:54:933 ESI/(9584:9584): Get jugador
+[DEBUG] 03:11:54:933 ESI/(9584:9584): paquete de tamanio fijo agregado
+[DEBUG] 03:11:54:933 ESI/(9584:9584): Set messi
+[DEBUG] 03:11:54:933 ESI/(9584:9584): paquete de tamanio fijo agregado
+[DEBUG] 03:11:54:933 ESI/(9584:9584): paquete de tamanio fijo agregado
+[DEBUG] 03:11:54:933 ESI/(9584:9584): Store ˆ$­ûMüaMüa üa üa üa üa üa b: parsed.argumentos.STORE.clave
+[DEBUG] 03:11:54:933 ESI/(9584:9584): paquete de tamanio fijo agregado
+[INFO] 03:11:54:933 ESI/(9584:9584): No quedan mas lineas en el archivo
+[DEBUG] 03:12:31:795 ESI/(9624:9624): Configurando ESI
+[INFO] 03:12:31:795 ESI/(9624:9624): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:12:31:796 ESI/(9624:9624): Socket conectado
+[INFO] 03:12:31:796 ESI/(9624:9624): Mensaje enviado
+[INFO] 03:12:38:922 ESI/(9624:9624): Mensaje de 4 bytes recibido
+[INFO] 03:12:38:922 ESI/(9624:9624): Se ha conectado al coordinador correctamente!!
+[INFO] 03:12:38:923 ESI/(9624:9624): Socket conectado
+[INFO] 03:12:38:924 ESI/(9624:9624): Mensaje de 4 bytes recibido
+[DEBUG] 03:12:38:924 ESI/(9624:9624): el id del esi es: 98
+[INFO] 03:12:38:924 ESI/(9624:9624): Mensaje enviado
+[DEBUG] 03:12:38:924 ESI/(9624:9624): Get jugador
+[DEBUG] 03:12:38:924 ESI/(9624:9624): paquete de tamanio fijo agregado
+[DEBUG] 03:12:38:924 ESI/(9624:9624): Set messi
+[DEBUG] 03:12:38:924 ESI/(9624:9624): paquete de tamanio fijo agregado
+[DEBUG] 03:12:38:924 ESI/(9624:9624): paquete de tamanio fijo agregado
+[DEBUG] 03:12:38:924 ESI/(9624:9624): Store ˆ$­ûMŒZ	MŒZ	 ŒZ	 ŒZ	 ŒZ	 ŒZ	 ŒZ	 œZ	: parsed.argumentos.STORE.clave
+[DEBUG] 03:12:38:924 ESI/(9624:9624): paquete de tamanio fijo agregado
+[INFO] 03:12:38:924 ESI/(9624:9624): No quedan mas lineas en el archivo
+[DEBUG] 03:14:44:523 ESI/(9711:9711): Configurando ESI
+[INFO] 03:14:44:523 ESI/(9711:9711): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:14:44:523 ESI/(9711:9711): Socket conectado
+[INFO] 03:14:44:524 ESI/(9711:9711): Mensaje enviado
+[INFO] 03:14:50:621 ESI/(9711:9711): Mensaje de 4 bytes recibido
+[INFO] 03:14:50:621 ESI/(9711:9711): Se ha conectado al coordinador correctamente!!
+[INFO] 03:14:50:621 ESI/(9711:9711): Socket conectado
+[INFO] 03:14:50:621 ESI/(9711:9711): Mensaje de 4 bytes recibido
+[DEBUG] 03:14:50:621 ESI/(9711:9711): el id del esi es: 99
+[INFO] 03:14:50:621 ESI/(9711:9711): Mensaje enviado
+[DEBUG] 03:14:50:621 ESI/(9711:9711): Get jugador
+[DEBUG] 03:14:50:621 ESI/(9711:9711): paquete de tamanio fijo agregado
+[DEBUG] 03:14:50:621 ESI/(9711:9711): Set messi
+[DEBUG] 03:14:50:621 ESI/(9711:9711): paquete de tamanio fijo agregado
+[DEBUG] 03:14:50:622 ESI/(9711:9711): paquete de tamanio fijo agregado
+[DEBUG] 03:14:50:622 ESI/(9711:9711): Store ˆ$­ûMü¨	Mü¨	 ü¨	 ü¨	 ü¨	 ü¨	 ü¨	 ©	: parsed.argumentos.STORE.clave
+[DEBUG] 03:14:50:622 ESI/(9711:9711): paquete de tamanio fijo agregado
+[INFO] 03:14:50:622 ESI/(9711:9711): No quedan mas lineas en el archivo
+[DEBUG] 03:16:59:747 ESI/(9850:9850): Configurando ESI
+[INFO] 03:16:59:747 ESI/(9850:9850): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:16:59:748 ESI/(9850:9850): Socket conectado
+[INFO] 03:16:59:748 ESI/(9850:9850): Mensaje enviado
+[INFO] 03:17:01:604 ESI/(9850:9850): Mensaje de 4 bytes recibido
+[INFO] 03:17:01:604 ESI/(9850:9850): Se ha conectado al coordinador correctamente!!
+[INFO] 03:17:01:605 ESI/(9850:9850): Socket conectado
+[INFO] 03:17:01:605 ESI/(9850:9850): Mensaje de 4 bytes recibido
+[DEBUG] 03:17:01:605 ESI/(9850:9850): el id del esi es: 100
+[INFO] 03:17:01:605 ESI/(9850:9850): Mensaje enviado
+[DEBUG] 03:17:01:605 ESI/(9850:9850): Get jugador
+[DEBUG] 03:17:01:605 ESI/(9850:9850): paquete de tamanio fijo agregado
+[DEBUG] 03:17:01:605 ESI/(9850:9850): Set messi
+[DEBUG] 03:17:01:605 ESI/(9850:9850): paquete de tamanio fijo agregado
+[DEBUG] 03:17:01:605 ESI/(9850:9850): paquete de tamanio fijo agregado
+[DEBUG] 03:17:01:605 ESI/(9850:9850): Store ˆ$­ûM„	M„	 „	 „	 „	 „	 „	 ,„	: parsed.argumentos.STORE.clave
+[DEBUG] 03:17:01:606 ESI/(9850:9850): paquete de tamanio fijo agregado
+[INFO] 03:17:01:606 ESI/(9850:9850): No quedan mas lineas en el archivo
+[DEBUG] 03:18:02:985 ESI/(9892:9892): Configurando ESI
+[INFO] 03:18:02:985 ESI/(9892:9892): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:18:02:985 ESI/(9892:9892): Socket conectado
+[INFO] 03:18:02:986 ESI/(9892:9892): Mensaje enviado
+[INFO] 03:18:05:154 ESI/(9892:9892): Mensaje de 4 bytes recibido
+[INFO] 03:18:05:155 ESI/(9892:9892): Se ha conectado al coordinador correctamente!!
+[INFO] 03:18:05:155 ESI/(9892:9892): Socket conectado
+[INFO] 03:18:05:155 ESI/(9892:9892): Mensaje de 4 bytes recibido
+[DEBUG] 03:18:05:155 ESI/(9892:9892): el id del esi es: 101
+[INFO] 03:18:05:156 ESI/(9892:9892): Mensaje enviado
+[DEBUG] 03:18:05:156 ESI/(9892:9892): Get jugador
+[DEBUG] 03:18:05:156 ESI/(9892:9892): paquete de tamanio fijo agregado
+[DEBUG] 03:18:05:156 ESI/(9892:9892): Set messi
+[DEBUG] 03:18:05:156 ESI/(9892:9892): paquete de tamanio fijo agregado
+[DEBUG] 03:18:05:156 ESI/(9892:9892): paquete de tamanio fijo agregado
+[DEBUG] 03:18:05:156 ESI/(9892:9892): Store ˆ$­ûMüQ	MüQ	 üQ	 üQ	 üQ	 üQ	 üQ	 R	: parsed.argumentos.STORE.clave
+[DEBUG] 03:18:05:156 ESI/(9892:9892): paquete de tamanio fijo agregado
+[INFO] 03:18:05:156 ESI/(9892:9892): No quedan mas lineas en el archivo
+[DEBUG] 03:18:33:940 ESI/(9902:9902): Configurando ESI
+[INFO] 03:18:33:940 ESI/(9902:9902): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 03:18:33:940 ESI/(9902:9902): Socket conectado
+[INFO] 03:18:33:940 ESI/(9902:9902): Mensaje enviado
+[INFO] 03:18:42:579 ESI/(9902:9902): Mensaje de 4 bytes recibido
+[INFO] 03:18:42:579 ESI/(9902:9902): Se ha conectado al coordinador correctamente!!
+[INFO] 03:18:42:580 ESI/(9902:9902): Socket conectado
+[INFO] 03:18:42:580 ESI/(9902:9902): Mensaje de 4 bytes recibido
+[DEBUG] 03:18:42:580 ESI/(9902:9902): el id del esi es: 102
+[INFO] 03:18:42:580 ESI/(9902:9902): Mensaje enviado
+[DEBUG] 03:18:42:581 ESI/(9902:9902): Get jugador
+[DEBUG] 03:18:42:581 ESI/(9902:9902): paquete de tamanio fijo agregado
+[DEBUG] 03:18:42:581 ESI/(9902:9902): Set messi
+[DEBUG] 03:18:42:581 ESI/(9902:9902): paquete de tamanio fijo agregado
+[DEBUG] 03:18:42:582 ESI/(9902:9902): paquete de tamanio fijo agregado
+[DEBUG] 03:18:42:582 ESI/(9902:9902): Store ˆ$­ûM,×	M,×	 ,×	 ,×	 ,×	 ,×	 ,×	 <×	: parsed.argumentos.STORE.clave
+[DEBUG] 03:18:42:582 ESI/(9902:9902): paquete de tamanio fijo agregado
+[INFO] 03:18:42:582 ESI/(9902:9902): No quedan mas lineas en el archivo
