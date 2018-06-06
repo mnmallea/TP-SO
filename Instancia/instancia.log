@@ -929,3 +929,238 @@
 [ERROR] 15:06:05:181 Instancia/(1401:1401): paquete de tamanio fijo agregado
 [ERROR] 15:06:05:181 Instancia/(1401:1401): paquete de tamanio fijo agregado
 [ERROR] 15:06:05:181 Instancia/(1401:1401):  paquete tamanio variable agregado
+[INFO] 22:44:14:79 Instancia/(2021:2021): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:44:14:79 Instancia/(2021:2021): Socket conectado
+[INFO] 22:44:14:79 Instancia/(2021:2021): Mensaje enviado
+[INFO] 22:44:14:85 Instancia/(2021:2021): Mensaje de 4 bytes recibido
+[INFO] 22:44:14:85 Instancia/(2021:2021): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:44:14:239 Instancia/(2021:2021): paquete de tamanio fijo agregado
+[ERROR] 22:44:14:241 Instancia/(2021:2021): paquete de tamanio fijo agregado
+[ERROR] 22:44:14:241 Instancia/(2021:2021):  paquete tamanio variable agregado
+[INFO] 22:44:32:29 Instancia/(2055:2055): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:44:32:29 Instancia/(2055:2055): Socket conectado
+[INFO] 22:44:32:30 Instancia/(2055:2055): Mensaje enviado
+[INFO] 22:44:32:33 Instancia/(2055:2055): Mensaje de 4 bytes recibido
+[INFO] 22:44:32:33 Instancia/(2055:2055): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:46:09:573 Instancia/(2055:2055): paquete de tamanio fijo agregado
+[ERROR] 22:46:39:316 Instancia/(2055:2055): paquete de tamanio fijo agregado
+[ERROR] 22:47:08:395 Instancia/(2055:2055):  paquete tamanio variable agregado
+[INFO] 22:53:09:900 Instancia/(2250:2250): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:53:09:901 Instancia/(2250:2250): Socket conectado
+[INFO] 22:53:09:901 Instancia/(2250:2250): Mensaje enviado
+[INFO] 22:53:09:901 Instancia/(2250:2250): Mensaje de 4 bytes recibido
+[INFO] 22:53:09:901 Instancia/(2250:2250): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:53:09:901 Instancia/(2250:2250): paquete de tamanio fijo agregado
+[ERROR] 22:53:09:901 Instancia/(2250:2250): paquete de tamanio fijo agregado
+[ERROR] 22:53:09:902 Instancia/(2250:2250):  paquete tamanio variable agregado
+[INFO] 22:53:19:537 Instancia/(2261:2261): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:53:19:542 Instancia/(2261:2261): Socket conectado
+[INFO] 22:53:19:542 Instancia/(2261:2261): Mensaje enviado
+[INFO] 22:53:19:542 Instancia/(2261:2261): Mensaje de 4 bytes recibido
+[INFO] 22:53:19:543 Instancia/(2261:2261): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:53:19:543 Instancia/(2261:2261): paquete de tamanio fijo agregado
+[ERROR] 22:53:19:543 Instancia/(2261:2261): paquete de tamanio fijo agregado
+[ERROR] 22:53:19:543 Instancia/(2261:2261):  paquete tamanio variable agregado
+[INFO] 22:53:46:977 Instancia/(2348:2348): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:53:46:978 Instancia/(2348:2348): Socket conectado
+[INFO] 22:53:46:978 Instancia/(2348:2348): Mensaje enviado
+[INFO] 22:53:46:978 Instancia/(2348:2348): Mensaje de 4 bytes recibido
+[INFO] 22:53:46:978 Instancia/(2348:2348): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:53:46:978 Instancia/(2348:2348): paquete de tamanio fijo agregado
+[ERROR] 22:53:46:979 Instancia/(2348:2348): paquete de tamanio fijo agregado
+[ERROR] 22:53:46:979 Instancia/(2348:2348):  paquete tamanio variable agregado
+[INFO] 22:54:02:354 Instancia/(2354:2354): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:54:02:396 Instancia/(2354:2354): Socket conectado
+[INFO] 22:54:02:400 Instancia/(2354:2354): Mensaje enviado
+[INFO] 22:54:02:402 Instancia/(2354:2354): Mensaje de 4 bytes recibido
+[INFO] 22:54:02:402 Instancia/(2354:2354): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:54:02:407 Instancia/(2354:2354): paquete de tamanio fijo agregado
+[ERROR] 22:54:02:413 Instancia/(2354:2354): paquete de tamanio fijo agregado
+[ERROR] 22:54:02:413 Instancia/(2354:2354):  paquete tamanio variable agregado
+[INFO] 22:54:02:419 Instancia/(2354:2354): Mensaje recibido
+[INFO] 22:54:02:420 Instancia/(2354:2354): Mensaje recibido
+[INFO] 22:54:02:421 Instancia/(2354:2354): inicio el almacenamiento
+[INFO] 22:54:02:422 Instancia/(2354:2354): inicio el almacenamiento
+[INFO] 22:56:54:65 Instancia/(2442:2442): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:56:54:106 Instancia/(2442:2442): Socket conectado
+[INFO] 22:56:54:110 Instancia/(2442:2442): Mensaje enviado
+[INFO] 22:56:54:112 Instancia/(2442:2442): Mensaje de 4 bytes recibido
+[INFO] 22:56:54:112 Instancia/(2442:2442): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:56:54:123 Instancia/(2442:2442): paquete de tamanio fijo agregado
+[ERROR] 22:56:54:125 Instancia/(2442:2442): paquete de tamanio fijo agregado
+[ERROR] 22:56:54:125 Instancia/(2442:2442):  paquete tamanio variable agregado
+[INFO] 22:56:54:131 Instancia/(2442:2442): Mensaje recibido
+[INFO] 22:56:54:132 Instancia/(2442:2442): Mensaje recibido
+[INFO] 22:56:54:133 Instancia/(2442:2442): inicio el almacenamiento
+[INFO] 22:56:54:134 Instancia/(2442:2442): inicio el almacenamiento
+[INFO] 22:57:35:680 Instancia/(2505:2505): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:57:35:740 Instancia/(2505:2505): Socket conectado
+[INFO] 22:57:35:744 Instancia/(2505:2505): Mensaje enviado
+[INFO] 22:57:35:746 Instancia/(2505:2505): Mensaje de 4 bytes recibido
+[INFO] 22:57:35:747 Instancia/(2505:2505): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:57:35:760 Instancia/(2505:2505): paquete de tamanio fijo agregado
+[ERROR] 22:57:35:762 Instancia/(2505:2505): paquete de tamanio fijo agregado
+[ERROR] 22:57:35:762 Instancia/(2505:2505):  paquete tamanio variable agregado
+[INFO] 22:57:35:768 Instancia/(2505:2505): Mensaje recibido
+[INFO] 22:57:35:770 Instancia/(2505:2505): Mensaje recibido
+[TRACE] 22:57:35:771 Instancia/(2505:2505): Se va a inicializar el almacenamiento con: cant_entradas = 0 y tamaño = 1
+[INFO] 22:57:35:772 Instancia/(2505:2505): inicio el almacenamiento
+[INFO] 22:57:35:773 Instancia/(2505:2505): inicio el almacenamiento
+[INFO] 22:58:39:695 Instancia/(2533:2533): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:58:39:737 Instancia/(2533:2533): Socket conectado
+[INFO] 22:58:39:741 Instancia/(2533:2533): Mensaje enviado
+[INFO] 22:58:39:749 Instancia/(2533:2533): Mensaje de 4 bytes recibido
+[INFO] 22:58:39:750 Instancia/(2533:2533): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:58:39:755 Instancia/(2533:2533): paquete de tamanio fijo agregado
+[ERROR] 22:58:39:757 Instancia/(2533:2533): paquete de tamanio fijo agregado
+[ERROR] 22:58:39:757 Instancia/(2533:2533):  paquete tamanio variable agregado
+[INFO] 22:58:39:803 Instancia/(2533:2533): Mensaje recibido
+[INFO] 22:58:39:803 Instancia/(2533:2533): Mensaje recibido
+[TRACE] 22:58:39:804 Instancia/(2533:2533): Se va a inicializar el almacenamiento con: cant_entradas = 5 y tamaño = 2
+[INFO] 22:58:39:805 Instancia/(2533:2533): inicio el almacenamiento
+[INFO] 22:58:39:806 Instancia/(2533:2533): inicio el almacenamiento
+[INFO] 22:59:29:127 Instancia/(2555:2555): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 22:59:29:163 Instancia/(2555:2555): Socket conectado
+[INFO] 22:59:29:167 Instancia/(2555:2555): Mensaje enviado
+[INFO] 22:59:29:169 Instancia/(2555:2555): Mensaje de 4 bytes recibido
+[INFO] 22:59:29:170 Instancia/(2555:2555): Se ha conectado al coordinador correctamente!!
+[ERROR] 22:59:29:174 Instancia/(2555:2555): paquete de tamanio fijo agregado
+[ERROR] 22:59:29:181 Instancia/(2555:2555): paquete de tamanio fijo agregado
+[ERROR] 22:59:29:182 Instancia/(2555:2555):  paquete tamanio variable agregado
+[INFO] 22:59:29:227 Instancia/(2555:2555): Mensaje recibido
+[INFO] 22:59:29:227 Instancia/(2555:2555): Mensaje recibido
+[TRACE] 22:59:29:228 Instancia/(2555:2555): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 22:59:29:229 Instancia/(2555:2555): inicio el almacenamiento
+[INFO] 22:59:29:230 Instancia/(2555:2555): inicio el almacenamiento
+[INFO] 23:10:08:748 Instancia/(2851:2851): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 23:10:08:785 Instancia/(2851:2851): Socket conectado
+[INFO] 23:10:08:795 Instancia/(2851:2851): Mensaje enviado
+[INFO] 23:10:08:797 Instancia/(2851:2851): Mensaje de 4 bytes recibido
+[INFO] 23:10:08:804 Instancia/(2851:2851): Se ha conectado al coordinador correctamente!!
+[INFO] 23:10:08:815 Instancia/(2851:2851): Mensaje enviado
+[INFO] 23:10:08:816 Instancia/(2851:2851): Mensaje recibido
+[INFO] 23:10:08:817 Instancia/(2851:2851): Mensaje recibido
+[TRACE] 23:10:08:818 Instancia/(2851:2851): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 23:10:08:819 Instancia/(2851:2851): inicio el almacenamiento
+[INFO] 23:10:08:819 Instancia/(2851:2851): inicio el almacenamiento
+[INFO] 23:10:58:223 Instancia/(2899:2899): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 23:10:58:264 Instancia/(2899:2899): Socket conectado
+[INFO] 23:10:58:268 Instancia/(2899:2899): Mensaje enviado
+[INFO] 23:10:58:271 Instancia/(2899:2899): Mensaje de 4 bytes recibido
+[INFO] 23:10:58:271 Instancia/(2899:2899): Se ha conectado al coordinador correctamente!!
+[INFO] 23:10:58:275 Instancia/(2899:2899): Mensaje enviado
+[INFO] 23:10:58:276 Instancia/(2899:2899): Mensaje recibido
+[INFO] 23:10:58:312 Instancia/(2899:2899): Mensaje recibido
+[TRACE] 23:10:58:313 Instancia/(2899:2899): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 23:10:58:318 Instancia/(2899:2899): inicio el almacenamiento
+[INFO] 23:10:58:318 Instancia/(2899:2899): inicio el almacenamiento
+[INFO] 23:12:00:293 Instancia/(2910:2910): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 23:12:00:335 Instancia/(2910:2910): Socket conectado
+[INFO] 23:12:00:339 Instancia/(2910:2910): Mensaje enviado
+[INFO] 23:12:00:341 Instancia/(2910:2910): Mensaje de 4 bytes recibido
+[INFO] 23:12:00:342 Instancia/(2910:2910): Se ha conectado al coordinador correctamente!!
+[INFO] 23:12:00:345 Instancia/(2910:2910): Mensaje enviado
+[INFO] 23:12:00:346 Instancia/(2910:2910): Mensaje recibido
+[INFO] 23:12:00:347 Instancia/(2910:2910): Mensaje recibido
+[TRACE] 23:12:00:348 Instancia/(2910:2910): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 23:12:00:356 Instancia/(2910:2910): inicio el almacenamiento
+[INFO] 23:12:00:357 Instancia/(2910:2910): inicio el almacenamiento
+[INFO] 23:12:24:890 Instancia/(2922:2922): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 23:12:24:931 Instancia/(2922:2922): Socket conectado
+[INFO] 23:12:24:935 Instancia/(2922:2922): Mensaje enviado
+[INFO] 23:12:24:937 Instancia/(2922:2922): Mensaje de 4 bytes recibido
+[INFO] 23:12:24:938 Instancia/(2922:2922): Se ha conectado al coordinador correctamente!!
+[INFO] 23:12:24:941 Instancia/(2922:2922): Mensaje enviado
+[INFO] 23:12:24:942 Instancia/(2922:2922): Mensaje recibido
+[INFO] 23:12:24:943 Instancia/(2922:2922): Mensaje recibido
+[TRACE] 23:12:24:951 Instancia/(2922:2922): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 23:12:24:952 Instancia/(2922:2922): inicio el almacenamiento
+[INFO] 23:12:24:954 Instancia/(2922:2922): inicio el almacenamiento
+[INFO] 23:12:56:372 Instancia/(2977:2977): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 23:12:56:413 Instancia/(2977:2977): Socket conectado
+[INFO] 23:12:56:417 Instancia/(2977:2977): Mensaje enviado
+[INFO] 23:12:56:419 Instancia/(2977:2977): Mensaje de 4 bytes recibido
+[INFO] 23:12:56:419 Instancia/(2977:2977): Se ha conectado al coordinador correctamente!!
+[INFO] 23:12:56:423 Instancia/(2977:2977): Mensaje enviado
+[INFO] 23:12:56:424 Instancia/(2977:2977): Mensaje recibido
+[INFO] 23:12:56:425 Instancia/(2977:2977): Mensaje recibido
+[TRACE] 23:12:56:433 Instancia/(2977:2977): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 23:12:56:434 Instancia/(2977:2977): inicio el almacenamiento
+[INFO] 23:12:56:436 Instancia/(2977:2977): inicio el almacenamiento
+[INFO] 23:13:42:147 Instancia/(3011:3011): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 23:13:42:189 Instancia/(3011:3011): Socket conectado
+[INFO] 23:13:42:193 Instancia/(3011:3011): Mensaje enviado
+[INFO] 23:13:42:195 Instancia/(3011:3011): Mensaje de 4 bytes recibido
+[INFO] 23:13:42:195 Instancia/(3011:3011): Se ha conectado al coordinador correctamente!!
+[INFO] 23:13:42:199 Instancia/(3011:3011): Mensaje enviado
+[INFO] 23:13:42:200 Instancia/(3011:3011): Mensaje recibido
+[INFO] 23:13:42:201 Instancia/(3011:3011): Mensaje recibido
+[TRACE] 23:13:42:210 Instancia/(3011:3011): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 23:13:42:212 Instancia/(3011:3011): inicio el almacenamiento
+[INFO] 23:13:42:212 Instancia/(3011:3011): inicio el almacenamiento
+[INFO] 00:55:23:714 Instancia/(3360:3360): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 00:55:23:757 Instancia/(3360:3360): Socket conectado
+[INFO] 00:55:23:761 Instancia/(3360:3360): Mensaje enviado
+[INFO] 00:55:23:763 Instancia/(3360:3360): Mensaje de 4 bytes recibido
+[INFO] 00:55:23:763 Instancia/(3360:3360): Se ha conectado al coordinador correctamente!!
+[INFO] 00:55:23:767 Instancia/(3360:3360): Mensaje enviado
+[INFO] 00:55:23:768 Instancia/(3360:3360): Mensaje recibido
+[INFO] 00:55:23:775 Instancia/(3360:3360): Mensaje recibido
+[TRACE] 00:55:23:777 Instancia/(3360:3360): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 00:55:23:779 Instancia/(3360:3360): inicio el almacenamiento
+[INFO] 00:55:23:780 Instancia/(3360:3360): inicio el almacenamiento
+[INFO] 00:55:27:947 Instancia/(3374:3374): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 00:55:27:989 Instancia/(3374:3374): Socket conectado
+[INFO] 00:55:27:993 Instancia/(3374:3374): Mensaje enviado
+[INFO] 00:55:27:995 Instancia/(3374:3374): Mensaje de 4 bytes recibido
+[INFO] 00:55:27:995 Instancia/(3374:3374): Se ha conectado al coordinador correctamente!!
+[INFO] 00:55:27:999 Instancia/(3374:3374): Mensaje enviado
+[INFO] 00:55:27:0 Instancia/(3374:3374): Mensaje recibido
+[INFO] 00:55:27:1 Instancia/(3374:3374): Mensaje recibido
+[TRACE] 00:55:28:8 Instancia/(3374:3374): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 00:55:28:11 Instancia/(3374:3374): inicio el almacenamiento
+[INFO] 00:55:28:12 Instancia/(3374:3374): inicio el almacenamiento
+[INFO] 00:55:30:514 Instancia/(3378:3378): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 00:55:30:558 Instancia/(3378:3378): Socket conectado
+[INFO] 00:55:30:562 Instancia/(3378:3378): Mensaje enviado
+[INFO] 00:55:30:563 Instancia/(3378:3378): Mensaje de 4 bytes recibido
+[INFO] 00:55:30:564 Instancia/(3378:3378): Se ha conectado al coordinador correctamente!!
+[INFO] 00:55:30:568 Instancia/(3378:3378): Mensaje enviado
+[INFO] 00:55:30:577 Instancia/(3378:3378): Mensaje recibido
+[INFO] 00:55:30:578 Instancia/(3378:3378): Mensaje recibido
+[TRACE] 00:55:30:579 Instancia/(3378:3378): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 00:55:30:580 Instancia/(3378:3378): inicio el almacenamiento
+[INFO] 00:55:30:581 Instancia/(3378:3378): inicio el almacenamiento
+[INFO] 00:55:47:280 Instancia/(3432:3432): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 00:55:47:325 Instancia/(3432:3432): Socket conectado
+[INFO] 00:55:47:344 Instancia/(3432:3432): Mensaje enviado
+[INFO] 00:55:47:346 Instancia/(3432:3432): Mensaje de 4 bytes recibido
+[INFO] 00:55:47:347 Instancia/(3432:3432): Se ha conectado al coordinador correctamente!!
+[INFO] 00:55:47:354 Instancia/(3432:3432): Mensaje enviado
+[INFO] 00:55:47:358 Instancia/(3432:3432): Mensaje recibido
+[INFO] 00:55:47:391 Instancia/(3432:3432): Mensaje recibido
+[TRACE] 00:55:47:392 Instancia/(3432:3432): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 00:55:47:393 Instancia/(3432:3432): inicio el almacenamiento
+[INFO] 00:55:47:393 Instancia/(3432:3432): inicio el almacenamiento
+[INFO] 00:56:46:763 Instancia/(3555:3555): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 00:56:46:808 Instancia/(3555:3555): Socket conectado
+[INFO] 00:56:46:813 Instancia/(3555:3555): Mensaje enviado
+[INFO] 00:56:46:814 Instancia/(3555:3555): Mensaje de 4 bytes recibido
+[INFO] 00:56:46:815 Instancia/(3555:3555): Se ha conectado al coordinador correctamente!!
+[INFO] 00:56:46:832 Instancia/(3555:3555): Mensaje enviado
+[INFO] 00:56:46:833 Instancia/(3555:3555): Mensaje recibido
+[INFO] 00:56:46:835 Instancia/(3555:3555): Mensaje recibido
+[TRACE] 00:56:46:836 Instancia/(3555:3555): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 00:56:46:838 Instancia/(3555:3555): inicio el almacenamiento
+[INFO] 00:56:46:838 Instancia/(3555:3555): inicio el almacenamiento
+[INFO] 00:56:54:149 Instancia/(3560:3560): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 00:56:54:192 Instancia/(3560:3560): Socket conectado
+[INFO] 00:56:54:197 Instancia/(3560:3560): Mensaje enviado
+[INFO] 00:56:54:199 Instancia/(3560:3560): Mensaje de 4 bytes recibido
+[INFO] 00:56:54:199 Instancia/(3560:3560): Se ha conectado al coordinador correctamente!!
+[INFO] 00:56:54:211 Instancia/(3560:3560): Mensaje enviado
+[INFO] 00:56:54:213 Instancia/(3560:3560): Mensaje recibido
+[INFO] 00:56:54:215 Instancia/(3560:3560): Mensaje recibido
+[TRACE] 00:56:54:216 Instancia/(3560:3560): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 00:56:54:216 Instancia/(3560:3560): inicio el almacenamiento
+[INFO] 00:56:54:217 Instancia/(3560:3560): inicio el almacenamiento

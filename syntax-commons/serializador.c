@@ -6,11 +6,12 @@ paquete* crearPaquete() {
 	nuevoPaquete->carga = malloc(0);
 	return nuevoPaquete;
 }
-;
 
 void destruirPaquete(paquete* unPaquete) {
-	free(unPaquete->carga);
-	free(unPaquete);
+	if (unPaquete != NULL) {
+		free(unPaquete->carga);
+		free(unPaquete);
+	}
 }
 
 void agregar(paquete* pqt, void* contenido, size_t tamanioContenido) {
@@ -19,7 +20,6 @@ void agregar(paquete* pqt, void* contenido, size_t tamanioContenido) {
 	pqt->tamanioActual += tamanioContenido;
 	log_error(logger, "paquete de tamanio fijo agregado");
 }
-;
 
 void agregarTamanioVariable(paquete* pqt, void* contenido,
 		size_t tamanioContenido) {
@@ -27,7 +27,6 @@ void agregarTamanioVariable(paquete* pqt, void* contenido,
 	agregar(pqt, contenido, tamanioContenido);
 	log_error(logger, " paquete tamanio variable agregado");
 }
-;
 
 void* construirPaquete(paquete* pqt) {
 	void* paqueteProcesado = malloc(pqt->tamanioActual);
