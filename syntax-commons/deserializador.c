@@ -39,6 +39,7 @@ unsigned int try_recibirPaqueteVariable(int my_socket, void** buffer) {
 		log_error(logger, "Error al recibir tamaño del paquete");
 		return res_recv;
 	}
+	log_trace(logger, "El tamaño del contenido es %d", tamanio);
 
 	if ((*buffer = malloc(tamanio)) == NULL) {
 		log_error(logger, "Error al realizar el malloc");

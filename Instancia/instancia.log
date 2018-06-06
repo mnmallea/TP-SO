@@ -1428,3 +1428,16 @@
 [TRACE] 01:33:50:649 Instancia/(4745:4745): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
 [INFO] 01:33:50:650 Instancia/(4745:4745): inicio el almacenamiento
 [INFO] 01:33:50:651 Instancia/(4745:4745): inicio el almacenamiento
+[INFO] 02:15:32:857 Instancia/(6856:6856): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 02:15:32:894 Instancia/(6856:6856): Socket conectado
+[INFO] 02:15:32:899 Instancia/(6856:6856): Mensaje enviado
+[INFO] 02:15:32:901 Instancia/(6856:6856): Mensaje de 4 bytes recibido
+[INFO] 02:15:32:901 Instancia/(6856:6856): Se ha conectado al coordinador correctamente!!
+[DEBUG] 02:15:32:910 Instancia/(6856:6856): paquete de tamanio fijo agregado
+[INFO] 02:15:32:915 Instancia/(6856:6856): Mensaje recibido
+[INFO] 02:15:32:950 Instancia/(6856:6856): Mensaje recibido
+[TRACE] 02:15:32:951 Instancia/(6856:6856): Se va a inicializar el almacenamiento con: cant_entradas = 75 y tamaño = 4
+[INFO] 02:15:32:951 Instancia/(6856:6856): inicio el almacenamiento
+[INFO] 02:15:32:952 Instancia/(6856:6856): inicio el almacenamiento
+[INFO] 02:45:22:656 Instancia/(8075:8075): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[ERROR] 02:45:22:693 Instancia/(8075:8075): Error al conectar el socket
