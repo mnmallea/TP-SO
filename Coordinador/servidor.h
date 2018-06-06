@@ -17,6 +17,7 @@
 #include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/serializador.h"
 #include "../syntax-commons/deserializador.h"
+#include "../syntax-commons/conexiones.h"
 #include "config_coordinador.h"
 #include "sincronizacion.h"
 #include "algoritmos_distribucion.h"
