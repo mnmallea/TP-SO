@@ -19,11 +19,13 @@
 //#include "consola.h"
 #include "main.h"
 
+
 int flag;
 bool primera_vez;
 bool hay_nuevo_esi;
 bool hay_esi_bloqueado;
 bool hay_esi_finalizado;
+t_esi* esi_a_matar;
 
 /* Nombre: obtener_nuevo_esi_a_correr();
  * Desc: obtiene el proximo esi a correr a partir del algoritmo elegido
@@ -65,9 +67,9 @@ t_esi *buscar_esi_por_id(int id_esi);
 bool esi_con_este_id(void* esi);
 
 /* Nombre: esi_tiene_clave(t_esi* esi, char* clave)
- * Desc: Indica si el esi mencionado tiene tomada la clave mencionada
+ * Desc: Indica si el esi corriendo tiene tomada la clave mencionada
  */
-bool esi_tiene_clave(t_esi* esi, char* clave);
+bool esi_tiene_clave(char* clave);
 
 /* Nombre: nueva_clave_tomada_x_esi(char* clave)
  * Desc: Cuando el coordinador me dice que un esi pidio una clave llama a esta funcion
@@ -75,6 +77,21 @@ bool esi_tiene_clave(t_esi* esi, char* clave);
  */
 void nueva_clave_tomada_x_esi(char* clave);
 
+/* Nombre: liberar_recursos(t_esi* esi)
+ * Desc: Se liberan las claves tomadas por ese esi
+ * Se la saca del dic_clave_x_esi y se desbloquean los recursos
+ */
+void liberar_recursos(t_esi* esi);
+
+/* Nombre: liberar_claves(char* clave, void* esi)
+ * Desc: Le saca las claves tomadas al esi
+ */
+void liberar_claves(char* clave, void* esi);
+
+/* Nombre: desbloquear_claves_tomadas(char* clave, void* esi)
+ * Desc: Desbloquea las claves tomadas por ese esi
+ */
+void desbloquear_claves_tomadas(char* clave, void* esi);
 
 
 void correr(t_esi* esi);

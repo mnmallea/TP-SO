@@ -42,7 +42,6 @@ void *menu(void *ptr){
 			case 2:
 				printf("Ingreso bloquear un proceso, ingrese <clave>");
 
-				//ACA ME TIRA UN WARNING de que clave es char **
 				scanf("%s", clave);
 
 				printf("Ingreso bloquear un proceso, ingrese <ID>");
@@ -69,6 +68,7 @@ void *menu(void *ptr){
 				printf("Ingreso matar un proceso, ingrese <ID>");
 
 				scanf("%d", &id);
+				matar_por_consola(id);
 				break;
 			case 6:
 				printf("Ingreso matar un proceso, ingrese <clave>");
@@ -104,6 +104,8 @@ void pausar_despausar_consola(){
 	printf("Continuando con la planificacion\n");
 	flag--;
 	}
+
+	log_debug(logger, "El flag esta en: %d", flag);
 	pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
 }
@@ -134,5 +136,12 @@ void bloquear(char* clave, int id){
 }
 
 void desbloquear(char* clave){
-	desbloquear_por_consola(clave); //falta definirlo
+	desbloquear_por_consola(clave);
+}
+
+
+void matar_por_consola(int id){
+	t_esi* esi_a_matar = buscar_esi_por_id(id);
+	liberar_recursos(esi_a_matar);
+	matar_nodo_esi(esi_a_matar);
 }

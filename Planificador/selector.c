@@ -103,15 +103,19 @@ void *listener(void *ptr) {
 							break;
 						case DESBLOQUEO_CLAVE: //un esi hizo store de una clave
 							//recibir que clave fue
-							se_desbloqueo_un_recurso(clave);
+							//se_desbloqueo_un_recurso(clave);
 							break;
 						case BLOQUEO_ESI: //un esi pidio una clave que ya tenia pedida otro
 							//me pasan la clave que pidio
 							bloquear_esi(clave);
 							break;
-						case SOLICITUD_CLAVE: //me indican que el esi corriendo solicito una clave
+						case BLOQUEO_CLAVE: //me indican que el esi corriendo solicito una clave
 							//recibir la clave
 							nueva_clave_tomada_x_esi(clave);
+							break;
+						case SOLICITUD_CLAVE:
+							//bool la_tiene = esi_tiene_clave(clave);
+							//mandar por sockets la_tiene
 							break;
 						default:
 							break;
