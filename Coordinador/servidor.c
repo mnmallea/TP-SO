@@ -136,13 +136,19 @@ void atender_esi(int socket) {
 
 		switch (cod_op) {
 		case OP_GET:
+			recibir_operacion_unaria(socket, &clave);
+			log_trace(logger, "Recibi Get/store %s", clave);
+			logear_get(*n_esi->id, clave);
+			break;
 		case OP_STORE:
 			recibir_operacion_unaria(socket, &clave);
 			log_trace(logger, "Recibi Get/store %s", clave);
+			logear_store(*n_esi->id, clave);
 			break;
 		case OP_SET:
 			recibir_set(socket, &clave, &valor);
 			log_trace(logger, "Recibi SET %s %s", clave, valor);
+			logear_set(*n_esi->id, clave, valor);
 			break;
 		default:
 			log_error(logger, "el esi ha muerto");

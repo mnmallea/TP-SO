@@ -22,6 +22,7 @@
 #include "sincronizacion.h"
 #include "algoritmos_distribucion.h"
 #include "instancia.h"
+#include "log_operaciones.h"
 
 extern int socket_planificador;
 extern t_log* logger;
