@@ -23,8 +23,8 @@ int flag = 0;
 bool primera_vez = false;
 bool hay_nuevo_esi = false;
 bool hay_esi_bloqueado = false;
-bool hay_esi_finalizado = false;
-
+bool hay_esi_finalizado = f
+t_esi* esi_a_matar;
 
 void planificar(){
 
@@ -155,7 +155,7 @@ t_esi *buscar_esi_por_id(int id_esi){
 	t_esi *esi_a_devolver;
 	//me fijo si es el esi que esta corriendo
 	if(esi_corriendo->id == id){
-		esi_a_devolver = esi_corriendo; //COMO HAGO QUE ESPERE HASTA QUE TERMINE DE CORRER?
+		esi_a_devolver = esi_corriendo;
 
 	}else{
 		//si no es el q esta corriendo lo busco en la lista de esis listos
@@ -177,8 +177,8 @@ void se_desbloqueo_un_recurso(char* clave){
 
 	t_list *lista_esis_bloq_esta_clave =  dictionary_get(dic_esis_bloqueados,clave);
 	t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
-	nuevo_esi(esi_desbloq);
 	dictionary_put(dic_esis_bloqueados,clave,lista_esis_bloq_esta_clave);
+	dictionary_remove(dic_clave_x_esi, clave);
 
 	nuevo_esi(esi_desbloq);
 
@@ -186,11 +186,11 @@ void se_desbloqueo_un_recurso(char* clave){
 
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE PREGUNTA SI UN ESI TIENE UNA CLAVE
 //SEGURAMENTE HAYA QUE REFACTORIZARLO A UN ID
-bool esi_tiene_clave(t_esi* esi, char* clave){
+bool esi_tiene_clave(char* clave){
 
 	if(!dictionary_has_key(dic_clave_x_esi, clave)){
 		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi,clave);
-		return (esi_que_la_tomo->id == esi->id);
+		return (esi_que_la_tomo->id == esi_corriendo->id);
 	}else{
 		return false;
 	}
@@ -216,7 +216,8 @@ void nueva_clave_tomada_x_esi(char* clave){
 
 void correr(t_esi* esi){
 
-	//LE MANDA AL ESI X SOCKET QUE CORRA
+	mandar_confirmacion(esi->socket);
+
 }
 
 void ya_termino_linea(){
@@ -225,9 +226,6 @@ void ya_termino_linea(){
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 	aumentar_viene_corriendo(esi_corriendo);
 	log_debug(logger, "El esi %d se termino de leer una nueva linea \n", esi_corriendo->id);
-
-
-
 
 	sem_post(&sem_binario_planif);
 }
@@ -245,6 +243,29 @@ void aumentar_viene_esperando(void* esi){
 
 void aumentar_viene_corriendo(void* esi){
 	((t_esi*)esi)->dur_ult_raf = ((t_esi*)esi)->dur_ult_raf + 1;
+}
+
+void liberar_recursos(t_esi* esi){
+
+	esi_a_matar = esi;
+	dictionary_iterator(dic_clave_x_esi,liberar_claves);
+	dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);
+}
+
+void liberar_claves(char* clave, void* esi){
+
+	if(((t_esi)esi)->id == esi_a_matar->id){
+		dictionary_remove(dic_clave_x_esi,clave);
+	}
+
+}
+
+void desbloquear_claves_tomadas(char* clave, void* esi){
+
+	if(((t_esi)esi)->id == esi_a_matar->id){
+		se_desbloqueo_un_recurso(clave);
+	}
+
 }
 
 
