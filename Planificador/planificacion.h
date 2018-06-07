@@ -71,6 +71,11 @@ bool esi_con_este_id(void* esi);
  */
 bool esi_tiene_clave(char* clave);
 
+/* Nombre: esta_tomada_la_clave(char* clave)
+ * Desc: Indica si la clave mencionada ya fue o no tomada
+ */
+bool esta_tomada_la_clave(char* clave);
+
 /* Nombre: nueva_clave_tomada_x_esi(char* clave)
  * Desc: Cuando el coordinador me dice que un esi pidio una clave llama a esta funcion
  * Que me agrega esa clave y ese esi al diccionario de claves x esi

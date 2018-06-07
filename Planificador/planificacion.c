@@ -197,6 +197,13 @@ bool esi_tiene_clave(char* clave){
 
 }
 
+bool esta_tomada_la_clave(char* clave){
+
+	return dictionary_has_key(dic_clave_x_esi, clave);
+
+}
+
+
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR ME INDICA QUE SE TOMO UNA NUEVA CLAVE
 void nueva_clave_tomada_x_esi(char* clave){
 
