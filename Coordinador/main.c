@@ -9,9 +9,10 @@
 int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de configuracion como parametro
 	crear_log_operaciones();
 	logger = log_create("coordinador.log", "Coordinador", true, LOG_LEVEL);
-	configuracion = configurar(argv[1]);
+	configurar(argv[1]);
 	log_trace(logger, "Coordinador correctamente configurado");
 	lista_instancias_disponibles = list_create();
+	lista_instancias_inactivas = list_create();
 	lista_esis_disponibles = list_create();
 	cant_instancias = 0;
 	inicializar_semaforos();
@@ -26,15 +27,15 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 	}
 
 
-	while (1) {
-		sem_wait(&contador_instancias_disponibles);
-		t_instancia* elegida = obtener_instancia_siguiente("");
-		sem_post(&contador_instancias_disponibles);//porque en realidad no la sacaste de la lista a la instancia
-		log_debug(logger, "Instancia elegida Nº %d", elegida->id);
-
-		//instancia.haceTuMagia()
-
-	}
+//	while (1) {
+//		sem_wait(&contador_instancias_disponibles);
+//		t_instancia* elegida = obtener_instancia_siguiente("");
+//		sem_post(&contador_instancias_disponibles);//porque en realidad no la sacaste de la lista a la instancia
+//		log_debug(logger, "Instancia elegida: %s", elegida->nombre);
+//
+//		//instancia.haceTuMagia>>>>>>> 9e71288354523bf2f56d8810ef0f85ee3959260c()
+//
+//	}
 
 	if (pthread_join(thread_listener, NULL)) {
 		log_error(logger, "Error al joinear thread del servidor escucha");
@@ -43,6 +44,6 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 
 	destruir_log_operaciones();
 	log_destroy(logger);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }
 
