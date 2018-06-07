@@ -51,7 +51,7 @@ void *listener(void *ptr) {
 						n_esi->id = id;
 						list_add(lista_esis_listos, n_esi);
 						hay_nuevo_esi = true;
-						if (primera_vez){
+						if (primera_vez) {
 							sem_post(&sem_binario_planif);
 							primera_vez = true;
 						}
@@ -88,37 +88,39 @@ void *listener(void *ptr) {
 					} else {
 						if (i == socketCord) {
 							mandar_confirmacion(socketCord);
+							switch (buf) { //mensajes de coord
+							case DESBLOQUEO_CLAVE: //un esi hizo store de una clave
+								//recibir que clave fue
+								 //se_desbloqueo_un_recurso(clave);
+								break;
+							case BLOQUEO_ESI: //un esi pidio una clave que ya tenia pedida otro
+								//me pasan la clave que pidio
+								bloquear_esi(clave);
+								break;
+							case BLOQUEO_CLAVE: //me indican que el esi corriendo solicito una clave
+								//recibir la clave
+								nueva_clave_tomada_x_esi(clave);
+								break;
+							case SOLICITUD_CLAVE:
+								//bool la_tiene = esi_tiene_clave(clave);
+								//mandar por sockets la_tiene
+								break;
+							default:
+								break;
+							}
 
-						}
-
-						switch (buf) {
-						case EXITO:
-							ya_termino_linea();
-							break;
-						case ERROR:
-							fallo_linea();
-							break;
-						case FINALIZO_ESI:
-							finalizar_esi();
-							break;
-						case DESBLOQUEO_CLAVE: //un esi hizo store de una clave
-							//recibir que clave fue
-							//se_desbloqueo_un_recurso(clave);
-							break;
-						case BLOQUEO_ESI: //un esi pidio una clave que ya tenia pedida otro
-							//me pasan la clave que pidio
-							bloquear_esi(clave);
-							break;
-						case BLOQUEO_CLAVE: //me indican que el esi corriendo solicito una clave
-							//recibir la clave
-							nueva_clave_tomada_x_esi(clave);
-							break;
-						case SOLICITUD_CLAVE:
-							//bool la_tiene = esi_tiene_clave(clave);
-							//mandar por sockets la_tiene
-							break;
-						default:
-							break;
+						} else {
+							switch (buf) { //mensajes de esis
+							case EXITO:
+								ya_termino_linea();
+								break;
+							case ERROR:
+								fallo_linea();
+								break;
+							case FINALIZO_ESI:
+								finalizar_esi();
+								break;
+							}
 						}
 
 					}
