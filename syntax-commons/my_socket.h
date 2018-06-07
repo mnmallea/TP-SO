@@ -12,7 +12,6 @@
 #include <errno.h>
 
 
-
 t_log * logger;
 
 //#include <readline/readline.h> // Para usar readline
