@@ -7,7 +7,6 @@ int main(int argc, char* argv[]) {
 	size_t len = 0;
 	ssize_t read;
 	t_operacion *n_esi_operacion;
-	t_operacion *paqueteProcesado = NULL;
 
 	logger = log_create("ESI.log", "ESI", true, LOG_LEVEL);
 
@@ -59,54 +58,15 @@ int main(int argc, char* argv[]) {
 			switch (parsed.keyword) {
 			case GET:
 				log_debug(logger, "Get %s", parsed.argumentos.SET.clave);
-//				n_esi_operacion->keyword = 0;
-//				n_esi_operacion->clave = parsed.argumentos.GET.clave;
-////
-////				s_clave = sizeof(char) * strlen(parsed.argumentos.GET.clave)
-////						+ 1;
-////				s_carga = s_clave + sizeof(t_operacion);
-////
-////				agregarTamanioVariable(pkg_esi, n_esi_operacion, s_carga);
-////
-////				paqueteProcesado = construirPaquete(pkg_esi);
-//				log_info(logger, "Espacio de la carga: %d", s_carga);
-//				//enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
-//				log_info(logger, "Pkg de tamaño %d enviado",
-//						pkg_esi->tamanioActual);
-//
-//				free(paqueteProcesado->clave);
-				enviar_operacion_unaria(socketCord, OP_GET,
-						parsed.argumentos.GET.clave);
-
+				enviar_get(socketCord, parsed.argumentos.GET.clave);
 				break;
 
 			case SET:
-
-				log_debug(logger, "Set %s", parsed.argumentos.SET.valor);
+				log_debug(logger, "Set %s %s", parsed.argumentos.SET.clave, parsed.argumentos.SET.valor);
 				if (strlen(parsed.argumentos.SET.valor) < 40) {
 
 					enviar_set(socketCord, parsed.argumentos.SET.clave,
 							parsed.argumentos.SET.valor);
-//					n_esi_operacion->keyword = 1;
-//					n_esi_operacion->clave = parsed.argumentos.SET.clave;
-//					n_esi_operacion->valor = parsed.argumentos.SET.valor;
-//
-//					s_clave = sizeof(char) * strlen(parsed.argumentos.SET.clave)
-//							+ 1;
-//					s_valor = sizeof(char) * strlen(parsed.argumentos.SET.valor)
-//							+ 1;
-//					s_carga = s_clave + s_valor + sizeof(t_operacion);
-//
-//					agregarTamanioVariable(pkg_esi, n_esi_operacion, s_carga);
-//					paqueteProcesado = construirPaquete(pkg_esi);
-//
-//					log_info(logger, "Espacio de la carga: %d", s_carga);
-//					//enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
-//					log_info(logger, "Pkg de tamaño %d enviado",
-//							pkg_esi->tamanioActual);
-//
-//					free(paqueteProcesado->clave);
-//					free(paqueteProcesado->valor);
 
 				} else {
 					log_error(logger,
@@ -115,31 +75,11 @@ int main(int argc, char* argv[]) {
 					exit_gracefully(1);
 					//error valor mayor a 40
 				}
-
 				break;
+
 			case STORE:
-				log_debug(logger, "Store %s: parsed.argumentos.STORE.clave");
-				enviar_operacion_unaria(socketCord, OP_STORE,
-										parsed.argumentos.STORE.clave);
-
-
-//				n_esi_operacion->keyword = 2;
-//				n_esi_operacion->clave = parsed.argumentos.STORE.clave;
-//
-//				s_clave = sizeof(char) * strlen(parsed.argumentos.STORE.clave)
-//						+ 1;
-//				s_carga = s_clave + sizeof(t_operacion);
-//
-//				agregarTamanioVariable(pkg_esi, n_esi_operacion, s_carga);
-//				paqueteProcesado = construirPaquete(pkg_esi);
-//
-//				log_info(logger, "Espacio de la carga: %d", s_carga);
-//				//enviarPaquete(socketCord,paqueteProcesado,pkg_esi->tamanioActual);
-//				log_info(logger, "Pkg de tamaño %d enviado",
-//						pkg_esi->tamanioActual);
-//
-//				free(paqueteProcesado->clave);
-
+				log_debug(logger, "Store %s", parsed.argumentos.STORE.clave);
+				enviar_store(socketCord, parsed.argumentos.STORE.clave);
 				break;
 
 			default:

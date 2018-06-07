@@ -36,35 +36,67 @@ int conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente) {
 	return socket_coord;
 }
 
-void enviar_operacion_unaria(int sockfd, t_cod_operacion cod_op, char *clave) {
+/*
+ * Devuelve valor negativo si fallo
+ */
+int enviar_operacion_unaria(int sockfd, t_protocolo cod_op, char *clave) {
 	if (send(sockfd, &cod_op, sizeof(cod_op), 0) < 0) {
 		log_error(logger, "Error al enviar operacion");
+		return -1;
 	}
 	t_paquete* paquete = paquete_crear();
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
 	paquete_enviar(paquete, sockfd);
 	paquete_destruir(paquete);
+	return 0;
 }
 
-void enviar_set(int sockfd, char* clave, char* valor) {
-	t_cod_operacion cod_op = OP_SET;
+/*
+ * Devuelve valor negativo si fallo
+ */
+int enviar_get(int sockfd,char *clave){
+	return enviar_operacion_unaria(sockfd, OP_GET, clave);
+}
+
+/*
+ * Devuelve valor negativo si fallo
+ */
+int enviar_store(int sockfd,char *clave){
+	return enviar_operacion_unaria(sockfd, OP_STORE, clave);
+}
+
+/*
+ * Devuelve valor negativo si fallo
+ */
+int enviar_set(int sockfd, char* clave, char* valor) {
+	t_protocolo cod_op = OP_SET;
 	if (send(sockfd, &cod_op, sizeof(cod_op), 0) < 0) {
 		log_error(logger, "Error al enviar codigo operacion");
+		return -1;
 	}
 	t_paquete* paquete = paquete_crear();
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
 	paquete_agregar(paquete, valor, strlen(valor) + 1);
 	paquete_enviar(paquete, sockfd);
 	paquete_destruir(paquete);
+	return 0;
 }
 
-void recibir_set(int sockfd, char** clave, char** valor) {
-	recibirPaqueteVariable(sockfd, (void**) clave);
-	recibirPaqueteVariable(sockfd, (void**) valor);
+int recibir_set(int sockfd, char** clave, char** valor) {
+	int res;
+	if ((res = try_recibirPaqueteVariable(sockfd, (void**)clave)) <= 0) {
+		log_error(logger, "Error al recibir clave");
+		return res;
+	}
+	if ((res = try_recibirPaqueteVariable(sockfd, (void**)valor)) <= 0) {
+		log_error(logger, "Error al recibir clave");
+		return res;
+	}
+	return res;
 }
 
-t_cod_operacion recibir_cod_operacion(int sockfd) {
-	t_cod_operacion cod_op;
+t_protocolo recibir_cod_operacion(int sockfd) {
+	t_protocolo cod_op;
 	if (recv(sockfd, &cod_op, sizeof(cod_op), MSG_WAITALL) <= 0) {
 		log_error(logger, "Error al recibir codigo de operacion");
 		return -1;

@@ -2657,3 +2657,129 @@ M
 [DEBUG] 03:18:42:582 ESI/(9902:9902): Store ˆ$­ûM,×	M,×	 ,×	 ,×	 ,×	 ,×	 ,×	 <×	: parsed.argumentos.STORE.clave
 [DEBUG] 03:18:42:582 ESI/(9902:9902): paquete de tamanio fijo agregado
 [INFO] 03:18:42:582 ESI/(9902:9902): No quedan mas lineas en el archivo
+[DEBUG] 21:35:53:471 ESI/(17093:17093): Configurando ESI
+[INFO] 21:35:53:471 ESI/(17093:17093): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 21:35:53:472 ESI/(17093:17093): Socket conectado
+[INFO] 21:35:53:472 ESI/(17093:17093): Mensaje enviado
+[INFO] 21:35:53:472 ESI/(17093:17093): Mensaje de 4 bytes recibido
+[INFO] 21:35:53:472 ESI/(17093:17093): Se ha conectado al coordinador correctamente!!
+[INFO] 21:35:53:472 ESI/(17093:17093): Socket conectado
+[INFO] 21:35:53:473 ESI/(17093:17093): Mensaje de 4 bytes recibido
+[DEBUG] 21:35:53:473 ESI/(17093:17093): el id del esi es: 1
+[INFO] 21:35:53:473 ESI/(17093:17093): Mensaje enviado
+[DEBUG] 21:35:53:473 ESI/(17093:17093): Get jugador
+[DEBUG] 21:35:53:473 ESI/(17093:17093): paquete de tamanio fijo agregado
+[DEBUG] 21:35:53:473 ESI/(17093:17093): Set messi
+[DEBUG] 21:35:53:473 ESI/(17093:17093): paquete de tamanio fijo agregado
+[DEBUG] 21:35:53:473 ESI/(17093:17093): paquete de tamanio fijo agregado
+[DEBUG] 21:35:53:473 ESI/(17093:17093): Store ˆ$­ûM,M, , , , , , <: parsed.argumentos.STORE.clave
+[DEBUG] 21:35:53:473 ESI/(17093:17093): paquete de tamanio fijo agregado
+[INFO] 21:35:53:473 ESI/(17093:17093): No quedan mas lineas en el archivo
+[DEBUG] 21:37:36:659 ESI/(17110:17110): Configurando ESI
+[INFO] 21:37:36:659 ESI/(17110:17110): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 21:37:36:659 ESI/(17110:17110): Socket conectado
+[INFO] 21:37:36:659 ESI/(17110:17110): Mensaje enviado
+[INFO] 21:37:36:660 ESI/(17110:17110): Mensaje de 4 bytes recibido
+[INFO] 21:37:36:660 ESI/(17110:17110): Se ha conectado al coordinador correctamente!!
+[INFO] 21:37:36:660 ESI/(17110:17110): Socket conectado
+[INFO] 21:37:36:660 ESI/(17110:17110): Mensaje de 4 bytes recibido
+[DEBUG] 21:37:36:660 ESI/(17110:17110): el id del esi es: 2
+[INFO] 21:37:36:660 ESI/(17110:17110): Mensaje enviado
+[DEBUG] 21:37:36:660 ESI/(17110:17110): Get jugador
+[DEBUG] 21:37:36:660 ESI/(17110:17110): paquete de tamanio fijo agregado
+[DEBUG] 21:37:36:661 ESI/(17110:17110): Set messi
+[DEBUG] 21:37:36:661 ESI/(17110:17110): paquete de tamanio fijo agregado
+[DEBUG] 21:37:36:661 ESI/(17110:17110): paquete de tamanio fijo agregado
+[DEBUG] 21:37:36:661 ESI/(17110:17110): Store ˆ$­ûMüµMüµ üµ üµ üµ üµ üµ ¶: parsed.argumentos.STORE.clave
+[DEBUG] 21:37:36:661 ESI/(17110:17110): paquete de tamanio fijo agregado
+[INFO] 21:37:36:661 ESI/(17110:17110): No quedan mas lineas en el archivo
+[DEBUG] 21:38:22:834 ESI/(17155:17155): Configurando ESI
+[INFO] 21:38:22:834 ESI/(17155:17155): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 21:38:22:834 ESI/(17155:17155): Socket conectado
+[INFO] 21:38:22:834 ESI/(17155:17155): Mensaje enviado
+[INFO] 21:38:22:835 ESI/(17155:17155): Mensaje de 4 bytes recibido
+[INFO] 21:38:22:835 ESI/(17155:17155): Se ha conectado al coordinador correctamente!!
+[INFO] 21:38:22:835 ESI/(17155:17155): Socket conectado
+[INFO] 21:38:22:835 ESI/(17155:17155): Mensaje de 4 bytes recibido
+[DEBUG] 21:38:22:835 ESI/(17155:17155): el id del esi es: 3
+[INFO] 21:38:22:835 ESI/(17155:17155): Mensaje enviado
+[DEBUG] 21:38:22:835 ESI/(17155:17155): Get jugador
+[DEBUG] 21:38:22:835 ESI/(17155:17155): paquete de tamanio fijo agregado
+[DEBUG] 21:38:22:835 ESI/(17155:17155): Set messi
+[DEBUG] 21:38:22:836 ESI/(17155:17155): paquete de tamanio fijo agregado
+[DEBUG] 21:38:22:836 ESI/(17155:17155): paquete de tamanio fijo agregado
+[DEBUG] 21:38:22:836 ESI/(17155:17155): Store jugador
+[DEBUG] 21:38:22:836 ESI/(17155:17155): paquete de tamanio fijo agregado
+[INFO] 21:38:22:836 ESI/(17155:17155): No quedan mas lineas en el archivo
+[DEBUG] 21:39:05:737 ESI/(17224:17224): Configurando ESI
+[INFO] 21:39:05:740 ESI/(17224:17224): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 21:39:05:741 ESI/(17224:17224): Socket conectado
+[INFO] 21:39:05:741 ESI/(17224:17224): Mensaje enviado
+[INFO] 21:39:05:741 ESI/(17224:17224): Mensaje de 4 bytes recibido
+[INFO] 21:39:05:741 ESI/(17224:17224): Se ha conectado al coordinador correctamente!!
+[INFO] 21:39:05:742 ESI/(17224:17224): Socket conectado
+[INFO] 21:39:05:742 ESI/(17224:17224): Mensaje de 4 bytes recibido
+[DEBUG] 21:39:05:742 ESI/(17224:17224): el id del esi es: 4
+[INFO] 21:39:05:742 ESI/(17224:17224): Mensaje enviado
+[DEBUG] 21:39:05:742 ESI/(17224:17224): Get jugador
+[DEBUG] 21:39:05:742 ESI/(17224:17224): paquete de tamanio fijo agregado
+[DEBUG] 21:39:05:742 ESI/(17224:17224): Set messi messi
+[DEBUG] 21:39:05:742 ESI/(17224:17224): paquete de tamanio fijo agregado
+[DEBUG] 21:39:05:742 ESI/(17224:17224): paquete de tamanio fijo agregado
+[DEBUG] 21:39:05:742 ESI/(17224:17224): Store jugador
+[DEBUG] 21:39:05:743 ESI/(17224:17224): paquete de tamanio fijo agregado
+[INFO] 21:39:05:743 ESI/(17224:17224): No quedan mas lineas en el archivo
+[DEBUG] 21:39:22:829 ESI/(17273:17273): Configurando ESI
+[INFO] 21:39:22:832 ESI/(17273:17273): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 21:39:22:833 ESI/(17273:17273): Socket conectado
+[INFO] 21:39:22:833 ESI/(17273:17273): Mensaje enviado
+[INFO] 21:39:22:834 ESI/(17273:17273): Mensaje de 4 bytes recibido
+[INFO] 21:39:22:834 ESI/(17273:17273): Se ha conectado al coordinador correctamente!!
+[INFO] 21:39:22:834 ESI/(17273:17273): Socket conectado
+[INFO] 21:39:22:834 ESI/(17273:17273): Mensaje de 4 bytes recibido
+[DEBUG] 21:39:22:834 ESI/(17273:17273): el id del esi es: 5
+[INFO] 21:39:22:834 ESI/(17273:17273): Mensaje enviado
+[DEBUG] 21:39:22:834 ESI/(17273:17273): Get jugador
+[DEBUG] 21:39:22:835 ESI/(17273:17273): paquete de tamanio fijo agregado
+[DEBUG] 21:39:22:835 ESI/(17273:17273): Set jugador messi
+[DEBUG] 21:39:22:835 ESI/(17273:17273): paquete de tamanio fijo agregado
+[DEBUG] 21:39:22:835 ESI/(17273:17273): paquete de tamanio fijo agregado
+[DEBUG] 21:39:22:835 ESI/(17273:17273): Store jugador
+[DEBUG] 21:39:22:835 ESI/(17273:17273): paquete de tamanio fijo agregado
+[INFO] 21:39:22:835 ESI/(17273:17273): No quedan mas lineas en el archivo
+[DEBUG] 21:41:41:66 ESI/(17506:17506): Configurando ESI
+[INFO] 21:41:41:67 ESI/(17506:17506): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 21:41:41:67 ESI/(17506:17506): Socket conectado
+[INFO] 21:41:41:67 ESI/(17506:17506): Mensaje enviado
+[INFO] 21:41:41:71 ESI/(17506:17506): Mensaje de 4 bytes recibido
+[INFO] 21:41:41:71 ESI/(17506:17506): Se ha conectado al coordinador correctamente!!
+[INFO] 21:41:41:71 ESI/(17506:17506): Socket conectado
+[INFO] 21:41:41:71 ESI/(17506:17506): Mensaje de 4 bytes recibido
+[DEBUG] 21:41:41:71 ESI/(17506:17506): el id del esi es: 1
+[INFO] 21:41:41:71 ESI/(17506:17506): Mensaje enviado
+[DEBUG] 21:41:41:71 ESI/(17506:17506): Get jugador
+[DEBUG] 21:41:41:71 ESI/(17506:17506): paquete de tamanio fijo agregado
+[DEBUG] 21:41:41:72 ESI/(17506:17506): Set jugador messi
+[DEBUG] 21:41:41:72 ESI/(17506:17506): paquete de tamanio fijo agregado
+[DEBUG] 21:41:41:72 ESI/(17506:17506): paquete de tamanio fijo agregado
+[DEBUG] 21:41:41:72 ESI/(17506:17506): Store jugador
+[DEBUG] 21:41:41:72 ESI/(17506:17506): paquete de tamanio fijo agregado
+[INFO] 21:41:41:72 ESI/(17506:17506): No quedan mas lineas en el archivo
+[DEBUG] 21:41:45:225 ESI/(17510:17510): Configurando ESI
+[INFO] 21:41:45:232 ESI/(17510:17510): Conectandose al Coordinador, IP: 127.0.0.2	Puerto: 8081
+[INFO] 21:41:45:232 ESI/(17510:17510): Socket conectado
+[INFO] 21:41:45:233 ESI/(17510:17510): Mensaje enviado
+[INFO] 21:41:45:233 ESI/(17510:17510): Mensaje de 4 bytes recibido
+[INFO] 21:41:45:234 ESI/(17510:17510): Se ha conectado al coordinador correctamente!!
+[INFO] 21:41:45:234 ESI/(17510:17510): Socket conectado
+[INFO] 21:41:45:234 ESI/(17510:17510): Mensaje de 4 bytes recibido
+[DEBUG] 21:41:45:234 ESI/(17510:17510): el id del esi es: 2
+[INFO] 21:41:45:234 ESI/(17510:17510): Mensaje enviado
+[DEBUG] 21:41:45:234 ESI/(17510:17510): Get jugador
+[DEBUG] 21:41:45:237 ESI/(17510:17510): paquete de tamanio fijo agregado
+[DEBUG] 21:41:45:237 ESI/(17510:17510): Set jugador messi
+[DEBUG] 21:41:45:237 ESI/(17510:17510): paquete de tamanio fijo agregado
+[DEBUG] 21:41:45:237 ESI/(17510:17510): paquete de tamanio fijo agregado
+[DEBUG] 21:41:45:237 ESI/(17510:17510): Store jugador
+[DEBUG] 21:41:45:237 ESI/(17510:17510): paquete de tamanio fijo agregado
+[INFO] 21:41:45:237 ESI/(17510:17510): No quedan mas lineas en el archivo

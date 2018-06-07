@@ -131,7 +131,7 @@ void atender_esi(int socket) {
 	char* clave = NULL;
 	char* valor = NULL;
 	while (1) {
-		t_cod_operacion cod_op = recibir_cod_operacion(socket);
+		t_protocolo cod_op = recibir_cod_operacion(socket);
 		log_trace(logger, "codigo de operacion recibido");
 
 		switch (cod_op) {
