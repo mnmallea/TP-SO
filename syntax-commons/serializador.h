@@ -7,22 +7,20 @@
 #include <string.h>
 #include "../syntax-commons/my_socket.h"
 
-typedef struct {void* carga;size_t tamanioActual;} paquete;
+typedef struct paquete {
+	int tamanioActual;
+	void* carga;
+} t_paquete;
 
-t_log * logger;
+extern void limpiar_configuracion();
+extern t_log * logger;
 
-paquete* 	crearPaquete();
+t_paquete* paquete_crear();
+void paquete_destruir(t_paquete* unPaquete);
+void paquete_agregar(t_paquete* pqt, void* contenido, uint32_t tamanioContenido);
+int paquete_enviar(t_paquete* paquete, int socket);
+void paquete_enviar_safe(t_paquete* paquete, int socket);
 
-void 		configure_logger_ser() ;
-
-void 		agregar(paquete* pqt,void* contenido, size_t tamanioContenido);
-
-void agregarTamanioVariable(paquete* pqt, void* contenido, size_t tamanioContenido);
-
-void* construirPaquete(paquete* p);
-
-void destruirPaquete(paquete* unPaquete);
-
-void eviarPaquete(int my_socket, void* element);
+void enviarPaquete(int socket, void* paqueteSerializado, size_t tamanioPaquete);
 
 #endif

@@ -14,8 +14,10 @@
 
 
 extern t_log *logger;
+extern config configuracion;
 
-config configurar(char *ruta);
+void configurar(char *ruta);
 void limpiar_configuracion(void);
+t_algoritmo get_algoritmo_distribucion(char*);
 
 #endif /* CONFIG_H_ */

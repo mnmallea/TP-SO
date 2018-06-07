@@ -12,16 +12,19 @@
 #include <sys/socket.h>
 #include "protocol.h"
 #include "my_socket.h"
+#include "serializador.h"
+#include "deserializador.h"
 
 extern t_log* logger;
 extern void limpiar_configuracion(void);
 
-/*
- * Sirve para conectarse al coordinador y realizar un handshake.
- * En el remitente debe ir quien es el que lo llama
- * Si falla, finaliza el proceso.
- * Retorna el socket por el que se conecto
- */
 int conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente);
+
+t_protocolo recibir_cod_operacion(int sockfd);
+int recibir_operacion_unaria(int sockfd, char** clave);
+int recibir_set(int sockfd, char** clave, char** valor);
+int enviar_set(int sockfd, char* clave, char* valor);
+int enviar_get(int sockfd,char *clave);
+int enviar_store(int sockfd,char *clave);
 
 #endif /* DEBUG_CONEXIONES_H_ */
