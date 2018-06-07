@@ -23,7 +23,7 @@ int flag = 0;
 bool primera_vez = false;
 bool hay_nuevo_esi = false;
 bool hay_esi_bloqueado = false;
-bool hay_esi_finalizado = f
+bool hay_esi_finalizado = false;
 t_esi* esi_a_matar;
 
 void planificar(){
@@ -254,7 +254,7 @@ void liberar_recursos(t_esi* esi){
 
 void liberar_claves(char* clave, void* esi){
 
-	if(((t_esi)esi)->id == esi_a_matar->id){
+	if(((t_esi*)esi)->id == esi_a_matar->id){
 		dictionary_remove(dic_clave_x_esi,clave);
 	}
 
@@ -262,7 +262,7 @@ void liberar_claves(char* clave, void* esi){
 
 void desbloquear_claves_tomadas(char* clave, void* esi){
 
-	if(((t_esi)esi)->id == esi_a_matar->id){
+	if(((t_esi*)esi)->id == esi_a_matar->id){
 		se_desbloqueo_un_recurso(clave);
 	}
 

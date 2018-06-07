@@ -5,6 +5,7 @@ void *listener(void *ptr) {
 	FD_ZERO(&master);
 	FD_ZERO(&read_fds);
 	t_protocolo buf;
+
 	int nbytes;
 	t_esi *n_esi;
 	int id = 1;
@@ -51,7 +52,7 @@ void *listener(void *ptr) {
 						n_esi->id = id;
 						list_add(lista_esis_listos, n_esi);
 						hay_nuevo_esi = true;
-						if (primera_vez) {
+						if (id == 1) {
 							sem_post(&sem_binario_planif);
 							primera_vez = true;
 						}
