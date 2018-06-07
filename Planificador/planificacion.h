@@ -71,10 +71,10 @@ bool esi_con_este_id(void* esi);
  */
 bool esi_tiene_clave(char* clave);
 
-/* Nombre: esta_tomada_la_clave(char* clave)
+/* Nombre: esta_tomada_x_otro_la_clave(char* clave)
  * Desc: Indica si la clave mencionada ya fue o no tomada
  */
-bool esta_tomada_la_clave(char* clave);
+bool esta_tomada_x_otro_la_clave(char* clave);
 
 /* Nombre: nueva_clave_tomada_x_esi(char* clave)
  * Desc: Cuando el coordinador me dice que un esi pidio una clave llama a esta funcion
@@ -104,5 +104,8 @@ void ya_termino_linea();
 void fallo_linea();
 void aumentar_viene_esperando(void* esi);
 void aumentar_viene_corriendo(void* esi);
+
+
+void nueva_solicitud(char* clave);
 
 #endif /* PLANIFICACION_H_ */

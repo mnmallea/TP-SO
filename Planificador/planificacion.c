@@ -102,7 +102,6 @@ void finalizar_esi(){
 	sem_post(&sem_binario_planif);
 }
 
-//FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR ME INDICA UN BLOQUEO
 void bloquear_esi(char* clave){
 
 	//No existe la clave, agrego esta nueva linea
@@ -185,10 +184,9 @@ void se_desbloqueo_un_recurso(char* clave){
 }
 
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE PREGUNTA SI UN ESI TIENE UNA CLAVE
-//SEGURAMENTE HAYA QUE REFACTORIZARLO A UN ID
 bool esi_tiene_clave(char* clave){
 
-	if(!dictionary_has_key(dic_clave_x_esi, clave)){
+	if(dictionary_has_key(dic_clave_x_esi, clave)){
 		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi,clave);
 		return (esi_que_la_tomo->id == esi_corriendo->id);
 	}else{
@@ -197,9 +195,19 @@ bool esi_tiene_clave(char* clave){
 
 }
 
-bool esta_tomada_la_clave(char* clave){
+bool esta_tomada_x_otro_la_clave(char* clave){
 
-	return dictionary_has_key(dic_clave_x_esi, clave);
+	if(dictionary_has_key(dic_clave_x_esi, clave)){ //ya esta tomada?
+		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi,clave);
+
+		//el esi que la tiene es el actual?
+		// si es el actual -> la tiene el, esta volviendo a hacer get
+		// si no es el actual la tiene otro
+
+		return !(esi_que_la_tomo->id == esi_corriendo->id);
+	}
+
+	return false; //no esta tomada
 
 }
 
@@ -273,6 +281,15 @@ void desbloquear_claves_tomadas(char* clave, void* esi){
 		se_desbloqueo_un_recurso(clave);
 	}
 
+}
+
+
+void nueva_solicitud(char* clave){
+	if(esta_tomada_x_otro_la_clave(clave)){
+		bloquear_esi(clave);
+	}else{
+		nueva_clave_tomada_x_esi(clave);
+	}
 }
 
 
