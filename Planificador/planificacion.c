@@ -293,8 +293,6 @@ void nueva_solicitud(char* clave){
 }
 
 
-void esi_tiene_clave(char* clave){
 
-}
 
 
