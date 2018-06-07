@@ -26,5 +26,6 @@ int recibir_set(int sockfd, char** clave, char** valor);
 int enviar_set(int sockfd, char* clave, char* valor);
 int enviar_get(int sockfd,char *clave);
 int enviar_store(int sockfd,char *clave);
+int enviar_operacion_unaria(int sockfd, t_protocolo cod_op, char *clave);
 
 #endif /* DEBUG_CONEXIONES_H_ */

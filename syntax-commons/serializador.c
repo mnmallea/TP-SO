@@ -34,8 +34,21 @@ int paquete_enviar(t_paquete* paquete, int socket) {
 	return res_send;
 }
 
-void paquete_enviar_safe(t_paquete* paquete, int socket){
-	if(paquete_enviar(paquete, socket)<0){
+int paquete_enviar_con_codigo(t_paquete* paquete, t_protocolo codigo,
+		int sockfd) {
+	if (send(sockfd, &codigo, sizeof(codigo), 0) <= 0) {
+		log_error(logger, "Error al enviar codigo paquete");
+		return -1;
+	}
+	if (paquete_enviar(paquete, sockfd) <= 0) {
+		log_error(logger, "Error al enviar paquete");
+		return -1;
+	}
+	return 0;
+}
+
+void paquete_enviar_safe(t_paquete* paquete, int socket) {
+	if (paquete_enviar(paquete, socket) < 0) {
 		close(socket);
 		limpiar_configuracion();
 		exit(EXIT_FAILURE);
