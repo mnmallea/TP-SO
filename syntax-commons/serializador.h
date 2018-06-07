@@ -21,12 +21,6 @@ void paquete_agregar(t_paquete* pqt, void* contenido, uint32_t tamanioContenido)
 int paquete_enviar(t_paquete* paquete, int socket);
 void paquete_enviar_safe(t_paquete* paquete, int socket);
 
-
-void agregarTamanioVariable(t_paquete* pqt, void* contenido,
-		size_t tamanioContenido);
-
-void* construirPaquete(t_paquete* p);
-
 void enviarPaquete(int socket, void* paqueteSerializado, size_t tamanioPaquete);
 
 #endif

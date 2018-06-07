@@ -1098,3 +1098,65 @@
 [INFO] 03:18:42:580 Planificador/(8945:8946): Cantidad de elementos en la lista: 1
 [ERROR] 03:18:42:582 Planificador/(8945:8946): La conexion del socket 5 finalizo inesperadamente
 
+[DEBUG] 21:35:32:211 Planificador/(17055:17055): Configurando coordinador
+[DEBUG] 21:35:32:211 Planificador/(17055:17055): Planificador correctamente configurado
+[INFO] 21:35:32:213 Planificador/(17055:17056): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 21:35:32:213 Planificador/(17055:17056): Socket conectado
+[INFO] 21:35:32:213 Planificador/(17055:17056): Mensaje enviado
+[INFO] 21:35:32:213 Planificador/(17055:17056): Mensaje de 4 bytes recibido
+[INFO] 21:35:32:213 Planificador/(17055:17056): Se ha conectado al coordinador correctamente!!
+[INFO] 21:35:32:213 Planificador/(17055:17056): Escuchando en puerto: 8080
+[TRACE] 21:35:53:472 Planificador/(17055:17056): Nueva conexion por el socket 6
+
+[INFO] 21:35:53:472 Planificador/(17055:17056): Mensaje enviado
+[INFO] 21:35:53:472 Planificador/(17055:17056): Cantidad de elementos en la lista: 1
+[ERROR] 21:35:53:474 Planificador/(17055:17056): La conexion del socket 6 finalizo inesperadamente
+
+[TRACE] 21:37:36:660 Planificador/(17055:17056): Nueva conexion por el socket 6
+
+[INFO] 21:37:36:660 Planificador/(17055:17056): Mensaje enviado
+[INFO] 21:37:36:660 Planificador/(17055:17056): Cantidad de elementos en la lista: 1
+[ERROR] 21:37:36:661 Planificador/(17055:17056): La conexion del socket 6 finalizo inesperadamente
+
+[TRACE] 21:38:22:835 Planificador/(17055:17056): Nueva conexion por el socket 6
+
+[INFO] 21:38:22:835 Planificador/(17055:17056): Mensaje enviado
+[INFO] 21:38:22:835 Planificador/(17055:17056): Cantidad de elementos en la lista: 1
+[ERROR] 21:38:22:836 Planificador/(17055:17056): La conexion del socket 6 finalizo inesperadamente
+
+[TRACE] 21:39:05:742 Planificador/(17055:17056): Nueva conexion por el socket 6
+
+[INFO] 21:39:05:742 Planificador/(17055:17056): Mensaje enviado
+[INFO] 21:39:05:742 Planificador/(17055:17056): Cantidad de elementos en la lista: 1
+[ERROR] 21:39:05:743 Planificador/(17055:17056): La conexion del socket 6 finalizo inesperadamente
+
+[TRACE] 21:39:22:834 Planificador/(17055:17056): Nueva conexion por el socket 6
+
+[INFO] 21:39:22:834 Planificador/(17055:17056): Mensaje enviado
+[INFO] 21:39:22:834 Planificador/(17055:17056): Cantidad de elementos en la lista: 1
+[ERROR] 21:39:22:835 Planificador/(17055:17056): La conexion del socket 6 finalizo inesperadamente
+
+[ERROR] 21:39:36:903 Planificador/(17055:17056): La conexion del socket 5 finalizo inesperadamente
+
+[DEBUG] 21:41:38:976 Planificador/(17501:17501): Configurando coordinador
+[DEBUG] 21:41:38:976 Planificador/(17501:17501): Planificador correctamente configurado
+[INFO] 21:41:38:977 Planificador/(17501:17502): Conectandose al Coordinador, IP: 127.0.0.1	Puerto: 8081
+[INFO] 21:41:38:977 Planificador/(17501:17502): Socket conectado
+[INFO] 21:41:38:977 Planificador/(17501:17502): Mensaje enviado
+[INFO] 21:41:38:977 Planificador/(17501:17502): Mensaje de 4 bytes recibido
+[INFO] 21:41:38:977 Planificador/(17501:17502): Se ha conectado al coordinador correctamente!!
+[INFO] 21:41:38:977 Planificador/(17501:17502): Escuchando en puerto: 8080
+[TRACE] 21:41:41:71 Planificador/(17501:17502): Nueva conexion por el socket 6
+
+[INFO] 21:41:41:71 Planificador/(17501:17502): Mensaje enviado
+[INFO] 21:41:41:71 Planificador/(17501:17502): Cantidad de elementos en la lista: 1
+[ERROR] 21:41:41:72 Planificador/(17501:17502): La conexion del socket 6 finalizo inesperadamente
+
+[TRACE] 21:41:45:234 Planificador/(17501:17502): Nueva conexion por el socket 6
+
+[INFO] 21:41:45:234 Planificador/(17501:17502): Mensaje enviado
+[INFO] 21:41:45:234 Planificador/(17501:17502): Cantidad de elementos en la lista: 1
+[ERROR] 21:41:45:238 Planificador/(17501:17502): La conexion del socket 6 finalizo inesperadamente
+
+[ERROR] 21:42:07:949 Planificador/(17501:17502): La conexion del socket 5 finalizo inesperadamente
+

@@ -20,13 +20,11 @@ extern void limpiar_configuracion(void);
 
 int conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente);
 
-void enviar_operacion_unaria(int sockfd, t_cod_operacion cod_op, char *clave);
-
+t_protocolo recibir_cod_operacion(int sockfd);
 int recibir_operacion_unaria(int sockfd, char** clave);
-
-t_cod_operacion recibir_cod_operacion(int sockfd);
-
-void recibir_set(int sockfd, char** clave, char** valor);
-void enviar_set(int sockfd, char* clave, char* valor);
+int recibir_set(int sockfd, char** clave, char** valor);
+int enviar_set(int sockfd, char* clave, char* valor);
+int enviar_get(int sockfd,char *clave);
+int enviar_store(int sockfd,char *clave);
 
 #endif /* DEBUG_CONEXIONES_H_ */

@@ -42,23 +42,6 @@ void paquete_enviar_safe(t_paquete* paquete, int socket){
 	}
 }
 
-//void agregarTamanioVariable(t_paquete* pqt, void* contenido,
-//		size_t tamanioContenido) {
-//	agregar(pqt, &tamanioContenido, sizeof(tamanioContenido));
-//	agregar(pqt, contenido, tamanioContenido);
-//	log_error(logger, " paquete tamanio variable agregado");
-//}
-
-void* construirPaquete(t_paquete* pqt) {
-	void* paqueteProcesado = malloc(pqt->tamanioActual);
-	if (paqueteProcesado == NULL) {
-		log_error(logger, "ERROR EN EL MALLOC");
-	}
-	memcpy(paqueteProcesado, pqt->carga, pqt->tamanioActual);
-
-	return paqueteProcesado;
-}
-
 void enviarPaquete(int socket, void* paqueteSerializado, size_t tamanioPaquete) {
 	int cantEnviada = send(socket, paqueteSerializado, tamanioPaquete, 0);
 

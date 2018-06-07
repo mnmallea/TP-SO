@@ -20,11 +20,10 @@ typedef enum protocolo {
 	DESBLOQUEO_CLAVE,
 	BLOQUEO_ESI,
 	CORRER_ESI,
-	FINALIZO_ESI
+	FINALIZO_ESI,
+	OP_GET,
+	OP_SET,
+	OP_STORE
 } t_protocolo;
-
-typedef enum operacion {
-	OP_GET, OP_SET, OP_STORE
-} t_cod_operacion;
 
 #endif /* PROTOCOL_H_ */
