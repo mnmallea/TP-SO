@@ -88,7 +88,8 @@ void *listener(void *ptr) {
 
 					} else {
 						if (i == socketCord) {
-							//mandar_confirmacion(socketCord); queda comentado porque era para pruebas
+							//mandar_confirmacion(socketCord);
+							//queda comentado porque era para pruebas
 
 
 							recibir_operacion_unaria(i, (void**)clave);
