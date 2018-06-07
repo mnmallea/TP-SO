@@ -66,12 +66,13 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 		break;
 	case PLANIFICADOR:
 		log_info(logger, "Se ha conectado el Planificador");
-		atender_planif(socket);
+		atender_planificador(socket);
 		log_trace(logger, "Se termino de atender al Planificador, sockfd = %d",
 				socket);
 		break;
 	default:
 		log_error(logger, "Conexion desconocida");
+		close(socket);
 	}
 }
 
@@ -80,16 +81,35 @@ void atender_planificador(int socket) {
 }
 
 void atender_instancia(int sockfd) {
-	t_instancia* instancia = calloc(1, sizeof(instancia));
-	instancia->socket = sockfd;
-	instancia->cant_entradas_vacias = configuracion.cant_entradas;
-	instancia->claves_almacenadas = list_create();
-
+	char* nombre;
+	if (try_recibirPaqueteVariable(sockfd, (void**) &nombre) <= 0) {
+		log_error(logger, "Error al configurar instancia");
+		close(sockfd);
+		return;
+	}
+	if (send(sockfd, &configuracion.entrada_size,
+			sizeof(configuracion.entrada_size), 0) < 0) {
+		log_error(logger, "Error al configurar instancia");
+		close(sockfd);
+		return;
+	}
+	if (send(sockfd, &configuracion.cant_entradas,
+			sizeof(configuracion.cant_entradas), 0) < 0) {
+		log_error(logger, "Error al configurar instancia");
+		close(sockfd);
+		return;
+	}
+	if (esta_activa_instancia(nombre)) {
+		log_error(logger, "La instancia %s ya se encuentra activa", nombre);
+		close(sockfd);
+		return;
+	}
+	t_instancia* instancia = crear_instancia(sockfd, nombre,
+			configuracion.cant_entradas);
 	pthread_mutex_lock(&mutex_instancias_disponibles);
-	instancia->id = cant_instancias;
 	cant_instancias++;
 	list_add(lista_instancias_disponibles, instancia);
-	log_debug(logger, "Instancia Nº:%d agregada a la lista", instancia->id);
+	log_debug(logger, "Instancia %s agregada a la lista", instancia->nombre);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	sem_post(&contador_instancias_disponibles);
 }
@@ -107,12 +127,37 @@ void atender_esi(int socket) {
 	pthread_mutex_unlock(&mutex_esi_disponibles);
 
 	sem_post(&planif_binario);
-	recibir_confirmacion(socket);
+//	recibir_confirmacion(socket);
+	char* clave = NULL;
+	char* valor = NULL;
+	while (1) {
+		t_protocolo cod_op = recibir_cod_operacion(socket);
+		log_trace(logger, "codigo de operacion recibido");
 
-	//t_operacion *carga=NULL; tipo de la carga
-	//recibirPaqueteVariable(socket,(void**)carga);
-	//log_debug(logger, "Clave del pkg recivido: %s ", *(carga->clave));
-
+		switch (cod_op) {
+		case OP_GET:
+			recibir_operacion_unaria(socket, &clave);
+			log_trace(logger, "Recibi Get/store %s", clave);
+			logear_get(*n_esi->id, clave);
+			break;
+		case OP_STORE:
+			recibir_operacion_unaria(socket, &clave);
+			log_trace(logger, "Recibi Get/store %s", clave);
+			logear_store(*n_esi->id, clave);
+			break;
+		case OP_SET:
+			recibir_set(socket, &clave, &valor);
+			log_trace(logger, "Recibi SET %s %s", clave, valor);
+			logear_set(*n_esi->id, clave, valor);
+			break;
+		default:
+			log_error(logger, "el esi ha muerto");
+			close(socket);
+			return;
+		}
+	}
+	free(clave);
+	free(valor);
 }
 
 void atender_planif(int socket) {

@@ -56,3 +56,4 @@ dkms.conf
 *.old
 RemoteSystemsTempFiles/
 language.settings.xml
+*.log
