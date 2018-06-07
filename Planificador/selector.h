@@ -17,6 +17,7 @@
 #include "algoritmos_planificacion.h"
 #include "../syntax-commons/protocol.h"
 #include "../syntax-commons/conexiones.h"
+#include <stdbool.h>
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
@@ -36,6 +37,7 @@ extern t_list *lista_esis_listos;
 extern t_esi esi;
 extern config configuracion;
 
+bool la_tiene;
 
 void *listener(void *ptr);
 t_esi *crear_nodo_esi(int socket);

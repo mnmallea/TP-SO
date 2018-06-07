@@ -5,7 +5,7 @@ void *listener(void *ptr) {
 	FD_ZERO(&master);
 	FD_ZERO(&read_fds);
 	t_protocolo buf;
-
+	char* clave;
 	int nbytes;
 	t_esi *n_esi;
 	int id = 1;
@@ -88,20 +88,27 @@ void *listener(void *ptr) {
 
 					} else {
 						if (i == socketCord) {
-							mandar_confirmacion(socketCord);
+							//mandar_confirmacion(socketCord); queda comentado porque era para pruebas
+
+
+							recibir_operacion_unaria(i, (void**)clave);
+
 							switch (buf) { //mensajes de coord
-							case DESBLOQUEO_CLAVE: //un esi hizo store de una clave
-								//recibir que clave fue
-								 //se_desbloqueo_un_recurso(clave);
+
+
+							case DESBLOQUEO_CLAVE:
+								 se_desbloqueo_un_recurso(clave);
 								break;
-							case ESI_TIENE_CLAVE: //para ver si puede hacer el set
-								//bool la_tiene = esi_tiene_clave(clave);
+							case ESI_TIENE_CLAVE:
+								//dejar estos corchetes sin cuestionar (nay)
+								{
+								bool la_tiene = esi_tiene_clave(clave);
+
 								//mandar por sockets la_tiene
+								}
 								break;
 							case SOLICITUD_CLAVE:
-								//obtengo la clave
 								nueva_solicitud(clave);
-
 								break;
 							default:
 								break;
@@ -117,6 +124,8 @@ void *listener(void *ptr) {
 								break;
 							case FINALIZO_ESI:
 								finalizar_esi();
+								break;
+							default:
 								break;
 							}
 						}
