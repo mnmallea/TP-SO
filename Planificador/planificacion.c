@@ -30,13 +30,18 @@ void* planificar(void* nada) {
 
 	while (1) {
 		sem_wait(&sem_binario_planif);
+
 		pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if (flag == 0) { //esta despausada la planificacion
 			pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
 			t_esi* proximo_esi;
 			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
-				if (hay_nuevo_esi || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
+				if (primera_vez || hay_nuevo_esi || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
+					/*DESALOJO AL ESI: (lo paso de nuevo a listos,
+					dejo el puntero con esi corriendo como esta, total despues se pisa)*/
+					nuevo_esi(esi_corriendo);
+					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
 				} else {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
@@ -44,6 +49,7 @@ void* planificar(void* nada) {
 			} else {
 
 				if (primera_vez || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. sin desalojo)
+					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
 				} else {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
@@ -83,7 +89,8 @@ t_esi *obtener_nuevo_esi_a_correr() {
 void nuevo_esi(t_esi* esi) {
 	list_add(lista_esis_listos, esi);
 
-	log_debug(logger, "Llego/se desbloqueo un nuevo esi: %d \n", esi->id);
+	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n", esi->id);
+	sem_post(&contador_esis);
 	hay_nuevo_esi = true;
 
 }
