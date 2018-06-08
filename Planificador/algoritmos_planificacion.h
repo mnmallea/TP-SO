@@ -29,7 +29,6 @@ typedef struct {
 
 	int viene_esperando; //Se suma uno cada vez que un esi que no es el finaliza una linea
 	double response_ratio;
-	char *clave_bloq;
 } t_esi;
 
 extern config configuracion;
