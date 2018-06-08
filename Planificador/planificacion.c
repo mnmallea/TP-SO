@@ -56,7 +56,7 @@ void* planificar(void* nada) {
 					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
 					primera_vez = hay_esi_bloqueado = hay_esi_finalizado =
-							false;
+					false;
 				} else {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
 				}
@@ -190,13 +190,15 @@ bool esi_con_este_id(void* esi) {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE INDICA QUE SE DESBLOQUIO UN RECURSO
 void se_desbloqueo_un_recurso(char* clave) {
 
-	t_list *lista_esis_bloq_esta_clave = dictionary_get(dic_esis_bloqueados,
-			clave);
-	t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
-	dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
-	dictionary_remove(dic_clave_x_esi, clave);
+	if (dictionary_has_key(dic_esis_bloqueados, clave)) { //hay esis encolados
+		t_list *lista_esis_bloq_esta_clave = dictionary_get(dic_esis_bloqueados,
+				clave);
+		t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
+		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
+		dictionary_remove(dic_clave_x_esi, clave);
 
-	nuevo_esi(esi_desbloq);
+		nuevo_esi(esi_desbloq);
+	}
 
 }
 
