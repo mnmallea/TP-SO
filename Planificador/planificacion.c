@@ -296,7 +296,7 @@ void nueva_solicitud(int socket, char* clave) {
 	t_protocolo cod_op;
 	if (esta_tomada_x_otro_la_clave(clave)) {
 		bloquear_esi(clave);
-		cod_op = ERROR;
+		cod_op = BLOQUEO_ESI;
 
 	} else {
 		nueva_clave_tomada_x_esi(clave);
