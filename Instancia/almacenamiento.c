@@ -48,8 +48,7 @@ void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) 
 	}
 
 }
-void store(int entrada, unsigned int tamanioEntrada) {
-}
+
 
 char* convertirString(const void *valor, size_t tamanio) {
 	// calloc en vez de malloc y despues inicializar en 0
@@ -58,25 +57,28 @@ char* convertirString(const void *valor, size_t tamanio) {
 
 	return valorStr;
 }
-void mostrarAlmacenamiento() {
-	int a = 0;
-	while (a < ato->tamanioEntrada) {
-		char* valor = convertirString(
-				ato->tamanioEntrada + (a * (ato->tamanioEntrada)),
-				ato->tamanioEntrada);
-		log_info(logger, "Entrada %d: %s");
+void mostrarAlmacenamiento(){
+	int a=0;
+	while(a < ato->cantEntradas){
+		void* valor= malloc(ato->tamanioEntrada);
+		memcpy(valor,ato->dato + (a *ato->tamanioEntrada),ato->tamanioEntrada);;
+		char* valorStr= convertirString(valor,ato->tamanioEntrada);
 		free(valor);
+		printf("imprimiendo la entrada numero %d : %s",a,valorStr);
+		free(valorStr);
 		a++;
 	}
 }
 
 void eliminarAlmacenamiento() {
-	int a = 0;
-	while (a < ato->tamanioEntrada) {
-		free(ato->dato[a]);
-	}
 	free(ato->dato);
 	free(ato);
 	log_info(logger, "memoria liberada");
+}
+
+void* buscarEnALmacenamiento(int posicion, unsigned int tamanio){
+	void*carga =malloc(sizeof(tamanio));
+	memcpy(carga,ato->dato + (posicion * ato->tamanioEntrada),tamanio);
+	return carga;
 }
 

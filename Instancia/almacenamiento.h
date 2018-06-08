@@ -18,7 +18,7 @@ typedef struct {
 
 almacenamiento* ato;
 
-t_bitarray estadoAto;
+//t_bitarray estadoAto;
 
 void almacenamiento_logger();
 /*  *@NAME: mostrarALmacenamiento
@@ -61,5 +61,5 @@ void mostrarAlmacenamiento();
  */
 void eliminarAlmacenamiento();
 char* convertirString(const void *valor, size_t tamanio);
-
+void* buscarEnALmacenamiento(int posicion, unsigned int tamanio);
 #endif /* ALMACENAMIENTO_H_ */

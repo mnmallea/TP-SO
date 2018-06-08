@@ -4,7 +4,7 @@
  *  Created on: 29 abr. 2018
  *      Author: utnso
  */
-#include <stdlib.h>
+#include <stdio.h>
 #include <commons/log.h>
 #include "config_instancia.h"
 #include "../syntax-commons/my_socket.h"
@@ -12,7 +12,11 @@
 #include "cfg_almacenamiento.h"
 #include "almacenamiento.h"
 #include "tabla_entradas.h"
+#include "../syntax-commons/protocol.h"
+#include "instancia.h"
+#include "tabla_entradas.h"
 #define LOG_LEVEL LOG_LEVEL_TRACE
+
 
 config configuracion;
 t_log *logger;
@@ -24,14 +28,42 @@ int main(int argc, char** argv) {
 			configuracion.ip_coordinador, configuracion.puerto_coordinador,
 			INSTANCIA);
 	configurarAlmacenamiento(socketCoordinador);
-	log_trace(logger,
-			"Se va a inicializar el almacenamiento con: cant_entradas = %d y tamaño = %d",
-			cfgAlmacenamiento.totalEntradas, cfgAlmacenamiento.tamanioEntrada);
-	inicializarAlmacenamiento(cfgAlmacenamiento.totalEntradas,
-			cfgAlmacenamiento.tamanioEntrada);
+	log_trace(logger,"Se va a inicializar el almacenamiento con: cant_entradas = %d y tamaño = %d",cfgAlmacenamiento.totalEntradas, cfgAlmacenamiento.tamanioEntrada);
+	inicializarAlmacenamiento(cfgAlmacenamiento.totalEntradas,cfgAlmacenamiento.tamanioEntrada);
 	crearTablaEntradas();
-	while (1) {
-		//aca toda la bola de que lleguen cosas las reciba haga set get store
+	iniciarDumper(configuracion.punto_montaje);
+	int escucha=1;
+	while(escucha){ //despues se va a transformar a while(instanciaEsteActiva())
+		int resultado;
+	switch (recibir_cod_operacion(socketCoordinador)){
+		case OP_SET:{
+			resultado = SET(socketCoordinador);
+			if(resultado>=0){
+				//notificarCoordExito
+			}
+			else{
+				//notificarCoordFalla
+			}
+		case OP_STORE:{
+			char* clave;
+			int rs= recibir_operacion_unaria(socketCoordinador, &clave);
+			resultado= STORE(clave);
+			if(resultado>=0){
+			//notificarCoordExito
+			}
+			else{
+			//notificarCoordFalla
+			}
+		}
+		case MATAR_INSTANCIA:{
+			escucha=0;
+		}
+		default:{
+			log_info(logger,"no se pudo interpretar el mensaje");
+		}
+
+		}
+	}
 	}
 	limpiar_configuracion();
 	log_destroy(logger);

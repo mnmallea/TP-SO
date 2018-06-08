@@ -23,7 +23,8 @@ typedef enum protocolo {
 	FINALIZO_ESI,
 	OP_GET,
 	OP_SET,
-	OP_STORE
+	OP_STORE,
+	MATAR_INSTANCIA
 } t_protocolo;
 
 #endif /* PROTOCOL_H_ */
