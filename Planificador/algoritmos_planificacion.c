@@ -25,7 +25,12 @@ bool mayor_response_ratio(void* esi1, void* esi2){
 }
 
 void matar_nodo_esi(void* esi){
-	free(((t_esi*)esi));
+
+	if(esi != NULL){
+		close(((t_esi*)esi)->socket);
+		free(((t_esi*)esi));
+	}
+
 }
 
 
