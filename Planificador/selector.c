@@ -107,7 +107,7 @@ void *listener(void *ptr) {
 								if(la_tiene){
 									cod_op = EXITO;
 								}else{
-									cod_op = ERROR;
+									cod_op = CLAVE_NO_BLOQUEADA_EXCEPTION;
 								}
 
 								enviar_cod_operacion(i, cod_op);
@@ -126,7 +126,7 @@ void *listener(void *ptr) {
 							case EXITO:
 								ya_termino_linea();
 								break;
-							case ERROR:
+							case ABORTA:
 								fallo_linea();
 								break;
 							case FINALIZO_ESI:
@@ -135,10 +135,13 @@ void *listener(void *ptr) {
 							case BLOQUEO_ESI:
 								//supongo que ya me encargue de guardarlo como bloqueado
 								break;
+							case INSTANCIA_CAIDA_EXCEPTION:
+								fallo_linea();
+								break;
 							default:
 								break;
 							}
-							sem_post(&sem_binario_planif);
+							//sem_post(&sem_binario_planif);
 						}
 
 					}
