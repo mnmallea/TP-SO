@@ -90,8 +90,8 @@ int main(int argc, char* argv[]) {
 			}
 
 			//Respuesta al planificador
-			//key = recibir_mensaje(socketCord);
-			//mandar_mensaje(socketPlan,key);
+			key = recibir_mensaje(socketCord);
+			mandar_mensaje(socketPlan,key);
 
 //			//Frees
 //			free(paqueteProcesado);
