@@ -111,7 +111,7 @@ void finalizar_esi() {
 	log_debug(logger, "Termino un esi: %d \n", esi_corriendo->id);
 
 	hay_esi_finalizado = true;
-	list_iterate(lista_esis_finalizados, aumentar_viene_esperando);
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 	sem_post(&sem_binario_planif);
 }
 
@@ -268,7 +268,7 @@ void fallo_linea() {
 			esi_corriendo->id);
 	liberar_recursos(esi_corriendo);
 	matar_nodo_esi(esi_corriendo);
-	list_iterate(lista_esis_finalizados, aumentar_viene_esperando);
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 }
 
 void aumentar_viene_esperando(void* esi) {
