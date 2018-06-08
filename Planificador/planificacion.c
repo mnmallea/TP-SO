@@ -37,13 +37,16 @@ void* planificar(void* nada) {
 
 			t_esi* proximo_esi;
 			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
-				if (primera_vez || hay_nuevo_esi || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
+				if (primera_vez || hay_nuevo_esi || hay_esi_bloqueado
+						|| hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
 					/*DESALOJO AL ESI: (lo paso de nuevo a listos,
-					dejo el puntero con esi corriendo como esta, total despues se pisa)*/
-					nuevo_esi(esi_corriendo);
+					 dejo el puntero con esi corriendo como esta, total despues se pisa)*/
+					if (!primera_vez)
+						nuevo_esi(esi_corriendo);
 					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
-					primera_vez = hay_nuevo_esi = hay_esi_bloqueado = hay_esi_finalizado = false;
+					primera_vez = hay_nuevo_esi = hay_esi_bloqueado =
+							hay_esi_finalizado = false;
 				} else {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
 				}
@@ -52,7 +55,8 @@ void* planificar(void* nada) {
 				if (primera_vez || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. sin desalojo)
 					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
-					primera_vez = hay_esi_bloqueado = hay_esi_finalizado = false;
+					primera_vez = hay_esi_bloqueado = hay_esi_finalizado =
+							false;
 				} else {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
 				}
@@ -91,7 +95,8 @@ t_esi *obtener_nuevo_esi_a_correr() {
 void nuevo_esi(t_esi* esi) {
 	list_add(lista_esis_listos, esi);
 
-	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n", esi->id);
+	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
+			esi->id);
 	sem_post(&contador_esis);
 	hay_nuevo_esi = true;
 
@@ -105,6 +110,7 @@ void finalizar_esi() {
 	log_debug(logger, "Termino un esi: %d \n", esi_corriendo->id);
 
 	hay_esi_finalizado = true;
+	list_iterate(lista_esis_finalizados, aumentar_viene_esperando);
 	sem_post(&sem_binario_planif);
 }
 
@@ -256,6 +262,7 @@ void fallo_linea() {
 	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
 	matar_nodo_esi(esi_corriendo);
+	list_iterate(lista_esis_finalizados, aumentar_viene_esperando);
 }
 
 void aumentar_viene_esperando(void* esi) {
