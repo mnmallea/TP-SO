@@ -43,6 +43,7 @@ void* planificar(void* nada) {
 					nuevo_esi(esi_corriendo);
 					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
+					primera_vez = hay_nuevo_esi = hay_esi_bloqueado = hay_esi_finalizado = false;
 				} else {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
 				}
@@ -51,6 +52,7 @@ void* planificar(void* nada) {
 				if (primera_vez || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. sin desalojo)
 					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
+					primera_vez = hay_esi_bloqueado = hay_esi_finalizado = false;
 				} else {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
 				}

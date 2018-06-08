@@ -23,7 +23,7 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 
 	/*Config*/
 	logger = log_create("planificador.log", "Planificador", true, LOG_LEVEL);
-	logger->is_active_console = 0;
+//	logger->is_active_console = 0;
 	configuracion = configurar(argv[1]);
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;

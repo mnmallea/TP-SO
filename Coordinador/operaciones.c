@@ -28,7 +28,7 @@ void realizar_get(t_esi* esi, char* clave) {
 		return;
 		break;
 	case EXITO:
-		log_info(logger, "Set realizado exitosamente");
+		log_info(logger, "Get realizado exitosamente");
 		send(esi->socket, &cod_op, sizeof(t_protocolo), 0);
 		break;
 	default:
