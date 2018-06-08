@@ -50,7 +50,8 @@ void *listener(void *ptr) {
 								newfd);
 						n_esi = crear_nodo_esi(newfd);
 						n_esi->id = id;
-						list_add(lista_esis_listos, n_esi);
+						nuevo_esi(n_esi);
+						sem_post(&contador_esis);
 						hay_nuevo_esi = true;
 						if (id == 1) {
 							sem_post(&sem_binario_planif);
