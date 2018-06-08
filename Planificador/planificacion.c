@@ -190,12 +190,12 @@ bool esi_con_este_id(void* esi) {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE INDICA QUE SE DESBLOQUIO UN RECURSO
 void se_desbloqueo_un_recurso(char* clave) {
 
+	dictionary_remove(dic_clave_x_esi, clave);
 	if (dictionary_has_key(dic_esis_bloqueados, clave)) { //hay esis encolados
 		t_list *lista_esis_bloq_esta_clave = dictionary_get(dic_esis_bloqueados,
 				clave);
 		t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
 		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
-		dictionary_remove(dic_clave_x_esi, clave);
 
 		nuevo_esi(esi_desbloq);
 	}
