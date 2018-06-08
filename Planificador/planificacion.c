@@ -280,11 +280,19 @@ void desbloquear_claves_tomadas(char* clave, void* esi) {
 
 }
 
-void nueva_solicitud(char* clave) {
+void nueva_solicitud(int socket, char* clave) {
+
+	t_protocolo cod_op;
 	if (esta_tomada_x_otro_la_clave(clave)) {
 		bloquear_esi(clave);
+		cod_op = ERROR;
+
 	} else {
 		nueva_clave_tomada_x_esi(clave);
+		cod_op = EXITO;
+
 	}
+
+	enviar_cod_operacion(socket, cod_op);
 }
 

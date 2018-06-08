@@ -30,6 +30,12 @@ int conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente);
  * Devuelve valor negativo si fallo
  */
 t_protocolo recibir_cod_operacion(int sockfd);
+
+/*
+ * Devuelve valor negativo si fallo
+ */
+
+int enviar_cod_operacion(int sockfd, t_protocolo cod_op);
 int recibir_operacion_unaria(int sockfd, char** clave);
 int recibir_set(int sockfd, char** clave, char** valor);
 

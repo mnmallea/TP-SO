@@ -86,6 +86,14 @@ t_protocolo recibir_cod_operacion(int sockfd) {
 	return cod_op;
 }
 
+int enviar_cod_operacion(int sockfd, t_protocolo cod_op) {
+	if (send(sockfd, &cod_op, sizeof(cod_op), 0) < 0) {
+		log_error(logger, "Error al enviar operacion");
+		return -1;
+	}
+	return 0;
+}
+
 int recibir_operacion_unaria(int sockfd, char** clave) {
 	return try_recibirPaqueteVariable(sockfd, (void**) clave);
 }

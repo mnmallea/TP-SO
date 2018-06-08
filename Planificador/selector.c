@@ -108,7 +108,8 @@ void *listener(void *ptr) {
 								}
 								break;
 							case SOLICITUD_CLAVE:
-								nueva_solicitud(clave);
+								nueva_solicitud(i, clave);
+
 								break;
 							default:
 								break;
