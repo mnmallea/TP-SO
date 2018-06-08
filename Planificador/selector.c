@@ -92,7 +92,7 @@ void *listener(void *ptr) {
 							//queda comentado porque era para pruebas
 
 
-							recibir_operacion_unaria(i, (void**)clave);
+							recibir_operacion_unaria(i, clave);
 
 							switch (buf) { //mensajes de coord
 

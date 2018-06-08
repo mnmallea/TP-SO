@@ -4,7 +4,16 @@
  *  Created on: 5 jun. 2018
  *      Author: utnso
  */
+
 #include "instancia.h"
+
+#include <commons/string.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+#include "sincronizacion.h"
 
 /*
  * Aclaracion, vos te tenes que encargar de que la clave tenga el lugar en memoria.
@@ -47,10 +56,11 @@ void liberar_instancia(t_instancia* instancia) {
 	}
 }
 
-bool esta_instancia_en_lista(char* nombre, t_list* lista){
+bool esta_instancia_en_lista(char* nombre, t_list* lista) {
 	bool esLaInstanciaQueBusco(void* instancia) {
-			return string_equals_ignore_case(((t_instancia*)instancia)->nombre, nombre);
-		}
+		return string_equals_ignore_case(((t_instancia*) instancia)->nombre,
+				nombre);
+	}
 	return list_any_satisfy(lista, esLaInstanciaQueBusco);
 }
 
@@ -58,6 +68,22 @@ bool esta_activa_instancia(char* nombre) {
 	return esta_instancia_en_lista(nombre, lista_instancias_disponibles);
 }
 
-bool esta_inactiva_instancia(char* nombre){
+bool esta_inactiva_instancia(char* nombre) {
 	return esta_instancia_en_lista(nombre, lista_instancias_inactivas);
+}
+
+void instancia_desactivar(t_instancia* instancia) {
+	pthread_mutex_lock(&mutex_instancias_disponibles);
+	bool esLaInstanciaQueBusco(void* una_instancia) {
+		return instancia == una_instancia;
+	}
+	list_remove_by_condition(lista_instancias_disponibles,
+			esLaInstanciaQueBusco);
+	sem_wait(&contador_instancias_disponibles);
+	pthread_mutex_unlock(&mutex_instancias_disponibles);
+
+	close(instancia->socket);
+	instancia->socket = -1;//porlas
+	//todo no se si hay que poner o no mutex aca
+	list_add(lista_instancias_inactivas, instancia);
 }
