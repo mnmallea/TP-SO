@@ -18,6 +18,7 @@
 //#include "selector.h"
 //#include "consola.h"
 #include "main.h"
+#include "../syntax-commons/conexiones.h"
 
 
 int flag;
@@ -106,7 +107,7 @@ void aumentar_viene_esperando(void* esi);
 void aumentar_viene_corriendo(void* esi);
 
 
-void nueva_solicitud(char* clave);
+void nueva_solicitud(int socket, char* clave);
 
 void* planificar(void*);
 
