@@ -141,7 +141,7 @@ void *listener(void *ptr) {
 							default:
 								break;
 							}
-							//sem_post(&sem_binario_planif);
+							sem_post(&sem_binario_planif);
 						}
 
 					}

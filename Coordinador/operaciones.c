@@ -23,7 +23,8 @@ void realizar_get(t_esi* esi, char* clave) {
 	logear_get(esi->id, clave);
 	solicitar_clave(clave);
 	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
-	log_trace(logger, "Mensaje recibido del planificador: %s", to_string_protocolo(cod_op));
+	log_trace(logger, "Mensaje recibido del planificador: %s",
+			to_string_protocolo(cod_op));
 	switch (cod_op) {
 	case BLOQUEO_ESI: //en realidad es que la clave estaba ocupada
 		log_info(logger, "Clave ocupada %s", clave);
@@ -50,10 +51,12 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 	logear_set(esi->id, clave, valor);
 	esi_tiene_clave(clave);
 	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
-	log_trace(logger, "Mensaje recibido del planificador: %s", to_string_protocolo(cod_op));
+	log_trace(logger, "Mensaje recibido del planificador: %s",
+			to_string_protocolo(cod_op));
 	switch (cod_op) {
 	case CLAVE_NO_BLOQUEADA_EXCEPTION: //en realidad es que la clave estaba ocupada
-		send(esi->socket, &cod_op, sizeof(t_protocolo), 0);
+	case CLAVE_NO_IDENTIFICADA_EXCEPTION:
+		enviar_cod_operacion(esi->socket, ABORTA);
 		return;
 		break;
 	case EXITO:
@@ -68,19 +71,20 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 //			informar_instancia_caida(instancia_elegida);
 			return;
 		}
-		t_protocolo respuesta_instancia = recibir_cod_operacion(
-				instancia_elegida->socket);
+//		t_protocolo respuesta_instancia = recibir_cod_operacion(
+//				instancia_elegida->socket);
+		t_protocolo respuesta_instancia = EXITO;
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger, "Set realizado exitosamente en Instancia %s",
 					instancia_elegida->nombre);
 			agregar_clave_almacenada(instancia_elegida, clave);
-			send(esi->socket, &respuesta_instancia, sizeof(t_protocolo), 0);
+			enviar_cod_operacion(esi->socket, EXITO);
 			break;
 		case ERROR:
 			log_error(logger, "Error al realizar set en Instancia %s",
 					instancia_elegida->nombre);
-			send(esi->socket, &respuesta_instancia, sizeof(t_protocolo), 0);
+			enviar_cod_operacion(esi->socket, ABORTA);
 			break;
 		default:
 			log_error(logger, "Error al recibir retorno de instancia %s",
@@ -108,12 +112,15 @@ void realizar_store(t_esi* esi, char* clave) {
 	logear_store(esi->id, clave);
 	esi_tiene_clave(clave);
 	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
-	log_trace(logger, "Mensaje recibido del planificador: %s", to_string_protocolo(cod_op));
+	log_trace(logger, "Mensaje recibido del planificador: %s",
+			to_string_protocolo(cod_op));
 	switch (cod_op) {
 	case EXITO:
 		instancia_elegida = instancia_con_clave(clave);
-		if(instancia_elegida == NULL){
-			log_error(logger, "La instancia que tiene la clave %s no esta disponible en el sistema",clave);
+		if (instancia_elegida == NULL) {
+			log_error(logger,
+					"La instancia que tiene la clave %s no esta disponible en el sistema",
+					clave);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 		}
 		log_debug(logger, "Instancia elegida: %s", instancia_elegida->nombre);
@@ -125,18 +132,19 @@ void realizar_store(t_esi* esi, char* clave) {
 //			informar_instancia_caida(instancia_elegida);
 			return;
 		}
-		t_protocolo respuesta_instancia = recibir_cod_operacion(
-				instancia_elegida->socket);
+//		t_protocolo respuesta_instancia = recibir_cod_operacion(
+//				instancia_elegida->socket);
+		t_protocolo respuesta_instancia = EXITO;
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger, "Store realizado exitosamente en Instancia %s",
 					instancia_elegida->nombre);
-			send(esi->socket, &respuesta_instancia, sizeof(t_protocolo), 0);
+			enviar_cod_operacion(esi->socket, EXITO);
 			break;
 		case ERROR:
 			log_error(logger, "Error al realizar store en Instancia %s",
 					instancia_elegida->nombre);
-			send(esi->socket, &respuesta_instancia, sizeof(t_protocolo), 0);
+			enviar_cod_operacion(esi->socket, ABORTA);
 			break;
 		default:
 			log_error(logger, "Error al recibir retorno de instancia %s",

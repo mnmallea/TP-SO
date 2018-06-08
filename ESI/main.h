@@ -9,11 +9,9 @@
 #define MAIN_H_
 
 #include <commons/log.h>
-#include <parsi/parser.h>
-#include "../syntax-commons/my_socket.h"
-#include "../syntax-commons/serializador.h"
+
 #include "../syntax-commons/protocol.h"
-#include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/serializador.h"
 #include "config_esi.h"
 
 

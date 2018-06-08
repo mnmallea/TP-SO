@@ -1,5 +1,16 @@
 #include "main.h"
 
+#include <parsi/parser.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+
+#include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/my_socket.h"
+
 int main(int argc, char* argv[]) {
 	FILE * fp;
 	char * line = NULL;
@@ -91,7 +102,13 @@ int main(int argc, char* argv[]) {
 
 			//Respuesta al planificador
 			key = recibir_mensaje(socketCord);
-			mandar_mensaje(socketPlan,key);
+//			switch(key){
+//			case BLOQUEO_ESI:
+//				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
+//				recibir_confirmacion(socketPlan);
+//			}
+			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
+			mandar_mensaje(socketPlan, key);
 
 //			//Frees
 //			free(paqueteProcesado);
@@ -109,9 +126,8 @@ int main(int argc, char* argv[]) {
 
 	log_info(logger, "No quedan mas lineas en el archivo");
 
-
 	t_protocolo cod_op = FINALIZO_ESI;
-	enviar_cod_op(socketPlan, cod_op);
+	enviar_cod_operacion(socketPlan, cod_op);
 
 	fclose(fp);
 	if (line)
