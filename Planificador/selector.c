@@ -104,8 +104,15 @@ void *listener(void *ptr) {
 								//dejar estos corchetes sin cuestionar (nay)
 								{
 								bool la_tiene = esi_tiene_clave(clave);
+								t_protocolo cod_op;
 
-								//mandar por sockets la_tiene
+								if(la_tiene){
+									cod_op = EXITO;
+								}else{
+									cod_op = ERROR;
+								}
+
+								enviar_cod_operacion(i, cod_op);
 								}
 								break;
 							case SOLICITUD_CLAVE:
