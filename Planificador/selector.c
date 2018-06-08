@@ -132,6 +132,9 @@ void *listener(void *ptr) {
 							case FINALIZO_ESI:
 								finalizar_esi();
 								break;
+							case BLOQUEO_ESI:
+								//supongo que ya me encargue de guardarlo como bloqueado
+								break;
 							default:
 								break;
 							}
