@@ -7,6 +7,22 @@
 
 #include "servidor.h"
 
+#include <semaphore.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <unistd.h>
+
+#include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/deserializador.h"
+#include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/protocol.h"
+#include "instancia.h"
+#include "log_operaciones.h"
+#include "operaciones.h"
+#include "planificador.h"
+#include "sincronizacion.h"
+
 void esperar_nuevas_conexiones(int *sockfd) {
 	int new_sockfd;
 	socklen_t addr_size;
@@ -116,48 +132,56 @@ void atender_instancia(int sockfd) {
 
 void atender_esi(int socket) {
 
-	t_esi *n_esi = malloc(sizeof(t_esi));
-	n_esi->socket = socket;
-	n_esi->id = safe_recv(socket, sizeof(int));
-
-	//n_esi->valores=malloc(0); //hay que acordarse de hacer free a los valores cuando termine de atender al ESI
+	t_esi *esi = malloc(sizeof(t_esi));
+	esi->socket = socket;
+	if (recv(socket, &esi->id, sizeof(int), MSG_WAITALL) <= 0) {
+		log_error(logger, "Error al recibir id de esi");
+		close(socket);
+		return;
+	}
 	pthread_mutex_lock(&mutex_esi_disponibles);
-	list_add(lista_esis_disponibles, n_esi);
-	log_debug(logger, "Esi id:%d agregada a la lista", *(n_esi->id));
+	list_add(lista_esis_disponibles, esi);
+	log_debug(logger, "Esi id:%d agregada a la lista", esi->id);
 	pthread_mutex_unlock(&mutex_esi_disponibles);
 
-	sem_post(&planif_binario);
-//	recibir_confirmacion(socket);
-	char* clave = NULL;
-	char* valor = NULL;
+//	sem_post(&planif_binario); todo revisar esto (dudoso)
 	while (1) {
+		char* clave = NULL;
+		char* valor = NULL;
+
 		t_protocolo cod_op = recibir_cod_operacion(socket);
 		log_trace(logger, "codigo de operacion recibido");
 
 		switch (cod_op) {
 		case OP_GET:
 			recibir_operacion_unaria(socket, &clave);
-			log_trace(logger, "Recibi Get/store %s", clave);
-			logear_get(*n_esi->id, clave);
+			log_trace(logger, "Recibi GET %s", clave);
+			realizar_get(esi, clave);
 			break;
 		case OP_STORE:
 			recibir_operacion_unaria(socket, &clave);
-			log_trace(logger, "Recibi Get/store %s", clave);
-			logear_store(*n_esi->id, clave);
+			log_trace(logger, "Recibi STORE %s", clave);
+			realizar_store(esi, clave);
 			break;
 		case OP_SET:
 			recibir_set(socket, &clave, &valor);
 			log_trace(logger, "Recibi SET %s %s", clave, valor);
-			logear_set(*n_esi->id, clave, valor);
+			realizar_set(esi, clave, valor);
 			break;
 		default:
-			log_error(logger, "el esi ha muerto");
+			log_error(logger,
+					"El esi ha muerto, le cortaron la garganta de aqui a aca",
+					esi->id);
+			/*
+			 * todo fijarse si aca hay que sacarlo de la lista o no
+			 */
 			close(socket);
 			return;
 		}
+
+		free(clave);
+		free(valor);
 	}
-	free(clave);
-	free(valor);
 }
 
 void atender_planif(int socket) {
