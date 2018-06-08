@@ -56,6 +56,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 	switch (cod_op) {
 	case CLAVE_NO_BLOQUEADA_EXCEPTION: //en realidad es que la clave estaba ocupada
 	case CLAVE_NO_IDENTIFICADA_EXCEPTION:
+		log_trace(logger, "Enviando Aborta al ESI");
 		enviar_cod_operacion(esi->socket, ABORTA);
 		return;
 		break;

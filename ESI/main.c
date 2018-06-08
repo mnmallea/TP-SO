@@ -101,14 +101,14 @@ int main(int argc, char* argv[]) {
 			}
 
 			//Respuesta al planificador
-			key = recibir_mensaje(socketCord);
+			key = recibir_cod_operacion(socketCord);
 //			switch(key){
 //			case BLOQUEO_ESI:
 //				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
 //				recibir_confirmacion(socketPlan);
 //			}
 			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
-			mandar_mensaje(socketPlan, key);
+			enviar_cod_operacion(socketPlan, key);
 
 //			//Frees
 //			free(paqueteProcesado);
