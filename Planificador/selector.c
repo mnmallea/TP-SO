@@ -62,7 +62,6 @@ void *listener(void *ptr) {
 						log_info(logger,
 								"Cantidad de elementos en la lista: %d",
 								list_size(lista_esis_listos));
-						mandar_confirmacion(newfd);
 					}
 				}
 
@@ -151,7 +150,6 @@ t_esi *crear_nodo_esi(int socket) {
 	t_esi *p = malloc(sizeof(esi));
 	p->socket = socket;
 	p->estim_anter = configuracion.estimacion_inicial;
-	p->clave_bloq = configuracion.claves_bloqueadas;
 	p->dur_ult_raf = 0;
 	p->viene_esperando = 0;
 
