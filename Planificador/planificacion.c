@@ -112,7 +112,9 @@ void bloquear_esi(char* clave) {
 
 	//No existe la clave, agrego esta nueva linea
 	if (!dictionary_has_key(dic_esis_bloqueados, clave)) {
-		dictionary_put(dic_esis_bloqueados, clave, esi_corriendo);
+		t_list *primer_esi = list_create();
+		list_add(primer_esi, esi_corriendo);
+		dictionary_put(dic_esis_bloqueados, clave, primer_esi);
 
 	} else { //Existe la clave, agrego el esi a la lista de bloq
 
