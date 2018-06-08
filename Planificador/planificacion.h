@@ -108,5 +108,7 @@ void aumentar_viene_corriendo(void* esi);
 
 void nueva_solicitud(char* clave);
 
+void* planificar(void*);
+
 
 #endif /* PLANIFICACION_H_ */

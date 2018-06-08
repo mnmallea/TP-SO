@@ -42,7 +42,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	//todo descomentar esto despues:
-//	recibir_confirmacion(socketPlan); //signal para ejecutar
+	recibir_confirmacion(socketPlan); //signal para ejecutar
 
 	while ((read = getline(&line, &len, fp)) != -1) {
 
@@ -103,7 +103,7 @@ int main(int argc, char* argv[]) {
 			//enviar respuesta al planificador, error de linea(?)
 			exit_gracefully(1);
 		}
-//		recibir_confirmacion(socketPlan); todo descomentar esto tambien
+		recibir_confirmacion(socketPlan);
 
 	}
 
