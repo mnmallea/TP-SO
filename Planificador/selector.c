@@ -51,10 +51,6 @@ void *listener(void *ptr) {
 						n_esi = crear_nodo_esi(newfd);
 						n_esi->id = id;
 						nuevo_esi(n_esi);
-						if (id == 1) {
-							sem_post(&sem_binario_planif);
-							primera_vez = true;
-						}
 
 						mandar_mensaje(newfd, id);
 						id++;

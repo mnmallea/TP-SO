@@ -41,8 +41,7 @@ void* planificar(void* nada) {
 						|| hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
 					/*DESALOJO AL ESI: (lo paso de nuevo a listos,
 					 dejo el puntero con esi corriendo como esta, total despues se pisa)*/
-					if (!primera_vez)
-						nuevo_esi(esi_corriendo);
+					if (!primera_vez) nuevo_esi(esi_corriendo);
 					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
 					primera_vez = hay_nuevo_esi = hay_esi_bloqueado =
@@ -93,6 +92,12 @@ t_esi *obtener_nuevo_esi_a_correr() {
 
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE LLEGO UN NUEVO ESI
 void nuevo_esi(t_esi* esi) {
+
+	if(list_is_empty(lista_esis_listos)){
+		primera_vez = true;
+		sem_post(&sem_binario_planif);
+	}
+
 	list_add(lista_esis_listos, esi);
 
 	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
@@ -269,6 +274,7 @@ void fallo_linea() {
 	liberar_recursos(esi_corriendo);
 	matar_nodo_esi(esi_corriendo);
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+	hay_esi_finalizado = true;
 }
 
 void aumentar_viene_esperando(void* esi) {
