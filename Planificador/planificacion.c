@@ -105,6 +105,7 @@ void nuevo_esi(t_esi* esi) {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL ESI CORRIENDO FINALIZO
 void finalizar_esi() {
 
+	liberar_recursos(esi_corriendo);
 	list_add(lista_esis_finalizados, esi_corriendo);
 
 	log_debug(logger, "Termino un esi: %d \n", esi_corriendo->id);
@@ -263,6 +264,7 @@ void fallo_linea() {
 	//si leyo mal la linea
 	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
+	liberar_recursos(esi_corriendo);
 	matar_nodo_esi(esi_corriendo);
 	list_iterate(lista_esis_finalizados, aumentar_viene_esperando);
 }
