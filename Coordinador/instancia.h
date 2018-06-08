@@ -23,5 +23,6 @@ void liberar_instancia(t_instancia* instancia);
 bool esta_activa_instancia(char* nombre);
 bool esta_inactiva_instancia(char* nombre);
 void instancia_desactivar(t_instancia*);
+t_instancia* instancia_con_clave(char* clave);
 
 #endif /* INSTANCIA_H_ */

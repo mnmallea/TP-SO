@@ -38,6 +38,6 @@ void esi_tiene_clave(char* clave) {
 }
 
 void informar_instancia_caida(t_instancia* instancia) {
-	t_protocolo msg = INSTANCIA_CAIDA;
+	t_protocolo msg = INSTANCIA_CAIDA_EXCEPTION;
 	safe_send(socket_planificador, &msg, sizeof(msg));
 }
