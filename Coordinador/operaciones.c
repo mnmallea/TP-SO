@@ -23,8 +23,11 @@ void realizar_get(t_esi* esi, char* clave) {
 	logear_get(esi->id, clave);
 	solicitar_clave(clave);
 	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+	log_trace(logger, "Mensaje recibido del planificador: %s", to_string_protocolo(cod_op));
 	switch (cod_op) {
-	case ERROR: //en realidad es que la clave estaba ocupada
+	case BLOQUEO_ESI: //en realidad es que la clave estaba ocupada
+		log_info(logger, "Clave ocupada %s", clave);
+		send(esi->socket, &cod_op, sizeof(t_protocolo), 0);
 		return;
 		break;
 	case EXITO:
@@ -47,10 +50,10 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 	logear_set(esi->id, clave, valor);
 	esi_tiene_clave(clave);
 	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
-
+	log_trace(logger, "Mensaje recibido del planificador: %s", to_string_protocolo(cod_op));
 	switch (cod_op) {
-	case ERROR: //en realidad es que la clave estaba ocupada
-		//todo aca habria que avisarle al esi que se bloqueo???
+	case CLAVE_NO_BLOQUEADA_EXCEPTION: //en realidad es que la clave estaba ocupada
+		send(esi->socket, &cod_op, sizeof(t_protocolo), 0);
 		return;
 		break;
 	case EXITO:
@@ -60,7 +63,9 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida);
-			informar_instancia_caida(instancia_elegida);
+
+			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+//			informar_instancia_caida(instancia_elegida);
 			return;
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
@@ -69,6 +74,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		case EXITO:
 			log_info(logger, "Set realizado exitosamente en Instancia %s",
 					instancia_elegida->nombre);
+			agregar_clave_almacenada(instancia_elegida, clave);
 			send(esi->socket, &respuesta_instancia, sizeof(t_protocolo), 0);
 			break;
 		case ERROR:
@@ -79,8 +85,9 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		default:
 			log_error(logger, "Error al recibir retorno de instancia %s",
 					instancia_elegida->nombre);
+			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 			instancia_desactivar(instancia_elegida);
-			informar_instancia_caida(instancia_elegida);
+//			informar_instancia_caida(instancia_elegida);
 		}
 
 		break;
@@ -91,6 +98,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			exit(EXIT_FAILURE);
 		}
 		log_error(logger, "Respuesta del planificador desconocida");
+		//todo no se que haria en este caso
 	}
 }
 
@@ -100,16 +108,21 @@ void realizar_store(t_esi* esi, char* clave) {
 	logear_store(esi->id, clave);
 	esi_tiene_clave(clave);
 	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
-
+	log_trace(logger, "Mensaje recibido del planificador: %s", to_string_protocolo(cod_op));
 	switch (cod_op) {
 	case EXITO:
-		instancia_elegida = obtener_instancia_siguiente(clave);
+		instancia_elegida = instancia_con_clave(clave);
+		if(instancia_elegida == NULL){
+			log_error(logger, "La instancia que tiene la clave %s no esta disponible en el sistema",clave);
+			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+		}
 		log_debug(logger, "Instancia elegida: %s", instancia_elegida->nombre);
 		if (enviar_store(instancia_elegida->socket, clave) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida);
-			informar_instancia_caida(instancia_elegida);
+			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+//			informar_instancia_caida(instancia_elegida);
 			return;
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
@@ -129,11 +142,14 @@ void realizar_store(t_esi* esi, char* clave) {
 			log_error(logger, "Error al recibir retorno de instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida);
-			informar_instancia_caida(instancia_elegida);
+			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+//			informar_instancia_caida(instancia_elegida);
 		}
 		informar_liberacion_clave(clave);
 		break;
-	case ERROR:		//aca la clave esta bloqueada
+	case CLAVE_NO_BLOQUEADA_EXCEPTION:		//aca la clave esta bloqueada
+	case CLAVE_NO_IDENTIFICADA_EXCEPTION:
+		enviar_cod_operacion(esi->socket, ABORTA);
 		return;
 		break;
 	default:
