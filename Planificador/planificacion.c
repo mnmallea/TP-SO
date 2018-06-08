@@ -19,7 +19,7 @@
  * -NUEVO PROCESO LLEGA (o uno se desbloquea)
  */
 
-int flag = 0;
+int flag = 1;
 bool primera_vez = false;
 bool hay_nuevo_esi = false;
 bool hay_esi_bloqueado = false;
@@ -32,7 +32,7 @@ void* planificar(void* nada) {
 		sem_wait(&sem_binario_planif);
 
 		pthread_mutex_lock(&mutex_flag_pausa_despausa);
-		if (flag == 0) { //esta despausada la planificacion
+		if (flag == 1) { //esta despausada la planificacion
 			pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
 			t_esi* proximo_esi;
@@ -41,7 +41,8 @@ void* planificar(void* nada) {
 						|| hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
 					/*DESALOJO AL ESI: (lo paso de nuevo a listos,
 					 dejo el puntero con esi corriendo como esta, total despues se pisa)*/
-					if (!primera_vez) nuevo_esi(esi_corriendo);
+					if (!primera_vez)
+						nuevo_esi(esi_corriendo);
 					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
 					primera_vez = hay_nuevo_esi = hay_esi_bloqueado =
@@ -93,7 +94,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE LLEGO UN NUEVO ESI
 void nuevo_esi(t_esi* esi) {
 
-	if(list_is_empty(lista_esis_listos)){
+	if (list_is_empty(lista_esis_listos)) {
 		primera_vez = true;
 		sem_post(&sem_binario_planif);
 	}
@@ -122,26 +123,32 @@ void finalizar_esi() {
 
 void bloquear_esi(char* clave) {
 
+	agregar_a_dic_bloqueados(clave, esi_corriendo);
+	log_debug(logger, "Se bloqueo el esi corriendo: %d para la clave: %s \n",
+			esi_corriendo->id, clave);
+	hay_esi_bloqueado = true;
+}
+
+void agregar_a_dic_bloqueados(char* clave, t_esi *esi) {
+
 	//No existe la clave, agrego esta nueva linea
 	if (!dictionary_has_key(dic_esis_bloqueados, clave)) {
 		t_list *primer_esi = list_create();
-		list_add(primer_esi, esi_corriendo);
+		list_add(primer_esi, esi);
 		dictionary_put(dic_esis_bloqueados, clave, primer_esi);
 
 	} else { //Existe la clave, agrego el esi a la lista de bloq
 
 		t_list *lista_esis_bloq_esta_clave = dictionary_remove(
 				dic_esis_bloqueados, clave);
-		list_add(lista_esis_bloq_esta_clave, esi_corriendo);
+		list_add(lista_esis_bloq_esta_clave, esi);
 		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
 
 	}
 
-	log_debug(logger, "Se bloqueo el esi: %d para la clave: %s \n",
-			esi_corriendo->id, clave);
-	hay_esi_bloqueado = true;
 }
 
+//variable para memoria compartida
 int id;
 
 void bloquear_esi_por_consola(char* clave, int id_esi) {
@@ -150,20 +157,9 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 
 	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
 
-	//No existe la clave, agrego esta nueva linea
-	if (!dictionary_has_key(dic_esis_bloqueados, clave)) {
-		dictionary_put(dic_esis_bloqueados, clave, esi_afectado);
-
-	} else { //Existe la clave, agrego el esi a la lista de bloq
-
-		t_list *lista_esis_bloq_esta_clave = dictionary_remove(
-				dic_esis_bloqueados, clave);
-		list_add(lista_esis_bloq_esta_clave, esi_afectado);
-		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
-
-	}
+	agregar_a_dic_bloqueados(clave, esi_afectado);
 	log_debug(logger, "Se bloqueo por consola el esi: %d para la clave: %s \n",
-			esi_corriendo->id, clave);
+			esi_afectado->id, clave);
 
 }
 
@@ -180,7 +176,10 @@ t_esi *buscar_esi_por_id(int id_esi) {
 
 	} else {
 		//si no es el q esta corriendo lo busco en la lista de esis listos
-		esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
+		if (list_any_satisfy(lista_esis_listos, esi_con_este_id)) {
+			esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
+		}else
+			log_error(logger, "No existe ningun esi en el sistema con el id: %d", id);
 
 	}
 

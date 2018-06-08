@@ -18,7 +18,7 @@
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
 
-extern int flag;
+//extern int flag;
 extern t_log *logger;
 
 void *menu(void *ptr);
