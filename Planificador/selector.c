@@ -51,8 +51,6 @@ void *listener(void *ptr) {
 						n_esi = crear_nodo_esi(newfd);
 						n_esi->id = id;
 						nuevo_esi(n_esi);
-						sem_post(&contador_esis);
-						hay_nuevo_esi = true;
 						if (id == 1) {
 							sem_post(&sem_binario_planif);
 							primera_vez = true;
@@ -159,7 +157,7 @@ t_esi *crear_nodo_esi(int socket) {
 	t_esi *p = malloc(sizeof(esi));
 	p->socket = socket;
 	p->estim_anter = configuracion.estimacion_inicial;
-	p->dur_ult_raf = 0;
+	p->dur_ult_raf = configuracion.estimacion_inicial;
 	p->viene_esperando = 0;
 
 	return p;
