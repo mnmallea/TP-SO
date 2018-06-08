@@ -27,7 +27,7 @@ typedef struct {
 } dumperEstructura;
 dumperEstructura* dumper;
 
-extern t_log logger;
+extern t_log *logger;
 
 int crearDumperCV(char*clave);
 void iniciarDumper(char* puntoMontaje);

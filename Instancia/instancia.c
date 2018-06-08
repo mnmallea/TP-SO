@@ -60,7 +60,7 @@ void almacenarEnDumper(char* data,char* clave,unsigned int tamanio){
 		fd= crearDumperCV(clave);
 	}
 	if(fd==-1){
-		log_info("error al almacenar clave en dumper");
+		log_info(logger,"error al almacenar clave en dumper");
 		//TERMINAR ALMACENARENDUMPER
 	}
 	ftruncate(fd,tamanio);
