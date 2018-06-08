@@ -123,6 +123,11 @@ void liberarEntrada(tablaE* entrada){
 	free(entrada->clave);
 	free(entrada);
 }
+void liberarCv(claveEntrada* cv){
+	free(cv->clave);
+	free(cv->valor);
+	free(cv);
+}
 
 claveEntrada* crearClaveEntrada(char* clave, char* valor) {
 	claveEntrada* claveE = malloc(sizeof(claveEntrada));
@@ -130,4 +135,22 @@ claveEntrada* crearClaveEntrada(char* clave, char* valor) {
 	claveE->clave = string_substring_until(clave, 40);
 	claveE->tamanio = (unsigned int) (string_length(valor) + 1);
 	return claveE;
+}
+
+
+bool hayEntradasDisponibles(claveEntrada* cv){
+	return (cv->tamanio/obtenerTamanioEntrada() +1)<= entradasLibres;
+
+}
+
+tablaE* buscarEntrada(char* claveAPedir){
+	tablaE* entrada;
+	for(int i=0;i<list_size(tabla);i++){
+		entrada = (tablaE*) list_get(tabla,i);
+		if(entrada->clave == claveAPedir){
+			return entrada;
+		}
+	}
+	log_info(logger,"no se encontro la entrada buscada");
+	return NULL;
 }
