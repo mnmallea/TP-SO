@@ -109,7 +109,9 @@ int main(int argc, char* argv[]) {
 
 	log_info(logger, "No quedan mas lineas en el archivo");
 
-	//enviar respuesta al planificador , no habia mas lineas(?)
+
+	t_protocolo cod_op = FINALIZO_ESI;
+	enviar_cod_op(socketPlan, cod_op);
 
 	fclose(fp);
 	if (line)
