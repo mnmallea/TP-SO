@@ -92,7 +92,7 @@ void *listener(void *ptr) {
 							//queda comentado porque era para pruebas
 
 
-							recibir_operacion_unaria(i, clave);
+							recibir_operacion_unaria(i, &clave);
 
 							switch (buf) { //mensajes de coord
 
@@ -129,6 +129,7 @@ void *listener(void *ptr) {
 							default:
 								break;
 							}
+							sem_post(&sem_binario_planif);
 						}
 
 					}
