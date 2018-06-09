@@ -103,7 +103,7 @@ PROCESAR:switch (parsed.keyword) {
 			switch(key){
 			case BLOQUEO_ESI:
 				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
-				esperar_confirmacion(socketPlan);
+				recibir_confirmacion(socketPlan);
 					goto PROCESAR;
 
 			}
