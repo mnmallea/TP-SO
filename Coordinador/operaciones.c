@@ -124,7 +124,8 @@ void realizar_store(t_esi* esi, char* clave) {
 					clave);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 		}
-		log_debug(logger, "Instancia elegida: %s", instancia_elegida->nombre);
+		log_debug(logger, "Instancia elegida: %s,ya que tiene la clave %s",
+				instancia_elegida->nombre, clave);
 		if (enviar_store(instancia_elegida->socket, clave) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);

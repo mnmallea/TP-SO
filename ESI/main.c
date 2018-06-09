@@ -63,10 +63,8 @@ int main(int argc, char* argv[]) {
 		t_esi_operacion parsed = parse(line);
 
 		if (parsed.valido) {
-//			pkg_esi = crearPaquete();
-//			log_debug(logger, "Crea pkg");
 
-			switch (parsed.keyword) {
+PROCESAR:switch (parsed.keyword) {
 			case GET:
 				log_debug(logger, "Get %s", parsed.argumentos.SET.clave);
 				enviar_get(socketCord, parsed.argumentos.GET.clave);
@@ -85,7 +83,7 @@ int main(int argc, char* argv[]) {
 							"El tamaño del valor <%s> es superior al permitido\n",
 							line);
 					exit_gracefully(1);
-					//error valor mayor a 40
+
 				}
 				break;
 
@@ -102,32 +100,34 @@ int main(int argc, char* argv[]) {
 
 			//Respuesta al planificador
 			key = recibir_cod_operacion(socketCord);
-//			switch(key){
-//			case BLOQUEO_ESI:
-//				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
-//				recibir_confirmacion(socketPlan);
-//			}
+			switch(key){
+			case BLOQUEO_ESI:
+				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
+				if(CORRER_ESI==recibir_cod_operacion(socketCord))
+					goto PROCESAR;
+
+			}
 			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
 			enviar_cod_operacion(socketPlan, key);
 
-//			//Frees
-//			free(paqueteProcesado);
-//			destruirPaquete(pkg_esi);
+			//Frees
+
 			destruir_operacion(parsed);
 
-		} else {
+		}
+		else {
 			log_error(logger, "La linea <%s> no es valida\n", line);
-			//enviar respuesta al planificador, error de linea(?)
+			enviar_cod_operacion(socketPlan, LINEA_INVALIDA);
 			exit_gracefully(1);
 		}
+
 		recibir_confirmacion(socketPlan);
 
 	}
 
 	log_info(logger, "No quedan mas lineas en el archivo");
 
-	t_protocolo cod_op = FINALIZO_ESI;
-	enviar_cod_operacion(socketPlan, cod_op);
+	enviar_cod_operacion(socketPlan, FINALIZO_ESI);
 
 	fclose(fp);
 	if (line)
