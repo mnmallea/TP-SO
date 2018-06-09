@@ -11,6 +11,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 #include "sincronizacion.h"
@@ -23,7 +24,17 @@ void agregar_clave_almacenada(t_instancia* instancia, char* clave) {
 	char* copia_clave = string_duplicate(clave);
 	list_add(instancia->claves_almacenadas, copia_clave);
 }
-
+/*
+ * Remueve la clave almacenada de la instancia
+ * serviria luego de que haga el store
+ */
+void remover_clave_almacenada(t_instancia* instancia, char* clave) {
+	bool esLaClave(void* unaClave) {
+		return !strcmp(unaClave, clave);
+	}
+	char* clave_buscada = list_remove_by_condition(instancia->claves_almacenadas, esLaClave);
+	free(clave_buscada);
+}
 /*
  * Deberia decirte si la instancia almacena una clave
  */
