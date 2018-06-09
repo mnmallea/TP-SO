@@ -49,3 +49,17 @@ config configurar(char *ruta){
 void limpiar_configuracion(){
 
 }
+
+/* PENDIENTE DE SEPARAR LOS TYPEDEFS POR OTRO LADO
+tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo){
+	if(string_equals_ignore_case(nombre_algoritmo, "FIFO"))
+		return FIFO;
+	if(string_equals_ignore_case(nombre_algoritmo, "SJF-CD"))
+		return SJFcD;
+	if(string_equals_ignore_case(nombre_algoritmo, "SJF-SD"))
+		return SJFsD;
+	if(string_equals_ignore_case(nombre_algoritmo, "HRRN"))
+		return HRRN;
+	exit_error_with_msg("Nombre del algoritmo desconocido");
+	return -1;
+}*/
