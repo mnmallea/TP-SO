@@ -49,21 +49,18 @@ int main(int argc, char** argv) {
 			}
 			break;
 		case OP_STORE:
-			;
 			char* clave;
 			int rs = recibir_operacion_unaria(socketCoordinador, &clave);
 			if (rs < 0) {
-				log_error(logger, "Error al recibir operacion blah");
+				log_error(logger, "Error al recibir operacion ");
 				close(socketCoordinador);
 				exit(EXIT_FAILURE);
 			}
 			log_trace(logger, "Store %s", clave);
 			resultado = STORE(clave);
 			if (resultado >= 0) {
-				//notificarCoordExito
 				enviar_cod_operacion(socketCoordinador, EXITO);
 			} else {
-				//notificarCoordFalla
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			break;
@@ -73,11 +70,11 @@ int main(int argc, char** argv) {
 			escucha = 0;
 
 			break;
-		default: {
+		default: 
 			log_info(logger, "no se pudo interpretar el mensaje");
 			//todo aca te tendrias que morir de manera copada
 			exit(EXIT_FAILURE);
-		}
+		
 
 		}
 	}
