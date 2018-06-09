@@ -72,9 +72,9 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 //			informar_instancia_caida(instancia_elegida);
 			return;
 		}
-//		t_protocolo respuesta_instancia = recibir_cod_operacion(
-//				instancia_elegida->socket);
-		t_protocolo respuesta_instancia = EXITO;
+		t_protocolo respuesta_instancia = recibir_cod_operacion(
+				instancia_elegida->socket);
+//		t_protocolo respuesta_instancia = EXITO;
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger, "Set realizado exitosamente en Instancia %s",
@@ -133,9 +133,9 @@ void realizar_store(t_esi* esi, char* clave) {
 //			informar_instancia_caida(instancia_elegida);
 			return;
 		}
-//		t_protocolo respuesta_instancia = recibir_cod_operacion(
-//				instancia_elegida->socket);
-		t_protocolo respuesta_instancia = EXITO;
+		t_protocolo respuesta_instancia = recibir_cod_operacion(
+				instancia_elegida->socket);
+//		t_protocolo respuesta_instancia = EXITO;
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger, "Store realizado exitosamente en Instancia %s",
