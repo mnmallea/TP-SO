@@ -33,5 +33,6 @@ extern t_log *logger;
 
 config configurar(char *ruta);
 void limpiar_configuracion();
+//tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo);
 
 #endif /* CONFIG_PLANIFICADOR_H_ */

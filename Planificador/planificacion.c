@@ -157,9 +157,15 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 
 	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
 
-	agregar_a_dic_bloqueados(clave, esi_afectado);
-	log_debug(logger, "Se bloqueo por consola el esi: %d para la clave: %s \n",
-			esi_afectado->id, clave);
+	if (esi_afectado != NULL) { //valido que me haya devuelto algo coherente
+		agregar_a_dic_bloqueados(clave, esi_afectado);
+		log_debug(logger,
+				"Se bloqueo por consola el esi: %d para la clave: %s \n",
+				esi_afectado->id, clave);
+	} else {
+		log_error(logger, "No existe ningun esi en el sistema con el id: %d",
+				id);
+	}
 
 }
 
@@ -173,14 +179,9 @@ t_esi *buscar_esi_por_id(int id_esi) {
 	//me fijo si es el esi que esta corriendo
 	if (esi_corriendo->id == id) {
 		esi_a_devolver = esi_corriendo;
-
 	} else {
 		//si no es el q esta corriendo lo busco en la lista de esis listos
-		if (list_any_satisfy(lista_esis_listos, esi_con_este_id)) {
-			esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
-		}else
-			log_error(logger, "No existe ningun esi en el sistema con el id: %d", id);
-
+		esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
 	}
 
 	return esi_a_devolver;
