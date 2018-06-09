@@ -75,6 +75,8 @@ int main(int argc, char** argv) {
 			break;
 		default: {
 			log_info(logger, "no se pudo interpretar el mensaje");
+			//todo aca te tendrias que morir de manera copada
+			exit(EXIT_FAILURE);
 		}
 
 		}
