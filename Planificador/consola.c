@@ -15,7 +15,6 @@ void *menu(void *ptr){
 
 	int opcion_seleccionada;
 	char *clave = (char*)malloc(40) ;
-	char *recurso = (char*)malloc(40);
 	int id;
 
 
@@ -60,8 +59,8 @@ void *menu(void *ptr){
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
 
-				scanf("%s", recurso);
-				listar(recurso);
+				scanf("%s", clave);
+				listar(clave);
 				break;
 			case 5:
 
@@ -71,7 +70,7 @@ void *menu(void *ptr){
 				matar_por_consola(id);
 				break;
 			case 6:
-				printf("Ingreso matar un proceso, ingrese <clave>");
+				printf("Ingreso status de una clave, ingrese <clave>");
 
 				scanf("%s", clave);
 				break;

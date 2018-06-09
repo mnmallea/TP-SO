@@ -153,8 +153,6 @@ int id;
 
 void bloquear_esi_por_consola(char* clave, int id_esi) {
 
-	id = id_esi;
-
 	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
 
 	if (esi_afectado != NULL) { //valido que me haya devuelto algo coherente
@@ -175,6 +173,7 @@ void desbloquear_por_consola(char* clave) {
 
 t_esi *buscar_esi_por_id(int id_esi) {
 
+	id = id_esi;
 	t_esi *esi_a_devolver;
 	//me fijo si es el esi que esta corriendo
 	if (esi_corriendo->id == id) {
@@ -195,7 +194,10 @@ bool esi_con_este_id(void* esi) {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE INDICA QUE SE DESBLOQUIO UN RECURSO
 void se_desbloqueo_un_recurso(char* clave) {
 
-	dictionary_remove(dic_clave_x_esi, clave);
+	if (dictionary_has_key(dic_clave_x_esi, clave)){
+		dictionary_remove(dic_clave_x_esi, clave);
+	}
+
 	if (dictionary_has_key(dic_esis_bloqueados, clave)) { //hay esis encolados
 		t_list *lista_esis_bloq_esta_clave = dictionary_get(dic_esis_bloqueados,
 				clave);
@@ -203,6 +205,8 @@ void se_desbloqueo_un_recurso(char* clave) {
 		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
 
 		nuevo_esi(esi_desbloq);
+	}else{
+		log_debug(logger, "No estaba bloqueada esta clave");
 	}
 
 }
