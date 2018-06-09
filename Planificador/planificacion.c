@@ -291,6 +291,7 @@ void aumentar_viene_corriendo(void* esi) {
 
 void liberar_recursos(t_esi* esi) {
 
+	esi_a_matar = (t_esi *) malloc(sizeof(t_esi));
 	esi_a_matar = esi;
 	dictionary_iterator(dic_clave_x_esi, liberar_claves);
 	dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);

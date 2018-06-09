@@ -92,7 +92,8 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis){
 	t_list *lista_nueva = list_duplicate(lista_esis);
 	list_iterate(lista_nueva, obtener_rr);
 	list_sort(lista_nueva, mayor_response_ratio);
-	t_esi *esi_elegido = list_remove(lista_nueva, 0);
+	t_esi *esi_elegido = list_get(lista_nueva, 0);
+	remover_esi_de_lista(lista_esis, esi_elegido->id);
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
 	list_destroy(lista_nueva);
 
