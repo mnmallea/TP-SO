@@ -49,6 +49,7 @@ int main(int argc, char** argv) {
 			}
 			break;
 		case OP_STORE:
+			;
 			char* clave;
 			int rs = recibir_operacion_unaria(socketCoordinador, &clave);
 			if (rs < 0) {
