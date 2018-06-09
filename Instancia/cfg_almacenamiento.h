@@ -19,7 +19,6 @@ typedef struct {
 	unsigned int	totalEntradas;
 } almacenamiento_cfg;
 almacenamiento_cfg cfgAlmacenamiento;
-
 extern config configuracion;
 
 /*  *@NAME: configurarAlmacenamiento

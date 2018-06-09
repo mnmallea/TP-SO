@@ -25,11 +25,10 @@ typedef struct{
 	int intervalo_dump;
 } config;
 
-extern t_log *logger;
-extern config configuracion;
-
-config configurar(char* ruta);
-tipo_algoritmo get_enum_algoritmo(char* nombre_algoritmo);
-void limpiar_configuracion(void);
+extern 			t_log *logger;
+extern 			config configuracion;
+config 			configurar(char* ruta);
+void 			limpiar_configuracion(void);
+tipo_algoritmo 	get_enum_algoritmo(char* nombre_algoritmo);
 
 #endif /* CONFIG_INSTANCIA_H_ */
