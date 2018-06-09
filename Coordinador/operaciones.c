@@ -136,11 +136,11 @@ void realizar_store(t_esi* esi, char* clave) {
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
 				instancia_elegida->socket);
-//		t_protocolo respuesta_instancia = EXITO;
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger, "Store realizado exitosamente en Instancia %s",
 					instancia_elegida->nombre);
+			remover_clave_almacenada(instancia_elegida, clave);
 			enviar_cod_operacion(esi->socket, EXITO);
 			break;
 		case ERROR:

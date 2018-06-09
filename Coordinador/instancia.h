@@ -24,5 +24,6 @@ bool esta_activa_instancia(char* nombre);
 bool esta_inactiva_instancia(char* nombre);
 void instancia_desactivar(t_instancia*);
 t_instancia* instancia_con_clave(char* clave);
+void remover_clave_almacenada(t_instancia* instancia, char* clave);
 
 #endif /* INSTANCIA_H_ */
