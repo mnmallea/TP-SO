@@ -5,7 +5,6 @@
  *      Author: utnso
  */
 
-
 #ifndef ALGORITMOS_PLANIFICACION_H_
 #define ALGORITMOS_PLANIFICACION_H_
 
@@ -13,10 +12,11 @@
 #include "config_planificador.h"
 #include <stdlib.h>
 
+typedef enum {
+	FIFO, SJFsD, SJFcD, HRRN
+} tipo_algoritmo_planif;
 
-typedef enum {FIFO, SJFsD, SJFcD, HRRN } tipo_algoritmo_planif ;
-
-typedef struct{
+typedef struct {
 
 	//info del socket
 	int id;
@@ -29,7 +29,6 @@ typedef struct{
 
 	int viene_esperando; //Se suma uno cada vez que un esi que no es el finaliza una linea
 	double response_ratio;
-	char *clave_bloq;
 } t_esi;
 
 extern config configuracion;
@@ -45,6 +44,6 @@ bool menor_estimacion(void* esi1, void *esi2);
 bool mayor_response_ratio(void* esi1, void* esi2);
 
 void matar_nodo_esi(void* esi);
-
+t_esi* remover_esi_de_lista(t_list*, int);
 
 #endif /* ALGORITMOS_PLANIFICACION_H_ */

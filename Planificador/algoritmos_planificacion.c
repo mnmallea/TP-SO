@@ -8,6 +8,12 @@
 #include "algoritmos_planificacion.h"
 #include <stdbool.h>
 
+t_esi* remover_esi_de_lista(t_list* lista, int id){
+	bool esElEsi(void* esi){
+		return id == ((t_esi*)esi)->id;
+	}
+	return list_remove_by_condition(lista, esElEsi);
+}
 
 bool menor_estimacion(void* esi1, void *esi2){
 	return ((t_esi*)esi1)->estim_actual <= ((t_esi*)esi2)->estim_actual ;
@@ -19,7 +25,12 @@ bool mayor_response_ratio(void* esi1, void* esi2){
 }
 
 void matar_nodo_esi(void* esi){
-	free(((t_esi*)esi));
+
+	if(esi != NULL){
+		close(((t_esi*)esi)->socket);
+		free(((t_esi*)esi));
+	}
+
 }
 
 
@@ -32,7 +43,9 @@ t_esi *obtener_proximo_segun_fifo(t_list *lista_esis){
 
 void obtener_proximas_rafagas(void* esi){
 	double alfa = configuracion.alfa;
+	log_trace(logger, "El alfa es %f", alfa);
 	((t_esi*)esi)->estim_actual = alfa * ((t_esi*)esi)->estim_anter + (1-alfa) * ((t_esi*)esi)->dur_ult_raf;
+	log_trace(logger, "esi %d, proxima rafaga estimada %f", ((t_esi*)esi)->id, ((t_esi*)esi)->estim_actual);
 
 }
 
@@ -49,7 +62,8 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 	list_iterate(lista_nueva, obtener_proximas_rafagas);
 	list_sort(lista_nueva, menor_estimacion);
 
-	t_esi *esi_elegido = list_remove(lista_nueva, 0);
+	t_esi *esi_elegido = list_get(lista_nueva, 0);
+	remover_esi_de_lista(lista_esis, esi_elegido->id);
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
 	list_destroy(lista_nueva);
 

@@ -7,10 +7,10 @@
 
 #ifndef INSTANCIA_H_
 #define INSTANCIA_H_
-#include <stdlib.h>
-#include <stdbool.h>
+
 #include <commons/collections/list.h>
-#include <commons/string.h>
+#include <stdbool.h>
+
 #include "typedefs.h"
 
 extern t_list *lista_instancias_disponibles;
@@ -22,5 +22,7 @@ t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas);
 void liberar_instancia(t_instancia* instancia);
 bool esta_activa_instancia(char* nombre);
 bool esta_inactiva_instancia(char* nombre);
+void instancia_desactivar(t_instancia*);
+t_instancia* instancia_con_clave(char* clave);
 
 #endif /* INSTANCIA_H_ */
