@@ -15,9 +15,8 @@ void *menu(void *ptr){
 
 	int opcion_seleccionada;
 	char *clave = (char*)malloc(40) ;
-	char *recurso = (char*)malloc(40);
 	int id;
-	int flag=0;
+
 
 		do{
 
@@ -36,22 +35,12 @@ void *menu(void *ptr){
 
 			switch(opcion_seleccionada){
 			case 1:
-				if(flag==0){
-					printf("Planificador pausado\n");
-					flag++;
-					break;
-				}
-				else{
-					printf("Continuando con la planificacion\n");
-					flag--;
-					break;
-				}
-
+				pausar_despausar_consola();
+				break;
 
 			case 2:
 				printf("Ingreso bloquear un proceso, ingrese <clave>");
 
-				//ACA ME TIRA UN WARNING de que clave es char **
 				scanf("%s", clave);
 
 				printf("Ingreso bloquear un proceso, ingrese <ID>");
@@ -70,17 +59,18 @@ void *menu(void *ptr){
 			case 4:
 				printf("Ingreso listar procesos esperando un recurso, ingrese <recurso>");
 
-				scanf("%s", recurso);
-				listar(recurso);
+				scanf("%s", clave);
+				listar(clave);
 				break;
 			case 5:
 
 				printf("Ingreso matar un proceso, ingrese <ID>");
 
 				scanf("%d", &id);
+				matar_por_consola(id);
 				break;
 			case 6:
-				printf("Ingreso matar un proceso, ingrese <clave>");
+				printf("Ingreso status de una clave, ingrese <clave>");
 
 				scanf("%s", clave);
 				break;
@@ -104,18 +94,53 @@ void *menu(void *ptr){
 }
 
 
+void pausar_despausar_consola(){
+	pthread_mutex_lock(&mutex_flag_pausa_despausa);
+	if(flag==1){
+	printf("Planificador pausado\n");
+	flag--;
+	}else{
+	printf("Continuando con la planificacion\n");
+	flag++;
+	}
+
+	log_debug(logger, "El flag esta en: %d", flag);
+	pthread_mutex_unlock(&mutex_flag_pausa_despausa);
+
+}
+
 void listar(char* rec){
 
 	/*supongo q voy al diccionario y hago dictionary_get(clave)
 	 * despues muestro por pantalla la lista
 	 */
+
+	if(!dictionary_has_key(dic_esis_bloqueados, rec)){
+		printf("No existe esa clave\n");
+	}else{
+		t_list* esis_bloq = dictionary_get(dic_esis_bloqueados,rec);
+		list_iterate(esis_bloq, mostrar_esi_en_pantalla);
+	}
+}
+
+
+void mostrar_esi_en_pantalla(void* esi){
+
+	printf("Esi bloqueado para este recurso: %d \n", ((t_esi*)esi)->id);
 }
 
 void bloquear(char* clave, int id){
 
-/*id creo q debe ir en struct t_esi*/
+	bloquear_esi_por_consola(clave, id);
 }
 
 void desbloquear(char* clave){
+	desbloquear_por_consola(clave);
+}
 
+
+void matar_por_consola(int id){
+	t_esi* esi_a_matar = buscar_esi_por_id(id);
+	liberar_recursos(esi_a_matar);
+	matar_nodo_esi(esi_a_matar);
 }
