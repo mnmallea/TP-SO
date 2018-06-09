@@ -36,7 +36,7 @@ int main(int argc, char* argv[]) {
 	configuracion = configurar(argv[2]);
 	int handshake_msg = ESI;
 
-	int socketCord = conectarse_a_coordinador(configuracion.ipPlan,
+	int socketCord = conectarse_a_coordinador(configuracion.ipCoord,
 			configuracion.portCoord, handshake_msg);
 	int socketPlan = crear_socket_cliente(configuracion.ipPlan,
 			configuracion.portPlan);
