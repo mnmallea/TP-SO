@@ -1,5 +1,16 @@
 #include "main.h"
 
+#include <parsi/parser.h>
+#include <stdbool.h>
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/types.h>
+
+#include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/my_socket.h"
+
 int main(int argc, char* argv[]) {
 	FILE * fp;
 	char * line = NULL;
@@ -42,7 +53,7 @@ int main(int argc, char* argv[]) {
 	}
 
 	//todo descomentar esto despues:
-//	recibir_confirmacion(socketPlan); //signal para ejecutar
+	recibir_confirmacion(socketPlan); //signal para ejecutar
 
 	while ((read = getline(&line, &len, fp)) != -1) {
 
@@ -62,7 +73,8 @@ int main(int argc, char* argv[]) {
 				break;
 
 			case SET:
-				log_debug(logger, "Set %s %s", parsed.argumentos.SET.clave, parsed.argumentos.SET.valor);
+				log_debug(logger, "Set %s %s", parsed.argumentos.SET.clave,
+						parsed.argumentos.SET.valor);
 				if (strlen(parsed.argumentos.SET.valor) < 40) {
 
 					enviar_set(socketCord, parsed.argumentos.SET.clave,
@@ -89,8 +101,14 @@ int main(int argc, char* argv[]) {
 			}
 
 			//Respuesta al planificador
-			//key = recibir_mensaje(socketCord);
-			//mandar_mensaje(socketPlan,key);
+			key = recibir_cod_operacion(socketCord);
+//			switch(key){
+//			case BLOQUEO_ESI:
+//				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
+//				recibir_confirmacion(socketPlan);
+//			}
+			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
+			enviar_cod_operacion(socketPlan, key);
 
 //			//Frees
 //			free(paqueteProcesado);
@@ -102,11 +120,14 @@ int main(int argc, char* argv[]) {
 			//enviar respuesta al planificador, error de linea(?)
 			exit_gracefully(1);
 		}
-//		recibir_confirmacion(socketPlan); todo descomentar esto tambien
+		recibir_confirmacion(socketPlan);
+
 	}
 
 	log_info(logger, "No quedan mas lineas en el archivo");
-	//enviar respuesta al planificador , no habia mas lineas(?)
+
+	t_protocolo cod_op = FINALIZO_ESI;
+	enviar_cod_operacion(socketPlan, cod_op);
 
 	fclose(fp);
 	if (line)
@@ -118,4 +139,3 @@ int main(int argc, char* argv[]) {
 	limpiar_configuracion();
 	exit(1);
 }
-

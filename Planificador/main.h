@@ -19,6 +19,7 @@
 #include "consola.h"
 
 config configuracion;
+t_log *logger;
 
 t_list *lista_esis_listos;
 t_esi *esi_corriendo;
@@ -32,13 +33,13 @@ t_list *lista_esis_finalizados;
  */
 t_dictionary *dic_esis_bloqueados;
 
-/*Nombre: dic_esi_recurso_bloq
- * Estructura: t_esi esi, char* clave retenida
+/*Nombre: dic_clave_x_esi
+ * Estructura: char* clave retenida, esi que la tiene
  *
  * Se agrega una linea cuando un esi solicita un recurso (GET del mismo)
  * Se elimina una linea cuando un esi libera un recurso (STORE del mismo)
  */
-t_dictionary *dic_esi_recurso_bloq;
+t_dictionary *dic_clave_x_esi;
 
 
 
