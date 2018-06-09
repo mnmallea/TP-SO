@@ -65,10 +65,19 @@ void *listener(void *ptr) {
 					if ((nbytes = recv(i, &buf, sizeof buf, 0)) <= 0) {
 
 						if (nbytes == 0) {
-							log_error(logger,
-									"La conexion del socket %d finalizo inesperadamente\n",
-									i);
+								if(i==socketCord){
+									log_error(logger,
+									"Se desconectó el Coordinador\n");
+									//exit_gracefully(1);
+								}
+								else{
+									log_error(logger,
+											"La conexion del socket %d finalizo inesperadamente\n",i);
+								}
 							socketAEliminar = i;
+
+							//enviar error esi desconectado al coordinador
+
 							list_remove_and_destroy_by_condition(
 									lista_esis_listos, (void*) socketProceso,
 									(void*) free);

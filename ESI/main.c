@@ -17,7 +17,6 @@ int main(int argc, char* argv[]) {
 
 	size_t len = 0;
 	ssize_t read;
-	t_operacion *n_esi_operacion;
 
 	logger = log_create("ESI.log", "ESI", true, LOG_LEVEL);
 
@@ -43,23 +42,14 @@ int main(int argc, char* argv[]) {
 
 	int *esi_id = safe_recv(socketPlan, sizeof(int)); //hay q hacer free
 	log_debug(logger, "el id del esi es: %d", *esi_id);
-	//int esi_id=recibir_mensaje(socketPlan);
 	safe_send(socketCord, esi_id, sizeof(int));
 
-	if ((n_esi_operacion = malloc(sizeof(t_operacion))) == NULL) {
-		log_error(logger, "No se puede alocar memoria");
-		//enviar respuesta al planificador, error de linea(?)
-		exit_gracefully(1);
-	}
 
 	//todo descomentar esto despues:
 	recibir_confirmacion(socketPlan); //signal para ejecutar
 
 	while ((read = getline(&line, &len, fp)) != -1) {
 
-		size_t s_valor = 0;
-		size_t s_clave = 0;
-		size_t s_carga = 0;
 		t_esi_operacion parsed = parse(line);
 
 		if (parsed.valido) {
@@ -103,8 +93,8 @@ PROCESAR:switch (parsed.keyword) {
 			switch(key){
 			case BLOQUEO_ESI:
 				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
-				if(CORRER_ESI==recibir_cod_operacion(socketCord))
-					goto PROCESAR;
+				recibir_confirmacion(socketPlan);
+				goto PROCESAR;
 
 			}
 			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
