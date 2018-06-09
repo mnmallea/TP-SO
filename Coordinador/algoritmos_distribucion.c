@@ -14,10 +14,12 @@ int largo_lista;
  * Thread safe (mutex implementado sobre la lista de instancias disponibles)
  */
 t_instancia* obtener_instancia_segun_EL(char* clave){
+	sem_wait(&contador_instancias_disponibles);
 	pthread_mutex_lock(&mutex_instancias_disponibles);
 	t_instancia* inst_elegida = list_get(lista_instancias_disponibles, instancia_a_utilizar);
 	largo_lista = list_size(lista_instancias_disponibles);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
+	sem_post(&contador_instancias_disponibles);
 	instancia_a_utilizar++;
 
 	if(instancia_a_utilizar == largo_lista) //recien utilice la ultima posicion
@@ -32,10 +34,12 @@ t_instancia* obtener_instancia_segun_EL(char* clave){
  */
 t_instancia* obtener_instancia_segun_LSU(char* clave){
 	t_instancia* instancia_elegida;
+	sem_wait(&contador_instancias_disponibles);
 	pthread_mutex_lock(&mutex_instancias_disponibles);
 	list_sort(lista_instancias_disponibles,tieneMasEspacioLibre);
 	instancia_elegida = list_get(lista_instancias_disponibles, 0);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
+	sem_post(&contador_instancias_disponibles);
 	return instancia_elegida;
 }
 
@@ -69,7 +73,7 @@ t_instancia* obtener_instancia_siguiente(char* clave){
 t_instancia* obtener_instancia_segun_KE(char* clave){
 	t_instancia* instancia_elegida;
 	int nro_letra = get_nro_letra(clave[0]);
-
+	sem_wait(&contador_instancias_disponibles);
 	pthread_mutex_lock(&mutex_instancias_disponibles);
 	int cantidad_instancias = list_size(lista_instancias_disponibles);
 	int cant_letras_por_instancia = CANT_LETRAS_ALFABETO / cantidad_instancias;
@@ -78,6 +82,7 @@ t_instancia* obtener_instancia_segun_KE(char* clave){
 	int nro_instancia_a_elegir = (nro_letra - 1)/ cant_letras_por_instancia;
 	instancia_elegida = list_get(lista_instancias_disponibles, nro_instancia_a_elegir);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
+	sem_post(&contador_instancias_disponibles);
 
 	return instancia_elegida;
 }

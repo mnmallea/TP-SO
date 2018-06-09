@@ -39,10 +39,12 @@ int main(int argc, char** argv) {
 		case OP_SET:{
 			resultado = SET(socketCoordinador);
 			if(resultado>=0){
+				enviar_cod_operacion(socketCoordinador, EXITO);
 				//notificarCoordExito
 			}
 			else{
 				//notificarCoordFalla
+				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 		case OP_STORE:{
 			char* clave;
@@ -50,9 +52,11 @@ int main(int argc, char** argv) {
 			resultado= STORE(clave);
 			if(resultado>=0){
 			//notificarCoordExito
+				enviar_cod_operacion(socketCoordinador, EXITO);
 			}
 			else{
 			//notificarCoordFalla
+				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 		}
 		case MATAR_INSTANCIA:{
