@@ -40,6 +40,8 @@ t_esi *obtener_nuevo_esi_a_correr();
  */
 void bloquear_esi(char* clave);
 
+void agregar_a_dic_bloqueados(char* clave, t_esi *esi);
+
 void bloquear_esi_por_consola(char* clave, int id_esi);
 
 
