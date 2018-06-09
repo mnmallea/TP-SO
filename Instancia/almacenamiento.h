@@ -13,7 +13,7 @@ t_log * logger;
 typedef struct {
 	unsigned int tamanioEntrada;
 	unsigned int cantEntradas;
-	void** dato;
+	void* dato;
 } almacenamiento;
 
 almacenamiento* ato;

@@ -77,7 +77,7 @@ void eliminarAlmacenamiento() {
 }
 
 void* buscarEnALmacenamiento(int posicion, unsigned int tamanio){
-	void*carga =malloc(sizeof(tamanio));
+	void*carga =malloc(tamanio);
 	memcpy(carga,ato->dato + (posicion * ato->tamanioEntrada),tamanio);
 	return carga;
 }

@@ -37,7 +37,7 @@ int STORE(char* clave) {
 	log_trace(logger, "estoy storeando un %s", carga);
 	almacenarEnDumper(carga, clave, cv->tamanio);
 	free(carga);
-	free(cv);
+//	free(cv); NO HACER FREE DE ESTO, @den despues te explico por que
 	return estado;
 }
 //------------------------------------------------------------------------
