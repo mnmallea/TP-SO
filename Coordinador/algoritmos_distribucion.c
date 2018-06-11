@@ -4,7 +4,15 @@
  *  Created on: 3 may. 2018
  *      Author: utnso
  */
+
 #include "algoritmos_distribucion.h"
+
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdbool.h>
+
+#include "instancia.h"
+#include "typedefs.h"
 
 int instancia_a_utilizar = 0;
 int largo_lista;
@@ -34,13 +42,26 @@ t_instancia* obtener_instancia_segun_EL(char* clave) {
  * Thread safe (mutex implementado sobre la lista de instancias disponibles)
  */
 t_instancia* obtener_instancia_segun_LSU(char* clave) {
-	t_instancia* instancia_elegida;
+
 	sem_wait(&contador_instancias_disponibles);
 	pthread_mutex_lock(&mutex_instancias_disponibles);
-	list_sort(lista_instancias_disponibles, tieneMasEspacioLibre);
-	instancia_elegida = list_get(lista_instancias_disponibles, 0);
+
+	int i;
+	int indice_elegido = 0;
+	t_instancia* instancia_elegida = list_get(lista_instancias_disponibles, 0);
+	for (i = 0; i < list_size(lista_instancias_disponibles); i++) {
+		t_instancia* unaInstancia = list_get(lista_instancias_disponibles, 0);
+		if (tieneMasEspacioLibre(unaInstancia, instancia_elegida)) {
+			instancia_elegida = unaInstancia;
+			indice_elegido = i;
+		}
+	}
+	list_remove(lista_instancias_disponibles, indice_elegido);
+	list_add(lista_instancias_disponibles, instancia_elegida);
+
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	sem_post(&contador_instancias_disponibles);
+
 	return instancia_elegida;
 }
 

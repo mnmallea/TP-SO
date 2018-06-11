@@ -35,7 +35,8 @@ typedef enum protocolo {
 	CLAVE_NO_BLOQUEADA_EXCEPTION,
 	CLAVE_NO_IDENTIFICADA_EXCEPTION,
 	LINEA_INVALIDA,
-	ABORTA
+	ABORTA,
+	RELEVANTAR_INSTANCIA
 } t_protocolo;
 
 char* to_string_protocolo(t_protocolo codigo);

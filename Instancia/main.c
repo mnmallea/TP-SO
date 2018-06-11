@@ -71,6 +71,13 @@ int main(int argc, char** argv) {
 			escucha = 0;
 
 			break;
+		case RELEVANTAR_INSTANCIA:
+			log_info(logger, "La instancia se esta relevantando.....");
+			/* todo
+			 * Formato del mensaje que te mando
+			 * Cantidad de Claves (int) + {tamaño clave + clave} n veces
+			 */
+			break;
 		default: 
 			log_info(logger, "no se pudo interpretar el mensaje");
 			//todo aca te tendrias que morir de manera copada

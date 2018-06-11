@@ -22,8 +22,6 @@ extern t_list *lista_esis_disponibles;
 pthread_t thread_ESI;
 pthread_t thread_Planificador;
 
-unsigned cant_instancias;
-
 /**
  * @NAME: esperar_nuevas_conexiones
  * @DESC: Sirve para que el coordinador atienda a los que se conectan tirando hilos
