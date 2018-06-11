@@ -86,6 +86,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			log_error(logger, "Error al realizar set en Instancia %s",
 					instancia_elegida->nombre);
 			enviar_cod_operacion(esi->socket, ABORTA);
+			remover_clave_almacenada(instancia_elegida, clave);
 			break;
 		default:
 			log_error(logger, "Error al recibir retorno de instancia %s",
@@ -140,12 +141,12 @@ void realizar_store(t_esi* esi, char* clave) {
 		case EXITO:
 			log_info(logger, "Store realizado exitosamente en Instancia %s",
 					instancia_elegida->nombre);
-			remover_clave_almacenada(instancia_elegida, clave);
 			enviar_cod_operacion(esi->socket, EXITO);
 			break;
 		case ERROR:
 			log_error(logger, "Error al realizar store en Instancia %s",
 					instancia_elegida->nombre);
+			remover_clave_almacenada(instancia_elegida, clave);
 			enviar_cod_operacion(esi->socket, ABORTA);
 			break;
 		default:
