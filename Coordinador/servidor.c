@@ -120,14 +120,14 @@ void atender_instancia(int sockfd) {
 		close(sockfd);
 		return;
 	}
-	t_instancia* instancia = crear_instancia(sockfd, nombre,
-			configuracion.cant_entradas);
-	pthread_mutex_lock(&mutex_instancias_disponibles);
-	cant_instancias++;
-	list_add(lista_instancias_disponibles, instancia);
-	log_debug(logger, "Instancia %s agregada a la lista", instancia->nombre);
-	pthread_mutex_unlock(&mutex_instancias_disponibles);
-	sem_post(&contador_instancias_disponibles);
+	if (esta_inactiva_instancia(nombre)) {
+		instancia_relevantar(nombre, sockfd);
+	} else {
+		t_instancia* instancia = crear_instancia(sockfd, nombre,
+				configuracion.cant_entradas);
+		log_info(logger, "La instancia %s ha sido agregada por primera vez", instancia->nombre);
+		instancia_agregar_a_activas(instancia);
+	}
 }
 
 void atender_esi(int socket) {
