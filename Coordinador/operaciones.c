@@ -22,7 +22,9 @@
 void realizar_get(t_esi* esi, char* clave) {
 	logear_get(esi->id, clave);
 	solicitar_clave(clave);
-	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+	sem_wait(&planificador_respondio);
+	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {
@@ -50,7 +52,9 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 
 	logear_set(esi->id, clave, valor);
 	esi_tiene_clave(clave);
-	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+	sem_wait(&planificador_respondio);
+	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {
@@ -113,7 +117,9 @@ void realizar_store(t_esi* esi, char* clave) {
 
 	logear_store(esi->id, clave);
 	esi_tiene_clave(clave);
-	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+	sem_wait(&planificador_respondio);
+	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {

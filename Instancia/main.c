@@ -78,6 +78,11 @@ int main(int argc, char** argv) {
 			 * Cantidad de Claves (int) + {tamaño clave + clave} n veces
 			 */
 			break;
+		case INSTANCIA_COMPACTAR:
+			log_info(logger, "Estoy compactando ...");
+			enviar_cod_operacion(socketCoordinador, EXITO);
+			//si falla deberia contestarle ERROR
+			break;
 		default: 
 			log_info(logger, "no se pudo interpretar el mensaje");
 			//todo aca te tendrias que morir de manera copada

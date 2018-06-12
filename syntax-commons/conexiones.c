@@ -81,7 +81,7 @@ t_protocolo recibir_cod_operacion(int sockfd) {
 	t_protocolo cod_op;
 	if (recv(sockfd, &cod_op, sizeof(cod_op), MSG_WAITALL) <= 0) {
 		log_error(logger, "Error al recibir codigo de operacion");
-		return -1;
+		return ERROR_CONEXION;
 	}
 	return cod_op;
 }
