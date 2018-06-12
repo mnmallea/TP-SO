@@ -33,6 +33,7 @@ void atender_instancia(int sockfd);
 void atender_esi(int socket);
 void atender_planificador(int socket);
 void atender_planif(int socket);
+void retardarse(long int);
 
 
 #endif /* SERVIDOR_H_ */

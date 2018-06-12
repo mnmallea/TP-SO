@@ -156,16 +156,19 @@ void atender_esi(int socket) {
 		case OP_GET:
 			recibir_operacion_unaria(socket, &clave);
 			log_trace(logger, "Recibi GET %s", clave);
+			retardarse(configuracion.retardo);
 			realizar_get(esi, clave);
 			break;
 		case OP_STORE:
 			recibir_operacion_unaria(socket, &clave);
 			log_trace(logger, "Recibi STORE %s", clave);
+			retardarse(configuracion.retardo);
 			realizar_store(esi, clave);
 			break;
 		case OP_SET:
 			recibir_set(socket, &clave, &valor);
 			log_trace(logger, "Recibi SET %s %s", clave, valor);
+			retardarse(configuracion.retardo);
 			realizar_set(esi, clave, valor);
 			break;
 		default:
@@ -191,4 +194,19 @@ void atender_planif(int socket) {
 		mandar_confirmacion(socket);
 		recibir_confirmacion(socket);
 	}
+}
+
+void retardarse(long int milisegundos){
+	log_info(logger, "Retardandose %d milisegundos ...", milisegundos);
+	struct timespec requested, remaining;
+	requested.tv_sec = milisegundos / 1000;
+	long int resto = milisegundos % 1000;
+	if(resto !=0){
+		requested.tv_nsec = resto * 1000000;
+	}
+	nanosleep(&requested, &remaining);
+
+//	while(nanosleep(&requested, &remaining) <0){
+//		requested = remaining;
+//	}
 }
