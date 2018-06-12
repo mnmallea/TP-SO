@@ -94,9 +94,28 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 
 void atender_planificador(int socket) {
 	socket_planificador = socket;
+	while (1) {
+		t_protocolo cod_operacion = recibir_cod_operacion(socket);
+		log_info(logger, "Codigo operacion %s recibido desde el planificador",
+				to_string_protocolo(cod_operacion));
+		switch (cod_operacion) {
+		case ERROR_CONEXION:
+			//todo aca nos morimos de una manera piola
+			log_error(logger, "Error en la conexion con el planificador");
+			exit(EXIT_FAILURE);
+			break; //el break mas necesario de la historia
+		case SOLICITUD_STATUS_CLAVE:
+			//todo implementar esto
+			break;
+		default:
+			respuesta_planificador = cod_operacion;
+			sem_post(&planificador_respondio);
+		}
+	}
 }
 
 void atender_instancia(int sockfd) {
+	t_instancia* instancia;
 	char* nombre;
 	if (try_recibirPaqueteVariable(sockfd, (void**) &nombre) <= 0) {
 		log_error(logger, "Error al configurar instancia");
@@ -121,13 +140,44 @@ void atender_instancia(int sockfd) {
 		return;
 	}
 	if (esta_inactiva_instancia(nombre)) {
-		instancia_relevantar(nombre, sockfd);
+		if ((instancia = instancia_relevantar(nombre, sockfd)) == NULL)
+			return;
 	} else {
-		t_instancia* instancia = crear_instancia(sockfd, nombre,
+		instancia = crear_instancia(sockfd, nombre,
 				configuracion.cant_entradas);
-		log_info(logger, "La instancia %s ha sido agregada por primera vez", instancia->nombre);
+		log_info(logger, "La instancia %s ha sido agregada por primera vez",
+				instancia->nombre);
 		instancia_agregar_a_activas(instancia);
 	}
+
+	while (1) {
+		sem_wait(&instancia->semaforo_instancia);
+		if (enviar_cod_operacion(instancia->socket, INSTANCIA_COMPACTAR) < 0) {
+			log_error(logger, "La instancia % se cayo", instancia->nombre);
+			instancia_desactivar(instancia);
+			return;
+		}
+		t_protocolo cod_op = recibir_cod_operacion(instancia->socket);
+		switch (cod_op) {
+		case EXITO:
+			log_info(logger,
+					"Se ha realizado compactacion correctamente en instancia %s",
+					instancia->nombre);
+			break;
+		case ERROR:
+			log_error(logger,
+					"Un error ha ocurrrido al realizar compactacion correctamente en instancia %s",
+					instancia->nombre);
+			break;
+		case ERROR_CONEXION:
+			log_error(logger, "La instancia % se cayo", instancia->nombre);
+			instancia_desactivar(instancia);
+			return;
+		default:
+			log_warning(logger, "Mensaje no esperado: %s", cod_op);
+		}
+	}
+	sem_destroy(&instancia->semaforo_instancia);
 }
 
 void atender_esi(int socket) {
@@ -196,17 +246,13 @@ void atender_planif(int socket) {
 	}
 }
 
-void retardarse(long int milisegundos){
+void retardarse(long int milisegundos) {
 	log_info(logger, "Retardandose %d milisegundos ...", milisegundos);
 	struct timespec requested, remaining;
 	requested.tv_sec = milisegundos / 1000;
 	long int resto = milisegundos % 1000;
-	if(resto !=0){
+	if (resto != 0) {
 		requested.tv_nsec = resto * 1000000;
 	}
 	nanosleep(&requested, &remaining);
-
-//	while(nanosleep(&requested, &remaining) <0){
-//		requested = remaining;
-//	}
 }

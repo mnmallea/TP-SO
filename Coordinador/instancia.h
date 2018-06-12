@@ -30,8 +30,9 @@ t_instancia* instancia_con_clave(char* clave);
 void remover_clave_almacenada(t_instancia* instancia, char* clave);
 int espacio_utilizado_por(char* clave);
 t_instancia* sacar_instancia_de_lista(char* nombre, t_list* lista);
-void instancia_relevantar(char* nombre, int socket);
+t_instancia* instancia_relevantar(char* nombre, int socket);
 void instancia_agregar_a_inactivas(t_instancia* instancia);
 void instancia_agregar_a_activas(t_instancia* instancia);
+void realizar_compactacion();
 
 #endif /* INSTANCIA_H_ */

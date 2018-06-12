@@ -14,4 +14,5 @@ void inicializar_semaforos(){
 	sem_init(&contador_instancias_disponibles, 0, 0);
 	sem_init(&semaforo_binario, 0, 1);
 	sem_init(&planif_binario, 0, 0); //
+	sem_init(&planificador_respondio, 0, 0);
 }

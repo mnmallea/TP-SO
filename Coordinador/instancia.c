@@ -61,6 +61,7 @@ t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas) {
 	new_instancia->nombre = string_duplicate(nombre);
 	new_instancia->socket = sockfd;
 	new_instancia->cant_entradas_vacias = cant_entradas;
+	sem_init(&new_instancia->semaforo_instancia, 0, 0);
 	return new_instancia;
 }
 
@@ -100,6 +101,7 @@ bool esta_inactiva_instancia(char* nombre) {
 }
 
 /*
+ * La saca de la lista de activas y la mete en inactivas
  * Thread safe
  */
 void instancia_desactivar(t_instancia* instancia) {
@@ -121,6 +123,7 @@ void instancia_desactivar(t_instancia* instancia) {
  */
 void instancia_agregar_a_inactivas(t_instancia* instancia) {
 	close(instancia->socket);
+	sem_destroy(&instancia->semaforo_instancia);
 	pthread_mutex_lock(&mutex_instancias_inactivas);
 	list_add(lista_instancias_inactivas, instancia);
 	pthread_mutex_unlock(&mutex_instancias_inactivas);
@@ -163,7 +166,11 @@ int espacio_utilizado_por(char* clave) {
 	return espacio_utilizado;
 }
 
-void instancia_relevantar(char* nombre, int socket) {
+/*
+ * Relevanta la instancia y devuelve su estructura
+ * Si no puede la desactiva y devuelve NULL
+ */
+t_instancia* instancia_relevantar(char* nombre, int socket) {
 	pthread_mutex_lock(&mutex_instancias_inactivas);
 	t_instancia* instancia = sacar_instancia_de_lista(nombre,
 			lista_instancias_inactivas);
@@ -181,23 +188,37 @@ void instancia_relevantar(char* nombre, int socket) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
 		instancia_agregar_a_inactivas(instancia);
-		return;
+		return NULL;
 	}
 	if (send(socket, &cantidad_claves, sizeof(cantidad_claves), 0) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
 		instancia_agregar_a_inactivas(instancia);
-		return;
+		return NULL;
 	}
 
 	if (paquete_enviar(paquete_claves, socket) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
 		instancia_agregar_a_inactivas(instancia);
-		return;
+		return NULL;
 	}
 	//todo ver si necesitas algun tipo de confirmacion por parte de la instancia
 
 	log_info(logger, "La instancia %s ha sido relevantada", instancia->nombre);
 	instancia_agregar_a_activas(instancia);
+	return instancia;
+}
+
+void levantar_semaforo(void* instancia){
+	sem_post(&((t_instancia*)instancia)->semaforo_instancia);
+}
+
+/*
+ * Realiza la compactacion en todas las instancias
+ */
+void realizar_compactacion(){//todo ver como esperar a que todas compacten
+	pthread_mutex_lock(&mutex_instancias_disponibles);
+	list_iterate(lista_instancias_disponibles, levantar_semaforo);
+	pthread_mutex_unlock(&mutex_instancias_disponibles);
 }
