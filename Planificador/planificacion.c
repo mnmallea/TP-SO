@@ -329,3 +329,26 @@ void nueva_solicitud(int socket, char* clave) {
 	enviar_cod_operacion(socket, cod_op);
 }
 
+
+t_list *lista_deadlock = list_create();
+
+t_list *obtener_procesos_en_deadlock(){
+
+	dictionary_iterator(dic_esis_bloqueados, itera_por_linea);
+}
+
+void itera_por_linea(char* clave, void* esisbloq){
+
+	list_iterate(esisbloq, filtra_en_deadlock);
+}
+
+void filtra_en_deadlock(void *esi){
+
+	//fijarse si tiene alguna clave tomada en dic_clave_x_esi
+	//si tiene clave lo agreo a la lista deadlock
+	//sino no
+}
+
+
+
+

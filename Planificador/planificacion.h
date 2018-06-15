@@ -113,5 +113,7 @@ void nueva_solicitud(int socket, char* clave);
 
 void* planificar(void*);
 
+t_esi *obtener_procesos_en_deadlock();
+
 
 #endif /* PLANIFICACION_H_ */
