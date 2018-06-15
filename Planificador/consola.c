@@ -75,6 +75,7 @@ void *menu(void *ptr) {
 			break;
 		case 7:
 			printf("Ingreso solucionar problemas de deadlock");
+			deadlock();
 			break;
 		case 0:
 			break;
@@ -144,4 +145,11 @@ void matar_por_consola(int id) {
 		matar_nodo_esi(esi_a_matar);
 	}
 
+}
+
+
+void deadlock(){
+	t_list* esis_deadlock = obtener_procesos_en_deadlock();
+	list_iterate(esis_deadlock, mostrar_esi_en_pantalla);
+	list_destroy(esis_deadlock);
 }
