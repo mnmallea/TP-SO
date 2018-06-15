@@ -118,7 +118,6 @@ void finalizar_esi() {
 
 	hay_esi_finalizado = true;
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	sem_post(&sem_binario_planif);
 }
 
 void bloquear_esi(char* clave) {
@@ -332,7 +331,8 @@ void nueva_solicitud(int socket, char* clave) {
 
 t_list *lista_deadlock = list_create();
 
-t_list *obtener_procesos_en_deadlock(){
+t_list *obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
+	//habria que ver si es void o si se cambia la implementacion
 
 	dictionary_iterator(dic_esis_bloqueados, itera_por_linea);
 }
