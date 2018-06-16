@@ -7,14 +7,12 @@
 
 #ifndef MAIN_H_
 #define MAIN_H_
-#include <stdlib.h>
+
 #include <commons/collections/list.h>
-#include "../syntax-commons/my_socket.h"
-#include "algoritmos_distribucion.h"
-#include "config_coordinador.h"
-#include "servidor.h"
-#include "sincronizacion.h"
-#include "log_operaciones.h"
+#include <commons/log.h>
+#include <pthread.h>
+
+#include "typedefs.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5

@@ -8,6 +8,8 @@
 #ifndef TYPEDEFS_H_
 #define TYPEDEFS_H_
 
+#include <semaphore.h>
+
 #define PORT_MAX_STRING_LENGTH 5
 #include <commons/collections/list.h>
 
@@ -21,7 +23,7 @@ typedef struct {
 	char* nombre;
 	//para lsu
 	int cant_entradas_vacias;
-
+	sem_t semaforo_instancia;
 	t_list* claves_almacenadas;
 } t_instancia;
 

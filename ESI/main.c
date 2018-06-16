@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 	configuracion = configurar(argv[2]);
 	int handshake_msg = ESI;
 
-	int socketCord = conectarse_a_coordinador(configuracion.ipPlan,
+	int socketCord = conectarse_a_coordinador(configuracion.ipCoord,
 			configuracion.portCoord, handshake_msg);
 	int socketPlan = crear_socket_cliente(configuracion.ipPlan,
 			configuracion.portPlan);
@@ -94,7 +94,11 @@ PROCESAR:switch (parsed.keyword) {
 			case BLOQUEO_ESI:
 				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
 				recibir_confirmacion(socketPlan);
+<<<<<<< HEAD
 				goto PROCESAR;
+=======
+					goto PROCESAR;
+>>>>>>> 03809228e15ae42f90e06eeeaabaa31824da9e4c
 
 			}
 			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
