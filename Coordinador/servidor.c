@@ -94,9 +94,28 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 
 void atender_planificador(int socket) {
 	socket_planificador = socket;
+	while (1) {
+		t_protocolo cod_operacion = recibir_cod_operacion(socket);
+		log_info(logger, "Codigo operacion %s recibido desde el planificador",
+				to_string_protocolo(cod_operacion));
+		switch (cod_operacion) {
+		case ERROR_CONEXION:
+			//todo aca nos morimos de una manera piola
+			log_error(logger, "Error en la conexion con el planificador");
+			exit(EXIT_FAILURE);
+			break; //el break mas necesario de la historia
+		case SOLICITUD_STATUS_CLAVE:
+			//todo implementar esto
+			break;
+		default:
+			respuesta_planificador = cod_operacion;
+			sem_post(&planificador_respondio);
+		}
+	}
 }
 
 void atender_instancia(int sockfd) {
+	t_instancia* instancia;
 	char* nombre;
 	if (try_recibirPaqueteVariable(sockfd, (void**) &nombre) <= 0) {
 		log_error(logger, "Error al configurar instancia");
@@ -120,14 +139,45 @@ void atender_instancia(int sockfd) {
 		close(sockfd);
 		return;
 	}
-	t_instancia* instancia = crear_instancia(sockfd, nombre,
-			configuracion.cant_entradas);
-	pthread_mutex_lock(&mutex_instancias_disponibles);
-	cant_instancias++;
-	list_add(lista_instancias_disponibles, instancia);
-	log_debug(logger, "Instancia %s agregada a la lista", instancia->nombre);
-	pthread_mutex_unlock(&mutex_instancias_disponibles);
-	sem_post(&contador_instancias_disponibles);
+	if (esta_inactiva_instancia(nombre)) {
+		if ((instancia = instancia_relevantar(nombre, sockfd)) == NULL)
+			return;
+	} else {
+		instancia = crear_instancia(sockfd, nombre,
+				configuracion.cant_entradas);
+		log_info(logger, "La instancia %s ha sido agregada por primera vez",
+				instancia->nombre);
+		instancia_agregar_a_activas(instancia);
+	}
+
+	while (1) {
+		sem_wait(&instancia->semaforo_instancia);
+		if (enviar_cod_operacion(instancia->socket, INSTANCIA_COMPACTAR) < 0) {
+			log_error(logger, "La instancia % se cayo", instancia->nombre);
+			instancia_desactivar(instancia);
+			return;
+		}
+		t_protocolo cod_op = recibir_cod_operacion(instancia->socket);
+		switch (cod_op) {
+		case EXITO:
+			log_info(logger,
+					"Se ha realizado compactacion correctamente en instancia %s",
+					instancia->nombre);
+			break;
+		case ERROR:
+			log_error(logger,
+					"Un error ha ocurrrido al realizar compactacion correctamente en instancia %s",
+					instancia->nombre);
+			break;
+		case ERROR_CONEXION:
+			log_error(logger, "La instancia % se cayo", instancia->nombre);
+			instancia_desactivar(instancia);
+			return;
+		default:
+			log_warning(logger, "Mensaje no esperado: %s", cod_op);
+		}
+	}
+	sem_destroy(&instancia->semaforo_instancia);
 }
 
 void atender_esi(int socket) {
@@ -156,16 +206,19 @@ void atender_esi(int socket) {
 		case OP_GET:
 			recibir_operacion_unaria(socket, &clave);
 			log_trace(logger, "Recibi GET %s", clave);
+			retardarse(configuracion.retardo);
 			realizar_get(esi, clave);
 			break;
 		case OP_STORE:
 			recibir_operacion_unaria(socket, &clave);
 			log_trace(logger, "Recibi STORE %s", clave);
+			retardarse(configuracion.retardo);
 			realizar_store(esi, clave);
 			break;
 		case OP_SET:
 			recibir_set(socket, &clave, &valor);
 			log_trace(logger, "Recibi SET %s %s", clave, valor);
+			retardarse(configuracion.retardo);
 			realizar_set(esi, clave, valor);
 			break;
 		default:
@@ -191,4 +244,15 @@ void atender_planif(int socket) {
 		mandar_confirmacion(socket);
 		recibir_confirmacion(socket);
 	}
+}
+
+void retardarse(long int milisegundos) {
+	log_info(logger, "Retardandose %d milisegundos ...", milisegundos);
+	struct timespec requested, remaining;
+	requested.tv_sec = milisegundos / 1000;
+	long int resto = milisegundos % 1000;
+	if (resto != 0) {
+		requested.tv_nsec = resto * 1000000;
+	}
+	nanosleep(&requested, &remaining);
 }

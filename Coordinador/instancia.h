@@ -9,12 +9,15 @@
 #define INSTANCIA_H_
 
 #include <commons/collections/list.h>
+#include <commons/log.h>
 #include <stdbool.h>
 
 #include "typedefs.h"
 
 extern t_list *lista_instancias_disponibles;
 extern t_list *lista_instancias_inactivas;
+extern config configuracion;
+extern t_log* logger;
 
 void agregar_clave_almacenada(t_instancia*, char*);
 bool tiene_clave_almacenada(t_instancia*, char*);
@@ -24,5 +27,12 @@ bool esta_activa_instancia(char* nombre);
 bool esta_inactiva_instancia(char* nombre);
 void instancia_desactivar(t_instancia*);
 t_instancia* instancia_con_clave(char* clave);
+void remover_clave_almacenada(t_instancia* instancia, char* clave);
+int espacio_utilizado_por(char* clave);
+t_instancia* sacar_instancia_de_lista(char* nombre, t_list* lista);
+t_instancia* instancia_relevantar(char* nombre, int socket);
+void instancia_agregar_a_inactivas(t_instancia* instancia);
+void instancia_agregar_a_activas(t_instancia* instancia);
+void realizar_compactacion();
 
 #endif /* INSTANCIA_H_ */

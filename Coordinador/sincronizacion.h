@@ -13,9 +13,11 @@
 
 sem_t semaforo_binario;
 pthread_mutex_t mutex_instancias_disponibles;
+pthread_mutex_t mutex_instancias_inactivas;
 pthread_mutex_t mutex_esi_disponibles;
 sem_t contador_instancias_disponibles;
 sem_t planif_binario; //
+sem_t planificador_respondio;
 
 void inicializar_semaforos();
 

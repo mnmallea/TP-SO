@@ -22,7 +22,9 @@
 void realizar_get(t_esi* esi, char* clave) {
 	logear_get(esi->id, clave);
 	solicitar_clave(clave);
-	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+	sem_wait(&planificador_respondio);
+	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {
@@ -50,7 +52,9 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 
 	logear_set(esi->id, clave, valor);
 	esi_tiene_clave(clave);
-	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+	sem_wait(&planificador_respondio);
+	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {
@@ -86,6 +90,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			log_error(logger, "Error al realizar set en Instancia %s",
 					instancia_elegida->nombre);
 			enviar_cod_operacion(esi->socket, ABORTA);
+			remover_clave_almacenada(instancia_elegida, clave);
 			break;
 		default:
 			log_error(logger, "Error al recibir retorno de instancia %s",
@@ -112,7 +117,9 @@ void realizar_store(t_esi* esi, char* clave) {
 
 	logear_store(esi->id, clave);
 	esi_tiene_clave(clave);
-	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+	sem_wait(&planificador_respondio);
+	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {
@@ -136,7 +143,6 @@ void realizar_store(t_esi* esi, char* clave) {
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
 				instancia_elegida->socket);
-//		t_protocolo respuesta_instancia = EXITO;
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger, "Store realizado exitosamente en Instancia %s",
@@ -146,6 +152,7 @@ void realizar_store(t_esi* esi, char* clave) {
 		case ERROR:
 			log_error(logger, "Error al realizar store en Instancia %s",
 					instancia_elegida->nombre);
+			remover_clave_almacenada(instancia_elegida, clave);
 			enviar_cod_operacion(esi->socket, ABORTA);
 			break;
 		default:

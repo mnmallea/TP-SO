@@ -26,7 +26,11 @@ char* nombres_protocolo[] = {
 	"CLAVE_NO_BLOQUEADA_EXCEPTION",
 	"CLAVE_NO_IDENTIFICADA_EXCEPTION",
 	"LINEA_INVALIDA",
-	"ABORTA"
+	"ABORTA",
+	"RELEVANTAR_INSTANCIA",
+	"SOLICITUD_STATUS_CLAVE",
+	"INSTANCIA_COMPACTAR",
+	"ERROR_CONEXION"
 };
 
 char* to_string_protocolo(t_protocolo codigo){

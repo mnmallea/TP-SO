@@ -10,10 +10,13 @@
 
 #include <commons/log.h>
 
+#include "../syntax-commons/protocol.h"
 #include "typedefs.h"
 
 extern t_log* logger;
 extern int socket_planificador;
+
+t_protocolo respuesta_planificador;
 
 void solicitar_clave(char* clave);
 void esi_tiene_clave(char* clave);

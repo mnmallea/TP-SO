@@ -46,40 +46,52 @@ int main(int argc, char** argv) {
 			} else {
 				//notificarCoordFalla
 				enviar_cod_operacion(socketCoordinador, ERROR);
-
-				break;
-				case OP_STORE:;
-				char* clave;
-				int rs = recibir_operacion_unaria(socketCoordinador, &clave);
-				if (rs < 0) {
-					log_error(logger, "Error al recibir operacion blah");
-					close(socketCoordinador);
-					exit(EXIT_FAILURE);
-				}
-				log_trace(logger, "Store %s", clave);
-				resultado = STORE(clave);
-				if (resultado >= 0) {
-					//notificarCoordExito
-					enviar_cod_operacion(socketCoordinador, EXITO);
-				} else {
-					//notificarCoordFalla
-					enviar_cod_operacion(socketCoordinador, ERROR);
-				}
-				break;
-
-				case MATAR_INSTANCIA:
-
-				escucha = 0;
-
-				break;
-				default:
-				{
-					log_info(logger, "no se pudo interpretar el mensaje");
-				}
-
 			}
+			break;
+		case OP_STORE:
+			;
+			char* clave;
+			int rs = recibir_operacion_unaria(socketCoordinador, &clave);
+			if (rs < 0) {
+				log_error(logger, "Error al recibir operacion ");
+				close(socketCoordinador);
+				exit(EXIT_FAILURE);
+			}
+			log_trace(logger, "Store %s", clave);
+			resultado = STORE(clave);
+			if (resultado >= 0) {
+				enviar_cod_operacion(socketCoordinador, EXITO);
+			} else {
+				enviar_cod_operacion(socketCoordinador, ERROR);
+			}
+			break;
+
+		case MATAR_INSTANCIA:
+
+			escucha = 0;
+
+			break;
+		case RELEVANTAR_INSTANCIA:
+			log_info(logger, "La instancia se esta relevantando.....");
+			/* todo
+			 * Formato del mensaje que te mando
+			 * Cantidad de Claves (int) + {tamaño clave + clave} n veces
+			 */
+			break;
+		case INSTANCIA_COMPACTAR:
+			log_info(logger, "Estoy compactando ...");
+			enviar_cod_operacion(socketCoordinador, EXITO);
+			//si falla deberia contestarle ERROR
+			break;
+		default: 
+			log_info(logger, "no se pudo interpretar el mensaje");
+			//todo aca te tendrias que morir de manera copada
+			exit(EXIT_FAILURE);
+		
+
 		}
 	}
+
 	limpiar_configuracion();
 	log_destroy(logger);
 	exit(0);
