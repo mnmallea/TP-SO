@@ -27,7 +27,7 @@ void paquete_agregar(t_paquete* pqt, void* contenido, uint32_t tamanioContenido)
 
 int paquete_enviar(t_paquete* paquete, int socket) {
 	int res_send;
-	if ((res_send = send(socket, paquete->carga, paquete->tamanioActual, 0))
+	if ((res_send = send(socket, paquete->carga, paquete->tamanioActual, MSG_NOSIGNAL))
 			< 0) {
 		log_error(logger, "Error al enviar paquete: %s", strerror(errno));
 	}
@@ -56,7 +56,7 @@ void paquete_enviar_safe(t_paquete* paquete, int socket) {
 }
 
 void enviarPaquete(int socket, void* paqueteSerializado, size_t tamanioPaquete) {
-	int cantEnviada = send(socket, paqueteSerializado, tamanioPaquete, 0);
+	int cantEnviada = send(socket, paqueteSerializado, tamanioPaquete, MSG_NOSIGNAL);
 
 	if (tamanioPaquete > cantEnviada) {
 		enviarPaquete(socket, paqueteSerializado + cantEnviada,
