@@ -13,7 +13,7 @@
 
 #include "algoritmos_planificacion.h"
 
-int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de configuracion como parametro
+int main(int argc, char **argv) {
 
 	lista_esis_listos = list_create();
 	esi_corriendo = (t_esi *) malloc(sizeof(t_esi));
@@ -23,14 +23,14 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 
 	/*Config*/
 	logger = log_create("planificador.log", "Planificador", true, LOG_LEVEL);
-//	logger->is_active_console = 0;
+	logger->is_active_console = 0; //para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
 	configuracion = configurar(argv[1]);
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;
 	pthread_t consola_planificador;
 	pthread_t planificador;
 
-	const char *message0 = "Inicializacion el selector";
+	const char *message0 = "Inicializacion del planificador";
 	if (pthread_create(&selector_planificador, NULL, listener,
 			(void*) message0)) {
 		log_error(logger, "Cantidad incorrecta de parametros");
@@ -44,10 +44,11 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 	}
 
 	const char *message2 = "Inicializacion del planificador";
-	if (pthread_create(&planificador, NULL, planificar, (void*) message2)) {
-		log_error(logger, "Error creando el hilo del planificador\n");
-		exit(EXIT_FAILURE);
-	}
+		if (pthread_create(&planificador, NULL, planificar, (void*) message2)) {
+			log_error(logger, "Error creando el hilo del planificador\n");
+			exit(EXIT_FAILURE);
+		}
+
 
 	/*Join threads*/
 	if (pthread_join(selector_planificador, NULL)) {

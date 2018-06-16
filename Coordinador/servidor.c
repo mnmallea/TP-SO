@@ -72,7 +72,6 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 	case ESI:
 		log_info(logger, "Se ha conectado un ESI");
 		atender_esi(socket);
-		log_trace(logger, "Se termino de atender un ESI, sockfd = %d", socket);
 		break;
 	case INSTANCIA:
 		log_info(logger, "Se ha conectado una Instancia");
@@ -221,9 +220,14 @@ void atender_esi(int socket) {
 			retardarse(configuracion.retardo);
 			realizar_set(esi, clave, valor);
 			break;
+		case FINALIZO_ESI :
+			close(socket);
+			log_trace(logger, "Se termino de atender el ESI id: %d",
+					esi->id);
+			return;
 		default:
 			log_error(logger,
-					"El esi ha muerto, le cortaron la garganta de aqui a aca",
+					"El esi %d ha muerto, le cortaron la garganta de aqui a aca",
 					esi->id);
 			/*
 			 * todo fijarse si aca hay que sacarlo de la lista o no
