@@ -93,17 +93,18 @@ void *menu(void *ptr) {
 }
 
 void pausar_despausar_consola() {
-	pthread_mutex_lock(&mutex_flag_pausa_despausa);
+	//pthread_mutex_lock(&mutex_flag_pausa_despausa);
 	if (flag == 1) {
 		printf("Planificador pausado\n");
 		flag--;
 	} else {
 		printf("Continuando con la planificacion\n");
 		flag++;
+		sem_post(&sem_binario_planif);
 	}
 
 	log_debug(logger, "El flag esta en: %d", flag);
-	pthread_mutex_unlock(&mutex_flag_pausa_despausa);
+	//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
 }
 

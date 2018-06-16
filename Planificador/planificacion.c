@@ -30,9 +30,10 @@ void* planificar(void* nada){
 	while (1) {
 		sem_wait(&sem_binario_planif);
 
-		pthread_mutex_lock(&mutex_flag_pausa_despausa);
+		//pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if (flag == 1) { //esta despausada la planificacion
-			pthread_mutex_unlock(&mutex_flag_pausa_despausa);
+			//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
+
 
 			t_esi* proximo_esi;
 			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
