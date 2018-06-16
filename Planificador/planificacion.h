@@ -105,15 +105,17 @@ void desbloquear_claves_tomadas(char* clave, void* esi);
 void correr(t_esi* esi);
 void ya_termino_linea();
 void fallo_linea();
+void interpretar();
+void linea_size();
 void aumentar_viene_esperando(void* esi);
 void aumentar_viene_corriendo(void* esi);
 
 
 void nueva_solicitud(int socket, char* clave);
 
-void* planificar(void*);
+void* planificar(void *nada);
 
-t_esi *obtener_procesos_en_deadlock();
+//t_esi *obtener_procesos_en_deadlock();
 
 
 #endif /* PLANIFICACION_H_ */

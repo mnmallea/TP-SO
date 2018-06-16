@@ -41,14 +41,12 @@ int main(int argc, char* argv[]) {
 	int socketPlan = crear_socket_cliente(configuracion.ipPlan,
 			configuracion.portPlan);
 
-	int *esi_id = safe_recv(socketPlan, sizeof(int)); //hay q hacer free
+	int *esi_id = safe_recv(socketPlan, sizeof(int));
 	log_debug(logger, "el id del esi es: %d", *esi_id);
-	//int esi_id=recibir_mensaje(socketPlan);
 	safe_send(socketCord, esi_id, sizeof(int));
 
 	if ((n_esi_operacion = malloc(sizeof(t_operacion))) == NULL) {
 		log_error(logger, "No se puede alocar memoria");
-		//enviar respuesta al planificador, error de linea(?)
 		exit_gracefully(1);
 	}
 
@@ -57,9 +55,6 @@ int main(int argc, char* argv[]) {
 
 	while ((read = getline(&line, &len, fp)) != -1) {
 
-		size_t s_valor = 0;
-		size_t s_clave = 0;
-		size_t s_carga = 0;
 		t_esi_operacion parsed = parse(line);
 
 		if (parsed.valido) {
@@ -72,17 +67,20 @@ PROCESAR:switch (parsed.keyword) {
 
 			case SET:
 				log_debug(logger, "Set %s %s", parsed.argumentos.SET.clave,
-						parsed.argumentos.SET.valor);
+							parsed.argumentos.SET.valor);
 				if (strlen(parsed.argumentos.SET.valor) < 40) {
 
 					enviar_set(socketCord, parsed.argumentos.SET.clave,
 							parsed.argumentos.SET.valor);
 
-				} else {
+				}
+				else {
 					log_error(logger,
 							"El tamaño del valor <%s> es superior al permitido\n",
 							line);
-					exit_gracefully(1);
+					enviar_cod_operacion(socketPlan, LINEA_SIZE);
+					destruir_operacion(parsed);
+					goto FREE;
 
 				}
 				break;
@@ -94,31 +92,33 @@ PROCESAR:switch (parsed.keyword) {
 
 			default:
 				log_error(logger, "No pude interpretar <%s>\n", line);
-				//enviar respuesta al planificador, error de linea(?)
-				exit_gracefully(1);
+				enviar_cod_operacion(socketPlan, INTERPRETAR);
+				destruir_operacion(parsed);
+				goto FREE;
 			}
 
 			//Respuesta al planificador
 			key = recibir_cod_operacion(socketCord);
-			switch(key){
-			case BLOQUEO_ESI:
+
+			if(key==BLOQUEO_ESI){
 				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
 				recibir_confirmacion(socketPlan);
 					goto PROCESAR;
 
 			}
+
 			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
 			enviar_cod_operacion(socketPlan, key);
-
-			//Frees
 
 			destruir_operacion(parsed);
 
 		}
 		else {
 			log_error(logger, "La linea <%s> no es valida\n", line);
-			enviar_cod_operacion(socketPlan, LINEA_INVALIDA);
-			exit_gracefully(1);
+			enviar_cod_operacion(socketPlan, ABORTA);
+			destruir_operacion(parsed);
+			goto FREE;
+
 		}
 
 		recibir_confirmacion(socketPlan);
@@ -128,12 +128,14 @@ PROCESAR:switch (parsed.keyword) {
 	log_info(logger, "No quedan mas lineas en el archivo");
 
 	enviar_cod_operacion(socketPlan, FINALIZO_ESI);
+	enviar_cod_operacion(socketCord, FINALIZO_ESI);
 
-	fclose(fp);
-	if (line)
-		free(line);
 
-	free(esi_id);
+FREE :	fclose(fp);
+		if (line)
+			free(line);
+
+		free(esi_id);
 
 	log_destroy(logger);
 	limpiar_configuracion();

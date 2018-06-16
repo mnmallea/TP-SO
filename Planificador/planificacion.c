@@ -26,8 +26,7 @@ bool hay_esi_bloqueado = false;
 bool hay_esi_finalizado = false;
 t_esi* esi_a_matar;
 
-void* planificar(void* nada) {
-
+void* planificar(void* nada){
 	while (1) {
 		sem_wait(&sem_binario_planif);
 
@@ -72,6 +71,7 @@ void* planificar(void* nada) {
 
 	}
 	return NULL;
+
 }
 
 t_esi *obtener_nuevo_esi_a_correr() {
@@ -114,7 +114,7 @@ void finalizar_esi() {
 	liberar_recursos(esi_corriendo);
 	list_add(lista_esis_finalizados, esi_corriendo);
 
-	log_debug(logger, "Termino un esi: %d \n", esi_corriendo->id);
+	log_debug(logger, "Termino el ESI id: %d \n", esi_corriendo->id);
 
 	hay_esi_finalizado = true;
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
@@ -270,6 +270,26 @@ void ya_termino_linea() {
 
 }
 
+void linea_size() {
+	//si leyo mal la linea
+	log_debug(logger, "El ESI %d leyo una linea con mas de 40 caracteres\n",
+			esi_corriendo->id);
+	liberar_recursos(esi_corriendo);
+	matar_nodo_esi(esi_corriendo);
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+	hay_esi_finalizado = true;
+}
+
+void interpretar() {
+	//si leyo mal la linea
+	log_debug(logger, "No se pudo interpretar una linea en el esi %d\n",
+			esi_corriendo->id);
+	liberar_recursos(esi_corriendo);
+	matar_nodo_esi(esi_corriendo);
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+	hay_esi_finalizado = true;
+}
+
 void fallo_linea() {
 	//si leyo mal la linea
 	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
@@ -328,7 +348,7 @@ void nueva_solicitud(int socket, char* clave) {
 	enviar_cod_operacion(socket, cod_op);
 }
 
-
+/*
 t_list *lista_deadlock = list_create();
 
 t_list *obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
@@ -349,6 +369,6 @@ void filtra_en_deadlock(void *esi){
 	//sino no
 }
 
-
+*/
 
 

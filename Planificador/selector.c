@@ -64,19 +64,34 @@ void *listener(void *ptr) {
 
 					if ((nbytes = recv(i, &buf, sizeof buf, 0)) <= 0) {
 
-						if (nbytes == 0) {
-							log_error(logger,
-									"La conexion del socket %d finalizo inesperadamente\n",
-									i);
-							socketAEliminar = i;
-							list_remove_and_destroy_by_condition(
-									lista_esis_listos, (void*) socketProceso,
-									(void*) free);
-						} else {
-							log_error(logger,
-									"El mensaje recivido por socket %d tiene errores\n",
-									i);
+						if (i==socketCord){
+							if (nbytes == 0) {
+								log_error(logger,
+										  "La conexion con el Coordinador finalizo inesperadamente\n");
+								socketAEliminar = i; //para q sirve?
+							}
+							else {
+								log_error(logger,
+										  "El mensaje recivido por el Coordinador tiene errores\n");
+							}
+
 						}
+						else{
+							if (nbytes == 0) {
+								log_error(logger,
+										 "La conexion con del socket %d finalizo inesperadamente\n",
+										  i);
+									socketAEliminar = i; //para q sirve?
+							}
+							else {
+								log_error(logger,
+										  "El mensaje recivido por el socket %d tiene errores\n",
+										  i);
+							}
+								//list_remove_and_destroy_by_condition(lista_esis_listos, (void*) socketProceso,
+									//								(void*) free);
+						}
+
 						close(i);
 						FD_CLR(i, &master);
 
@@ -122,11 +137,18 @@ void *listener(void *ptr) {
 							case EXITO:
 								ya_termino_linea();
 								break;
+							case LINEA_SIZE:
+								linea_size();
+								break;
+							case INTERPRETAR:
+								interpretar();
+								break;
 							case ABORTA:
 								fallo_linea();
 								break;
 							case FINALIZO_ESI:
 								finalizar_esi();
+								FD_CLR(i, &master);
 								break;
 							case BLOQUEO_ESI:
 								//supongo que ya me encargue de guardarlo como bloqueado
@@ -137,6 +159,7 @@ void *listener(void *ptr) {
 							default:
 								break;
 							}
+							//planificar();
 							sem_post(&sem_binario_planif);
 						}
 
