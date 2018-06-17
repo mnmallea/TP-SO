@@ -20,9 +20,11 @@ void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {
 	if (paquete_enviar_con_codigo(paquete, tipo_consulta, socket_planificador)
 			< 0) {
 		log_error(logger, "Error de comunicacion con el planificador");
+		paquete_destruir(paquete);
 		//hay que liberar varias cosas
 		exit(EXIT_FAILURE);
 	}
+	paquete_destruir(paquete);
 }
 
 void solicitar_clave(char* clave) {

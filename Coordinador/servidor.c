@@ -148,6 +148,7 @@ void atender_instancia(int sockfd) {
 				instancia->nombre);
 		instancia_agregar_a_activas(instancia);
 	}
+	free(nombre);
 
 	while (1) {
 		sem_wait(&instancia->semaforo_instancia);
