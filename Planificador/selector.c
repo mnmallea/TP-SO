@@ -69,6 +69,8 @@ void *listener(void *ptr) {
 								log_error(logger,
 										  "La conexion con el Coordinador finalizo inesperadamente\n");
 								socketAEliminar = i; //para q sirve?
+
+								exit(EXIT_FAILURE);
 							}
 							else {
 								log_error(logger,

@@ -24,7 +24,10 @@ void esperar_mensaje(int my_socket);
 int recibir_mensaje(int my_socket);
 void mandar_mensaje(int my_socket,int id);
 void recibir_confirmacion (int my_socket); //wait
-void mandar_confirmacion(int my_socket);   //signal
+/*
+ * Devuelve valor negativo si fallo
+ */
+int mandar_confirmacion(int my_socket);   //signal
 void mandar_error(int my_socket);
 void salir_con_error(int my_socket, char* error_msg);
 void exit_gracefully(int return_nr);

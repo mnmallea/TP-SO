@@ -22,8 +22,8 @@ int main(int argc, char **argv) {
 	dic_clave_x_esi = dictionary_create();
 
 	/*Config*/
-	logger = log_create("planificador.log", "Planificador", true, LOG_LEVEL);
-	logger->is_active_console = 0; //para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
+	logger = log_create("planificador.log", "Planificador", false, LOG_LEVEL);
+	//para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
 	configuracion = configurar(argv[1]);
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;
