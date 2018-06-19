@@ -72,6 +72,8 @@ void *menu(void *ptr) {
 			printf("Ingreso status de una clave, ingrese <clave>");
 
 			scanf("%s", clave);
+
+			envia_status_clave(clave);
 			break;
 		case 7:
 			printf("Ingreso solucionar problemas de deadlock");
@@ -145,6 +147,23 @@ void matar_por_consola(int id) {
 		liberar_recursos(esi_a_matar);
 		matar_nodo_esi(esi_a_matar);
 	}
+
+}
+
+void envia_status_clave(char* clave){
+
+	t_paquete* paquete = paquete_crear();
+	paquete_agregar(paquete, clave, strlen(clave) + 1);
+	if (paquete_enviar_con_codigo(paquete, SOLICITUD_STATUS_CLAVE, socketCord)< 0) {
+		log_error(logger, "Error enviandole el paquete al coordindor");
+		paquete_destruir(paquete);
+		exit(EXIT_FAILURE);
+	}
+	paquete_destruir(paquete);
+
+	//sem_wait(&coordinador_respondio);
+	//recibir paquete del coordinador
+	//hacer printf de las cosas que me mando
 
 }
 

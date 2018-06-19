@@ -39,6 +39,8 @@ extern config configuracion;
 
 bool la_tiene;
 
+int socketCord;
+
 
 void *listener(void *ptr);
 t_esi *crear_nodo_esi(int socket);

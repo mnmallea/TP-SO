@@ -11,6 +11,8 @@
 #include "planificacion.h"
 #include "sincronizacion.h"
 #include <commons/log.h>
+#include "../syntax-commons/protocol.h"
+#include "../syntax-commons/my_socket.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -20,6 +22,7 @@
 
 //extern int flag;
 extern t_log *logger;
+extern int socketCord ; //sale del selector
 
 void *menu(void *ptr);
 void listar(char* rec);
@@ -29,5 +32,6 @@ void pausar_despausar_consola();
 void mostrar_esi_en_pantalla(void* esi);
 void matar_por_consola(int id);
 void deadlock();
+void envia_status_clave(char* clave);
 
 #endif /* CONSOLA_H_ */
