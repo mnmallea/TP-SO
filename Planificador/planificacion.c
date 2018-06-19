@@ -26,14 +26,13 @@ bool hay_esi_bloqueado = false;
 bool hay_esi_finalizado = false;
 t_esi* esi_a_matar;
 
-void* planificar(void* nada){
+void* planificar(void* nada) {
 	while (1) {
 		sem_wait(&sem_binario_planif);
 
 		//pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if (flag == 1) { //esta despausada la planificacion
 			//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
-
 
 			t_esi* proximo_esi;
 			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
@@ -194,18 +193,22 @@ bool esi_con_este_id(void* esi) {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE INDICA QUE SE DESBLOQUIO UN RECURSO
 void se_desbloqueo_un_recurso(char* clave) {
 
-	if (dictionary_has_key(dic_clave_x_esi, clave)){
+	if (dictionary_has_key(dic_clave_x_esi, clave)) {
 		dictionary_remove(dic_clave_x_esi, clave);
 	}
 
 	if (dictionary_has_key(dic_esis_bloqueados, clave)) { //hay esis encolados
-		t_list *lista_esis_bloq_esta_clave = dictionary_get(dic_esis_bloqueados,
+		t_list *lista_esis_bloq_esta_clave = dictionary_remove(dic_esis_bloqueados,
 				clave);
 		t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
-		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
+
+		if (list_size(lista_esis_bloq_esta_clave) != 0){ //agrego la lista de bloqueados solo si tiene algun esi
+			dictionary_put(dic_esis_bloqueados, clave,
+								lista_esis_bloq_esta_clave);
+		}
 
 		nuevo_esi(esi_desbloq);
-	}else{
+	} else {
 		log_debug(logger, "No estaba bloqueada esta clave");
 	}
 
@@ -350,26 +353,25 @@ void nueva_solicitud(int socket, char* clave) {
 }
 
 /*
-t_list *lista_deadlock = list_create();
+ t_list *lista_deadlock = list_create();
 
-t_list *obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
-	//habria que ver si es void o si se cambia la implementacion
+ t_list *obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
+ //habria que ver si es void o si se cambia la implementacion
 
-	dictionary_iterator(dic_esis_bloqueados, itera_por_linea);
-}
+ dictionary_iterator(dic_esis_bloqueados, itera_por_linea);
+ }
 
-void itera_por_linea(char* clave, void* esisbloq){
+ void itera_por_linea(char* clave, void* esisbloq){
 
-	list_iterate(esisbloq, filtra_en_deadlock);
-}
+ list_iterate(esisbloq, filtra_en_deadlock);
+ }
 
-void filtra_en_deadlock(void *esi){
+ void filtra_en_deadlock(void *esi){
 
-	//fijarse si tiene alguna clave tomada en dic_clave_x_esi
-	//si tiene clave lo agreo a la lista deadlock
-	//sino no
-}
+ //fijarse si tiene alguna clave tomada en dic_clave_x_esi
+ //si tiene clave lo agreo a la lista deadlock
+ //sino no
+ }
 
-*/
-
+ */
 
