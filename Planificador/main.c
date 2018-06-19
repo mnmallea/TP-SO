@@ -21,10 +21,15 @@ int main(int argc, char **argv) {
 	dic_esis_bloqueados = dictionary_create();
 	dic_clave_x_esi = dictionary_create();
 
+
+
 	/*Config*/
 	logger = log_create("planificador.log", "Planificador", false, LOG_LEVEL);
 	//para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
 	configuracion = configurar(argv[1]);
+
+	configurar_claves_inicialmente_bloqueadas();
+
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;
 	pthread_t consola_planificador;
@@ -68,3 +73,21 @@ int main(int argc, char **argv) {
 	return 0;
 }
 
+
+void configurar_claves_inicialmente_bloqueadas(){
+
+	t_esi *esi_trucho = malloc(sizeof(esi));
+	esi_trucho->socket = -1;
+	esi_trucho->estim_anter = 0;
+	esi_trucho->dur_ult_raf = 0;
+	esi_trucho->viene_esperando = 0;
+	esi_trucho->id = -1;
+
+	int i = 0;
+	while(configuracion.claves_bloqueadas[i] != NULL){
+
+		dictionary_put(dic_clave_x_esi, configuracion.claves_bloqueadas[i], esi_trucho);
+		i++;
+	}
+
+}

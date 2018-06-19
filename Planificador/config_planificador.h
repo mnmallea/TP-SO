@@ -25,7 +25,7 @@ typedef struct{
 	int estimacion_inicial;
 	char *ipCoord;
 	char *portCoord;
-	char *claves_bloqueadas;
+	char **claves_bloqueadas;
 	double alfa;
 } config;
 
