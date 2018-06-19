@@ -41,6 +41,7 @@ t_dictionary *dic_esis_bloqueados;
  */
 t_dictionary *dic_clave_x_esi;
 
+void configurar_claves_inicialmente_bloqueadas();
 
 
 //#include "typescommons.h"
