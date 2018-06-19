@@ -14,6 +14,7 @@
 pthread_mutex_t mutex_flag_pausa_despausa; //PAUSAR Y DESPAUSAR CONSOLA
 pthread_mutex_t mutex_var_comp_id; //Variable compartida id
 sem_t sem_binario_planif;
+sem_t coordinador_respondio_paq;
 sem_t contador_esis;
 
 

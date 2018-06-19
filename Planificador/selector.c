@@ -128,7 +128,9 @@ void *listener(void *ptr) {
 								break;
 							case SOLICITUD_CLAVE:
 								nueva_solicitud(i, clave);
-
+								break;
+							case SOLICITUD_STATUS_CLAVE:
+								//manda paquete con rtas
 								break;
 							default:
 								break;
