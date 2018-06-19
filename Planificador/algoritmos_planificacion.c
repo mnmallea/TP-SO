@@ -28,6 +28,7 @@ void matar_nodo_esi(void* esi){
 
 	if(esi != NULL){
 		close(((t_esi*)esi)->socket);
+		//todo:sacarlo de la lista de esis listos/que pasa si es el esi corriendo?
 		free(((t_esi*)esi));
 	}
 
