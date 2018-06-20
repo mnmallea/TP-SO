@@ -20,20 +20,16 @@ int main(int argc, char **argv) {
 	lista_esis_finalizados = list_create();
 	dic_esis_bloqueados = dictionary_create();
 	dic_clave_x_esi = dictionary_create();
-
+	lista_deadlock = list_create();
 
 
 	/*Config*/
-	logger = log_create("planificador.log", "Planificador", false, LOG_LEVEL);
-	//para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
+	logger = log_create("planificador.log", "Planificador", true, LOG_LEVEL);
+	logger->is_active_console = 0; //para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
 	configuracion = configurar(argv[1]);
-
-	configurar_claves_inicialmente_bloqueadas();
-
 	/*Creacion de hilos*/
 	pthread_t selector_planificador;
 	pthread_t consola_planificador;
-	pthread_t planificador;
 
 	const char *message0 = "Inicializacion del planificador";
 	if (pthread_create(&selector_planificador, NULL, listener,
@@ -48,13 +44,6 @@ int main(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 
-	const char *message2 = "Inicializacion del planificador";
-		if (pthread_create(&planificador, NULL, planificar, (void*) message2)) {
-			log_error(logger, "Error creando el hilo del planificador\n");
-			exit(EXIT_FAILURE);
-		}
-
-
 	/*Join threads*/
 	if (pthread_join(selector_planificador, NULL)) {
 		log_error(logger, "Error al joinear el hilo del selector\n");
@@ -66,10 +55,6 @@ int main(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 
-	if (pthread_join(planificador, NULL)) {
-		log_error(logger, "Error al joinear el hilo del planificador\n");
-		exit(EXIT_FAILURE);
-	}
 	return 0;
 }
 

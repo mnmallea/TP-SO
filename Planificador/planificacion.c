@@ -26,13 +26,9 @@ bool hay_esi_bloqueado = false;
 bool hay_esi_finalizado = false;
 t_esi* esi_a_matar;
 
-void* planificar(void* nada) {
-	while (1) {
-		sem_wait(&sem_binario_planif);
+void planificar(void) {
 
-		//pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if (flag == 1) { //esta despausada la planificacion
-			//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
 			t_esi* proximo_esi;
 			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
@@ -42,7 +38,6 @@ void* planificar(void* nada) {
 					 dejo el puntero con esi corriendo como esta, total despues se pisa)*/
 					if (!primera_vez)
 						nuevo_esi(esi_corriendo);
-					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
 					primera_vez = hay_nuevo_esi = hay_esi_bloqueado =
 							hay_esi_finalizado = false;
@@ -52,7 +47,6 @@ void* planificar(void* nada) {
 			} else {
 
 				if (primera_vez || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. sin desalojo)
-					sem_wait(&contador_esis);
 					proximo_esi = obtener_nuevo_esi_a_correr();
 					primera_vez = hay_esi_bloqueado = hay_esi_finalizado =
 					false;
@@ -68,9 +62,6 @@ void* planificar(void* nada) {
 			correr(esi_corriendo);
 
 		}
-
-	}
-	return NULL;
 
 }
 
@@ -92,19 +83,22 @@ t_esi *obtener_nuevo_esi_a_correr() {
 }
 
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE LLEGO UN NUEVO ESI
-void nuevo_esi(t_esi* esi) {
-
+void *nuevo_esi(t_esi* esi) {
 	if (list_is_empty(lista_esis_listos)) {
 		primera_vez = true;
-		sem_post(&sem_binario_planif);
+		list_add(lista_esis_listos, esi);
+		planificar();
+		hay_nuevo_esi = true;
+		return NULL;
 	}
 
 	list_add(lista_esis_listos, esi);
 
 	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
 			esi->id);
-	sem_post(&contador_esis);
+	//sem_post(&contador_esis);
 	hay_nuevo_esi = true;
+	return NULL;
 
 }
 
@@ -247,6 +241,7 @@ void nueva_clave_tomada_x_esi(char* clave) {
 
 	//No existe la clave, agrego esta nueva linea
 	if (!dictionary_has_key(dic_clave_x_esi, clave)) {
+
 		dictionary_put(dic_clave_x_esi, clave, esi_corriendo); //aca estoy guardando el puntero al esi_corriendo verdad?
 
 	} else { //Existe la clave, saco al que estaba y pongo al nuevo
@@ -353,26 +348,27 @@ void nueva_solicitud(int socket, char* clave) {
 	enviar_cod_operacion(socket, cod_op);
 }
 
-/*
- t_list *lista_deadlock = list_create();
 
- t_list *obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
- //habria que ver si es void o si se cambia la implementacion
+void obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
+										//habria que ver si es void o si se cambia la implementacion
+	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
+}
 
- dictionary_iterator(dic_esis_bloqueados, itera_por_linea);
- }
+void itera_por_linea(char *clave, void *esi){
+	candidato = esi;
+	dictionary_iterator(dic_esis_bloqueados, filtra_en_deadlock);
 
- void itera_por_linea(char* clave, void* esisbloq){
+}
 
- list_iterate(esisbloq, filtra_en_deadlock);
- }
+void filtra_en_deadlock(char* clave, void* esisbloq){
 
- void filtra_en_deadlock(void *esi){
+	if (list_find(esisbloq,esta)!=NULL){
+			list_add(lista_deadlock,candidato);
+		}
+}
 
- //fijarse si tiene alguna clave tomada en dic_clave_x_esi
- //si tiene clave lo agreo a la lista deadlock
- //sino no
- }
+bool esta(void *esibloq){
+	return ((t_esi*) esibloq)->id == candidato->id;
+}
 
- */
 

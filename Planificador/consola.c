@@ -76,8 +76,8 @@ void *menu(void *ptr) {
 			envia_status_clave(clave);
 			break;
 		case 7:
-			printf("Ingreso solucionar problemas de deadlock");
-			//deadlock();
+			printf("Ingreso a la vista de procesos en deadlock");
+			deadlock();
 			break;
 		case 0:
 			break;
@@ -102,7 +102,7 @@ void pausar_despausar_consola() {
 	} else {
 		printf("Continuando con la planificacion\n");
 		flag++;
-		sem_post(&sem_binario_planif);
+		planificar();
 	}
 
 	log_debug(logger, "El flag esta en: %d", flag);
@@ -167,9 +167,17 @@ void envia_status_clave(char* clave){
 
 }
 
+void mostrar_dl_pantalla(void* esi) {
 
-/*void deadlock(){
-	t_list* esis_deadlock = obtener_procesos_en_deadlock();
-	list_iterate(esis_deadlock, mostrar_esi_en_pantalla);
-	list_destroy(esis_deadlock);
-}*/
+	printf("El esi id: %d esta en deadlock \n", ((t_esi*) esi)->id);
+}
+
+void deadlock(){
+
+	pthread_mutex_lock(&mutex_dl);
+	obtener_procesos_en_deadlock();
+	pthread_mutex_unlock(&mutex_dl);
+	list_iterate(lista_deadlock, mostrar_dl_pantalla);
+	list_clean_and_destroy_elements(lista_deadlock, (void*) free);
+
+}

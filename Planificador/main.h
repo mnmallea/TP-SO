@@ -24,6 +24,7 @@ t_log *logger;
 t_list *lista_esis_listos;
 t_esi *esi_corriendo;
 t_list *lista_esis_finalizados;
+t_list *lista_deadlock;
 
 /*Nombre: dic_esis_bloqueados
  * Estructura: char* clave bloqueada, t_list esis_bloqueados

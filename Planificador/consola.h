@@ -30,6 +30,7 @@ void bloquear(char* clave, int id);
 void desbloquear(char* clave);
 void pausar_despausar_consola();
 void mostrar_esi_en_pantalla(void* esi);
+void mostrar_dl_pantalla(void* esi);
 void matar_por_consola(int id);
 void deadlock();
 void envia_status_clave(char* clave);

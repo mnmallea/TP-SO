@@ -26,7 +26,7 @@ void *listener(void *ptr) {
 		fdmax = socketServer;
 
 	for (;;) {
-		read_fds = master;
+		SIG : read_fds = master;
 		if (select(fdmax + 1, &read_fds, NULL, NULL, NULL) == -1) {
 			log_error(logger, "No se pudo seleccionar conexiones\n");
 		}
@@ -50,13 +50,10 @@ void *listener(void *ptr) {
 								newfd);
 						n_esi = crear_nodo_esi(newfd);
 						n_esi->id = id;
-						nuevo_esi(n_esi);
-
 						mandar_mensaje(newfd, id);
 						id++;
-						log_info(logger,
-								"Cantidad de elementos en la lista: %d",
-								list_size(lista_esis_listos));
+						nuevo_esi(n_esi);
+
 					}
 				}
 
@@ -109,6 +106,7 @@ void *listener(void *ptr) {
 
 
 							case DESBLOQUEO_CLAVE:
+
 								 se_desbloqueo_un_recurso(clave);
 								break;
 							case ESI_TIENE_CLAVE:
@@ -153,6 +151,8 @@ void *listener(void *ptr) {
 							case FINALIZO_ESI:
 								finalizar_esi();
 								FD_CLR(i, &master);
+								if (list_is_empty(lista_esis_listos))
+									goto SIG;
 								break;
 							case BLOQUEO_ESI:
 								//supongo que ya me encargue de guardarlo como bloqueado
@@ -163,8 +163,8 @@ void *listener(void *ptr) {
 							default:
 								break;
 							}
-							//planificar();
-							sem_post(&sem_binario_planif);
+							planificar();
+
 						}
 
 					}

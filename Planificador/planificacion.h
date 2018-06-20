@@ -27,6 +27,7 @@ bool hay_nuevo_esi;
 bool hay_esi_bloqueado;
 bool hay_esi_finalizado;
 t_esi* esi_a_matar;
+t_esi *candidato;
 
 /* Nombre: obtener_nuevo_esi_a_correr();
  * Desc: obtiene el proximo esi a correr a partir del algoritmo elegido
@@ -63,7 +64,7 @@ void desbloquear_por_consola(char* clave);
 /* Nombre: nuevo_esi(t_esi* esi)
  * Desc: Agrego un nuevo esi a la lista de listos
  */
-void nuevo_esi(t_esi* esi);
+void *nuevo_esi(t_esi* esi);
 
 t_esi *buscar_esi_por_id(int id_esi);
 
@@ -109,11 +110,14 @@ void interpretar();
 void linea_size();
 void aumentar_viene_esperando(void* esi);
 void aumentar_viene_corriendo(void* esi);
-
+void obtener_procesos_en_deadlock();
+void itera_por_linea(char *clave, void *esi);
+void filtra_en_deadlock(char* clave, void* esisbloq);
+bool esta(void *esibloq);
 
 void nueva_solicitud(int socket, char* clave);
 
-void* planificar(void *nada);
+void planificar(void);
 
 //t_esi *obtener_procesos_en_deadlock();
 
