@@ -31,6 +31,7 @@ t_esi *esi_corriendo;
 t_list *lista_esis_finalizados;
 
 t_protocolo respuesta_esi_corriendo;
+char* clave_bloqueadora;
 
 /*Nombre: dic_esis_bloqueados
  * Estructura: char* clave bloqueada, t_list esis_bloqueados

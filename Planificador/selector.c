@@ -128,9 +128,10 @@ void listener(void) {
 								"Mensaje del coordinador desconocido");
 						break;
 					}
+					free(clave);
 					continue;
 				}
-				if (i == esi_corriendo->socket) {
+				if (esi_corriendo !=NULL && i == esi_corriendo->socket) {
 					log_debug(logger, "Mensaje recibido de un ESI: %s",
 							to_string_protocolo(buf));
 					respuesta_esi_corriendo = buf;

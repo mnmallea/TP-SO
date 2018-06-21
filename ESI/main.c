@@ -59,7 +59,7 @@ int main(int argc, char* argv[]) {
 
 		if (parsed.valido) {
 
-PROCESAR:switch (parsed.keyword) {
+			PROCESAR: switch (parsed.keyword) {
 			case GET:
 				log_debug(logger, "Get %s", parsed.argumentos.SET.clave);
 				enviar_get(socketCord, parsed.argumentos.GET.clave);
@@ -67,14 +67,13 @@ PROCESAR:switch (parsed.keyword) {
 
 			case SET:
 				log_debug(logger, "Set %s %s", parsed.argumentos.SET.clave,
-							parsed.argumentos.SET.valor);
+						parsed.argumentos.SET.valor);
 				if (strlen(parsed.argumentos.SET.valor) < 40) {
 
 					enviar_set(socketCord, parsed.argumentos.SET.clave,
 							parsed.argumentos.SET.valor);
 
-				}
-				else {
+				} else {
 					log_error(logger,
 							"El tamaño del valor <%s> es superior al permitido\n",
 							line);
@@ -99,24 +98,32 @@ PROCESAR:switch (parsed.keyword) {
 
 			//Respuesta al planificador
 			key = recibir_cod_operacion(socketCord);
+			log_trace(logger, "Recibi mensaje de coordinador: %s",
+					to_string_protocolo(key));
 
-			if(key==BLOQUEO_ESI){
-				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
+			if (enviar_cod_operacion(socketPlan, key) < 0) {
+				log_error(logger, "Error de conexion con planificador");
+				exit_gracefully(EXIT_FAILURE);
+			}
+			log_trace(logger, "Le envie al coordinador: %s", to_string_protocolo(key));
+
+			if (key == BLOQUEO_ESI) {
+				log_info(logger, "ESI bloqueado por clave %s",
+						parsed.argumentos.SET.clave);
 				recibir_confirmacion(socketPlan);
 				log_trace(logger, "Recibi señal para ejecutar");
-					goto PROCESAR;
+				goto PROCESAR;
 
 			}
 
-			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
-			enviar_cod_operacion(socketPlan, key);
-
 			destruir_operacion(parsed);
 
-		}
-		else {
+		} else {
 			log_error(logger, "La linea <%s> no es valida\n", line);
-			enviar_cod_operacion(socketPlan, ABORTA);
+			if (enviar_cod_operacion(socketPlan, ABORTA) < 0) {
+				log_error(logger, "Error de conexion con planificador");
+				exit_gracefully(EXIT_FAILURE);
+			}
 			destruir_operacion(parsed);
 			goto FREE;
 
@@ -131,12 +138,11 @@ PROCESAR:switch (parsed.keyword) {
 	enviar_cod_operacion(socketPlan, FINALIZO_ESI);
 	enviar_cod_operacion(socketCord, FINALIZO_ESI);
 
+	FREE: fclose(fp);
+	if (line)
+		free(line);
 
-FREE :	fclose(fp);
-		if (line)
-			free(line);
-
-		free(esi_id);
+	free(esi_id);
 
 	log_destroy(logger);
 	limpiar_configuracion();

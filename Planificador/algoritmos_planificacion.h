@@ -9,8 +9,9 @@
 #define ALGORITMOS_PLANIFICACION_H_
 
 #include <commons/collections/list.h>
+#include <stdbool.h>
+
 #include "config_planificador.h"
-#include <stdlib.h>
 
 typedef enum {
 	FIFO, SJFsD, SJFcD, HRRN

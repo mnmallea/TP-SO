@@ -7,6 +7,15 @@
 
 #include "planificacion.h"
 
+#include <commons/collections/dictionary.h>
+#include <commons/collections/list.h>
+#include <semaphore.h>
+#include <sys/select.h>
+
+#include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/protocol.h"
+#include "selector.h"
+
 /* SE DEBE REPLANIFICAR CUANDO:
  *
  * SI USO HRRN/SJF SIN DESALOJO:
@@ -25,43 +34,39 @@ bool hay_esi_bloqueado = false;
 bool hay_esi_finalizado = false;
 t_esi* esi_a_matar;
 
-bool hay_que_planificar(tipo_algoritmo_planif algoritmo) {
-	if(esi_corriendo == NULL){
-		return true;//todo esto hay que refactorizarlo je
-	}
-	switch (algoritmo) {
+bool algoritmo_debe_planificar() {
+	switch (configuracion.algoritmo) {
 	case FIFO:
 	case SJFsD:
 	case HRRN:
-		return hay_esi_bloqueado || hay_esi_finalizado;
+		return false;
 	case SJFcD:
-		return hay_esi_bloqueado || hay_esi_finalizado || hay_nuevo_esi;
+		return hay_nuevo_esi;
 	default:
 		log_error(logger, "Algoritmo desconocido");
 		exit(EXIT_FAILURE);
 	}
 }
 
-void* planificar(void* nada) {
+bool hay_que_planificar() {
+	return esi_corriendo == NULL || algoritmo_debe_planificar();
+}
+
+void* planificar(void* _) {
 	esi_corriendo = NULL;
-	t_esi* proximo_esi;
+//	t_esi* proximo_esi;
 	while (1) {
 		//pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if (flag == 1) { //esta despausada la planificacion
 			//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
-			if (hay_que_planificar(configuracion.algoritmo)) {
-				proximo_esi = obtener_nuevo_esi_a_correr();
-				hay_nuevo_esi = hay_esi_bloqueado = hay_esi_finalizado = false;
-			} else {
-				proximo_esi = esi_corriendo;
+			if (hay_que_planificar()) {
+				esi_corriendo = obtener_nuevo_esi_a_correr();
 			}
 
-			log_debug(logger, "Proximo esi a correr: %d \n", proximo_esi->id);
+			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 
-			esi_corriendo = proximo_esi;
 			correr(esi_corriendo);
-
 		}
 
 	}
@@ -86,25 +91,22 @@ t_esi *obtener_nuevo_esi_a_correr() {
 	} else {
 		prox_esi = obtener_proximo_segun_hrrn(lista_esis_listos);
 	}
+	hay_nuevo_esi = false;
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 
 	return prox_esi;
 
 }
 
+//thread safe
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE LLEGO UN NUEVO ESI
 void nuevo_esi(t_esi* esi) {
-
-	if (list_is_empty(lista_esis_listos)) {
-		primera_vez = true;
-		sem_post(&sem_binario_planif);
-	}
-
+	pthread_mutex_lock(&mutex_lista_esis_listos);
 	list_add(lista_esis_listos, esi);
-
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
+	sem_post(&contador_esis);
 	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
 			esi->id);
-	sem_post(&contador_esis);
 	hay_nuevo_esi = true;
 
 }
@@ -117,7 +119,7 @@ void finalizar_esi() {
 
 	log_debug(logger, "Termino el ESI id: %d \n", esi_corriendo->id);
 
-	hay_esi_finalizado = true;
+	esi_corriendo = NULL;
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 }
 
@@ -126,7 +128,7 @@ void bloquear_esi(char* clave) {
 	agregar_a_dic_bloqueados(clave, esi_corriendo);
 	log_debug(logger, "Se bloqueo el esi corriendo: %d para la clave: %s \n",
 			esi_corriendo->id, clave);
-	hay_esi_bloqueado = true;
+	esi_corriendo = NULL;
 }
 
 void agregar_a_dic_bloqueados(char* clave, t_esi *esi) {
@@ -167,9 +169,7 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 
 }
 
-void desbloquear_por_consola(char* clave) {
-	se_desbloqueo_un_recurso(clave);
-}
+
 
 t_esi *buscar_esi_por_id(int id_esi) {
 
@@ -282,7 +282,8 @@ void correr(t_esi* esi) {
 		FD_CLR(i, &master);
 		break;
 	case BLOQUEO_ESI:
-		//supongo que ya me encargue de guardarlo como bloqueado
+		bloquear_esi(clave_bloqueadora);
+		free(clave_bloqueadora);
 		break;
 	case INSTANCIA_CAIDA_EXCEPTION:
 		fallo_linea();
@@ -306,30 +307,28 @@ void linea_size() {
 //si leyo mal la linea
 	log_debug(logger, "El ESI %d leyo una linea con mas de 40 caracteres\n",
 			esi_corriendo->id);
-	liberar_recursos(esi_corriendo);
-	matar_nodo_esi(esi_corriendo);
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	hay_esi_finalizado = true;
+	matar_esi_corriendo();
 }
 
 void interpretar() {
 //si leyo mal la linea
 	log_debug(logger, "No se pudo interpretar una linea en el esi %d\n",
 			esi_corriendo->id);
-	liberar_recursos(esi_corriendo);
-	matar_nodo_esi(esi_corriendo);
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	hay_esi_finalizado = true;
+	matar_esi_corriendo();
 }
 
 void fallo_linea() {
 //si leyo mal la linea
 	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
+	matar_esi_corriendo();
+}
+
+void matar_esi_corriendo() {
 	liberar_recursos(esi_corriendo);
 	matar_nodo_esi(esi_corriendo);
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	hay_esi_finalizado = true;
+	esi_corriendo = NULL;
 }
 
 void aumentar_viene_esperando(void* esi) {
@@ -369,8 +368,9 @@ void nueva_solicitud(int socket, char* clave) {
 
 	t_protocolo cod_op;
 	if (esta_tomada_x_otro_la_clave(clave)) {
-		bloquear_esi(clave);
+//		bloquear_esi(clave); NO HAY QUE HACER ESTO ACA
 		cod_op = BLOQUEO_ESI;
+		clave_bloqueadora = strdup(clave);
 
 	} else {
 		nueva_clave_tomada_x_esi(clave);

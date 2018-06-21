@@ -7,6 +7,13 @@
 
 #include "consola.h"
 
+#include <commons/collections/dictionary.h>
+#include <commons/collections/list.h>
+
+#include "../syntax-commons/serializador.h"
+#include "algoritmos_planificacion.h"
+#include "main.h"
+
 void *menu(void *ptr) {
 
 	char *message;
@@ -51,7 +58,7 @@ void *menu(void *ptr) {
 			printf("Ingreso desbloquear un proceso, ingrese <clave>");
 
 			scanf("%s", clave);
-			desbloquear(clave);
+			se_desbloqueo_un_recurso(clave);
 
 			break;
 		case 4:
@@ -102,7 +109,7 @@ void pausar_despausar_consola() {
 	} else {
 		printf("Continuando con la planificacion\n");
 		flag++;
-		sem_post(&sem_binario_planif);
+//		sem_post(&sem_binario_planif);
 	}
 
 	log_debug(logger, "El flag esta en: %d", flag);
@@ -134,27 +141,26 @@ void bloquear(char* clave, int id) {
 	bloquear_esi_por_consola(clave, id);
 }
 
-void desbloquear(char* clave) {
-	desbloquear_por_consola(clave);
-}
-
 void matar_por_consola(int id) {
 	t_esi* esi_a_matar = buscar_esi_por_id(id);
 	if (esi_a_matar == NULL) {
 		log_debug(logger, "El esi elegido no existe en el sistema");
 	} else {
-		log_debug(logger, "Se encontro el esi  %d en el sistema, se procede a matarlo", esi_a_matar->id);
+		log_debug(logger,
+				"Se encontro el esi  %d en el sistema, se procede a matarlo",
+				esi_a_matar->id);
 		liberar_recursos(esi_a_matar);
 		matar_nodo_esi(esi_a_matar);
 	}
 
 }
 
-void envia_status_clave(char* clave){
+void envia_status_clave(char* clave) {
 
 	t_paquete* paquete = paquete_crear();
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
-	if (paquete_enviar_con_codigo(paquete, SOLICITUD_STATUS_CLAVE, socketCord)< 0) {
+	if (paquete_enviar_con_codigo(paquete, SOLICITUD_STATUS_CLAVE, socketCord)
+			< 0) {
 		log_error(logger, "Error enviandole el paquete al coordindor");
 		paquete_destruir(paquete);
 		exit(EXIT_FAILURE);
@@ -167,9 +173,8 @@ void envia_status_clave(char* clave){
 
 }
 
-
 /*void deadlock(){
-	t_list* esis_deadlock = obtener_procesos_en_deadlock();
-	list_iterate(esis_deadlock, mostrar_esi_en_pantalla);
-	list_destroy(esis_deadlock);
-}*/
+ t_list* esis_deadlock = obtener_procesos_en_deadlock();
+ list_iterate(esis_deadlock, mostrar_esi_en_pantalla);
+ list_destroy(esis_deadlock);
+ }*/

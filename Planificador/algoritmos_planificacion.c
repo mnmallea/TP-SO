@@ -6,7 +6,10 @@
  */
 
 #include "algoritmos_planificacion.h"
+
+#include <commons/log.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 t_esi* remover_esi_de_lista(t_list* lista, int id){
 	bool esElEsi(void* esi){
