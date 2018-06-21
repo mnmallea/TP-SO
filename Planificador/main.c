@@ -75,6 +75,5 @@ void configurar_claves_inicialmente_bloqueadas(){
 		i++;
 	}
 	
-	free(esi_trucho);
 
 }
