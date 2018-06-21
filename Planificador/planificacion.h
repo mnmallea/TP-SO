@@ -22,6 +22,7 @@
 
 
 int flag;
+t_esi *esi_corriendo;
 bool primera_vez;
 bool hay_nuevo_esi;
 bool hay_esi_bloqueado;

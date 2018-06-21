@@ -20,6 +20,7 @@
  */
 
 int flag = 1;
+t_esi *esi_corriendo=NULL;
 bool primera_vez = false;
 bool hay_nuevo_esi = false;
 bool hay_esi_bloqueado = false;
@@ -32,6 +33,7 @@ void planificar(void) {
 
 			t_esi* proximo_esi;
 			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
+				log_info(logger, "Con desalojo");
 				if (primera_vez || hay_nuevo_esi || hay_esi_bloqueado
 						|| hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
 					/*DESALOJO AL ESI: (lo paso de nuevo a listos,
@@ -45,7 +47,7 @@ void planificar(void) {
 					proximo_esi = esi_corriendo; //no hubo evento de replanif
 				}
 			} else {
-
+				log_info(logger, "Sin desalojo");
 				if (primera_vez || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. sin desalojo)
 					proximo_esi = obtener_nuevo_esi_a_correr();
 					primera_vez = hay_esi_bloqueado = hay_esi_finalizado =
@@ -55,12 +57,15 @@ void planificar(void) {
 				}
 
 			}
-
+			if(proximo_esi!=NULL){
 			log_debug(logger, "Proximo esi a correr: %d \n", proximo_esi->id);
 
 			esi_corriendo = proximo_esi;
 			correr(esi_corriendo);
-
+			}
+			else{
+				log_info(logger, "No hay ESIS en la lista de readys");
+			}
 		}
 
 }
@@ -68,7 +73,9 @@ void planificar(void) {
 t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
 
-	if (configuracion.algoritmo == FIFO) {
+	if(list_is_empty(lista_esis_listos)){
+		prox_esi = NULL;
+	}else if (configuracion.algoritmo == FIFO) {
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
 	} else if (configuracion.algoritmo == SJFsD) {
 		prox_esi = obtener_proximo_segun_sjf(lista_esis_listos);
@@ -76,7 +83,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 		prox_esi = obtener_proximo_segun_sjf(lista_esis_listos);
 	} else {
 		prox_esi = obtener_proximo_segun_hrrn(lista_esis_listos);
-	}
+	}sem_post(&contador_esis);
 
 	return prox_esi;
 
@@ -85,18 +92,16 @@ t_esi *obtener_nuevo_esi_a_correr() {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE LLEGO UN NUEVO ESI
 void *nuevo_esi(t_esi* esi) {
 	if (list_is_empty(lista_esis_listos)) {
-		primera_vez = true;
 		list_add(lista_esis_listos, esi);
+		primera_vez = true;
 		planificar();
-		hay_nuevo_esi = true;
 		return NULL;
 	}
-
 	list_add(lista_esis_listos, esi);
 
 	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
 			esi->id);
-	//sem_post(&contador_esis);
+
 	hay_nuevo_esi = true;
 	return NULL;
 

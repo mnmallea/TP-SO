@@ -26,7 +26,7 @@ void *listener(void *ptr) {
 		fdmax = socketServer;
 
 	for (;;) {
-		SIG : read_fds = master;
+		read_fds = master;
 		if (select(fdmax + 1, &read_fds, NULL, NULL, NULL) == -1) {
 			log_error(logger, "No se pudo seleccionar conexiones\n");
 		}
@@ -53,6 +53,7 @@ void *listener(void *ptr) {
 						mandar_mensaje(newfd, id);
 						id++;
 						nuevo_esi(n_esi);
+
 
 					}
 				}
@@ -151,8 +152,6 @@ void *listener(void *ptr) {
 							case FINALIZO_ESI:
 								finalizar_esi();
 								FD_CLR(i, &master);
-								if (list_is_empty(lista_esis_listos))
-									goto SIG;
 								break;
 							case BLOQUEO_ESI:
 								//supongo que ya me encargue de guardarlo como bloqueado

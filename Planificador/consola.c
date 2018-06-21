@@ -37,18 +37,18 @@ void *menu(void *ptr) {
 			break;
 
 		case 2:
-			printf("Ingreso bloquear un proceso, ingrese <clave>");
+			printf("Ingreso bloquear un proceso, ingrese <clave>:");
 
 			scanf("%s", clave);
 
-			printf("Ingreso bloquear un proceso, ingrese <ID>");
+			printf("Ingreso bloquear un proceso, ingrese <ID>:");
 
 			scanf("%d", &id);
 
 			bloquear(clave, id);
 			break;
 		case 3:
-			printf("Ingreso desbloquear un proceso, ingrese <clave>");
+			printf("Ingreso desbloquear un proceso, ingrese <clave>:");
 
 			scanf("%s", clave);
 			desbloquear(clave);
@@ -56,27 +56,27 @@ void *menu(void *ptr) {
 			break;
 		case 4:
 			printf(
-					"Ingreso listar procesos esperando un recurso, ingrese <recurso>");
+					"Ingreso listar procesos esperando un recurso, ingrese <recurso>:");
 
 			scanf("%s", clave);
 			listar(clave);
 			break;
 		case 5:
 
-			printf("Ingreso matar un proceso, ingrese <ID>");
+			printf("Ingreso matar un proceso, ingrese <ID>:");
 
 			scanf("%d", &id);
 			matar_por_consola(id);
 			break;
 		case 6:
-			printf("Ingreso status de una clave, ingrese <clave>");
+			printf("Ingreso status de una clave, ingrese <clave>:");
 
 			scanf("%s", clave);
 
 			envia_status_clave(clave);
 			break;
 		case 7:
-			printf("Ingreso a la vista de procesos en deadlock");
+			printf("Ingreso a la vista de procesos en deadlock\n");
 			deadlock();
 			break;
 		case 0:
@@ -95,18 +95,19 @@ void *menu(void *ptr) {
 }
 
 void pausar_despausar_consola() {
-	//pthread_mutex_lock(&mutex_flag_pausa_despausa);
+
 	if (flag == 1) {
 		printf("Planificador pausado\n");
 		flag--;
 	} else {
 		printf("Continuando con la planificacion\n");
 		flag++;
-		planificar();
+		if (!list_is_empty(lista_esis_listos)||esi_corriendo!=NULL)
+			planificar();
 	}
 
 	log_debug(logger, "El flag esta en: %d", flag);
-	//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
+
 
 }
 
