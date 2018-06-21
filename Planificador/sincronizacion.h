@@ -16,7 +16,7 @@ pthread_mutex_t mutex_var_comp_id; //Variable compartida id
 sem_t sem_binario_planif;
 sem_t coordinador_respondio_paq;
 sem_t contador_esis;
-
+sem_t respondio_esi_corriendo;
 
 void inicializar_semaforos();
 

@@ -28,8 +28,6 @@ t_esi* esi_a_matar;
 
 void* planificar(void* nada) {
 	while (1) {
-		sem_wait(&sem_binario_planif);
-
 		//pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if (flag == 1) { //esta despausada la planificacion
 			//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
@@ -198,13 +196,13 @@ void se_desbloqueo_un_recurso(char* clave) {
 	}
 
 	if (dictionary_has_key(dic_esis_bloqueados, clave)) { //hay esis encolados
-		t_list *lista_esis_bloq_esta_clave = dictionary_remove(dic_esis_bloqueados,
-				clave);
+		t_list *lista_esis_bloq_esta_clave = dictionary_remove(
+				dic_esis_bloqueados, clave);
 		t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
 
-		if (list_size(lista_esis_bloq_esta_clave) != 0){ //agrego la lista de bloqueados solo si tiene algun esi
+		if (list_size(lista_esis_bloq_esta_clave) != 0) { //agrego la lista de bloqueados solo si tiene algun esi
 			dictionary_put(dic_esis_bloqueados, clave,
-								lista_esis_bloq_esta_clave);
+					lista_esis_bloq_esta_clave);
 		}
 
 		nuevo_esi(esi_desbloq);
@@ -262,11 +260,38 @@ void correr(t_esi* esi) {
 
 	mandar_confirmacion(esi->socket);
 
+	sem_wait(&respondio_esi_corriendo);
+	switch (respuesta_esi_corriendo) { //mensajes de esis
+	case EXITO:
+		ya_termino_linea();
+		break;
+	case LINEA_SIZE:
+		linea_size();
+		break;
+	case INTERPRETAR:
+		interpretar();
+		break;
+	case ABORTA:
+		fallo_linea();
+		break;
+	case FINALIZO_ESI:
+		finalizar_esi();
+		FD_CLR(i, &master);
+		break;
+	case BLOQUEO_ESI:
+		//supongo que ya me encargue de guardarlo como bloqueado
+		break;
+	case INSTANCIA_CAIDA_EXCEPTION:
+		fallo_linea();
+		break;
+	default:
+		break;
+	}
 }
 
 void ya_termino_linea() {
 
-	//si leyo bien la linea
+//si leyo bien la linea
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 	aumentar_viene_corriendo(esi_corriendo);
 	log_debug(logger, "El esi %d se termino de leer una nueva linea \n",
@@ -275,7 +300,7 @@ void ya_termino_linea() {
 }
 
 void linea_size() {
-	//si leyo mal la linea
+//si leyo mal la linea
 	log_debug(logger, "El ESI %d leyo una linea con mas de 40 caracteres\n",
 			esi_corriendo->id);
 	liberar_recursos(esi_corriendo);
@@ -285,7 +310,7 @@ void linea_size() {
 }
 
 void interpretar() {
-	//si leyo mal la linea
+//si leyo mal la linea
 	log_debug(logger, "No se pudo interpretar una linea en el esi %d\n",
 			esi_corriendo->id);
 	liberar_recursos(esi_corriendo);
@@ -295,7 +320,7 @@ void interpretar() {
 }
 
 void fallo_linea() {
-	//si leyo mal la linea
+//si leyo mal la linea
 	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
 	liberar_recursos(esi_corriendo);

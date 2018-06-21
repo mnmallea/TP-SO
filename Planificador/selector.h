@@ -42,7 +42,7 @@ bool la_tiene;
 int socketCord;
 
 
-void *listener(void *ptr);
+void listener(void);
 t_esi *crear_nodo_esi(int socket);
 int socketProceso(t_esi *n_esi);
 
