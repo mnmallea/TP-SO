@@ -74,5 +74,7 @@ void configurar_claves_inicialmente_bloqueadas(){
 		dictionary_put(dic_clave_x_esi, configuracion.claves_bloqueadas[i], esi_trucho);
 		i++;
 	}
+	
+	free(esi_trucho);
 
 }
