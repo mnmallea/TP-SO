@@ -20,44 +20,41 @@
  */
 
 int flag = 1;
-bool primera_vez = false;
 bool hay_nuevo_esi = false;
 bool hay_esi_bloqueado = false;
 bool hay_esi_finalizado = false;
 t_esi* esi_a_matar;
 
+bool hay_que_planificar(tipo_algoritmo_planif algoritmo) {
+	if(esi_corriendo == NULL){
+		return true;//todo esto hay que refactorizarlo je
+	}
+	switch (algoritmo) {
+	case FIFO:
+	case SJFsD:
+	case HRRN:
+		return hay_esi_bloqueado || hay_esi_finalizado;
+	case SJFcD:
+		return hay_esi_bloqueado || hay_esi_finalizado || hay_nuevo_esi;
+	default:
+		log_error(logger, "Algoritmo desconocido");
+		exit(EXIT_FAILURE);
+	}
+}
+
 void* planificar(void* nada) {
+	esi_corriendo = NULL;
+	t_esi* proximo_esi;
 	while (1) {
 		//pthread_mutex_lock(&mutex_flag_pausa_despausa);
 		if (flag == 1) { //esta despausada la planificacion
 			//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
 
-			t_esi* proximo_esi;
-			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
-				if (primera_vez || hay_nuevo_esi || hay_esi_bloqueado
-						|| hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
-					/*DESALOJO AL ESI: (lo paso de nuevo a listos,
-					 dejo el puntero con esi corriendo como esta, total despues se pisa)*/
-					if (!primera_vez)
-						nuevo_esi(esi_corriendo);
-					sem_wait(&contador_esis);
-					proximo_esi = obtener_nuevo_esi_a_correr();
-					primera_vez = hay_nuevo_esi = hay_esi_bloqueado =
-							hay_esi_finalizado = false;
-				} else {
-					proximo_esi = esi_corriendo; //no hubo evento de replanif
-				}
+			if (hay_que_planificar(configuracion.algoritmo)) {
+				proximo_esi = obtener_nuevo_esi_a_correr();
+				hay_nuevo_esi = hay_esi_bloqueado = hay_esi_finalizado = false;
 			} else {
-
-				if (primera_vez || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. sin desalojo)
-					sem_wait(&contador_esis);
-					proximo_esi = obtener_nuevo_esi_a_correr();
-					primera_vez = hay_esi_bloqueado = hay_esi_finalizado =
-					false;
-				} else {
-					proximo_esi = esi_corriendo; //no hubo evento de replanif
-				}
-
+				proximo_esi = esi_corriendo;
 			}
 
 			log_debug(logger, "Proximo esi a correr: %d \n", proximo_esi->id);
@@ -72,9 +69,14 @@ void* planificar(void* nada) {
 
 }
 
+/*
+ * @thread_safe
+ */
 t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
 
+	sem_wait(&contador_esis);
+	pthread_mutex_lock(&mutex_lista_esis_listos);
 	if (configuracion.algoritmo == FIFO) {
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
 	} else if (configuracion.algoritmo == SJFsD) {
@@ -84,6 +86,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 	} else {
 		prox_esi = obtener_proximo_segun_hrrn(lista_esis_listos);
 	}
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
 
 	return prox_esi;
 
