@@ -113,7 +113,9 @@ void aumentar_viene_corriendo(void* esi);
 
 void nueva_solicitud(int socket, char* clave);
 
-void* planificar(void *nada);
+void* planificar(void *);
+
+void matar_esi_corriendo();
 
 //t_esi *obtener_procesos_en_deadlock();
 
