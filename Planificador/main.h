@@ -8,6 +8,11 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
+#include <commons/collections/dictionary.h>
+#include <commons/collections/list.h>
+
+#include "algoritmos_planificacion.h"
+
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
 
@@ -24,6 +29,8 @@ t_log *logger;
 t_list *lista_esis_listos;
 t_esi *esi_corriendo;
 t_list *lista_esis_finalizados;
+
+t_protocolo respuesta_esi_corriendo;
 
 /*Nombre: dic_esis_bloqueados
  * Estructura: char* clave bloqueada, t_list esis_bloqueados
@@ -43,7 +50,5 @@ t_dictionary *dic_clave_x_esi;
 
 void configurar_claves_inicialmente_bloqueadas();
 
-
-//#include "typescommons.h"
 
 #endif /* MAIN_H_ */

@@ -50,8 +50,8 @@ int main(int argc, char* argv[]) {
 		exit_gracefully(1);
 	}
 
-	//todo descomentar esto despues:
 	recibir_confirmacion(socketPlan); //signal para ejecutar
+	log_trace(logger, "Recibi señal para ejecutar");
 
 	while ((read = getline(&line, &len, fp)) != -1) {
 
@@ -103,6 +103,7 @@ PROCESAR:switch (parsed.keyword) {
 			if(key==BLOQUEO_ESI){
 				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
 				recibir_confirmacion(socketPlan);
+				log_trace(logger, "Recibi señal para ejecutar");
 					goto PROCESAR;
 
 			}
@@ -122,7 +123,7 @@ PROCESAR:switch (parsed.keyword) {
 		}
 
 		recibir_confirmacion(socketPlan);
-
+		log_trace(logger, "Recibi señal para ejecutar");
 	}
 
 	log_info(logger, "No quedan mas lineas en el archivo");
