@@ -61,8 +61,10 @@ void listener(void) {
 	int handshake_msg = PLANIFICADOR;
 
 	socketServer = crear_socket_escucha(configuracion.puerto, BACKLOG);
+	log_debug(logger, "socketServer = %d", socketServer);
 	int socketCord = conectarse_a_coordinador(configuracion.ipCoord,
 			configuracion.portCoord, handshake_msg);
+	log_debug(logger, "socketCord = %d", socketCord);
 
 	log_info(logger, "Escuchando en puerto: %s", configuracion.puerto);
 
