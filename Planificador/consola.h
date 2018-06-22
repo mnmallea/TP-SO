@@ -8,14 +8,9 @@
 #ifndef CONSOLA_H_
 #define CONSOLA_H_
 
-#include "planificacion.h"
-#include "sincronizacion.h"
 #include <commons/log.h>
-#include "../syntax-commons/protocol.h"
-#include "../syntax-commons/my_socket.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdbool.h>
+
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
 #define BACKLOG 5
@@ -23,6 +18,8 @@
 //extern int flag;
 extern t_log *logger;
 extern int socketCord ; //sale del selector
+
+bool planificacion_pausada;
 
 void *menu(void *ptr);
 void listar(char* rec);

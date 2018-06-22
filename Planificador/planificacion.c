@@ -54,21 +54,25 @@ bool hay_que_planificar() {
 
 void* planificar(void* _) {
 	esi_corriendo = NULL;
-//	t_esi* proximo_esi;
+
 	while (1) {
-		//pthread_mutex_lock(&mutex_flag_pausa_despausa);
-		if (flag == 1) { //esta despausada la planificacion
-			//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
-
-			if (hay_que_planificar()) {
-				esi_corriendo = obtener_nuevo_esi_a_correr();
-			}
-
-			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
-
-			correr(esi_corriendo);
+		pthread_mutex_lock(&mutex_pausa);
+		if (planificacion_pausada) {
+			pthread_mutex_unlock(&mutex_pausa);
+			sem_wait(&pausa_planificacion);
+		}else{
+			pthread_mutex_unlock(&mutex_pausa);
 		}
 
+		log_trace(logger, "Estoy planificandoooo!!!!");
+
+		if (hay_que_planificar()) {
+			esi_corriendo = obtener_nuevo_esi_a_correr();
+		}
+
+		log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
+
+		correr(esi_corriendo);
 	}
 	return NULL;
 
@@ -168,8 +172,6 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 	}
 
 }
-
-
 
 t_esi *buscar_esi_por_id(int id_esi) {
 

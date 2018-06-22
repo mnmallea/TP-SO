@@ -23,7 +23,8 @@ int main(int argc, char **argv) {
 	logger = log_create("planificador.log", "Planificador", false, LOG_LEVEL);
 	//para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
 	configuracion = configurar(argv[1]);
-
+	inicializar_semaforos();
+	planificacion_pausada = false;
 	configurar_claves_inicialmente_bloqueadas();
 
 	/*Creacion de hilos*/
