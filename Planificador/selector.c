@@ -44,8 +44,9 @@ void atender_nueva_conexion(int id) {
 		nuevo_esi(n_esi);
 		mandar_mensaje(newfd, id);
 		id++;
-		log_info(logger, "Cantidad de elementos en la lista: %d",
-				list_size(lista_esis_listos));
+//		log_info(logger, "Cantidad de elementos en la lista: %d",
+//				list_size(lista_esis_listos));
+		//No logear esto si realmente no aporta porque te produce una condicion de carrera el list_size
 	}
 }
 

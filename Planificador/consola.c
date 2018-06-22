@@ -9,10 +9,15 @@
 
 #include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+#include "../syntax-commons/protocol.h"
 #include "../syntax-commons/serializador.h"
 #include "algoritmos_planificacion.h"
 #include "main.h"
+#include "planificacion.h"
 
 void *menu(void *ptr) {
 
@@ -102,19 +107,16 @@ void *menu(void *ptr) {
 }
 
 void pausar_despausar_consola() {
-	//pthread_mutex_lock(&mutex_flag_pausa_despausa);
-	if (flag == 1) {
-		printf("Planificador pausado\n");
-		flag--;
-	} else {
+	pthread_mutex_lock(&mutex_pausa);
+	if (planificacion_pausada) {
 		printf("Continuando con la planificacion\n");
-		flag++;
-//		sem_post(&sem_binario_planif);
+		planificacion_pausada = false;
+		sem_post(&pausa_planificacion);
+	} else {
+		printf("Planificador pausado\n");
+		planificacion_pausada = true;
 	}
-
-	log_debug(logger, "El flag esta en: %d", flag);
-	//pthread_mutex_unlock(&mutex_flag_pausa_despausa);
-
+	pthread_mutex_unlock(&mutex_pausa);
 }
 
 void listar(char* rec) {

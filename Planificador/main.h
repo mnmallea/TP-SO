@@ -11,6 +11,7 @@
 #include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
 
+#include "../syntax-commons/protocol.h"
 #include "algoritmos_planificacion.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
