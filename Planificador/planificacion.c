@@ -107,12 +107,11 @@ t_esi *obtener_nuevo_esi_a_correr() {
 void nuevo_esi(t_esi* esi) {
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	list_add(lista_esis_listos, esi);
+	hay_nuevo_esi = true;
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 	sem_post(&contador_esis);
 	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
 			esi->id);
-	hay_nuevo_esi = true;
-
 }
 
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL ESI CORRIENDO FINALIZO
@@ -281,7 +280,6 @@ void correr(t_esi* esi) {
 		break;
 	case FINALIZO_ESI:
 		finalizar_esi();
-		FD_CLR(i, &master);
 		break;
 	case BLOQUEO_ESI:
 		bloquear_esi(clave_bloqueadora);

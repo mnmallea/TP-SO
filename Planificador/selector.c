@@ -1,5 +1,7 @@
 #include "selector.h"
 
+int id = 1;
+
 void atender_error(int socketCord, int nbytes) {
 	if (i == socketCord) {
 		if (nbytes == 0) {
@@ -28,7 +30,7 @@ void atender_error(int socketCord, int nbytes) {
 	FD_CLR(i, &master);
 }
 
-void atender_nueva_conexion(int id) {
+void atender_nueva_conexion() {
 	addrlen = sizeof remoteaddr;
 	newfd = accept(socketServer, (struct sockaddr*) &remoteaddr, &addrlen);
 	if (newfd == -1) {
@@ -58,7 +60,7 @@ void listener(void) {
 	char* clave;
 	int nbytes;
 
-	int id = 1;
+
 	int handshake_msg = PLANIFICADOR;
 
 	socketServer = crear_socket_escucha(configuracion.puerto, BACKLOG);
@@ -86,7 +88,7 @@ void listener(void) {
 		for (i = 0; i <= fdmax; i++) {
 			if (FD_ISSET(i, &read_fds)) {
 				if (i == socketServer) {
-					atender_nueva_conexion(id);
+					atender_nueva_conexion();
 					continue;
 				}
 
@@ -133,6 +135,9 @@ void listener(void) {
 					continue;
 				}
 				if (esi_corriendo !=NULL && i == esi_corriendo->socket) {
+					if(buf == FINALIZO_ESI){//me ahorra sincronizar y una posible condicion de carrera hacer esto aca
+						FD_CLR(i, &master);
+					}
 					log_debug(logger, "Mensaje recibido de un ESI: %s",
 							to_string_protocolo(buf));
 					respuesta_esi_corriendo = buf;
