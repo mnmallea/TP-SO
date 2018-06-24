@@ -344,7 +344,7 @@ void liberar_recursos(t_esi* esi) {
 	esi_a_matar = (t_esi *) malloc(sizeof(t_esi));
 	esi_a_matar = esi; //esi a matar es memoria compartida
 	dictionary_iterator(dic_clave_x_esi, liberar_claves);
-	dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);
+	//dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);
 	free(esi_a_matar);
 }
 
@@ -352,17 +352,18 @@ void liberar_claves(char* clave, void* esi) {
 
 	if (((t_esi*) esi)->id == esi_a_matar->id) {
 		dictionary_remove(dic_clave_x_esi, clave);
+		se_desbloqueo_un_recurso(clave);
 	}
 
 }
 
-void desbloquear_claves_tomadas(char* clave, void* esi) {
+/*void desbloquear_claves_tomadas(char* clave, void* esi) {
 
 	if (((t_esi*) esi)->id == esi_a_matar->id) {
 		se_desbloqueo_un_recurso(clave);
 	}
 
-}
+}*/
 
 void nueva_solicitud(int socket, char* clave) {
 
