@@ -122,7 +122,6 @@ int main(int argc, char* argv[]) {
 			log_error(logger, "La linea <%s> no es valida\n", line);
 			if (enviar_cod_operacion(socketPlan, ABORTA) < 0) {
 				log_error(logger, "Error de conexion con planificador");
-				exit_gracefully(EXIT_FAILURE);
 			}
 			destruir_operacion(parsed);
 			goto FREE;
