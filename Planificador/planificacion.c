@@ -339,19 +339,19 @@ void aumentar_viene_corriendo(void* esi) {
 	((t_esi*) esi)->dur_ult_raf = ((t_esi*) esi)->dur_ult_raf + 1;
 }
 
-void liberar_recursos(t_esi* esi) {
+void liberar_recursos(t_esi* esi_a_liberar) {
 
-	esi_a_matar = (t_esi *) malloc(sizeof(t_esi));
-	esi_a_matar = esi; //esi a matar es memoria compartida
+	void liberar_claves(char* clave, void* esi){
+		liberar_claves_de_esi(esi_a_liberar, clave, esi);
+	}
 	dictionary_iterator(dic_clave_x_esi, liberar_claves);
 	//dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);
-	free(esi_a_matar);
+
 }
 
-void liberar_claves(char* clave, void* esi) {
+void liberar_claves_de_esi(t_esi* esi_a_matar, char* clave, t_esi* esi) {
 
-	if (((t_esi*) esi)->id == esi_a_matar->id) {
-		dictionary_remove(dic_clave_x_esi, clave);
+	if (esi->id == esi_a_matar->id) {
 		se_desbloqueo_un_recurso(clave);
 	}
 

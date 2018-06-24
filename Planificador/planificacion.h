@@ -94,7 +94,7 @@ void liberar_recursos(t_esi* esi);
 /* Nombre: liberar_claves(char* clave, void* esi)
  * Desc: Le saca las claves tomadas al esi
  */
-void liberar_claves(char* clave, void* esi);
+void liberar_claves_de_esi(t_esi* esi_a_matar, char* clave, t_esi* esi);
 
 /* Nombre: desbloquear_claves_tomadas(char* clave, void* esi)
  * Desc: Desbloquea las claves tomadas por ese esi
