@@ -21,10 +21,6 @@
 
 void *menu(void *ptr) {
 
-	char *message;
-	message = (char *) ptr;
-	printf("%s \n", message);
-
 	int opcion_seleccionada;
 	char *clave = (char*) malloc(40);
 	int id;
@@ -169,9 +165,13 @@ void envia_status_clave(char* clave) {
 	}
 	paquete_destruir(paquete);
 
-	//sem_wait(&coordinador_respondio);
-	//recibir paquete del coordinador
-	//hacer printf de las cosas que me mando
+	while(1){
+		sem_wait(&coordinador_respondio_paq);
+		//todo:  acceder a la variable compartida
+		//ponerle mutex a la variable
+		//hacer printf de las cosas que me mando
+	}
+
 
 }
 

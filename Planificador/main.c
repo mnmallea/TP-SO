@@ -14,7 +14,6 @@
 int main(int argc, char **argv) {
 
 	lista_esis_listos = list_create();
-	esi_corriendo = (t_esi *) malloc(sizeof(t_esi));
 	lista_esis_finalizados = list_create();
 	dic_esis_bloqueados = dictionary_create();
 	dic_clave_x_esi = dictionary_create();
@@ -31,14 +30,12 @@ int main(int argc, char **argv) {
 	pthread_t consola_planificador;
 	pthread_t planificador;
 
-	const char *message1 = "Inicializacion de la consola";
-	if (pthread_create(&consola_planificador, NULL, menu, (void*) message1)) {
+	if (pthread_create(&consola_planificador, NULL, menu, NULL)) {
 		log_error(logger, "Error creando el hilo de la consola\n");
 		exit(EXIT_FAILURE);
 	}
 
-	const char *message2 = "Inicializacion del planificador";
-	if (pthread_create(&planificador, NULL, planificar, (void*) message2)) {
+	if (pthread_create(&planificador, NULL, planificar, NULL)) {
 		log_error(logger, "Error creando el hilo del planificador\n");
 		exit(EXIT_FAILURE);
 	}

@@ -124,7 +124,9 @@ void listener(void) {
 						nueva_solicitud(i, clave);
 						break;
 					case SOLICITUD_STATUS_CLAVE:
-						//manda paquete con rtas
+						//todo: recibir el paquete y guardarlo en una variable de mem compartida
+						//ponerle mutex a la variable
+						sem_post(&coordinador_respondio_paq);
 						break;
 					default:
 						log_warning(logger,
