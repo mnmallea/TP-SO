@@ -172,7 +172,7 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 
 }
 
-t_esi *buscar_esi_por_id(int id_esi) {
+t_esi *buscar_esi_por_id(int id_esi){
 
 	id = id_esi;
 	t_esi *esi_a_devolver;
@@ -381,26 +381,58 @@ void nueva_solicitud(int socket, char* clave) {
 	enviar_cod_operacion(socket, cod_op);
 }
 
+
 /*
- t_list *lista_deadlock = list_create();
 
- t_list *obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
- //habria que ver si es void o si se cambia la implementacion
+typedef struct{
+	int idEsi;
+	char *tiene;
+	char *espera;
+}t_dl;
 
- dictionary_iterator(dic_esis_bloqueados, itera_por_linea);
+t_dl *esiDL;
+t_list * esisEnDl;
+int claves;
+
+void armarMatriz(){
+	dictionary_iterator(dic_esis_bloqueados,contarClaves);
+	dictionary_iterator(dic_esis_bloqueados,esiEnOrden);
+}
+
+void contarClaves(){}
+
+void esiEnOrden(){}
+
+void deadlock(){
+ armarMatriz();
+ t_list* esis_deadlock = obtener_procesos_en_deadlock();
+ list_iterate(esis_deadlock, mostrar_esi_en_pantalla);
+ list_destroy(esis_deadlock);
  }
 
- void itera_por_linea(char* clave, void* esisbloq){
 
- list_iterate(esisbloq, filtra_en_deadlock);
- }
 
- void filtra_en_deadlock(void *esi){
 
- //fijarse si tiene alguna clave tomada en dic_clave_x_esi
- //si tiene clave lo agreo a la lista deadlock
- //sino no
- }
 
- */
+void obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
+										//habria que ver si es void o si se cambia la implementacion
+	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
+}
 
+void itera_por_linea(char *clave, void *esi){
+	candidato = esi;
+	dictionary_iterator(dic_esis_bloqueados, filtra_en_deadlock);
+
+}
+
+void filtra_en_deadlock(char* clave, void* esisbloq){
+
+	if (list_find(esisbloq,esta)!=NULL){
+			list_add(lista_deadlock,candidato);
+		}
+}
+
+bool esta(void *esibloq){
+	return ((t_esi*) esibloq)->id == candidato->id;
+}
+*/
