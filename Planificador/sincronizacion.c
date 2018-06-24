@@ -19,7 +19,7 @@ void inicializar_semaforos() {
 	pthread_mutex_init(&mutex_pausa, NULL);
 
 	sem_init(&pausa_planificacion, 0, 0);
-	sem_init(&coordinador_respondio_paq, 0, 1);
+	sem_init(&coordinador_respondio_paq, 0, 0);
 	sem_init(&contador_esis, 0, 0);
 	sem_init(&respondio_esi_corriendo, 0, 0);
 }
