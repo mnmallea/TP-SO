@@ -117,6 +117,9 @@ void* planificar(void *);
 
 void matar_esi_corriendo();
 
+void clave_esta_tomada_x_esi_a_liberar(char* clave, void* esi);
+void liberar_clave(void* clave);
+
 //t_esi *obtener_procesos_en_deadlock();
 
 

@@ -60,7 +60,7 @@ void* planificar(void* _) {
 		if (planificacion_pausada) {
 			pthread_mutex_unlock(&mutex_pausa);
 			sem_wait(&pausa_planificacion);
-		}else{
+		} else {
 			pthread_mutex_unlock(&mutex_pausa);
 		}
 
@@ -68,9 +68,11 @@ void* planificar(void* _) {
 
 		if (hay_que_planificar()) {
 			esi_corriendo = obtener_nuevo_esi_a_correr();
+			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
+		} else {
+			log_debug(logger, "Se continua corriendo: %d \n",
+					esi_corriendo->id);
 		}
-
-		log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 
 		correr(esi_corriendo);
 	}
@@ -341,29 +343,33 @@ void aumentar_viene_corriendo(void* esi) {
 
 void liberar_recursos(t_esi* esi_a_liberar) {
 
-	void liberar_claves(char* clave, void* esi){
-		liberar_claves_de_esi(esi_a_liberar, clave, esi);
+	t_list *lista_claves_a_desbloquear = list_create();
+
+	void clave_esta_tomada_x_esi_a_liberar(char* clave, void* esi){
+		if(((t_esi*)esi)->id == esi_a_liberar->id){
+			list_add(lista_claves_a_desbloquear,clave);
+		}
 	}
-	dictionary_iterator(dic_clave_x_esi, liberar_claves);
-	//dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);
+
+	dictionary_iterator(dic_clave_x_esi, clave_esta_tomada_x_esi_a_liberar);
+
+	list_iterate(lista_claves_a_desbloquear, liberar_clave);
+	list_destroy(lista_claves_a_desbloquear);
 
 }
 
-void liberar_claves_de_esi(t_esi* esi_a_matar, char* clave, t_esi* esi) {
 
-	if (esi->id == esi_a_matar->id) {
-		se_desbloqueo_un_recurso(clave);
-	}
-
+void liberar_clave(void* clave) {
+		se_desbloqueo_un_recurso((char*)clave);
 }
 
 /*void desbloquear_claves_tomadas(char* clave, void* esi) {
 
-	if (((t_esi*) esi)->id == esi_a_matar->id) {
-		se_desbloqueo_un_recurso(clave);
-	}
+ if (((t_esi*) esi)->id == esi_a_matar->id) {
+ se_desbloqueo_un_recurso(clave);
+ }
 
-}*/
+ }*/
 
 void nueva_solicitud(int socket, char* clave) {
 
