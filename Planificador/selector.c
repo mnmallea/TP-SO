@@ -2,7 +2,7 @@
 
 int id = 1;
 
-void atender_error(int socketCord, int nbytes) {
+void atender_error(int nbytes) {
 	if (i == socketCord) {
 		if (nbytes == 0) {
 			log_error(logger,
@@ -60,7 +60,6 @@ void listener(void) {
 	char* clave;
 	int nbytes;
 
-
 	int handshake_msg = PLANIFICADOR;
 
 	socketServer = crear_socket_escucha(configuracion.puerto, BACKLOG);
@@ -87,13 +86,32 @@ void listener(void) {
 
 		for (i = 0; i <= fdmax; i++) {
 			if (FD_ISSET(i, &read_fds)) {
+
 				if (i == socketServer) {
 					atender_nueva_conexion();
 					continue;
 				}
 
-				if ((nbytes = recv(i, &buf, sizeof buf, MSG_NOSIGNAL)) <= 0) {
-					atender_error(socketCord, nbytes);
+				nbytes = recv(i, &buf, sizeof buf, MSG_NOSIGNAL);
+
+				if (esi_corriendo != NULL && i == esi_corriendo->socket) {
+					if (nbytes <= 0) {
+						FD_CLR(i, &master);
+						buf = ERROR_CONEXION;
+					}
+
+					if (buf == FINALIZO_ESI) {//me ahorra sincronizar y una posible condicion de carrera hacer esto aca
+						FD_CLR(i, &master);
+					}
+					log_debug(logger, "Mensaje recibido de un ESI: %s",
+							to_string_protocolo(buf));
+					respuesta_esi_corriendo = buf;
+					sem_post(&respondio_esi_corriendo);
+					continue;
+				}
+
+				if (nbytes <= 0) {
+					atender_error(nbytes);
 					continue;
 				}
 
@@ -134,16 +152,6 @@ void listener(void) {
 						break;
 					}
 					free(clave);
-					continue;
-				}
-				if (esi_corriendo !=NULL && i == esi_corriendo->socket) {
-					if(buf == FINALIZO_ESI){//me ahorra sincronizar y una posible condicion de carrera hacer esto aca
-						FD_CLR(i, &master);
-					}
-					log_debug(logger, "Mensaje recibido de un ESI: %s",
-							to_string_protocolo(buf));
-					respuesta_esi_corriendo = buf;
-					sem_post(&respondio_esi_corriendo);
 					continue;
 				}
 

@@ -277,6 +277,8 @@ void correr(t_esi* esi) {
 	case INTERPRETAR:
 		interpretar();
 		break;
+	case ERROR_CONEXION:
+		log_error(logger, "Error de conexion en el ESI %d", esi->id);
 	case ABORTA:
 		fallo_linea();
 		break;
