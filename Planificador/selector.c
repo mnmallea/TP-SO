@@ -3,6 +3,7 @@
 int id = 1;
 
 void atender_error(int nbytes) {
+	log_trace(logger, "Error en el socket %d\t Socket Coordinador %d", i, socketCord);
 	if (i == socketCord) {
 		if (nbytes == 0) {
 			log_error(logger,
@@ -64,7 +65,7 @@ void listener(void) {
 
 	socketServer = crear_socket_escucha(configuracion.puerto, BACKLOG);
 	log_debug(logger, "socketServer = %d", socketServer);
-	int socketCord = conectarse_a_coordinador(configuracion.ipCoord,
+	socketCord = conectarse_a_coordinador(configuracion.ipCoord,
 			configuracion.portCoord, handshake_msg);
 	log_debug(logger, "socketCord = %d", socketCord);
 
@@ -96,11 +97,13 @@ void listener(void) {
 
 				if (esi_corriendo != NULL && i == esi_corriendo->socket) {
 					if (nbytes <= 0) {
+						close(i);
 						FD_CLR(i, &master);
 						buf = ERROR_CONEXION;
 					}
 
 					if (buf == FINALIZO_ESI) {//me ahorra sincronizar y una posible condicion de carrera hacer esto aca
+						close(i);
 						FD_CLR(i, &master);
 					}
 					log_debug(logger, "Mensaje recibido de un ESI: %s",
