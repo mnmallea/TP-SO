@@ -218,18 +218,15 @@ t_esi *buscar_esi_por_id(int id_esi) {
 }
 
 t_list *obtener_todos_los_esis_bloqueados() {
-
 	t_list* lista = list_create();
-
-	dictionary_iterator(dic_esis_bloqueados, obtener_esis_bloq);
-
+	void agregar_a_lista_bloq(void* esi) {
+		list_add(lista, esi);
+	}
 	void obtener_esis_bloq(char* c, void* data) {
 		list_iterate((t_list*) data, agregar_a_lista_bloq);
 	}
 
-	void agregar_a_lista_bloq(void* esi) {
-		list_add(lista, esi);
-	}
+	dictionary_iterator(dic_esis_bloqueados, obtener_esis_bloq);
 
 	return lista;
 }
@@ -323,6 +320,7 @@ void correr(t_esi* esi) {
 		break;
 	case ERROR_CONEXION:
 		log_error(logger, "Error de conexion en el ESI %d", esi->id);
+		/* no break */
 	case ABORTA:
 		fallo_linea();
 		break;

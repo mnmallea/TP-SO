@@ -43,3 +43,40 @@ void informar_instancia_caida(t_instancia* instancia) {
 	t_protocolo msg = INSTANCIA_CAIDA_EXCEPTION;
 	safe_send(socket_planificador, &msg, sizeof(msg));
 }
+
+void agregar_status_a_paquete(t_paquete* paquete, t_status_clave status){
+	paquete_agregar_sin_tamanio(paquete, &status, sizeof(status));
+}
+
+void informar_status_clave(char* clave){
+	t_paquete* paquete = paquete_crear();
+
+	t_instancia* instancia = instancia_con_clave(clave);
+
+	if(instancia!=NULL){
+		char* valor;
+		t_status_clave estado_instancia;
+		//preguntarle a la instancia el valor de la clave
+
+		if(valor){
+			agregar_status_a_paquete(paquete, HAY_VALOR);
+			paquete_agregar(paquete, valor, strlen(valor) + 1);
+		}else{
+			agregar_status_a_paquete(paquete, NO_HAY_VALOR);
+		}
+		agregar_status_a_paquete(paquete, estado_instancia);
+		paquete_agregar(paquete, instancia->nombre, strlen(instancia->nombre) + 1);
+		agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
+	}else{
+		agregar_status_a_paquete(paquete, NO_HAY_VALOR);
+		agregar_status_a_paquete(paquete, INSTANCIA_NO_ASIGNADA);
+//		instancia = obtenerInstanciaSegunSimulacion()
+		agregar_status_a_paquete(paquete, HAY_SIMULACION);
+		paquete_agregar(paquete, instancia->nombre, strlen(instancia->nombre) + 1);
+	}
+	log_info(logger, "Enviando paquete de status clave al Planificador");
+	paquete_enviar_safe(paquete, socket_planificador);
+	log_info(logger, "Paquete enviado");
+	paquete_destruir(paquete);
+
+}
