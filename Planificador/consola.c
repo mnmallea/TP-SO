@@ -140,6 +140,7 @@ void bloquear(char* clave, int id) {
 }
 
 void matar_por_consola(int id) {
+
 	t_esi* esi_a_matar = buscar_esi_por_id(id);
 	if (esi_a_matar == NULL) {
 		log_debug(logger, "El esi elegido no existe en el sistema");
@@ -147,8 +148,15 @@ void matar_por_consola(int id) {
 		log_debug(logger,
 				"Se encontro el esi  %d en el sistema, se procede a matarlo",
 				esi_a_matar->id);
-		liberar_recursos(esi_a_matar);
-		matar_nodo_esi(esi_a_matar);
+
+		if (esi_a_matar->id != esi_corriendo->id) {
+			liberar_recursos(esi_a_matar);
+			matar_nodo_esi(esi_a_matar);
+			log_debug(logger, "Se mato el esi  %d", esi_a_matar->id);
+		} else {
+			//es el esi corriendo
+		}
+
 	}
 
 }
@@ -165,13 +173,12 @@ void envia_status_clave(char* clave) {
 	}
 	paquete_destruir(paquete);
 
-	while(1){
+	while (1) {
 		sem_wait(&coordinador_respondio_paq);
 		//todo:  acceder a la variable compartida
 		//ponerle mutex a la variable
 		//hacer printf de las cosas que me mando
 	}
-
 
 }
 

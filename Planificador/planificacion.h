@@ -119,6 +119,10 @@ void matar_esi_corriendo();
 
 void clave_esta_tomada_x_esi_a_liberar(char* clave, void* esi);
 void liberar_clave(void* clave);
+t_list *obtener_todos_los_esis_bloqueados();
+
+void agregar_a_lista_bloq(void* esi);
+void obtener_esis_bloq(char* c, void* data);
 
 //t_esi *obtener_procesos_en_deadlock();
 
