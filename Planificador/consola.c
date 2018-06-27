@@ -175,6 +175,7 @@ void envia_status_clave(char* clave) {
 
 	while (1) {
 		sem_wait(&coordinador_respondio_paq);
+
 		//todo:  acceder a la variable compartida
 		//ponerle mutex a la variable
 		//hacer printf de las cosas que me mando
