@@ -163,10 +163,26 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
 
 	if (esi_afectado != NULL) { //valido que me haya devuelto algo coherente
-		agregar_a_dic_bloqueados(clave, esi_afectado);
-		log_debug(logger,
-				"Se bloqueo por consola el esi: %d para la clave: %s \n",
-				esi_afectado->id, clave);
+
+		if (esi_a_matar->id != esi_corriendo->id) {
+			t_list* todos_los_esis_bloqueados =
+					obtener_todos_los_esis_bloqueados();
+
+			if (list_find(todos_los_esis_bloqueados, esi_con_este_id) != NULL) {
+				log_debug(logger, "Ya se encuentra bloqueado ese esi");
+			} else {
+				agregar_a_dic_bloqueados(clave, esi_afectado);
+				log_debug(logger,
+						"Se bloqueo por consola el esi: %d para la clave: %s \n",
+						esi_afectado->id, clave);
+			}
+
+			list_destroy(todos_los_esis_bloqueados);
+
+		} else {
+			//es el esi corriendo
+		}
+
 	} else {
 		log_error(logger, "No existe ningun esi en el sistema con el id: %d",
 				id);
@@ -184,10 +200,38 @@ t_esi *buscar_esi_por_id(int id_esi) {
 	} else {
 		//si no es el q esta corriendo lo busco en la lista de esis listos
 		esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
+
+		if (esi_a_devolver == NULL) {
+			//es un esi bloqueado
+
+			t_list* todos_los_esis_bloqueados =
+					obtener_todos_los_esis_bloqueados();
+
+			esi_a_devolver = list_find(todos_los_esis_bloqueados,
+					esi_con_este_id);
+			list_destroy(todos_los_esis_bloqueados);
+		}
 	}
 
 	return esi_a_devolver;
 
+}
+
+t_list *obtener_todos_los_esis_bloqueados() {
+
+	t_list* lista = list_create();
+
+	dictionary_iterator(dic_esis_bloqueados, obtener_esis_bloq);
+
+	void obtener_esis_bloq(char* c, void* data) {
+		list_iterate((t_list*) data, agregar_a_lista_bloq);
+	}
+
+	void agregar_a_lista_bloq(void* esi) {
+		list_add(lista, esi);
+	}
+
+	return lista;
 }
 
 bool esi_con_este_id(void* esi) {
@@ -347,9 +391,9 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 
 	t_list *lista_claves_a_desbloquear = list_create();
 
-	void clave_esta_tomada_x_esi_a_liberar(char* clave, void* esi){
-		if(((t_esi*)esi)->id == esi_a_liberar->id){
-			list_add(lista_claves_a_desbloquear,clave);
+	void clave_esta_tomada_x_esi_a_liberar(char* clave, void* esi) {
+		if (((t_esi*) esi)->id == esi_a_liberar->id) {
+			list_add(lista_claves_a_desbloquear, clave);
 		}
 	}
 
@@ -360,9 +404,8 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 
 }
 
-
 void liberar_clave(void* clave) {
-		se_desbloqueo_un_recurso((char*)clave);
+	se_desbloqueo_un_recurso((char*) clave);
 }
 
 /*void desbloquear_claves_tomadas(char* clave, void* esi) {
