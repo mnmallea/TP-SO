@@ -3,7 +3,8 @@
 int id = 1;
 
 void atender_error(int nbytes) {
-	log_trace(logger, "Error en el socket %d\t Socket Coordinador %d", i, socketCord);
+	log_trace(logger, "Error en el socket %d\t Socket Coordinador %d", i,
+			socketCord);
 	if (i == socketCord) {
 		if (nbytes == 0) {
 			log_error(logger,
@@ -119,43 +120,53 @@ void listener(void) {
 				}
 
 				if (i == socketCord) {
-					recibir_operacion_unaria(i, &clave);
 
-					switch (buf) { //mensajes de coord
+					if (buf != SOLICITUD_STATUS_CLAVE) {
 
-					case DESBLOQUEO_CLAVE:
-						se_desbloqueo_un_recurso(clave);
-						break;
-					case ESI_TIENE_CLAVE:
-						//dejar estos corchetes sin cuestionar (nay)
-					{
-						bool la_tiene = esi_tiene_clave(clave);
-						t_protocolo cod_op;
+						recibir_operacion_unaria(i, &clave);
 
-						if (la_tiene) {
-							cod_op = EXITO;
+						switch (buf) { //mensajes de coord
+
+						case DESBLOQUEO_CLAVE:
+							se_desbloqueo_un_recurso(clave);
+							break;
+						case ESI_TIENE_CLAVE:
+							//dejar estos corchetes sin cuestionar (nay)
+						{
+							bool la_tiene = esi_tiene_clave(clave);
+							t_protocolo cod_op;
+
+							if (la_tiene) {
+								cod_op = EXITO;
+							} else {
+								cod_op = CLAVE_NO_BLOQUEADA_EXCEPTION;
+							}
+
+							enviar_cod_operacion(i, cod_op);
+						}
+							break;
+						case SOLICITUD_CLAVE:
+							nueva_solicitud(i, clave);
+							break;
+						default:
+							log_warning(logger,
+									"Mensaje del coordinador desconocido");
+							break;
+						}
+						free(clave);
+						continue;
+
+					} else {
+
+						if (try_recibirPaqueteVariable(i, (void**) &buffer) < 0) {
+							//buffer es variable de memoria compartida con la consola
+							log_error(logger,
+									"Fallo recibir paquete del coordinador");
 						} else {
-							cod_op = CLAVE_NO_BLOQUEADA_EXCEPTION;
+							sem_post(&coordinador_respondio_paq);
 						}
 
-						enviar_cod_operacion(i, cod_op);
 					}
-						break;
-					case SOLICITUD_CLAVE:
-						nueva_solicitud(i, clave);
-						break;
-					case SOLICITUD_STATUS_CLAVE:
-						//todo: recibir el paquete y guardarlo en una variable de mem compartida
-						//ponerle mutex a la variable
-						sem_post(&coordinador_respondio_paq);
-						break;
-					default:
-						log_warning(logger,
-								"Mensaje del coordinador desconocido");
-						break;
-					}
-					free(clave);
-					continue;
 				}
 
 				log_warning(logger, "Quien te conoce papa");
