@@ -14,6 +14,12 @@ void paquete_destruir(t_paquete* unPaquete) {
 	}
 }
 
+void paquete_agregar_sin_tamanio(t_paquete* paquete, void* contenido, int size){
+	paquete->carga = realloc(paquete->carga, paquete->tamanioActual + size);
+	memcpy(paquete->carga + paquete->tamanioActual, contenido, size);
+	paquete->tamanioActual += size;
+}
+
 void paquete_agregar(t_paquete* pqt, void* contenido, uint32_t tamanioContenido) {
 	int tamanio_a_agregar = sizeof(tamanioContenido) + tamanioContenido;
 	pqt->carga = realloc(pqt->carga, pqt->tamanioActual + tamanio_a_agregar);
@@ -22,7 +28,6 @@ void paquete_agregar(t_paquete* pqt, void* contenido, uint32_t tamanioContenido)
 	memcpy(pqt->carga + pqt->tamanioActual + sizeof(tamanioContenido),
 			contenido, tamanioContenido);
 	pqt->tamanioActual += tamanio_a_agregar;
-	log_debug(logger, "paquete de tamanio fijo agregado");
 }
 
 int paquete_enviar(t_paquete* paquete, int socket) {
