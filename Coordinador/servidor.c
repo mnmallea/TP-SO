@@ -104,6 +104,16 @@ void atender_planificador(int socket) {
 			exit(EXIT_FAILURE);
 			break; //el break mas necesario de la historia
 		case SOLICITUD_STATUS_CLAVE:
+			;
+			char* clave;
+			int respuesta = try_recibirPaqueteVariable(socket_planificador,
+					(void**) &clave);
+			if (respuesta <= 0) {
+				log_error(logger, "Error en la conexion con el planificador");
+				exit(EXIT_FAILURE);
+			}
+			log_info(logger, "Recuperando el status de la clave %s", clave);
+			informar_status_clave(clave);
 			//todo implementar esto
 			break;
 		default:
@@ -221,10 +231,9 @@ void atender_esi(int socket) {
 			retardarse(configuracion.retardo);
 			realizar_set(esi, clave, valor);
 			break;
-		case FINALIZO_ESI :
+		case FINALIZO_ESI:
 			close(socket);
-			log_trace(logger, "Se termino de atender el ESI id: %d",
-					esi->id);
+			log_trace(logger, "Se termino de atender el ESI id: %d", esi->id);
 			return;
 		default:
 			log_error(logger,

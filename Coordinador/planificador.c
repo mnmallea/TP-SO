@@ -7,12 +7,12 @@
 
 #include "planificador.h"
 
-#include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
 
 #include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/serializador.h"
+#include "algoritmos_distribucion.h"
 #include "instancia.h"
 
 void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {

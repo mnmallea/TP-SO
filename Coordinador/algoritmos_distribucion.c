@@ -66,18 +66,18 @@ t_instancia* obtener_instancia_siguiente(char* clave) {
 	pthread_mutex_lock(&mutex_instancias_disponibles);
 	switch (configuracion.algoritmo) {
 	case EL:
-		return obtener_instancia_segun_EL(clave);
+		instancia = obtener_instancia_segun_EL(clave);
 		break;
 	case LSU:
-		return obtener_instancia_segun_LSU(clave);
+		instancia = obtener_instancia_segun_LSU(clave);
 		break;
 	case KE:
-		return obtener_instancia_segun_KE(clave);
+		instancia = obtener_instancia_segun_KE(clave);
 		break;
 	}
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	sem_post(&contador_instancias_disponibles);
-	return NULL;
+	return instancia;
 }
 
 /*
