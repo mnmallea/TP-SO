@@ -62,6 +62,7 @@ t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas) {
 	new_instancia->socket = sockfd;
 	new_instancia->cant_entradas_vacias = cant_entradas;
 	sem_init(&new_instancia->semaforo_instancia, 0, 0);
+	pthread_mutex_init(&new_instancia->mutex_comunicacion, NULL);
 	return new_instancia;
 }
 
@@ -210,15 +211,49 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	return instancia;
 }
 
-void levantar_semaforo(void* instancia){
-	sem_post(&((t_instancia*)instancia)->semaforo_instancia);
+void levantar_semaforo(void* instancia) {
+	sem_post(&((t_instancia*) instancia)->semaforo_instancia);
 }
 
 /*
  * Realiza la compactacion en todas las instancias
  */
-void realizar_compactacion(){//todo ver como esperar a que todas compacten
+void realizar_compactacion() { //todo ver como esperar a que todas compacten
 	pthread_mutex_lock(&mutex_instancias_disponibles);
 	list_iterate(lista_instancias_disponibles, levantar_semaforo);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
+}
+
+t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia,
+		char* clave, char** valor) {
+	pthread_mutex_lock(&instancia->mutex_comunicacion);
+	if (enviar_operacion_unaria(instancia->socket, SOLICITUD_VALOR, clave)
+			< 0) {
+		pthread_mutex_unlock(&instancia->mutex_comunicacion);
+		return INSTANCIA_CAIDA;
+	}
+	t_protocolo respuesta_instancia = recibir_cod_operacion(instancia->socket);
+
+	switch (respuesta_instancia) {
+	case ERROR_CONEXION:
+		pthread_mutex_unlock(&instancia->mutex_comunicacion);
+		return INSTANCIA_CAIDA;
+	case VALOR_NO_ENCONTRADO:
+		pthread_mutex_unlock(&instancia->mutex_comunicacion);
+		return INSTANCIA_NO_TIENE_CLAVE;
+	case VALOR_ENCONTRADO:
+		;
+		int respuesta = try_recibirPaqueteVariable(instancia->socket,
+				(void**) valor);
+		pthread_mutex_unlock(&instancia->mutex_comunicacion);
+		if (respuesta <= 0) {
+			free(*valor);
+			return INSTANCIA_CAIDA;
+		}
+		return INSTANCIA_OK;
+	default:
+		//si llegaste hasta aca es porque algo salio mal
+		log_warning(logger, "Mensaje no esperado de la instancia");
+		return INSTANCIA_CAIDA;
+	}
 }
