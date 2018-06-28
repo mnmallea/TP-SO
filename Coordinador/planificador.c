@@ -7,12 +7,13 @@
 
 #include "planificador.h"
 
-#include <commons/log.h>
+#include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "../syntax-commons/protocol.h"
+#include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/serializador.h"
+#include "instancia.h"
 
 void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {
 	t_paquete* paquete = paquete_crear();
@@ -44,35 +45,50 @@ void informar_instancia_caida(t_instancia* instancia) {
 	safe_send(socket_planificador, &msg, sizeof(msg));
 }
 
-void agregar_status_a_paquete(t_paquete* paquete, t_status_clave status){
+void agregar_status_a_paquete(t_paquete* paquete, t_status_clave status) {
 	paquete_agregar_sin_tamanio(paquete, &status, sizeof(status));
 }
 
-void informar_status_clave(char* clave){
+void informar_status_clave(char* clave) {
 	t_paquete* paquete = paquete_crear();
 
 	t_instancia* instancia = instancia_con_clave(clave);
 
-	if(instancia!=NULL){
+	if (instancia != NULL) {
 		char* valor;
-		t_status_clave estado_instancia;
-		//preguntarle a la instancia el valor de la clave
+		t_status_clave estado_instancia = instancia_solicitar_valor_de_clave(
+				instancia, clave, &valor);
 
-		if(valor){
+		switch (estado_instancia) {
+		case INSTANCIA_CAIDA:
+		case INSTANCIA_NO_TIENE_CLAVE:
+			agregar_status_a_paquete(paquete, NO_HAY_VALOR);
+			break;
+		case INSTANCIA_OK:
 			agregar_status_a_paquete(paquete, HAY_VALOR);
 			paquete_agregar(paquete, valor, strlen(valor) + 1);
-		}else{
-			agregar_status_a_paquete(paquete, NO_HAY_VALOR);
+			break;
+		default:
+			;
+			// esto nunca deberia pasar
 		}
+
 		agregar_status_a_paquete(paquete, estado_instancia);
-		paquete_agregar(paquete, instancia->nombre, strlen(instancia->nombre) + 1);
+		paquete_agregar(paquete, instancia->nombre,
+				strlen(instancia->nombre) + 1);
 		agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
-	}else{
+	} else {
 		agregar_status_a_paquete(paquete, NO_HAY_VALOR);
 		agregar_status_a_paquete(paquete, INSTANCIA_NO_ASIGNADA);
-//		instancia = obtenerInstanciaSegunSimulacion()
-		agregar_status_a_paquete(paquete, HAY_SIMULACION);
-		paquete_agregar(paquete, instancia->nombre, strlen(instancia->nombre) + 1);
+		instancia = simular_algoritmo(clave);
+		if (instancia != NULL) {
+			agregar_status_a_paquete(paquete, HAY_SIMULACION);
+			paquete_agregar(paquete, instancia->nombre,
+					strlen(instancia->nombre) + 1);
+		}else{
+			agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
+		}
+
 	}
 	log_info(logger, "Enviando paquete de status clave al Planificador");
 	paquete_enviar_safe(paquete, socket_planificador);
