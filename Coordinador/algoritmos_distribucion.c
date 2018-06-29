@@ -15,20 +15,12 @@
 #include "instancia.h"
 #include "typedefs.h"
 
-int instancia_a_utilizar = 0;
-int largo_lista;
-
 /*
  * Obtiene instancia segun el algoritmo Equitative Load
  */
 t_instancia* obtener_instancia_segun_EL(char* clave) {
-	t_instancia* inst_elegida = list_get(lista_instancias_disponibles,
-			instancia_a_utilizar);
-	largo_lista = list_size(lista_instancias_disponibles);
-	instancia_a_utilizar++;
-
-	if (instancia_a_utilizar == largo_lista) //recien utilice la ultima posicion
-		instancia_a_utilizar = 0;
+	t_instancia* inst_elegida = list_remove(lista_instancias_disponibles, 0);
+	list_add(lista_instancias_disponibles, inst_elegida);
 
 	return inst_elegida;
 }
@@ -123,8 +115,7 @@ t_instancia* simular_algoritmo(char* clave) {
 	}
 	switch (configuracion.algoritmo) {
 	case EL:
-		instancia_elegida = list_get(lista_instancias_disponibles,
-				instancia_a_utilizar);
+		instancia_elegida = list_get(lista_instancias_disponibles, 0);
 		break;
 	case LSU:
 		instancia_elegida = instancia_con_menos_espacio_usado(
