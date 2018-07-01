@@ -94,7 +94,7 @@ void liberar_recursos(t_esi* esi);
 /* Nombre: liberar_claves(char* clave, void* esi)
  * Desc: Le saca las claves tomadas al esi
  */
-void liberar_claves(char* clave, void* esi);
+void liberar_claves_de_esi(t_esi* esi_a_matar, char* clave, t_esi* esi);
 
 /* Nombre: desbloquear_claves_tomadas(char* clave, void* esi)
  * Desc: Desbloquea las claves tomadas por ese esi
@@ -116,6 +116,13 @@ void nueva_solicitud(int socket, char* clave);
 void* planificar(void *);
 
 void matar_esi_corriendo();
+
+void clave_esta_tomada_x_esi_a_liberar(char* clave, void* esi);
+void liberar_clave(void* clave);
+t_list *obtener_todos_los_esis_bloqueados();
+
+void agregar_a_lista_bloq(void* esi);
+void obtener_esis_bloq(char* c, void* data);
 
 //t_esi *obtener_procesos_en_deadlock();
 

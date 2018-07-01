@@ -60,7 +60,7 @@ void* planificar(void* _) {
 		if (planificacion_pausada) {
 			pthread_mutex_unlock(&mutex_pausa);
 			sem_wait(&pausa_planificacion);
-		}else{
+		} else {
 			pthread_mutex_unlock(&mutex_pausa);
 		}
 
@@ -68,9 +68,11 @@ void* planificar(void* _) {
 
 		if (hay_que_planificar()) {
 			esi_corriendo = obtener_nuevo_esi_a_correr();
+			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
+		} else {
+			log_debug(logger, "Se continua corriendo: %d \n",
+					esi_corriendo->id);
 		}
-
-		log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 
 		correr(esi_corriendo);
 	}
@@ -161,10 +163,26 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
 
 	if (esi_afectado != NULL) { //valido que me haya devuelto algo coherente
-		agregar_a_dic_bloqueados(clave, esi_afectado);
-		log_debug(logger,
-				"Se bloqueo por consola el esi: %d para la clave: %s \n",
-				esi_afectado->id, clave);
+
+		if (esi_a_matar->id != esi_corriendo->id) {
+			t_list* todos_los_esis_bloqueados =
+					obtener_todos_los_esis_bloqueados();
+
+			if (list_find(todos_los_esis_bloqueados, esi_con_este_id) != NULL) {
+				log_debug(logger, "Ya se encuentra bloqueado ese esi");
+			} else {
+				agregar_a_dic_bloqueados(clave, esi_afectado);
+				log_debug(logger,
+						"Se bloqueo por consola el esi: %d para la clave: %s \n",
+						esi_afectado->id, clave);
+			}
+
+			list_destroy(todos_los_esis_bloqueados);
+
+		} else {
+			//es el esi corriendo
+		}
+
 	} else {
 		log_error(logger, "No existe ningun esi en el sistema con el id: %d",
 				id);
@@ -182,10 +200,35 @@ t_esi *buscar_esi_por_id(int id_esi){
 	} else {
 		//si no es el q esta corriendo lo busco en la lista de esis listos
 		esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
+
+		if (esi_a_devolver == NULL) {
+			//es un esi bloqueado
+
+			t_list* todos_los_esis_bloqueados =
+					obtener_todos_los_esis_bloqueados();
+
+			esi_a_devolver = list_find(todos_los_esis_bloqueados,
+					esi_con_este_id);
+			list_destroy(todos_los_esis_bloqueados);
+		}
 	}
 
 	return esi_a_devolver;
 
+}
+
+t_list *obtener_todos_los_esis_bloqueados() {
+	t_list* lista = list_create();
+	void agregar_a_lista_bloq(void* esi) {
+		list_add(lista, esi);
+	}
+	void obtener_esis_bloq(char* c, void* data) {
+		list_iterate((t_list*) data, agregar_a_lista_bloq);
+	}
+
+	dictionary_iterator(dic_esis_bloqueados, obtener_esis_bloq);
+
+	return lista;
 }
 
 bool esi_con_este_id(void* esi) {
@@ -275,6 +318,9 @@ void correr(t_esi* esi) {
 	case INTERPRETAR:
 		interpretar();
 		break;
+	case ERROR_CONEXION:
+		log_error(logger, "Error de conexion en el ESI %d", esi->id);
+		/* no break */
 	case ABORTA:
 		fallo_linea();
 		break;
@@ -339,30 +385,37 @@ void aumentar_viene_corriendo(void* esi) {
 	((t_esi*) esi)->dur_ult_raf = ((t_esi*) esi)->dur_ult_raf + 1;
 }
 
-void liberar_recursos(t_esi* esi) {
+void liberar_recursos(t_esi* esi_a_liberar) {
 
-	esi_a_matar = (t_esi *) malloc(sizeof(t_esi));
-	esi_a_matar = esi; //esi a matar es memoria compartida
-	dictionary_iterator(dic_clave_x_esi, liberar_claves);
-	//dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);
-	free(esi_a_matar);
+	t_list *lista_claves_a_desbloquear = list_create();
+
+	void clave_esta_tomada_x_esi_a_liberar(char* clave, void* esi) {
+		if (((t_esi*) esi)->id == esi_a_liberar->id) {
+			list_add(lista_claves_a_desbloquear, clave);
+		}
+	}
+<<<<<<< HEAD
+=======
+
+	dictionary_iterator(dic_clave_x_esi, clave_esta_tomada_x_esi_a_liberar);
+
+	list_iterate(lista_claves_a_desbloquear, liberar_clave);
+	list_destroy(lista_claves_a_desbloquear);
+
 }
 
-void liberar_claves(char* clave, void* esi) {
-
-	if (((t_esi*) esi)->id == esi_a_matar->id) {
-		dictionary_remove(dic_clave_x_esi, clave);
-		se_desbloqueo_un_recurso(clave);
-	}
+void liberar_clave(void* clave) {
+	se_desbloqueo_un_recurso((char*) clave);
+>>>>>>> 8d0c3edb078b3d94fc941edc4e06840a0b2939b7
 }
 
 /*void desbloquear_claves_tomadas(char* clave, void* esi) {
 
-	if (((t_esi*) esi)->id == esi_a_matar->id) {
-		se_desbloqueo_un_recurso(clave);
-	}
+ if (((t_esi*) esi)->id == esi_a_matar->id) {
+ se_desbloqueo_un_recurso(clave);
+ }
 
-}*/
+ }*/
 
 void nueva_solicitud(int socket, char* clave) {
 

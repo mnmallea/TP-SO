@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 	//para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
 	configuracion = configurar(argv[1]);
 	inicializar_semaforos();
-	planificacion_pausada = false;
+	planificacion_pausada = true;
 	configurar_claves_inicialmente_bloqueadas();
 
 	/*Creacion de hilos*/

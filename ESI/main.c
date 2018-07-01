@@ -98,7 +98,7 @@ int main(int argc, char* argv[]) {
 				log_error(logger, "Error de conexion con planificador");
 				exit_gracefully(EXIT_FAILURE);
 			}
-			log_trace(logger, "Le envie al coordinador: %s", to_string_protocolo(key));
+			log_trace(logger, "Le envie al planificador: %s", to_string_protocolo(key));
 
 			if (key == BLOQUEO_ESI) {
 				log_info(logger, "ESI bloqueado por clave %s",
