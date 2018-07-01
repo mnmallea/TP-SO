@@ -61,6 +61,7 @@ t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas) {
 	new_instancia->nombre = string_duplicate(nombre);
 	new_instancia->socket = sockfd;
 	new_instancia->cant_entradas_vacias = cant_entradas;
+	new_instancia->thread = pthread_self();
 	sem_init(&new_instancia->semaforo_instancia, 0, 0);
 	pthread_mutex_init(&new_instancia->mutex_comunicacion, NULL);
 	return new_instancia;
@@ -116,6 +117,13 @@ void instancia_desactivar(t_instancia* instancia) {
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 
 	instancia_agregar_a_inactivas(instancia);
+	if(pthread_equal(instancia->thread, pthread_self())){
+		return;
+	}
+	if(pthread_cancel(instancia->thread)){
+		log_error(logger, "Error al finalizar thread de instancia %s", instancia->nombre);
+	}
+
 }
 
 /*
@@ -207,6 +215,9 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	//todo ver si necesitas algun tipo de confirmacion por parte de la instancia
 
 	log_info(logger, "La instancia %s ha sido relevantada", instancia->nombre);
+	instancia->thread = pthread_self();
+	sem_init(&instancia->semaforo_instancia, 0, 0);
+
 	instancia_agregar_a_activas(instancia);
 	return instancia;
 }
