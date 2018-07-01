@@ -117,6 +117,9 @@ void instancia_desactivar(t_instancia* instancia) {
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 
 	instancia_agregar_a_inactivas(instancia);
+	if(pthread_equal(instancia->thread, pthread_self())){
+		return;
+	}
 	if(pthread_cancel(instancia->thread)){
 		log_error(logger, "Error al finalizar thread de instancia %s", instancia->nombre);
 	}
