@@ -436,7 +436,7 @@ void nueva_solicitud(int socket, char* clave) {
 
 
 typedef struct{
-	int *idEsi;
+	int idEsi;
 	char *retiene;
 	char *espera;
 }t_dl;
@@ -446,7 +446,7 @@ typedef struct{
 }t_clave_dl;
 
 t_list * listaDL;
-t_list *idsDL,idsDLL;
+t_list *idsDL,*idsDLL;
 t_dl *candidato;
 t_esi *esiDL;
 int rye=0;
@@ -494,12 +494,14 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial){
 			 list_destroy_and_destroy_elements(idsDLL,(void*) free);
 	}
 }
-
+int *idEsis;
 void buscarClaveQEspera(char* claveQEspera, void* esisbloq){
 	if (list_find(esisbloq,esta)!=NULL){
 			candidato->espera = claveQEspera;
 			list_add(listaDL,candidato);
-			list_add(idsDLL,candidato->idEsi);
+			idEsis=malloc(sizeof(int));
+			*(idEsis)=candidato->idEsi;
+			list_add(idsDLL,idEsis);
 		}
 	else{
 		rye=0;
@@ -516,14 +518,6 @@ void mergearL(void *id){
 
 void mostrarDL(void* candidato){
 			printf("%d  |  %s   | %s",((t_dl*) candidato)->idEsi,((t_dl*) candidato)->retiene,((t_dl*) candidato)->espera);
-}
-
-t_dl *crear_nodo_esidl(){
-	t_dl *p = malloc(sizeof(candidato));
-	p->retiene = configuracion.estimacion_inicial;
-	p->espera = configuracion.estimacion_inicial;
-
-	return p;
 }
 
 
