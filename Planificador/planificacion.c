@@ -394,8 +394,7 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 			list_add(lista_claves_a_desbloquear, clave);
 		}
 	}
-<<<<<<< HEAD
-=======
+
 
 	dictionary_iterator(dic_clave_x_esi, clave_esta_tomada_x_esi_a_liberar);
 
@@ -406,7 +405,7 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 
 void liberar_clave(void* clave) {
 	se_desbloqueo_un_recurso((char*) clave);
->>>>>>> 8d0c3edb078b3d94fc941edc4e06840a0b2939b7
+
 }
 
 /*void desbloquear_claves_tomadas(char* clave, void* esi) {
