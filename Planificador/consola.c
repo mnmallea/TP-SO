@@ -150,9 +150,10 @@ void matar_por_consola(int id) {
 				esi_a_matar->id);
 
 		if (esi_a_matar->id != esi_corriendo->id) {
+			log_debug(logger, "Se mato el esi  %d", esi_a_matar->id);
 			liberar_recursos(esi_a_matar);
 			matar_nodo_esi(esi_a_matar);
-			log_debug(logger, "Se mato el esi  %d", esi_a_matar->id);
+
 		} else {
 			//es el esi corriendo
 		}

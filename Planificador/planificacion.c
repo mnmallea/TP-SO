@@ -125,7 +125,7 @@ void finalizar_esi() {
 	log_debug(logger, "Termino el ESI id: %d \n", esi_corriendo->id);
 
 	esi_corriendo = NULL;
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+
 }
 
 void bloquear_esi(char* clave) {
@@ -164,7 +164,7 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 
 	if (esi_afectado != NULL) { //valido que me haya devuelto algo coherente
 
-		if (esi_a_matar->id != esi_corriendo->id) {
+		if (esi_afectado->id != esi_corriendo->id) {
 			t_list* todos_los_esis_bloqueados =
 					obtener_todos_los_esis_bloqueados();
 
@@ -308,6 +308,9 @@ void correr(t_esi* esi) {
 	mandar_confirmacion(esi->socket);
 
 	sem_wait(&respondio_esi_corriendo);
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+	aumentar_viene_corriendo(esi_corriendo);
+
 	switch (respuesta_esi_corriendo) { //mensajes de esis
 	case EXITO:
 		ya_termino_linea();
@@ -342,8 +345,6 @@ void correr(t_esi* esi) {
 void ya_termino_linea() {
 
 //si leyo bien la linea
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	aumentar_viene_corriendo(esi_corriendo);
 	log_debug(logger, "El esi %d se termino de leer una nueva linea \n",
 			esi_corriendo->id);
 
@@ -373,7 +374,6 @@ void fallo_linea() {
 void matar_esi_corriendo() {
 	liberar_recursos(esi_corriendo);
 	matar_nodo_esi(esi_corriendo);
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 	esi_corriendo = NULL;
 }
 
