@@ -190,7 +190,7 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 
 }
 
-t_esi *buscar_esi_por_id(int id_esi) {
+t_esi *buscar_esi_por_id(int id_esi){
 
 	id = id_esi;
 	t_esi *esi_a_devolver;
@@ -394,6 +394,8 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 			list_add(lista_claves_a_desbloquear, clave);
 		}
 	}
+<<<<<<< HEAD
+=======
 
 	dictionary_iterator(dic_clave_x_esi, clave_esta_tomada_x_esi_a_liberar);
 
@@ -404,6 +406,7 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 
 void liberar_clave(void* clave) {
 	se_desbloqueo_un_recurso((char*) clave);
+>>>>>>> 8d0c3edb078b3d94fc941edc4e06840a0b2939b7
 }
 
 /*void desbloquear_claves_tomadas(char* clave, void* esi) {
@@ -431,26 +434,97 @@ void nueva_solicitud(int socket, char* clave) {
 	enviar_cod_operacion(socket, cod_op);
 }
 
-/*
- t_list *lista_deadlock = list_create();
 
- t_list *obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
- //habria que ver si es void o si se cambia la implementacion
 
- dictionary_iterator(dic_esis_bloqueados, itera_por_linea);
+typedef struct{
+	int *idEsi;
+	char *retiene;
+	char *espera;
+}t_dl;
+
+typedef struct{
+	char *clave;
+}t_clave_dl;
+
+t_list * listaDL;
+t_list *idsDL,idsDLL;
+t_dl *candidato;
+t_esi *esiDL;
+int rye=0;
+
+
+void deadlock(){
+ idsDL = list_create();
+ dictionary_iterator(dic_clave_x_esi,itera_por_linea);
+ list_destroy_and_destroy_elements(idsDL,(void*) free);
  }
 
- void itera_por_linea(char* clave, void* esisbloq){
+void itera_por_linea(char *claveIncialTomada, void *esiInicial){
+	rye=1;
+	//primerEsi
+	candidato = malloc(sizeof(t_dl));
+	candidato->idEsi = ((t_esi*) esiInicial)->id;
 
- list_iterate(esisbloq, filtra_en_deadlock);
- }
+	if(!list_any_satisfy(idsDL,esta)&&((t_esi*) esiInicial)->id!=-1){
+		listaDL = list_create();
+		idsDLL = list_create();
+		candidato->retiene = claveIncialTomada;								//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
+		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);   	//busco la espera el ESI
+			if(!rye)														//flag para ver si se cumple retencion y espera
+				goto DEST;
+		//sgtes
+		do{
+			char * retieneProx=candidato->espera;
+			candidato = malloc(sizeof(t_dl));
+			esiDL=dictionary_get(dic_clave_x_esi,retieneProx);				//quien tiene la clave que espera el anterior?
+			candidato->idEsi = ((t_esi*) esiDL)->id;						//el nuevo esi ahora es el actual
+			candidato->retiene = retieneProx;								//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
+			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);	//busco la clave que espera el ESI
+			if(!rye)														//flag para ver si se cumple retencion y espera
+				goto DEST;													//sino salta al fin ya que una condicion no se cumple
 
- void filtra_en_deadlock(void *esi){
+		}while(strcmp(claveIncialTomada,candidato->espera)!=0);				//se busca la espera circular
 
- //fijarse si tiene alguna clave tomada en dic_clave_x_esi
- //si tiene clave lo agreo a la lista deadlock
- //sino no
- }
+		list_iterate(idsDLL,mergearL);										//agrego los ids en dl a la lista global para evitar que los vuelvan a revisar en la proxima iteracion
 
- */
+		//print
+		//printf header de la tabla
+		list_iterate(listaDL,mostrarDL);
+
+		DEST:list_destroy_and_destroy_elements(listaDL,(void*) free);
+			 list_destroy_and_destroy_elements(idsDLL,(void*) free);
+	}
+}
+
+void buscarClaveQEspera(char* claveQEspera, void* esisbloq){
+	if (list_find(esisbloq,esta)!=NULL){
+			candidato->espera = claveQEspera;
+			list_add(listaDL,candidato);
+			list_add(idsDLL,candidato->idEsi);
+		}
+	else{
+		rye=0;
+	}
+}
+
+bool esta(void *esi){
+	return ((t_esi*) esi)->id == candidato->idEsi;
+}
+
+void mergearL(void *id){
+			list_add(idsDL,id);
+}
+
+void mostrarDL(void* candidato){
+			printf("%d  |  %s   | %s",((t_dl*) candidato)->idEsi,((t_dl*) candidato)->retiene,((t_dl*) candidato)->espera);
+}
+
+t_dl *crear_nodo_esidl(){
+	t_dl *p = malloc(sizeof(candidato));
+	p->retiene = configuracion.estimacion_inicial;
+	p->espera = configuracion.estimacion_inicial;
+
+	return p;
+}
+
 
