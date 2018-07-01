@@ -9,7 +9,7 @@ void atender_error(int nbytes) {
 		if (nbytes == 0) {
 			log_error(logger,
 					"La conexion con el Coordinador finalizo inesperadamente\n");
-			socketAEliminar = i; //para q sirve?
+
 			exit(EXIT_FAILURE);
 		} else {
 			log_error(logger,
@@ -20,13 +20,12 @@ void atender_error(int nbytes) {
 			log_error(logger,
 					"La conexion con del socket %d finalizo inesperadamente\n",
 					i);
-			socketAEliminar = i; //para q sirve?
 		} else {
 			log_error(logger,
 					"El mensaje recivido por el socket %d tiene errores\n", i);
 		}
-		//list_remove_and_destroy_by_condition(lista_esis_listos, (void*) socketProceso,
-		//								(void*) free);
+		//list_remove_and_destroy_by_condition(lista_esis_listos, (void*) i,
+			//							(void*) free);
 	}
 	close(i);
 	FD_CLR(i, &master);
