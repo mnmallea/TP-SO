@@ -137,6 +137,7 @@ void realizar_store(t_esi* esi, char* clave) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida);
+
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 //			informar_instancia_caida(instancia_elegida);
 			return;

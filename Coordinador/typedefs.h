@@ -27,6 +27,7 @@ typedef struct {
 	sem_t semaforo_instancia;
 	pthread_mutex_t mutex_comunicacion;
 	t_list* claves_almacenadas;
+	pthread_t thread;
 } t_instancia;
 
 typedef struct {
