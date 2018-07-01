@@ -377,6 +377,31 @@ void matar_esi_corriendo() {
 	esi_corriendo = NULL;
 }
 
+void sacar_al_esi_de_donde_este(t_esi* esi_to_kill){
+	t_esi *esi_encontrado = list_find(lista_esis_listos, es_el_esi_a_matar);
+
+	bool es_el_esi_a_matar(void* esi){
+		return ((t_esi*)esi)->id == esi_to_kill->id;
+	}
+
+	void buscar_esi_a_matar(char* clave, void* lista){
+		t_esi *esi_encontrado = list_find(lista, es_el_esi_a_matar);
+
+		if(esi_encontrado != NULL){
+			list_remove_by_condition(lista, es_el_esi_a_matar);
+		}
+	}
+
+	if(esi_encontrado == NULL){
+		//no era un esi en la lista de listos, lo busco en bloqueados
+		dictionary_iterator(dic_esis_bloqueados, buscar_esi_a_matar);
+	}else{
+		//era un esi en la lista de listos
+		list_remove_by_condition(lista_esis_listos, es_el_esi_a_matar);
+	}
+
+}
+
 void aumentar_viene_esperando(void* esi) {
 	((t_esi*) esi)->viene_esperando = ((t_esi*) esi)->viene_esperando + 1;
 }
@@ -407,14 +432,6 @@ void liberar_clave(void* clave) {
 	se_desbloqueo_un_recurso((char*) clave);
 
 }
-
-/*void desbloquear_claves_tomadas(char* clave, void* esi) {
-
- if (((t_esi*) esi)->id == esi_a_matar->id) {
- se_desbloqueo_un_recurso(clave);
- }
-
- }*/
 
 void nueva_solicitud(int socket, char* clave) {
 
