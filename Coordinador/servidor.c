@@ -180,14 +180,14 @@ void atender_instancia(int sockfd) {
 					instancia->nombre);
 			break;
 		case ERROR_CONEXION:
-			log_error(logger, "La instancia % se cayo", instancia->nombre);
+			log_error(logger, "La instancia %s se cayo", instancia->nombre);
 			instancia_desactivar(instancia);
 			return;
 		default:
 			log_warning(logger, "Mensaje no esperado: %s", cod_op);
 		}
 	}
-	sem_destroy(&instancia->semaforo_instancia);
+
 }
 
 void atender_esi(int socket) {
