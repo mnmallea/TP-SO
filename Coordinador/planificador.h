@@ -22,5 +22,6 @@ void solicitar_clave(char* clave);
 void esi_tiene_clave(char* clave);
 void informar_liberacion_clave(char* clave);
 void informar_instancia_caida(t_instancia* instancia);
+void informar_status_clave(char* clave);
 
 #endif /* PLANIFICADOR_H_ */

@@ -1,0 +1,11 @@
+GET a
+SET a algo
+GET b
+SET b algo
+GET c
+SET c algo
+SET c otraCosa
+GET d
+SET d algo
+GET z
+SET z algo

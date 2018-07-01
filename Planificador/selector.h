@@ -40,6 +40,7 @@ extern config configuracion;
 bool la_tiene;
 
 int socketCord;
+char** buffer;
 
 
 void listener(void);

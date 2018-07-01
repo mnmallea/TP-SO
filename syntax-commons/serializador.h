@@ -21,6 +21,7 @@ void paquete_destruir(t_paquete* unPaquete);
 void paquete_agregar(t_paquete* pqt, void* contenido, uint32_t tamanioContenido);
 int paquete_enviar(t_paquete* paquete, int socket);
 void paquete_enviar_safe(t_paquete* paquete, int socket);
+void paquete_agregar_sin_tamanio(t_paquete* paquete, void* contenido, int size);
 /*
  * Envia un paquete antecedido del codigo
  * Devuelve -1 si hay error

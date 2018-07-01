@@ -8,6 +8,7 @@
 #ifndef TYPEDEFS_H_
 #define TYPEDEFS_H_
 
+#include <pthread.h>
 #include <semaphore.h>
 
 #define PORT_MAX_STRING_LENGTH 5
@@ -24,6 +25,7 @@ typedef struct {
 	//para lsu
 	int cant_entradas_vacias;
 	sem_t semaforo_instancia;
+	pthread_mutex_t mutex_comunicacion;
 	t_list* claves_almacenadas;
 } t_instancia;
 

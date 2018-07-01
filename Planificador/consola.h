@@ -18,6 +18,7 @@
 //extern int flag;
 extern t_log *logger;
 extern int socketCord ; //sale del selector
+extern char** buffer;
 
 bool planificacion_pausada;
 
