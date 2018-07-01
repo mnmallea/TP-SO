@@ -354,7 +354,6 @@ void liberar_claves(char* clave, void* esi) {
 		dictionary_remove(dic_clave_x_esi, clave);
 		se_desbloqueo_un_recurso(clave);
 	}
-
 }
 
 /*void desbloquear_claves_tomadas(char* clave, void* esi) {
@@ -383,57 +382,96 @@ void nueva_solicitud(int socket, char* clave) {
 }
 
 
-/*
 
 typedef struct{
-	int idEsi;
-	char *tiene;
+	int *idEsi;
+	char *retiene;
 	char *espera;
 }t_dl;
 
-t_dl *esiDL;
-t_list * esisEnDl;
-int claves;
+typedef struct{
+	char *clave;
+}t_clave_dl;
 
-void armarMatriz(){
-	dictionary_iterator(dic_esis_bloqueados,contarClaves);
-	dictionary_iterator(dic_esis_bloqueados,esiEnOrden);
-}
+t_list * listaDL;
+t_list *idsDL,idsDLL;
+t_dl *candidato;
+t_esi *esiDL;
+int rye=0;
 
-void contarClaves(){}
-
-void esiEnOrden(){}
 
 void deadlock(){
- armarMatriz();
- t_list* esis_deadlock = obtener_procesos_en_deadlock();
- list_iterate(esis_deadlock, mostrar_esi_en_pantalla);
- list_destroy(esis_deadlock);
+ idsDL = list_create();
+ dictionary_iterator(dic_clave_x_esi,itera_por_linea);
+ list_destroy_and_destroy_elements(idsDL,(void*) free);
  }
 
+void itera_por_linea(char *claveIncialTomada, void *esiInicial){
+	rye=1;
+	//primerEsi
+	candidato = malloc(sizeof(t_dl));
+	candidato->idEsi = ((t_esi*) esiInicial)->id;
 
+	if(!list_any_satisfy(idsDL,esta)&&((t_esi*) esiInicial)->id!=-1){
+		listaDL = list_create();
+		idsDLL = list_create();
+		candidato->retiene = claveIncialTomada;								//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
+		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);   	//busco la espera el ESI
+			if(!rye)														//flag para ver si se cumple retencion y espera
+				goto DEST;
+		//sgtes
+		do{
+			char * retieneProx=candidato->espera;
+			candidato = malloc(sizeof(t_dl));
+			esiDL=dictionary_get(dic_clave_x_esi,retieneProx);				//quien tiene la clave que espera el anterior?
+			candidato->idEsi = ((t_esi*) esiDL)->id;						//el nuevo esi ahora es el actual
+			candidato->retiene = retieneProx;								//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
+			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);	//busco la clave que espera el ESI
+			if(!rye)														//flag para ver si se cumple retencion y espera
+				goto DEST;													//sino salta al fin ya que una condicion no se cumple
 
+		}while(strcmp(claveIncialTomada,candidato->espera)!=0);				//se busca la espera circular
 
+		list_iterate(idsDLL,mergearL);										//agrego los ids en dl a la lista global para evitar que los vuelvan a revisar en la proxima iteracion
 
-void obtener_procesos_en_deadlock(){ //al principio pense que devolvia t_list..
-										//habria que ver si es void o si se cambia la implementacion
-	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
+		//print
+		//printf header de la tabla
+		list_iterate(listaDL,mostrarDL);
+
+		DEST:list_destroy_and_destroy_elements(listaDL,(void*) free);
+			 list_destroy_and_destroy_elements(idsDLL,(void*) free);
+	}
 }
 
-void itera_por_linea(char *clave, void *esi){
-	candidato = esi;
-	dictionary_iterator(dic_esis_bloqueados, filtra_en_deadlock);
-
-}
-
-void filtra_en_deadlock(char* clave, void* esisbloq){
-
+void buscarClaveQEspera(char* claveQEspera, void* esisbloq){
 	if (list_find(esisbloq,esta)!=NULL){
-			list_add(lista_deadlock,candidato);
+			candidato->espera = claveQEspera;
+			list_add(listaDL,candidato);
+			list_add(idsDLL,candidato->idEsi);
 		}
+	else{
+		rye=0;
+	}
 }
 
-bool esta(void *esibloq){
-	return ((t_esi*) esibloq)->id == candidato->id;
+bool esta(void *esi){
+	return ((t_esi*) esi)->id == candidato->idEsi;
 }
-*/
+
+void mergearL(void *id){
+			list_add(idsDL,id);
+}
+
+void mostrarDL(void* candidato){
+			printf("%d  |  %s   | %s",((t_dl*) candidato)->idEsi,((t_dl*) candidato)->retiene,((t_dl*) candidato)->espera);
+}
+
+t_dl *crear_nodo_esidl(){
+	t_dl *p = malloc(sizeof(candidato));
+	p->retiene = configuracion.estimacion_inicial;
+	p->espera = configuracion.estimacion_inicial;
+
+	return p;
+}
+
+

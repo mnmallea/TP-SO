@@ -17,20 +17,18 @@ int main(int argc, char* argv[]) {
 
 	size_t len = 0;
 	ssize_t read;
-	t_operacion *n_esi_operacion;
 
 	logger = log_create("ESI.log", "ESI", true, LOG_LEVEL);
 
 	if (argc != CANT_ARGUMENTOS_MAIN) {
 		log_error(logger, "Cantidad incorrecta de parametros");
 		exit_gracefully(1);
-		return -1;
 	}
 
 	fp = fopen(argv[1], "r");
 	if (fp == NULL) {
 		log_error(logger, "El archivo está vacio.");
-		exit(EXIT_FAILURE);
+		exit_gracefully(1);
 	}
 
 	configuracion = configurar(argv[2]);
@@ -44,11 +42,6 @@ int main(int argc, char* argv[]) {
 	int *esi_id = safe_recv(socketPlan, sizeof(int));
 	log_debug(logger, "el id del esi es: %d", *esi_id);
 	safe_send(socketCord, esi_id, sizeof(int));
-
-	if ((n_esi_operacion = malloc(sizeof(t_operacion))) == NULL) {
-		log_error(logger, "No se puede alocar memoria");
-		exit_gracefully(1);
-	}
 
 	recibir_confirmacion(socketPlan); //signal para ejecutar
 	log_trace(logger, "Recibi señal para ejecutar");
@@ -141,9 +134,7 @@ int main(int argc, char* argv[]) {
 	if (line)
 		free(line);
 
-	free(esi_id);
-
-	log_destroy(logger);
 	limpiar_configuracion();
-	exit(1);
+	exit_gracefully(1);
+
 }
