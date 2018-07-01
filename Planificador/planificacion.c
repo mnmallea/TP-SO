@@ -378,11 +378,13 @@ void matar_esi_corriendo() {
 }
 
 void sacar_al_esi_de_donde_este(t_esi* esi_to_kill){
-	t_esi *esi_encontrado = list_find(lista_esis_listos, es_el_esi_a_matar);
 
 	bool es_el_esi_a_matar(void* esi){
-		return ((t_esi*)esi)->id == esi_to_kill->id;
-	}
+			return ((t_esi*)esi)->id == esi_to_kill->id;
+		}
+
+	t_esi *esi_encontrado = list_find(lista_esis_listos, es_el_esi_a_matar);
+
 
 	void buscar_esi_a_matar(char* clave, void* lista){
 		t_esi *esi_encontrado = list_find(lista, es_el_esi_a_matar);
