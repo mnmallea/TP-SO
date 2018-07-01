@@ -18,6 +18,7 @@ int SET(int socketCoordinador) {
 	char* valor;
 	int estado = 1;
 	recibir_set(socketCoordinador, &clave, &valor);
+	log_debug(logger, "Recibi SET %s %s", clave, valor);
 	claveEntrada* cv = crearClaveEntrada(clave, valor);
 	if (!hayEntradasDisponibles(cv)) {
 		//implementar algoritmo
