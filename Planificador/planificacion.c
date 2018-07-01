@@ -120,7 +120,9 @@ void nuevo_esi(t_esi* esi) {
 void finalizar_esi() {
 
 	liberar_recursos(esi_corriendo);
+	pthread_mutex_lock(&mutex_lista_esis_finalizados);
 	list_add(lista_esis_finalizados, esi_corriendo);
+	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
 
 	log_debug(logger, "Termino el ESI id: %d \n", esi_corriendo->id);
 
