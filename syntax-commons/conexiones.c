@@ -38,6 +38,7 @@ int enviar_operacion_unaria(int sockfd, t_protocolo cod_op, char *clave) {
 	t_paquete* paquete = paquete_crear();
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
 	if (paquete_enviar(paquete, sockfd) < 0) {
+		paquete_destruir(paquete);
 		log_error(logger, "Error al enviar operacion");
 		return -1;
 	}
@@ -63,6 +64,7 @@ int enviar_set(int sockfd, char* clave, char* valor) {
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
 	paquete_agregar(paquete, valor, strlen(valor) + 1);
 	if (paquete_enviar(paquete, sockfd) < 0) {
+		paquete_destruir(paquete);
 		log_error(logger, "Error al enviar paquete del SET");
 		return -1;
 	}
