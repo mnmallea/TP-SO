@@ -124,7 +124,16 @@ t_list *obtener_todos_los_esis_bloqueados();
 void agregar_a_lista_bloq(void* esi);
 void obtener_esis_bloq(char* c, void* data);
 
+void es_el_esi_a_matar(void* esi);
+void buscar_esi_a_matar(char* clave, void* lista);
+
 //t_esi *obtener_procesos_en_deadlock();
 
+void deadlock();
+void itera_por_linea(char *claveIncialTomada, void *esiInicial);
+void buscarClaveQEspera(char* claveQEspera, void* esisbloq);
+bool esta(void *esi);
+void mergearL(void *id);
+void mostrarDL(void* candidato);
 
 #endif /* PLANIFICACION_H_ */
