@@ -164,6 +164,10 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 
 	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
 
+	bool es_el_esi_a_bloquear(void* esi) {
+		return ((t_esi*) esi)->id == esi_afectado->id;
+	}
+
 	if (esi_afectado != NULL) { //valido que me haya devuelto algo coherente
 
 		if (esi_afectado->id != esi_corriendo->id) {
@@ -173,14 +177,15 @@ void bloquear_esi_por_consola(char* clave, int id_esi) {
 			if (list_find(todos_los_esis_bloqueados, esi_con_este_id) != NULL) {
 				log_debug(logger, "Ya se encuentra bloqueado ese esi");
 			} else {
-				agregar_a_dic_bloqueados(clave, esi_afectado);
-				log_debug(logger,
-						"Se bloqueo por consola el esi: %d para la clave: %s \n",
-						esi_afectado->id, clave);
+				//no estaba bloqueado, ni es el esi corriendo -> tiene que estar en listos
+				//lo elimino de la lista de listos
+
+				pthread_mutex_lock(&mutex_lista_esis_listos);
+				list_remove_by_condition(lista_esis_listos,
+						es_el_esi_a_bloquear);
+				pthread_mutex_unlock(&mutex_lista_esis_listos);
+
 			}
-
-			list_destroy(todos_los_esis_bloqueados);
-
 		} else {
 			//es el esi corriendo
 		}
@@ -201,7 +206,10 @@ t_esi *buscar_esi_por_id(int id_esi) {
 		esi_a_devolver = esi_corriendo;
 	} else {
 		//si no es el q esta corriendo lo busco en la lista de esis listos
+
+		pthread_mutex_lock(&mutex_lista_esis_listos);
 		esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
+		pthread_mutex_unlock(&mutex_lista_esis_listos);
 
 		if (esi_a_devolver == NULL) {
 			//es un esi bloqueado
