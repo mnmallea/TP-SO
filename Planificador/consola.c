@@ -158,6 +158,7 @@ void matar_por_consola(int id) {
 			//es el esi corriendo
 		}
 
+
 	}
 
 }
