@@ -12,6 +12,7 @@
 #include <stdbool.h>
 
 #include "config_planificador.h"
+#include "sincronizacion.h"
 
 typedef enum {
 	FIFO, SJFsD, SJFcD, HRRN
@@ -33,6 +34,7 @@ typedef struct {
 } t_esi;
 
 extern config configuracion;
+extern t_list *lista_esis_finalizados;
 
 t_esi *obtener_proximo_segun_fifo(t_list *lista_esis);
 t_esi *obtener_proximo_segun_sjf(t_list *lista_esis);
