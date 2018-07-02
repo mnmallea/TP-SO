@@ -6,13 +6,11 @@
  */
 
 #include "consola.h"
-
 #include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "../syntax-commons/protocol.h"
 #include "../syntax-commons/serializador.h"
 #include "algoritmos_planificacion.h"
@@ -35,9 +33,13 @@ void *menu(void *ptr) {
 				"\n 5 <ID>: para matar un proceso"
 				"\n 6 <clave>: para conocer el status de la clave"
 				"\n 7: para solucionar conflictos de deadlock "
-				"\n 0: para salir de la consola \n");
+				"\n 0: para salir de la consola \n"
+				"\nOpcion n°:"
+				);
 
 		scanf("%d", &opcion_seleccionada);
+
+		printf("\n");
 
 		switch (opcion_seleccionada) {
 		case 1:
@@ -93,6 +95,14 @@ void *menu(void *ptr) {
 			break;
 
 		}
+
+		getchar();
+		printf("\nPresione Enter para continuar..\n");
+		getchar();
+
+		system("clear");
+
+
 
 	} while (opcion_seleccionada != 0);
 
