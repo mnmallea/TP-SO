@@ -455,6 +455,9 @@ int rye=0;
 void deadlock(){
  idsDL = list_create();
  dictionary_iterator(dic_clave_x_esi,itera_por_linea);
+ if(list_size(idsDL)==0){
+	printf("No hay deadlocks.\n");
+ }
  list_destroy_and_destroy_elements(idsDL,(void*) free);
  }
 
@@ -468,21 +471,21 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial){
 		listaDL = list_create();
 		idsDLL = list_create();
 		candidato->retiene = claveIncialTomada;								//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
-		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);   	//busco la espera el ESI
+		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);   	//busco la clave q espera el ESI
 			if(!rye)														//flag para ver si se cumple retencion y espera
 				goto DEST;
 		//sgtes
 		do{
-			char * retieneProx=candidato->espera;
+			char * esperaAnterior=candidato->espera;
 			candidato = malloc(sizeof(t_dl));
-			esiDL=dictionary_get(dic_clave_x_esi,retieneProx);				//quien tiene la clave que espera el anterior?
+			esiDL=dictionary_get(dic_clave_x_esi,esperaAnterior);			//quien tiene la clave que espera el anterior?
 			candidato->idEsi = ((t_esi*) esiDL)->id;						//el nuevo esi ahora es el actual
-			candidato->retiene = retieneProx;								//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
+			candidato->retiene = esperaAnterior;							//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
 			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);	//busco la clave que espera el ESI
 			if(!rye)														//flag para ver si se cumple retencion y espera
-				goto DEST;													//sino salta al fin ya que una condicion no se cumple
+				goto DEST;
 
-		}while(strcmp(claveIncialTomada,candidato->espera)!=0);				//se busca la espera circular
+		}while(strcmp(claveIncialTomada,candidato->espera)!=0);				//se sigue buscando para encontrar la espera circular
 
 		list_iterate(idsDLL,mergearL);										//agrego los ids en dl a la lista global para evitar que los vuelvan a revisar en la proxima iteracion
 
