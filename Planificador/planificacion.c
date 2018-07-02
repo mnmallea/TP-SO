@@ -248,9 +248,11 @@ bool esi_con_este_id(void* esi) {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE INDICA QUE SE DESBLOQUIO UN RECURSO
 void se_desbloqueo_un_recurso(char* clave) {
 
+	pthread_mutex_lock(&mutex_dic_clave_x_esi);
 	if (dictionary_has_key(dic_clave_x_esi, clave)) {
 		dictionary_remove(dic_clave_x_esi, clave);
 	}
+	pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 
 	if (dictionary_has_key(dic_esis_bloqueados, clave)) { //hay esis encolados
 		t_list *lista_esis_bloq_esta_clave = dictionary_remove(
@@ -272,8 +274,10 @@ void se_desbloqueo_un_recurso(char* clave) {
 //FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE PREGUNTA SI UN ESI TIENE UNA CLAVE
 bool esi_tiene_clave(char* clave) {
 
+	pthread_mutex_lock(&mutex_dic_clave_x_esi);
 	if (dictionary_has_key(dic_clave_x_esi, clave)) {
 		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi, clave);
+		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 		return (esi_que_la_tomo->id == esi_corriendo->id);
 	} else {
 		return false;
@@ -283,8 +287,10 @@ bool esi_tiene_clave(char* clave) {
 
 bool esta_tomada_x_otro_la_clave(char* clave) {
 
+	pthread_mutexlock(&mutex_dic_clave_x_esi);
 	if (dictionary_has_key(dic_clave_x_esi, clave)) { //ya esta tomada?
 		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi, clave);
+		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 
 		//el esi que la tiene es el actual?
 		// si es el actual -> la tiene el, esta volviendo a hacer get
@@ -301,6 +307,7 @@ bool esta_tomada_x_otro_la_clave(char* clave) {
 void nueva_clave_tomada_x_esi(char* clave) {
 
 	//No existe la clave, agrego esta nueva linea
+	pthread_mutex_lock(&mutex_dic_clave_x_esi);
 	if (!dictionary_has_key(dic_clave_x_esi, clave)) {
 		dictionary_put(dic_clave_x_esi, clave, esi_corriendo); //aca estoy guardando el puntero al esi_corriendo verdad?
 
@@ -310,6 +317,8 @@ void nueva_clave_tomada_x_esi(char* clave) {
 		//supongo que el put pisa lo que estaba
 
 	}
+
+	pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 
 }
 
@@ -431,7 +440,11 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 		}
 	}
 
+	pthread_mutex_lock(&mutex_dic_clave_x_esi);
+
 	dictionary_iterator(dic_clave_x_esi, clave_esta_tomada_x_esi_a_liberar);
+
+	pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 
 	list_iterate(lista_claves_a_desbloquear, liberar_clave);
 	list_destroy(lista_claves_a_desbloquear);
@@ -489,6 +502,7 @@ void deadlock(){
 void deadlock() {
 	idsDL = list_create();
 	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
+
 	list_destroy_and_destroy_elements(idsDL, (void*) free);
 }
 >>>>>>> fc7e02cf6c4448d2eb395300309628ef6de92e5f
