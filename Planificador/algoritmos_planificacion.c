@@ -34,7 +34,11 @@ void matar_nodo_esi(void* esi){
 
 	if(esi != NULL){
 		close(((t_esi*)esi)->socket);
-		free(((t_esi*)esi));
+		//free(((t_esi*)esi));
+		//ya no se lo borra del sistema, se lo pasa a finalizados
+		pthread_mutex_lock(&mutex_lista_esis_finalizados);
+		list_add(lista_esis_finalizados, esi);
+		pthread_mutex_unlock(&mutex_lista_esis_finalizados);
 	}
 
 }
