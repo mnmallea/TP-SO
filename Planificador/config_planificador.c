@@ -28,7 +28,7 @@ config configurar(char *ruta){
 			config_has_property(config_dictionary, "ALFA")){
 		strncpy(configuracion.puerto, config_get_string_value(config_dictionary, "LOCALPORT"),PORT_MAX_STRING_LENGTH);//hay que copiarselo porque al final borras el diccionario
 		configuracion.puerto[5] = '\0';
-		configuracion.algoritmo = config_get_int_value(config_dictionary, "ALGORITMO");
+		configuracion.algoritmo = get_algoritmo_planificacion(config_get_string_value(config_dictionary, "ALGORITMO"));
 		configuracion.estimacion_inicial = config_get_int_value(config_dictionary, "ESTADO_INICIAL");
 		configuracion.ipCoord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
 		configuracion.portCoord = string_duplicate(config_get_string_value(config_dictionary, "PORT_COORD"));

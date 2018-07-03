@@ -50,7 +50,7 @@ bool es_un_esi_bloqueado(int id_a_buscar){
 
 	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
 	dictionary_iterator(dic_esis_bloqueados, obtener_esis_bloq);
-	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
+	pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 
 
 	bool resultado = contenido_en_lista(lista_bloqueados, id_a_buscar);
