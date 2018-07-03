@@ -68,6 +68,7 @@ bool puede_tomar_la_clave(char* clave, t_esi* esi_solicitante) {
 
 	}else{
 		//no la tiene nadie, la puede tomar
+		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 		return true;
 	}
 
