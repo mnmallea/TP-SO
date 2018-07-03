@@ -132,7 +132,8 @@ void listener(void) {
 						case ESI_TIENE_CLAVE:
 							//dejar estos corchetes sin cuestionar (nay)
 						{
-							bool la_tiene = esi_tiene_clave(clave);
+							//si este esi_corriendo jode mucho hablarme(nay) y lo cambio
+							bool la_tiene = esi_tiene_clave(clave, esi_corriendo);
 							t_protocolo cod_op;
 
 							if (la_tiene) {
