@@ -10,6 +10,18 @@
 
 #include <commons/log.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include <commons/collections/dictionary.h>
+#include <commons/collections/list.h>
+
+#include "../syntax-commons/protocol.h"
+#include "../syntax-commons/serializador.h"
+
+#include "planificacion.h"
+#include "funciones_auxiliares_consola.h"
 
 
 #define LOG_LEVEL LOG_LEVEL_TRACE

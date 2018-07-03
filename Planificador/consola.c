@@ -6,16 +6,6 @@
  */
 
 #include "consola.h"
-#include <commons/collections/dictionary.h>
-#include <commons/collections/list.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include "../syntax-commons/protocol.h"
-#include "../syntax-commons/serializador.h"
-#include "algoritmos_planificacion.h"
-#include "main.h"
-#include "planificacion.h"
 
 void *menu(void *ptr) {
 
@@ -113,13 +103,16 @@ void *menu(void *ptr) {
 }
 
 void pausar_despausar_consola() {
+
 	pthread_mutex_lock(&mutex_pausa);
 	if (planificacion_pausada) {
 		printf("Continuando con la planificacion\n");
+		log_debug(logger, "CONSOLA: pausar/despausar. Actualmente consola pausada. Se continua planificacion");
 		planificacion_pausada = false;
 		sem_post(&pausa_planificacion);
 	} else {
 		printf("Planificador pausado\n");
+		log_debug(logger, "CONSOLA: pausar/despausar. Actualmente consola planificando. Se pausa la planificacion");
 		planificacion_pausada = true;
 	}
 	pthread_mutex_unlock(&mutex_pausa);
@@ -127,16 +120,26 @@ void pausar_despausar_consola() {
 
 void listar(char* rec) {
 
-	/*supongo q voy al diccionario y hago dictionary_get(clave)
-	 * despues muestro por pantalla la lista
-	 */
+	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
 
 	if (!dictionary_has_key(dic_esis_bloqueados, rec)) {
-		printf("No existe esa clave\n");
+
+		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
+		printf("La clave solicitada(%s) no tiene ningun ESI bloqueado", rec);
+		log_debug(logger, "CONSOLA: Se eligio listar los esis bloqueados para la clave: %s", rec);
+
 	} else {
+
+		printf("Se procede a listar los ESIS encolados para la clave: %s\n", rec);
+		log_debug(logger, "CONSOLA: Se listaran los esis encolados para la clave: %s", rec);
+
 		t_list* esis_bloq = dictionary_get(dic_esis_bloqueados, rec);
+		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 		list_iterate(esis_bloq, mostrar_esi_en_pantalla);
+
 	}
+
+
 }
 
 void mostrar_esi_en_pantalla(void* esi) {
@@ -146,58 +149,70 @@ void mostrar_esi_en_pantalla(void* esi) {
 
 void bloquear(char* clave, int id) {
 
-	bloquear_esi_por_consola(clave, id);
+	printf("Se procede a bloquear al esi: %d para la clave: %s", id, clave);
+	log_debug(logger, "CONSOLA: Se eligio bloquear al esi: %d para la clave %s", id, clave);
+
+	if(esi_corriendo->id == id){
+		//es el esi corriendo
+		//TODO: ver q hacemos aca
+	}else if(es_un_esi_listo(id)){
+		t_esi* esi_a_bloquear = obtener_de_listos(id);
+		eliminar_de_listos(esi_a_bloquear);
+		bloquear_esi(clave, esi_a_bloquear);
+	}else if(es_un_esi_bloqueado(id)){
+		printf("El esi solicitado para el bloqueo(%d) ya se encontraba bloqueado", id);
+	}else if(es_un_esi_finalizado(id)){
+		printf("El esi solicitado para el bloqueo(%d) ya se encontraba finalizado", id);
+	}else{
+		printf("El esi solicitado para el bloqueo(%d) no existe en el sistema", id);
+	}
 }
 
 void matar_por_consola(int id) {
 
-	t_esi* esi_a_matar = buscar_esi_por_id(id);
-	if (esi_a_matar == NULL) {
-		log_debug(logger, "El esi elegido no existe en el sistema");
-	} else {
-		log_debug(logger,
-				"Se encontro el esi  %d en el sistema, se procede a matarlo",
-				esi_a_matar->id);
+	printf("Se procede a matar al esi: %d", id);
+	log_debug(logger, "CONSOLA: Se eligio matar al esi: %d", id);
 
-		if (esi_a_matar->id != esi_corriendo->id) {
-			log_debug(logger, "Se procede a matar el esi  %d", esi_a_matar->id);
-			sacar_al_esi_de_donde_este(esi_a_matar);
-			liberar_recursos(esi_a_matar);
-			matar_nodo_esi(esi_a_matar);
-
-		} else {
+		if(esi_corriendo->id == id){
 			//es el esi corriendo
+			//TODO: ver q hacemos aca
+		}else if(es_un_esi_listo(id)){
+			t_esi* esi_a_matar = obtener_de_listos(id);
+			eliminar_de_listos(esi_a_matar);
+			finalizar_esi(esi_a_matar);
+		}else if(es_un_esi_finalizado(id)){
+			printf("El esi solicitado para matar(%d) ya se encontraba finalizado", id);
+		}else if(es_un_esi_bloqueado(id)){
+			t_esi* esi_a_matar = obtener_de_bloqueados(id);
+			eliminar_de_bloqueados(esi_a_matar);
+			finalizar_esi(esi_a_matar);
+		}else{
+			printf("El esi solicitado para matar(%d) no existe en el sistema", id);
 		}
-
-
-	}
 
 }
 
 void envia_status_clave(char* clave) {
 
+	printf("Se procede a mostrar el status de la clave: %s", clave);
+	log_debug(logger, "CONSOLA: Se eligio status clave para: %s", clave);
+
 	t_paquete* paquete = paquete_crear();
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
 	if (paquete_enviar_con_codigo(paquete, SOLICITUD_STATUS_CLAVE, socketCord)
 			< 0) {
-		log_error(logger, "Error enviandole el paquete al coordindor");
+		log_error(logger, "Error enviandole el paquete de status clave al coordindor");
 		paquete_destruir(paquete);
 		exit(EXIT_FAILURE);
+	}else{
+		while (1) {
+			sem_wait(&coordinador_respondio_paq);
+
+				//todo:  acceder a la variable compartida
+				//ponerle mutex a la variable
+				//hacer printf de las cosas que me mando
+			}
 	}
 	paquete_destruir(paquete);
 
-	while (1) {
-		sem_wait(&coordinador_respondio_paq);
-
-		//todo:  acceder a la variable compartida
-		//ponerle mutex a la variable
-		//hacer printf de las cosas que me mando
-	}
-
 }
-
-/*void deadlock(){
- t_list* esis_deadlock = obtener_procesos_en_deadlock();
- list_iterate(esis_deadlock, mostrar_esi_en_pantalla);
- list_destroy(esis_deadlock);
- }*/

@@ -7,13 +7,6 @@
 
 #include "algoritmos_planificacion.h"
 
-
-
-
-#include <commons/log.h>
-#include <stdbool.h>
-#include <unistd.h>
-
 t_esi* remover_esi_de_lista(t_list* lista, int id){
 	bool esElEsi(void* esi){
 		return id == ((t_esi*)esi)->id;
@@ -30,23 +23,12 @@ bool mayor_response_ratio(void* esi1, void* esi2){
 	return ((t_esi*)esi1)->response_ratio >= ((t_esi*)esi1)->response_ratio;
 }
 
-void matar_nodo_esi(void* esi){
-
-	if(esi != NULL){
-		close(((t_esi*)esi)->socket);
-		//free(((t_esi*)esi));
-		//ya no se lo borra del sistema, se lo pasa a finalizados
-		pthread_mutex_lock(&mutex_lista_esis_finalizados);
-		list_add(lista_esis_finalizados, esi);
-		pthread_mutex_unlock(&mutex_lista_esis_finalizados);
-	}
-
-}
-
 
 t_esi *obtener_proximo_segun_fifo(t_list *lista_esis){
 
+	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_esi *esi_elegido = list_remove(lista_esis, 0);
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
 	return esi_elegido;
 
 }
@@ -67,13 +49,16 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 	 * devuelvo ese esi
 	 */
 
-
+	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_list *lista_nueva = list_duplicate(lista_esis);
 	list_iterate(lista_nueva, obtener_proximas_rafagas);
 	list_sort(lista_nueva, menor_estimacion);
 
 	t_esi *esi_elegido = list_get(lista_nueva, 0);
 	remover_esi_de_lista(lista_esis, esi_elegido->id);
+
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
+
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
 	list_destroy(lista_nueva);
 
@@ -98,12 +83,15 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis){
 	 * devuelvo ese esi
 	 */
 
-
+	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_list *lista_nueva = list_duplicate(lista_esis);
 	list_iterate(lista_nueva, obtener_rr);
 	list_sort(lista_nueva, mayor_response_ratio);
 	t_esi *esi_elegido = list_get(lista_nueva, 0);
 	remover_esi_de_lista(lista_esis, esi_elegido->id);
+
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
+
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
 	list_destroy(lista_nueva);
 
