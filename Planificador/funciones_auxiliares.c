@@ -26,7 +26,7 @@ void agregar_a_dic_bloqueados(char* clave, t_esi *esi) {
 
 	}
 
-	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
+	pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 
 }
 
@@ -41,7 +41,7 @@ bool esi_tiene_clave(char* clave, t_esi* esi_a_validar) {
 
 		return (esi_que_la_tomo->id == esi_a_validar->id);
 	} else {
-		pthread_mutex_lock(&mutex_dic_clave_x_esi);
+		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 		return false;
 	}
 

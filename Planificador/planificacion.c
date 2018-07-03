@@ -172,6 +172,7 @@ void se_desbloqueo_un_recurso(char* clave) {
 				nuevo_esi(esi_a_desbloquear);
 
 			} else {
+				pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 				log_debug(logger, "La clave desbloqueada no tenia esis encolados esperandola");
 			}
 
