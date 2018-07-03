@@ -26,8 +26,10 @@ bool mayor_response_ratio(void* esi1, void* esi2){
 
 t_esi *obtener_proximo_segun_fifo(t_list *lista_esis){
 
+	log_trace(logger, "Se procede a buscar al proximo esi a ejecutar segun FIFO");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_esi *esi_elegido = list_remove(lista_esis, 0);
+	log_trace(logger, "El esi elegido(en orden de llegada) es: %d", esi_elegido->id);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 	return esi_elegido;
 
@@ -49,6 +51,7 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 	 * devuelvo ese esi
 	 */
 
+	log_trace(logger, "Se procede a buscar al proximo esi a ejecutar segun SJF");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_list *lista_nueva = list_duplicate(lista_esis);
 	list_iterate(lista_nueva, obtener_proximas_rafagas);
@@ -56,6 +59,8 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 
 	t_esi *esi_elegido = list_get(lista_nueva, 0);
 	remover_esi_de_lista(lista_esis, esi_elegido->id);
+
+	log_trace(logger, "El esi elegido(con la menor proxima rafaga) es: %d", esi_elegido->id);
 
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 
@@ -83,11 +88,13 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis){
 	 * devuelvo ese esi
 	 */
 
+	log_trace(logger, "Se procede a buscar al proximo esi a ejecutar segun HRRN");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_list *lista_nueva = list_duplicate(lista_esis);
 	list_iterate(lista_nueva, obtener_rr);
 	list_sort(lista_nueva, mayor_response_ratio);
 	t_esi *esi_elegido = list_get(lista_nueva, 0);
+	log_trace(logger, "El esi elegido(con el mayor response ratio) es: %d", esi_elegido->id);
 	remover_esi_de_lista(lista_esis, esi_elegido->id);
 
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
