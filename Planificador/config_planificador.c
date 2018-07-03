@@ -47,7 +47,7 @@ config configurar(char *ruta){
 }
 
 void limpiar_configuracion(){
-
+//TODO: QUE ES ESTO???
 }
 
 tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo){

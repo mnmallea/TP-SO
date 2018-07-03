@@ -103,7 +103,9 @@ t_esi* obtener_de_listos(int id_a_devolver){
 				return ((t_esi*)esi)->id == id_a_devolver;
 	}
 
+	pthread_mutex_lock(&mutex_lista_esis_listos);
 	return list_find(lista_esis_listos, tiene_el_id_buscado);
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
 }
 
 t_esi* obtener_de_bloqueados(int id_a_devolver){

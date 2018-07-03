@@ -233,7 +233,7 @@ void correr(t_esi* esi) {
 void ya_termino_linea() {
 
 //si leyo bien la linea
-	log_error(logger, "El esi %d se termino de leer una nueva linea \n",
+	log_trace(logger, "El esi %d se termino de leer una nueva linea \n",
 			esi_corriendo->id);
 
 }
