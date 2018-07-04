@@ -22,6 +22,10 @@ pthread_mutex_t mutex_dic_clave_x_esi;
 pthread_mutex_t mutex_pausa;
 pthread_mutex_t mutex_dic_esis_bloqueados;
 pthread_mutex_t mutex_esi_corriendo;
+pthread_mutex_t mutex_esi_a_matar_por_consola;
+pthread_mutex_t mutex_esi_a_bloquear_por_consola;
+pthread_mutex_t mutex_clave_a_bloquear;
+
 
 sem_t pausa_planificacion;
 sem_t coordinador_respondio_paq;

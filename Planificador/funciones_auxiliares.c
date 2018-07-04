@@ -92,3 +92,6 @@ void aumentar_viene_esperando(void* esi) {
 void aumentar_viene_corriendo(void* esi) {
 	((t_esi*) esi)->dur_ult_raf = ((t_esi*) esi)->dur_ult_raf + 1;
 }
+
+
+
