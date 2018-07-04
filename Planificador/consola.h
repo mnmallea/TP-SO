@@ -34,6 +34,10 @@ extern char** buffer;
 
 bool planificacion_pausada;
 
+t_esi* esi_a_matar_por_consola;
+t_esi* esi_a_bloquear_por_consola;
+char* clave_a_bloquear;
+
 void *menu(void *ptr);
 void listar(char* rec);
 void bloquear(char* clave, int id);

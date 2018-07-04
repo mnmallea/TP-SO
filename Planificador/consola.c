@@ -7,6 +7,7 @@
 
 #include "consola.h"
 
+
 void *menu(void *ptr) {
 
 	int opcion_seleccionada;
@@ -95,6 +96,7 @@ void *menu(void *ptr) {
 
 	printf("Ha salido de la consola");
 	free(clave);
+	free(clave_a_bloquear);
 
 	return NULL;
 }
@@ -158,9 +160,25 @@ void bloquear(char* clave, int id) {
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (esi_corriendo->id == id) {
+
+		pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
+		if(esi_a_matar_por_consola != NULL){
+			//ya habian pedido matarlo
+			pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+			printf("No se puede bloquear al esi: %d por consola, ya se solicito matarlo", id);
+		}else{
+			pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+			pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
+			esi_a_bloquear_por_consola = esi_corriendo;
+			pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+
+			pthread_mutex_lock(&mutex_clave_a_bloquear);
+			clave_a_bloquear = (char*) malloc(40);
+			clave_a_bloquear = clave;
+			pthread_mutex_unlock(&mutex_clave_a_bloquear);
+		}
+
 		pthread_mutex_unlock(&mutex_esi_corriendo);
-		//es el esi corriendo
-		//TODO: ver q hacemos aca
 	} else {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
 		if (es_un_esi_listo(id)) {
@@ -188,9 +206,19 @@ void matar_por_consola(int id) {
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (esi_corriendo->id == id) {
+
+		pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
+		if(esi_a_bloquear_por_consola != NULL){
+			//ya habian pedido bloquearlo
+			pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+			printf("No puede solicitar matar al esi: %d por consola, ya se solicito bloquearlo", id);
+		}else{
+			pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+			pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
+			esi_a_matar_por_consola = esi_corriendo;
+			pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+		}
 		pthread_mutex_unlock(&mutex_esi_corriendo);
-		//es el esi corriendo
-		//TODO: ver q hacemos aca
 	} else {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
 		if (es_un_esi_listo(id)) {

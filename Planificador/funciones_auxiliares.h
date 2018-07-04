@@ -29,4 +29,5 @@ void aumentar_viene_esperando(void* esi);
 void aumentar_viene_corriendo(void* esi);
 
 
+
 #endif /* FUNCIONES_AUXILIARES_H_ */

@@ -28,6 +28,10 @@
 #include "sincronizacion.h"
 #include "funciones_auxiliares.h"
 
+extern bool planificacion_pausada;
+extern t_esi* esi_a_matar_por_consola;
+extern t_esi* esi_a_bloquear_por_consola;
+extern char* clave_a_bloquear;
 
 int flag;
 char* clave_bloqueadora;
@@ -46,12 +50,13 @@ t_dictionary *dic_clave_x_esi;
 
 t_protocolo respuesta_esi_corriendo;
 
-extern bool planificacion_pausada;
-
 bool algoritmo_debe_planificar() ;
 bool hay_que_planificar();
 
 t_esi *obtener_nuevo_esi_a_correr() ;
+
+
+bool validar_si_hubo_bloqueo_o_asesinato_por_consola();
 
 void* planificar(void* _);
 void nuevo_esi(t_esi* esi);
@@ -66,6 +71,8 @@ void fallo_linea();
 void nueva_solicitud(int socket, char* clave);
 void liberar_recursos(t_esi* esi_a_liberar);
 void liberar_clave(void* clave);
+void ejecutar_bloqueo_o_asesinato();
+
 
 void deadlock();
 void itera_por_linea(char *claveIncialTomada, void *esiInicial);
