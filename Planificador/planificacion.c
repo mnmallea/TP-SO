@@ -381,11 +381,30 @@ void liberar_clave(void* clave) {
 }
 
 bool validar_si_hubo_bloqueo_o_asesinato_por_consola(){
-	return (esi_a_matar_por_consola != NULL || esi_a_matar_por_consola != NULL);
+
+	bool valido1; bool valido2;
+
+	pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
+	valido1 = esi_a_bloquear_por_consola != NULL;
+	pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+
+
+	pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
+	valido2 = esi_a_matar_por_consola != NULL;
+	pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+
+	return (valido1 || valido2);
 }
 
 void nullear_esis_por_consola(){
-	esi_a_matar_por_consola = NULL; esi_a_matar_por_consola = NULL;
+
+	pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
+	esi_a_matar_por_consola = NULL;
+	pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+
+	pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
+	esi_a_bloquear_por_consola = NULL;
+	pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
 }
 
 
