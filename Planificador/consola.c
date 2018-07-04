@@ -26,7 +26,7 @@ void *menu(void *ptr) {
 				"\n 6 <clave>: para conocer el status de la clave"
 				"\n 7: para solucionar conflictos de deadlock "
 				"\n 0: para salir de la consola \n"
-				"\nOpcion n°:");
+				"Opcion n°:");
 
 		scanf("%d", &opcion_seleccionada);
 
