@@ -54,27 +54,26 @@ int main(int argc, char* argv[]) {
 
 			PROCESAR: switch (parsed.keyword) {
 			case GET:
-				log_debug(logger, "Get %s", parsed.argumentos.SET.clave);
-				enviar_get(socketCord, parsed.argumentos.GET.clave);
+				log_debug(logger, "Get %s", parsed.argumentos.GET.clave);
+
+				if (strlen(parsed.argumentos.GET.clave) <= 40) {
+					enviar_get(socketCord, parsed.argumentos.GET.clave);
+				}
+				else {
+					log_error(logger,
+							"El tamaño de la clave <%s> es superior al permitido\n",
+							line);
+					enviar_cod_operacion(socketPlan, CLAVE_SIZE);
+					destruir_operacion(parsed);
+					goto FREE;
+					}
 				break;
 
 			case SET:
 				log_debug(logger, "Set %s %s", parsed.argumentos.SET.clave,
 						parsed.argumentos.SET.valor);
-				if (strlen(parsed.argumentos.SET.valor) < 40) {
-
-					enviar_set(socketCord, parsed.argumentos.SET.clave,
-							parsed.argumentos.SET.valor);
-
-				} else {
-					log_error(logger,
-							"El tamaño del valor <%s> es superior al permitido\n",
-							line);
-					enviar_cod_operacion(socketPlan, LINEA_SIZE);
-					destruir_operacion(parsed);
-					goto FREE;
-
-				}
+				enviar_set(socketCord, parsed.argumentos.SET.clave,
+						parsed.argumentos.SET.valor);
 				break;
 
 			case STORE:

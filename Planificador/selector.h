@@ -39,6 +39,8 @@ void listener(void);
 t_esi *crear_nodo_esi(int socket);
 int socketProceso(t_esi *n_esi);
 respuesta_status_clave_t recibir_status_clave();
+void atender_nueva_conexion();
+void atender_error(int nbytes);
 
 #endif /* SELECTOR_H_ */
 

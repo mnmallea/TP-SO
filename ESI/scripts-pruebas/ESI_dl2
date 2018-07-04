@@ -3,10 +3,18 @@ SET futbol:masche TraemeLaCopa
 SET futbol:masche TraemeLaCo
 SET futbol:masche TraemeLaCopa
 SET futbol:masche TraemeLaCo
-GET futbol:messi
-SET futbol:messi TraemeLaCopaMessi
-SET futbol:messi TraemeLaCo
-SET futbol:messi TraemeLaCopaMessi
-SET futbol:messi TraemeLaCo
-STORE futbol:messi
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+GET futbol:pipa
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+STORE futbol:pipa
 STORE futbol:masche

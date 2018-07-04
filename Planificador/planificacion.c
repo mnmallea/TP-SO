@@ -226,7 +226,7 @@ void correr(t_esi* esi) {
 		}
 
 		break;
-	case LINEA_SIZE:
+	case CLAVE_SIZE:
 		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
 			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
 			nullear_esis_por_consola();
@@ -307,7 +307,7 @@ void ya_termino_linea() {
 
 void linea_size() {
 //si leyo mal la linea
-	log_error(logger, "El ESI %d leyo una linea con mas de 40 caracteres\n",
+	log_error(logger, "El ESI %d leyo una clave con mas de 40 caracteres\n",
 			esi_corriendo->id);
 	finalizar_esi(esi_corriendo);
 }
@@ -432,16 +432,12 @@ void ejecutar_bloqueo_o_asesinato(){
 }
 
 
-/*
+
 typedef struct {
 	int idEsi;
 	char *retiene;
 	char *espera;
 } t_dl;
-
-typedef struct {
-	char *clave;
-} t_clave_dl;
 
 t_list * listaDL;
 t_list *idsDL, *idsDLL;
@@ -449,105 +445,68 @@ t_dl *candidato;
 t_esi *esiDL;
 int rye = 0;
 
-<<<<<<< HEAD
 void deadlock(){
  idsDL = list_create();
  dictionary_iterator(dic_clave_x_esi,itera_por_linea);
- if(list_size(idsDL)==0){
-	printf("No hay deadlocks.\n");
- }
  list_destroy_and_destroy_elements(idsDL,(void*) free);
  }
-=======
-void deadlock() {
-	idsDL = list_create();
-	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
 
-	list_destroy_and_destroy_elements(idsDL, (void*) free);
-}
->>>>>>> fc7e02cf6c4448d2eb395300309628ef6de92e5f
-
-void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
-	rye = 1;
+void itera_por_linea(char *claveIncialTomada, void *esiInicial){
+	rye=1;
 	//primerEsi
 	candidato = malloc(sizeof(t_dl));
 	candidato->idEsi = ((t_esi*) esiInicial)->id;
 
-	if (!list_any_satisfy(idsDL, esta) && ((t_esi*) esiInicial)->id != -1) {
+	if(!list_any_satisfy(idsDL,esta)&&((t_esi*) esiInicial)->id!=-1){
 		listaDL = list_create();
 		idsDLL = list_create();
-<<<<<<< HEAD
-		candidato->retiene = claveIncialTomada;								//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
-		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);   	//busco la clave q espera el ESI
-			if(!rye)														//flag para ver si se cumple retencion y espera
+		candidato->retiene = claveIncialTomada;
+		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
+			if(!rye)
 				goto DEST;
 		//sgtes
 		do{
-			char * esperaAnterior=candidato->espera;
+			char *retieneProx=candidato->espera;
 			candidato = malloc(sizeof(t_dl));
-			esiDL=dictionary_get(dic_clave_x_esi,esperaAnterior);			//quien tiene la clave que espera el anterior?
-			candidato->idEsi = ((t_esi*) esiDL)->id;						//el nuevo esi ahora es el actual
-			candidato->retiene = esperaAnterior;							//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
-			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);	//busco la clave que espera el ESI
-			if(!rye)														//flag para ver si se cumple retencion y espera
+			esiDL=dictionary_get(dic_clave_x_esi,retieneProx);
+			candidato->idEsi = ((t_esi*) esiDL)->id;
+			candidato->retiene = retieneProx;
+			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
+			if(!rye)
 				goto DEST;
 
-		}while(strcmp(claveIncialTomada,candidato->espera)!=0);				//se sigue buscando para encontrar la espera circular
-=======
-		candidato->retiene = claveIncialTomada;	//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
-		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera); //busco la espera el ESI
-		if (!rye)				//flag para ver si se cumple retencion y espera
-			goto DEST;
-		//sgtes
-		do {
-			char * retieneProx = candidato->espera;
-			candidato = malloc(sizeof(t_dl));
-			esiDL = dictionary_get(dic_clave_x_esi, retieneProx);//quien tiene la clave que espera el anterior?
-			candidato->idEsi = ((t_esi*) esiDL)->id;//el nuevo esi ahora es el actual
-			candidato->retiene = retieneProx;//ya sabemos que retiene porque lo toma del diccionario de clave_x_esi
-			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);//busco la clave que espera el ESI
-			if (!rye)			//flag para ver si se cumple retencion y espera
-				goto DEST;
-			//sino salta al fin ya que una condicion no se cumple
+		}while(strcmp((*claveIncialTomada),candidato->espera)!=0);
 
-		} while (strcmp(claveIncialTomada, candidato->espera) != 0);//se busca la espera circular
->>>>>>> fc7e02cf6c4448d2eb395300309628ef6de92e5f
-
-		list_iterate(idsDLL, mergearL);	//agrego los ids en dl a la lista global para evitar que los vuelvan a revisar en la proxima iteracion
+		list_iterate(idsDLL,mergearL);
 
 		//print
 		//printf header de la tabla
-		list_iterate(listaDL, mostrarDL);
+		list_iterate(listaDL,mostrarDL);
 
-		DEST: list_destroy_and_destroy_elements(listaDL, (void*) free);
-		list_destroy_and_destroy_elements(idsDLL, (void*) free);
-	}
-}
-int *idEsis;
-void buscarClaveQEspera(char* claveQEspera, void* esisbloq) {
-	if (list_find(esisbloq, esta) != NULL) {
-		candidato->espera = claveQEspera;
-		list_add(listaDL, candidato);
-		idEsis = malloc(sizeof(int));
-		*(idEsis) = candidato->idEsi;
-		list_add(idsDLL, idEsis);
-	} else {
-		rye = 0;
+		DEST:list_destroy_and_destroy_elements(listaDL,(void*) free);
+			 list_destroy_and_destroy_elements(idsDLL,(void*) free);
 	}
 }
 
-bool esta(void *esi) {
+void buscarClaveQEspera(char* claveQEspera, void* esisbloq){
+	if (list_find(esisbloq,esta)!=NULL){
+			candidato->espera = claveQEspera;
+			list_add(listaDL,candidato);
+			list_add(idsDLL,&(candidato->idEsi));
+		}
+	else{
+		rye=0;
+	}
+}
+
+bool esta(void *esi){
 	return ((t_esi*) esi)->id == candidato->idEsi;
 }
 
-void mergearL(void *id) {
-	list_add(idsDL, id);
+void mergearL(void *id){
+			list_add(idsDL,id);
 }
 
-void mostrarDL(void* candidato) {
-	printf("%d  |  %s   | %s", ((t_dl*) candidato)->idEsi,
-			((t_dl*) candidato)->retiene, ((t_dl*) candidato)->espera);
+void mostrarDL(void* candidato){
+			printf("%d  |  %s   | %s",((t_dl*) candidato)->idEsi,((t_dl*) candidato)->retiene,((t_dl*) candidato)->espera);
 }
-
-*/
-

@@ -17,57 +17,6 @@
 
 int id = 1;
 
-void atender_error(int nbytes) {
-	log_trace(logger, "Error en el socket %d\t Socket Coordinador %d", i,
-			socketCord);
-	if (i == socketCord) {
-		if (nbytes == 0) {
-			log_error(logger,
-					"La conexion con el Coordinador finalizo inesperadamente\n");
-
-			exit(EXIT_FAILURE);
-		} else {
-			log_error(logger,
-					"El mensaje recivido por el Coordinador tiene errores\n");
-		}
-	} else {
-		if (nbytes == 0) {
-			log_error(logger,
-					"La conexion con del socket %d finalizo inesperadamente\n",
-					i);
-		} else {
-			log_error(logger,
-					"El mensaje recivido por el socket %d tiene errores\n", i);
-		}
-		//list_remove_and_destroy_by_condition(lista_esis_listos, (void*) i,
-		//							(void*) free);
-	}
-	close(i);
-	FD_CLR(i, &master);
-}
-
-void atender_nueva_conexion() {
-	addrlen = sizeof remoteaddr;
-	newfd = accept(socketServer, (struct sockaddr*) &remoteaddr, &addrlen);
-	if (newfd == -1) {
-		log_error(logger, "No se pudo aceptar la conexion\n");
-	} else {
-		FD_SET(newfd, &master);
-		if (newfd > fdmax) {
-			fdmax = newfd;
-		}
-		log_trace(logger, "Nueva conexion por el socket %d\n", newfd);
-		t_esi* n_esi = crear_nodo_esi(newfd);
-		n_esi->id = id;
-		nuevo_esi(n_esi);
-		mandar_mensaje(newfd, id);
-		id++;
-//		log_info(logger, "Cantidad de elementos en la lista: %d",
-//				list_size(lista_esis_listos));
-		//No logear esto si realmente no aporta porque te produce una condicion de carrera el list_size
-	}
-}
-
 void listener(void) {
 
 	FD_ZERO(&master);
@@ -190,6 +139,55 @@ void listener(void) {
 
 }
 
+void atender_nueva_conexion() {
+	addrlen = sizeof remoteaddr;
+	newfd = accept(socketServer, (struct sockaddr*) &remoteaddr, &addrlen);
+	if (newfd == -1) {
+		log_error(logger, "No se pudo aceptar la conexion\n");
+	} else {
+		FD_SET(newfd, &master);
+		if (newfd > fdmax) {
+			fdmax = newfd;
+		}
+		log_trace(logger, "Nueva conexion por el socket %d\n", newfd);
+		t_esi* n_esi = crear_nodo_esi(newfd);
+		n_esi->id = id;
+		nuevo_esi(n_esi);
+		mandar_mensaje(newfd, id);
+		id++;
+	}
+}
+
+void atender_error(int nbytes) {
+	log_trace(logger, "Error en el socket %d\t Socket Coordinador %d", i,
+			socketCord);
+	if (i == socketCord) {
+		if (nbytes == 0) {
+			log_error(logger,
+					"La conexion con el Coordinador finalizo inesperadamente\n");
+
+			exit(EXIT_FAILURE);
+		} else {
+			log_error(logger,
+					"El mensaje recivido por el Coordinador tiene errores\n");
+		}
+	} else {
+		if (nbytes == 0) {
+			log_error(logger,
+					"El esi conectado al socket %d finalizo inesperadamente\n",
+					i);
+		} else {
+			log_error(logger,
+					"El mensaje recivido por el socket %d tiene errores\n", i);
+		}
+		//list_remove_and_destroy_by_condition(lista_esis_listos, (void*) i,
+		//							(void*) free);
+	}
+	close(i);
+	FD_CLR(i, &master);
+}
+
+
 t_status_clave recibir_enum_status_clave() {
 	t_status_clave respuesta;
 	if (recv(socketCord, &respuesta, sizeof(respuesta), MSG_NOSIGNAL) <= 0) {
@@ -246,12 +244,3 @@ int socketProceso(t_esi* n_esi) {
 	return (n_esi->socket == socketAEliminar);
 }
 
-/*void atenderESI(socket,buf)
- {
-
- switch(buf)
- {
-
- }
-
- }*/
