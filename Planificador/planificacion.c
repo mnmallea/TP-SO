@@ -128,7 +128,9 @@ void finalizar_esi(t_esi* esi_a_finalizar) {
 	close(esi_a_finalizar->socket);
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
-	esi_corriendo = NULL;
+	if(esi_a_finalizar-> id == esi_corriendo->id){
+		esi_corriendo = NULL;
+	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 
 }
@@ -140,10 +142,11 @@ void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
 	log_debug(logger, "Se bloqueo el esi: %d para la clave: %s \n",
 			esi_a_bloquear->id, clave);
 
-	//no pongo el mutex aca dado q lo pongo en el switch donde llama a bloquear esi con el esi corriendo
+	pthread_mutex_lock(&mutex_esi_corriendo);
 	if(esi_a_bloquear-> id == esi_corriendo->id){
 		esi_corriendo = NULL;
 	}
+	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
 void se_desbloqueo_un_recurso(char* clave) {
