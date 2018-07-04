@@ -36,9 +36,22 @@ char* nombres_protocolo[] = {
 	"VALOR_ENCONTRADO",
 	"VALOR_NO_ENCONTRADO",
 	"INSTANCIA_COMPACTAR",
-	"ERROR_CONEXION"
+	"ERROR_CONEXION" };
+char* desc_status_clave[] = {
+	"Hay valor para la clave",
+	"No hay valor para la clave",
+	"La instancia esta disponible",
+	"La instancia se encuentra caida",
+	"No hay instancia asignada",
+	"La instancia no posee la clave",
+	"Se realizo la simulacion",
+	"No se realizo la simulacion"
 };
 
-char* to_string_protocolo(t_protocolo codigo){
+char* to_string_status_clave(t_status_clave codigo) {
+	return desc_status_clave[codigo];
+}
+
+char* to_string_protocolo(t_protocolo codigo) {
 	return nombres_protocolo[codigo];
 }

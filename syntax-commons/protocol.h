@@ -61,5 +61,6 @@ typedef enum status_clave{
 } t_status_clave;
 
 char* to_string_protocolo(t_protocolo codigo);
+char* to_string_status_clave(t_status_clave codigo);
 
 #endif /* PROTOCOL_H_ */

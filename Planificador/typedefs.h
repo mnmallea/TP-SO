@@ -8,6 +8,10 @@
 #ifndef TYPEDEFS_H_
 #define TYPEDEFS_H_
 
+#include <stdbool.h>
+
+#include "../syntax-commons/protocol.h"
+
 
 #define PORT_MAX_STRING_LENGTH 5
 
@@ -40,5 +44,14 @@ typedef struct{
 	double alfa;
 } config;
 
+typedef struct{
+	bool hay_valor;
+	char* valor;
+	t_status_clave estado_instancia;
+	bool hay_instancia;
+	char* instancia;
+	bool hay_simulacion;
+	char* instancia_simulacion;
+} respuesta_status_clave_t;
 
 #endif /* TYPEDEFS_H_ */
