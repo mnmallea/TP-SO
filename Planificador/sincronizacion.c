@@ -20,6 +20,7 @@ void inicializar_semaforos() {
 	pthread_mutex_init(&mutex_dic_clave_x_esi, NULL);
 	pthread_mutex_init(&mutex_dic_esis_bloqueados, NULL);
 	pthread_mutex_init(&mutex_pausa, NULL);
+	pthread_mutex_init(&mutex_esi_corriendo, NULL);
 
 	sem_init(&pausa_planificacion, 0, 0);
 	sem_init(&coordinador_respondio_paq, 0, 0);

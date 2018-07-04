@@ -21,6 +21,7 @@ pthread_mutex_t mutex_lista_esis_finalizados;
 pthread_mutex_t mutex_dic_clave_x_esi;
 pthread_mutex_t mutex_pausa;
 pthread_mutex_t mutex_dic_esis_bloqueados;
+pthread_mutex_t mutex_esi_corriendo;
 
 sem_t pausa_planificacion;
 sem_t coordinador_respondio_paq;
