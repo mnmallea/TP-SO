@@ -72,6 +72,7 @@ void nueva_solicitud(int socket, char* clave);
 void liberar_recursos(t_esi* esi_a_liberar);
 void liberar_clave(void* clave);
 void ejecutar_bloqueo_o_asesinato();
+void nullear_esis_por_consola();
 
 
 void deadlock();
