@@ -2,23 +2,11 @@
 #ifndef SELECTOR_H_
 #define SELECTOR_H_
 
-#include <stdio.h>
-#include <sys/types.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
-#include <netdb.h>
-#include <stdbool.h>
-
 #include <commons/collections/list.h>
-#include <commons/log.h>
+#include <stdbool.h>
+#include <sys/select.h>
 
-#include "../syntax-commons/my_socket.h"
-#include "../syntax-commons/protocol.h"
-#include "../syntax-commons/conexiones.h"
-
-#include "config_planificador.h"
-#include "planificacion.h"
 #include "typedefs.h"
 
 #define LOG_LEVEL LOG_LEVEL_TRACE
@@ -28,6 +16,7 @@ extern t_list *lista_esis_listos;
 extern t_esi* esi_corriendo;
 extern t_esi esi;
 extern config configuracion;
+extern respuesta_status_clave_t respuesta_status_clave;
 
 fd_set master;
 fd_set read_fds;
@@ -49,6 +38,7 @@ struct sockaddr_storage remoteaddr;
 void listener(void);
 t_esi *crear_nodo_esi(int socket);
 int socketProceso(t_esi *n_esi);
+respuesta_status_clave_t recibir_status_clave();
 
 #endif /* SELECTOR_H_ */
 

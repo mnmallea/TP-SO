@@ -1,5 +1,20 @@
 #include "selector.h"
 
+#include <commons/log.h>
+#include <semaphore.h>
+#include <stdlib.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <unistd.h>
+
+#include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/deserializador.h"
+#include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/protocol.h"
+#include "funciones_auxiliares.h"
+#include "planificacion.h"
+#include "sincronizacion.h"
+
 int id = 1;
 
 void atender_error(int nbytes) {
@@ -25,7 +40,7 @@ void atender_error(int nbytes) {
 					"El mensaje recivido por el socket %d tiene errores\n", i);
 		}
 		//list_remove_and_destroy_by_condition(lista_esis_listos, (void*) i,
-			//							(void*) free);
+		//							(void*) free);
 	}
 	close(i);
 	FD_CLR(i, &master);
@@ -133,7 +148,8 @@ void listener(void) {
 							//dejar estos corchetes sin cuestionar (nay)
 						{
 							//si este esi_corriendo jode mucho hablarme(nay) y lo cambio
-							bool la_tiene = esi_tiene_clave(clave, esi_corriendo);
+							bool la_tiene = esi_tiene_clave(clave,
+									esi_corriendo);
 							t_protocolo cod_op;
 
 							if (la_tiene) {
@@ -158,13 +174,8 @@ void listener(void) {
 
 					} else {
 
-						if (try_recibirPaqueteVariable(i, (void**) &buffer) < 0) {
-							//buffer es variable de memoria compartida con la consola
-							log_error(logger,
-									"Fallo recibir paquete del coordinador");
-						} else {
-							sem_post(&coordinador_respondio_paq);
-						}
+						respuesta_status_clave = recibir_status_clave();
+						sem_post(&coordinador_respondio_paq);
 
 					}
 				}
@@ -177,6 +188,48 @@ void listener(void) {
 
 	}
 
+}
+
+t_status_clave recibir_enum_status_clave() {
+	t_status_clave respuesta;
+	if (recv(socketCord, &respuesta, sizeof(respuesta), MSG_NOSIGNAL) <= 0) {
+		log_error(logger, "Se perdio la comunicación con el coordinador");
+
+		exit(EXIT_FAILURE);
+	}
+	return respuesta;
+}
+
+respuesta_status_clave_t recibir_status_clave() {
+	respuesta_status_clave_t respuesta_status;
+
+	t_status_clave respuesta;
+	respuesta = recibir_enum_status_clave();
+
+	respuesta_status.hay_valor = respuesta == HAY_VALOR ? true : false;
+	if (respuesta_status.hay_valor) {
+		try_recibirPaqueteVariable(socketCord,
+				(void**) &respuesta_status.valor);
+	}
+
+	respuesta_status.estado_instancia = recibir_enum_status_clave();
+	respuesta_status.hay_instancia =
+			respuesta_status.estado_instancia != INSTANCIA_NO_ASIGNADA ?
+					true : false;
+	if (respuesta_status.hay_instancia) {
+		try_recibirPaqueteVariable(socketCord,
+				(void**) &respuesta_status.instancia);
+	}
+
+	respuesta = recibir_enum_status_clave();
+	respuesta_status.hay_simulacion =
+			respuesta == HAY_SIMULACION ? true : false;
+	if (respuesta_status.hay_simulacion) {
+		try_recibirPaqueteVariable(socketCord,
+				(void**) &respuesta_status.instancia_simulacion);
+	}
+
+	return respuesta_status;
 }
 
 t_esi *crear_nodo_esi(int socket) {

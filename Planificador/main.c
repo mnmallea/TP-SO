@@ -15,8 +15,12 @@ int main(int argc, char **argv) {
 	configuracion = configurar(argv[1]);
 	inicializar_semaforos();
 	planificacion_pausada = true;
+
+	dic_clave_x_esi = dictionary_create();
+
 	configurar_claves_inicialmente_bloqueadas();
 
+	log_trace(logger, "Se ha terminado la inicializacion");
 	/*Creacion de hilos*/
 	pthread_t consola_planificador;
 	pthread_t planificador;

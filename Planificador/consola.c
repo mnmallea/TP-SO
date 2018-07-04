@@ -7,6 +7,7 @@
 
 #include "consola.h"
 
+respuesta_status_clave_t respuesta_status_clave;
 
 void *menu(void *ptr) {
 
@@ -162,11 +163,13 @@ void bloquear(char* clave, int id) {
 	if (esi_corriendo->id == id) {
 
 		pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
-		if(esi_a_matar_por_consola != NULL){
+		if (esi_a_matar_por_consola != NULL) {
 			//ya habian pedido matarlo
 			pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
-			printf("No se puede bloquear al esi: %d por consola, ya se solicito matarlo", id);
-		}else{
+			printf(
+					"No se puede bloquear al esi: %d por consola, ya se solicito matarlo",
+					id);
+		} else {
 			pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
 			pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
 			esi_a_bloquear_por_consola = esi_corriendo;
@@ -187,13 +190,16 @@ void bloquear(char* clave, int id) {
 			eliminar_de_listos(esi_a_bloquear);
 			bloquear_esi(clave, esi_a_bloquear);
 		} else if (es_un_esi_bloqueado(id)) {
-			printf("El esi solicitado para el bloqueo(%d) ya se encontraba bloqueado",
+			printf(
+					"El esi solicitado para el bloqueo(%d) ya se encontraba bloqueado",
 					id);
 		} else if (es_un_esi_finalizado(id)) {
-			printf("El esi solicitado para el bloqueo(%d) ya se encontraba finalizado",
+			printf(
+					"El esi solicitado para el bloqueo(%d) ya se encontraba finalizado",
 					id);
 		} else {
-			printf("El esi solicitado para el bloqueo(%d) no existe en el sistema",
+			printf(
+					"El esi solicitado para el bloqueo(%d) no existe en el sistema",
 					id);
 		}
 	}
@@ -208,11 +214,13 @@ void matar_por_consola(int id) {
 	if (esi_corriendo->id == id) {
 
 		pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
-		if(esi_a_bloquear_por_consola != NULL){
+		if (esi_a_bloquear_por_consola != NULL) {
 			//ya habian pedido bloquearlo
 			pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
-			printf("No puede solicitar matar al esi: %d por consola, ya se solicito bloquearlo", id);
-		}else{
+			printf(
+					"No puede solicitar matar al esi: %d por consola, ya se solicito bloquearlo",
+					id);
+		} else {
 			pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
 			pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
 			esi_a_matar_por_consola = esi_corriendo;
@@ -254,15 +262,27 @@ void envia_status_clave(char* clave) {
 				"Error enviandole el paquete de status clave al coordindor");
 		paquete_destruir(paquete);
 		exit(EXIT_FAILURE);
-	} else {
-		while (1) {
-			sem_wait(&coordinador_respondio_paq);
-
-			//todo:  acceder a la variable compartida
-			//ponerle mutex a la variable
-			//hacer printf de las cosas que me mando
-		}
 	}
 	paquete_destruir(paquete);
+	sem_wait(&coordinador_respondio_paq);
+
+	show_respuesta_status_clave(respuesta_status_clave);
+
+}
+void show_respuesta_status_clave(respuesta_status_clave_t res){
+	if(res.hay_valor)
+		printf("Valor de la clave: %s\n", res.valor);
+	else
+		printf("No hay valor para la clave solicitada\n");
+
+	if(res.hay_instancia)
+		printf("Instancia: %s \t Estado: %s\n", res.instancia, to_string_status_clave(res.estado_instancia));
+	else
+		printf("%s\n", to_string_status_clave(res.estado_instancia));
+
+	if(res.hay_simulacion)
+		printf("La clave sería asignada a la instancia: %s", res.instancia_simulacion);
+	else
+		printf("No se ha realizado la simulacion");
 
 }
