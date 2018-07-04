@@ -169,16 +169,13 @@ void bloquear(char* clave, int id) {
 			eliminar_de_listos(esi_a_bloquear);
 			bloquear_esi(clave, esi_a_bloquear);
 		} else if (es_un_esi_bloqueado(id)) {
-			printf(
-					"El esi solicitado para el bloqueo(%d) ya se encontraba bloqueado",
+			printf("El esi solicitado para el bloqueo(%d) ya se encontraba bloqueado",
 					id);
 		} else if (es_un_esi_finalizado(id)) {
-			printf(
-					"El esi solicitado para el bloqueo(%d) ya se encontraba finalizado",
+			printf("El esi solicitado para el bloqueo(%d) ya se encontraba finalizado",
 					id);
 		} else {
-			printf(
-					"El esi solicitado para el bloqueo(%d) no existe en el sistema",
+			printf("El esi solicitado para el bloqueo(%d) no existe en el sistema",
 					id);
 		}
 	}
