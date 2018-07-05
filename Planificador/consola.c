@@ -16,6 +16,7 @@ void *menu(void *ptr) {
 	int id;
 
 	do {
+		system("clear");
 
 		printf("Ingrese la opcion que desea ejecutar: "
 				"\n 1: para pausar/continuar la ejecucion del planificador "
@@ -88,10 +89,9 @@ void *menu(void *ptr) {
 		}
 
 		getchar();
-		printf("\nPresione Enter para continuar..\n");
+		printf("\nPresione [Enter] para continuar..\n");
 		getchar();
 
-		system("clear");
 
 	} while (opcion_seleccionada != 0);
 

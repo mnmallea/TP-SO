@@ -6,6 +6,7 @@
 #include <commons/collections/list.h>
 #include <stdbool.h>
 #include <sys/select.h>
+#include "funciones_auxiliares_consola.h"
 
 #include "typedefs.h"
 
@@ -41,6 +42,7 @@ int socketProceso(t_esi *n_esi);
 respuesta_status_clave_t recibir_status_clave();
 void atender_nueva_conexion();
 void atender_error(int nbytes);
+int encontrarIdDelSocket(int i);
 
 #endif /* SELECTOR_H_ */
 
