@@ -124,7 +124,7 @@ void listener(void) {
 					} else {
 
 						respuesta_status_clave = recibir_status_clave();
-						sem_post(&coordinador_respondio_paq);
+						sem_post(&coordinador_respondio_paq); //para que se usa???
 
 					}
 				}
@@ -159,30 +159,39 @@ void atender_nueva_conexion() {
 }
 
 void atender_error(int nbytes) {
-	log_trace(logger, "Error en el socket %d\t Socket Coordinador %d", i,
-			socketCord);
+
 	if (i == socketCord) {
 		if (nbytes == 0) {
 			log_error(logger,
 					"La conexion con el Coordinador finalizo inesperadamente\n");
-
 			exit(EXIT_FAILURE);
 		} else {
 			log_error(logger,
-					"El mensaje recivido por el Coordinador tiene errores\n");
+					"El mensaje recibido por el Coordinador tiene errores\n");
 		}
 	} else {
+		int id=encontrarIdDelSocket(i);
 		if (nbytes == 0) {
 			log_error(logger,
-					"El esi conectado al socket %d finalizo inesperadamente\n",
-					i);
+					"El ESI (ID:%d) finalizó inesperadamente\n",
+					id);
+			if (es_un_esi_listo(id)) {
+				t_esi* esi_a_matar = obtener_de_listos(id);
+				eliminar_de_listos(esi_a_matar);
+				finalizar_esi(esi_a_matar);
+			}
+			else if(es_un_esi_bloqueado(id)){
+				t_esi* esi_a_matar = obtener_de_bloqueados(id);
+				eliminar_de_bloqueados(esi_a_matar);
+				finalizar_esi(esi_a_matar);
+			}
+
 		} else {
 			log_error(logger,
-					"El mensaje recivido por el socket %d tiene errores\n", i);
+					"El mensaje recibido por el ESI (ID:%d) tiene errores\n", id);
 		}
-		//list_remove_and_destroy_by_condition(lista_esis_listos, (void*) i,
-		//							(void*) free);
 	}
+	log_debug(logger,"termina de atender el error"); //nunca sale el select del primer kill
 	close(i);
 	FD_CLR(i, &master);
 }
@@ -238,6 +247,40 @@ t_esi *crear_nodo_esi(int socket) {
 	p->viene_esperando = 0;
 
 	return p;
+}
+
+int encontrarIdDelSocket(int i){
+	int id=0;
+	t_esi* esi_a_devolver=NULL;
+
+	bool tiene_el_socket_buscado(void* esi){
+					return ((t_esi*)esi)->socket == i;
+		}
+
+	pthread_mutex_lock(&mutex_lista_esis_listos);
+	esi_a_devolver=list_find(lista_esis_listos, tiene_el_socket_buscado);
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
+	if(esi_a_devolver!=NULL)
+		id=esi_a_devolver->id;
+
+	if(id==0){
+
+		bool tiene_el_socket_buscado(void* esi){
+							return ((t_esi*)esi)->socket == i;
+				}
+
+		void buscar_esi(char* c, void* lista_esis_bloq){
+			esi_a_devolver = list_find(lista_esis_bloq, tiene_el_socket_buscado);
+			id=esi_a_devolver->id;
+		}
+
+		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
+		dictionary_iterator(dic_esis_bloqueados, buscar_esi);
+		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
+
+	}
+
+	return id;
 }
 
 int socketProceso(t_esi* n_esi) {

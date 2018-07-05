@@ -63,17 +63,18 @@ void* planificar(void* _) {
 		log_trace(logger, "Estoy planificandoooo!!!!");
 
 		if (hay_que_planificar()) {
-
-			pthread_mutex_lock(&mutex_esi_corriendo);
+			log_debug(logger, "Pase hay que planificar");
+			//pthread_mutex_lock(&mutex_esi_corriendo);
+			log_debug(logger, "Antes de nuevo esi");
 			esi_corriendo = obtener_nuevo_esi_a_correr();
-			pthread_mutex_unlock(&mutex_esi_corriendo);
+			//pthread_mutex_unlock(&mutex_esi_corriendo);
 
 			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 		} else {
 			log_debug(logger, "Se continua corriendo: %d \n",
 					esi_corriendo->id);
 		}
-
+		log_debug(logger, "Para correr");
 		correr(esi_corriendo);
 	}
 	return NULL;
@@ -87,7 +88,9 @@ t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
 
 	sem_wait(&contador_esis);
+	log_debug(logger, "Pase el contador de esi a correr");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
+	log_debug(logger, "Pase el mutex de esi a correr");
 	if (configuracion.algoritmo == FIFO) {
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
 	} else if (configuracion.algoritmo == SJFsD) {
