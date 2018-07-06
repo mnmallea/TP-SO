@@ -41,6 +41,7 @@ bool algoritmo_debe_planificar() {
 bool hay_que_planificar() {
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	return esi_corriendo == NULL || algoritmo_debe_planificar();
+
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
@@ -89,8 +90,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 
 	sem_wait(&contador_esis);
 	log_debug(logger, "Pase el contador de esi a correr");
-	pthread_mutex_lock(&mutex_lista_esis_listos);
-	log_debug(logger, "Pase el mutex de esi a correr");
+
 	if (configuracion.algoritmo == FIFO) {
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
 	} else if (configuracion.algoritmo == SJFsD) {
@@ -101,7 +101,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 		prox_esi = obtener_proximo_segun_hrrn(lista_esis_listos);
 	}
 	hay_nuevo_esi = false;
-	pthread_mutex_unlock(&mutex_lista_esis_listos);
+
 
 	return prox_esi;
 
@@ -111,8 +111,9 @@ t_esi *obtener_nuevo_esi_a_correr() {
 void nuevo_esi(t_esi* esi) {
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	list_add(lista_esis_listos, esi);
-	hay_nuevo_esi = true;
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
+	hay_nuevo_esi = true;
+
 	sem_post(&contador_esis);
 	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
 			esi->id);
