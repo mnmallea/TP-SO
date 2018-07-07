@@ -38,12 +38,6 @@ bool algoritmo_debe_planificar() {
 	}
 }
 
-bool hay_que_planificar() {
-	pthread_mutex_lock(&mutex_esi_corriendo);
-	return esi_corriendo == NULL || algoritmo_debe_planificar();
-
-	pthread_mutex_unlock(&mutex_esi_corriendo);
-}
 
 void* planificar(void* _) {
 	esi_corriendo = NULL;
@@ -62,8 +56,9 @@ void* planificar(void* _) {
 		}
 
 		log_trace(logger, "Estoy planificandoooo!!!!");
-
+		pthread_mutex_lock(&mutex_esi_corriendo);
 		if (hay_que_planificar()) {
+			pthread_mutex_unlock(&mutex_esi_corriendo);
 			log_debug(logger, "Pase hay que planificar");
 			//pthread_mutex_lock(&mutex_esi_corriendo);
 			log_debug(logger, "Antes de nuevo esi");
@@ -72,6 +67,7 @@ void* planificar(void* _) {
 
 			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 		} else {
+			pthread_mutex_unlock(&mutex_esi_corriendo);
 			log_debug(logger, "Se continua corriendo: %d \n",
 					esi_corriendo->id);
 		}
@@ -79,6 +75,113 @@ void* planificar(void* _) {
 		correr(esi_corriendo);
 	}
 	return NULL;
+
+}
+
+
+bool hay_que_planificar() {
+	return esi_corriendo == NULL || algoritmo_debe_planificar();
+}
+
+void correr(t_esi* esi) {
+
+	mandar_confirmacion(esi->socket);
+
+	sem_wait(&respondio_esi_corriendo);
+	log_debug(logger, "Signal para correr");
+
+	//Aumenta cuanto vienen esperando los que estan en listos
+	pthread_mutex_lock(&mutex_lista_esis_listos);
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
+
+	log_debug(logger, "Aumento rafaga listos");
+
+	//Aumenta la rafaga del esi que esta corriendo
+	//pthread_mutex_lock(&mutex_esi_corriendo);
+	aumentar_viene_corriendo(esi_corriendo);
+	//pthread_mutex_unlock(&mutex_esi_corriendo);
+
+	log_debug(logger, "Aumento rafaga corriendo");
+
+	switch (respuesta_esi_corriendo) {
+	case EXITO:
+		ya_termino_linea();
+
+		log_debug(logger, "Se procede a validar si habian pedido matar/bloquear al esi por consola");
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_debug(logger, "Se encontro pedido de consola, se procede a ejecutar bloqueo/asesinato de esi");
+			ejecutar_bloqueo_o_asesinato();
+			nullear_esis_por_consola();
+		}
+
+		break;
+	case CLAVE_SIZE:
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		linea_size();
+		log_error(logger, "El error fue: el ESI intento leer una linea de mas de 40 caracteres");
+		break;
+	case INTERPRETAR:
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		interpretar();
+		log_error(logger, "El error fue: no se pudo interpretar una linea del ESI");
+		break;
+	case ERROR_CONEXION: //porque valida en todos los casos si hubo asesinato por consola?
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		finalizar_esi(esi_corriendo);
+		log_error(logger, "El error fue: error de conexion en el ESI");
+		break;//antes no break
+	case ABORTA:
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		fallo_linea();
+		log_error(logger, "El error fue: no se pudo ejecutar una linea del ESI");
+		break;
+
+	case INSTANCIA_CAIDA_EXCEPTION:
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+
+		fallo_linea();
+		log_error(logger, "El error fue: falla leyendo una linea del ESI debido a problemas de instancia");
+		break;
+
+	case FINALIZO_ESI:
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_debug(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque el esi ya ha finalizado su script");
+			nullear_esis_por_consola();
+		}
+		finalizar_esi(esi_corriendo);
+		break;
+	case BLOQUEO_ESI:
+		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
+			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque ya el esi fue bloqueado por su script");
+			nullear_esis_por_consola();
+		}
+
+		bloquear_esi(clave_bloqueadora,esi_corriendo);
+
+		free(clave_bloqueadora);
+		break;
+
+	default:
+		break;
+	}
+
+	log_debug(logger, "Salio de correr");
 
 }
 
@@ -121,6 +224,7 @@ void nuevo_esi(t_esi* esi) {
 
 void finalizar_esi(t_esi* esi_a_finalizar) {
 
+
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n", esi_a_finalizar->id);
 
 	liberar_recursos(esi_a_finalizar);
@@ -134,6 +238,9 @@ void finalizar_esi(t_esi* esi_a_finalizar) {
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if(esi_a_finalizar-> id == esi_corriendo->id){
 		esi_corriendo = NULL;
+	}
+	else{
+		eliminar_de_listos(esi_a_finalizar);
 	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 
@@ -202,114 +309,7 @@ void se_desbloqueo_un_recurso(char* clave) {
 
 }
 
-void correr(t_esi* esi) {
 
-	mandar_confirmacion(esi->socket);
-
-	sem_wait(&respondio_esi_corriendo);
-	log_debug(logger, "Signal para correr");
-
-	//Aumenta cuanto vienen esperando los que estan en listos
-	pthread_mutex_lock(&mutex_lista_esis_listos);
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	pthread_mutex_unlock(&mutex_lista_esis_listos);
-
-	log_debug(logger, "Aumento rafaga listos");
-
-	//Aumenta la rafaga del esi que esta corriendo
-	pthread_mutex_lock(&mutex_esi_corriendo);
-	aumentar_viene_corriendo(esi_corriendo);
-	pthread_mutex_unlock(&mutex_esi_corriendo);
-
-	log_debug(logger, "Aumento rafaga corriendo");
-
-	switch (respuesta_esi_corriendo) {
-	case EXITO:
-		ya_termino_linea();
-
-		log_debug(logger, "Se procede a validar si habian pedido matar/bloquear al esi por consola");
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_debug(logger, "Se encontro pedido de consola, se procede a ejecutar bloqueo/asesinato de esi");
-			ejecutar_bloqueo_o_asesinato();
-			nullear_esis_por_consola();
-		}
-
-		break;
-	case CLAVE_SIZE:
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
-			nullear_esis_por_consola();
-		}
-		linea_size();
-		log_error(logger, "El error fue: el ESI intento leer una linea de mas de 40 caracteres");
-		break;
-	case INTERPRETAR:
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
-			nullear_esis_por_consola();
-		}
-		interpretar();
-		log_error(logger, "El error fue: no se pudo interpretar una linea del ESI");
-		break;
-	case ERROR_CONEXION: //porque valida en todos los casos si hubo asesinato por consola?
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
-			nullear_esis_por_consola();
-		}
-		pthread_mutex_lock(&mutex_esi_corriendo);
-		finalizar_esi(esi_corriendo);
-		pthread_mutex_unlock(&mutex_esi_corriendo);
-		log_error(logger, "El error fue: error de conexion en el ESI");
-		break;//antes no break
-	case ABORTA:
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
-			nullear_esis_por_consola();
-		}
-		fallo_linea();
-		log_error(logger, "El error fue: no se pudo ejecutar una linea del ESI");
-		break;
-
-	case INSTANCIA_CAIDA_EXCEPTION:
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
-			nullear_esis_por_consola();
-		}
-
-		fallo_linea();
-		log_error(logger, "El error fue: falla leyendo una linea del ESI debido a problemas de instancia");
-		break;
-
-	case FINALIZO_ESI:
-
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_debug(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque el esi ya ha finalizado su script");
-			nullear_esis_por_consola();
-		}
-		pthread_mutex_lock(&mutex_esi_corriendo);
-		finalizar_esi(esi_corriendo);
-		pthread_mutex_unlock(&mutex_esi_corriendo);
-		break;
-	case BLOQUEO_ESI:
-
-		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
-			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque ya el esi fue bloqueado por su script");
-			nullear_esis_por_consola();
-		}
-
-		pthread_mutex_lock(&mutex_esi_corriendo);
-		bloquear_esi(clave_bloqueadora,esi_corriendo);
-		pthread_mutex_unlock(&mutex_esi_corriendo);
-		free(clave_bloqueadora);
-		break;
-
-	default:
-		break;
-	}
-
-	log_debug(logger, "Salio de correr");
-
-}
 
 void ya_termino_linea() {
 
