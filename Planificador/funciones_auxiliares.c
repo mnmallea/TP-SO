@@ -48,9 +48,10 @@ bool esi_tiene_clave(char* clave, t_esi* esi_a_validar) {
 }
 
 bool puede_tomar_la_clave(char* clave, t_esi* esi_solicitante) {
+	log_debug(logger, "Entra a puede tomar clave");
 
 	pthread_mutex_lock(&mutex_dic_clave_x_esi);
-
+	log_debug(logger, "mutex clave x esi en puede tomar");
 	//valido si la clave pedida ya estaba tomada por otro esi
 	if (dictionary_has_key(dic_clave_x_esi, clave)) {
 

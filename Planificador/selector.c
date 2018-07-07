@@ -59,6 +59,8 @@ void listener(void) {
 
 				nbytes = recv(i, &buf, sizeof buf, MSG_NOSIGNAL);
 
+
+
 				if (esi_corriendo != NULL && i == esi_corriendo->socket) {
 					if (nbytes <= 0) {
 						close(i);
@@ -80,7 +82,7 @@ void listener(void) {
 				if (nbytes <= 0) {
 					atender_error(nbytes);
 					continue;
-				}
+								}
 
 				if (i == socketCord) {
 

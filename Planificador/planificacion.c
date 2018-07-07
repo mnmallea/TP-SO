@@ -207,16 +207,21 @@ void correr(t_esi* esi) {
 	mandar_confirmacion(esi->socket);
 
 	sem_wait(&respondio_esi_corriendo);
+	log_debug(logger, "Signal para correr");
 
 	//Aumenta cuanto vienen esperando los que estan en listos
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	list_iterate(lista_esis_listos, aumentar_viene_esperando);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 
+	log_debug(logger, "Aumento rafaga listos");
+
 	//Aumenta la rafaga del esi que esta corriendo
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	aumentar_viene_corriendo(esi_corriendo);
 	pthread_mutex_unlock(&mutex_esi_corriendo);
+
+	log_debug(logger, "Aumento rafaga corriendo");
 
 	switch (respuesta_esi_corriendo) {
 	case EXITO:
@@ -246,14 +251,16 @@ void correr(t_esi* esi) {
 		interpretar();
 		log_error(logger, "El error fue: no se pudo interpretar una linea del ESI");
 		break;
-	case ERROR_CONEXION:
+	case ERROR_CONEXION: //porque valida en todos los casos si hubo asesinato por consola?
 		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
 			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
 			nullear_esis_por_consola();
 		}
-
+		pthread_mutex_lock(&mutex_esi_corriendo);
+		finalizar_esi(esi_corriendo);
+		pthread_mutex_unlock(&mutex_esi_corriendo);
 		log_error(logger, "El error fue: error de conexion en el ESI");
-		/* no break */
+		break;//antes no break
 	case ABORTA:
 		if(validar_si_hubo_bloqueo_o_asesinato_por_consola()){
 			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
@@ -281,7 +288,7 @@ void correr(t_esi* esi) {
 		}
 		pthread_mutex_lock(&mutex_esi_corriendo);
 		finalizar_esi(esi_corriendo);
-		pthread_mutex_lock(&mutex_esi_corriendo);
+		pthread_mutex_unlock(&mutex_esi_corriendo);
 		break;
 	case BLOQUEO_ESI:
 
@@ -299,6 +306,9 @@ void correr(t_esi* esi) {
 	default:
 		break;
 	}
+
+	log_debug(logger, "Salio de correr");
+
 }
 
 void ya_termino_linea() {
@@ -327,7 +337,9 @@ void fallo_linea() {
 //si leyo mal la linea
 	log_error(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
+	pthread_mutex_lock(&mutex_esi_corriendo);
 	finalizar_esi(esi_corriendo);
+	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
 
@@ -339,18 +351,19 @@ void nueva_solicitud(int socket, char* clave) {
 
 	log_debug(logger, "El esi: %d solicito la clave: %s, se procede a validar si ya estaba tomada", esi_corriendo->id, clave);
 
-	pthread_mutex_lock(&mutex_esi_corriendo);
-	if (puede_tomar_la_clave(clave, esi_corriendo)) {
-		pthread_mutex_unlock(&mutex_esi_corriendo);
+	//pthread_mutex_lock(&mutex_esi_corriendo); //aca se queda el dl
+	log_debug(logger, "paso mutex nueva solicitud");
+
+	if (!puede_tomar_la_clave(clave, esi_corriendo)) {
+		//pthread_mutex_unlock(&mutex_esi_corriendo);
 		log_debug(logger, "El esi: %d solicito una clave ya tomada, se procede a bloquearlo", esi_corriendo->id);
 		cod_op = BLOQUEO_ESI;
 		clave_bloqueadora = strdup(clave);
 
 	} else {
-
+		//pthread_mutex_unlock(&mutex_esi_corriendo); //
 		log_debug(logger, "Se procede a bloquear la clave: %s para el esi: %d \n", clave, esi_corriendo->id);
 		nueva_clave_tomada_x_esi(clave, esi_corriendo);
-		pthread_mutex_unlock(&mutex_esi_corriendo);
 		cod_op = EXITO;
 
 	}
@@ -479,7 +492,7 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial){
 			if(!rye)
 				goto DEST;
 
-		}while(strcmp((*claveIncialTomada),candidato->espera)!=0);
+		}while(strcmp(claveIncialTomada,candidato->espera)!=0);
 
 		list_iterate(idsDLL,mergearL);
 
