@@ -41,7 +41,7 @@ int paquete_enviar(t_paquete* paquete, int socket) {
 
 int paquete_enviar_con_codigo(t_paquete* paquete, t_protocolo codigo,
 		int sockfd) {
-	if (send(sockfd, &codigo, sizeof(codigo), 0) <= 0) {
+	if (send(sockfd, &codigo, sizeof(codigo), MSG_NOSIGNAL) <= 0) {
 		log_error(logger, "Error al enviar codigo paquete");
 		return -1;
 	}

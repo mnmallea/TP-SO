@@ -88,18 +88,18 @@ void listener(void) {
 
 				if (i == socketCord) {
 
-					if (buf != SOLICITUD_STATUS_CLAVE) {
+					if (buf != RESPUESTA_STATUS_CLAVE) {
 
 						recibir_operacion_unaria(i, &clave);
 
 						switch (buf) { //mensajes de coord
 
 						case DESBLOQUEO_CLAVE:
+							log_trace(logger, "El coordinador informo el desbloqueo de una clave");
 							se_desbloqueo_un_recurso(clave);
 							break;
 						case ESI_TIENE_CLAVE:
-							//dejar estos corchetes sin cuestionar (nay)
-						{
+							log_trace(logger, "El coordinador solicito saber si el ESI corriendo tiene una clave");
 							//si este esi_corriendo jode mucho hablarme(nay) y lo cambio
 							bool la_tiene = esi_tiene_clave(clave,
 									esi_corriendo);
@@ -112,9 +112,10 @@ void listener(void) {
 							}
 
 							enviar_cod_operacion(i, cod_op);
-						}
+
 							break;
 						case SOLICITUD_CLAVE:
+							log_trace(logger, "El coordinador solicita una clave para el esi corriendo");
 							nueva_solicitud(i, clave);
 							break;
 						default:
@@ -122,6 +123,8 @@ void listener(void) {
 									"Mensaje del coordinador desconocido");
 							break;
 						}
+						log_debug(logger, "Se ha enviado el resultado de la operacion al coordinador");
+
 						free(clave);
 						continue;
 
