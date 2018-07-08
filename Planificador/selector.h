@@ -44,5 +44,6 @@ void atender_nueva_conexion();
 void atender_error(int nbytes);
 int encontrarIdDelSocket(int i);
 
+
 #endif /* SELECTOR_H_ */
 
