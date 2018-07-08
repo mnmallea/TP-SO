@@ -65,10 +65,12 @@ void eliminar_de_listos(t_esi* esi_a_eliminar){
 	bool esElEsi(void* esi){
 			return esi_a_eliminar->id == ((t_esi*)esi)->id;
 		}
-
+	log_debug(logger,"x Lockear");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
+	log_debug(logger,"Lockeo");
 	list_remove_by_condition(lista_esis_listos, esElEsi);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
+	log_debug(logger,"ESI eliminado de listos");
 }
 
 void eliminar_de_bloqueados(t_esi* esi_a_eliminar){

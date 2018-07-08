@@ -56,18 +56,13 @@ void* planificar(void* _) {
 		}
 
 		log_trace(logger, "Estoy planificandoooo!!!!");
-		pthread_mutex_lock(&mutex_esi_corriendo);
+
 		if (hay_que_planificar()) {
 			pthread_mutex_unlock(&mutex_esi_corriendo);
-			log_debug(logger, "Pase hay que planificar");
-			//pthread_mutex_lock(&mutex_esi_corriendo);
 			log_debug(logger, "Antes de nuevo esi");
-			esi_corriendo = obtener_nuevo_esi_a_correr();
-			//pthread_mutex_unlock(&mutex_esi_corriendo);
-
+			esi_corriendo = obtener_nuevo_esi_a_correr(); //movi el mutex adentro, porque si se lockeaba por el contador arrastraba el mutex con el tambien
 			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 		} else {
-			pthread_mutex_unlock(&mutex_esi_corriendo);
 			log_debug(logger, "Se continua corriendo: %d \n",
 					esi_corriendo->id);
 		}
@@ -98,9 +93,9 @@ void correr(t_esi* esi) {
 	log_debug(logger, "Aumento rafaga listos");
 
 	//Aumenta la rafaga del esi que esta corriendo
-	//pthread_mutex_lock(&mutex_esi_corriendo);
+	pthread_mutex_lock(&mutex_esi_corriendo);
 	aumentar_viene_corriendo(esi_corriendo);
-	//pthread_mutex_unlock(&mutex_esi_corriendo);
+	pthread_mutex_unlock(&mutex_esi_corriendo);
 
 	log_debug(logger, "Aumento rafaga corriendo");
 
@@ -171,7 +166,6 @@ void correr(t_esi* esi) {
 			log_error(logger, "Se ignora el pedido realizado por consola(bloqueo/asesinato) porque ya el esi fue bloqueado por su script");
 			nullear_esis_por_consola();
 		}
-
 		bloquear_esi(clave_bloqueadora,esi_corriendo);
 
 		free(clave_bloqueadora);
@@ -193,7 +187,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 
 	sem_wait(&contador_esis);
 	log_debug(logger, "Pase el contador de esi a correr");
-
+	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (configuracion.algoritmo == FIFO) {
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
 	} else if (configuracion.algoritmo == SJFsD) {
@@ -203,6 +197,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 	} else {
 		prox_esi = obtener_proximo_segun_hrrn(lista_esis_listos);
 	}
+	pthread_mutex_unlock(&mutex_esi_corriendo);
 	hay_nuevo_esi = false;
 
 
@@ -224,12 +219,11 @@ void nuevo_esi(t_esi* esi) {
 
 void finalizar_esi(t_esi* esi_a_finalizar) {
 
-
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n", esi_a_finalizar->id);
 
 	liberar_recursos(esi_a_finalizar);
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);
-	list_add(lista_esis_finalizados, esi_corriendo);
+	list_add(lista_esis_finalizados, esi_a_finalizar);
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
 
 	log_debug(logger, "Se procede a cerrar el socket del ESI : %d \n", esi_a_finalizar->id);
@@ -238,9 +232,6 @@ void finalizar_esi(t_esi* esi_a_finalizar) {
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if(esi_a_finalizar-> id == esi_corriendo->id){
 		esi_corriendo = NULL;
-	}
-	else{
-		eliminar_de_listos(esi_a_finalizar);
 	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 
@@ -312,11 +303,9 @@ void se_desbloqueo_un_recurso(char* clave) {
 
 
 void ya_termino_linea() {
-
 //si leyo bien la linea
 	log_trace(logger, "El esi %d se termino de leer una nueva linea \n",
 			esi_corriendo->id);
-
 }
 
 void linea_size() {
@@ -337,9 +326,7 @@ void fallo_linea() {
 //si leyo mal la linea
 	log_error(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
-	pthread_mutex_lock(&mutex_esi_corriendo);
 	finalizar_esi(esi_corriendo);
-	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
 
@@ -351,17 +338,17 @@ void nueva_solicitud(int socket, char* clave) {
 
 	log_debug(logger, "El esi: %d solicito la clave: %s, se procede a validar si ya estaba tomada", esi_corriendo->id, clave);
 
-	//pthread_mutex_lock(&mutex_esi_corriendo); //aca se queda el dl
+	pthread_mutex_lock(&mutex_esi_corriendo); //aca se queda el dl
 	log_debug(logger, "paso mutex nueva solicitud");
 
 	if (!puede_tomar_la_clave(clave, esi_corriendo)) {
-		//pthread_mutex_unlock(&mutex_esi_corriendo);
+		pthread_mutex_unlock(&mutex_esi_corriendo);
 		log_debug(logger, "El esi: %d solicito una clave ya tomada, se procede a bloquearlo", esi_corriendo->id);
 		cod_op = BLOQUEO_ESI;
 		clave_bloqueadora = strdup(clave);
 
 	} else {
-		//pthread_mutex_unlock(&mutex_esi_corriendo); //
+		pthread_mutex_unlock(&mutex_esi_corriendo); //
 		log_debug(logger, "Se procede a bloquear la clave: %s para el esi: %d \n", clave, esi_corriendo->id);
 		nueva_clave_tomada_x_esi(clave, esi_corriendo);
 		cod_op = EXITO;

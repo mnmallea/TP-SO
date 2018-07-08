@@ -178,9 +178,12 @@ void atender_error(int nbytes) {
 					"El ESI (ID:%d) finalizó inesperadamente\n",
 					id);
 			if (es_un_esi_listo(id)) {
+				log_debug(logger,"Entro al esi listo");
 				t_esi* esi_a_matar = obtener_de_listos(id);
 				eliminar_de_listos(esi_a_matar);
+				log_debug(logger,"Elimino de listos");
 				finalizar_esi(esi_a_matar);
+				log_debug(logger,"Finalizo");
 			}
 			else if(es_un_esi_bloqueado(id)){
 				t_esi* esi_a_matar = obtener_de_bloqueados(id);
