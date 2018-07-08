@@ -224,17 +224,17 @@ void finalizar_esi(t_esi* esi_a_finalizar) {
 	liberar_recursos(esi_a_finalizar);
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);
 	list_add(lista_esis_finalizados, esi_a_finalizar);
+	log_debug(logger, "Agrego a finalizados");
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
 
-	log_debug(logger, "Se procede a cerrar el socket del ESI : %d \n", esi_a_finalizar->id);
-	close(esi_a_finalizar->socket);
-
 	pthread_mutex_lock(&mutex_esi_corriendo);
-	if(esi_a_finalizar-> id == esi_corriendo->id){
-		esi_corriendo = NULL;
+	if(esi_corriendo != NULL){ //dejarlo asi con un if dentro de un if , sino rompe
+		if(esi_a_finalizar-> id == esi_corriendo->id){
+			esi_corriendo = NULL;
+			log_debug(logger, "Nullea el corriendo");
+		}
 	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);
-
 }
 
 
@@ -359,26 +359,28 @@ void nueva_solicitud(int socket, char* clave) {
 }
 
 void liberar_recursos(t_esi* esi_a_liberar) {
-
+	int cont=0;
 	t_list *lista_claves_a_desbloquear = list_create();
-
 	void obtener_claves_tomadas_por_esi_a_liberar(char* clave, void* esi) {
 
 		if (((t_esi*) esi)->id == esi_a_liberar->id) {
 			list_add(lista_claves_a_desbloquear, clave);
+			cont++;
 		}
 	}
 
-	log_debug(logger, "Se procede a liberar las claves del esi: %d", esi_a_liberar);
-
-	pthread_mutex_lock(&mutex_dic_clave_x_esi);
 	//se obtienen todas las claves tomadas por el esi a liberar
+	pthread_mutex_lock(&mutex_dic_clave_x_esi);
 	dictionary_iterator(dic_clave_x_esi, obtener_claves_tomadas_por_esi_a_liberar);
 	pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 
 	//se itera la lista, liberando cada clave
-	list_iterate(lista_claves_a_desbloquear, liberar_clave);
-	list_destroy(lista_claves_a_desbloquear);
+	if(cont>0){
+		log_debug(logger, "Se procede a liberar las claves del esi: %d", esi_a_liberar->id);
+		list_iterate(lista_claves_a_desbloquear, liberar_clave);
+		list_destroy(lista_claves_a_desbloquear);
+	}
+	log_debug(logger, "Paso el cont");
 
 }
 

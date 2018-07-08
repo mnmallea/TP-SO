@@ -25,6 +25,8 @@ void listener(void) {
 	char* clave;
 	int nbytes;
 
+	esi_corriendo=NULL; //al principio debe empezar nulo
+
 	int handshake_msg = PLANIFICADOR;
 
 	socketServer = crear_socket_escucha(configuracion.puerto, BACKLOG);
@@ -179,18 +181,16 @@ void atender_error(int nbytes) {
 					id);
 			if (es_un_esi_listo(id)) {
 				log_debug(logger,"Entro al esi listo");
-				pthread_mutex_lock(&mutex_lista_esis_listos);
 				t_esi* esi_a_matar = obtener_de_listos(id);
-				pthread_mutex_unlock(&mutex_lista_esis_listos);
-				eliminar_de_listos(esi_a_matar);
-				log_debug(logger,"Elimino de listos");
 				finalizar_esi(esi_a_matar);
 				log_debug(logger,"Finalizo");
+				eliminar_de_listos(esi_a_matar);
+				log_debug(logger,"Elimino de listos");
 			}
 			else if(es_un_esi_bloqueado(id)){
 				t_esi* esi_a_matar = obtener_de_bloqueados(id);
-				eliminar_de_bloqueados(esi_a_matar);
 				finalizar_esi(esi_a_matar);
+				eliminar_de_bloqueados(esi_a_matar);
 			}
 
 		} else {
