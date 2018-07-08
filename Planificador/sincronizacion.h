@@ -31,7 +31,6 @@ sem_t pausa_planificacion;
 sem_t coordinador_respondio_paq;
 sem_t contador_esis;
 sem_t respondio_esi_corriendo;
-sem_t operacion_coordinador;
 
 void inicializar_semaforos();
 

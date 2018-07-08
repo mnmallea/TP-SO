@@ -25,6 +25,8 @@ void listener(void) {
 	char* clave;
 	int nbytes;
 
+	esi_corriendo=NULL; //al principio debe empezar nulo
+
 	int handshake_msg = PLANIFICADOR;
 
 	socketServer = crear_socket_escucha(configuracion.puerto, BACKLOG);
@@ -59,6 +61,8 @@ void listener(void) {
 
 				nbytes = recv(i, &buf, sizeof buf, MSG_NOSIGNAL);
 
+
+
 				if (esi_corriendo != NULL && i == esi_corriendo->socket) {
 					if (nbytes <= 0) {
 						close(i);
@@ -66,7 +70,7 @@ void listener(void) {
 						buf = ERROR_CONEXION;
 					}
 
-					if (buf == FINALIZO_ESI) { //me ahorra sincronizar y una posible condicion de carrera hacer esto aca
+					if (buf == FINALIZO_ESI) {//me ahorra sincronizar y una posible condicion de carrera hacer esto aca
 						close(i);
 						FD_CLR(i, &master);
 					}
@@ -80,26 +84,22 @@ void listener(void) {
 				if (nbytes <= 0) {
 					atender_error(nbytes);
 					continue;
-				}
+								}
 
 				if (i == socketCord) {
 
 					if (buf != RESPUESTA_STATUS_CLAVE) {
-						int valor;
 
 						recibir_operacion_unaria(i, &clave);
 
 						switch (buf) { //mensajes de coord
 
 						case DESBLOQUEO_CLAVE:
-							log_trace(logger,
-									"El coordinador informo el desbloqueo de una clave");
+							log_trace(logger, "El coordinador informo el desbloqueo de una clave");
 							se_desbloqueo_un_recurso(clave);
-
 							break;
 						case ESI_TIENE_CLAVE:
-							log_trace(logger,
-									"El coordinador solicito saber si el ESI corriendo tiene una clave");
+							log_trace(logger, "El coordinador solicito saber si el ESI corriendo tiene una clave");
 							//si este esi_corriendo jode mucho hablarme(nay) y lo cambio
 							bool la_tiene = esi_tiene_clave(clave,
 									esi_corriendo);
@@ -113,30 +113,18 @@ void listener(void) {
 
 							enviar_cod_operacion(i, cod_op);
 
-							log_trace(logger,
-									"LE HAGO POST AL SEMAFORO OPERACION COORDINADOR");
-							sem_post(&operacion_coordinador);
-
-							sem_getvalue(&operacion_coordinador, &valor);
-//							log_trace(logger, "VALOR DESPUES DEL POST: %d",
-//									valor);
-
 							break;
 						case SOLICITUD_CLAVE:
-							log_trace(logger,
-									"El coordinador solicita una clave para el esi corriendo");
+							log_trace(logger, "El coordinador solicita una clave para el esi corriendo");
 							nueva_solicitud(i, clave);
-
-							log_trace(logger,
-									"LE HAGO POST AL SEMAFORO OPERACION COORDINADOR");
-							sem_post(&operacion_coordinador);
-
 							break;
 						default:
 							log_warning(logger,
 									"Mensaje del coordinador desconocido");
 							break;
 						}
+						log_debug(logger, "Se ha enviado el resultado de la operacion al coordinador");
+
 						free(clave);
 						continue;
 
@@ -189,17 +177,20 @@ void atender_error(int nbytes) {
 					"El mensaje recibido por el Coordinador tiene errores\n");
 		}
 	} else {
-		int id = encontrarIdDelSocket(i);
+		int id=encontrarIdDelSocket(i);
 		if (nbytes == 0) {
-			log_error(logger, "El ESI (ID:%d) finalizó inesperadamente\n", id);
+			log_error(logger,
+					"El ESI (ID:%d) finalizó inesperadamente\n",
+					id);
 			if (es_un_esi_listo(id)) {
-				log_debug(logger, "Entro al esi listo");
+				log_debug(logger,"Entro al esi listo");
 				t_esi* esi_a_matar = obtener_de_listos(id);
 				finalizar_esi(esi_a_matar);
-				log_debug(logger, "Finalizo");
+				log_debug(logger,"Finalizo");
 				eliminar_de_listos(esi_a_matar);
-				log_debug(logger, "Elimino de listos");
-			} else if (es_un_esi_bloqueado(id)) {
+				log_debug(logger,"Elimino de listos");
+			}
+			else if(es_un_esi_bloqueado(id)){
 				t_esi* esi_a_matar = obtener_de_bloqueados(id);
 				finalizar_esi(esi_a_matar);
 				eliminar_de_bloqueados(esi_a_matar);
@@ -207,14 +198,14 @@ void atender_error(int nbytes) {
 
 		} else {
 			log_error(logger,
-					"El mensaje recibido por el ESI (ID:%d) tiene errores\n",
-					id);
+					"El mensaje recibido por el ESI (ID:%d) tiene errores\n", id);
 		}
 	}
-	log_debug(logger, "termina de atender el error"); //nunca sale el select del primer kill
+	log_debug(logger,"termina de atender el error"); //nunca sale el select del primer kill
 	close(i);
 	FD_CLR(i, &master);
 }
+
 
 t_status_clave recibir_enum_status_clave() {
 	t_status_clave respuesta;
@@ -268,30 +259,29 @@ t_esi *crear_nodo_esi(int socket) {
 	return p;
 }
 
-int encontrarIdDelSocket(int i) {
-	int id = 0;
-	t_esi* esi_a_devolver = NULL;
+int encontrarIdDelSocket(int i){
+	int id=0;
+	t_esi* esi_a_devolver=NULL;
 
-	bool tiene_el_socket_buscado(void* esi) {
-		return ((t_esi*) esi)->socket == i;
-	}
-
-	pthread_mutex_lock(&mutex_lista_esis_listos);
-	esi_a_devolver = list_find(lista_esis_listos, tiene_el_socket_buscado);
-	pthread_mutex_unlock(&mutex_lista_esis_listos);
-	if (esi_a_devolver != NULL)
-		id = esi_a_devolver->id;
-
-	if (id == 0) {
-
-		bool tiene_el_socket_buscado(void* esi) {
-			return ((t_esi*) esi)->socket == i;
+	bool tiene_el_socket_buscado(void* esi){
+					return ((t_esi*)esi)->socket == i;
 		}
 
-		void buscar_esi(char* c, void* lista_esis_bloq) {
-			esi_a_devolver = list_find(lista_esis_bloq,
-					tiene_el_socket_buscado);
-			id = esi_a_devolver->id;
+	pthread_mutex_lock(&mutex_lista_esis_listos);
+	esi_a_devolver=list_find(lista_esis_listos, tiene_el_socket_buscado);
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
+	if(esi_a_devolver!=NULL)
+		id=esi_a_devolver->id;
+
+	if(id==0){
+
+		bool tiene_el_socket_buscado(void* esi){
+							return ((t_esi*)esi)->socket == i;
+				}
+
+		void buscar_esi(char* c, void* lista_esis_bloq){
+			esi_a_devolver = list_find(lista_esis_bloq, tiene_el_socket_buscado);
+			id=esi_a_devolver->id;
 		}
 
 		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
