@@ -6,8 +6,9 @@
  */
 
 #include "protocol.h"
+#define MAX_STRING_LENGTH 40
 
-char* nombres_protocolo[] = {
+char nombres_protocolo[][MAX_STRING_LENGTH + 1] = {
 	"EXITO",
 	"ERROR",
 	"SOLICITUD_CLAVE",
@@ -36,8 +37,10 @@ char* nombres_protocolo[] = {
 	"VALOR_ENCONTRADO",
 	"VALOR_NO_ENCONTRADO",
 	"INSTANCIA_COMPACTAR",
-	"ERROR_CONEXION" };
-char* desc_status_clave[] = {
+	"ERROR_CONEXION",
+	"MURIO_ESI_CORRIENDO"
+};
+char desc_status_clave[][MAX_STRING_LENGTH + 1] = {
 	"Hay valor para la clave",
 	"No hay valor para la clave",
 	"La instancia esta disponible",

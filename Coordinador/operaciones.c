@@ -37,6 +37,11 @@ void realizar_get(t_esi* esi, char* clave) {
 		log_info(logger, "Get realizado exitosamente");
 		send(esi->socket, &cod_op, sizeof(t_protocolo), 0);
 		break;
+	case MURIO_ESI_CORRIENDO:
+		log_info(logger,
+				"El ESI %d actual ha muerto mientras intentaba realizar una operacion",
+				esi->id);
+		break;
 	default:
 		if (cod_op < 0) {
 			log_error(logger, "Error de conexion con el planificador");
@@ -58,6 +63,11 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {
+	case MURIO_ESI_CORRIENDO:
+		log_info(logger,
+				"El ESI %d actual ha muerto mientras intentaba realizar una operacion",
+				esi->id);
+		break;
 	case CLAVE_NO_BLOQUEADA_EXCEPTION: //en realidad es que la clave estaba ocupada
 	case CLAVE_NO_IDENTIFICADA_EXCEPTION:
 		log_trace(logger, "Enviando Aborta al ESI");
@@ -123,6 +133,11 @@ void realizar_store(t_esi* esi, char* clave) {
 	log_trace(logger, "Mensaje recibido del planificador: %s",
 			to_string_protocolo(cod_op));
 	switch (cod_op) {
+	case MURIO_ESI_CORRIENDO:
+		log_info(logger,
+				"El ESI %d actual ha muerto mientras intentaba realizar una operacion",
+				esi->id);
+		break;
 	case EXITO:
 		instancia_elegida = instancia_con_clave(clave);
 		if (instancia_elegida == NULL) {
