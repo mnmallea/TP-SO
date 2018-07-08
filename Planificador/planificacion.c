@@ -40,7 +40,6 @@ bool algoritmo_debe_planificar() {
 
 
 void* planificar(void* _) {
-	esi_corriendo = NULL;
 	lista_esis_listos = list_create();
 	lista_esis_finalizados = list_create();
 	dic_esis_bloqueados = dictionary_create();
@@ -83,6 +82,13 @@ void correr(t_esi* esi) {
 	mandar_confirmacion(esi->socket);
 
 	sem_wait(&respondio_esi_corriendo);
+
+//	int valor;
+//	sem_getvalue(&operacion_coordinador, &valor);
+//	log_trace(logger, "El valor del SEMAFORO ES %d", valor);
+	sem_wait(&operacion_coordinador);
+
+	log_trace(logger, "PROCEDO A HACER LO QUE TENGO QUE HACER CON EL ESI CORRIENDO");
 
 	log_debug(logger, "Signal para correr");
 
