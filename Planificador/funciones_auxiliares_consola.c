@@ -64,7 +64,7 @@ void eliminar_de_listos(t_esi* esi_a_eliminar){
 
 	bool esElEsi(void* esi){
 			return esi_a_eliminar->id == ((t_esi*)esi)->id;
-		}
+	}
 	log_debug(logger,"x Lockear");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	log_debug(logger,"Lockeo");
@@ -105,9 +105,9 @@ t_esi* obtener_de_listos(int id_a_devolver){
 				return ((t_esi*)esi)->id == id_a_devolver;
 	}
 
-	pthread_mutex_lock(&mutex_lista_esis_listos);
+
 	return list_find(lista_esis_listos, tiene_el_id_buscado);
-	pthread_mutex_unlock(&mutex_lista_esis_listos);
+
 }
 
 t_esi* obtener_de_bloqueados(int id_a_devolver){
