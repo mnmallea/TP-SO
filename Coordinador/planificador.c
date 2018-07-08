@@ -103,7 +103,13 @@ void informar_status_clave(char* clave) {
 
 	}
 	log_info(logger, "Enviando paquete de status clave al Planificador");
-	paquete_enviar_safe(paquete, socket_planificador);
+
+	if(paquete_enviar_con_codigo(paquete, RESPUESTA_STATUS_CLAVE, socket_planificador)){
+		log_error(logger, "Error al enviar respuesta status clave al planificador");
+		paquete_destruir(paquete);
+		exit(EXIT_FAILURE);
+	}
+
 	log_info(logger, "Paquete enviado");
 	paquete_destruir(paquete);
 

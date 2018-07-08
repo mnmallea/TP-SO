@@ -251,7 +251,7 @@ void matar_por_consola(int id) {
 
 void envia_status_clave(char* clave) {
 
-	printf("Se procede a mostrar el status de la clave: %s", clave);
+	printf("Se procede a mostrar el status de la clave: %s\n", clave);
 	log_debug(logger, "CONSOLA: Se eligio status clave para: %s", clave);
 
 	t_paquete* paquete = paquete_crear();

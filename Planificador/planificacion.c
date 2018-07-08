@@ -83,6 +83,7 @@ void correr(t_esi* esi) {
 	mandar_confirmacion(esi->socket);
 
 	sem_wait(&respondio_esi_corriendo);
+
 	log_debug(logger, "Signal para correr");
 
 	//Aumenta cuanto vienen esperando los que estan en listos

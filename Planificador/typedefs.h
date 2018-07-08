@@ -36,7 +36,7 @@ typedef struct {
 
 typedef struct{
 	char puerto[PORT_MAX_STRING_LENGTH + 1]; //el maximo es 65535 mas el '\0'
-	int algoritmo;
+	tipo_algoritmo_planif algoritmo;
 	int estimacion_inicial;
 	char *ipCoord;
 	char *portCoord;

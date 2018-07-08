@@ -59,6 +59,8 @@ tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo){
 		return SJFsD;
 	if(string_equals_ignore_case(nombre_algoritmo, "HRRN"))
 		return HRRN;
+	log_error(logger, "Algoritmo invalido");
+	exit(EXIT_FAILURE);
 
 	return -1;
 }
