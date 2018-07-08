@@ -100,13 +100,16 @@ void eliminar_de_bloqueados(t_esi* esi_a_eliminar){
 }
 
 t_esi* obtener_de_listos(int id_a_devolver){
+	t_esi* esi_a_devolver;
 
 	bool tiene_el_id_buscado(void* esi){
 				return ((t_esi*)esi)->id == id_a_devolver;
 	}
 
-
-	return list_find(lista_esis_listos, tiene_el_id_buscado);
+		pthread_mutex_lock(&mutex_lista_esis_listos);
+		esi_a_devolver=list_find(lista_esis_listos, tiene_el_id_buscado);
+		pthread_mutex_unlock(&mutex_lista_esis_listos);
+		return esi_a_devolver;
 
 }
 

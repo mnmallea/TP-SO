@@ -230,9 +230,7 @@ void matar_por_consola(int id) {
 	} else {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
 		if (es_un_esi_listo(id)) {
-			pthread_mutex_lock(&mutex_lista_esis_listos);
 			t_esi* esi_a_matar = obtener_de_listos(id);
-			pthread_mutex_unlock(&mutex_lista_esis_listos);
 			eliminar_de_listos(esi_a_matar);
 			finalizar_esi(esi_a_matar);
 		} else if (es_un_esi_finalizado(id)) {
