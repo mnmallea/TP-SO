@@ -17,6 +17,7 @@ int main(int argc, char **argv) {
 	planificacion_pausada = true;
 
 	dic_clave_x_esi = dictionary_create();
+	esi_corriendo=NULL; //al principio debe empezar nulo
 
 	configurar_claves_inicialmente_bloqueadas();
 
