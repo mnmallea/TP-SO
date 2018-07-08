@@ -210,6 +210,7 @@ void atender_esi(int socket) {
 		char* valor = NULL;
 
 		t_protocolo cod_op = recibir_cod_operacion(socket);
+		pthread_mutex_lock(&mutex_operacion);
 		log_trace(logger, "codigo de operacion recibido");
 
 		switch (cod_op) {
@@ -234,6 +235,7 @@ void atender_esi(int socket) {
 		case FINALIZO_ESI:
 			close(socket);
 			log_trace(logger, "Se termino de atender el ESI id: %d", esi->id);
+			pthread_mutex_unlock(&mutex_operacion);
 			return;
 		default:
 			log_error(logger,
@@ -243,8 +245,10 @@ void atender_esi(int socket) {
 			 * todo fijarse si aca hay que sacarlo de la lista o no
 			 */
 			close(socket);
+			pthread_mutex_unlock(&mutex_operacion);
 			return;
 		}
+		pthread_mutex_unlock(&mutex_operacion);
 
 		free(clave);
 		free(valor);
