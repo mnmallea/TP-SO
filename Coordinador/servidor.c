@@ -270,8 +270,9 @@ void retardarse(long int milisegundos) {
 	struct timespec requested, remaining;
 	requested.tv_sec = milisegundos / 1000;
 	long int resto = milisegundos % 1000;
-	if (resto != 0) {
+	if (resto != 0)
 		requested.tv_nsec = resto * 1000000;
-	}
+	else
+		requested.tv_nsec = 0;
 	nanosleep(&requested, &remaining);
 }
