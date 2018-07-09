@@ -28,16 +28,18 @@ void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {
 	paquete_destruir(paquete);
 }
 
-void solicitar_clave(char* clave) {
+void solicitar_clave(char* clave, t_esi* esi) {
 	consulta_de_clave(clave, SOLICITUD_CLAVE);
+	safe_send(socket_planificador, &esi->id, sizeof(esi->id));
 }
 
 void informar_liberacion_clave(char* clave) {
 	consulta_de_clave(clave, DESBLOQUEO_CLAVE);
 }
 
-void esi_tiene_clave(char* clave) {
+void esi_tiene_clave(char* clave, t_esi* esi) {
 	consulta_de_clave(clave, ESI_TIENE_CLAVE);
+	safe_send(socket_planificador, &esi->id, sizeof(esi->id));
 }
 
 void informar_instancia_caida(t_instancia* instancia) {
