@@ -31,6 +31,7 @@ int socketServer;
 int newfd;
 int i,j;
 int socketAEliminar;
+int id_pedido;
 
 socklen_t addrlen;
 

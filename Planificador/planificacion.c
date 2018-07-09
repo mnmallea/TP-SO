@@ -341,7 +341,7 @@ void fallo_linea() {
 	finalizar_esi(esi_corriendo);
 }
 
-void nueva_solicitud(int socket, char* clave) {
+void nueva_solicitud(int socket, char* clave, int id_pedido) {
 
 	t_protocolo cod_op;
 
@@ -374,6 +374,12 @@ void nueva_solicitud(int socket, char* clave) {
 			nueva_clave_tomada_x_esi(clave, esi_corriendo);
 			cod_op = EXITO;
 
+		}
+
+		pthread_mutex_lock(&mutex_esi_corriendo);
+		if(id_pedido != esi_corriendo->id){
+			pthread_mutex_unlock(&mutex_esi_corriendo);
+			cod_op = MURIO_ESI_CORRIENDO;
 		}
 	}
 	enviar_cod_operacion(socket, cod_op);

@@ -52,11 +52,12 @@ t_protocolo respuesta_esi_corriendo;
 
 bool algoritmo_debe_planificar() ;
 bool hay_que_planificar();
+bool validar_si_hubo_bloqueo_o_asesinato_por_consola();
 
 t_esi *obtener_nuevo_esi_a_correr() ;
 
 
-bool validar_si_hubo_bloqueo_o_asesinato_por_consola();
+
 
 void* planificar(void* _);
 void nuevo_esi(t_esi* esi);
@@ -68,7 +69,7 @@ void ya_termino_linea();
 void linea_size();
 void interpretar();
 void fallo_linea();
-void nueva_solicitud(int socket, char* clave);
+void nueva_solicitud(int socket, char* clave, int id_pedido);
 void liberar_recursos(t_esi* esi_a_liberar);
 void liberar_clave(void* clave);
 void ejecutar_bloqueo_o_asesinato();
