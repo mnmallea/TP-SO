@@ -8,25 +8,12 @@
 #ifndef PLANIFICACION_H_
 #define PLANIFICACION_H_
 
-#include <stdlib.h>
-#include <stdbool.h>
-#include <pthread.h>
-#include <semaphore.h>
-#include <sys/select.h>
-
-#include <commons/log.h>
 #include <commons/collections/dictionary.h>
 #include <commons/collections/list.h>
+#include <stdbool.h>
 
-#include "../syntax-commons/conexiones.h"
-#include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/protocol.h"
-
-#include "config_planificador.h"
-#include "algoritmos_planificacion.h"
 #include "typedefs.h"
-#include "sincronizacion.h"
-#include "funciones_auxiliares.h"
 
 extern bool planificacion_pausada;
 extern t_esi* esi_a_matar_por_consola;
