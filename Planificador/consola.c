@@ -76,6 +76,7 @@ void *menu(void *ptr) {
 			scanf("%s", clave);
 
 			envia_status_clave(clave);
+			listar(clave);
 			break;
 		case 7:
 			printf("Ingreso solucionar problemas de deadlock");
@@ -281,8 +282,8 @@ void show_respuesta_status_clave(respuesta_status_clave_t res){
 		printf("%s\n", to_string_status_clave(res.estado_instancia));
 
 	if(res.hay_simulacion)
-		printf("La clave sería asignada a la instancia: %s", res.instancia_simulacion);
+		printf("La clave sería asignada a la instancia: %s\n", res.instancia_simulacion);
 	else
-		printf("No se ha realizado la simulacion");
+		printf("No se ha realizado la simulacion\n");
 
 }
