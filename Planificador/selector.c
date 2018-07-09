@@ -101,24 +101,44 @@ void listener(void) {
 							log_trace(logger,
 									"El coordinador solicito saber si el ESI corriendo tiene una clave");
 							//si este esi_corriendo jode mucho hablarme(nay) y lo cambio
+							nbytes = recv(i, &id_pedido, sizeof(int),
+							MSG_NOSIGNAL);
 
-							pthread_mutex_lock(&mutex_esi_corriendo);
-							if (esi_corriendo != NULL) {
-								bool la_tiene = esi_tiene_clave(clave, esi_corriendo);
-								pthread_mutex_unlock(&mutex_esi_corriendo);
-								t_protocolo cod_op;
+							if (nbytes <= 0) {
+								atender_error(nbytes);
+								continue;
+							} else {
+								pthread_mutex_lock(&mutex_esi_corriendo);
+								if (esi_corriendo != NULL) {
+									t_protocolo cod_op;
 
-								if (la_tiene) {
-									cod_op = EXITO;
+									if (id_pedido != esi_corriendo->id) { //lo valido aca
+										//, total tengo mutex en esi corriendo y no me lo pueden cambiar (?
+										cod_op = MURIO_ESI_CORRIENDO;
+									} else {
+
+										bool la_tiene = esi_tiene_clave(clave,
+												esi_corriendo);
+
+										if (la_tiene) {
+											cod_op = EXITO;
+										} else {
+											cod_op =
+													CLAVE_NO_BLOQUEADA_EXCEPTION;
+										}
+
+									}
+
+									pthread_mutex_unlock(&mutex_esi_corriendo);
+
+									enviar_cod_operacion(i, cod_op);
+
 								} else {
-									cod_op = CLAVE_NO_BLOQUEADA_EXCEPTION;
+									pthread_mutex_unlock(&mutex_esi_corriendo);
+									enviar_cod_operacion(i,
+											MURIO_ESI_CORRIENDO);
 								}
 
-								enviar_cod_operacion(i, cod_op);
-
-							}else{
-								pthread_mutex_unlock(&mutex_esi_corriendo);
-								enviar_cod_operacion(i, MURIO_ESI_CORRIENDO);
 							}
 
 							break;
@@ -126,12 +146,13 @@ void listener(void) {
 							log_trace(logger,
 									"El coordinador solicita una clave para el esi corriendo");
 
-							nbytes = recv(i, &id_pedido, sizeof(int), MSG_NOSIGNAL);
+							nbytes = recv(i, &id_pedido, sizeof(int),
+							MSG_NOSIGNAL);
 
 							if (nbytes <= 0) {
-												atender_error(nbytes);
-												continue;
-							}else{
+								atender_error(nbytes);
+								continue;
+							} else {
 								nueva_solicitud(i, clave, id_pedido);
 							}
 
