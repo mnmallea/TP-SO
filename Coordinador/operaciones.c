@@ -21,7 +21,7 @@
 
 void realizar_get(t_esi* esi, char* clave) {
 	logear_get(esi->id, clave);
-	solicitar_clave(clave);
+	solicitar_clave(clave, esi);
 //	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
 	sem_wait(&planificador_respondio);
 	t_protocolo cod_op = respuesta_planificador;
@@ -56,7 +56,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 	t_instancia* instancia_elegida;
 
 	logear_set(esi->id, clave, valor);
-	esi_tiene_clave(clave);
+	esi_tiene_clave(clave, esi);
 //	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
 	sem_wait(&planificador_respondio);
 	t_protocolo cod_op = respuesta_planificador;
@@ -126,7 +126,7 @@ void realizar_store(t_esi* esi, char* clave) {
 	t_instancia* instancia_elegida;
 
 	logear_store(esi->id, clave);
-	esi_tiene_clave(clave);
+	esi_tiene_clave(clave, esi);
 //	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
 	sem_wait(&planificador_respondio);
 	t_protocolo cod_op = respuesta_planificador;
