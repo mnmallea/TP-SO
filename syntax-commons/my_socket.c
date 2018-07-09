@@ -92,12 +92,15 @@ int recibir_mensaje(int my_socket){
 }
 
 void recibir_confirmacion (int my_socket){ //wait confirmacion
-    int resultado=1;
-    if (recv(my_socket,&resultado,sizeof(int),0)<=0){
+    int resultado=-1;
+    if (recv(my_socket,&resultado,sizeof(int),MSG_WAITALL)<=0){
         salir_con_error(my_socket,"no se pudo recibir confirmación");
     }
+    if(resultado < 0){
+    	log_warning(logger, "El ESI ha sido finalizado por el planificador");
+    	salir_con_error(my_socket, "Fin");
+    }
     log_info(logger, "confirmación recibida");
-    //close(my_socket);
 }
 
 void mandar_mensaje(int my_socket,int id){

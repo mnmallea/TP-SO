@@ -212,7 +212,7 @@ void matar_por_consola(int id) {
 	log_debug(logger, "CONSOLA: Se eligio matar al esi: %d", id);
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
-	if (esi_corriendo->id == id) {
+	if (esi_corriendo != NULL && esi_corriendo->id == id) {
 
 		pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
 		if (esi_a_bloquear_por_consola != NULL) {

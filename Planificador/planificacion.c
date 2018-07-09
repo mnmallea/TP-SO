@@ -7,6 +7,19 @@
 
 #include "planificacion.h"
 
+#include <commons/log.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/my_socket.h"
+#include "algoritmos_planificacion.h"
+#include "funciones_auxiliares.h"
+#include "sincronizacion.h"
+
 /* SE DEBE REPLANIFICAR CUANDO:
  *
  * SI USO HRRN/SJF SIN DESALOJO:
@@ -228,6 +241,11 @@ void finalizar_esi(t_esi* esi_a_finalizar) {
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
 			esi_a_finalizar->id);
 
+	log_debug(logger, "Cerrando conexion del esi %d...", esi_a_finalizar->id);
+	int morite_hdp = -1;
+	send(esi_a_finalizar->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
+	close(esi_a_finalizar->socket);
+
 	liberar_recursos(esi_a_finalizar);
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);
 	list_add(lista_esis_finalizados, esi_a_finalizar);
@@ -402,8 +420,8 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 		log_debug(logger, "Se procede a liberar las claves del esi: %d",
 				esi_a_liberar->id);
 		list_iterate(lista_claves_a_desbloquear, liberar_clave);
-		list_destroy(lista_claves_a_desbloquear);
 	}
+	list_destroy(lista_claves_a_desbloquear);
 	log_debug(logger, "Paso el cont");
 
 }
