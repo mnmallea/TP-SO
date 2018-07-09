@@ -350,7 +350,7 @@ void nueva_solicitud(int socket, char* clave, int id_pedido) {
 	pthread_mutex_lock(&mutex_esi_corriendo); //aca se queda el dl
 	log_debug(logger, "paso mutex nueva solicitud");
 
-	if (esi_corriendo == NULL) {
+	if (esi_corriendo == NULL || esi_corriendo->id != id_pedido) {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
 		cod_op = MURIO_ESI_CORRIENDO;
 	} else {
@@ -376,11 +376,11 @@ void nueva_solicitud(int socket, char* clave, int id_pedido) {
 
 		}
 
-		pthread_mutex_lock(&mutex_esi_corriendo);
-		if(id_pedido != esi_corriendo->id){
-			pthread_mutex_unlock(&mutex_esi_corriendo);
-			cod_op = MURIO_ESI_CORRIENDO;
-		}
+//		pthread_mutex_lock(&mutex_esi_corriendo);
+//		if(id_pedido != esi_corriendo->id){
+//			pthread_mutex_unlock(&mutex_esi_corriendo);
+//			cod_op = MURIO_ESI_CORRIENDO;
+//		}
 	}
 	enviar_cod_operacion(socket, cod_op);
 }
