@@ -212,24 +212,26 @@ void atender_esi(int socket) {
 
 		t_protocolo cod_op = recibir_cod_operacion(socket);
 		pthread_mutex_lock(&mutex_operacion);
-		log_trace(logger, "codigo de operacion recibido");
+		log_trace(logger, "Codigo de operacion %s recibido del ESI %d",
+				to_string_protocolo(cod_op), esi->id);
 
 		switch (cod_op) {
 		case OP_GET:
 			recibir_operacion_unaria(socket, &clave);
-			log_trace(logger, "Recibi GET %s", clave);
+			log_trace(logger, "[ESI %d]Recibi GET %s", esi->id, clave);
 			retardarse(configuracion.retardo);
 			realizar_get(esi, clave);
 			break;
 		case OP_STORE:
 			recibir_operacion_unaria(socket, &clave);
-			log_trace(logger, "Recibi STORE %s", clave);
+			log_trace(logger, "[ESI %d]Recibi STORE %s", esi->id, clave);
 			retardarse(configuracion.retardo);
 			realizar_store(esi, clave);
 			break;
 		case OP_SET:
 			recibir_set(socket, &clave, &valor);
-			log_trace(logger, "Recibi SET %s %s", clave, valor);
+			log_trace(logger, "[ESI %d]Recibi SET %s %s", esi->id, clave,
+					valor);
 			retardarse(configuracion.retardo);
 			realizar_set(esi, clave, valor);
 			break;
