@@ -109,6 +109,7 @@ void atender_planificador(int socket) {
 			int respuesta = try_recibirPaqueteVariable(socket_planificador,
 					(void**) &clave);
 			if (respuesta <= 0) {
+				free(clave);
 				log_error(logger, "Error en la conexion con el planificador");
 				exit(EXIT_FAILURE);
 			}

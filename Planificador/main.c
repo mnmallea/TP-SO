@@ -7,6 +7,8 @@
 
 #include "main.h"
 
+void iniciar_estructuras_adm_planificador();
+
 int main(int argc, char **argv) {
 
 	/*Config*/
@@ -14,10 +16,7 @@ int main(int argc, char **argv) {
 	//para ver la consola tail -200f planificador.log en otra ventana y se ve en tiempo real
 	configuracion = configurar(argv[1]);
 	inicializar_semaforos();
-	planificacion_pausada = true;
-
-	dic_clave_x_esi = dictionary_create();
-
+	iniciar_estructuras_adm_planificador();
 	configurar_claves_inicialmente_bloqueadas();
 
 	log_trace(logger, "Se ha terminado la inicializacion");
@@ -66,5 +65,15 @@ void configurar_claves_inicialmente_bloqueadas() {
 				esi_trucho);
 		i++;
 	}
+
+}
+
+void iniciar_estructuras_adm_planificador() {
+	planificacion_pausada = true;
+	esi_corriendo = NULL;
+	lista_esis_listos = list_create();
+	lista_esis_finalizados = list_create();
+	dic_esis_bloqueados = dictionary_create();
+	dic_clave_x_esi = dictionary_create();
 
 }

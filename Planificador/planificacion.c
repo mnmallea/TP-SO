@@ -39,11 +39,6 @@ bool algoritmo_debe_planificar() {
 }
 
 void* planificar(void* _) {
-	esi_corriendo = NULL;
-	lista_esis_listos = list_create();
-	lista_esis_finalizados = list_create();
-	dic_esis_bloqueados = dictionary_create();
-	dic_clave_x_esi = dictionary_create();
 
 	while (1) {
 		pthread_mutex_lock(&mutex_pausa);
