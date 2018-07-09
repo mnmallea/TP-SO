@@ -125,7 +125,16 @@ void listener(void) {
 						case SOLICITUD_CLAVE:
 							log_trace(logger,
 									"El coordinador solicita una clave para el esi corriendo");
-							nueva_solicitud(i, clave);
+
+							nbytes = recv(i, &id_pedido, sizeof(int), MSG_NOSIGNAL);
+
+							if (nbytes <= 0) {
+												atender_error(nbytes);
+												continue;
+							}else{
+								nueva_solicitud(i, clave, id_pedido);
+							}
+
 							break;
 						default:
 							log_warning(logger,
