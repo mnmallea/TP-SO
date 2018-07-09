@@ -307,8 +307,6 @@ void se_desbloqueo_un_recurso(char* clave) {
 						lista_esis_bloq_esta_clave);
 			}
 
-			list_destroy(lista_esis_bloq_esta_clave);
-
 			pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 
 			nuevo_esi(esi_a_desbloquear);
