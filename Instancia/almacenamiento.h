@@ -21,45 +21,13 @@ almacenamiento* ato;
 //t_bitarray estadoAto;
 
 void almacenamiento_logger();
-/*  *@NAME: mostrarALmacenamiento
- * @DESC: creo el almacenamiento inicializando su contenido data
- * 		 en 0
- * @PARAMS:
- * 			entradas
- * 			tamanioEntradaa
- */
-void inicializarAlmacenamiento(unsigned int entradas,
-		unsigned int tamanioEntrada);
-/*  *@NAME: set
- * @DESC: ingresa el valor en el almacenamiento, chequeando
- * si entra en una entrada o necesita mas de manera recursiva
- * @PARAMS:
- * 		proximaEntrada
- * 		valor
- * 		tamanio
- */
-void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio);
-
-//void store(int entrada,unsigned int tamanioEntrada);//falta hacer
-
-/*  *@NAME: convertirString
- * @DESC: convierte un valor en string para ser mostrado por
- * 		 pantalla
- * @PARAMS:
- * 		valor
- * 		tamanio
- */
-char* convertirString(const void *valor, size_t tamanio);
-/*  *@NAME: mostrarALmacenamiento
- * @DESC: muestra todo el almacenamiento
- * @PARAMS:-
- */
 void mostrarAlmacenamiento();
-/*  *@NAME: eliminarALmacenamiento
- * @DESC: libera todo el almacenamiento
- * @PARAMS:-
- */
 void eliminarAlmacenamiento();
 char* convertirString(const void *valor, size_t tamanio);
 void* buscarEnALmacenamiento(int posicion, unsigned int tamanio);
+void inicializarAlmacenamiento(unsigned int entradas,unsigned int tamanioEntrada);
+void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio);
+char* convertirString(const void *valor, size_t tamanio);
+
+
 #endif /* ALMACENAMIENTO_H_ */
