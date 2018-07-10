@@ -4,21 +4,7 @@
  *  Created on: 29 abr. 2018
  *      Author: utnso
  */
-#include <stdio.h>
-#include <commons/log.h>
-#include "config_instancia.h"
-#include "../syntax-commons/my_socket.h"
-#include "../syntax-commons/conexiones.h"
-#include "cfg_almacenamiento.h"
-#include "almacenamiento.h"
-#include "tabla_entradas.h"
-#include "../syntax-commons/protocol.h"
-#include "instancia.h"
-#include "tabla_entradas.h"
-#define LOG_LEVEL LOG_LEVEL_TRACE
-
-config configuracion;
-t_log *logger;
+#include "main.h"
 
 int main(int argc, char** argv) {
 	logger = log_create("instancia.log", "Instancia", true, LOG_LEVEL);
@@ -35,24 +21,31 @@ int main(int argc, char** argv) {
 	crearTablaEntradas();
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
-	while (escucha) { //despues se va a transformar a while(instanciaEsteActiva())
+	pthread_t dumper;
+	//tengo que hacer pthread join ?
+    if (pthread_create(&dumper,NULL,dumpearADisco,NULL)) {
+			log_error(logger, "Error creando el hilo del dumper\n");
+			exit(EXIT_FAILURE);
+	}
+	t_list* posiblesAReemplazar=NULL;
+	while (escucha) {
 		int resultado;
 		switch (recibir_cod_operacion(socketCoordinador)) {
 		case OP_SET:
-			resultado = SET(socketCoordinador);
+			resultado = SET(socketCoordinador,posiblesAReemplazar);
 			if (resultado >= 0) {
 				enviar_cod_operacion(socketCoordinador, EXITO);
-				//notificarCoordExito
+				mandar_mensaje(socketCoordinador,obtenerEntradasTotales()- entradasLibres);
 			} else {
-				//notificarCoordFalla
+
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			break;
 		case OP_STORE:
 			;
 			char* clave;
-			int rs = recibir_operacion_unaria(socketCoordinador, &clave);
-			if (rs < 0) {
+			resultado = recibir_operacion_unaria(socketCoordinador, &clave);
+			if (resultado < 0) {
 				log_error(logger, "Error al recibir operacion ");
 				close(socketCoordinador);
 				exit(EXIT_FAILURE);
@@ -61,23 +54,45 @@ int main(int argc, char** argv) {
 			resultado = STORE(clave);
 			if (resultado >= 0) {
 				enviar_cod_operacion(socketCoordinador, EXITO);
+				mandar_mensaje(socketCoordinador,obtenerEntradasTotales()- entradasLibres);
 			} else {
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			break;
 
 		case MATAR_INSTANCIA:
-
+			log_info(logger, "la instancia se esta desconectando");
+			eliminarAlmacenamiento();
+			//todo: destruirTE();
+			free(posiblesAReemplazar);
+			close(socketCoordinador);
 			escucha = 0;
 
 			break;
-		case RELEVANTAR_INSTANCIA:
+
+		/*case RELEVANTAR_INSTANCIA:
 			log_info(logger, "La instancia se esta relevantando.....");
-			/* todo
-			 * Formato del mensaje que te mando
-			 * Cantidad de Claves (int) + {tamaño clave + clave} n veces
-			 */
-			break;
+			int* cantidadClaves=NULL;
+			recibirPaquete(socketCoordinador,cantidadClaves, sizeof(int));
+			int cantClaves= *cantidadClaves;
+			free(cantidadClaves);
+			for(int i=0;i<cantClaves;i++){
+				void* clave;
+				try_recibirPaqueteVariable(socketCoordinador, &clave);
+				if(dictionary_has_key(dumper->fd, clave)){
+					if(fopen(clave,"r")<0){
+						log_info(logger," la instancia no encuentra el archivo de la clave %d",clave);
+					}else{
+						void* valor=NULL;/*hago el malloc o lo hace el fread*/
+						/*fread (valor,sizeof(clave), 1,clave);
+						SET(socketCoordinador,posiblesAReemplazar);
+						free(valor);
+						fclose(clave);
+					}
+				}
+				free(clave);
+			}
+			break;*/
 		case INSTANCIA_COMPACTAR:
 			log_info(logger, "Estoy compactando ...");
 			enviar_cod_operacion(socketCoordinador, EXITO);
@@ -85,8 +100,11 @@ int main(int argc, char** argv) {
 			break;
 		default: 
 			log_info(logger, "no se pudo interpretar el mensaje");
-			//todo aca te tendrias que morir de manera copada
-			exit(EXIT_FAILURE);
+			eliminarAlmacenamiento();
+			//TODO	destruirTE();
+			free(posiblesAReemplazar);
+			close(socketCoordinador);
+			escucha=0;
 		
 
 		}
