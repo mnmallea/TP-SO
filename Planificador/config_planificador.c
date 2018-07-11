@@ -28,11 +28,11 @@ config configurar(char *ruta){
 			config_has_property(config_dictionary, "ALFA")){
 		strncpy(configuracion.puerto, config_get_string_value(config_dictionary, "LOCALPORT"),PORT_MAX_STRING_LENGTH);//hay que copiarselo porque al final borras el diccionario
 		configuracion.puerto[5] = '\0';
-		configuracion.algoritmo = config_get_int_value(config_dictionary, "ALGORITMO");
+		configuracion.algoritmo = get_algoritmo_planificacion(config_get_string_value(config_dictionary, "ALGORITMO"));
 		configuracion.estimacion_inicial = config_get_int_value(config_dictionary, "ESTADO_INICIAL");
 		configuracion.ipCoord = string_duplicate(config_get_string_value(config_dictionary, "IP_COORD"));
 		configuracion.portCoord = string_duplicate(config_get_string_value(config_dictionary, "PORT_COORD"));
-		configuracion.claves_bloqueadas = string_duplicate(config_get_string_value(config_dictionary, "CLAVES_BLOQUEADAS"));
+		configuracion.claves_bloqueadas = config_get_array_value(config_dictionary, "CLAVES_BLOQUEADAS");
 		configuracion.alfa = ((double)config_get_int_value(config_dictionary, "ALFA"))/100;
 		log_trace(logger, "Alfa de la configuracion: %f", configuracion.alfa);
 	}
@@ -47,10 +47,9 @@ config configurar(char *ruta){
 }
 
 void limpiar_configuracion(){
-
+//TODO: QUE ES ESTO???
 }
 
-/* PENDIENTE DE SEPARAR LOS TYPEDEFS POR OTRO LADO
 tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo){
 	if(string_equals_ignore_case(nombre_algoritmo, "FIFO"))
 		return FIFO;
@@ -60,6 +59,8 @@ tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo){
 		return SJFsD;
 	if(string_equals_ignore_case(nombre_algoritmo, "HRRN"))
 		return HRRN;
-	exit_error_with_msg("Nombre del algoritmo desconocido");
+	log_error(logger, "Algoritmo invalido");
+	exit(EXIT_FAILURE);
+
 	return -1;
-}*/
+}

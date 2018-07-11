@@ -12,6 +12,7 @@
 #include <commons/log.h>
 #include <stdbool.h>
 
+#include "../syntax-commons/protocol.h"
 #include "typedefs.h"
 
 extern t_list *lista_instancias_disponibles;
@@ -34,5 +35,7 @@ t_instancia* instancia_relevantar(char* nombre, int socket);
 void instancia_agregar_a_inactivas(t_instancia* instancia);
 void instancia_agregar_a_activas(t_instancia* instancia);
 void realizar_compactacion();
+t_instancia* instancia_con_clave(char* clave);
+t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia, char* clave, char** valor);
 
 #endif /* INSTANCIA_H_ */

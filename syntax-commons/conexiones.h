@@ -27,7 +27,7 @@ extern void limpiar_configuracion(void);
 int conectarse_a_coordinador(char* ip, char* puerto, t_identidad remitente);
 
 /*
- * Devuelve ERROR si fallo
+ * Devuelve ERROR_CONEXION si fallo
  */
 t_protocolo recibir_cod_operacion(int sockfd);
 

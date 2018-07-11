@@ -23,13 +23,12 @@ int main(int argc, char* argv[]) {
 	if (argc != CANT_ARGUMENTOS_MAIN) {
 		log_error(logger, "Cantidad incorrecta de parametros");
 		exit_gracefully(1);
-		return -1;
 	}
 
 	fp = fopen(argv[1], "r");
 	if (fp == NULL) {
 		log_error(logger, "El archivo está vacio.");
-		exit(EXIT_FAILURE);
+		exit_gracefully(1);
 	}
 
 	configuracion = configurar(argv[2]);
@@ -40,13 +39,12 @@ int main(int argc, char* argv[]) {
 	int socketPlan = crear_socket_cliente(configuracion.ipPlan,
 			configuracion.portPlan);
 
-	int *esi_id = safe_recv(socketPlan, sizeof(int)); //hay q hacer free
+	int *esi_id = safe_recv(socketPlan, sizeof(int));
 	log_debug(logger, "el id del esi es: %d", *esi_id);
 	safe_send(socketCord, esi_id, sizeof(int));
 
-
-	//todo descomentar esto despues:
 	recibir_confirmacion(socketPlan); //signal para ejecutar
+	log_trace(logger, "Recibi señal para ejecutar");
 
 	while ((read = getline(&line, &len, fp)) != -1) {
 
@@ -54,27 +52,28 @@ int main(int argc, char* argv[]) {
 
 		if (parsed.valido) {
 
-PROCESAR:switch (parsed.keyword) {
+			PROCESAR: switch (parsed.keyword) {
 			case GET:
-				log_debug(logger, "Get %s", parsed.argumentos.SET.clave);
-				enviar_get(socketCord, parsed.argumentos.GET.clave);
+				log_debug(logger, "Get %s", parsed.argumentos.GET.clave);
+
+				if (strlen(parsed.argumentos.GET.clave) <= 40) {
+					enviar_get(socketCord, parsed.argumentos.GET.clave);
+				}
+				else {
+					log_error(logger,
+							"El tamaño de la clave <%s> es superior al permitido\n",
+							line);
+					enviar_cod_operacion(socketPlan, CLAVE_SIZE);
+					destruir_operacion(parsed);
+					goto FREE;
+					}
 				break;
 
 			case SET:
 				log_debug(logger, "Set %s %s", parsed.argumentos.SET.clave,
 						parsed.argumentos.SET.valor);
-				if (strlen(parsed.argumentos.SET.valor) < 40) {
-
-					enviar_set(socketCord, parsed.argumentos.SET.clave,
-							parsed.argumentos.SET.valor);
-
-				} else {
-					log_error(logger,
-							"El tamaño del valor <%s> es superior al permitido\n",
-							line);
-					exit_gracefully(1);
-
-				}
+				enviar_set(socketCord, parsed.argumentos.SET.clave,
+						parsed.argumentos.SET.valor);
 				break;
 
 			case STORE:
@@ -84,52 +83,58 @@ PROCESAR:switch (parsed.keyword) {
 
 			default:
 				log_error(logger, "No pude interpretar <%s>\n", line);
-				//enviar respuesta al planificador, error de linea(?)
-				exit_gracefully(1);
+				enviar_cod_operacion(socketPlan, INTERPRETAR);
+				destruir_operacion(parsed);
+				goto FREE;
 			}
 
 			//Respuesta al planificador
 			key = recibir_cod_operacion(socketCord);
-			switch(key){
-			case BLOQUEO_ESI:
-				log_info(logger, "ESI bloqueado por clave %s", parsed.argumentos.SET.clave);
+
+			log_trace(logger, "Recibi mensaje de coordinador: %s",
+					to_string_protocolo(key));
+
+			if (enviar_cod_operacion(socketPlan, key) < 0) {
+				log_error(logger, "Error de conexion con planificador");
+				exit_gracefully(EXIT_FAILURE);
+			}
+			log_trace(logger, "Le envie al planificador: %s", to_string_protocolo(key));
+
+			if (key == BLOQUEO_ESI) {
+				log_info(logger, "ESI bloqueado por clave %s",
+						parsed.argumentos.SET.clave);
 				recibir_confirmacion(socketPlan);
-<<<<<<< HEAD
+				log_trace(logger, "Recibi señal para ejecutar");
 				goto PROCESAR;
-=======
-					goto PROCESAR;
->>>>>>> 03809228e15ae42f90e06eeeaabaa31824da9e4c
 
 			}
-			log_trace(logger, "Recibi mensaje de coordinador: %s", to_string_protocolo(key));
-			enviar_cod_operacion(socketPlan, key);
-
-			//Frees
 
 			destruir_operacion(parsed);
 
-		}
-		else {
+		} else {
 			log_error(logger, "La linea <%s> no es valida\n", line);
-			enviar_cod_operacion(socketPlan, LINEA_INVALIDA);
-			exit_gracefully(1);
+			if (enviar_cod_operacion(socketPlan, ABORTA) < 0) {
+				log_error(logger, "Error de conexion con planificador");
+			}
+			destruir_operacion(parsed);
+			goto FREE;
+
 		}
 
 		recibir_confirmacion(socketPlan);
-
+		log_trace(logger, "Recibi señal para ejecutar");
 	}
 
 	log_info(logger, "No quedan mas lineas en el archivo");
 
 	enviar_cod_operacion(socketPlan, FINALIZO_ESI);
+	enviar_cod_operacion(socketCord, FINALIZO_ESI);
 
-	fclose(fp);
+	FREE: fclose(fp);
 	if (line)
 		free(line);
 
-	free(esi_id);
-
-	log_destroy(logger);
 	limpiar_configuracion();
-	exit(1);
+	exit_gracefully(1);
+
 }
