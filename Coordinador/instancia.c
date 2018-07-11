@@ -106,24 +106,43 @@ bool esta_inactiva_instancia(char* nombre) {
  * La saca de la lista de activas y la mete en inactivas
  * Thread safe
  */
-void instancia_desactivar(t_instancia* instancia) {
+void instancia_desactivar(char* nombre_instancia) {
+	t_instancia* instancia = instancia_sacar_de_activas(nombre_instancia);
+
+	if(instancia == NULL){
+		log_warning(logger, "La instancia que se intento desactivar no estaba activa");
+		return;
+	}
+
+	instancia_agregar_a_inactivas(instancia);
+
+	if (pthread_equal(instancia->thread, pthread_self())) {
+		return;
+	}
+	if (pthread_cancel(instancia->thread)) {
+		log_error(logger, "Error al finalizar thread de instancia %s",
+				instancia->nombre);
+	}
+
+}
+
+/*
+ * Saca una instancia de la lista de activas y te devuelve el puntero
+ * Thread safe
+ * Unsafe en el sentido de que puede devolverte NULL (VALIDAR ESTO)
+ */
+t_instancia* instancia_sacar_de_activas(char* nombre_instancia) {
+	t_instancia * instancia;
 	pthread_mutex_lock(&mutex_instancias_disponibles);
 	bool esLaInstanciaQueBusco(void* una_instancia) {
-		return instancia == una_instancia;
+		t_instancia* inst = una_instancia;
+		return string_equals_ignore_case(inst->nombre, nombre_instancia);
 	}
-	list_remove_by_condition(lista_instancias_disponibles,
+	instancia = list_remove_by_condition(lista_instancias_disponibles,
 			esLaInstanciaQueBusco);
 	sem_wait(&contador_instancias_disponibles);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
-
-	instancia_agregar_a_inactivas(instancia);
-	if(pthread_equal(instancia->thread, pthread_self())){
-		return;
-	}
-	if(pthread_cancel(instancia->thread)){
-		log_error(logger, "Error al finalizar thread de instancia %s", instancia->nombre);
-	}
-
+	return instancia;
 }
 
 /*
