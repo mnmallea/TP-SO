@@ -90,6 +90,7 @@ int main(int argc, char* argv[]) {
 
 			//Respuesta al planificador
 			key = recibir_cod_operacion(socketCord);
+
 			log_trace(logger, "Recibi mensaje de coordinador: %s",
 					to_string_protocolo(key));
 
