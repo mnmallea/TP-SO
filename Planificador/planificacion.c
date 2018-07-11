@@ -261,8 +261,7 @@ void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 	log_debug(logger, "Cerrando conexion del esi %d...", esi_a_finalizar->id);
 	int morite_hdp = -1;
 	send(esi_a_finalizar->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
-	close(esi_a_finalizar->socket);
-	FD_CLR(i, &master);
+	cerrarConexion(esi_a_finalizar->socket);
 
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
 			esi_a_finalizar->id);

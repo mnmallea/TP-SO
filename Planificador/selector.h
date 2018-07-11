@@ -44,7 +44,7 @@ respuesta_status_clave_t recibir_status_clave();
 void atender_nueva_conexion();
 void atender_error(int nbytes);
 int encontrarIdDelSocket(int i);
-
+void cerrarConexion(int socket);
 
 #endif /* SELECTOR_H_ */
 

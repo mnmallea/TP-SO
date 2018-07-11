@@ -12,6 +12,7 @@
 #include <commons/collections/list.h>
 #include <stdbool.h>
 
+#include "selector.h"
 #include "../syntax-commons/protocol.h"
 #include "typedefs.h"
 
@@ -61,7 +62,7 @@ void liberar_recursos(t_esi* esi_a_liberar);
 void liberar_clave(void* clave);
 void ejecutar_bloqueo_o_asesinato();
 void nullear_esis_por_consola();
-
+void finalizar_esi_sync(t_esi* esi_a_finalizar);
 
 void deadlock();
 void itera_por_linea(char *claveIncialTomada, void *esiInicial);

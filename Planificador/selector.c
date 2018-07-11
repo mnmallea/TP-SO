@@ -66,8 +66,7 @@ void listener(void) {
 						log_debug(logger, "Cerrando conexion del esi %d...", i);
 						int morite_hdp = -1;
 						send(i, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
-						close(i);
-						FD_CLR(i, &master);
+						cerrarConexion(i);
 						buf = ERROR_CONEXION;
 					}
 
@@ -75,8 +74,7 @@ void listener(void) {
 						log_debug(logger, "Cerrando conexion del esi %d...", i);
 						int morite_hdp = -1;
 						send(i, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
-						close(i);
-						FD_CLR(i, &master);
+						cerrarConexion(i);
 					}
 					log_debug(logger, "Mensaje recibido del ESI corriendo: %s",
 							to_string_protocolo(buf));
@@ -222,8 +220,7 @@ void atender_error(int nbytes) {
 			log_error(logger,
 					"El mensaje recibido por el Coordinador tiene errores\n");
 		}
-		close(i);
-		FD_CLR(i, &master);
+		cerrarConexion(i);
 	} else {
 		int id = encontrarIdDelSocket(i);
 		if (nbytes == 0) {
@@ -336,6 +333,11 @@ int encontrarIdDelSocket(int i) {
 	}
 
 	return id;
+}
+
+void cerrarConexion(int socket){
+	close(socket);
+	FD_CLR(socket, &master);
 }
 
 int socketProceso(t_esi* n_esi) {
