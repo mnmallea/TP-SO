@@ -49,7 +49,6 @@ t_esi *obtener_nuevo_esi_a_correr() ;
 
 void* planificar(void* _);
 void nuevo_esi(t_esi* esi);
-void finalizar_esi(t_esi* esi_a_finalizar);
 void bloquear_esi(char* clave, t_esi* esi_a_bloquear);
 void se_desbloqueo_un_recurso(char* clave);
 void correr(t_esi* esi);
@@ -62,6 +61,7 @@ void liberar_recursos(t_esi* esi_a_liberar);
 void liberar_clave(void* clave);
 void ejecutar_bloqueo_o_asesinato();
 void nullear_esis_por_consola();
+void finalizar_esi_corriendo(t_esi* esi_a_finalizar);
 void finalizar_esi_sync(t_esi* esi_a_finalizar);
 
 void deadlock();
