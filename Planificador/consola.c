@@ -232,16 +232,16 @@ void matar_por_consola(int id) {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
 		if (es_un_esi_listo(id)) {
 			t_esi* esi_a_matar = obtener_de_listos(id);
+			finalizar_esi_consola(esi_a_matar);
 			eliminar_de_listos(esi_a_matar);
-			finalizar_esi(esi_a_matar);
 		} else if (es_un_esi_finalizado(id)) {
 			printf(
 					"El esi solicitado para matar(%d) ya se encontraba finalizado",
 					id);
 		} else if (es_un_esi_bloqueado(id)) {
 			t_esi* esi_a_matar = obtener_de_bloqueados(id);
+			finalizar_esi_consola(esi_a_matar);
 			eliminar_de_bloqueados(esi_a_matar);
-			finalizar_esi(esi_a_matar);
 
 		} else {
 			printf("El esi solicitado para matar(%d) no existe en el sistema",
