@@ -237,14 +237,35 @@ void nuevo_esi(t_esi* esi) {
 }
 
 void finalizar_esi(t_esi* esi_a_finalizar) {
-
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
 			esi_a_finalizar->id);
+
+	liberar_recursos(esi_a_finalizar);
+	pthread_mutex_lock(&mutex_lista_esis_finalizados);
+	list_add(lista_esis_finalizados, esi_a_finalizar);
+	log_debug(logger, "Agrego a finalizados");
+	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
+
+	pthread_mutex_lock(&mutex_esi_corriendo);
+	if (esi_corriendo != NULL) { //dejarlo asi con un if dentro de un if , sino rompe
+		if (esi_a_finalizar->id == esi_corriendo->id) {
+			esi_corriendo = NULL;
+			log_debug(logger, "Nullea el corriendo");
+		}
+	}
+	pthread_mutex_unlock(&mutex_esi_corriendo);
+}
+
+void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 
 	log_debug(logger, "Cerrando conexion del esi %d...", esi_a_finalizar->id);
 	int morite_hdp = -1;
 	send(esi_a_finalizar->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
 	close(esi_a_finalizar->socket);
+	FD_CLR(i, &master);
+
+	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
+			esi_a_finalizar->id);
 
 	liberar_recursos(esi_a_finalizar);
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);

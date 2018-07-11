@@ -63,12 +63,18 @@ void listener(void) {
 
 				if (esi_corriendo != NULL && i == esi_corriendo->socket) {
 					if (nbytes <= 0) {
+						log_debug(logger, "Cerrando conexion del esi %d...", i);
+						int morite_hdp = -1;
+						send(i, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
 						close(i);
 						FD_CLR(i, &master);
 						buf = ERROR_CONEXION;
 					}
 
 					if (buf == FINALIZO_ESI) { //me ahorra sincronizar y una posible condicion de carrera hacer esto aca
+						log_debug(logger, "Cerrando conexion del esi %d...", i);
+						int morite_hdp = -1;
+						send(i, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
 						close(i);
 						FD_CLR(i, &master);
 					}
@@ -216,6 +222,8 @@ void atender_error(int nbytes) {
 			log_error(logger,
 					"El mensaje recibido por el Coordinador tiene errores\n");
 		}
+		close(i);
+		FD_CLR(i, &master);
 	} else {
 		int id = encontrarIdDelSocket(i);
 		if (nbytes == 0) {
@@ -223,13 +231,13 @@ void atender_error(int nbytes) {
 			if (es_un_esi_listo(id)) {
 				log_debug(logger, "Entro al esi listo");
 				t_esi* esi_a_matar = obtener_de_listos(id);
-				finalizar_esi(esi_a_matar);
+				finalizar_esi_sync(esi_a_matar);
 				log_debug(logger, "Finalizo");
 				eliminar_de_listos(esi_a_matar);
 				log_debug(logger, "Elimino de listos");
 			} else if (es_un_esi_bloqueado(id)) {
 				t_esi* esi_a_matar = obtener_de_bloqueados(id);
-				finalizar_esi(esi_a_matar);
+				finalizar_esi_sync(esi_a_matar);
 				eliminar_de_bloqueados(esi_a_matar);
 			}
 
@@ -240,8 +248,7 @@ void atender_error(int nbytes) {
 		}
 	}
 	log_debug(logger, "termina de atender el error"); //nunca sale el select del primer kill
-	close(i);
-	FD_CLR(i, &master);
+
 }
 
 t_status_clave recibir_enum_status_clave() {
