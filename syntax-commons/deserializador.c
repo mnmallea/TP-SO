@@ -30,8 +30,8 @@ unsigned int recibirPaqueteVariable(int my_socket, void** buffer) {
 	return res_recv;
 }
 
-unsigned int try_recibirPaqueteVariable(int my_socket, void** buffer) {
-	unsigned int res_recv;
+int try_recibirPaqueteVariable(int my_socket, void** buffer) {
+	int res_recv;
 	uint32_t tamanio;
 
 	if ((res_recv = recv(my_socket, &tamanio, sizeof(tamanio), MSG_WAITALL))

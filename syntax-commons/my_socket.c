@@ -1,5 +1,7 @@
 #include "my_socket.h"
 
+#include <asm-generic/socket.h>
+
 void configure_logger() {
   logger = log_create("mysocket.log", "socket",true , LOG_LEVEL_INFO);
 }
@@ -90,30 +92,35 @@ int recibir_mensaje(int my_socket){
 }
 
 void recibir_confirmacion (int my_socket){ //wait confirmacion
-    int resultado=1;
-    if (recv(my_socket,&resultado,sizeof(int),0)<=0){
+    int resultado=-1;
+    if (recv(my_socket,&resultado,sizeof(int),MSG_WAITALL)<=0){
         salir_con_error(my_socket,"no se pudo recibir confirmación");
     }
+    if(resultado < 0){
+    	log_warning(logger, "El ESI ha sido finalizado por el planificador");
+    	salir_con_error(my_socket, "Fin");
+    }
     log_info(logger, "confirmación recibida");
-    //close(my_socket);
 }
 
 void mandar_mensaje(int my_socket,int id){
     //int id=id_verificador;
-    int res_send = send(my_socket, &id, sizeof(id), 0);
+    int res_send = send(my_socket, &id, sizeof(id), MSG_NOSIGNAL);
     if(res_send != sizeof(id)){
         salir_con_error(my_socket,"No se pudo mandar mensaje");
     }
     log_info(logger, "Mensaje enviado");
 }
 
-void mandar_confirmacion(int my_socket) { //mandar signal
+int mandar_confirmacion(int my_socket) { //mandar signal
     int resultado=1;
 	if (send(my_socket, &resultado, sizeof(resultado),MSG_NOSIGNAL)<=0) {
-        salir_con_error(my_socket,"no se pudo mandar confirmación");
+        log_error(logger ,"No se pudo mandar confirmación: %s", strerror(errno));
+        close(my_socket);
+        return -1;
 	}
-    log_info(logger, "confirmación enviada");
-    //close(my_socket);
+    log_info(logger, "Confirmación enviada");
+    return 0;
 }
 
 void mandar_error(int my_socket) {
@@ -126,7 +133,7 @@ void mandar_error(int my_socket) {
 }
 
  void safe_send(int my_socket, void* msg, int msg_len) {
-	int res_send = send(my_socket, msg, msg_len, 0);
+	int res_send = send(my_socket, msg, msg_len, MSG_NOSIGNAL);
 	if (res_send != msg_len) {
 		salir_con_error(my_socket, "No se pudo mandar mensaje");
 	}

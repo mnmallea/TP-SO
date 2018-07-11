@@ -1,0 +1,20 @@
+GET futbol:masche
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+SET futbol:masche TraemeLaCopa
+SET futbol:masche TraemeLaCo
+GET futbol:pipa
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+STORE futbol:pipa
+STORE futbol:masche

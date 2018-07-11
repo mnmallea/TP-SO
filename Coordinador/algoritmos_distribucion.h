@@ -25,5 +25,7 @@ t_instancia* obtener_instancia_segun_LSU(char* clave);
 t_instancia* obtener_instancia_segun_KE(char* clave);
 bool tieneMasEspacioLibre(void*, void*);
 int get_nro_letra(char letra);
+t_instancia* instancia_con_menos_espacio_usado(t_list* una_lista_instancias);
+t_instancia* simular_algoritmo(char* clave);
 
 #endif /* ALGORITMOS_DISTRIBUCION_H_ */
