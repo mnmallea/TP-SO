@@ -133,31 +133,36 @@ void atender_instancia(int sockfd) {
 		return;
 	}
 	if (send(sockfd, &configuracion.entrada_size,
-			sizeof(configuracion.entrada_size), 0) < 0) {
+			sizeof(configuracion.entrada_size), MSG_NOSIGNAL) < 0) {
 		log_error(logger, "Error al configurar instancia");
 		close(sockfd);
 		return;
 	}
 	if (send(sockfd, &configuracion.cant_entradas,
-			sizeof(configuracion.cant_entradas), 0) < 0) {
+			sizeof(configuracion.cant_entradas), MSG_NOSIGNAL) < 0) {
 		log_error(logger, "Error al configurar instancia");
 		close(sockfd);
 		return;
 	}
+
 	if (esta_activa_instancia(nombre)) {
-		log_error(logger, "La instancia %s ya se encuentra activa", nombre);
-		close(sockfd);
-		return;
-	}
-	if (esta_inactiva_instancia(nombre)) {
-		if ((instancia = instancia_relevantar(nombre, sockfd)) == NULL)
+		log_info(logger, "La instancia %s ha estado previamente en el sistema",
+				nombre);
+		instancia_desactivar(nombre);
+		instancia = instancia_relevantar(nombre, sockfd);
+		if (instancia == NULL)
 			return;
 	} else {
-		instancia = crear_instancia(sockfd, nombre,
-				configuracion.cant_entradas);
-		log_info(logger, "La instancia %s ha sido agregada por primera vez",
-				instancia->nombre);
-		instancia_agregar_a_activas(instancia);
+		if (esta_inactiva_instancia(nombre)) {
+			if ((instancia = instancia_relevantar(nombre, sockfd)) == NULL)
+				return;
+		} else {
+			instancia = crear_instancia(sockfd, nombre,
+					configuracion.cant_entradas);
+			log_info(logger, "La instancia %s ha sido agregada por primera vez",
+					instancia->nombre);
+			instancia_agregar_a_activas(instancia);
+		}
 	}
 	free(nombre);
 
@@ -165,7 +170,7 @@ void atender_instancia(int sockfd) {
 		sem_wait(&instancia->semaforo_instancia);
 		if (enviar_cod_operacion(instancia->socket, INSTANCIA_COMPACTAR) < 0) {
 			log_error(logger, "La instancia % se cayo", instancia->nombre);
-			instancia_desactivar(instancia);
+			instancia_desactivar(instancia->nombre);
 			return;
 		}
 		t_protocolo cod_op = recibir_cod_operacion(instancia->socket);
@@ -182,7 +187,7 @@ void atender_instancia(int sockfd) {
 			break;
 		case ERROR_CONEXION:
 			log_error(logger, "La instancia %s se cayo", instancia->nombre);
-			instancia_desactivar(instancia);
+			instancia_desactivar(instancia->nombre);
 			return;
 		default:
 			log_warning(logger, "Mensaje no esperado: %s", cod_op);
