@@ -22,7 +22,7 @@
 void realizar_get(t_esi* esi, char* clave) {
 	logear_get(esi->id, clave);
 	solicitar_clave(clave, esi);
-//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+
 	sem_wait(&planificador_respondio);
 	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "[ESI %d] Mensaje recibido del planificador: %s", esi->id,
@@ -57,7 +57,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 
 	logear_set(esi->id, clave, valor);
 	esi_tiene_clave(clave, esi);
-//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+
 	sem_wait(&planificador_respondio);
 	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "[ESI %d] Mensaje recibido del planificador: %s", esi->id,
@@ -80,15 +80,15 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		if (enviar_set(instancia_elegida->socket, clave, valor) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
-			instancia_desactivar(instancia_elegida);
+			instancia_desactivar(instancia_elegida->nombre);
 
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
-//			informar_instancia_caida(instancia_elegida);
+
 			return;
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
 				instancia_elegida->socket);
-//		t_protocolo respuesta_instancia = EXITO;
+
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger,
@@ -108,8 +108,8 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 					"[ESI %d] Error al recibir retorno de instancia %s",
 					esi->id, instancia_elegida->nombre);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
-			instancia_desactivar(instancia_elegida);
-//			informar_instancia_caida(instancia_elegida);
+			instancia_desactivar(instancia_elegida->nombre);
+
 		}
 
 		break;
@@ -129,7 +129,7 @@ void realizar_store(t_esi* esi, char* clave) {
 
 	logear_store(esi->id, clave);
 	esi_tiene_clave(clave, esi);
-//	t_protocolo cod_op = recibir_cod_operacion(socket_planificador);
+
 	sem_wait(&planificador_respondio);
 	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "[ESI %d] Mensaje recibido del planificador: %s", esi->id,
@@ -153,10 +153,10 @@ void realizar_store(t_esi* esi, char* clave) {
 		if (enviar_store(instancia_elegida->socket, clave) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
-			instancia_desactivar(instancia_elegida);
+			instancia_desactivar(instancia_elegida->nombre);
 
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
-//			informar_instancia_caida(instancia_elegida);
+
 			return;
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
@@ -179,9 +179,9 @@ void realizar_store(t_esi* esi, char* clave) {
 			log_error(logger,
 					"[ESI %d] Error al recibir retorno de instancia %s",
 					esi->id, instancia_elegida->nombre);
-			instancia_desactivar(instancia_elegida);
+			instancia_desactivar(instancia_elegida->nombre);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
-//			informar_instancia_caida(instancia_elegida);
+
 		}
 		informar_liberacion_clave(clave);
 		break;
