@@ -44,7 +44,10 @@ bool algoritmo_debe_planificar() {
 	case HRRN:
 		return false;
 	case SJFcD:
+	{
+		sem_post(&contador_esis);
 		return hay_nuevo_esi;
+	}
 	default:
 		log_error(logger, "Algoritmo desconocido");
 		exit(EXIT_FAILURE);
@@ -52,28 +55,19 @@ bool algoritmo_debe_planificar() {
 }
 
 void* planificar(void* _) {
-
+	log_trace(logger, "Trabajo muy duro, como un esclavo!");
 	while (1) {
-		pthread_mutex_lock(&mutex_pausa);
-		if (planificacion_pausada) {
-			pthread_mutex_unlock(&mutex_pausa);
-			sem_wait(&pausa_planificacion);
-		} else {
-			pthread_mutex_unlock(&mutex_pausa);
-		}
 
-		log_trace(logger, "Estoy planificandoooo!!!!");
-
+		log_trace(logger, "Planificando...");
 		if (hay_que_planificar()) {
+
 			pthread_mutex_unlock(&mutex_esi_corriendo);
-			log_debug(logger, "Antes de nuevo esi");
 			esi_corriendo = obtener_nuevo_esi_a_correr(); //movi el mutex adentro, porque si se lockeaba por el contador arrastraba el mutex con el tambien
 			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 		} else {
-			log_debug(logger, "Se continua corriendo: %d \n",
+			log_debug(logger, "Continua corriendo: %d \n",
 					esi_corriendo->id);
 		}
-		log_debug(logger, "Para correr");
 		correr(esi_corriendo);
 	}
 	return NULL;
@@ -146,7 +140,7 @@ void correr(t_esi* esi) {
 					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
 			nullear_esis_por_consola();
 		}
-		finalizar_esi(esi_corriendo);
+		finalizar_esi_corriendo(esi_corriendo);
 		log_error(logger, "El error fue: error de conexion en el ESI");
 		break; //antes no break
 	case ABORTA:
@@ -178,7 +172,7 @@ void correr(t_esi* esi) {
 					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque el esi ya ha finalizado su script");
 			nullear_esis_por_consola();
 		}
-		finalizar_esi(esi_corriendo);
+		finalizar_esi_corriendo(esi_corriendo);
 		break;
 	case BLOQUEO_ESI:
 		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
@@ -205,7 +199,19 @@ void correr(t_esi* esi) {
 t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
 
-	sem_wait(&contador_esis);
+	CONTADOR : sem_wait(&contador_esis);
+
+	pthread_mutex_lock(&mutex_pausa);
+	if (planificacion_pausada) {
+		pthread_mutex_unlock(&mutex_pausa);
+		sem_wait(&pausa_planificacion);
+		sem_post(&contador_esis);
+		goto CONTADOR;
+
+	} else {
+		pthread_mutex_unlock(&mutex_pausa);
+	}
+
 	log_debug(logger, "Pase el contador de esi a correr");
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (configuracion.algoritmo == FIFO) {
@@ -236,7 +242,7 @@ void nuevo_esi(t_esi* esi) {
 			esi->id);
 }
 
-void finalizar_esi(t_esi* esi_a_finalizar) {
+void finalizar_esi_corriendo(t_esi* esi_a_finalizar) {
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
 			esi_a_finalizar->id);
 
@@ -247,12 +253,8 @@ void finalizar_esi(t_esi* esi_a_finalizar) {
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
-	if (esi_corriendo != NULL) { //dejarlo asi con un if dentro de un if , sino rompe
-		if (esi_a_finalizar->id == esi_corriendo->id) {
 			esi_corriendo = NULL;
 			log_debug(logger, "Nullea el corriendo");
-		}
-	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
@@ -271,15 +273,8 @@ void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 	list_add(lista_esis_finalizados, esi_a_finalizar);
 	log_debug(logger, "Agrego a finalizados");
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
+	sem_wait(&contador_esis);
 
-	pthread_mutex_lock(&mutex_esi_corriendo);
-	if (esi_corriendo != NULL) { //dejarlo asi con un if dentro de un if , sino rompe
-		if (esi_a_finalizar->id == esi_corriendo->id) {
-			esi_corriendo = NULL;
-			log_debug(logger, "Nullea el corriendo");
-		}
-	}
-	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
 void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
@@ -355,21 +350,21 @@ void linea_size() {
 //si leyo mal la linea
 	log_error(logger, "El ESI %d leyo una clave con mas de 40 caracteres\n",
 			esi_corriendo->id);
-	finalizar_esi(esi_corriendo);
+	finalizar_esi_corriendo(esi_corriendo);
 }
 
 void interpretar() {
 //si leyo mal la linea
 	log_error(logger, "No se pudo interpretar una linea en el esi %d\n",
 			esi_corriendo->id);
-	finalizar_esi(esi_corriendo);
+	finalizar_esi_corriendo(esi_corriendo);
 }
 
 void fallo_linea() {
 //si leyo mal la linea
 	log_error(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
-	finalizar_esi(esi_corriendo);
+	finalizar_esi_corriendo(esi_corriendo);
 }
 
 void nueva_solicitud(int socket, char* clave, int id_pedido) {
@@ -489,7 +484,7 @@ void ejecutar_bloqueo_o_asesinato() {
 		pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
 		if (esi_a_matar_por_consola != NULL) {
 			log_debug(logger, "Se habia pedido matar al esi");
-			finalizar_esi(esi_a_matar_por_consola);
+			finalizar_esi_corriendo(esi_a_matar_por_consola);
 		}
 
 		pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
