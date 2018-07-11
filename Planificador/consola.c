@@ -232,7 +232,7 @@ void matar_por_consola(int id) {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
 		if (es_un_esi_listo(id)) {
 			t_esi* esi_a_matar = obtener_de_listos(id);
-			finalizar_esi_consola(esi_a_matar);
+			finalizar_esi_sync(esi_a_matar);
 			eliminar_de_listos(esi_a_matar);
 		} else if (es_un_esi_finalizado(id)) {
 			printf(
@@ -240,7 +240,7 @@ void matar_por_consola(int id) {
 					id);
 		} else if (es_un_esi_bloqueado(id)) {
 			t_esi* esi_a_matar = obtener_de_bloqueados(id);
-			finalizar_esi_consola(esi_a_matar);
+			finalizar_esi_sync(esi_a_matar);
 			eliminar_de_bloqueados(esi_a_matar);
 
 		} else {
