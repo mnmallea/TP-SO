@@ -70,7 +70,11 @@ void listener(void) {
 						buf = ERROR_CONEXION;
 					}
 
-					if (buf == FINALIZO_ESI) { //me ahorra sincronizar y una posible condicion de carrera hacer esto aca
+					switch (buf) { //me ahorra sincronizar y una posible condicion de carrera hacer esto aca
+					case EXITO:
+					case BLOQUEO_ESI:
+						break;
+					default:
 						log_debug(logger, "Cerrando conexion del esi %d...", i);
 						int morite_hdp = -1;
 						send(i, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
@@ -222,8 +226,7 @@ void atender_error(int nbytes) {
 		}
 		cerrarConexion(i);
 	} else {
-		log_debug(logger,
-							"Atendiendo error ESI\n");
+		log_debug(logger, "Atendiendo error ESI\n");
 		int id = encontrarIdDelSocket(i); //err
 		if (nbytes == 0) {
 			log_error(logger, "El ESI (ID:%d) finalizó inesperadamente\n", id);
@@ -340,7 +343,7 @@ int encontrarIdDelSocket(int i) {
 	return id;
 }
 
-void cerrarConexion(int socket){
+void cerrarConexion(int socket) {
 	close(socket);
 	FD_CLR(socket, &master);
 }
