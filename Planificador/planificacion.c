@@ -270,7 +270,7 @@ void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 	log_debug(logger, "Cerrando conexion del esi %d...", esi_a_finalizar->id);
 	int morite_hdp = -1;
 	send(esi_a_finalizar->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
-	cerrarConexion(esi_a_finalizar->socket);
+	cerrarConexion(&esi_a_finalizar->socket);
 
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
 			esi_a_finalizar->id);
@@ -490,7 +490,7 @@ void ejecutar_bloqueo_o_asesinato() {
 		if (esi_a_matar_por_consola != NULL) {
 			log_debug(logger, "Se habia pedido matar al esi");
 
-			cerrarConexion(esi_a_matar_por_consola->socket);
+			cerrarConexion(&esi_a_matar_por_consola->socket);
 
 			finalizar_esi_corriendo(esi_a_matar_por_consola);
 		}
