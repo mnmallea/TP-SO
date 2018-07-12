@@ -233,9 +233,12 @@ void atender_error(int nbytes) {
 				eliminar_de_listos(esi_a_matar);
 				log_debug(logger, "Elimino de listos");
 			} else if (es_un_esi_bloqueado(id)) {
+				log_debug(logger, "Entro al esi bloqueado");
 				t_esi* esi_a_matar = obtener_de_bloqueados(id);
 				finalizar_esi_sync(esi_a_matar);
+				log_debug(logger, "Finalizo");
 				eliminar_de_bloqueados(esi_a_matar);
+				log_debug(logger, "Elimino de bloqueados");
 			}
 
 		} else {

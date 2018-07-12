@@ -51,7 +51,7 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis){
 	 * devuelvo ese esi
 	 */
 
-	log_trace(logger, "Se procede a buscar al proximo esi a ejecutar segun SJF");
+	//log_trace(logger, "Se procede a buscar al proximo esi a ejecutar segun SJF");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_list *lista_nueva = list_duplicate(lista_esis);
 	list_iterate(lista_nueva, obtener_proximas_rafagas);

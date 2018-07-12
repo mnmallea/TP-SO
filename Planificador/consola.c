@@ -25,8 +25,8 @@ void *menu(void *ptr) {
 				"\n 4 <recurso>: listar procesos esperando al recurso"
 				"\n 5 <ID>: para matar un proceso"
 				"\n 6 <clave>: para conocer el status de la clave"
-				"\n 7: para solucionar conflictos de deadlock "
-				"\n 0: para salir de la consola \n"
+				"\n 7: Vista de ESIs en deadlock "
+				"\n 0: Para salir de la consola \n"
 				"Opcion n°:");
 
 		scanf("%d", &opcion_seleccionada);
@@ -39,18 +39,18 @@ void *menu(void *ptr) {
 			break;
 
 		case 2:
-			printf("Ingreso bloquear un proceso, ingrese <clave>");
+			printf("Ingreso bloquear un proceso, ingrese <clave>:");
 
 			scanf("%s", clave);
 
-			printf("Ingreso bloquear un proceso, ingrese <ID>");
+			printf("Ingreso bloquear un proceso, ingrese <ID>:");
 
 			scanf("%d", &id);
 
 			bloquear(clave, id);
 			break;
 		case 3:
-			printf("Ingreso desbloquear un proceso, ingrese <clave>");
+			printf("Ingreso desbloquear un proceso, ingrese <clave>:");
 
 			scanf("%s", clave);
 			se_desbloqueo_un_recurso(clave);
@@ -58,20 +58,20 @@ void *menu(void *ptr) {
 			break;
 		case 4:
 			printf(
-					"Ingreso listar procesos esperando un recurso, ingrese <recurso>");
+					"Ingreso listar procesos esperando un recurso, ingrese <recurso>:");
 
 			scanf("%s", clave);
 			listar(clave);
 			break;
 		case 5:
 
-			printf("Ingreso matar un proceso, ingrese <ID>");
+			printf("Ingrese el <ID> del ESI a matar:");
 
 			scanf("%d", &id);
 			matar_por_consola(id);
 			break;
 		case 6:
-			printf("Ingreso status de una clave, ingrese <clave>");
+			printf("Ingrese <clave> a verificar el estado:");
 
 			scanf("%s", clave);
 
@@ -79,8 +79,8 @@ void *menu(void *ptr) {
 			listar(clave);
 			break;
 		case 7:
-			printf("Ingreso solucionar problemas de deadlock");
-			//deadlock();
+			printf("Deadlocks activos en el sistema:\n");
+			deadlock();
 			break;
 		case 0:
 			break;
@@ -90,7 +90,7 @@ void *menu(void *ptr) {
 		}
 
 		getchar();
-		printf("\nPresione [Enter] para continuar..\n");
+		printf("\nPresione [Enter] para continuar..");
 		getchar();
 
 
