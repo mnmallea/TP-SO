@@ -8,7 +8,7 @@
 #include "main.h"
 
 #include <commons/collections/list.h>
-#include <pthread.h>
+#include <commons/string.h>
 #include <signal.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -44,12 +44,6 @@ int main(int argc, char** argv) {
 	crearTablaEntradas();
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
-//	pthread_t dumper;
-	//tengo que hacer pthread join ?
-//	if (pthread_create(&dumper, NULL, dumpearADisco, NULL)) {
-//		log_error(logger, "Error creando el hilo del dumper\n");
-//		exit(EXIT_FAILURE);
-//	}
 	configurar_timer_dumper();
 	t_list* posiblesAReemplazar = NULL;
 	while (escucha) {
@@ -59,8 +53,7 @@ int main(int argc, char** argv) {
 			resultado = SET(socketCoordinador, posiblesAReemplazar);
 			if (resultado >= 0) {
 				enviar_cod_operacion(socketCoordinador, EXITO);
-				mandar_mensaje(socketCoordinador,
-						obtenerEntradasTotales() - entradasLibres);
+				mandar_mensaje(socketCoordinador, entradasLibres);
 			} else {
 
 				enviar_cod_operacion(socketCoordinador, ERROR);
@@ -79,8 +72,7 @@ int main(int argc, char** argv) {
 			resultado = STORE(clave);
 			if (resultado >= 0) {
 				enviar_cod_operacion(socketCoordinador, EXITO);
-				mandar_mensaje(socketCoordinador,
-						obtenerEntradasTotales() - entradasLibres);
+				mandar_mensaje(socketCoordinador, entradasLibres);
 			} else {
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
