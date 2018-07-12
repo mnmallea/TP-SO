@@ -59,7 +59,7 @@ void* planificar(void* _) {
 	while (1) {
 
 		pthread_mutex_lock(&mutex_pausa);
-			if (planificacion_pausada) { //va 2 veces el check porque en el caso de ser el primer esi el q matas te queda en dl
+			if (planificacion_pausada) { //dejar esta pausa, sirve para cuando se inicia una prueba con el planificador vacio
 				pthread_mutex_unlock(&mutex_pausa);
 				sem_wait(&pausa_planificacion);
 			} else {
@@ -205,9 +205,9 @@ void correr(t_esi* esi) {
  */
 t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
-
+	log_debug(logger, "Esperando el contador de esis");
 	CONTADOR : sem_wait(&contador_esis);
-	//log_debug(logger, "Pase el contador de esi a correr");
+	log_debug(logger, "Pase el contador de esi a correr");
 	pthread_mutex_lock(&mutex_pausa);
 	if (planificacion_pausada) {
 		pthread_mutex_unlock(&mutex_pausa);
@@ -217,7 +217,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 
 	} else {
 		pthread_mutex_unlock(&mutex_pausa);
-		//log_debug(logger, "deslockeo mutex pausa");
+		log_debug(logger, "deslockeo mutex pausa");
 	}
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (configuracion.algoritmo == FIFO) {
@@ -255,8 +255,8 @@ void finalizar_esi_corriendo(t_esi* esi_a_finalizar) {
 	liberar_recursos(esi_a_finalizar);
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);
 	list_add(lista_esis_finalizados, esi_a_finalizar);
-	log_debug(logger, "Agrego a finalizados");
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
+	log_debug(logger, "Agrego a finalizados");
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
 			esi_corriendo = NULL;
@@ -311,9 +311,9 @@ void se_desbloqueo_un_recurso(char* clave) {
 		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
 		//valido si la clave tenia esis encolados
 		if (dictionary_has_key(dic_esis_bloqueados, clave)) {
-			t_list *lista_esis_bloq_esta_clave = dictionary_remove(
+			t_list *lista_esis_bloq_x_esta_clave = dictionary_remove(
 					dic_esis_bloqueados, clave);
-			t_esi* esi_a_desbloquear = list_remove(lista_esis_bloq_esta_clave,
+			t_esi* esi_a_desbloquear = list_remove(lista_esis_bloq_x_esta_clave,
 					0);
 
 			log_debug(logger,
@@ -321,9 +321,9 @@ void se_desbloqueo_un_recurso(char* clave) {
 							"se desbloqueo el esi: %d", esi_a_desbloquear->id);
 
 			//valido seguir teniendo esis esperando esta clave
-			if (list_size(lista_esis_bloq_esta_clave) != 0) {
+			if (list_size(lista_esis_bloq_x_esta_clave) != 0) {
 				dictionary_put(dic_esis_bloqueados, clave,
-						lista_esis_bloq_esta_clave);
+						lista_esis_bloq_x_esta_clave);
 			}
 
 			pthread_mutex_unlock(&mutex_dic_esis_bloqueados);

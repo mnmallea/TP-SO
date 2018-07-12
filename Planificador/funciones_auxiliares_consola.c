@@ -55,7 +55,7 @@ bool es_un_esi_bloqueado(int id_a_buscar){
 
 	bool resultado = contenido_en_lista(lista_bloqueados, id_a_buscar);
 
-	list_destroy(lista_bloqueados);
+	list_destroy(lista_bloqueados); //tiene q ser un destroy and destroy elements
 	return resultado;
 
 }
@@ -68,36 +68,36 @@ void eliminar_de_listos(t_esi* esi_a_eliminar){
 	log_debug(logger,"x Lockear");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	log_debug(logger,"Lockeo");
+	list_remove_and_destroy_by_condition(lista_esis_listos, esElEsi, free);
 	list_remove_by_condition(lista_esis_listos, esElEsi);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 	log_debug(logger,"ESI eliminado de listos");
 	sem_wait(&contador_esis);
 }
 
-void eliminar_de_bloqueados(t_esi* esi_a_eliminar){
+void eliminar_de_bloqueados(t_esi* esi_a_eliminar){ //debuggear esta funcion
 
-	char* clave_donde_se_encuentra = (char*) malloc(40);
+	bool esElEsi(void* esi){
+				return esi_a_eliminar->id == ((t_esi*)esi)->id;
+			}
 
-	void buscar_esi_a_matar(char* c, void* lista_esis_bloq){
+	void borrar_esi_a_matar(char* c, void* lista_esis_bloq){
 		if(contenido_en_lista(lista_esis_bloq, esi_a_eliminar->id)){
-			clave_donde_se_encuentra = c;
+			list_remove_and_destroy_by_condition(lista_esis_bloq, esElEsi, free);
+			log_debug(logger,"Se borra el esi ID:%d, de la lista de bloqueados",esi_a_eliminar->id);
+				if(list_size(lista_esis_bloq)==0){
+					dictionary_remove_and_destroy(dic_esis_bloqueados,c,free);
+					log_debug(logger,"Se borra la clave del diccionario ya que no hay ningun esi bloqueado por la misma");
+				}
 		}
 	}
 
-	bool esElEsi(void* esi){
-			return esi_a_eliminar->id == ((t_esi*)esi)->id;
-		}
-
 	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
-	dictionary_iterator(dic_esis_bloqueados, buscar_esi_a_matar);
-
-	t_list* lista_afectada = dictionary_remove(dic_esis_bloqueados, clave_donde_se_encuentra);
-	list_remove_by_condition(lista_afectada, esElEsi);
-	dictionary_put(dic_esis_bloqueados, clave_donde_se_encuentra, lista_afectada);
+	dictionary_iterator(dic_esis_bloqueados, borrar_esi_a_matar);
 
 	pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 
-	free(clave_donde_se_encuentra);
+
 }
 
 t_esi* obtener_de_listos(int id_a_devolver){

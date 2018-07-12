@@ -33,7 +33,7 @@ void eliminar_de_listos(t_esi* esi_a_eliminar);
 void eliminar_de_bloqueados(t_esi* esi_a_eliminar);
 void agregar_a_lista_bloq(void* esi);
 void obtener_esis_bloq(char* c, void* data);
-void buscar_esi_a_matar(char* c, void* lista_esis_bloq);
+void borrar_esi_a_matar(char* c, void* lista_esis_bloq);
 void buscar_esi(char* c, void* lista_esis_bloq);
 
 t_esi* obtener_de_listos(int id_a_devolver);
