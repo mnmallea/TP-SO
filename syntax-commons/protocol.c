@@ -1,13 +1,7 @@
-/*
- * protocol.c
- *
- *  Created on: 8 jun. 2018
- *      Author: utnso
- */
-
 #include "protocol.h"
+#define MAX_STRING_LENGTH 40
 
-char* nombres_protocolo[] = {
+char nombres_protocolo[][MAX_STRING_LENGTH + 1] = {
 	"EXITO",
 	"ERROR",
 	"SOLICITUD_CLAVE",
@@ -26,13 +20,34 @@ char* nombres_protocolo[] = {
 	"CLAVE_NO_BLOQUEADA_EXCEPTION",
 	"CLAVE_NO_IDENTIFICADA_EXCEPTION",
 	"LINEA_INVALIDA",
+	"CLAVE_SIZE",
+	"INTERPRETAR",
 	"ABORTA",
 	"RELEVANTAR_INSTANCIA",
 	"SOLICITUD_STATUS_CLAVE",
+	"RESPUESTA_STATUS_CLAVE",
+	"SOLICITUD_VALOR",
+	"VALOR_ENCONTRADO",
+	"VALOR_NO_ENCONTRADO",
 	"INSTANCIA_COMPACTAR",
-	"ERROR_CONEXION"
+	"ERROR_CONEXION",
+	"MURIO_ESI_CORRIENDO"
+};
+char desc_status_clave[][MAX_STRING_LENGTH + 1] = {
+	"Hay valor para la clave",
+	"No hay valor para la clave",
+	"La instancia esta disponible",
+	"La instancia se encuentra caida",
+	"No hay instancia asignada",
+	"La instancia no posee la clave",
+	"Se realizo la simulacion",
+	"No se realizo la simulacion"
 };
 
-char* to_string_protocolo(t_protocolo codigo){
+char* to_string_status_clave(t_status_clave codigo) {
+	return desc_status_clave[codigo];
+}
+
+char* to_string_protocolo(t_protocolo codigo) {
 	return nombres_protocolo[codigo];
 }

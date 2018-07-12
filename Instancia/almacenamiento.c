@@ -9,7 +9,7 @@ void inicializarAlmacenamiento(unsigned int entradas,
 		unsigned int tamanioEntrada) {
 	log_info(logger, "inicio el almacenamiento");
 	ato = malloc(sizeof(almacenamiento));
-// estadoAto= bitarray_create_with_mode(char *bitarray,entradas*tamanioEntrada,LSB_FIRST);
+	estadoAto= crearBitArray(entradas);
 	ato->cantEntradas = entradas;
 	ato->tamanioEntrada = tamanioEntrada;
 	ato->dato = calloc(ato->cantEntradas, ato->tamanioEntrada);
@@ -20,14 +20,12 @@ void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) 
 	if (tamanio <= ato->tamanioEntrada) {
 		memcpy(ato->dato + (proximaEntrada * ato->tamanioEntrada), valor,
 				tamanio);
-
-		//este paso lo hago para mostrar en pantalla el valor que inserte
 		char* valorEnString = convertirString(valor, tamanio);
+
 		free(valorEnString);
 
 	} else {
 		unsigned int resto = tamanio - ato->tamanioEntrada;
-		//ver que onda, el malloc de parte a insertar lo hacia con ato->tamanioENtrada
 		void* parteAinsertar = malloc(ato->tamanioEntrada);
 		void* parteRestante = malloc(resto);
 
@@ -36,7 +34,6 @@ void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) 
 
 		memcpy(ato->dato + (proximaEntrada * ato->tamanioEntrada),
 				parteAinsertar, ato->tamanioEntrada);
-		//este paso lo hago para mostrar en pantalla el valor que inserte
 		char* valorEnString = convertirString(parteAinsertar,
 				ato->tamanioEntrada);
 		free(valorEnString);
@@ -51,7 +48,6 @@ void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) 
 
 
 char* convertirString(const void *valor, size_t tamanio) {
-	// calloc en vez de malloc y despues inicializar en 0
 	char *valorStr = calloc(tamanio + 1, sizeof(tamanio));
 	memcpy(valorStr, valor, tamanio);
 
@@ -82,3 +78,18 @@ void* buscarEnALmacenamiento(int posicion, unsigned int tamanio){
 	return carga;
 }
 
+
+
+t_bitarray * crearBitArray(uint32_t cantBloques){
+int tamanioBitarray=cantBloques/8;
+if(cantBloques % 8 != 0){
+tamanioBitarray++;
+}
+char* bits=malloc(tamanioBitarray);
+t_bitarray * bitarray = bitarray_create_with_mode(bits,tamanioBitarray,MSB_FIRST);
+int cont=0;
+for(; cont < tamanioBitarray*8; cont++){
+bitarray_clean_bit(bitarray, cont);
+}
+return bitarray;
+}

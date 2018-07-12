@@ -35,7 +35,10 @@ void iniciarDumper(char* puntoMontaje);
 void almacenarEnDumper(char*data,char*Clave,unsigned int tamanio);
 //------------------------------------------------------------------
 int		SET(int socketCoordinador,t_list* posiblesAReemplazar);
+int hacer_set(char* clave,char* valor,t_list* posiblesAReemplazar);
 int		STORE(char* clave);
+
+
 
 
 #endif /* INSTANCIA_H_ */
