@@ -58,10 +58,17 @@ void* planificar(void* _) {
 	log_trace(logger, "Trabajo muy duro, como un esclavo!");
 	while (1) {
 
-		log_trace(logger, "Planificando...");
-		if (hay_que_planificar()) {
+		pthread_mutex_lock(&mutex_pausa);
+			if (planificacion_pausada) { //va 2 veces el check porque en el caso de ser el primer esi el q matas te queda en dl
+				pthread_mutex_unlock(&mutex_pausa);
+				sem_wait(&pausa_planificacion);
+			} else {
+				pthread_mutex_unlock(&mutex_pausa);
+			}
 
-			pthread_mutex_unlock(&mutex_esi_corriendo);
+
+		if (hay_que_planificar()) {
+			log_trace(logger, "Planificando...");
 			esi_corriendo = obtener_nuevo_esi_a_correr(); //movi el mutex adentro, porque si se lockeaba por el contador arrastraba el mutex con el tambien
 			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
 		} else {
@@ -200,7 +207,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
 
 	CONTADOR : sem_wait(&contador_esis);
-
+	//log_debug(logger, "Pase el contador de esi a correr");
 	pthread_mutex_lock(&mutex_pausa);
 	if (planificacion_pausada) {
 		pthread_mutex_unlock(&mutex_pausa);
@@ -210,9 +217,8 @@ t_esi *obtener_nuevo_esi_a_correr() {
 
 	} else {
 		pthread_mutex_unlock(&mutex_pausa);
+		//log_debug(logger, "deslockeo mutex pausa");
 	}
-
-	log_debug(logger, "Pase el contador de esi a correr");
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (configuracion.algoritmo == FIFO) {
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
@@ -271,10 +277,8 @@ void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 	liberar_recursos(esi_a_finalizar);
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);
 	list_add(lista_esis_finalizados, esi_a_finalizar);
-	log_debug(logger, "Agrego a finalizados");
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
-	sem_wait(&contador_esis);
-
+	log_debug(logger, "Agrego a finalizados");
 }
 
 void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
@@ -313,7 +317,7 @@ void se_desbloqueo_un_recurso(char* clave) {
 					0);
 
 			log_debug(logger,
-					"Habia esis esperando el desbloqueo de esta clave, "
+					"Habia ESIS esperando el desbloqueo de esta clave, "
 							"se desbloqueo el esi: %d", esi_a_desbloquear->id);
 
 			//valido seguir teniendo esis esperando esta clave

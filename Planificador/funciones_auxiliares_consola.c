@@ -71,6 +71,7 @@ void eliminar_de_listos(t_esi* esi_a_eliminar){
 	list_remove_by_condition(lista_esis_listos, esElEsi);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 	log_debug(logger,"ESI eliminado de listos");
+	sem_wait(&contador_esis);
 }
 
 void eliminar_de_bloqueados(t_esi* esi_a_eliminar){
