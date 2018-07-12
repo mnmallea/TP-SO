@@ -33,6 +33,7 @@ char nombres_protocolo[][MAX_STRING_LENGTH + 1] = {
 	"ERROR_CONEXION",
 	"MURIO_ESI_CORRIENDO"
 };
+
 char desc_status_clave[][MAX_STRING_LENGTH + 1] = {
 	"Hay valor para la clave",
 	"No hay valor para la clave",

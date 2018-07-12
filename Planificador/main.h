@@ -8,41 +8,29 @@
 #ifndef MAIN_H_
 #define MAIN_H_
 
-#define LOG_LEVEL LOG_LEVEL_TRACE
-#define BACKLOG 5
-
 #include <stdlib.h>
 #include <pthread.h>
+#include <stdbool.h>
+
+#include <commons/collections/dictionary.h>
+#include <commons/collections/list.h>
 #include <commons/log.h>
+
+#include "../syntax-commons/protocol.h"
+
 #include "config_planificador.h"
 #include "selector.h"
 #include "consola.h"
+#include "planificacion.h"
+
+#define LOG_LEVEL LOG_LEVEL_TRACE
+#define BACKLOG 5
 
 config configuracion;
 t_log *logger;
 
-t_list *lista_esis_listos;
-t_esi *esi_corriendo;
-t_list *lista_esis_finalizados;
 
-/*Nombre: dic_esis_bloqueados
- * Estructura: char* clave bloqueada, t_list esis_bloqueados
- *
- * Se agrega una linea cuando un esi solicita una clave que esta bloqueada (GET del mismo)
- * Se elimina una linea cuando un esi libera un recurso (STORE del mismo)
- */
-t_dictionary *dic_esis_bloqueados;
+void configurar_claves_inicialmente_bloqueadas();
 
-/*Nombre: dic_clave_x_esi
- * Estructura: char* clave retenida, esi que la tiene
- *
- * Se agrega una linea cuando un esi solicita un recurso (GET del mismo)
- * Se elimina una linea cuando un esi libera un recurso (STORE del mismo)
- */
-t_dictionary *dic_clave_x_esi;
-
-
-
-//#include "typescommons.h"
 
 #endif /* MAIN_H_ */

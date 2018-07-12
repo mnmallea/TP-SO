@@ -6,80 +6,77 @@ int SET(int socketCoordinador, t_list* posiblesAReemplazar) {
 	char* valor;
 	recibir_set(socketCoordinador, &clave, &valor);
 	int resultado;
-	resultado = hacer_set(clave,valor,posiblesAReemplazar);
+	resultado = hacer_set(clave, valor, posiblesAReemplazar);
 	return resultado;
-/*	claveEntrada* cv= crearClaveEntrada(clave, valor);
-	nroOperacion ++;
-	if(buscarEntrada(cv->clave)!=NULL){
+	/*	claveEntrada* cv= crearClaveEntrada(clave, valor);
+	 nroOperacion ++;
+	 if(buscarEntrada(cv->clave)!=NULL){
+	 reemplazarCVEnTabla(cv);
+	 liberarCv(cv);
+	 return 0;
+	 }
+	 if(hayEntradasDisponibles(cv)){
+	 int proximaEntrada = entradaSiguienteEnTabla(cv);
+	 agregarEnTabla(proximaEntrada, cv);
+	 setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+	 liberarCv(cv);
+	 return 0;
+	 }else{
+	 t_list* vanAReemplazarse = algoritmoCircular(cv,posiblesAReemplazar);
+	 for(int i=0; i<list_size(vanAReemplazarse);i++){
+	 tablaE* aReemp= buscarEntrada(list_get(vanAReemplazarse,i));
+	 removerDeLista(aReemp->numero, aReemp);
+	 }
+	 int proximaEntrada = entradaSiguienteEnTabla(cv);
+	 agregarEnTabla(proximaEntrada, cv);
+	 setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+	 liberarCv(cv);
+	 }
+	 liberarCv(cv);
+	 return 0;
+	 */
+}
+
+int hacer_set(char* clave, char* valor, t_list* posiblesAReemplazar) {
+	claveEntrada* cv = crearClaveEntrada(clave, valor);
+	nroOperacion++;
+	if (buscarEntrada(cv->clave) != NULL) {
 		reemplazarCVEnTabla(cv);
 		liberarCv(cv);
 		return 0;
 	}
-	if(hayEntradasDisponibles(cv)){
-			int proximaEntrada = entradaSiguienteEnTabla(cv);
-			agregarEnTabla(proximaEntrada, cv);
-			setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
-			liberarCv(cv);
-			return 0;
-	}else{
-	t_list* vanAReemplazarse = algoritmoCircular(cv,posiblesAReemplazar);
-	for(int i=0; i<list_size(vanAReemplazarse);i++){
-		tablaE* aReemp= buscarEntrada(list_get(vanAReemplazarse,i));
-		removerDeLista(aReemp->numero, aReemp);
-		}
-	int proximaEntrada = entradaSiguienteEnTabla(cv);
-	agregarEnTabla(proximaEntrada, cv);
-	setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
-	liberarCv(cv);
-	}
-		liberarCv(cv);
-		return 0;
-	*/
-}
-
-
-int hacer_set(char* clave,char* valor,t_list* posiblesAReemplazar){
-	claveEntrada* cv= crearClaveEntrada(clave, valor);
-		nroOperacion ++;
-		if(buscarEntrada(cv->clave)!=NULL){
-			reemplazarCVEnTabla(cv);
-			liberarCv(cv);
-			return 0;
-		}
-		if(hayEntradasDisponibles(cv)){
-				int proximaEntrada = entradaSiguienteEnTabla(cv);
-				agregarEnTabla(proximaEntrada, cv);
-				setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
-				liberarCv(cv);
-				return 0;
-		}else{
-		t_list* vanAReemplazarse = algoritmoCircular(cv,posiblesAReemplazar);
-		for(int i=0; i<list_size(vanAReemplazarse);i++){
-			tablaE* aReemp= buscarEntrada(list_get(vanAReemplazarse,i));
-			removerDeLista(aReemp->numero, aReemp);
-			}
+	if (hayEntradasDisponibles(cv)) {
 		int proximaEntrada = entradaSiguienteEnTabla(cv);
 		agregarEnTabla(proximaEntrada, cv);
 		setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
 		liberarCv(cv);
+		return 0;
+	} else {
+		t_list* vanAReemplazarse = algoritmoCircular(cv, posiblesAReemplazar);
+		for (int i = 0; i < list_size(vanAReemplazarse); i++) {
+			tablaE* aReemp = buscarEntrada(list_get(vanAReemplazarse, i));
+			removerDeLista(aReemp->numero, aReemp);
 		}
-			liberarCv(cv);
-			return 0;
+		int proximaEntrada = entradaSiguienteEnTabla(cv);
+		agregarEnTabla(proximaEntrada, cv);
+		setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+		liberarCv(cv);
+	}
+	liberarCv(cv);
+	return 0;
 }
-
-
 
 int STORE(char* clave) {
 	log_info(logger, "inicializo OP_STORE");
 	tablaE* cv = buscarEntrada(clave);
-	if(cv == NULL){
+	if (cv == NULL) {
 		return -1;
 	}
 	void* carga = buscarEnALmacenamiento(cv->numero, cv->tamanio);
-	if(carga == NULL){
+	if (carga == NULL) {
 		return -1;
 	}
-	nroOperacion ++;
+	nroOperacion++;
 
 	log_trace(logger, "estoy storeando un %s", carga);
 	almacenarEnDumper(carga, clave, cv->tamanio);
@@ -122,7 +119,8 @@ void almacenarEnDumper(char* data, char* clave, unsigned int tamanio) {
 }
 
 int crearDumperCV(char* clave) {
-	char* nombreArchivo = string_from_format("%s/%s.txt", dumper->puntoMontaje,clave);
+	char* nombreArchivo = string_from_format("%s/%s.txt", dumper->puntoMontaje,
+			clave);
 	log_trace(logger, "Nombre del archivo a guardar: %s", nombreArchivo);
 	int fd = open(nombreArchivo, O_CREAT | O_RDWR, S_IRWXU);
 	log_trace(logger, "File descriptor: %d", fd);
@@ -137,18 +135,15 @@ int crearDumperCV(char* clave) {
 	return fd;
 }
 
-
 // funcion dumper cada 100 segundos se prende recorre la tabla de entradas, la storea y vacia la entrada y el almacenamiento
-void* dumpearADisco(void* sinuso){
-	while(1){
-	sleep(10);
-	for(int i=0;i<obtenerEntradasTotales();i++){
-		tablaE* entrada=list_get(tabla,i);
-		STORE(entrada->clave);
-		free(entrada);
+void* dumpearADisco(void* sinuso) {
+	while (1) {
+		sleep(10);
+		for (int i = 0; i < obtenerEntradasTotales(); i++) {
+			tablaE* entrada = list_get(tabla, i);
+			STORE(entrada->clave);
+			free(entrada);
+		}
 	}
 }
-}
-
-
 

@@ -10,7 +10,7 @@
 int entradasLibres;
 t_list * tabla;
 extern t_log* logger;
-unsigned int nroOperacion=0;
+unsigned int nroOperacion;
 
 typedef struct{
 	unsigned int	numero;

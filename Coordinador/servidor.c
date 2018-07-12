@@ -72,7 +72,6 @@ void atender_nueva_conexion(int* sockfd_ptr) {
 	case ESI:
 		log_info(logger, "Se ha conectado un ESI");
 		atender_esi(socket);
-		log_trace(logger, "Se termino de atender un ESI, sockfd = %d", socket);
 		break;
 	case INSTANCIA:
 		log_info(logger, "Se ha conectado una Instancia");
@@ -105,6 +104,17 @@ void atender_planificador(int socket) {
 			exit(EXIT_FAILURE);
 			break; //el break mas necesario de la historia
 		case SOLICITUD_STATUS_CLAVE:
+			;
+			char* clave;
+			int respuesta = try_recibirPaqueteVariable(socket_planificador,
+					(void**) &clave);
+			if (respuesta <= 0) {
+				free(clave);
+				log_error(logger, "Error en la conexion con el planificador");
+				exit(EXIT_FAILURE);
+			}
+			log_info(logger, "Recuperando el status de la clave %s", clave);
+			informar_status_clave(clave);
 			//todo implementar esto
 			break;
 		default:
@@ -123,38 +133,44 @@ void atender_instancia(int sockfd) {
 		return;
 	}
 	if (send(sockfd, &configuracion.entrada_size,
-			sizeof(configuracion.entrada_size), 0) < 0) {
+			sizeof(configuracion.entrada_size), MSG_NOSIGNAL) < 0) {
 		log_error(logger, "Error al configurar instancia");
 		close(sockfd);
 		return;
 	}
 	if (send(sockfd, &configuracion.cant_entradas,
-			sizeof(configuracion.cant_entradas), 0) < 0) {
+			sizeof(configuracion.cant_entradas), MSG_NOSIGNAL) < 0) {
 		log_error(logger, "Error al configurar instancia");
 		close(sockfd);
 		return;
 	}
+
 	if (esta_activa_instancia(nombre)) {
-		log_error(logger, "La instancia %s ya se encuentra activa", nombre);
-		close(sockfd);
-		return;
-	}
-	if (esta_inactiva_instancia(nombre)) {
-		if ((instancia = instancia_relevantar(nombre, sockfd)) == NULL)
+		log_info(logger, "La instancia %s ha estado previamente en el sistema",
+				nombre);
+		instancia_desactivar(nombre);
+		instancia = instancia_relevantar(nombre, sockfd);
+		if (instancia == NULL)
 			return;
 	} else {
-		instancia = crear_instancia(sockfd, nombre,
-				configuracion.cant_entradas);
-		log_info(logger, "La instancia %s ha sido agregada por primera vez",
-				instancia->nombre);
-		instancia_agregar_a_activas(instancia);
+		if (esta_inactiva_instancia(nombre)) {
+			if ((instancia = instancia_relevantar(nombre, sockfd)) == NULL)
+				return;
+		} else {
+			instancia = crear_instancia(sockfd, nombre,
+					configuracion.cant_entradas);
+			log_info(logger, "La instancia %s ha sido agregada por primera vez",
+					instancia->nombre);
+			instancia_agregar_a_activas(instancia);
+		}
 	}
+	free(nombre);
 
 	while (1) {
 		sem_wait(&instancia->semaforo_instancia);
 		if (enviar_cod_operacion(instancia->socket, INSTANCIA_COMPACTAR) < 0) {
 			log_error(logger, "La instancia % se cayo", instancia->nombre);
-			instancia_desactivar(instancia);
+			instancia_desactivar(instancia->nombre);
 			return;
 		}
 		t_protocolo cod_op = recibir_cod_operacion(instancia->socket);
@@ -170,14 +186,14 @@ void atender_instancia(int sockfd) {
 					instancia->nombre);
 			break;
 		case ERROR_CONEXION:
-			log_error(logger, "La instancia % se cayo", instancia->nombre);
-			instancia_desactivar(instancia);
+			log_error(logger, "La instancia %s se cayo", instancia->nombre);
+			instancia_desactivar(instancia->nombre);
 			return;
 		default:
 			log_warning(logger, "Mensaje no esperado: %s", cod_op);
 		}
 	}
-	sem_destroy(&instancia->semaforo_instancia);
+
 }
 
 void atender_esi(int socket) {
@@ -200,37 +216,47 @@ void atender_esi(int socket) {
 		char* valor = NULL;
 
 		t_protocolo cod_op = recibir_cod_operacion(socket);
-		log_trace(logger, "codigo de operacion recibido");
+		pthread_mutex_lock(&mutex_operacion);
+		log_trace(logger, "Codigo de operacion %s recibido del ESI %d",
+				to_string_protocolo(cod_op), esi->id);
 
 		switch (cod_op) {
 		case OP_GET:
 			recibir_operacion_unaria(socket, &clave);
-			log_trace(logger, "Recibi GET %s", clave);
+			log_trace(logger, "[ESI %d]Recibi GET %s", esi->id, clave);
 			retardarse(configuracion.retardo);
 			realizar_get(esi, clave);
 			break;
 		case OP_STORE:
 			recibir_operacion_unaria(socket, &clave);
-			log_trace(logger, "Recibi STORE %s", clave);
+			log_trace(logger, "[ESI %d]Recibi STORE %s", esi->id, clave);
 			retardarse(configuracion.retardo);
 			realizar_store(esi, clave);
 			break;
 		case OP_SET:
 			recibir_set(socket, &clave, &valor);
-			log_trace(logger, "Recibi SET %s %s", clave, valor);
+			log_trace(logger, "[ESI %d]Recibi SET %s %s", esi->id, clave,
+					valor);
 			retardarse(configuracion.retardo);
 			realizar_set(esi, clave, valor);
 			break;
+		case FINALIZO_ESI:
+			close(socket);
+			log_trace(logger, "Se termino de atender el ESI id: %d", esi->id);
+			pthread_mutex_unlock(&mutex_operacion);
+			return;
 		default:
 			log_error(logger,
-					"El esi ha muerto, le cortaron la garganta de aqui a aca",
+					"El esi %d ha muerto, le cortaron la garganta de aqui a aca",
 					esi->id);
 			/*
 			 * todo fijarse si aca hay que sacarlo de la lista o no
 			 */
 			close(socket);
+			pthread_mutex_unlock(&mutex_operacion);
 			return;
 		}
+		pthread_mutex_unlock(&mutex_operacion);
 
 		free(clave);
 		free(valor);
@@ -251,8 +277,9 @@ void retardarse(long int milisegundos) {
 	struct timespec requested, remaining;
 	requested.tv_sec = milisegundos / 1000;
 	long int resto = milisegundos % 1000;
-	if (resto != 0) {
+	if (resto != 0)
 		requested.tv_nsec = resto * 1000000;
-	}
+	else
+		requested.tv_nsec = 0;
 	nanosleep(&requested, &remaining);
 }

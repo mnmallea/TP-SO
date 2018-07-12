@@ -1,0 +1,20 @@
+GET futbol:pipa
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+SET futbol:pipa TraemeLaCopapipa
+SET futbol:pipa TraemeLaCo
+GET futbol:messi
+SET futbol:messi TraemeLaCopaMessi
+SET futbol:messi TraemeLaCo
+SET futbol:messi TraemeLaCopaMessi
+SET futbol:messi TraemeLaCo
+STORE futbol:messi
+STORE futbol:pipa
