@@ -8,6 +8,7 @@ void crearTablaEntradas() {
 bool agregarEnTabla(int nuevaEntrada, claveEntrada* claveE) {
 	tablaE * nuevaE = adaptoClave(claveE);
 	nuevaE->numero = nuevaEntrada;
+	nuevaE->operaciones= nroOperacion;
 	if (nuevaEntrada >= 0) {
 		list_add(tabla, (void *) nuevaE);
 		list_sort(tabla, ordenAscendente);
@@ -26,6 +27,26 @@ bool ordenAscendente(void * primero, void * segundo) {
 	return true;
 }
 
+bool ordenAscendentePorOperacion(void * primero, void * segundo) {
+	tablaE* unaEntrada = (tablaE*) primero;
+	tablaE* otraEntrada = (tablaE*) segundo;
+	if (otraEntrada->operaciones < unaEntrada->operaciones) {
+		return false;
+	}
+	return true;
+}
+
+bool ordenDescendentePorTamanio(void * primero, void * segundo){
+	tablaE* unaEntrada = (tablaE*) primero;
+		tablaE* otraEntrada = (tablaE*) segundo;
+		if (otraEntrada->tamanio >= unaEntrada->tamanio) {
+			return false;
+		}
+		return true;
+}
+
+
+
 bool tablaEstaVacia(t_list* tabla) {
 	return list_is_empty(tabla);
 }
@@ -40,15 +61,11 @@ int entradaSiguienteEnTabla(claveEntrada* claveE) {
 	//defino una variable para chequear el espacio entre entradas de la tabla
 	int espacioEntreEntradas = 0;
 
-	if(tablaEstaVacia(tabla)){//si es la primera vez todo revisar esto
+	if(tablaEstaVacia(tabla)){
 		return 0;
 	}
-
 	// si la tabla no esta vacia y las entradas libres me alcanzan para cubrir las que necesito empiezo a ejecutar
 	if (entradasLibres >= cantEntradasNecesarias) {
-		//if(cantEntradasUsadas == 0){
-		//	return 0;
-		//	} else{
 		entrada1 = (tablaE*) list_get(tabla, 0);
 		if (entrada1->numero > 0
 				&& cantEntradasNecesarias <= (entrada1->numero)) {
@@ -82,7 +99,6 @@ int entradaSiguienteEnTabla(claveEntrada* claveE) {
 		}
 
 	}
-//arreglar tiene que decir que hubo error y exit_gracefully o algo asi
 	return -1;
 }
 
@@ -106,7 +122,6 @@ bool quitarDeTabla(claveEntrada * claveE) {
 	}
 	return false;
 }
-
 void removerDeLista(int unaVariable, tablaE* entrada) {
 	list_remove(tabla, unaVariable);
 	entradasLibres += (entrada->tamanio / obtenerTamanioEntrada()) + 1;
@@ -137,7 +152,7 @@ void liberarCv(claveEntrada* cv) {
 
 claveEntrada* crearClaveEntrada(char* clave, char* valor) {
 	claveEntrada* claveE = malloc(sizeof(claveEntrada));
-	claveE->valor = valor;
+	claveE->valor =  string_duplicate(valor);
 	claveE->clave = string_substring_until(clave, 40);
 	claveE->tamanio = (unsigned int) (string_length(valor) + 1);
 	return claveE;
@@ -148,14 +163,36 @@ bool hayEntradasDisponibles(claveEntrada* cv) {
 
 }
 
+void reemplazarCVEnTabla(claveEntrada* cv){
+	tablaE* entrada=buscarEntrada(cv->clave);
+	entrada->operaciones=nroOperacion;
+	entrada->tamanio=cv->tamanio;
+	list_replace(tabla,entrada->numero,(void*) entrada);
+	setEnAlmacenamiento(entrada->numero,cv->valor,cv->tamanio);
+
+}
+
 tablaE* buscarEntrada(char* claveAPedir) {
 	tablaE* entrada;
 	for (int i = 0; i < list_size(tabla); i++) {
 		entrada = (tablaE*) list_get(tabla, i);
-		if (!strcmp(claveAPedir, entrada->clave)) {
+		if (strcmp(claveAPedir, entrada->clave)==0) {
 			return entrada;
 		}
 	}
 	log_info(logger, "no se encontro la entrada buscada");
 	return NULL;
 }
+
+bool esAtomica(void* entrada){
+    tablaE* unaEntrada = entrada;
+  return unaEntrada->tamanio <= obtenerTamanioEntrada();
+
+}
+char* obtenerClave(claveEntrada* cv){
+	return cv->clave;
+}
+
+
+
+
