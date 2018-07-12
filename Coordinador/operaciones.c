@@ -52,6 +52,15 @@ void realizar_get(t_esi* esi, char* clave) {
 	}
 }
 
+void instancia_actualizar_entradas_libres(t_instancia* instancia) {
+	int entradas_libres;
+	recv(instancia->socket, &entradas_libres, sizeof(entradas_libres),
+			MSG_WAITALL);
+	instancia->cant_entradas_vacias = entradas_libres;
+	log_info(logger, "A la instancia %s le quedan %d entradas libres",
+			instancia->nombre, instancia->cant_entradas_vacias);
+}
+
 void realizar_set(t_esi* esi, char* clave, char* valor) {
 	t_instancia* instancia_elegida;
 
@@ -62,6 +71,10 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "[ESI %d] Mensaje recibido del planificador: %s", esi->id,
 			to_string_protocolo(cod_op));
+
+	/*
+	 * Recibe la respuesta del planificador
+	 */
 	switch (cod_op) {
 	case MURIO_ESI_CORRIENDO:
 		log_info(logger,
@@ -89,12 +102,17 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
 				instancia_elegida->socket);
 
+		/*
+		 * Recibe la respuesta de la instancia
+		 */
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger,
 					"[ESI %d] Set realizado exitosamente en Instancia %s",
 					esi->id, instancia_elegida->nombre);
 			agregar_clave_almacenada(instancia_elegida, clave);
+
+			instancia_actualizar_entradas_libres(instancia_elegida);
 			enviar_cod_operacion(esi->socket, EXITO);
 			break;
 		case ERROR:
@@ -134,6 +152,10 @@ void realizar_store(t_esi* esi, char* clave) {
 	t_protocolo cod_op = respuesta_planificador;
 	log_trace(logger, "[ESI %d] Mensaje recibido del planificador: %s", esi->id,
 			to_string_protocolo(cod_op));
+
+	/*
+	 * Interpreta la respuesta del planificador
+	 */
 	switch (cod_op) {
 	case MURIO_ESI_CORRIENDO:
 		log_info(logger,
@@ -161,11 +183,16 @@ void realizar_store(t_esi* esi, char* clave) {
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
 				instancia_elegida->socket);
+
+		/*
+		 * Interpreta la respuesta de la instancia
+		 */
 		switch (respuesta_instancia) {
 		case EXITO:
 			log_info(logger,
 					"[ESI %d] Store realizado exitosamente en Instancia %s",
 					esi->id, instancia_elegida->nombre);
+			instancia_actualizar_entradas_libres(instancia_elegida);
 			enviar_cod_operacion(esi->socket, EXITO);
 			break;
 		case ERROR:

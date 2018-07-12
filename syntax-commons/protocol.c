@@ -1,10 +1,3 @@
-/*
- * protocol.c
- *
- *  Created on: 8 jun. 2018
- *      Author: utnso
- */
-
 #include "protocol.h"
 #define MAX_STRING_LENGTH 40
 
@@ -40,6 +33,7 @@ char nombres_protocolo[][MAX_STRING_LENGTH + 1] = {
 	"ERROR_CONEXION",
 	"MURIO_ESI_CORRIENDO"
 };
+
 char desc_status_clave[][MAX_STRING_LENGTH + 1] = {
 	"Hay valor para la clave",
 	"No hay valor para la clave",
