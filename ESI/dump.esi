@@ -1,0 +1,6 @@
+GET clave1
+GET clave2
+GET clave3
+SET clave1 futbol
+SET clave2 messi
+SET clave3 luka-modric

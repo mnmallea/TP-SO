@@ -9,6 +9,7 @@
 
 #include <commons/collections/list.h>
 #include <pthread.h>
+#include <signal.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
@@ -23,6 +24,9 @@
 #include "cfg_almacenamiento.h"
 #include "instancia.h"
 #include "tabla_entradas.h"
+
+void sigalrm_handler();
+void configurar_timer_dumper();
 
 int main(int argc, char** argv) {
 	nroOperacion = 0;
@@ -40,12 +44,13 @@ int main(int argc, char** argv) {
 	crearTablaEntradas();
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
-	pthread_t dumper;
+//	pthread_t dumper;
 	//tengo que hacer pthread join ?
-	if (pthread_create(&dumper, NULL, dumpearADisco, NULL)) {
-		log_error(logger, "Error creando el hilo del dumper\n");
-		exit(EXIT_FAILURE);
-	}
+//	if (pthread_create(&dumper, NULL, dumpearADisco, NULL)) {
+//		log_error(logger, "Error creando el hilo del dumper\n");
+//		exit(EXIT_FAILURE);
+//	}
+	configurar_timer_dumper();
 	t_list* posiblesAReemplazar = NULL;
 	while (escucha) {
 		int resultado;
@@ -125,4 +130,14 @@ int main(int argc, char** argv) {
 	limpiar_configuracion();
 	log_destroy(logger);
 	exit(0);
+}
+
+void configurar_timer_dumper(){
+	signal(SIGALRM, sigalrm_handler);
+	alarm(configuracion.intervalo_dump);
+}
+void sigalrm_handler(){
+	log_info(logger, "Se procede a realizar el DUMP...");
+	dumpearADisco(NULL);
+	alarm(configuracion.intervalo_dump);
 }

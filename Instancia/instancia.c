@@ -137,13 +137,14 @@ int crearDumperCV(char* clave) {
 
 // funcion dumper cada 100 segundos se prende recorre la tabla de entradas, la storea y vacia la entrada y el almacenamiento
 void* dumpearADisco(void* sinuso) {
-	while (1) {
-		sleep(10);
-		for (int i = 0; i < obtenerEntradasTotales(); i++) {
-			tablaE* entrada = list_get(tabla, i);
-			STORE(entrada->clave);
-			free(entrada);
-		}
+//	while (1) {
+//		sleep(10);
+	for (int i = 0; i < list_size(tabla); i++) {
+		tablaE* entrada = list_get(tabla, i);
+		STORE(entrada->clave);
+//		free(entrada);
 	}
+//	}
+	return NULL;
 }
 
