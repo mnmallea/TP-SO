@@ -25,6 +25,7 @@ pthread_mutex_t mutex_esi_corriendo;
 pthread_mutex_t mutex_esi_a_matar_por_consola;
 pthread_mutex_t mutex_esi_a_bloquear_por_consola;
 pthread_mutex_t mutex_clave_a_bloquear;
+pthread_mutex_t mutex_set_sockets;
 
 
 sem_t pausa_planificacion;

@@ -46,7 +46,9 @@ void listener(void) {
 		fdmax = socketServer;
 
 	while (1) {
+		pthread_mutex_lock(&mutex_set_sockets);
 		read_fds = master;
+		pthread_mutex_unlock(&mutex_set_sockets);
 		if (select(fdmax + 1, &read_fds, NULL, NULL, NULL) == -1) {
 			log_error(logger, "No se pudo seleccionar conexiones\n");
 		}
@@ -65,8 +67,8 @@ void listener(void) {
 					if (nbytes <= 0) {
 						log_debug(logger, "Cerrando conexion del esi %d...", i);
 						int morite_hdp = -1;
-						send(i, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
-						cerrarConexion(i);
+						send(esi_corriendo->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
+						cerrarConexion(&esi_corriendo->socket);
 						buf = ERROR_CONEXION;
 					}
 
@@ -78,7 +80,7 @@ void listener(void) {
 						log_debug(logger, "Cerrando conexion del esi %d...", i);
 						int morite_hdp = -1;
 						send(i, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
-						cerrarConexion(i);
+						cerrarConexion(&esi_corriendo->socket);
 					}
 					log_debug(logger, "Mensaje recibido del ESI corriendo: %s",
 							to_string_protocolo(buf));
@@ -200,7 +202,9 @@ void atender_nueva_conexion() {
 	if (newfd == -1) {
 		log_error(logger, "No se pudo aceptar la conexion\n");
 	} else {
+		pthread_mutex_lock(&mutex_set_sockets);
 		FD_SET(newfd, &master);
+		pthread_mutex_unlock(&mutex_set_sockets);
 		if (newfd > fdmax) {
 			fdmax = newfd;
 		}
@@ -224,7 +228,8 @@ void atender_error(int nbytes) {
 			log_error(logger,
 					"El mensaje recibido por el Coordinador tiene errores\n");
 		}
-		cerrarConexion(i);
+		int sock_aux = i;
+		cerrarConexion(&sock_aux);
 	} else {
 		log_debug(logger, "Atendiendo error ESI\n");
 		int id = encontrarIdDelSocket(i); //err
@@ -343,9 +348,17 @@ int encontrarIdDelSocket(int i) {
 	return id;
 }
 
-void cerrarConexion(int socket) {
-	close(socket);
-	FD_CLR(socket, &master);
+void cerrarConexion(int* socket) {
+	if(*socket <= 0){
+		log_warning(logger, "La conexion ya estaba finalizada");
+		return;
+	}
+	pthread_mutex_lock(&mutex_set_sockets);
+	close(*socket);
+	FD_CLR(*socket, &master);
+	pthread_mutex_unlock(&mutex_set_sockets);
+	log_trace(logger, "----- SE CERRO UN SOCKET -----");
+	*socket = -1;
 }
 
 int socketProceso(t_esi* n_esi) {
