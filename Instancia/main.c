@@ -6,6 +6,7 @@
  */
 #include "main.h"
 
+
 int main(int argc, char** argv) {
 	logger = log_create("instancia.log", "Instancia", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
@@ -23,7 +24,7 @@ int main(int argc, char** argv) {
 	int escucha = 1;
 	pthread_t dumper;
 	//tengo que hacer pthread join ?
-    if (pthread_create(&dumper,NULL,dumpearADisco,NULL)) {
+    if (pthread_create(&dumper,NULL,dumpearADisco,NULL)){
 			log_error(logger, "Error creando el hilo del dumper\n");
 			exit(EXIT_FAILURE);
 	}
@@ -59,44 +60,33 @@ int main(int argc, char** argv) {
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			break;
-
-		case MATAR_INSTANCIA:
-			log_info(logger, "la instancia se esta desconectando");
-			eliminarAlmacenamiento();
-			//todo: destruirTE();
-			free(posiblesAReemplazar);
-			close(socketCoordinador);
-			escucha = 0;
-
-			break;
-
-		/*case RELEVANTAR_INSTANCIA:
+		case RELEVANTAR_INSTANCIA:
 			log_info(logger, "La instancia se esta relevantando.....");
-			int* cantidadClaves=NULL;
-			recibirPaquete(socketCoordinador,cantidadClaves, sizeof(int));
-			int cantClaves= *cantidadClaves;
-			free(cantidadClaves);
-			for(int i=0;i<cantClaves;i++){
+			int cantidadClaves;
+			recibirPaquete(socketCoordinador,&cantidadClaves, sizeof(int));
+			for(int i=0;i<cantidadClaves;i++){
 				void* clave;
 				try_recibirPaqueteVariable(socketCoordinador, &clave);
-				if(dictionary_has_key(dumper->fd, clave)){
-					if(fopen(clave,"r")<0){
-						log_info(logger," la instancia no encuentra el archivo de la clave %d",clave);
-					}else{
-						void* valor=NULL;/*hago el malloc o lo hace el fread*/
-						/*fread (valor,sizeof(clave), 1,clave);
-						SET(socketCoordinador,posiblesAReemplazar);
+						if(fopen(clave,"r")==NULL){
+							log_info(logger," la instancia no encuentra el archivo de la clave %d",clave);
+						}
+						char* valor;
+						int lenght=0;
+						getline(&valor,&lenght,clave);
+						hacer_set(clave,valor,posiblesAReemplazar);
 						free(valor);
 						fclose(clave);
+						free(clave);
 					}
-				}
-				free(clave);
-			}
-			break;*/
+			free(clave);
+			break;
 		case INSTANCIA_COMPACTAR:
 			log_info(logger, "Estoy compactando ...");
 			enviar_cod_operacion(socketCoordinador, EXITO);
 			//si falla deberia contestarle ERROR
+			break;
+		case SOLICITUD_CLAVE:
+			//recibo una clave voy a la tabla de entradas me fijo la posicion y voy al almacenamiento y la saco y la devuelvo
 			break;
 		default: 
 			log_info(logger, "no se pudo interpretar el mensaje");

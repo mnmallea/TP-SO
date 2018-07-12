@@ -7,6 +7,7 @@
 #include <commons/log.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 t_log * logger;
 
@@ -18,11 +19,12 @@ typedef struct {
 
 almacenamiento* ato;
 
-//t_bitarray estadoAto;
+t_bitarray* estadoAto;
 
 void almacenamiento_logger();
 void mostrarAlmacenamiento();
 void eliminarAlmacenamiento();
+t_bitarray * crearBitArray(uint32_t cantBloques);
 char* convertirString(const void *valor, size_t tamanio);
 void* buscarEnALmacenamiento(int posicion, unsigned int tamanio);
 void inicializarAlmacenamiento(unsigned int entradas,unsigned int tamanioEntrada);
