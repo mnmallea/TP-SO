@@ -1,45 +1,87 @@
-/*
- * instancia.c
- *
- *  Created on: 7 jun. 2018
- *      Author: utnso
- */
-
 #include "instancia.h"
 
-#include <bits/mman-linux.h>
-#include <commons/log.h>
-#include <commons/string.h>
-#include <errno.h>
-
-int SET(int socketCoordinador) {
+int SET(int socketCoordinador, t_list* posiblesAReemplazar) {
 	log_info(logger, "inicializando OP_SET");
 	char* clave;
 	char* valor;
-	int estado = 1;
 	recibir_set(socketCoordinador, &clave, &valor);
-	log_debug(logger, "Recibi SET %s %s", clave, valor);
+	int resultado;
+	resultado = hacer_set(clave, valor, posiblesAReemplazar);
+	return resultado;
+	/*	claveEntrada* cv= crearClaveEntrada(clave, valor);
+	 nroOperacion ++;
+	 if(buscarEntrada(cv->clave)!=NULL){
+	 reemplazarCVEnTabla(cv);
+	 liberarCv(cv);
+	 return 0;
+	 }
+	 if(hayEntradasDisponibles(cv)){
+	 int proximaEntrada = entradaSiguienteEnTabla(cv);
+	 agregarEnTabla(proximaEntrada, cv);
+	 setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+	 liberarCv(cv);
+	 return 0;
+	 }else{
+	 t_list* vanAReemplazarse = algoritmoCircular(cv,posiblesAReemplazar);
+	 for(int i=0; i<list_size(vanAReemplazarse);i++){
+	 tablaE* aReemp= buscarEntrada(list_get(vanAReemplazarse,i));
+	 removerDeLista(aReemp->numero, aReemp);
+	 }
+	 int proximaEntrada = entradaSiguienteEnTabla(cv);
+	 agregarEnTabla(proximaEntrada, cv);
+	 setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+	 liberarCv(cv);
+	 }
+	 liberarCv(cv);
+	 return 0;
+	 */
+}
+
+int hacer_set(char* clave, char* valor, t_list* posiblesAReemplazar) {
 	claveEntrada* cv = crearClaveEntrada(clave, valor);
-	if (!hayEntradasDisponibles(cv)) {
-		//implementar algoritmo
+	nroOperacion++;
+	if (buscarEntrada(cv->clave) != NULL) {
+		reemplazarCVEnTabla(cv);
+		liberarCv(cv);
+		return 0;
 	}
-	int proximaEntrada = entradaSiguienteEnTabla(cv);
-	setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
-	agregarEnTabla(proximaEntrada, cv);
+	if (hayEntradasDisponibles(cv)) {
+		int proximaEntrada = entradaSiguienteEnTabla(cv);
+		agregarEnTabla(proximaEntrada, cv);
+		setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+		liberarCv(cv);
+		return 0;
+	} else {
+		t_list* vanAReemplazarse = algoritmoCircular(cv, posiblesAReemplazar);
+		for (int i = 0; i < list_size(vanAReemplazarse); i++) {
+			tablaE* aReemp = buscarEntrada(list_get(vanAReemplazarse, i));
+			removerDeLista(aReemp->numero, aReemp);
+		}
+		int proximaEntrada = entradaSiguienteEnTabla(cv);
+		agregarEnTabla(proximaEntrada, cv);
+		setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+		liberarCv(cv);
+	}
 	liberarCv(cv);
-	return estado;
+	return 0;
 }
 
 int STORE(char* clave) {
 	log_info(logger, "inicializo OP_STORE");
-	int estado = 1;
 	tablaE* cv = buscarEntrada(clave);
+	if (cv == NULL) {
+		return -1;
+	}
 	void* carga = buscarEnALmacenamiento(cv->numero, cv->tamanio);
+	if (carga == NULL) {
+		return -1;
+	}
+	nroOperacion++;
+
 	log_trace(logger, "estoy storeando un %s", carga);
 	almacenarEnDumper(carga, clave, cv->tamanio);
 	free(carga);
-//	free(cv); NO HACER FREE DE ESTO, @den despues te explico por que
-	return estado;
+	return 0;
 }
 //------------------------------------------------------------------------
 //https://stackoverflow.com/questions/7430248/creating-a-new-directory-in-c
@@ -76,7 +118,7 @@ void almacenarEnDumper(char* data, char* clave, unsigned int tamanio) {
 	munmap(memMap, tamanio);
 }
 
-int crearDumperCV(char*clave) {
+int crearDumperCV(char* clave) {
 	char* nombreArchivo = string_from_format("%s/%s.txt", dumper->puntoMontaje,
 			clave);
 	log_trace(logger, "Nombre del archivo a guardar: %s", nombreArchivo);
@@ -91,5 +133,18 @@ int crearDumperCV(char*clave) {
 	dictionary_put(dumper->fd, clave, (void*) fd);
 	free(nombreArchivo);
 	return fd;
+}
+
+// funcion dumper cada 100 segundos se prende recorre la tabla de entradas, la storea y vacia la entrada y el almacenamiento
+void* dumpearADisco(void* sinuso) {
+//	while (1) {
+//		sleep(10);
+	for (int i = 0; i < list_size(tabla); i++) {
+		tablaE* entrada = list_get(tabla, i);
+		STORE(entrada->clave);
+//		free(entrada);
+	}
+//	}
+	return NULL;
 }
 

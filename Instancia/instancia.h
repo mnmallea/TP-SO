@@ -18,6 +18,7 @@
 #include "tabla_entradas.h"
 #include "almacenamiento.h"
 #include <sys/mman.h>
+#include "algoritmos.h"
 #include <commons/collections/dictionary.h>
 #include "../syntax-commons/conexiones.h"
 
@@ -28,13 +29,16 @@ typedef struct {
 dumperEstructura* dumper;
 
 extern t_log *logger;
-
+void* dumpearADisco(void* sinUso);
 int crearDumperCV(char*clave);
 void iniciarDumper(char* puntoMontaje);
 void almacenarEnDumper(char*data,char*Clave,unsigned int tamanio);
 //------------------------------------------------------------------
-int		SET(int socketCoordinador);
+int		SET(int socketCoordinador,t_list* posiblesAReemplazar);
+int hacer_set(char* clave,char* valor,t_list* posiblesAReemplazar);
 int		STORE(char* clave);
+
+
 
 
 #endif /* INSTANCIA_H_ */
