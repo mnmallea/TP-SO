@@ -208,9 +208,11 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	t_paquete* paquete_claves = paquete_crear();
 	int i;
 	int cantidad_claves = list_size(instancia->claves_almacenadas);
+	log_info(logger, "La instancia %s tenia %d claves:", instancia->nombre, cantidad_claves);
 	for (i = 0; i < cantidad_claves; i++) {
 		char* clave_actual = list_get(instancia->claves_almacenadas, i);
 		paquete_agregar(paquete_claves, clave_actual, strlen(clave_actual) + 1);
+		printf("%d - %s\n", i, clave_actual);
 	}
 	if (enviar_cod_operacion(socket, RELEVANTAR_INSTANCIA) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
