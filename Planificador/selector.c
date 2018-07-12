@@ -329,13 +329,10 @@ int encontrarIdDelSocket(int i) {
 			esi_a_devolver = list_find(lista_esis_bloq,
 					tiene_el_socket_buscado);
 			id = esi_a_devolver->id;
-		}
 
-		log_error(logger, "lo busca en la lista de bloqueados\n", id);
+		}
 		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
-		log_error(logger, "lockea mutex\n", id);
 		dictionary_iterator(dic_esis_bloqueados, buscar_esi);
-		log_error(logger, "lo encontro lista de bloqueados\n", id);
 		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 
 	}

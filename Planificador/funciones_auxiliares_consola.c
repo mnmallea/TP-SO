@@ -94,7 +94,6 @@ void eliminar_de_bloqueados(t_esi* esi_a_eliminar){ //debuggear esta funcion
 
 	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
 	dictionary_iterator(dic_esis_bloqueados, borrar_esi_a_matar);
-
 	pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 
 

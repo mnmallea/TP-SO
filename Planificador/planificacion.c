@@ -262,6 +262,7 @@ void finalizar_esi_corriendo(t_esi* esi_a_finalizar) {
 			esi_corriendo = NULL;
 			log_debug(logger, "Nullea el corriendo");
 	pthread_mutex_unlock(&mutex_esi_corriendo);
+
 }
 
 void finalizar_esi_sync(t_esi* esi_a_finalizar) {
@@ -488,10 +489,13 @@ void ejecutar_bloqueo_o_asesinato() {
 		pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
 		if (esi_a_matar_por_consola != NULL) {
 			log_debug(logger, "Se habia pedido matar al esi");
+
+			cerrarConexion(esi_a_matar_por_consola->socket);
+
 			finalizar_esi_corriendo(esi_a_matar_por_consola);
 		}
-
 		pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+
 	}
 
 }
