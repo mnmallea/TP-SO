@@ -13,26 +13,16 @@
 #include <commons/config.h>
 #include <commons/log.h>
 #include <commons/string.h>
+
 #include "error.h"
+#include "typedefs.h"
 
-
-
-#define PORT_MAX_STRING_LENGTH 5
-
-typedef struct{
-	char puerto[PORT_MAX_STRING_LENGTH + 1]; //el maximo es 65535 mas el '\0'
-	int algoritmo;
-	int estimacion_inicial;
-	char *ipCoord;
-	char *portCoord;
-	char *claves_bloqueadas;
-	double alfa;
-} config;
 
 extern t_log *logger;
 
 config configurar(char *ruta);
+
 void limpiar_configuracion();
-//tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo);
+tipo_algoritmo_planif get_algoritmo_planificacion(char* nombre_algoritmo);
 
 #endif /* CONFIG_PLANIFICADOR_H_ */

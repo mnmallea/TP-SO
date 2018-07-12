@@ -7,6 +7,19 @@
 
 #include "planificacion.h"
 
+#include <commons/log.h>
+#include <pthread.h>
+#include <semaphore.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/my_socket.h"
+#include "algoritmos_planificacion.h"
+#include "funciones_auxiliares.h"
+#include "sincronizacion.h"
+
 /* SE DEBE REPLANIFICAR CUANDO:
  *
  * SI USO HRRN/SJF SIN DESALOJO:
@@ -20,63 +33,193 @@
  */
 
 int flag = 1;
-bool primera_vez = false;
 bool hay_nuevo_esi = false;
 bool hay_esi_bloqueado = false;
 bool hay_esi_finalizado = false;
-t_esi* esi_a_matar;
 
-void* planificar(void* nada) {
-
-	while (1) {
-		sem_wait(&sem_binario_planif);
-
-		pthread_mutex_lock(&mutex_flag_pausa_despausa);
-		if (flag == 1) { //esta despausada la planificacion
-			pthread_mutex_unlock(&mutex_flag_pausa_despausa);
-
-			t_esi* proximo_esi;
-			if (configuracion.algoritmo == SJFcD) { //planifico por desalojo
-				if (primera_vez || hay_nuevo_esi || hay_esi_bloqueado
-						|| hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. con desalojo)
-					/*DESALOJO AL ESI: (lo paso de nuevo a listos,
-					 dejo el puntero con esi corriendo como esta, total despues se pisa)*/
-					if (!primera_vez)
-						nuevo_esi(esi_corriendo);
-					sem_wait(&contador_esis);
-					proximo_esi = obtener_nuevo_esi_a_correr();
-					primera_vez = hay_nuevo_esi = hay_esi_bloqueado =
-							hay_esi_finalizado = false;
-				} else {
-					proximo_esi = esi_corriendo; //no hubo evento de replanif
-				}
-			} else {
-
-				if (primera_vez || hay_esi_bloqueado || hay_esi_finalizado) { //ocurrio un evento de replanificacion (en alg. sin desalojo)
-					sem_wait(&contador_esis);
-					proximo_esi = obtener_nuevo_esi_a_correr();
-					primera_vez = hay_esi_bloqueado = hay_esi_finalizado =
-					false;
-				} else {
-					proximo_esi = esi_corriendo; //no hubo evento de replanif
-				}
-
-			}
-
-			log_debug(logger, "Proximo esi a correr: %d \n", proximo_esi->id);
-
-			esi_corriendo = proximo_esi;
-			correr(esi_corriendo);
-
-		}
-
+bool algoritmo_debe_planificar() {
+	switch (configuracion.algoritmo) {
+	case FIFO:
+	case SJFsD:
+	case HRRN:
+		return false;
+	case SJFcD:
+	{
+		sem_post(&contador_esis);
+		return hay_nuevo_esi;
 	}
-	return NULL;
+	default:
+		log_error(logger, "Algoritmo desconocido");
+		exit(EXIT_FAILURE);
+	}
 }
 
+void* planificar(void* _) {
+	log_trace(logger, "Trabajo muy duro, como un esclavo!");
+	while (1) {
+
+		pthread_mutex_lock(&mutex_pausa);
+			if (planificacion_pausada) { //va 2 veces el check porque en el caso de ser el primer esi el q matas te queda en dl
+				pthread_mutex_unlock(&mutex_pausa);
+				sem_wait(&pausa_planificacion);
+			} else {
+				pthread_mutex_unlock(&mutex_pausa);
+			}
+
+
+		if (hay_que_planificar()) {
+			log_trace(logger, "Planificando...");
+			esi_corriendo = obtener_nuevo_esi_a_correr(); //movi el mutex adentro, porque si se lockeaba por el contador arrastraba el mutex con el tambien
+			log_debug(logger, "Proximo esi a correr: %d \n", esi_corriendo->id);
+		} else {
+			log_debug(logger, "Continua corriendo: %d \n",
+					esi_corriendo->id);
+		}
+		correr(esi_corriendo);
+	}
+	return NULL;
+
+}
+
+bool hay_que_planificar() {
+	return esi_corriendo == NULL || algoritmo_debe_planificar();
+}
+
+void correr(t_esi* esi) {
+
+	mandar_confirmacion(esi->socket);
+
+	sem_wait(&respondio_esi_corriendo);
+
+	log_debug(logger, "Signal para correr");
+
+	//Aumenta cuanto vienen esperando los que estan en listos
+	pthread_mutex_lock(&mutex_lista_esis_listos);
+	list_iterate(lista_esis_listos, aumentar_viene_esperando);
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
+
+	log_debug(logger, "Aumento rafaga listos");
+
+	//Aumenta la rafaga del esi que esta corriendo
+	pthread_mutex_lock(&mutex_esi_corriendo);
+	aumentar_viene_corriendo(esi_corriendo);
+	pthread_mutex_unlock(&mutex_esi_corriendo);
+
+	log_debug(logger, "Aumento rafaga corriendo");
+
+	switch (respuesta_esi_corriendo) {
+	case EXITO:
+		ya_termino_linea();
+
+		log_debug(logger,
+				"Se procede a validar si habian pedido matar/bloquear al esi por consola");
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_debug(logger,
+					"Se encontro pedido de consola, se procede a ejecutar bloqueo/asesinato de esi");
+			ejecutar_bloqueo_o_asesinato();
+			nullear_esis_por_consola();
+		}
+
+		break;
+	case CLAVE_SIZE:
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_error(logger,
+					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		linea_size();
+		log_error(logger,
+				"El error fue: el ESI intento leer una linea de mas de 40 caracteres");
+		break;
+	case INTERPRETAR:
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_error(logger,
+					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		interpretar();
+		log_error(logger,
+				"El error fue: no se pudo interpretar una linea del ESI");
+		break;
+	case ERROR_CONEXION: //porque valida en todos los casos si hubo asesinato por consola?
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_error(logger,
+					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		finalizar_esi_corriendo(esi_corriendo);
+		log_error(logger, "El error fue: error de conexion en el ESI");
+		break; //antes no break
+	case ABORTA:
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_error(logger,
+					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+		fallo_linea();
+		log_error(logger,
+				"El error fue: no se pudo ejecutar una linea del ESI");
+		break;
+
+	case INSTANCIA_CAIDA_EXCEPTION:
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_error(logger,
+					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque hubo una falla en el esi");
+			nullear_esis_por_consola();
+		}
+
+		fallo_linea();
+		log_error(logger,
+				"El error fue: falla leyendo una linea del ESI debido a problemas de instancia");
+		break;
+
+	case FINALIZO_ESI:
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_debug(logger,
+					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque el esi ya ha finalizado su script");
+			nullear_esis_por_consola();
+		}
+		finalizar_esi_corriendo(esi_corriendo);
+		break;
+	case BLOQUEO_ESI:
+		if (validar_si_hubo_bloqueo_o_asesinato_por_consola()) {
+			log_error(logger,
+					"Se ignora el pedido realizado por consola(bloqueo/asesinato) porque ya el esi fue bloqueado por su script");
+			nullear_esis_por_consola();
+		}
+		bloquear_esi(clave_bloqueadora, esi_corriendo);
+
+		free(clave_bloqueadora);
+		break;
+
+	default:
+		break;
+	}
+
+	log_debug(logger, "Salio de correr");
+
+}
+
+/*
+ * @thread_safe
+ */
 t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
 
+	CONTADOR : sem_wait(&contador_esis);
+	//log_debug(logger, "Pase el contador de esi a correr");
+	pthread_mutex_lock(&mutex_pausa);
+	if (planificacion_pausada) {
+		pthread_mutex_unlock(&mutex_pausa);
+		sem_wait(&pausa_planificacion);
+		sem_post(&contador_esis);
+		goto CONTADOR;
+
+	} else {
+		pthread_mutex_unlock(&mutex_pausa);
+		//log_debug(logger, "deslockeo mutex pausa");
+	}
+	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (configuracion.algoritmo == FIFO) {
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
 	} else if (configuracion.algoritmo == SJFsD) {
@@ -86,246 +229,347 @@ t_esi *obtener_nuevo_esi_a_correr() {
 	} else {
 		prox_esi = obtener_proximo_segun_hrrn(lista_esis_listos);
 	}
+	pthread_mutex_unlock(&mutex_esi_corriendo);
+	hay_nuevo_esi = false;
 
 	return prox_esi;
 
 }
 
-//FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE LLEGO UN NUEVO ESI
+//thread safe
 void nuevo_esi(t_esi* esi) {
-
-	if (list_is_empty(lista_esis_listos)) {
-		primera_vez = true;
-		sem_post(&sem_binario_planif);
-	}
-
+	pthread_mutex_lock(&mutex_lista_esis_listos);
 	list_add(lista_esis_listos, esi);
-
-	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
-			esi->id);
-	sem_post(&contador_esis);
+	pthread_mutex_unlock(&mutex_lista_esis_listos);
 	hay_nuevo_esi = true;
 
+	sem_post(&contador_esis);
+	log_debug(logger, "Llego/se desalojo/se desbloqueo un nuevo esi: %d \n",
+			esi->id);
 }
 
-//FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL ESI CORRIENDO FINALIZO
-void finalizar_esi() {
+void finalizar_esi_corriendo(t_esi* esi_a_finalizar) {
+	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
+			esi_a_finalizar->id);
 
-	liberar_recursos(esi_corriendo);
-	list_add(lista_esis_finalizados, esi_corriendo);
+	liberar_recursos(esi_a_finalizar);
+	pthread_mutex_lock(&mutex_lista_esis_finalizados);
+	list_add(lista_esis_finalizados, esi_a_finalizar);
+	log_debug(logger, "Agrego a finalizados");
+	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
 
-	log_debug(logger, "Termino un esi: %d \n", esi_corriendo->id);
-
-	hay_esi_finalizado = true;
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	sem_post(&sem_binario_planif);
+	pthread_mutex_lock(&mutex_esi_corriendo);
+			esi_corriendo = NULL;
+			log_debug(logger, "Nullea el corriendo");
+	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
-void bloquear_esi(char* clave) {
+void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 
-	agregar_a_dic_bloqueados(clave, esi_corriendo);
-	log_debug(logger, "Se bloqueo el esi corriendo: %d para la clave: %s \n",
-			esi_corriendo->id, clave);
-	hay_esi_bloqueado = true;
+	log_debug(logger, "Cerrando conexion del esi %d...", esi_a_finalizar->id);
+	int morite_hdp = -1;
+	send(esi_a_finalizar->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
+	cerrarConexion(esi_a_finalizar->socket);
+
+	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
+			esi_a_finalizar->id);
+
+	liberar_recursos(esi_a_finalizar);
+	pthread_mutex_lock(&mutex_lista_esis_finalizados);
+	list_add(lista_esis_finalizados, esi_a_finalizar);
+	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
+	log_debug(logger, "Agrego a finalizados");
 }
 
-void agregar_a_dic_bloqueados(char* clave, t_esi *esi) {
+void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
 
-	//No existe la clave, agrego esta nueva linea
-	if (!dictionary_has_key(dic_esis_bloqueados, clave)) {
-		t_list *primer_esi = list_create();
-		list_add(primer_esi, esi);
-		dictionary_put(dic_esis_bloqueados, clave, primer_esi);
+	agregar_a_dic_bloqueados(clave, esi_a_bloquear);
+	log_debug(logger, "Se bloqueo el esi: %d para la clave: %s \n",
+			esi_a_bloquear->id, clave);
 
-	} else { //Existe la clave, agrego el esi a la lista de bloq
-
-		t_list *lista_esis_bloq_esta_clave = dictionary_remove(
-				dic_esis_bloqueados, clave);
-		list_add(lista_esis_bloq_esta_clave, esi);
-		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
-
+	pthread_mutex_lock(&mutex_esi_corriendo);
+	if (esi_a_bloquear->id == esi_corriendo->id) {
+		esi_corriendo = NULL;
 	}
-
+	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
-//variable para memoria compartida
-int id;
-
-void bloquear_esi_por_consola(char* clave, int id_esi) {
-
-	t_esi *esi_afectado = buscar_esi_por_id(id_esi);
-
-	if (esi_afectado != NULL) { //valido que me haya devuelto algo coherente
-		agregar_a_dic_bloqueados(clave, esi_afectado);
-		log_debug(logger,
-				"Se bloqueo por consola el esi: %d para la clave: %s \n",
-				esi_afectado->id, clave);
-	} else {
-		log_error(logger, "No existe ningun esi en el sistema con el id: %d",
-				id);
-	}
-
-}
-
-void desbloquear_por_consola(char* clave) {
-	se_desbloqueo_un_recurso(clave);
-}
-
-t_esi *buscar_esi_por_id(int id_esi) {
-
-	id = id_esi;
-	t_esi *esi_a_devolver;
-	//me fijo si es el esi que esta corriendo
-	if (esi_corriendo->id == id) {
-		esi_a_devolver = esi_corriendo;
-	} else {
-		//si no es el q esta corriendo lo busco en la lista de esis listos
-		esi_a_devolver = list_find(lista_esis_listos, esi_con_este_id);
-	}
-
-	return esi_a_devolver;
-
-}
-
-bool esi_con_este_id(void* esi) {
-	return ((t_esi*) esi)->id == id;
-}
-
-//FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE INDICA QUE SE DESBLOQUIO UN RECURSO
 void se_desbloqueo_un_recurso(char* clave) {
 
-	if (dictionary_has_key(dic_clave_x_esi, clave)){
-		dictionary_remove(dic_clave_x_esi, clave);
-	}
+	pthread_mutex_lock(&mutex_dic_clave_x_esi);
 
-	if (dictionary_has_key(dic_esis_bloqueados, clave)) { //hay esis encolados
-		t_list *lista_esis_bloq_esta_clave = dictionary_get(dic_esis_bloqueados,
-				clave);
-		t_esi* esi_desbloq = list_remove(lista_esis_bloq_esta_clave, 0);
-		dictionary_put(dic_esis_bloqueados, clave, lista_esis_bloq_esta_clave);
-
-		nuevo_esi(esi_desbloq);
-	}else{
-		log_debug(logger, "No estaba bloqueada esta clave");
-	}
-
-}
-
-//FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR LE PREGUNTA SI UN ESI TIENE UNA CLAVE
-bool esi_tiene_clave(char* clave) {
-
+	//valido que la clave este efectivamente tomada por algun esi
 	if (dictionary_has_key(dic_clave_x_esi, clave)) {
-		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi, clave);
-		return (esi_que_la_tomo->id == esi_corriendo->id);
+
+		t_esi* esi_tenia_clave = dictionary_get(dic_clave_x_esi, clave);
+		log_debug(logger, "Se le desbloquea la clave: %s al esi: %d", clave,
+				esi_tenia_clave->id);
+		dictionary_remove(dic_clave_x_esi, clave);
+
+		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
+
+		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
+		//valido si la clave tenia esis encolados
+		if (dictionary_has_key(dic_esis_bloqueados, clave)) {
+			t_list *lista_esis_bloq_esta_clave = dictionary_remove(
+					dic_esis_bloqueados, clave);
+			t_esi* esi_a_desbloquear = list_remove(lista_esis_bloq_esta_clave,
+					0);
+
+			log_debug(logger,
+					"Habia ESIS esperando el desbloqueo de esta clave, "
+							"se desbloqueo el esi: %d", esi_a_desbloquear->id);
+
+			//valido seguir teniendo esis esperando esta clave
+			if (list_size(lista_esis_bloq_esta_clave) != 0) {
+				dictionary_put(dic_esis_bloqueados, clave,
+						lista_esis_bloq_esta_clave);
+			}
+
+			pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
+
+			nuevo_esi(esi_a_desbloquear);
+
+		} else {
+			pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
+			log_debug(logger,
+					"La clave desbloqueada no tenia esis encolados esperandola");
+		}
+
 	} else {
-		return false;
+		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
+		log_error(logger,
+				"Se esta intentando desbloquear un recurso que no estaba tomado");
 	}
-
-}
-
-bool esta_tomada_x_otro_la_clave(char* clave) {
-
-	if (dictionary_has_key(dic_clave_x_esi, clave)) { //ya esta tomada?
-		t_esi* esi_que_la_tomo = dictionary_get(dic_clave_x_esi, clave);
-
-		//el esi que la tiene es el actual?
-		// si es el actual -> la tiene el, esta volviendo a hacer get
-		// si no es el actual la tiene otro
-
-		return !(esi_que_la_tomo->id == esi_corriendo->id);
-	}
-
-	return false; //no esta tomada
-
-}
-
-//FUNCION A LLAMAR CUANDO EL SELECT ESCUCHA QUE EL COORDINADOR ME INDICA QUE SE TOMO UNA NUEVA CLAVE
-void nueva_clave_tomada_x_esi(char* clave) {
-
-	//No existe la clave, agrego esta nueva linea
-	if (!dictionary_has_key(dic_clave_x_esi, clave)) {
-		dictionary_put(dic_clave_x_esi, clave, esi_corriendo); //aca estoy guardando el puntero al esi_corriendo verdad?
-
-	} else { //Existe la clave, saco al que estaba y pongo al nuevo
-
-		dictionary_put(dic_clave_x_esi, clave, esi_corriendo);
-		//supongo que el put pisa lo que estaba
-
-	}
-
-}
-
-void correr(t_esi* esi) {
-
-	mandar_confirmacion(esi->socket);
 
 }
 
 void ya_termino_linea() {
-
-	//si leyo bien la linea
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	aumentar_viene_corriendo(esi_corriendo);
-	log_debug(logger, "El esi %d se termino de leer una nueva linea \n",
+//si leyo bien la linea
+	log_trace(logger, "El esi %d se termino de leer una nueva linea \n",
 			esi_corriendo->id);
+}
 
+void linea_size() {
+//si leyo mal la linea
+	log_error(logger, "El ESI %d leyo una clave con mas de 40 caracteres\n",
+			esi_corriendo->id);
+	finalizar_esi_corriendo(esi_corriendo);
+}
+
+void interpretar() {
+//si leyo mal la linea
+	log_error(logger, "No se pudo interpretar una linea en el esi %d\n",
+			esi_corriendo->id);
+	finalizar_esi_corriendo(esi_corriendo);
 }
 
 void fallo_linea() {
-	//si leyo mal la linea
-	log_debug(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
+//si leyo mal la linea
+	log_error(logger, "Hubo una falla cuando el esi %d leyo una nueva linea \n",
 			esi_corriendo->id);
-	liberar_recursos(esi_corriendo);
-	matar_nodo_esi(esi_corriendo);
-	list_iterate(lista_esis_listos, aumentar_viene_esperando);
-	hay_esi_finalizado = true;
+	finalizar_esi_corriendo(esi_corriendo);
 }
 
-void aumentar_viene_esperando(void* esi) {
-	((t_esi*) esi)->viene_esperando = ((t_esi*) esi)->viene_esperando + 1;
-}
-
-void aumentar_viene_corriendo(void* esi) {
-	((t_esi*) esi)->dur_ult_raf = ((t_esi*) esi)->dur_ult_raf + 1;
-}
-
-void liberar_recursos(t_esi* esi) {
-
-	esi_a_matar = (t_esi *) malloc(sizeof(t_esi));
-	esi_a_matar = esi;
-	dictionary_iterator(dic_clave_x_esi, liberar_claves);
-	dictionary_iterator(dic_esis_bloqueados, desbloquear_claves_tomadas);
-}
-
-void liberar_claves(char* clave, void* esi) {
-
-	if (((t_esi*) esi)->id == esi_a_matar->id) {
-		dictionary_remove(dic_clave_x_esi, clave);
-	}
-
-}
-
-void desbloquear_claves_tomadas(char* clave, void* esi) {
-
-	if (((t_esi*) esi)->id == esi_a_matar->id) {
-		se_desbloqueo_un_recurso(clave);
-	}
-
-}
-
-void nueva_solicitud(int socket, char* clave) {
+void nueva_solicitud(int socket, char* clave, int id_pedido) {
 
 	t_protocolo cod_op;
-	if (esta_tomada_x_otro_la_clave(clave)) {
-		bloquear_esi(clave);
-		cod_op = BLOQUEO_ESI;
 
+	//valido que la clave no se encuntre ya tomada por otro esi
+
+	pthread_mutex_lock(&mutex_esi_corriendo); //aca se queda el dl
+	log_debug(logger, "paso mutex nueva solicitud");
+
+	if (esi_corriendo == NULL || esi_corriendo->id != id_pedido) {
+		pthread_mutex_unlock(&mutex_esi_corriendo);
+		cod_op = MURIO_ESI_CORRIENDO;
 	} else {
-		nueva_clave_tomada_x_esi(clave);
-		cod_op = EXITO;
+		log_debug(logger,
+				"El esi: %d solicito la clave: %s, se procede a validar si ya estaba tomada",
+				esi_corriendo->id, clave);
 
+		if (!puede_tomar_la_clave(clave, esi_corriendo)) {
+			pthread_mutex_unlock(&mutex_esi_corriendo);
+			log_debug(logger,
+					"El esi: %d solicito una clave ya tomada, se procede a bloquearlo",
+					esi_corriendo->id);
+			cod_op = BLOQUEO_ESI;
+			clave_bloqueadora = strdup(clave);
+
+		} else {
+			pthread_mutex_unlock(&mutex_esi_corriendo); //
+			log_debug(logger,
+					"Se procede a bloquear la clave: %s para el esi: %d \n",
+					clave, esi_corriendo->id);
+			nueva_clave_tomada_x_esi(clave, esi_corriendo);
+			cod_op = EXITO;
+
+		}
+
+//		pthread_mutex_lock(&mutex_esi_corriendo);
+//		if(id_pedido != esi_corriendo->id){
+//			pthread_mutex_unlock(&mutex_esi_corriendo);
+//			cod_op = MURIO_ESI_CORRIENDO;
+//		}
 	}
-
 	enviar_cod_operacion(socket, cod_op);
 }
 
+void liberar_recursos(t_esi* esi_a_liberar) {
+	int cont = 0;
+	t_list *lista_claves_a_desbloquear = list_create();
+	void obtener_claves_tomadas_por_esi_a_liberar(char* clave, void* esi) {
+
+		if (((t_esi*) esi)->id == esi_a_liberar->id) {
+			list_add(lista_claves_a_desbloquear, clave);
+			cont++;
+		}
+	}
+
+	//se obtienen todas las claves tomadas por el esi a liberar
+	pthread_mutex_lock(&mutex_dic_clave_x_esi);
+	dictionary_iterator(dic_clave_x_esi,
+			obtener_claves_tomadas_por_esi_a_liberar);
+	pthread_mutex_unlock(&mutex_dic_clave_x_esi);
+
+	//se itera la lista, liberando cada clave
+	if (cont > 0) {
+		log_debug(logger, "Se procede a liberar las claves del esi: %d",
+				esi_a_liberar->id);
+		list_iterate(lista_claves_a_desbloquear, liberar_clave);
+	}
+	list_destroy(lista_claves_a_desbloquear);
+	log_debug(logger, "Paso el cont");
+
+}
+
+void liberar_clave(void* clave) {
+	se_desbloqueo_un_recurso((char*) clave);
+
+}
+
+bool validar_si_hubo_bloqueo_o_asesinato_por_consola() {
+
+	bool valido1;
+	bool valido2;
+
+	pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
+	valido1 = esi_a_bloquear_por_consola != NULL;
+	pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+
+	pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
+	valido2 = esi_a_matar_por_consola != NULL;
+	pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+
+	return (valido1 || valido2);
+}
+
+void nullear_esis_por_consola() {
+
+	pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
+	esi_a_matar_por_consola = NULL;
+	pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+
+	pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
+	esi_a_bloquear_por_consola = NULL;
+	pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+}
+
+void ejecutar_bloqueo_o_asesinato() {
+	pthread_mutex_lock(&mutex_esi_a_bloquear_por_consola);
+	if (esi_a_bloquear_por_consola != NULL) {
+		log_debug(logger, "Se habia pedido bloquear al esi para la clave: %s",
+				clave_a_bloquear);
+		bloquear_esi(clave_a_bloquear, esi_a_bloquear_por_consola);
+		pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+	} else {
+		pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
+
+		pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
+		if (esi_a_matar_por_consola != NULL) {
+			log_debug(logger, "Se habia pedido matar al esi");
+			finalizar_esi_corriendo(esi_a_matar_por_consola);
+		}
+
+		pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
+	}
+
+}
+
+typedef struct {
+	int idEsi;
+	char *retiene;
+	char *espera;
+} t_dl;
+
+t_list * listaDL;
+t_list *idsDL, *idsDLL;
+t_dl *candidato;
+t_esi *esiDL;
+int rye = 0;
+
+void deadlock() {
+	idsDL = list_create();
+	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
+	list_destroy_and_destroy_elements(idsDL, (void*) free);
+}
+
+void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
+	rye = 1;
+	//primerEsi
+	candidato = malloc(sizeof(t_dl));
+	candidato->idEsi = ((t_esi*) esiInicial)->id;
+
+	if (!list_any_satisfy(idsDL, esta) && ((t_esi*) esiInicial)->id != -1) {
+		listaDL = list_create();
+		idsDLL = list_create();
+		candidato->retiene = claveIncialTomada;
+		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
+		if (!rye)
+			goto DEST;
+		//sgtes
+		do {
+			char *retieneProx = candidato->espera;
+			candidato = malloc(sizeof(t_dl));
+			esiDL = dictionary_get(dic_clave_x_esi, retieneProx);
+			candidato->idEsi = ((t_esi*) esiDL)->id;
+			candidato->retiene = retieneProx;
+			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
+			if (!rye)
+				goto DEST;
+
+		} while (strcmp(claveIncialTomada, candidato->espera) != 0);
+
+		list_iterate(idsDLL, mergearL);
+
+		//print
+		//printf header de la tabla
+		list_iterate(listaDL, mostrarDL);
+
+		DEST: list_destroy_and_destroy_elements(listaDL, (void*) free);
+		list_destroy_and_destroy_elements(idsDLL, (void*) free);
+	}
+}
+
+void buscarClaveQEspera(char* claveQEspera, void* esisbloq) {
+	if (list_find(esisbloq, esta) != NULL) {
+		candidato->espera = claveQEspera;
+		list_add(listaDL, candidato);
+		list_add(idsDLL, &(candidato->idEsi));
+	} else {
+		rye = 0;
+	}
+}
+
+bool esta(void *esi) {
+	return ((t_esi*) esi)->id == candidato->idEsi;
+}
+
+void mergearL(void *id) {
+	list_add(idsDL, id);
+}
+
+void mostrarDL(void* candidato) {
+	printf("%d  |  %s   | %s", ((t_dl*) candidato)->idEsi,
+			((t_dl*) candidato)->retiene, ((t_dl*) candidato)->espera);
+}
