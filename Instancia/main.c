@@ -90,23 +90,30 @@ int main(int argc, char** argv) {
 			int cantidadClaves;
 			recibirPaquete(socketCoordinador, &cantidadClaves, sizeof(int));
 			for (int i = 0; i < cantidadClaves; i++) {
-				void* clave;
-				try_recibirPaqueteVariable(socketCoordinador, &clave);
+				char* clave_recibida = NULL;
+				try_recibirPaqueteVariable(socketCoordinador,
+						(void**) &clave_recibida);
+				log_debug(logger, "Recibi clave %s", clave_recibida);
 				FILE* arch;
-				if ((arch = fopen(clave, "r")) == NULL) {
+				char* path = string_from_format("%s/%s.txt",
+						configuracion.punto_montaje, clave_recibida);
+				if ((arch = fopen(path, "r")) == NULL) {
 					log_info(logger,
-							" la instancia no encuentra el archivo de la clave %d",
-							clave);
+							" la instancia no encuentra el archivo de la clave %s",
+							clave_recibida);
+					free(path);
+					free(clave_recibida);
+					continue;
 				}
-				char* valor;
+				char* valor = NULL;
 				size_t lenght = 0;
 				getline(&valor, &lenght, arch);
-				hacer_set(clave, valor, posiblesAReemplazar);
+				hacer_set(clave_recibida, valor, posiblesAReemplazar);
+				free(path);
 				free(valor);
 				fclose(arch);
-				free(clave);
+				free(clave_recibida);
 			}
-			free(clave);
 			break;
 		case INSTANCIA_COMPACTAR:
 			log_info(logger, "Estoy compactando ...");
@@ -132,11 +139,11 @@ int main(int argc, char** argv) {
 	exit(0);
 }
 
-void configurar_timer_dumper(){
+void configurar_timer_dumper() {
 	signal(SIGALRM, sigalrm_handler);
 	alarm(configuracion.intervalo_dump);
 }
-void sigalrm_handler(){
+void sigalrm_handler() {
 	log_info(logger, "Se procede a realizar el DUMP...");
 	dumpearADisco(NULL);
 	alarm(configuracion.intervalo_dump);
