@@ -222,7 +222,9 @@ void atender_error(int nbytes) {
 		}
 		cerrarConexion(i);
 	} else {
-		int id = encontrarIdDelSocket(i);
+		log_debug(logger,
+							"Atendiendo error ESI\n");
+		int id = encontrarIdDelSocket(i); //err
 		if (nbytes == 0) {
 			log_error(logger, "El ESI (ID:%d) finalizó inesperadamente\n", id);
 			if (es_un_esi_listo(id)) {
@@ -247,7 +249,7 @@ void atender_error(int nbytes) {
 					id);
 		}
 	}
-	log_debug(logger, "termina de atender el error"); //nunca sale el select del primer kill
+	log_debug(logger, "termina de atender el error");
 
 }
 
@@ -329,8 +331,11 @@ int encontrarIdDelSocket(int i) {
 			id = esi_a_devolver->id;
 		}
 
+		log_error(logger, "lo busca en la lista de bloqueados\n", id);
 		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
+		log_error(logger, "lockea mutex\n", id);
 		dictionary_iterator(dic_esis_bloqueados, buscar_esi);
+		log_error(logger, "lo encontro lista de bloqueados\n", id);
 		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 
 	}
