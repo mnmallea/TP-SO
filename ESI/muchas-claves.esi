@@ -1,0 +1,20 @@
+GET clave1
+GET clave2
+GET clave3
+GET clave4
+GET clave5
+GET clave6
+GET clave7
+GET clave8
+GET clave9
+GET clave10
+SET clave1 a
+SET clave2 b
+SET clave3 c
+SET clave4 d
+SET clave5 e
+SET clave6 f
+SET clave7 g
+SET clave8 h
+SET clave9 i
+SET clave10 j
