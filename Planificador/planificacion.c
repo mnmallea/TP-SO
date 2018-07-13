@@ -301,7 +301,7 @@ void se_desbloqueo_un_recurso(char* clave) {
 
 	//valido si es una clave a la que le habian hecho un get/set
 	log_debug(logger,
-			"Se procede a validar la clave haya sido tomada por un esi");
+			"Se procede a validar la clave %s haya sido tomada por un esi", clave);
 	if (dictionary_has_key(dic_clave_x_esi, clave)) {
 
 		t_esi* esi_tenia_clave = dictionary_get(dic_clave_x_esi, clave);
@@ -316,7 +316,7 @@ void se_desbloqueo_un_recurso(char* clave) {
 		log_debug(logger, "La clave no estaba tomada por nadie");
 	}
 
-	log_debug(logger, "Se procede a validar que la clave tenga esis encolados");
+	log_debug(logger, "Se procede a validar que la clave %s tenga esis encolados", clave);
 	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
 	//valido si la clave tenia esis encolados
 	if (dictionary_has_key(dic_esis_bloqueados, clave)) {
@@ -340,7 +340,7 @@ void se_desbloqueo_un_recurso(char* clave) {
 	} else {
 		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
 		log_debug(logger,
-				"La clave desbloqueada no tenia esis encolados esperandola");
+				"La clave desbloqueada (%s) no tenia esis encolados esperandola", clave);
 	}
 
 }
@@ -422,7 +422,7 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 	void obtener_claves_tomadas_por_esi_a_liberar(char* clave, void* esi) {
 
 		if (((t_esi*) esi)->id == esi_a_liberar->id) {
-			list_add(lista_claves_a_desbloquear, clave);
+			list_add(lista_claves_a_desbloquear, strdup(clave));
 			cont++;
 		}
 	}
@@ -439,7 +439,7 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 				esi_a_liberar->id);
 		list_iterate(lista_claves_a_desbloquear, liberar_clave);
 	}
-	list_destroy(lista_claves_a_desbloquear);
+	list_destroy_and_destroy_elements(lista_claves_a_desbloquear, free);
 	log_debug(logger, "Paso el cont");
 
 }
