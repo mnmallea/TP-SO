@@ -9,6 +9,8 @@
 
 respuesta_status_clave_t respuesta_status_clave;
 
+void limpiar_respuesta_status_clave();
+
 void *menu(void *ptr) {
 
 	int opcion_seleccionada;
@@ -93,7 +95,6 @@ void *menu(void *ptr) {
 		printf("\nPresione [Enter] para continuar..");
 		getchar();
 
-
 	} while (opcion_seleccionada != 0);
 
 	printf("Ha salido de la consola");
@@ -177,8 +178,7 @@ void bloquear(char* clave, int id) {
 			pthread_mutex_unlock(&mutex_esi_a_bloquear_por_consola);
 
 			pthread_mutex_lock(&mutex_clave_a_bloquear);
-			clave_a_bloquear = (char*) malloc(40);
-			clave_a_bloquear = clave;
+			clave_a_bloquear = strdup(clave);
 			pthread_mutex_unlock(&mutex_clave_a_bloquear);
 		}
 
@@ -268,22 +268,34 @@ void envia_status_clave(char* clave) {
 	sem_wait(&coordinador_respondio_paq);
 
 	show_respuesta_status_clave(respuesta_status_clave);
+//	limpiar_respuesta_status_clave();
 
 }
-void show_respuesta_status_clave(respuesta_status_clave_t res){
-	if(res.hay_valor)
+void show_respuesta_status_clave(respuesta_status_clave_t res) {
+	if (res.hay_valor)
 		printf("Valor de la clave: %s\n", res.valor);
 	else
 		printf("No hay valor para la clave solicitada\n");
 
-	if(res.hay_instancia)
-		printf("Instancia: %s \t Estado: %s\n", res.instancia, to_string_status_clave(res.estado_instancia));
+	if (res.hay_instancia)
+		printf("Instancia: %s \t Estado: %s\n", res.instancia,
+				to_string_status_clave(res.estado_instancia));
 	else
 		printf("%s\n", to_string_status_clave(res.estado_instancia));
 
-	if(res.hay_simulacion)
-		printf("La clave sería asignada a la instancia: %s\n", res.instancia_simulacion);
+	if (res.hay_simulacion)
+		printf("La clave sería asignada a la instancia: %s\n",
+				res.instancia_simulacion);
 	else
 		printf("No se ha realizado la simulacion\n");
 
+}
+
+void limpiar_respuesta_status_clave() {
+//	free(respuesta_status_clave->instancia);
+//	free(respuesta_status_clave->instancia_simulacion);
+//	free(respuesta_status_clave->valor);
+//	respuesta_status_clave->instancia = NULL;
+//	respuesta_status_clave->instancia_simulacion = NULL;
+//	respuesta_status_clave->valor = NULL;
 }
