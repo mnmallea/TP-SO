@@ -497,6 +497,7 @@ void ejecutar_bloqueo_o_asesinato() {
 		pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
 
 	}
+	free(clave_a_bloquear);
 
 }
 
