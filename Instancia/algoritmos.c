@@ -49,6 +49,7 @@ t_list* algoritmoCircular(claveEntrada* cv, t_list* posiblesAReemplazar) {
 	}
 	// que pasa si el tamaño de la lista de posibles a remplazar no alcanza, pero si busco en la tabla cuales son atomicas
 	//y lo concateno con la otra lista de posibles a remplazar me alzanza el tamañoi
+	log_error(logger, "No se pudo encontrar clave a reemplazar");
 	return NULL;
 }
 
@@ -80,6 +81,7 @@ t_list* algoritmoLRU(claveEntrada* cv) {
 		return vanASerReemplazadas;
 	}
 	free(posiblesAReemplazar);
+	log_error(logger, "No se pudo encontrar clave a reemplazar");
 	return NULL;
 }
 
@@ -108,6 +110,7 @@ t_list* algoritmoBSU(claveEntrada* cv) {
 	}
 
 	free(posiblesAReemplazar);
+	log_error(logger, "No se pudo encontrar clave a reemplazar");
 	return NULL;
 
 }
