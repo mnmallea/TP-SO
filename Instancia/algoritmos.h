@@ -14,4 +14,7 @@
 t_list* algoritmoCircular(claveEntrada* cv,t_list* posiblesAReemplazar);
 t_list* algoritmoLRU(claveEntrada* cv);
 t_list* algoritmoBSU(claveEntrada* cv);
+
+extern t_log *logger;
+
 #endif /* ALGORITMOS_H_ */
