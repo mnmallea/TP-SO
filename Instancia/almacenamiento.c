@@ -17,14 +17,16 @@ void inicializarAlmacenamiento(unsigned int entradas,
 }
 
 void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) {
+
+	log_trace(logger, "ALMACENAMIENTO: se procede a guardar el valor %s en la entrada %d", (char*)valor, proximaEntrada);
+
 	if (tamanio <= ato->tamanioEntrada) {
+		log_trace(logger, "El valor a guardar es atomico");
 		memcpy(ato->dato + (proximaEntrada * ato->tamanioEntrada), valor,
 				tamanio);
-		char* valorEnString = convertirString(valor, tamanio);
-
-		free(valorEnString);
 
 	} else {
+		log_trace(logger, "El valor a guardar no es atomico, ocupara varias entradas");
 		unsigned int resto = tamanio - ato->tamanioEntrada;
 		void* parteAinsertar = malloc(ato->tamanioEntrada);
 		void* parteRestante = malloc(resto);
@@ -34,9 +36,6 @@ void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) 
 
 		memcpy(ato->dato + (proximaEntrada * ato->tamanioEntrada),
 				parteAinsertar, ato->tamanioEntrada);
-		char* valorEnString = convertirString(parteAinsertar,
-				ato->tamanioEntrada);
-		free(valorEnString);
 
 		setEnAlmacenamiento(++proximaEntrada, parteRestante, resto);
 		free(parteAinsertar);

@@ -55,20 +55,28 @@ int entradaSiguienteEnTabla(claveEntrada* claveE) {
 	tablaE* entrada1;
 	tablaE* entrada2;
 	// me fijo la cantidad de entradas usadas
+	log_trace(logger, "Se procede a buscar la siguiente entrada disponible en tabla");
 	int cantEntradasUsadas = list_size(tabla);
+
 	// me fijo cuantas entradas necesitria la clave que llega por parametro
 	int cantEntradasNecesarias = claveE->tamanio / obtenerTamanioEntrada() + 1;
+	log_trace(logger, "Para guardar la clave %s con el valor %s se necesitan %d entradas", claveE->clave, claveE->valor, cantEntradasNecesarias);
+
 	//defino una variable para chequear el espacio entre entradas de la tabla
 	int espacioEntreEntradas = 0;
 
 	if(tablaEstaVacia(tabla)){
+		log_trace(logger, "La tabla de entradas esta vacia, se debe guardar en la posicion 0");
 		return 0;
 	}
 	// si la tabla no esta vacia y las entradas libres me alcanzan para cubrir las que necesito empiezo a ejecutar
 	if (entradasLibres >= cantEntradasNecesarias) {
+		log_trace(logger, "Las entradas libres son mayores que las entradas necesarias, puedo guardar la clave");
 		entrada1 = (tablaE*) list_get(tabla, 0);
+
 		if (entrada1->numero > 0
 				&& cantEntradasNecesarias <= (entrada1->numero)) {
+			log_trace(logger, "La primer entrada esta vacia, lo guardo en esa posicion");
 			return 0;
 		}
 
@@ -173,14 +181,17 @@ void reemplazarCVEnTabla(claveEntrada* cv){
 }
 
 tablaE* buscarEntrada(char* claveAPedir) {
+
+	log_trace(logger, "Se procede a recorrer la tabla de entradas para encontrar la clave");
 	tablaE* entrada;
 	for (int i = 0; i < list_size(tabla); i++) {
 		entrada = (tablaE*) list_get(tabla, i);
 		if (strcmp(claveAPedir, entrada->clave)==0) {
+			log_trace(logger, "Se encontro un una entrada asociada a la clave %s", claveAPedir);
 			return entrada;
 		}
 	}
-	log_info(logger, "no se encontro la entrada buscada");
+	log_trace(logger, "No se encontro la entrada asociada a la clave %s", claveAPedir);
 	return NULL;
 }
 
