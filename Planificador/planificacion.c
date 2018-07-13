@@ -299,7 +299,9 @@ void se_desbloqueo_un_recurso(char* clave) {
 
 	pthread_mutex_lock(&mutex_dic_clave_x_esi);
 
-	//valido que la clave este efectivamente tomada por algun esi
+	//valido si es una clave a la que le habian hecho un get/set
+	log_debug(logger,
+			"Se procede a validar la clave haya sido tomada por un esi");
 	if (dictionary_has_key(dic_clave_x_esi, clave)) {
 
 		t_esi* esi_tenia_clave = dictionary_get(dic_clave_x_esi, clave);
@@ -309,38 +311,36 @@ void se_desbloqueo_un_recurso(char* clave) {
 
 		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
 
-		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
-		//valido si la clave tenia esis encolados
-		if (dictionary_has_key(dic_esis_bloqueados, clave)) {
-			t_list *lista_esis_bloq_x_esta_clave = dictionary_remove(
-					dic_esis_bloqueados, clave);
-			t_esi* esi_a_desbloquear = list_remove(lista_esis_bloq_x_esta_clave,
-					0);
-
-			log_debug(logger,
-					"Habia ESIS esperando el desbloqueo de esta clave, "
-							"se desbloqueo el esi: %d", esi_a_desbloquear->id);
-
-			//valido seguir teniendo esis esperando esta clave
-			if (list_size(lista_esis_bloq_x_esta_clave) != 0) {
-				dictionary_put(dic_esis_bloqueados, clave,
-						lista_esis_bloq_x_esta_clave);
-			}
-
-			pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
-
-			nuevo_esi(esi_a_desbloquear);
-
-		} else {
-			pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
-			log_debug(logger,
-					"La clave desbloqueada no tenia esis encolados esperandola");
-		}
-
 	} else {
 		pthread_mutex_unlock(&mutex_dic_clave_x_esi);
-		log_error(logger,
-				"Se esta intentando desbloquear un recurso que no estaba tomado");
+		log_debug(logger, "La clave no estaba tomada por nadie");
+	}
+
+	log_debug(logger, "Se procede a validar que la clave tenga esis encolados");
+	pthread_mutex_lock(&mutex_dic_esis_bloqueados);
+	//valido si la clave tenia esis encolados
+	if (dictionary_has_key(dic_esis_bloqueados, clave)) {
+		t_list *lista_esis_bloq_x_esta_clave = dictionary_remove(
+				dic_esis_bloqueados, clave);
+		t_esi* esi_a_desbloquear = list_remove(lista_esis_bloq_x_esta_clave, 0);
+
+		log_debug(logger, "Habia ESIS esperando el desbloqueo de esta clave, "
+				"se desbloqueo el esi: %d", esi_a_desbloquear->id);
+
+		//valido seguir teniendo esis esperando esta clave
+		if (list_size(lista_esis_bloq_x_esta_clave) != 0) {
+			dictionary_put(dic_esis_bloqueados, clave,
+					lista_esis_bloq_x_esta_clave);
+		}
+
+		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
+
+		nuevo_esi(esi_a_desbloquear);
+
+	} else {
+		pthread_mutex_unlock(&mutex_dic_esis_bloqueados);
+		log_debug(logger,
+				"La clave desbloqueada no tenia esis encolados esperandola");
 	}
 
 }
