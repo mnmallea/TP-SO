@@ -156,12 +156,12 @@ void mostrar_esi_en_pantalla(void* esi) {
 
 void bloquear(char* clave, int id) {
 
-	printf("Se procede a bloquear al esi: %d para la clave: %s", id, clave);
+	printf("Se procede a bloquear al esi: %d para la clave: %s\n", id, clave);
 	log_debug(logger, "CONSOLA: Se eligio bloquear al esi: %d para la clave %s",
 			id, clave);
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
-	if (esi_corriendo->id == id) {
+	if (esi_corriendo != NULL && esi_corriendo->id == id) {
 
 		pthread_mutex_lock(&mutex_esi_a_matar_por_consola);
 		if (esi_a_matar_por_consola != NULL) {

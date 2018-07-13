@@ -289,7 +289,7 @@ void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
 			esi_a_bloquear->id, clave);
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
-	if (esi_a_bloquear->id == esi_corriendo->id) {
+	if (esi_corriendo != NULL && esi_a_bloquear->id == esi_corriendo->id) {
 		esi_corriendo = NULL;
 	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);

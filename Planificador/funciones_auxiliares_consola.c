@@ -68,7 +68,6 @@ void eliminar_de_listos(t_esi* esi_a_eliminar){
 	log_debug(logger,"x Lockear");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	log_debug(logger,"Lockeo");
-	list_remove_and_destroy_by_condition(lista_esis_listos, esElEsi, free);
 	list_remove_by_condition(lista_esis_listos, esElEsi);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 	log_debug(logger,"ESI eliminado de listos");
