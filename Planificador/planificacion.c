@@ -516,73 +516,71 @@ void ejecutar_bloqueo_o_asesinato() {
 
 }
 
-typedef struct {
-	int idEsi;
-	char *retiene;
-	char *espera;
-} t_dl;
-
 t_list * listaDL;
-t_list *idsDL, *idsDLL;
-t_dl *candidato;
-t_esi *esiDL;
-int rye = 0;
+t_list *idsDL;
+int *idCandidatoDL;
+char *candidatoRetiene;
+char *candidatoEspera;
+t_esi *esi_q_retiene;
+int rye;
+int primer;
 
 void deadlock() {
 	idsDL = list_create();
 	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
-	list_destroy_and_destroy_elements(idsDL, (void*) free);
+	list_destroy_(idsDL);
 }
 
 void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 	rye = 1;
-	//primerEsi
-	candidato = malloc(sizeof(t_dl));
-	candidato->idEsi = ((t_esi*) esiInicial)->id;
-
+	primer=0;
+	listaDL = list_create();
+	//primero
 	if (!list_any_satisfy(idsDL, esta) && ((t_esi*) esiInicial)->id != -1) {
-		listaDL = list_create();
-		idsDLL = list_create();
-		candidato->retiene = claveIncialTomada;
+		*idCandidatoDL=((t_esi*) esiInicial)->id;
+		candidatoRetiene = claveIncialTomada;
 		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
 		if (!rye)
 			goto DEST;
 		//sgtes
 		do {
-			char *retieneProx = candidato->espera;
-			candidato = malloc(sizeof(t_dl));
-			esiDL = dictionary_get(dic_clave_x_esi, retieneProx);
-			candidato->idEsi = ((t_esi*) esiDL)->id;
-			candidato->retiene = retieneProx;
-			dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
-			if (!rye)
+			char *retieneProx = candidatoEspera;
+			esi_q_retiene = dictionary_get(dic_clave_x_esi, retieneProx);
+			if(esi_q_retiene->id != -1){
+				*idCandidatoDL = esi_q_retiene->id;
+				candidatoRetiene = retieneProx;
+				dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
+				if (!rye)
+					goto DEST;
+				}
+			else{
 				goto DEST;
+			}
 
-		} while (strcmp(claveIncialTomada, candidato->espera) != 0);
+		} while (strcmp(*claveIncialTomada, *candidatoRetiene) != 0);
 
-		list_iterate(idsDLL, mergearL);
-
+		list_iterate(listaDL, mergearL);
 		//print
 		//printf header de la tabla
+		idCandidatoDL=list_get(listaDL,0);
+		printf("El ESI (ID:%d) espera al ");
 		list_iterate(listaDL, mostrarDL);
-
-		DEST: list_destroy_and_destroy_elements(listaDL, (void*) free);
-		list_destroy_and_destroy_elements(idsDLL, (void*) free);
+		printf("quien espera al primer ESI (ID:%d)");
+		DEST: list_destroy(listaDL);
 	}
 }
 
 void buscarClaveQEspera(char* claveQEspera, void* esisbloq) {
 	if (list_find(esisbloq, esta) != NULL) {
-		candidato->espera = claveQEspera;
-		list_add(listaDL, candidato);
-		list_add(idsDLL, &(candidato->idEsi));
+		candidatoEspera = claveQEspera;
+		list_add(listaDL, idCandidatoDL);
 	} else {
 		rye = 0;
 	}
 }
 
 bool esta(void *esi) {
-	return ((t_esi*) esi)->id == candidato->idEsi;
+	return ((t_esi*) esi)->id == idCandidatoDL;
 }
 
 void mergearL(void *id) {
@@ -590,6 +588,5 @@ void mergearL(void *id) {
 }
 
 void mostrarDL(void* candidato) {
-	printf("%d  |  %s   | %s", ((t_dl*) candidato)->idEsi,
-			((t_dl*) candidato)->retiene, ((t_dl*) candidato)->espera);
+		printf("ESI (ID:%d) que espera al ", (int*) *candidato);
 }
