@@ -168,7 +168,7 @@ void correr(t_esi* esi) {
 			nullear_esis_por_consola();
 		}
 
-		fallo_linea();
+		finalizar_esi_corriendo(esi_corriendo);
 		log_error(logger,
 				"El error fue: falla leyendo una linea del ESI debido a problemas de instancia");
 		break;
@@ -249,14 +249,22 @@ void nuevo_esi(t_esi* esi) {
 }
 
 void finalizar_esi_corriendo(t_esi* esi_a_finalizar) {
+
+	log_debug(logger, "Cerrando conexion del esi %d...", esi_a_finalizar->id);
+	int morite_hdp = -1;
+	send(esi_a_finalizar->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
+	cerrarConexion(&esi_a_finalizar->socket);
+
 	log_debug(logger, "Se procede a finalizar el ESI : %d \n",
 			esi_a_finalizar->id);
+
 
 	liberar_recursos(esi_a_finalizar);
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);
 	list_add(lista_esis_finalizados, esi_a_finalizar);
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
-	log_debug(logger, "Agrego a finalizados");
+	log_debug(logger, "El esi ID %d se agrego a finalizado\n",
+				esi_a_finalizar->id);
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
 			esi_corriendo = NULL;
@@ -279,7 +287,15 @@ void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 	pthread_mutex_lock(&mutex_lista_esis_finalizados);
 	list_add(lista_esis_finalizados, esi_a_finalizar);
 	pthread_mutex_unlock(&mutex_lista_esis_finalizados);
-	log_debug(logger, "Agrego a finalizados");
+	log_debug(logger, "El esi ID %d se agrego a finalizado\n",
+			esi_a_finalizar->id);
+
+	pthread_mutex_lock(&mutex_esi_corriendo);
+		if(esi_corriendo!=NULL&&esi_corriendo->id==esi_a_finalizar->id){
+			esi_corriendo = NULL;
+			log_debug(logger, "Nullea el corriendo");
+		}
+	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
 
 void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
@@ -490,9 +506,8 @@ void ejecutar_bloqueo_o_asesinato() {
 		if (esi_a_matar_por_consola != NULL) {
 			log_debug(logger, "Se habia pedido matar al esi");
 
-			cerrarConexion(&esi_a_matar_por_consola->socket);
-
-			finalizar_esi_corriendo(esi_a_matar_por_consola);
+			//cerrarConexion(&esi_corriendo->socket);
+			finalizar_esi_sync(esi_a_matar_por_consola); //era corriendo
 		}
 		pthread_mutex_unlock(&mutex_esi_a_matar_por_consola);
 

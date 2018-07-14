@@ -103,10 +103,10 @@ void recibir_confirmacion (int my_socket){ //wait confirmacion
     log_info(logger, "confirmación recibida");
 }
 
-void mandar_mensaje(int my_socket,int id){
+void mandar_mensaje(int my_socket,int idMandar){
     //int id=id_verificador;
-    int res_send = send(my_socket, &id, sizeof(id), MSG_NOSIGNAL);
-    if(res_send != sizeof(id)){
+    int res_send = send(my_socket, &idMandar, sizeof(idMandar), MSG_NOSIGNAL);
+    if(res_send != sizeof(idMandar)){
         salir_con_error(my_socket,"No se pudo mandar mensaje");
     }
     log_info(logger, "Mensaje enviado");

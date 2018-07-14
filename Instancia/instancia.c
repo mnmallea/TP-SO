@@ -47,7 +47,8 @@ int hacer_set(char* clave, char* valor, t_list* posiblesAReemplazar) {
 		return 0;
 	} else {
 		log_trace(logger, "No se encontro lugar disponible, se procede a reemplazar alguna clave existente");
-		t_list* vanAReemplazarse = algoritmoCircular(cv, posiblesAReemplazar);
+		t_list* vanAReemplazarse = obtenerAReemplazarSegunAlgoritmo(cv, posiblesAReemplazar);
+
 		for (int i = 0; i < list_size(vanAReemplazarse); i++) {
 			tablaE* aReemp = buscarEntrada(list_get(vanAReemplazarse, i));
 			removerDeLista(aReemp->numero, aReemp);
@@ -62,6 +63,19 @@ int hacer_set(char* clave, char* valor, t_list* posiblesAReemplazar) {
 	}
 	liberarCv(cv);
 	return 0;
+}
+
+t_list* obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv, t_list* posiblesAReemplazar){
+	if(configuracion.algoritmo == CIRC){
+		return algoritmoCircular(cv, posiblesAReemplazar);
+	}else if(configuracion.algoritmo == LRU){
+		return algoritmoLRU(cv);
+	}else if(configuracion.algoritmo == BSU){
+		return algoritmoBSU( cv);
+	}else{
+		log_error(logger, "No se encontro algoritmo de reemplazo");
+		return NULL;
+	}
 }
 
 int STORE(char* clave) {
