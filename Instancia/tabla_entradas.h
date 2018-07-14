@@ -27,11 +27,9 @@ typedef struct {
 	unsigned int tamanio;
 } claveEntrada;
 
-void 			mostrarTabla();
 void* 			obtenerClave(void*);
 void			crearTablaEntradas();
 void  			liberarCv(claveEntrada* cv);
-bool 			esAtomica(void* unaEntrada);
 bool    		tablaEstaVacia(t_list* tabla);
 void 			liberarEntrada(tablaE* entrada);
 tablaE* 		buscarEntrada(char* claveAPedir);
@@ -39,6 +37,7 @@ bool 			ordenAscendente(void * a, void *b);
 tablaE* 		adaptoClave(claveEntrada * claveE);
 bool    		quitarDeTabla(claveEntrada * claveE);
 void 			reemplazarCVEnTabla(claveEntrada* cv);
+int				entradas_que_ocupa(tablaE* unaEntrada);
 bool 			hayEntradasDisponibles(claveEntrada* cv);
 claveEntrada* 	crearClaveEntrada(char* clave, char* valor);
 int				entradaSiguienteEnTabla(claveEntrada* claveE);

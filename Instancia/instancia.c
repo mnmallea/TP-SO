@@ -20,8 +20,7 @@ int SET(int socketCoordinador, t_list* posiblesAReemplazar) {
 	return resultado;
 }
 
-int hacer_set(char* clave, char* valor, t_list* posiblesAReemplazar) {
-
+int hacer_set(char* clave, char* valor) {
 	log_trace(logger,"Se procede a crear la entrada con la clave: %s y el valor %s",clave, valor);
 	claveEntrada* cv = crearClaveEntrada(clave, valor);
 	nroOperacion++;
@@ -37,7 +36,7 @@ int hacer_set(char* clave, char* valor, t_list* posiblesAReemplazar) {
 	if (hayEntradasDisponibles(cv)) {
 		int proximaEntrada = entradaSiguienteEnTabla(cv);
 		if(proximaEntrada<0){
-			log_trace(logger, "se produjo un error al buscar la proxima entrada por lo que arrojo -1");
+			log_trace(logger, "como no hay entradas vacias, arrojo -1 aplicar algoritmo");
 		}
 		log_trace(logger, "Se encontro lugar disponible(%d), se lo agrega a la tabla", proximaEntrada);
 		agregarEnTabla(proximaEntrada, cv);
@@ -47,27 +46,14 @@ int hacer_set(char* clave, char* valor, t_list* posiblesAReemplazar) {
 		return 0;
 	} else {
 		log_trace(logger, "No se encontro lugar disponible, se procede a reemplazar alguna clave existente");
-		t_list* vanAReemplazarse = obtenerAReemplazarSegunAlgoritmo(cv, posiblesAReemplazar);
-
-		for (int i = 0; i < list_size(vanAReemplazarse); i++) {
-			tablaE* aReemp = buscarEntrada(list_get(vanAReemplazarse, i));
-			removerDeLista(aReemp->numero, aReemp);
-		}
-		int proximaEntrada = entradaSiguienteEnTabla(cv);
-		if(proximaEntrada<0){
-			log_trace(logger, "no se pudo encontrar proxima entrada disponible");
-		}
-		agregarEnTabla(proximaEntrada, cv);
-		setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
+		obtenerAReemplazarSegunAlgoritmo(cv);
 		liberarCv(cv);
-	}
-	liberarCv(cv);
-	return 0;
+		return 0;
 }
 
-t_list* obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv, t_list* posiblesAReemplazar){
+t_list* obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv){
 	if(configuracion.algoritmo == CIRC){
-		return algoritmoCircular(cv, posiblesAReemplazar);
+		return algoritmoCircular(cv);
 	}else if(configuracion.algoritmo == LRU){
 		return algoritmoLRU(cv);
 	}else if(configuracion.algoritmo == BSU){
