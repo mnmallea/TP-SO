@@ -75,14 +75,14 @@ void eliminar_de_listos(t_esi* esi_a_eliminar){
 }
 
 void eliminar_de_bloqueados(t_esi* esi_a_eliminar){ //debuggear esta funcion
-
+	log_debug(logger,"ESI ID:%d, entra a eliminar bloqueados",esi_a_eliminar->id);
 	bool esElEsi(void* esi){
 				return esi_a_eliminar->id == ((t_esi*)esi)->id;
 			}
 
 	void borrar_esi_a_matar(char* c, void* lista_esis_bloq){
 		if(contenido_en_lista(lista_esis_bloq, esi_a_eliminar->id)){
-			list_remove_and_destroy_by_condition(lista_esis_bloq, esElEsi, free);
+			list_remove_by_condition(lista_esis_bloq, esElEsi);
 			log_debug(logger,"Se borra el esi ID:%d, de la lista de bloqueados",esi_a_eliminar->id);
 				if(list_size(lista_esis_bloq)==0){
 					dictionary_remove_and_destroy(dic_esis_bloqueados,c,free);
