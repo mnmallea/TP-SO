@@ -1,20 +1,28 @@
 /*
  * algoritmos.h
  *
- *  Created on: 4 jul. 2018
+ *  Created on: 14 jul. 2018
  *      Author: utnso
  */
 
 #ifndef ALGORITMOS_H_
 #define ALGORITMOS_H_
 
-
-#include "tabla_entradas.h"
 #include "cfg_almacenamiento.h"
-t_list* algoritmoCircular(claveEntrada* cv,t_list* posiblesAReemplazar);
-t_list* algoritmoLRU(claveEntrada* cv);
-t_list* algoritmoBSU(claveEntrada* cv);
+
+int posicion;
+
+void algoritmoCircular(claveEntrada* cv);
+void algoritmoLRU(claveEntrada* cv);
+void algoritmoBSU(claveEntrada* cv);
+
+bool esAtomica(claveEntrada* cv);
+bool listaNoContigua(t_list* unaLista);
 
 extern t_log *logger;
+
+#endif /* ALGORITMO_H_ */
+
+
 
 #endif /* ALGORITMOS_H_ */
