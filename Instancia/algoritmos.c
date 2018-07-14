@@ -1,86 +1,65 @@
 /*
  * algoritmos.c
  *
- *  Created on: 4 jul. 2018
+ *  Created on: 14 jul. 2018
  *      Author: utnso
  */
-
-//todo no sabemos si el algoritmo lru y bsu deberian devolver una sola clave o las suficientes como para que ingrese la clave nueva
 #include "algoritmos.h"
 
-t_list* algoritmoCircular(claveEntrada* cv, t_list* posiblesAReemplazar) {
-	log_trace(logger, "Se procede a reemplazar mediante algoritmo circular");
-	log_trace(logger,"Se procede a validar si la lista de posiblesAReemplazar no es vacia");
-	if (!(list_is_empty(posiblesAReemplazar))) {
+posicion=0;
 
-		log_trace(logger,"La lista de posiblesAReemplazar no estaba vacia, se filtran las claves atomicas");
-		//ojo aca se van a repetir
-		list_add_all(posiblesAReemplazar,list_filter(tabla, esAtomica));
+void algoritmoCircular(claveEntrada* cv){
+	 unsigned int tamanio=0;
+	 t_list* atomicasNecesarias= list_create();
+	 t_list* tablaDup = list_duplicate(tabla);
+	 list_sort(tablaDup,ordenAscendente);
+	 log_trace(logger,"la posicion inicial de algoritmo circular es(%d)",posicion);
+		 for(int i =0; i< obtenerEntradasTotales();i++){
+			log_trace(logger,"iteracion numero(%d) de (%d)",i, obtenerEntradasTotales());
+			tablaE* unaEntrada= list_get(tablaDup,posicion+i);
+			log_trace(logger,"obtengo la posicion (%d) de la tabla", posicion + i);
+			if(esAtomica(unaEntrada) && tamanio<(cv->tamanio)){
+				tamanio += unaEntrada->tamanio;
+				posicion= posicion+i;
+				log_trace(logger,"el nuevo puntero que me dice donde esta la ultima clave atomica es (%d)",posicion);
+				list_add(atomicasNecesarias,unaEntrada->clave);
+			}
+			//la posicion solo puede dar negativa si estoy al final de la lista y vuelvo al inicio y no encuentro ninguna atomica
+			if(unaEntrada->numero ==(obtenerEntradasTotales()-1)){
+				posicion=-i-1;
+			}
+			liberarEntrada(unaEntrada);
+		 }
+
+	if (posicion <0){
+		tablaE* unaEntrada= list_get(atomicasNecesarias,(list_size(atomicasNecesarias)-1));
+		posicion= unaEntrada->numero;
+		liberarEntrada(unaEntrada);
 	}
-	log_trace(logger,"Se procede a chequear que la cantidad de entradas a reemplazar alcance para el tamaño del cv");
-	//chequo que la cantidad de entradas a replazar alcance para el tamaño de mi cv
-	if (list_size(posiblesAReemplazar) >= cv->tamanio) {
-		//ordeno ascendente
-		log_trace(logger,"Alcanzaban: La cantidad de posiblesAReemplazar es %d, el tamaño del cv es: %d",list_size(posiblesAReemplazar), cv->tamanio);
-		list_sort(posiblesAReemplazar, ordenAscendente);
-		//acorto la lista de posiblesARemplazar para que solo tenga las necesarias para mi nueva cv
-		t_list* vanASerReemplazadas = list_take_and_remove(posiblesAReemplazar,cv->tamanio / obtenerTamanioEntrada());
-		log_trace(logger,"Se ṕrocede a obtener el listado final de claves a ser reemplazadas");
-		//mapeo para retornar solo las claves no la entrada que despues se encarge la entrada de eliminar dicha clave
-		vanASerReemplazadas = list_map(vanASerReemplazadas, obtenerClave);
-		return vanASerReemplazadas;
+	if(cv->tamanio> list_size(atomicasNecesarias)){
+		log_trace(logger," el tamaño de las atomicas (%d) no me alcanza para cubrir el de mi entrada con tamaño (%d)",tamanio,cv->tamanio);
+		list_destroy(atomicasNecesarias);
+		list_destroy(tablaDup);
+		posicion++;
+		return ;
 	}
-	// que pasa si el tamaño de la lista de posibles a remplazar no alcanza, pero si busco en la tabla cuales son atomicas
-	//y lo concateno con la otra lista de posibles a remplazar me alzanza el tamañoi
-	log_error(logger, "No se pudo encontrar clave a reemplazar");
-	return NULL;
+	else{
+	for(int i=0; i<list_size(atomicasNecesarias);i++){
+		char* claveAPedir = list_get(atomicasNecesarias,0);
+		tablaE* unaEntrada= buscarEntrada(claveAPedir);
+		liberarEntrada(unaEntrada);
+		free(claveAPedir);
+	}
+	/// todo compactar solo si es necesario
+	// todo avisar coordinador que compacto
+	hacer_set(cv->clave,cv->valor);
+	}
+	list_destroy(atomicasNecesarias);
+	list_destroy(tablaDup);
+	posicion++;
 }
 
-
-
-/* ALG CIRCULAR V2.0
-
-t_list* algoritmoCircular(claveEntrada* cv, t_list* posiblesAReemplazar) {
-	//lista posiblesAReemplazar vacia
-	if(list_is_empty(posiblesAReemplazar)){
-		posiblesAReemplazar= list_filter(tabla,esAtomica);
-		 if(list_size(posiblesAReemplazar)> sizeof(cv)){
-			 list_sort(posiblesAReemplazar,ordenAscendente);
-			  t_list* vanASerReemplazadas = list_take_and_remove(posiblesAReemplazar,cv->tamanio / obtenerTamanioEntrada());
-			  t_list* listaMapeada= list_map(vanASerReemplazadas, obtenerClave);
-			  list_destroy(vanASerReemplazadas);
-			  return listaMapeada;
-		 }
-		 else{
-			 list_destroy(posiblesAReemplazar);
-			 return NULL;
-		 }
-	//lista posiblesAReemplazar con algo
-	}else{
-	 	 if(list_size(posiblesAReemplazar)> sizeof(cv)){
-	 		 list_sort(posiblesAReemplazar,ordenAscendente);
-	 		 t_list* vanASerReemplazadas = list_take_and_remove(posiblesAReemplazar,cv->tamanio / obtenerTamanioEntrada());
-	 		 t_list* listaMapeada= list_map(vanASerReemplazadas, obtenerClave);
-	 		 list_destroy(vanASerReemplazadas);
-	 		 return listaMapeada;
-	 	 }else{
-	 		 void list_add_all(posiblesAReemplazar,filter(tabla,esAtomica);
-
-
-
-	 	 }
-
- }
-}
-
-
-
-*/
-
-
-
-
-t_list* algoritmoLRU(claveEntrada* cv) {
+void algoritmoLRU(claveEntrada* cv){
 	log_trace(logger, "Se procede a reemplazar mediante algoritmo LRU");
 	t_list* posiblesAReemplazar= list_duplicate(tabla);
 	list_sort(posiblesAReemplazar, ordenAscendentePorOperacion);
@@ -88,38 +67,79 @@ t_list* algoritmoLRU(claveEntrada* cv) {
 	if (list_size(posiblesAReemplazar) >= cv->tamanio) {
 		log_trace(logger,"Alcanzaban: La cantidad de posiblesAReemplazar es %d, el tamaño del cv es: %d",list_size(posiblesAReemplazar), cv->tamanio);
 		t_list* vanASerReemplazadas = list_take_and_remove(posiblesAReemplazar,cv->tamanio / obtenerTamanioEntrada());
+		if(listaNoContigua(vanASerReemplazadas)){
+					// todo: compactar
+		}
 		log_trace(logger,"Se ṕrocede a obtener el listado final de claves a ser reemplazadas");
 		 t_list* clavesAReemplazar= list_map(vanASerReemplazadas,obtenerClave);
-		free(posiblesAReemplazar);
-		free(vanASerReemplazadas);
-		return clavesAReemplazar;
+		 log_trace(logger,"se procede a eliminar las claves a ser reemplazadas");
+		 for(int i=0;i<list_size(clavesAReemplazar);i++){
+			char* clave= list_get(clavesAReemplazar,i);
+			log_trace(logger,"se obtuvo la clave (%s)",clave);
+			tablaE* unaEntrada=buscarEntrada(clave);
+			liberarEntrada(unaEntrada);
+			free(clave);
+			log_trace(logger,"se elimino la clave de la tabla de entradas");
+		 	}
+		hacerSet(cv->clave,cv->valor);
+		list_destroy(posiblesAReemplazar);
+		list_destroy(vanASerReemplazadas);
+		list_destroy(clavesAReemplazar);
+		return;
 	}
-	free(posiblesAReemplazar);
+	list_destroy(posiblesAReemplazar);
 	log_error(logger, "No se pudo encontrar clave a reemplazar");
-	return NULL;
 }
 
 
 
 
+void algoritmoBSU(claveEntrada* cv){
+	t_list* entradasAtomicas= list_filter(tabla,esAtomica);
+	sort_list(entradasAtomicas,ordenDescendentePorTamanio);
+	if(list_size(entradasAtomicas)>=(cv->tamanio)){
+		log_trace(logger,"la cantidad de entradas atomicas son suficientes para mi nueva clave");
+		t_list* vanASerReemplazadas = list_take_and_remove(entradasAtomicas,(cv->tamanio / obtenerTamanioEntrada()+1));
+		if(listaNoContigua(vanASerReemplazadas)){
+			// todo: compactar
+		}
+		t_list* clavesAReemplazar= list_map(vanASerReemplazadas,obtenerClave);
+		log_trace(logger,"se procede a eliminar las claves a ser reemplazadas");
+		for(int i=0;i<list_size(clavesAReemplazar);i++){
+			char* clave= list_get(clavesAReemplazar,i);
+			log_trace(logger,"se obtuvo la clave (%s)",clave);
+			tablaE* unaEntrada=buscarEntrada(clave);
+			liberarEntrada(unaEntrada);
+			free(clave);
+			log_trace(logger,"se elimino la clave de la tabla de entradas");
+		}
+		hacerSet(cv->clave,cv->valor);
 
-t_list* algoritmoBSU(claveEntrada* cv) {
-	log_trace(logger, "Se procede a reemplazar mediante algoritmo BSU");
-	t_list* posiblesAReemplazar = list_filter(tabla, esAtomica);
-	list_sort(posiblesAReemplazar, ordenDescendentePorTamanio);
-	log_trace(logger,"Se procede a chequear que la cantidad de entradas a reemplazar alcance para el tamaño del cv");
-	if (list_size(posiblesAReemplazar) >= cv->tamanio) {
-		log_trace(logger,"Alcanzaban: La cantidad de posiblesAReemplazar es %d, el tamaño del cv es: %d",list_size(posiblesAReemplazar), cv->tamanio);
-		log_trace(logger,"Se ṕrocede a obtener el listado final de claves a ser reemplazadas");
-		t_list* vanASerReemplazadas = list_take_and_remove(posiblesAReemplazar,cv->tamanio / obtenerTamanioEntrada());
-		vanASerReemplazadas = list_map(vanASerReemplazadas,obtenerClave);
-		free(posiblesAReemplazar);
-		return vanASerReemplazadas;
+		list_destroy(clavesAReemplazar);
+		list_destroy(entradasAtomicas);
+		list_destroy(vanASerReemplazadas);
+
+
 	}
-
-	free(posiblesAReemplazar);
-	log_error(logger, "No se pudo encontrar clave a reemplazar");
-	return NULL;
-
+	else{
+	log_trace(logger," la cantidad de entradas atomicas no me alcanzaron para reemplazar mi clave");
+	}
 }
+
+
+bool esAtomica(tablaE* unaEntrada){
+	return unaEntrada->tamanio <= obtenerTamanioEntrada();
+}
+
+bool listaNoContigua(t_list* unaLista){
+	for(int i=0; i<(list_size(unaLista)-1);i++){
+			tablaE* unaEntrada= list_get(unaLista,i);
+			tablaE* sigEntrada= list_get(unaLista,i+1);
+			if((unaEntrada->numero + entradas_que_ocupa(unaEntrada))!=sigEntrada->numero-1){
+				return true;
+			}
+	}
+return false;
+}
+
 
