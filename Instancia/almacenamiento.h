@@ -29,7 +29,6 @@ char* convertirString(const void *valor, size_t tamanio);
 void* buscarEnALmacenamiento(int posicion, unsigned int tamanio);
 void inicializarAlmacenamiento(unsigned int entradas,unsigned int tamanioEntrada);
 void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio);
-char* convertirString(const void *valor, size_t tamanio);
 
 
 #endif /* ALMACENAMIENTO_H_ */

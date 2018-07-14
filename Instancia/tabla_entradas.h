@@ -28,11 +28,11 @@ typedef struct {
 } claveEntrada;
 
 void 			mostrarTabla();
+void* 			obtenerClave(void*);
 void			crearTablaEntradas();
 void  			liberarCv(claveEntrada* cv);
 bool 			esAtomica(void* unaEntrada);
 bool    		tablaEstaVacia(t_list* tabla);
-char* 			obtenerClave(claveEntrada* cv);
 void 			liberarEntrada(tablaE* entrada);
 tablaE* 		buscarEntrada(char* claveAPedir);
 bool 			ordenAscendente(void * a, void *b);

@@ -45,7 +45,7 @@ void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) 
 
 }
 
-
+/*
 char* convertirString(const void *valor, size_t tamanio) {
 	char *valorStr = calloc(tamanio + 1, sizeof(tamanio));
 	memcpy(valorStr, valor, tamanio);
@@ -64,6 +64,7 @@ void mostrarAlmacenamiento(){
 		a++;
 	}
 }
+*/
 
 void eliminarAlmacenamiento() {
 	free(ato->dato);

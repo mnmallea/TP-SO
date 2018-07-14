@@ -3,16 +3,21 @@
 void crearTablaEntradas() {
 	tabla = list_create();
 	entradasLibres = obtenerEntradasTotales();
+	log_trace(logger,"se crea la tabla de entrada, con (%d) entradas",entradasLibres);
+
 }
 
 bool agregarEnTabla(int nuevaEntrada, claveEntrada* claveE) {
+	log_trace(logger,"se adapta a estructura de tabla  la claveEntrada recibida");
 	tablaE * nuevaE = adaptoClave(claveE);
 	nuevaE->numero = nuevaEntrada;
 	nuevaE->operaciones= nroOperacion;
 	if (nuevaEntrada >= 0) {
 		list_add(tabla, (void *) nuevaE);
 		list_sort(tabla, ordenAscendente);
+		log_trace(logger,"entradas libres antes de agregar en tabla",entradasLibres);
 		entradasLibres -= claveE->tamanio / obtenerTamanioEntrada() + 1;
+		log_trace(logger,"entradas libres luego de agregar en tabla",entradasLibres);
 		return true;
 	}
 	return false;
@@ -57,7 +62,7 @@ int entradaSiguienteEnTabla(claveEntrada* claveE) {
 	// me fijo la cantidad de entradas usadas
 	log_trace(logger, "Se procede a buscar la siguiente entrada disponible en tabla");
 	int cantEntradasUsadas = list_size(tabla);
-
+	log_trace(logger,"se obtiene la cantidad de entradas usadas (%d)",cantEntradasUsadas );
 	// me fijo cuantas entradas necesitria la clave que llega por parametro
 	int cantEntradasNecesarias = claveE->tamanio / obtenerTamanioEntrada() + 1;
 	log_trace(logger, "Para guardar la clave %s con el valor %s se necesitan %d entradas", claveE->clave, claveE->valor, cantEntradasNecesarias);
@@ -87,25 +92,23 @@ int entradaSiguienteEnTabla(claveEntrada* claveE) {
 			entrada1 = (tablaE*) list_get(tabla, a);
 			entrada2 = (tablaE*) list_get(tabla, a + 1);
 			// chequeo el espacio entre la primera y la segunda entrada
-			espacioEntreEntradas =
-					(entrada2->numero)
-							- (entrada1->numero
-									+ (entrada1->tamanio
-											/ obtenerTamanioEntrada() + 1));
+			espacioEntreEntradas =(entrada2->numero)- (entrada1->numero + (entrada1->tamanio/ obtenerTamanioEntrada() + 1));
+			log_trace(logger, "el espacio entre la entrada (%d) y (%d) es (%d)",a, a+1,espacioEntreEntradas);
 			//si la cantidad de entradas necesarias para meter la que llego por parametro es menor al espacio entre entradas
 			if (cantEntradasNecesarias <= espacioEntreEntradas) {
-				//retorno la posicion donde podria insertar esa clave
+				log_trace(logger, " me alcanzo el espacio entre entradas (%d) y (%d)",a,(a+1));
 				return a + (entrada1->tamanio / obtenerTamanioEntrada() + 1);
 			}
 			a++;
 		}
+		log_trace(logger, "chequeando si a la ultima entrada le sobra espacio ");
 		entrada2 = (tablaE*) list_get(tabla, list_size(tabla) - 1);
 		if (obtenerTamanioEntrada() - entrada2->numero
 				>= cantEntradasNecesarias) {
+			log_trace(logger, "La ultima entrada tiene epacio disponible");
 			return (entrada2->tamanio / obtenerTamanioEntrada() + 1)
 					+ entrada2->numero;
 		}
-
 	}
 	return -1;
 }
@@ -123,6 +126,7 @@ bool quitarDeTabla(claveEntrada * claveE) {
 	while (i < list_size(tabla)) {
 		tablaE* entrada = (tablaE*) list_get(tabla, i);
 		if (!strcmp(claveE->clave, entrada->clave)) {
+			log_trace(logger, "se procede a eliminar la entrada (%d) de la tabla claveEntrada", i);
 			removerDeLista(i, entrada);
 			return true;
 		}
@@ -200,8 +204,9 @@ bool esAtomica(void* entrada){
   return unaEntrada->tamanio <= obtenerTamanioEntrada();
 
 }
-char* obtenerClave(claveEntrada* cv){
-	return cv->clave;
+void* obtenerClave(void* cv){
+	tablaE* unaEntrada= cv;
+	return (void*) unaEntrada->clave;
 }
 
 

@@ -19,6 +19,7 @@ typedef struct {
 	unsigned int	totalEntradas;
 } almacenamiento_cfg;
 almacenamiento_cfg cfgAlmacenamiento;
+extern 	t_log *logger;
 extern config configuracion;
 
 /*  *@NAME: configurarAlmacenamiento
