@@ -29,10 +29,13 @@ typedef struct {
 dumperEstructura* dumper;
 
 extern t_log *logger;
+extern config configuracion;
 void* dumpearADisco(void* sinUso);
 int crearDumperCV(char*clave);
 void iniciarDumper(char* puntoMontaje);
 void almacenarEnDumper(char*data,char*Clave,unsigned int tamanio);
+
+t_list* obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv, t_list* posiblesAReemplazar);
 //------------------------------------------------------------------
 int		SET(int socketCoordinador,t_list* posiblesAReemplazar);
 int hacer_set(char* clave,char* valor,t_list* posiblesAReemplazar);
