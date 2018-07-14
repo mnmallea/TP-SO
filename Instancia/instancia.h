@@ -18,9 +18,9 @@
 #include "tabla_entradas.h"
 #include "almacenamiento.h"
 #include <sys/mman.h>
-#include "algoritmos.h"
 #include <commons/collections/dictionary.h>
 #include "../syntax-commons/conexiones.h"
+#include "algoritmo.h"
 
 typedef struct {
 	char*			puntoMontaje;

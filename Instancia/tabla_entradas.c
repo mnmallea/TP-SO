@@ -15,13 +15,33 @@ bool agregarEnTabla(int nuevaEntrada, claveEntrada* claveE) {
 	if (nuevaEntrada >= 0) {
 		list_add(tabla, (void *) nuevaE);
 		list_sort(tabla, ordenAscendente);
-		log_trace(logger,"entradas libres antes de agregar en tabla",entradasLibres);
+		log_trace(logger,"entradas libres antes de agregar en tabla (%d)",entradasLibres);
 		entradasLibres -= claveE->tamanio / obtenerTamanioEntrada() + 1;
-		log_trace(logger,"entradas libres luego de agregar en tabla",entradasLibres);
+		log_trace(logger,"entradas libres luego de agregar en tabla (%d)",entradasLibres);
 		return true;
 	}
 	return false;
 }
+
+int entradaSiguienteEnTabla(claveEntrada* claveE) {
+	log_trace(logger, "Se procede a buscar la siguiente entrada disponible en tabla");
+	if(tablaEstaVacia(tabla)){
+			log_trace(logger, "La tabla de entradas esta vacia, se debe guardar en la posicion 0");
+			return 0;
+	}
+	for(int i=0; i< (cfgAlmacenamiento.totalEntradas); i++){
+		log_trace(logger, "chequeando que la entrada (%d) este vacia",i);
+		tablaE* entrada1 =(tablaE*) list_get(tabla,i);
+		if(entrada1->clave == NULL || entrada1 == NULL){
+			log_trace(logger, "la entrada (%d) esta vacia",i);
+			liberarEntrada(entrada1);
+			return i;
+		}
+		liberarEntrada(entrada1);
+	}
+	return -1;
+	}
+
 
 bool ordenAscendente(void * primero, void * segundo) {
 	tablaE* unaEntrada = (tablaE*) primero;
@@ -56,62 +76,6 @@ bool tablaEstaVacia(t_list* tabla) {
 	return list_is_empty(tabla);
 }
 
-int entradaSiguienteEnTabla(claveEntrada* claveE) {
-	tablaE* entrada1;
-	tablaE* entrada2;
-	// me fijo la cantidad de entradas usadas
-	log_trace(logger, "Se procede a buscar la siguiente entrada disponible en tabla");
-	int cantEntradasUsadas = list_size(tabla);
-	log_trace(logger,"se obtiene la cantidad de entradas usadas (%d)",cantEntradasUsadas );
-	// me fijo cuantas entradas necesitria la clave que llega por parametro
-	int cantEntradasNecesarias = claveE->tamanio / obtenerTamanioEntrada() + 1;
-	log_trace(logger, "Para guardar la clave %s con el valor %s se necesitan %d entradas", claveE->clave, claveE->valor, cantEntradasNecesarias);
-
-	//defino una variable para chequear el espacio entre entradas de la tabla
-	int espacioEntreEntradas = 0;
-
-	if(tablaEstaVacia(tabla)){
-		log_trace(logger, "La tabla de entradas esta vacia, se debe guardar en la posicion 0");
-		return 0;
-	}
-	// si la tabla no esta vacia y las entradas libres me alcanzan para cubrir las que necesito empiezo a ejecutar
-	if (entradasLibres >= cantEntradasNecesarias) {
-		log_trace(logger, "Las entradas libres son mayores que las entradas necesarias, puedo guardar la clave");
-		entrada1 = (tablaE*) list_get(tabla, 0);
-
-		if (entrada1->numero > 0
-				&& cantEntradasNecesarias <= (entrada1->numero)) {
-			log_trace(logger, "La primer entrada esta vacia, lo guardo en esa posicion");
-			return 0;
-		}
-
-		int a = 0;
-		//va a ir hasta el anteultimo de la lista
-		while (cantEntradasUsadas > a + 1) {
-			//tengo una entrada y su siguiente
-			entrada1 = (tablaE*) list_get(tabla, a);
-			entrada2 = (tablaE*) list_get(tabla, a + 1);
-			// chequeo el espacio entre la primera y la segunda entrada
-			espacioEntreEntradas =(entrada2->numero)- (entrada1->numero + (entrada1->tamanio/ obtenerTamanioEntrada() + 1));
-			log_trace(logger, "el espacio entre la entrada (%d) y (%d) es (%d)",a, a+1,espacioEntreEntradas);
-			//si la cantidad de entradas necesarias para meter la que llego por parametro es menor al espacio entre entradas
-			if (cantEntradasNecesarias <= espacioEntreEntradas) {
-				log_trace(logger, " me alcanzo el espacio entre entradas (%d) y (%d)",a,(a+1));
-				return a + (entrada1->tamanio / obtenerTamanioEntrada() + 1);
-			}
-			a++;
-		}
-		log_trace(logger, "chequeando si a la ultima entrada le sobra espacio ");
-		entrada2 = (tablaE*) list_get(tabla, list_size(tabla) - 1);
-		if (obtenerTamanioEntrada() - entrada2->numero
-				>= cantEntradasNecesarias) {
-			log_trace(logger, "La ultima entrada tiene epacio disponible");
-			return (entrada2->tamanio / obtenerTamanioEntrada() + 1)
-					+ entrada2->numero;
-		}
-	}
-	return -1;
-}
 
 tablaE * adaptoClave(claveEntrada * claveE) {
 	tablaE * entrada = malloc(sizeof(tablaE));
@@ -139,22 +103,12 @@ void removerDeLista(int unaVariable, tablaE* entrada) {
 	entradasLibres += (entrada->tamanio / obtenerTamanioEntrada()) + 1;
 }
 
-void mostrarTabla() {
-	int i = 0;
-	while (list_size(tabla) > i) {
-		tablaE* entrada = (tablaE*) list_get(tabla, i);
-		printf("----Registro n° %d----\n", i);
-		printf("----Posicion Almacenamiento: %d", entrada->numero);
-		printf("----La Clave es: %s", entrada->clave);
-		printf("----El Tamanio es: %d \n", entrada->tamanio);
-		i++;
-		liberarEntrada(entrada);
-	}
-}
+
 
 void liberarEntrada(tablaE* entrada) {
 	free(entrada->clave);
 	free(entrada);
+
 }
 void liberarCv(claveEntrada* cv) {
 	free(cv->clave);
@@ -172,20 +126,17 @@ claveEntrada* crearClaveEntrada(char* clave, char* valor) {
 
 bool hayEntradasDisponibles(claveEntrada* cv) {
 	return (cv->tamanio / obtenerTamanioEntrada() + 1) <= entradasLibres;
-
 }
 
 void reemplazarCVEnTabla(claveEntrada* cv){
 	tablaE* entrada=buscarEntrada(cv->clave);
 	entrada->operaciones=nroOperacion;
 	entrada->tamanio=cv->tamanio;
-	list_replace(tabla,entrada->numero,(void*) entrada);
 	setEnAlmacenamiento(entrada->numero,cv->valor,cv->tamanio);
-
+	liberarEntrada(entrada);
 }
 
 tablaE* buscarEntrada(char* claveAPedir) {
-
 	log_trace(logger, "Se procede a recorrer la tabla de entradas para encontrar la clave");
 	tablaE* entrada;
 	for (int i = 0; i < list_size(tabla); i++) {
@@ -199,16 +150,17 @@ tablaE* buscarEntrada(char* claveAPedir) {
 	return NULL;
 }
 
-bool esAtomica(void* entrada){
-    tablaE* unaEntrada = entrada;
-  return unaEntrada->tamanio <= obtenerTamanioEntrada();
-
-}
 void* obtenerClave(void* cv){
 	tablaE* unaEntrada= cv;
 	return (void*) unaEntrada->clave;
 }
 
+int entradas_que_ocupa(tablaE* unaEntrada){
+  int div = unaEntrada->tamanio / obtenerTamanioEntrada();
+if(unaEntrada->tamanio % obtenerTamanioEntrada()){
+div++;
+}
+return div;
 
 
 
