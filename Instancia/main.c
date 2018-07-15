@@ -105,7 +105,7 @@ int main(int argc, char** argv) {
 				char* valor = NULL;
 				size_t lenght = 0;
 				getline(&valor, &lenght, arch);
-				hacer_set(clave_recibida, valor, posiblesAReemplazar);
+				hacer_set(clave_recibida, valor);
 				free(path);
 				free(valor);
 				fclose(arch);

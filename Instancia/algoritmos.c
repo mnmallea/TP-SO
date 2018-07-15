@@ -6,8 +6,6 @@
  */
 #include "algoritmos.h"
 
-posicion=0;
-
 void algoritmoCircular(claveEntrada* cv){
 	 unsigned int tamanio=0;
 	 t_list* atomicasNecesarias= list_create();
@@ -28,13 +26,12 @@ void algoritmoCircular(claveEntrada* cv){
 			if(unaEntrada->numero ==(obtenerEntradasTotales()-1)){
 				posicion=-i-1;
 			}
-			liberarEntrada(unaEntrada);
 		 }
 
 	if (posicion <0){
 		tablaE* unaEntrada= list_get(atomicasNecesarias,(list_size(atomicasNecesarias)-1));
 		posicion= unaEntrada->numero;
-		liberarEntrada(unaEntrada);
+		//liberarEntrada(unaEntrada);
 	}
 	if(cv->tamanio> list_size(atomicasNecesarias)){
 		log_trace(logger," el tamaño de las atomicas (%d) no me alcanza para cubrir el de mi entrada con tamaño (%d)",tamanio,cv->tamanio);
@@ -48,7 +45,7 @@ void algoritmoCircular(claveEntrada* cv){
 		char* claveAPedir = list_get(atomicasNecesarias,0);
 		tablaE* unaEntrada= buscarEntrada(claveAPedir);
 		liberarEntrada(unaEntrada);
-		free(claveAPedir);
+		//free(claveAPedir);
 	}
 	/// todo compactar solo si es necesario
 	// todo avisar coordinador que compacto
@@ -81,7 +78,7 @@ void algoritmoLRU(claveEntrada* cv){
 			free(clave);
 			log_trace(logger,"se elimino la clave de la tabla de entradas");
 		 	}
-		hacerSet(cv->clave,cv->valor);
+		hacer_set(cv->clave,cv->valor);
 		list_destroy(posiblesAReemplazar);
 		list_destroy(vanASerReemplazadas);
 		list_destroy(clavesAReemplazar);
@@ -96,7 +93,7 @@ void algoritmoLRU(claveEntrada* cv){
 
 void algoritmoBSU(claveEntrada* cv){
 	t_list* entradasAtomicas= list_filter(tabla,esAtomica);
-	sort_list(entradasAtomicas,ordenDescendentePorTamanio);
+	list_sort(entradasAtomicas,ordenDescendentePorTamanio);
 	if(list_size(entradasAtomicas)>=(cv->tamanio)){
 		log_trace(logger,"la cantidad de entradas atomicas son suficientes para mi nueva clave");
 		t_list* vanASerReemplazadas = list_take_and_remove(entradasAtomicas,(cv->tamanio / obtenerTamanioEntrada()+1));
@@ -110,11 +107,10 @@ void algoritmoBSU(claveEntrada* cv){
 			log_trace(logger,"se obtuvo la clave (%s)",clave);
 			tablaE* unaEntrada=buscarEntrada(clave);
 			liberarEntrada(unaEntrada);
-			free(clave);
 			log_trace(logger,"se elimino la clave de la tabla de entradas");
+			//free(clave);
 		}
-		hacerSet(cv->clave,cv->valor);
-
+		hacer_set(cv->clave,cv->valor);
 		list_destroy(clavesAReemplazar);
 		list_destroy(entradasAtomicas);
 		list_destroy(vanASerReemplazadas);
@@ -127,8 +123,9 @@ void algoritmoBSU(claveEntrada* cv){
 }
 
 
-bool esAtomica(tablaE* unaEntrada){
-	return unaEntrada->tamanio <= obtenerTamanioEntrada();
+bool esAtomica(void* unaEntrada){
+	tablaE* entrada= unaEntrada;
+	return entrada->tamanio <= obtenerTamanioEntrada();
 }
 
 bool listaNoContigua(t_list* unaLista){
