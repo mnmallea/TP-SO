@@ -121,7 +121,7 @@ claveEntrada* crearClaveEntrada(char* clave, char* valor) {
 	claveEntrada* claveE = malloc(sizeof(claveEntrada));
 	claveE->valor = string_duplicate(valor);
 	claveE->clave = string_substring_until(clave, 40);
-	claveE->tamanio = (unsigned int) (string_length(valor) + 1);
+	claveE->tamanio = strlen(valor);
 	return claveE;
 }
 
@@ -132,13 +132,14 @@ bool hayEntradasDisponibles(claveEntrada* cv) {
 
 void reemplazarCVEnTabla(claveEntrada* cv) {
 	tablaE* entrada = buscarEntrada(cv->clave);
-	if (entradas_que_ocupa_por_tamanio(cv->tamanio)
-			> entradas_que_ocupa(entrada)) {
+	int entradas_ocupadas = entradas_que_ocupa(entrada);
+	int entradas_que_ocuparia = entradas_que_ocupa_por_tamanio(cv->tamanio);
+	if (entradas_que_ocuparia > entradas_ocupadas) {
 		log_error(logger, "Esto no deberia pasar");
 		return;
 	}
 
-	almac_liberar_entradas(entrada->indice, entrada->tamanio);
+	almac_liberar_entradas(entrada->indice, entradas_ocupadas);
 
 	entrada->operaciones = nroOperacion;
 	entrada->tamanio = cv->tamanio;

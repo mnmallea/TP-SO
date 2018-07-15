@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
 	crearTablaEntradas();
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
-//	configurar_timer_dumper();
+	configurar_timer_dumper();
 	t_list* posiblesAReemplazar = list_create();
 	while (escucha) {
 		int resultado;
@@ -62,6 +62,7 @@ int main(int argc, char** argv) {
 				log_trace(logger, "SET arrojo resultado ERROR");
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
+			nroOperacion++;
 			break;
 		case OP_STORE:
 			;
@@ -84,6 +85,7 @@ int main(int argc, char** argv) {
 				log_trace(logger, "STORE recibio resultado ERROR");
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
+			nroOperacion++;
 			break;
 		case RELEVANTAR_INSTANCIA:
 			log_info(logger, "La instancia se esta relevantando.....");
