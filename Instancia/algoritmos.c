@@ -23,14 +23,14 @@ void algoritmoCircular(claveEntrada* cv){
 				list_add(atomicasNecesarias,unaEntrada->clave);
 			}
 			//la posicion solo puede dar negativa si estoy al final de la lista y vuelvo al inicio y no encuentro ninguna atomica
-			if(unaEntrada->numero ==(obtenerEntradasTotales()-1)){
+			if(unaEntrada->indice ==(obtenerEntradasTotales()-1)){
 				posicion=-i-1;
 			}
 		 }
 
 	if (posicion <0){
 		tablaE* unaEntrada= list_get(atomicasNecesarias,(list_size(atomicasNecesarias)-1));
-		posicion= unaEntrada->numero;
+		posicion= unaEntrada->indice;
 		//liberarEntrada(unaEntrada);
 	}
 	if(cv->tamanio> list_size(atomicasNecesarias)){
@@ -132,7 +132,7 @@ bool listaNoContigua(t_list* unaLista){
 	for(int i=0; i<(list_size(unaLista)-1);i++){
 			tablaE* unaEntrada= list_get(unaLista,i);
 			tablaE* sigEntrada= list_get(unaLista,i+1);
-			if((unaEntrada->numero + entradas_que_ocupa(unaEntrada))!=sigEntrada->numero-1){
+			if((unaEntrada->indice + entradas_que_ocupa(unaEntrada))!=sigEntrada->indice-1){
 				return true;
 			}
 	}

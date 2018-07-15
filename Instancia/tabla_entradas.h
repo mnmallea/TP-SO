@@ -1,10 +1,10 @@
 #ifndef TABLA_ENTRADAS_H_
 #define TABLA_ENTRADAS_H_
+
 #include <commons/collections/list.h>
-#include <stdlib.h>
-#include <string.h>
-#include "almacenamiento.h"
-#include "cfg_almacenamiento.h"
+#include <commons/log.h>
+#include <stdbool.h>
+
 
 
 int entradasLibres;
@@ -13,7 +13,7 @@ extern t_log* logger;
 unsigned int nroOperacion;
 
 typedef struct{
-	unsigned int	numero;
+	unsigned int	indice;
 	unsigned int	tamanio;
 	char * clave;
 	unsigned int operaciones;
@@ -42,9 +42,11 @@ bool 			hayEntradasDisponibles(claveEntrada* cv);
 claveEntrada* 	crearClaveEntrada(char* clave, char* valor);
 int				entradaSiguienteEnTabla(claveEntrada* claveE);
 void    		removerDeLista(int unaVariable, tablaE* entrada);
-bool    		agregarEnTabla(int nuevaEntrada, claveEntrada* claveE);
+void    		agregarEnTabla(int nuevaEntrada, claveEntrada* claveE);
 bool 			ordenAscendentePorOperacion(void * primero, void * segundo);
 bool 			ordenDescendentePorTamanio(void * primero, void * segundo);
+int entradas_que_ocupa_por_tamanio(int size);
+
 
 
 
