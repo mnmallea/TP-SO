@@ -13,7 +13,7 @@ int SET(int socketCoordinador, t_list* posiblesAReemplazar) {
 			"Se procede a realizar set con la clave: %s y el valor %s", clave,
 			valor);
 	int resultado;
-	resultado = hacer_set(clave, valor, posiblesAReemplazar);
+	resultado = hacer_set(clave, valor);
 	free(clave);
 	free(valor);
 	log_trace(logger, "El resultado de la operacion set fue %d", resultado);
@@ -50,17 +50,18 @@ int hacer_set(char* clave, char* valor) {
 		liberarCv(cv);
 		return 0;
 }
+}
 
-t_list* obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv){
+void obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv){
 	if(configuracion.algoritmo == CIRC){
-		return algoritmoCircular(cv);
+		 algoritmoCircular(cv);
 	}else if(configuracion.algoritmo == LRU){
-		return algoritmoLRU(cv);
+		 algoritmoLRU(cv);
 	}else if(configuracion.algoritmo == BSU){
-		return algoritmoBSU( cv);
+		 algoritmoBSU(cv);
 	}else{
 		log_error(logger, "No se encontro algoritmo de reemplazo");
-		return NULL;
+		return;
 	}
 }
 
@@ -139,8 +140,8 @@ int crearDumperCV(char* clave) {
 	return fd;
 }
 
-// funcion dumper cada 100 segundos se prende recorre la tabla de entradas, la storea y vacia la entrada y el almacenamiento
-void* dumpearADisco(void* sinuso) {
+
+void* dumpearADisco(void* sinuso){
 	for (int i = 0; i < list_size(tabla); i++) {
 		tablaE* entrada = list_get(tabla, i);
 		STORE(entrada->clave);
@@ -148,3 +149,5 @@ void* dumpearADisco(void* sinuso) {
 	return NULL;
 }
 
+
+// funcion dumper cada 100 segundos se prende recorre la tabla de entradas, la storea y vacia la entrada y el almacenamiento

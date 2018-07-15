@@ -158,9 +158,9 @@ void* obtenerClave(void* cv){
 int entradas_que_ocupa(tablaE* unaEntrada){
   int div = unaEntrada->tamanio / obtenerTamanioEntrada();
 if(unaEntrada->tamanio % obtenerTamanioEntrada()){
-div++;
-}
+	div+=1;
+	}
+
 return div;
-
-
+}
 

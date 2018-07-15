@@ -20,7 +20,7 @@
 #include <sys/mman.h>
 #include <commons/collections/dictionary.h>
 #include "../syntax-commons/conexiones.h"
-#include "algoritmo.h"
+#include "algoritmos.h"
 
 typedef struct {
 	char*			puntoMontaje;
@@ -35,10 +35,10 @@ int crearDumperCV(char*clave);
 void iniciarDumper(char* puntoMontaje);
 void almacenarEnDumper(char*data,char*Clave,unsigned int tamanio);
 
-t_list* obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv, t_list* posiblesAReemplazar);
+void obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv);
 //------------------------------------------------------------------
 int		SET(int socketCoordinador,t_list* posiblesAReemplazar);
-int hacer_set(char* clave,char* valor,t_list* posiblesAReemplazar);
+int hacer_set(char* clave,char* valor);
 int		STORE(char* clave);
 
 
