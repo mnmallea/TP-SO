@@ -552,9 +552,9 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 		//sgtes
 
 		esi_q_retiene = dictionary_get(dic_clave_x_esi, candidatoEspera);
+		idCandidatoDL = &esi_q_retiene->id;
 		while(((t_esi*) esiInicial)->id!=*idCandidatoDL){
 			candidatoRetiene = candidatoEspera;
-			idCandidatoDL = &esi_q_retiene->id;
 			log_debug(logger, "Encontro el ESI(%d) que retiene la clave esperada",*idCandidatoDL);
 			if(!list_any_satisfy(idsDL, esta) && *idCandidatoDL != -1){
 				log_debug(logger, "No es esta retenida por el sistema, ni pertenece a otro deadlock");
@@ -573,7 +573,7 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 				goto DEST;
 			}
 			esi_q_retiene = dictionary_get(dic_clave_x_esi, candidatoEspera);
-
+			idCandidatoDL = &esi_q_retiene->id;
 		}
 
 		list_add_all(idsDL,listaDL);
