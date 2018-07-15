@@ -5,7 +5,7 @@
 
 #include "config_instancia.h"
 
-#define LOG_LEVEL LOG_LEVEL_TRACE
+#define LOG_LEVEL LOG_LEVEL_DEBUG
 
 config configuracion;
 t_log *logger;

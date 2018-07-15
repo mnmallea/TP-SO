@@ -9,7 +9,7 @@ int operacion_set(int socketCoordinador) {
 			"Se procede a obtener la clave y el valor del coordinador");
 	recibir_set(socketCoordinador, &clave, &valor);
 
-	log_trace(logger,
+	log_info(logger,
 			"Se procede a realizar set con la clave: %s y el valor %s", clave,
 			valor);
 	int resultado;
@@ -25,23 +25,26 @@ int hacer_set(char* clave, char* valor) {
 			"Se procede a crear la entrada con la clave: %s y el valor %s",
 			clave, valor);
 	claveEntrada* cv = crearClaveEntrada(clave, valor);
-	nroOperacion++;
 	log_trace(logger, "Numero de operacion %d", nroOperacion);
 	log_trace(logger,
 			"Se procede a ver si esa clave(%s) ya tenia un valor asociado",
 			clave);
 	if (buscarEntrada(cv->clave) != NULL) {
-		log_trace(logger, "Tenia un valor asociado, se procede a reemplazarlo");
+		log_info(logger, "La clave %s tenia un valor asociado, se procede a reemplazarlo", clave);
 		reemplazarCVEnTabla(cv);
 		liberarCv(cv);
 		return 0;
 	}
-	log_trace(logger,
+	log_info(logger,
 			"La clave %s no tenia un valor asociado, se procede a encontrarle un lugar",
 			clave);
+	int entradas_que_ocuparia = entradas_que_ocupa_por_tamanio(cv->tamanio);
+	log_debug(logger, "La cantidad de entradas disponibles son %d",
+			almac_entradas_disponibles());
+	log_debug(logger, "El valor ocuparia %d entradas", entradas_que_ocuparia);
 	if (hayEntradasDisponibles(cv)) {
 		int proximaEntrada = almac_primera_posicion_libre_con_tamanio(
-				cv->tamanio);
+				entradas_que_ocuparia);
 		if (proximaEntrada < 0) {
 			log_info(logger, "Hay fragmentacion externa, se debe compactar");
 			//aca hay que solicitarle al coordinador que mande a compactar
@@ -56,7 +59,7 @@ int hacer_set(char* clave, char* valor) {
 		liberarCv(cv);
 		return 0;
 	} else {
-		log_trace(logger,
+		log_info(logger,
 				"No se encontro lugar disponible, se procede a reemplazar alguna clave existente");
 		obtenerAReemplazarSegunAlgoritmo(cv);
 		liberarCv(cv);
@@ -93,7 +96,7 @@ int STORE(char* clave) {
 		log_trace(logger, "no se encontro el valor en el almacenamiento");
 		return -1;
 	}
-	nroOperacion++;
+
 	cv->operaciones = nroOperacion;
 	log_trace(logger, "se aumenta el numero de operacion(%d)", nroOperacion);
 	log_trace(logger, "estoy storeando un %s", carga);

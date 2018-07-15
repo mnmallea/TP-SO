@@ -23,7 +23,6 @@ void inicializarAlmacenamiento(unsigned int entradas,
 			bitarray_get_max_bit(bitarray_almac));
 	log_debug(logger, "El espacio restante (total) del almacenamiento es %d",
 			almac_entradas_disponibles());
-	log_debug(logger, "La primera entrada libre es %d", almac_primera_posicion_libre_con_tamanio(2));
 }
 
 void setEnAlmacenamiento(int indice, void* valor, unsigned int tamanio) {
