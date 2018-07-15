@@ -31,9 +31,11 @@ void inicializarAlmacenamiento(unsigned int entradas,unsigned int tamanioEntrada
 void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio);
 
 int almac_primera_posicion_libre_desde(int index_inicio);
-int almac_espacio_disponible();
+int almac_entradas_disponibles();
 int almac_cant_entradas_libres_desde(int index);
 int almac_primera_posicion_libre_con_tamanio(int size);
+int almac_ocupar_entradas(int index_inicio, int cantidad_entradas);
+int almac_liberar_entradas(int index_inicio, int cantidad_entradas);
 
 
 #endif /* ALMACENAMIENTO_H_ */

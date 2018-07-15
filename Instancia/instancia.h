@@ -37,7 +37,7 @@ void almacenarEnDumper(char*data,char*Clave,unsigned int tamanio);
 
 void obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv);
 //------------------------------------------------------------------
-int		SET(int socketCoordinador,t_list* posiblesAReemplazar);
+int		operacion_set(int socketCoordinador);
 int hacer_set(char* clave,char* valor);
 int		STORE(char* clave);
 

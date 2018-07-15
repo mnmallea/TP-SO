@@ -1,5 +1,10 @@
 #include "almacenamiento.h"
 
+#include <stdbool.h>
+
+#include "cfg_almacenamiento.h"
+#include "tabla_entradas.h"
+
 void almacenamiento_logger() {
 	logger = log_create("almacenamiento.log", "almacenamiento", true,
 			LOG_LEVEL_INFO);
@@ -17,39 +22,21 @@ void inicializarAlmacenamiento(unsigned int entradas,
 	log_debug(logger, "Se ha creado un bitarray de tamaño %d",
 			bitarray_get_max_bit(bitarray_almac));
 	log_debug(logger, "El espacio restante (total) del almacenamiento es %d",
-			almac_espacio_disponible());
+			almac_entradas_disponibles());
 	log_debug(logger, "La primera entrada libre es %d", almac_primera_posicion_libre_con_tamanio(2));
 }
 
-void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio) {
+void setEnAlmacenamiento(int indice, void* valor, unsigned int tamanio) {
 
 	log_trace(logger,
 			"ALMACENAMIENTO: se procede a guardar el valor %s en la entrada %d",
-			(char*) valor, proximaEntrada);
+			(char*) valor, indice);
 
-	if (tamanio <= ato->tamanioEntrada) {
-		log_trace(logger, "El valor a guardar es atomico");
-		memcpy(ato->dato + (proximaEntrada * ato->tamanioEntrada), valor,
-				tamanio);
+	int posicion_en_memoria = indice * obtenerTamanioEntrada();
 
-	} else {
-		log_trace(logger,
-				"El valor a guardar no es atomico, ocupara varias entradas");
-		unsigned int resto = tamanio - ato->tamanioEntrada;
-		void* parteAinsertar = malloc(ato->tamanioEntrada);
-		void* parteRestante = malloc(resto);
+	memcpy(ato->dato + posicion_en_memoria, valor, tamanio);
 
-		memcpy(parteAinsertar, valor, ato->tamanioEntrada);
-		memcpy(parteRestante, valor + ato->tamanioEntrada, resto);
-
-		memcpy(ato->dato + (proximaEntrada * ato->tamanioEntrada),
-				parteAinsertar, ato->tamanioEntrada);
-
-		setEnAlmacenamiento(++proximaEntrada, parteRestante, resto);
-		free(parteAinsertar);
-		free(parteRestante);
-
-	}
+	almac_ocupar_entradas(indice, entradas_que_ocupa_por_tamanio(tamanio));
 
 }
 
@@ -158,7 +145,7 @@ int almac_ocupar_entradas(int index_inicio, int cantidad_entradas) {
 /*
  * Devuelve el espacio restante en el almacenamiento
  */
-int almac_espacio_disponible() {
+int almac_entradas_disponibles() {
 	int i;
 	int contador_espacio = 0;
 	for (i = 0; i < ato->cantEntradas; i++) {
@@ -167,3 +154,22 @@ int almac_espacio_disponible() {
 	}
 	return contador_espacio;
 }
+
+/*
+ * Setea como libres las entradas en el bitarray
+ * Devuelve -1 si falla
+ */
+int almac_liberar_entradas(int index_inicio, int cantidad_entradas) {
+	int index_final = index_inicio + cantidad_entradas - 1;
+	if (index_final > ato->cantEntradas) {
+		log_warning(logger,
+				"Se está intentando liberar mas entradas que las que tiene el almacenamiento");
+		return -1;
+	}
+	int i;
+	for (i = 0; i <= index_final; i++) {
+		bitarray_clean_bit(bitarray_almac, i);
+	}
+	return 0;
+}
+
