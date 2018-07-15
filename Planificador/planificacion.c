@@ -552,7 +552,7 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 		//sgtes
 
 		esi_q_retiene = dictionary_get(dic_clave_x_esi, candidatoEspera);
-		while(((t_esi*) esiInicial)->id!=*idCandidatoDL);{
+		while(((t_esi*) esiInicial)->id!=*idCandidatoDL){
 			candidatoRetiene = candidatoEspera;
 			idCandidatoDL = &esi_q_retiene->id;
 			log_debug(logger, "Encontro el ESI(%d) que retiene la clave esperada",*idCandidatoDL);
