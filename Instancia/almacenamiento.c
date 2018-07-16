@@ -40,6 +40,18 @@ void setEnAlmacenamiento(int indice, void* valor, unsigned int tamanio) {
 }
 
 /*
+ * Devuelve la entrada segun la posicion en el almacenamiento
+ * Si no la encuentra devuelve NULL
+ */
+tablaE* encontrar_entrada_en_posicion(int indice_almacenamiento, t_list* lista) {
+	bool estaEnLaPosicion(void* unaEntrada) {
+		return ((tablaE*) unaEntrada)->indice == indice_almacenamiento;
+	}
+	tablaE* entrada = list_find(lista, estaEnLaPosicion);
+	return entrada;
+}
+
+/*
  char* convertirString(const void *valor, size_t tamanio) {
  char *valorStr = calloc(tamanio + 1, sizeof(tamanio));
  memcpy(valorStr, valor, tamanio);
@@ -108,7 +120,7 @@ int almac_cant_entradas_libres_desde(int index) {
 		if (bitarray_test_bit(bitarray_almac, i)) {
 			return contador;
 		}
-		contador ++;
+		contador++;
 	}
 	return contador;
 }
@@ -135,7 +147,7 @@ int almac_ocupar_entradas(int index_inicio, int cantidad_entradas) {
 		return -1;
 	}
 	int i;
-	for (i = 0; i <= index_final; i++) {
+	for (i = index_inicio; i <= index_final; i++) {
 		bitarray_set_bit(bitarray_almac, i);
 	}
 	return 0;
@@ -166,9 +178,22 @@ int almac_liberar_entradas(int index_inicio, int cantidad_entradas) {
 		return -1;
 	}
 	int i;
-	for (i = 0; i <= index_final; i++) {
+	for (i = index_inicio; i <= index_final; i++) {
 		bitarray_clean_bit(bitarray_almac, i);
 	}
 	return 0;
 }
 
+char* obtener_valor_de_clave(char* clave) {
+	tablaE* entrada = buscarEntrada(clave);
+	if (entrada == NULL) {
+		log_warning(logger, "La clave %s no está en el almacentamiento", clave);
+		return NULL;
+	}
+	char* valor = malloc(entrada->tamanio + 1);
+	void* ptr_almac = ato->dato + obtenerTamanioEntrada() * entrada->indice;
+	memcpy(valor, ptr_almac, entrada->tamanio);
+	valor[entrada->tamanio] = '\0';
+	log_debug(logger, "El valor de la clave %s es: %s", clave, valor);
+	return valor;
+}

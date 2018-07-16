@@ -7,6 +7,14 @@
 #include "almacenamiento.h"
 #include "cfg_almacenamiento.h"
 
+tablaE* remover_de_tabla(int indice_almacenamiento) {
+	bool esLaMisma(void* _entrada) {
+		return indice_almacenamiento == ((tablaE*) _entrada)->indice;
+	}
+
+	return list_remove_by_condition(tabla, esLaMisma);
+}
+
 void crearTablaEntradas() {
 	tabla = list_create();
 	entradasLibres = obtenerEntradasTotales();
@@ -107,7 +115,8 @@ void removerDeLista(int unaVariable, tablaE* entrada) {
 }
 
 void liberarEntrada(tablaE* entrada) {
-	free(entrada->clave);
+	if (entrada != NULL)
+		free(entrada->clave);
 	free(entrada);
 
 }

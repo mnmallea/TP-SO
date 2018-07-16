@@ -28,6 +28,7 @@
 void sigalrm_handler();
 void configurar_timer_dumper();
 void responder_solicitud_clave(int);
+void imprimir_almacenamiento();
 
 int main(int argc, char** argv) {
 	nroOperacion = 0;
@@ -63,6 +64,7 @@ int main(int argc, char** argv) {
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			nroOperacion++;
+			imprimir_almacenamiento();
 			break;
 		case OP_STORE:
 			;
@@ -117,6 +119,7 @@ int main(int argc, char** argv) {
 				free(valor);
 				fclose(arch);
 				free(clave_recibida);
+				imprimir_almacenamiento();
 			}
 			break;
 		case INSTANCIA_COMPACTAR:
@@ -124,7 +127,7 @@ int main(int argc, char** argv) {
 			enviar_cod_operacion(socketCoordinador, EXITO);
 			//si falla deberia contestarle ERROR
 			break;
-		case SOLICITUD_CLAVE:
+		case SOLICITUD_VALOR:
 			//recibo una clave voy a la tabla de entradas me fijo la posicion y voy al almacenamiento y la saco y la devuelvo
 			responder_solicitud_clave(socketCoordinador);
 			break;
@@ -158,11 +161,27 @@ void responder_solicitud_clave(int sockfd) {
 	char* clave;
 	try_recibirPaqueteVariable(sockfd, (void**) &clave);
 	log_info(logger, "Recuperando valor de la clave %s", clave);
-	tablaE* entrada = buscarEntrada(clave);
-	log_trace(logger,
-			"se encontro la entrada numero(%d) en la tabla de entradas con tamanio (%d)",
-			entrada->indice, entrada->tamanio);
-	char* valor = buscarEnALmacenamiento(entrada->indice, entrada->tamanio);
-	log_trace(logger, "se encontro el valor (%d) en el almacenamiento", valor);
+	char* valor = obtener_valor_de_clave(clave);
+	free(clave);
 
+	if(valor == NULL){
+		log_debug(logger, "Se informa al coordinador VALOR_NO_ENCONTRADO");
+		enviar_cod_operacion(sockfd, VALOR_NO_ENCONTRADO);
+		return;
+	}
+	log_debug(logger, "Se informa al coordinador VALOR_ENCONTRADO");
+	enviar_operacion_unaria(sockfd, VALOR_ENCONTRADO, valor);
+	free(valor);
+	return;
+}
+
+void imprimir_almacenamiento(){
+	char* alm = ato->dato;
+	int i,j;
+	for(i = 0; i < obtenerEntradasTotales(); i++){
+		for(j=0; j < obtenerTamanioEntrada(); j++){
+			putchar(alm[i * obtenerTamanioEntrada() + j]);
+		}
+		printf("\n");
+	}
 }
