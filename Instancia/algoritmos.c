@@ -125,6 +125,46 @@ tablaE* obtener_siguiente_entrada_circular() {
 	return entrada;
 }
 
+void algoritmoBSU(claveEntrada*cv){
+	log_trace(logger, "Se procede a reemplazar mediante algoritmo BSU");
+	int entradas_necesarias = entradas_que_ocupa_por_tamanio(cv->tamanio);
+	int entradas_ocupa=0;
+	log_debug(logger,"Se necesitan %d entradas para reemplazar, hay %d entradas atómicas",entradas_necesarias, cantidad_entradas_atomicas());
+	if (entradas_necesarias > cantidad_entradas_atomicas()) {
+			log_error(logger,"No hay suficientes entradas atomicas para reemplazar");
+			//aca hay que informar error al coordinador
+			return;
+	}
+	t_list* entradas_a_reemplazar = list_create();
+
+	for(int i=0; i<list_size(tabla);i++){
+		tablaE* entrada=list_get(tabla,i);
+		 entradas_ocupa += entradas_que_ocupa_por_tamanio(entrada->tamanio);
+		log_trace(logger,"se obtuvo la clave (%s) de la entrada numero (%d) en la iteracion (%s)", entrada->clave,entrada->indice,i);
+		if(esAtomica(entrada) && entradas_ocupa<=entradas_necesarias){
+			log_trace(logger,"la entrdada (%s) es atomica", entrada->clave);
+			list_add(entradas_a_reemplazar,entrada);
+
+		}
+	}
+	list_sort(entradas_a_reemplazar,ordenDescendentePorTamanio);
+	list_iterate((list_take(entradas_a_reemplazar,entradas_necesarias)), liberar_entrada);
+	list_destroy(entradas_a_reemplazar);
+
+	int posicion_a_insertar = almac_primera_posicion_libre_con_tamanio(entradas_necesarias);
+	if (posicion_a_insertar < 0) {
+		log_warning(logger, "Hay fragmentación externa");
+		//Aca hay que solicitar compactacion al coordinador
+		return;
+	}
+	agregarEnTabla(posicion_a_insertar, cv);
+	setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
+	log_info(logger, "Reemplazo ejecutado exitosamente!!!!");
+
+
+}
+
+
 void algoritmoLRU(claveEntrada* cv) {
 	log_trace(logger, "Se procede a reemplazar mediante algoritmo LRU");
 	t_list* posiblesAReemplazar = list_duplicate(tabla);
@@ -163,38 +203,7 @@ void algoritmoLRU(claveEntrada* cv) {
 	log_error(logger, "No se pudo encontrar clave a reemplazar");
 }
 
-void algoritmoBSU(claveEntrada* cv) {
-	t_list* entradasAtomicas = list_filter(tabla, esAtomica);
-	list_sort(entradasAtomicas, ordenDescendentePorTamanio);
-	if (list_size(entradasAtomicas) >= (cv->tamanio)) {
-		log_trace(logger,
-				"la cantidad de entradas atomicas son suficientes para mi nueva clave");
-		t_list* vanASerReemplazadas = list_take_and_remove(entradasAtomicas,
-				(cv->tamanio / obtenerTamanioEntrada() + 1));
-		if (listaNoContigua(vanASerReemplazadas)) {
-			// todo: compactar
-		}
-		t_list* clavesAReemplazar = list_map(vanASerReemplazadas, obtenerClave);
-		log_trace(logger,
-				"se procede a eliminar las claves a ser reemplazadas");
-		for (int i = 0; i < list_size(clavesAReemplazar); i++) {
-			char* clave = list_get(clavesAReemplazar, i);
-			log_trace(logger, "se obtuvo la clave (%s)", clave);
-			tablaE* unaEntrada = buscarEntrada(clave);
-			liberarEntrada(unaEntrada);
-			log_trace(logger, "se elimino la clave de la tabla de entradas");
-			//free(clave);
-		}
-		hacer_set(cv->clave, cv->valor);
-		list_destroy(clavesAReemplazar);
-		list_destroy(entradasAtomicas);
-		list_destroy(vanASerReemplazadas);
 
-	} else {
-		log_trace(logger,
-				" la cantidad de entradas atomicas no me alcanzaron para reemplazar mi clave");
-	}
-}
 
 bool esAtomica(void* unaEntrada) {
 	tablaE* entrada = unaEntrada;
