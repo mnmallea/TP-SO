@@ -73,60 +73,6 @@ void algoritmoCircular(claveEntrada* cv) {
 	agregarEnTabla(posicion_a_insertar, cv);
 	setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
 	log_info(logger, "Reemplazo ejecutado exitosamente!!!!");
-
-//	unsigned int tamanio = 0;
-//	t_list* atomicasNecesarias = list_create();
-//	t_list* tablaDup = list_duplicate(tabla);
-//	list_sort(tablaDup, ordenAscendente);
-//	log_trace(logger, "la posicion inicial de algoritmo circular es(%d)",
-//			posicion);
-//	for (int i = 0; i < obtenerEntradasTotales(); i++) {
-//		log_trace(logger, "iteracion numero(%d) de (%d)", i,
-//				obtenerEntradasTotales());
-//		tablaE* unaEntrada = list_get(tablaDup, posicion + i);
-//		log_trace(logger, "obtengo la posicion (%d) de la tabla", posicion + i);
-//		if (esAtomica(unaEntrada) && tamanio < (cv->tamanio)) {
-//			tamanio += unaEntrada->tamanio;
-//			posicion = posicion + i;
-//			log_trace(logger,
-//					"el nuevo puntero que me dice donde esta la ultima clave atomica es (%d)",
-//					posicion);
-//			list_add(atomicasNecesarias, unaEntrada->clave);
-//		}
-//		//la posicion solo puede dar negativa si estoy al final de la lista y vuelvo al inicio y no encuentro ninguna atomica
-//		if (unaEntrada->indice == (obtenerEntradasTotales() - 1)) {
-//			posicion = -i - 1;
-//		}
-//	}
-//
-//	if (posicion < 0) {
-//		tablaE* unaEntrada = list_get(atomicasNecesarias,
-//				(list_size(atomicasNecesarias) - 1));
-//		posicion = unaEntrada->indice;
-//		//liberarEntrada(unaEntrada);
-//	}
-//	if (cv->tamanio > list_size(atomicasNecesarias)) {
-//		log_trace(logger,
-//				" el tamaño de las atomicas (%d) no me alcanza para cubrir el de mi entrada con tamaño (%d)",
-//				tamanio, cv->tamanio);
-//		list_destroy(atomicasNecesarias);
-//		list_destroy(tablaDup);
-//		posicion++;
-//		return;
-//	} else {
-//		for (int i = 0; i < list_size(atomicasNecesarias); i++) {
-//			char* claveAPedir = list_get(atomicasNecesarias, 0);
-//			tablaE* unaEntrada = buscarEntrada(claveAPedir);
-//			liberarEntrada(unaEntrada);
-//			//free(claveAPedir);
-//		}
-//		/// todo compactar solo si es necesario
-//		// todo avisar coordinador que compacto
-//		hacer_set(cv->clave, cv->valor);
-//	}
-//	list_destroy(atomicasNecesarias);
-//	list_destroy(tablaDup);
-//	posicion++;
 }
 
 int obtener_indice_de_entrada(t_list* lista_de_tablaE, int posicion) {
@@ -172,8 +118,10 @@ tablaE* primera_entrada_atomica_desde(int posicion_desde) {
  * IMPORTANTE: validar antes que haya entradas atomicas disponibles
  */
 tablaE* obtener_siguiente_entrada_circular() {
-	tablaE* entrada = primera_entrada_atomica_desde(posicion + 1);
-	posicion = entrada->indice;
+	tablaE* entrada = primera_entrada_atomica_desde(posicion);
+	posicion = entrada->indice + 1;
+	if(posicion >= obtenerEntradasTotales())
+		posicion = 0;
 	return entrada;
 }
 

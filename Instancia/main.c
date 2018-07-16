@@ -28,6 +28,7 @@
 void sigalrm_handler();
 void configurar_timer_dumper();
 void responder_solicitud_clave(int);
+void imprimir_almacenamiento();
 
 int main(int argc, char** argv) {
 	nroOperacion = 0;
@@ -45,7 +46,7 @@ int main(int argc, char** argv) {
 	crearTablaEntradas();
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
-//	configurar_timer_dumper();
+	configurar_timer_dumper();
 	t_list* posiblesAReemplazar = list_create();
 	while (escucha) {
 		int resultado;
@@ -63,6 +64,7 @@ int main(int argc, char** argv) {
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			nroOperacion++;
+			imprimir_almacenamiento();
 			break;
 		case OP_STORE:
 			;
@@ -117,6 +119,7 @@ int main(int argc, char** argv) {
 				free(valor);
 				fclose(arch);
 				free(clave_recibida);
+				imprimir_almacenamiento();
 			}
 			break;
 		case INSTANCIA_COMPACTAR:
@@ -165,4 +168,15 @@ void responder_solicitud_clave(int sockfd) {
 	char* valor = buscarEnALmacenamiento(entrada->indice, entrada->tamanio);
 	log_trace(logger, "se encontro el valor (%d) en el almacenamiento", valor);
 
+}
+
+void imprimir_almacenamiento(){
+	char* alm = ato->dato;
+	int i,j;
+	for(i = 0; i < obtenerEntradasTotales(); i++){
+		for(j=0; j < obtenerTamanioEntrada(); j++){
+			putchar(alm[i * obtenerTamanioEntrada() + j]);
+		}
+		printf("\n");
+	}
 }
