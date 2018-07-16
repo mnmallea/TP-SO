@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
 	crearTablaEntradas();
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
-	configurar_timer_dumper();
+//	configurar_timer_dumper();
 	t_list* posiblesAReemplazar = list_create();
 	while (escucha) {
 		int resultado;

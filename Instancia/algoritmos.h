@@ -23,6 +23,8 @@ void algoritmoBSU(claveEntrada* cv);
 bool esAtomica(void* cv);
 bool listaNoContigua(t_list* unaLista);
 
+tablaE* obtener_siguiente_entrada_circular();
+
 extern t_log *logger;
 
 
