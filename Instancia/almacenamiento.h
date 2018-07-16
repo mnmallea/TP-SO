@@ -1,13 +1,12 @@
 #ifndef ALMACENAMIENTO_H_
 #define ALMACENAMIENTO_H_
 
-#include <commons/string.h>
-#include <stdlib.h>
 #include <commons/bitarray.h>
+#include <commons/collections/list.h>
 #include <commons/log.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
+#include <stddef.h>
+
+#include "tabla_entradas.h"
 
 t_log * logger;
 
@@ -27,7 +26,8 @@ void eliminarAlmacenamiento();
 t_bitarray * crearBitArray(int cantBloques);
 char* convertirString(const void *valor, size_t tamanio);
 void* buscarEnALmacenamiento(int posicion, unsigned int tamanio);
-void inicializarAlmacenamiento(unsigned int entradas,unsigned int tamanioEntrada);
+void inicializarAlmacenamiento(unsigned int entradas,
+		unsigned int tamanioEntrada);
 void setEnAlmacenamiento(int proximaEntrada, void* valor, unsigned int tamanio);
 
 int almac_primera_posicion_libre_desde(int index_inicio);
@@ -37,5 +37,7 @@ int almac_primera_posicion_libre_con_tamanio(int size);
 int almac_ocupar_entradas(int index_inicio, int cantidad_entradas);
 int almac_liberar_entradas(int index_inicio, int cantidad_entradas);
 
+tablaE* encontrar_entrada_en_posicion(int indice_almacenamiento, t_list* lista);
+char* obtener_valor_de_clave(char* clave);
 
 #endif /* ALMACENAMIENTO_H_ */
