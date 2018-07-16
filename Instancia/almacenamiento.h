@@ -38,5 +38,6 @@ int almac_ocupar_entradas(int index_inicio, int cantidad_entradas);
 int almac_liberar_entradas(int index_inicio, int cantidad_entradas);
 
 tablaE* encontrar_entrada_en_posicion(int indice_almacenamiento, t_list* lista);
+char* obtener_valor_de_clave(char* clave);
 
 #endif /* ALMACENAMIENTO_H_ */

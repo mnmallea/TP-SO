@@ -184,3 +184,16 @@ int almac_liberar_entradas(int index_inicio, int cantidad_entradas) {
 	return 0;
 }
 
+char* obtener_valor_de_clave(char* clave) {
+	tablaE* entrada = buscarEntrada(clave);
+	if (entrada == NULL) {
+		log_warning(logger, "La clave %s no está en el almacentamiento", clave);
+		return NULL;
+	}
+	char* valor = malloc(entrada->tamanio + 1);
+	void* ptr_almac = ato->dato + obtenerTamanioEntrada() * entrada->indice;
+	memcpy(valor, ptr_almac, entrada->tamanio);
+	valor[entrada->tamanio] = '\0';
+	log_debug(logger, "El valor de la clave %s es: %s", clave, valor);
+	return valor;
+}
