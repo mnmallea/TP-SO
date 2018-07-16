@@ -7,7 +7,7 @@
 
 #include "consola.h"
 
-respuesta_status_clave_t respuesta_status_clave;
+respuesta_status_clave_t* respuesta_status_clave;
 
 void limpiar_respuesta_status_clave();
 
@@ -16,6 +16,7 @@ void *menu(void *ptr) {
 	int opcion_seleccionada;
 	char *clave = (char*) malloc(40);
 	int id;
+	respuesta_status_clave = NULL;
 
 	do {
 		system("clear");
@@ -268,34 +269,34 @@ void envia_status_clave(char* clave) {
 	sem_wait(&coordinador_respondio_paq);
 
 	show_respuesta_status_clave(respuesta_status_clave);
-//	limpiar_respuesta_status_clave();
-
+	limpiar_respuesta_status_clave();
 }
-void show_respuesta_status_clave(respuesta_status_clave_t res) {
-	if (res.hay_valor)
-		printf("Valor de la clave: %s\n", res.valor);
+void show_respuesta_status_clave(respuesta_status_clave_t* res) {
+	if (res->hay_valor)
+		printf("Valor de la clave: %s\n", res->valor);
 	else
 		printf("No hay valor para la clave solicitada\n");
 
-	if (res.hay_instancia)
-		printf("Instancia: %s \t Estado: %s\n", res.instancia,
-				to_string_status_clave(res.estado_instancia));
+	if (res->hay_instancia)
+		printf("Instancia: %s \t Estado: %s\n", res->instancia,
+				to_string_status_clave(res->estado_instancia));
 	else
-		printf("%s\n", to_string_status_clave(res.estado_instancia));
+		printf("%s\n", to_string_status_clave(res->estado_instancia));
 
-	if (res.hay_simulacion)
+	if (res->hay_simulacion)
 		printf("La clave sería asignada a la instancia: %s\n",
-				res.instancia_simulacion);
+				res->instancia_simulacion);
 	else
 		printf("No se ha realizado la simulacion\n");
 
 }
 
 void limpiar_respuesta_status_clave() {
-//	free(respuesta_status_clave->instancia);
-//	free(respuesta_status_clave->instancia_simulacion);
-//	free(respuesta_status_clave->valor);
-//	respuesta_status_clave->instancia = NULL;
-//	respuesta_status_clave->instancia_simulacion = NULL;
-//	respuesta_status_clave->valor = NULL;
+	if (respuesta_status_clave == NULL)
+		return;
+	free(respuesta_status_clave->instancia);
+	free(respuesta_status_clave->instancia_simulacion);
+	free(respuesta_status_clave->valor);
+	free(respuesta_status_clave);
+	respuesta_status_clave = NULL;
 }

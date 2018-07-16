@@ -17,7 +17,7 @@ extern t_list *lista_esis_listos;
 extern t_esi* esi_corriendo;
 extern t_esi esi;
 extern config configuracion;
-extern respuesta_status_clave_t respuesta_status_clave;
+extern respuesta_status_clave_t* respuesta_status_clave;
 
 fd_set master;
 fd_set read_fds;
@@ -40,7 +40,7 @@ struct sockaddr_storage remoteaddr;
 void listener(void);
 t_esi *crear_nodo_esi(int socket);
 int socketProceso(t_esi *n_esi);
-respuesta_status_clave_t recibir_status_clave();
+respuesta_status_clave_t* recibir_status_clave();
 void atender_nueva_conexion();
 void atender_error(int nbytes);
 int encontrarIdDelSocket(int i);
