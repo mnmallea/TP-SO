@@ -47,6 +47,6 @@ void mostrar_esi_en_pantalla(void* esi);
 void matar_por_consola(int id);
 void deadlock();
 void envia_status_clave(char* clave);
-void show_respuesta_status_clave(respuesta_status_clave_t);
+void show_respuesta_status_clave(respuesta_status_clave_t*);
 
 #endif /* CONSOLA_H_ */

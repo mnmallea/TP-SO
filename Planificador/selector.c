@@ -272,33 +272,33 @@ t_status_clave recibir_enum_status_clave() {
 	return respuesta;
 }
 
-respuesta_status_clave_t recibir_status_clave() {
-	respuesta_status_clave_t respuesta_status;
+respuesta_status_clave_t* recibir_status_clave() {
+	respuesta_status_clave_t* respuesta_status = calloc(1, sizeof(*respuesta_status));
 
 	t_status_clave respuesta;
 	respuesta = recibir_enum_status_clave();
 
-	respuesta_status.hay_valor = respuesta == HAY_VALOR ? true : false;
-	if (respuesta_status.hay_valor) {
+	respuesta_status->hay_valor = respuesta == HAY_VALOR ? true : false;
+	if (respuesta_status->hay_valor) {
 		try_recibirPaqueteVariable(socketCord,
-				(void**) &respuesta_status.valor);
+				(void**) &respuesta_status->valor);
 	}
 
-	respuesta_status.estado_instancia = recibir_enum_status_clave();
-	respuesta_status.hay_instancia =
-			respuesta_status.estado_instancia != INSTANCIA_NO_ASIGNADA ?
+	respuesta_status->estado_instancia = recibir_enum_status_clave();
+	respuesta_status->hay_instancia =
+			respuesta_status->estado_instancia != INSTANCIA_NO_ASIGNADA ?
 					true : false;
-	if (respuesta_status.hay_instancia) {
+	if (respuesta_status->hay_instancia) {
 		try_recibirPaqueteVariable(socketCord,
-				(void**) &respuesta_status.instancia);
+				(void**) &respuesta_status->instancia);
 	}
 
 	respuesta = recibir_enum_status_clave();
-	respuesta_status.hay_simulacion =
+	respuesta_status->hay_simulacion =
 			respuesta == HAY_SIMULACION ? true : false;
-	if (respuesta_status.hay_simulacion) {
+	if (respuesta_status->hay_simulacion) {
 		try_recibirPaqueteVariable(socketCord,
-				(void**) &respuesta_status.instancia_simulacion);
+				(void**) &respuesta_status->instancia_simulacion);
 	}
 
 	return respuesta_status;
