@@ -15,6 +15,19 @@ tablaE* remover_de_tabla(int indice_almacenamiento) {
 	return list_remove_by_condition(tabla, esLaMisma);
 }
 
+/*
+ * Te devuelve la entrada que esta en un indice del almacenamiento
+ * Pero no la saca de la tabla
+ * Devuelve NULL si no la encuentra
+ */
+tablaE* obtener_entrada_en_posicion(int indice_almacenamiento) {
+	bool esLaMisma(void* _entrada) {
+		return indice_almacenamiento == ((tablaE*) _entrada)->indice;
+	}
+
+	return list_find(tabla, esLaMisma);
+}
+
 void crearTablaEntradas() {
 	tabla = list_create();
 	entradasLibres = obtenerEntradasTotales();

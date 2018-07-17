@@ -42,4 +42,6 @@ tablaE* encontrar_entrada_en_posicion(int indice_almacenamiento, t_list* lista);
 char* obtener_valor_de_clave(char* clave);
 char* obtener_valor_de_entrada(tablaE* entrada);
 
+void compactar();
+
 #endif /* ALMACENAMIENTO_H_ */

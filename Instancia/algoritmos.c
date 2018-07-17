@@ -68,7 +68,10 @@ void algoritmoCircular(claveEntrada* cv) {
 	if (posicion_a_insertar < 0) {
 		log_warning(logger, "Hay fragmentación externa");
 		//Aca hay que solicitar compactacion al coordinador
-		return;
+		compactar();
+		posicion_a_insertar = almac_primera_posicion_libre_con_tamanio(
+				entradas_necesarias);
+//		return;
 	}
 	agregarEnTabla(posicion_a_insertar, cv);
 	setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
@@ -120,7 +123,7 @@ tablaE* primera_entrada_atomica_desde(int posicion_desde) {
 tablaE* obtener_siguiente_entrada_circular() {
 	tablaE* entrada = primera_entrada_atomica_desde(posicion);
 	posicion = entrada->indice + 1;
-	if(posicion >= obtenerEntradasTotales())
+	if (posicion >= obtenerEntradasTotales())
 		posicion = 0;
 	return entrada;
 }
