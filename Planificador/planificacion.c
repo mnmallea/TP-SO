@@ -216,23 +216,42 @@ t_esi *obtener_nuevo_esi_a_correr() {
 		log_debug(logger, "deslockeo mutex pausa");
 	}
 	pthread_mutex_lock(&mutex_esi_corriendo);
-	if (configuracion.algoritmo == FIFO) {
+
+	switch(configuracion.algoritmo){
+
+	case FIFO:
 		prox_esi = obtener_proximo_segun_fifo(lista_esis_listos);
-	} else if (configuracion.algoritmo == SJFsD) {
+		break;
+	case SJFsD:
 		prox_esi = obtener_proximo_segun_sjf(lista_esis_listos);
-	} else if (configuracion.algoritmo == SJFcD) {
-		prox_esi = obtener_proximo_segun_sjf(lista_esis_listos);
-	} else {
+		break;
+	case SJFcD:
+		prox_esi = obtener_proximo_segun_sjfcd(lista_esis_listos);
+
+		if(prox_esi == NULL){
+			//el remaining time del actual es menor que todas las estimaciones
+			prox_esi = esi_corriendo;
+		}else{
+			//se desaloja al esi que esta corriendo
+			nuevo_esi(esi_corriendo);
+		}
+
+		break;
+	case HRRN:
 		prox_esi = obtener_proximo_segun_hrrn(lista_esis_listos);
+		break;
+	default:
+		break;
 	}
+
 	if (esi_corriendo == NULL
 			|| (esi_corriendo != NULL && prox_esi->id != esi_corriendo->id)) {
 		prox_esi->dur_ult_raf = 0;
 	}
-	if (esi_corriendo != NULL && prox_esi->id != esi_corriendo->id) {
+	/*if (esi_corriendo != NULL && prox_esi->id != esi_corriendo->id) {
 		nuevo_esi(esi_corriendo);
-	}
-	esi_corriendo = prox_esi;
+	}*/
+	//esi_corriendo = prox_esi; //COMENTO ESTO DADO QUE YA SE HACE EN LA FUNCION DE PLANIFICAR
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 	hay_nuevo_esi = false;
 
