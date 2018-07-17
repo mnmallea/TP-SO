@@ -1,5 +1,13 @@
 #include "instancia.h"
 
+#include <bits/mman-linux.h>
+#include <commons/collections/list.h>
+#include <commons/log.h>
+#include <commons/string.h>
+#include <errno.h>
+
+#include "config_instancia.h"
+
 int operacion_set(int socketCoordinador) {
 	log_info(logger, "inicializando OP_SET");
 	char* clave;
@@ -9,9 +17,8 @@ int operacion_set(int socketCoordinador) {
 			"Se procede a obtener la clave y el valor del coordinador");
 	recibir_set(socketCoordinador, &clave, &valor);
 
-	log_info(logger,
-			"Se procede a realizar set con la clave: %s y el valor %s", clave,
-			valor);
+	log_info(logger, "Se procede a realizar set con la clave: %s y el valor %s",
+			clave, valor);
 	int resultado;
 	resultado = hacer_set(clave, valor);
 	free(clave);
@@ -30,7 +37,9 @@ int hacer_set(char* clave, char* valor) {
 			"Se procede a ver si esa clave(%s) ya tenia un valor asociado",
 			clave);
 	if (buscarEntrada(cv->clave) != NULL) {
-		log_info(logger, "La clave %s tenia un valor asociado, se procede a reemplazarlo", clave);
+		log_info(logger,
+				"La clave %s tenia un valor asociado, se procede a reemplazarlo",
+				clave);
 		reemplazarCVEnTabla(cv);
 		liberarCv(cv);
 		return 0;
@@ -48,7 +57,10 @@ int hacer_set(char* clave, char* valor) {
 		if (proximaEntrada < 0) {
 			log_info(logger, "Hay fragmentacion externa, se debe compactar");
 			//aca hay que solicitarle al coordinador que mande a compactar
-			return -1;
+			compactar();
+			proximaEntrada = almac_primera_posicion_libre_con_tamanio(
+					entradas_que_ocuparia);
+//			return -1;
 		}
 		log_trace(logger, "Se almacenara en la posicion %d", proximaEntrada);
 		agregarEnTabla(proximaEntrada, cv);

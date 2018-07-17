@@ -1,9 +1,10 @@
 #include "almacenamiento.h"
 
 #include <stdbool.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "cfg_almacenamiento.h"
-#include "tabla_entradas.h"
 
 void almacenamiento_logger() {
 	logger = log_create("almacenamiento.log", "almacenamiento", true,
@@ -232,4 +233,15 @@ char* obtener_valor_de_clave(char* clave) {
 	return valor;
 }
 
+void compactar(){
+	int primer0 = almac_primera_posicion_libre();
+	int primer1 = almac_primera_posicion_ocupada_desde(primer0);
+	tablaE* entrada;
+	while(primer0 >=0 && primer1 >= 0){
+		entrada = obtener_entrada_en_posicion(primer1);
+		mover_entrada(entrada, primer0);
+		primer0 = almac_primera_posicion_libre();
+		primer1 = almac_primera_posicion_ocupada_desde(primer0);
+	}
+}
 
