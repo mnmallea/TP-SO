@@ -51,6 +51,8 @@ bool tieneMasEspacioLibre(void* una_instancia, void* otra_instancia) {
 t_instancia* obtener_instancia_siguiente(char* clave) {
 	t_instancia * instancia;
 	if ((instancia = instancia_con_clave(clave)) != NULL) {
+		log_info(logger, "La instancia %s ya tenía la clave %s",
+				instancia->nombre, clave);
 		return instancia;
 	}
 
@@ -69,6 +71,9 @@ t_instancia* obtener_instancia_siguiente(char* clave) {
 	}
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	sem_post(&contador_instancias_disponibles);
+	log_info(logger,
+			"El algoritmo selecciono a la instancia %s para almacenar la clave %s",
+			instancia->nombre, clave);
 	return instancia;
 }
 
