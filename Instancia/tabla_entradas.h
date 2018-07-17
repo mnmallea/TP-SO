@@ -47,6 +47,7 @@ bool 			ordenAscendentePorOperacion(void * primero, void * segundo);
 bool 			ordenDescendentePorTamanio(void * primero, void * segundo);
 int entradas_que_ocupa_por_tamanio(int size);
 tablaE* remover_de_tabla(int indice_almacenamiento) ;
+void mover_entrada(tablaE* entrada, int nueva_posicion);
 
 
 

@@ -25,6 +25,11 @@ void inicializarAlmacenamiento(unsigned int entradas,
 			almac_entradas_disponibles());
 }
 
+/*
+ * Copia el valor que le das en el almacenamiento
+ * Actualiza el bitarray
+ * NO actualiza la tabla de entradas
+ */
 void setEnAlmacenamiento(int indice, void* valor, unsigned int tamanio) {
 
 	log_trace(logger,
@@ -99,6 +104,15 @@ t_bitarray * crearBitArray(int cantBloques) {
 	return bitarray;
 }
 
+
+/*
+ * Devuelve el indice de la primera posicion libre del almacenamiento
+ * Si no hay posiciones libres devuelve -1
+ */
+int almac_primera_posicion_libre() {
+	return almac_primera_posicion_libre_desde(0);
+}
+
 /*
  * Devuelve cual es la primera posicion libre desde el index que le das
  * Si no quedan posiciones libre devuelve -1
@@ -112,6 +126,21 @@ int almac_primera_posicion_libre_desde(int index_inicio) {
 	}
 	return -1;
 }
+
+/*
+ * Devuelve cual es la primera posicion ocupada desde el index que le das
+ * Si no quedan posiciones ocupadas devuelve -1
+ */
+int almac_primera_posicion_ocupada_desde(int index_inicio) {
+	int i;
+	for (i = index_inicio; i < ato->cantEntradas; i++) {
+		if (bitarray_test_bit(bitarray_almac, i)) {
+			return i;
+		}
+	}
+	return -1;
+}
+
 
 int almac_cant_entradas_libres_desde(int index) {
 	int i;
@@ -184,16 +213,23 @@ int almac_liberar_entradas(int index_inicio, int cantidad_entradas) {
 	return 0;
 }
 
+char* obtener_valor_de_entrada(tablaE* entrada) {
+	char* valor = malloc(entrada->tamanio + 1);
+	void* ptr_almac = ato->dato + obtenerTamanioEntrada() * entrada->indice;
+	memcpy(valor, ptr_almac, entrada->tamanio);
+	valor[entrada->tamanio] = '\0';
+	log_debug(logger, "El valor de la clave %s es: %s", entrada->clave, valor);
+	return valor;
+}
+
 char* obtener_valor_de_clave(char* clave) {
 	tablaE* entrada = buscarEntrada(clave);
 	if (entrada == NULL) {
 		log_warning(logger, "La clave %s no está en el almacentamiento", clave);
 		return NULL;
 	}
-	char* valor = malloc(entrada->tamanio + 1);
-	void* ptr_almac = ato->dato + obtenerTamanioEntrada() * entrada->indice;
-	memcpy(valor, ptr_almac, entrada->tamanio);
-	valor[entrada->tamanio] = '\0';
-	log_debug(logger, "El valor de la clave %s es: %s", clave, valor);
+	char* valor = obtener_valor_de_entrada(entrada);
 	return valor;
 }
+
+

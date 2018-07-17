@@ -191,3 +191,12 @@ int entradas_que_ocupa_por_tamanio(int size) {
 
 	return cant_entradas;
 }
+
+void mover_entrada(tablaE* entrada, int nueva_posicion){
+	int cant_entradas = entradas_que_ocupa(entrada);
+	almac_liberar_entradas(entrada->indice, cant_entradas);
+	char* valor = obtener_valor_de_entrada(entrada);
+	entrada->indice = nueva_posicion;
+	setEnAlmacenamiento(nueva_posicion, valor, entrada->tamanio);
+	free(valor);
+}

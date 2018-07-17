@@ -36,8 +36,10 @@ int almac_cant_entradas_libres_desde(int index);
 int almac_primera_posicion_libre_con_tamanio(int size);
 int almac_ocupar_entradas(int index_inicio, int cantidad_entradas);
 int almac_liberar_entradas(int index_inicio, int cantidad_entradas);
+int almac_primera_posicion_libre();
 
 tablaE* encontrar_entrada_en_posicion(int indice_almacenamiento, t_list* lista);
 char* obtener_valor_de_clave(char* clave);
+char* obtener_valor_de_entrada(tablaE* entrada);
 
 #endif /* ALMACENAMIENTO_H_ */
