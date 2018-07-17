@@ -9,7 +9,7 @@
 
 
 config configurar(char *ruta){
-	log_debug(logger,"Configurando coordinador");
+	log_debug(logger,"Configurando planificador");
 	config configuracion;
 
 	t_config *config_dictionary = config_create(ruta);
