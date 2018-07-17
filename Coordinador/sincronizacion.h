@@ -19,7 +19,9 @@ pthread_mutex_t mutex_operacion;
 sem_t contador_instancias_disponibles;
 sem_t planif_binario; //
 sem_t planificador_respondio;
+sem_t semaforo_compactacion;
 
 void inicializar_semaforos();
+void n_waits(sem_t* semaforo, int n);
 
 #endif /* SINCRONIZACION_H_ */

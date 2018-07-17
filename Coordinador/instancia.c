@@ -251,9 +251,14 @@ void levantar_semaforo(void* instancia) {
  * Realiza la compactacion en todas las instancias
  */
 void realizar_compactacion() { //todo ver como esperar a que todas compacten
+	log_info(logger, "Todas las instancias compactaran...");
 	pthread_mutex_lock(&mutex_instancias_disponibles);
+	int cantidad_instancias = list_size(lista_instancias_disponibles);
+	log_debug(logger, "Hay %d instancias que compactaran", cantidad_instancias);
 	list_iterate(lista_instancias_disponibles, levantar_semaforo);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
+	n_waits(&semaforo_compactacion, cantidad_instancias);
+	log_info(logger, "La compactación ha finalizado");
 }
 
 t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia,

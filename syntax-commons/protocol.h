@@ -46,7 +46,8 @@ typedef enum protocolo {
 	VALOR_NO_ENCONTRADO,
 	INSTANCIA_COMPACTAR,
 	ERROR_CONEXION,
-	MURIO_ESI_CORRIENDO
+	MURIO_ESI_CORRIENDO,
+	SOLICITUD_COMPACTACION
 } t_protocolo;
 
 typedef enum status_clave{
