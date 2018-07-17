@@ -129,7 +129,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			realizar_compactacion();
 			int resultado_compactacion = set_tras_compactacion(
 					instancia_elegida, clave, valor);
-			if(resultado_compactacion){
+			if (resultado_compactacion) {
 				enviar_cod_operacion(esi->socket, ABORTA);
 				instancia_desactivar(instancia_elegida->nombre);
 				return;
