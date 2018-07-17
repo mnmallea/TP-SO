@@ -187,11 +187,13 @@ void atender_instancia(int sockfd) {
 			break;
 		case ERROR_CONEXION:
 			log_error(logger, "La instancia %s se cayo", instancia->nombre);
+			sem_post(&semaforo_compactacion);
 			instancia_desactivar(instancia->nombre);
 			return;
 		default:
 			log_warning(logger, "Mensaje no esperado: %s", cod_op);
 		}
+		sem_post(&semaforo_compactacion);
 	}
 
 }

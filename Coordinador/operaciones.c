@@ -19,6 +19,8 @@
 #include "sincronizacion.h"
 #include "typedefs.h"
 
+int set_tras_compactacion(t_instancia* instancia, char* clave, char* valor);
+
 void realizar_get(t_esi* esi, char* clave) {
 	logear_get(esi->id, clave);
 	solicitar_clave(clave, esi);
@@ -55,7 +57,7 @@ void realizar_get(t_esi* esi, char* clave) {
 void instancia_actualizar_entradas_libres(t_instancia* instancia) {
 	int entradas_libres;
 	recv(instancia->socket, &entradas_libres, sizeof(entradas_libres),
-			MSG_WAITALL);
+	MSG_WAITALL);
 	instancia->cant_entradas_vacias = entradas_libres;
 	log_info(logger, "A la instancia %s le quedan %d entradas libres",
 			instancia->nombre, instancia->cant_entradas_vacias);
@@ -121,6 +123,19 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			enviar_cod_operacion(esi->socket, ABORTA);
 			remover_clave_almacenada(instancia_elegida, clave);
 			break;
+		case SOLICITUD_COMPACTACION:
+			log_info(logger, "La instancia %s requiere compactación",
+					instancia_elegida->nombre);
+			realizar_compactacion();
+			int resultado_compactacion = set_tras_compactacion(
+					instancia_elegida, clave, valor);
+			if(resultado_compactacion){
+				enviar_cod_operacion(esi->socket, ABORTA);
+				instancia_desactivar(instancia_elegida->nombre);
+				return;
+			}
+			enviar_cod_operacion(esi->socket, EXITO);
+			break;
 		default:
 			log_error(logger,
 					"[ESI %d] Error al recibir retorno de instancia %s",
@@ -140,6 +155,43 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		log_error(logger, "Respuesta del planificador desconocida");
 		//todo no se que haria en este caso
 	}
+}
+
+/*
+ * Devuelve valor negativo si falla
+ */
+int set_tras_compactacion(t_instancia* instancia, char* clave, char* valor) {
+	if (enviar_set(instancia->socket, clave, valor) < 0) {
+		log_error(logger, "Error al enviar set a instancia %s",
+				instancia->nombre);
+		instancia_desactivar(instancia->nombre);
+		log_warning(logger, "La instancia %s se ha caido tras la compactacion",
+				instancia->nombre);
+		return -1;
+	}
+	t_protocolo respuesta_instancia = recibir_cod_operacion(instancia->socket);
+
+	/*
+	 * Recibe la respuesta de la instancia
+	 */
+	switch (respuesta_instancia) {
+	case EXITO:
+		agregar_clave_almacenada(instancia, clave);
+		instancia_actualizar_entradas_libres(instancia);
+		log_debug(logger,
+				"SET %s %s exitoso tras la compactacion en instancia %s",
+				instancia->nombre);
+		return 0;
+		break;
+	case SOLICITUD_COMPACTACION:
+		log_warning(logger, "La instancia %s ha solicitado compactar otra vez",
+				instancia->nombre); // @suppress("No break at end of case")
+	default:
+		log_error(logger, "Error al realizar el set en la instancia %s",
+				instancia->nombre);
+		return -1;
+	}
+
 }
 
 void realizar_store(t_esi* esi, char* clave) {
