@@ -34,14 +34,14 @@ t_esi *obtener_proximo_segun_fifo(t_list *lista_esis) {
 
 }
 
-void obtener_proximas_rafagas(void* esi) {
+void obtener_proximas_rafagas(void* _esi) {
 	double alfa = configuracion.alfa;
+	t_esi* esi = _esi;
 	log_trace(logger, "El alfa es %f", alfa);
-	((t_esi*) esi)->estim_actual = alfa * ((t_esi*) esi)->estim_anter
-			+ (1 - alfa) * ((t_esi*) esi)->dur_ult_raf;
-	t_esi* unEsi = esi;
-	log_info(logger, "La ESTIMACIÓN de la proxima rafaga para el ESI %d es %f", unEsi->id,
-			unEsi->estim_actual);
+	esi->estim_actual = alfa * esi->estim_anter + (1 - alfa) * esi->dur_ult_raf;
+
+	log_info(logger, "La ESTIMACIÓN de la proxima rafaga para el ESI %d es %f",
+			esi->id, esi->estim_actual);
 
 }
 
