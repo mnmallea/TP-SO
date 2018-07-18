@@ -90,15 +90,29 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		return;
 		break;
 	case EXITO:
-		instancia_elegida = obtener_instancia_siguiente(clave);
+		ELEGIR_INSTANCIA: instancia_elegida = instancia_con_clave(clave);
+		bool instancia_tenia_clave;
+		if (instancia_elegida != NULL) {
+			instancia_tenia_clave = true;
+			log_info(logger, "La instancia %s ya tenía la clave %s",
+					instancia_elegida->nombre, clave);
+		} else {
+			instancia_elegida = obtener_instancia_siguiente(clave);
+			instancia_tenia_clave = false;
+		}
 		log_debug(logger, "Instancia elegida: %s", instancia_elegida->nombre);
 		if (enviar_set(instancia_elegida->socket, clave, valor) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida->nombre);
-
-			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
-
+			if (instancia_tenia_clave) {
+				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+			} else {
+				log_info(logger,
+						"La instancia %s se cayó, se elegirá otra instancia ya que esta aún no tenía la clave",
+						instancia_elegida->nombre);
+				goto ELEGIR_INSTANCIA;
+			}
 			return;
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
@@ -140,9 +154,15 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			log_error(logger,
 					"[ESI %d] Error al recibir retorno de instancia %s",
 					esi->id, instancia_elegida->nombre);
-			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 			instancia_desactivar(instancia_elegida->nombre);
-
+			if (instancia_tenia_clave) {
+				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+			} else {
+				log_info(logger,
+						"La instancia %s se cayó, se elegirá otra instancia ya que esta aún no tenía la clave",
+						instancia_elegida->nombre);
+				goto ELEGIR_INSTANCIA;
+			}
 		}
 
 		break;
@@ -179,8 +199,8 @@ int set_tras_compactacion(t_instancia* instancia, char* clave, char* valor) {
 		agregar_clave_almacenada(instancia, clave);
 		instancia_actualizar_entradas_libres(instancia);
 		log_debug(logger,
-				"SET %s %s exitoso tras la compactacion en instancia %s",
-				instancia->nombre);
+				"SET %s %s exitoso tras la compactacion en instancia %s", clave,
+				valor, instancia->nombre);
 		return 0;
 		break;
 	case SOLICITUD_COMPACTACION:
@@ -221,6 +241,7 @@ void realizar_store(t_esi* esi, char* clave) {
 					"[ESI %d] La instancia que tiene la clave %s no esta disponible en el sistema",
 					esi->id, clave);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+			return;
 		}
 		log_debug(logger, "Instancia elegida: %s,ya que tiene la clave %s",
 				instancia_elegida->nombre, clave);

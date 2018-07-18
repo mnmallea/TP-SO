@@ -23,12 +23,13 @@
 /*
  * Aclaracion, esto te copia la clave que le pases
  * Por lo que si no la vas a usar mas despues le tenes que hacer vos el free
- * Ademas te disminuye el espacio restante de la instancia
+ * Si la clave ya esta, no la agrega de vuelta
  */
 void agregar_clave_almacenada(t_instancia* instancia, char* clave) {
-	char* copia_clave = string_duplicate(clave);
-	list_add(instancia->claves_almacenadas, copia_clave);
-	instancia->cant_entradas_vacias -= espacio_utilizado_por(clave);
+	if (!tiene_clave_almacenada(instancia, clave)) {
+		char* copia_clave = string_duplicate(clave);
+		list_add(instancia->claves_almacenadas, copia_clave);
+	}
 }
 /*
  * Remueve la clave almacenada de la instancia
@@ -109,11 +110,14 @@ bool esta_inactiva_instancia(char* nombre) {
 void instancia_desactivar(char* nombre_instancia) {
 	t_instancia* instancia = instancia_sacar_de_activas(nombre_instancia);
 
-	if(instancia == NULL){
-		log_warning(logger, "La instancia que se intento desactivar no estaba activa");
+	if (instancia == NULL) {
+		log_warning(logger,
+				"La instancia que se intento desactivar no estaba activa");
 		return;
 	}
-
+	close(instancia->socket);
+	pthread_mutex_destroy(&instancia->mutex_comunicacion);
+	sem_destroy(&instancia->semaforo_instancia);
 	instancia_agregar_a_inactivas(instancia);
 
 	if (pthread_equal(instancia->thread, pthread_self())) {
@@ -146,12 +150,10 @@ t_instancia* instancia_sacar_de_activas(char* nombre_instancia) {
 }
 
 /*
- * Cierra el socket y la agrega a la lista de instancias inactivas
+ * La agrega a la lista de instancias inactivas
  * thread safe
  */
 void instancia_agregar_a_inactivas(t_instancia* instancia) {
-	close(instancia->socket);
-	sem_destroy(&instancia->semaforo_instancia);
 	pthread_mutex_lock(&mutex_instancias_inactivas);
 	list_add(lista_instancias_inactivas, instancia);
 	pthread_mutex_unlock(&mutex_instancias_inactivas);
@@ -203,12 +205,13 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	t_instancia* instancia = sacar_instancia_de_lista(nombre,
 			lista_instancias_inactivas);
 	pthread_mutex_unlock(&mutex_instancias_inactivas);
-	instancia->socket = socket;
+
 
 	t_paquete* paquete_claves = paquete_crear();
 	int i;
 	int cantidad_claves = list_size(instancia->claves_almacenadas);
-	log_info(logger, "La instancia %s tenia %d claves:", instancia->nombre, cantidad_claves);
+	log_info(logger, "La instancia %s tenia %d claves:", instancia->nombre,
+			cantidad_claves);
 	for (i = 0; i < cantidad_claves; i++) {
 		char* clave_actual = list_get(instancia->claves_almacenadas, i);
 		paquete_agregar(paquete_claves, clave_actual, strlen(clave_actual) + 1);
@@ -217,27 +220,36 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	if (enviar_cod_operacion(socket, RELEVANTAR_INSTANCIA) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
+		close(socket);
 		instancia_agregar_a_inactivas(instancia);
+		paquete_destruir(paquete_claves);
 		return NULL;
 	}
 	if (send(socket, &cantidad_claves, sizeof(cantidad_claves), 0) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
+		close(socket);
 		instancia_agregar_a_inactivas(instancia);
+		paquete_destruir(paquete_claves);
 		return NULL;
 	}
 
 	if (paquete_enviar(paquete_claves, socket) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
+		close(socket);
 		instancia_agregar_a_inactivas(instancia);
+		paquete_destruir(paquete_claves);
 		return NULL;
 	}
+	paquete_destruir(paquete_claves);
 	//todo ver si necesitas algun tipo de confirmacion por parte de la instancia
 
 	log_info(logger, "La instancia %s ha sido relevantada", instancia->nombre);
 	instancia->thread = pthread_self();
+	instancia->socket = socket;
 	sem_init(&instancia->semaforo_instancia, 0, 0);
+	pthread_mutex_init(&instancia->mutex_comunicacion, NULL);
 
 	instancia_agregar_a_activas(instancia);
 	return instancia;
@@ -285,6 +297,7 @@ t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia,
 		pthread_mutex_unlock(&instancia->mutex_comunicacion);
 		if (respuesta <= 0) {
 			free(*valor);
+			*valor = NULL;
 			return INSTANCIA_CAIDA;
 		}
 		return INSTANCIA_OK;

@@ -7,7 +7,6 @@
 
 
 
-int entradasLibres;
 t_list * tabla;
 extern t_log* logger;
 unsigned int nroOperacion;
@@ -27,6 +26,8 @@ typedef struct {
 	unsigned int tamanio;
 } claveEntrada;
 
+void entrada_destroyer(void* entrada);
+
 void* 			obtenerClave(void*);
 void			crearTablaEntradas();
 void  			liberarCv(claveEntrada* cv);
@@ -36,12 +37,12 @@ tablaE* 		buscarEntrada(char* claveAPedir);
 bool 			ordenAscendente(void * a, void *b);
 tablaE* 		adaptoClave(claveEntrada * claveE);
 bool    		quitarDeTabla(claveEntrada * claveE);
-void 			reemplazarCVEnTabla(claveEntrada* cv);
+int 			reemplazarCVEnTabla(claveEntrada* cv);
 int				entradas_que_ocupa(tablaE* unaEntrada);
 bool 			hayEntradasDisponibles(claveEntrada* cv);
 claveEntrada* 	crearClaveEntrada(char* clave, char* valor);
 int				entradaSiguienteEnTabla(claveEntrada* claveE);
-void    		removerDeLista(int unaVariable, tablaE* entrada);
+
 void    		agregarEnTabla(int nuevaEntrada, claveEntrada* claveE);
 bool 			ordenAscendentePorOperacion(void * primero, void * segundo);
 bool 			ordenDescendentePorTamanio(void * primero, void * segundo);
