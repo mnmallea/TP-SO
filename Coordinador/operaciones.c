@@ -90,7 +90,20 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		return;
 		break;
 	case EXITO:
-		ELEGIR_INSTANCIA: instancia_elegida = instancia_con_clave(clave);
+		;
+		t_instancia* instancia_caida_con_clave = instancia_inactiva_con_clave(
+				clave);
+		if (instancia_caida_con_clave != NULL) {
+			log_error(logger,
+					"La instancia %s que tenia la clave %s no está disponible",
+					instancia_caida_con_clave->nombre, clave);
+
+			remover_clave_almacenada(instancia_caida_con_clave, clave);
+			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+			return;
+		}
+		ELEGIR_INSTANCIA: instancia_elegida = instancia_disponible_con_clave(
+				clave);
 		bool instancia_tenia_clave;
 		if (instancia_elegida != NULL) {
 			instancia_tenia_clave = true;
@@ -235,21 +248,32 @@ void realizar_store(t_esi* esi, char* clave) {
 				esi->id);
 		break;
 	case EXITO:
-		instancia_elegida = instancia_con_clave(clave);
-		if (instancia_elegida == NULL) {
+		;
+		t_instancia* instancia_muerta = instancia_inactiva_con_clave(clave);
+		if (instancia_muerta != NULL) {
 			log_error(logger,
-					"[ESI %d] La instancia que tiene la clave %s no esta disponible en el sistema",
-					esi->id, clave);
+					"[ESI %d] La instancia %s tenía la clave \"%s\", pero ya no esta disponible en el sistema",
+					esi->id, instancia_muerta->nombre, clave);
+			remover_clave_almacenada(instancia_muerta, clave);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 			return;
 		}
-		log_debug(logger, "Instancia elegida: %s,ya que tiene la clave %s",
+
+		instancia_elegida = instancia_disponible_con_clave(clave);
+		if (instancia_elegida == NULL) {
+			log_error(logger,
+					"[ESI %d] La clave \"%s\" no está presente en ninguna instancia del sistema",
+					esi->id, clave);
+			enviar_cod_operacion(esi->socket, ABORTA);
+			return;
+		}
+		log_debug(logger, "Instancia elegida: %s,ya que tiene la clave \"%s\"",
 				instancia_elegida->nombre, clave);
 		if (enviar_store(instancia_elegida->socket, clave) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida->nombre);
-
+			remover_clave_almacenada(instancia_elegida, clave);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 
 			return;

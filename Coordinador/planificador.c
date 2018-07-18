@@ -54,7 +54,7 @@ void agregar_status_a_paquete(t_paquete* paquete, t_status_clave status) {
 void informar_status_clave(char* clave) {
 	t_paquete* paquete = paquete_crear();
 
-	t_instancia* instancia = instancia_con_clave(clave);
+	t_instancia* instancia = instancia_disponible_con_clave(clave);
 
 	if (instancia != NULL) {
 		log_info(logger, "La instancia %s tiene la clave %s", instancia->nombre,

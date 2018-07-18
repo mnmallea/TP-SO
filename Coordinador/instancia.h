@@ -27,7 +27,7 @@ void liberar_instancia(t_instancia* instancia);
 bool esta_activa_instancia(char* nombre);
 bool esta_inactiva_instancia(char* nombre);
 void instancia_desactivar(char*);
-t_instancia* instancia_con_clave(char* clave);
+t_instancia* instancia_disponible_con_clave(char* clave);
 void remover_clave_almacenada(t_instancia* instancia, char* clave);
 int espacio_utilizado_por(char* clave);
 t_instancia* sacar_instancia_de_lista(char* nombre, t_list* lista);
@@ -35,8 +35,10 @@ t_instancia* instancia_relevantar(char* nombre, int socket);
 void instancia_agregar_a_inactivas(t_instancia* instancia);
 void instancia_agregar_a_activas(t_instancia* instancia);
 void realizar_compactacion();
-t_instancia* instancia_con_clave(char* clave);
+t_instancia* instancia_disponible_con_clave(char* clave);
 t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia, char* clave, char** valor);
 t_instancia* instancia_sacar_de_activas(char* nombre_instancia);
+t_instancia* instancia_con_clave_en_lista(char* clave, t_list* lista_instancias);
+t_instancia* instancia_inactiva_con_clave(char* clave);
 
 #endif /* INSTANCIA_H_ */
