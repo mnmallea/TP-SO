@@ -30,8 +30,6 @@ t_resultado_set ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 		return SET_ERROR;
 	}
 
-	t_list* entradas_a_reemplazar = list_create();
-
 	int i;
 	for (i = 0; i < entradas_necesarias; i++) {
 		tablaE* entrada = obtener_siguiente_entrada_segun_algoritmo();
@@ -39,14 +37,11 @@ t_resultado_set ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 			log_error(logger, "Esto no deberia pasar");
 			return SET_ERROR;
 		}
-		list_add(entradas_a_reemplazar, entrada);
 		log_debug(logger,
 				"Se reemplazara la entrada Nro: %d, que contenia la clave %s",
 				entrada->indice, entrada->clave);
+		liberar_entrada(entrada);
 	}
-
-	list_iterate(entradas_a_reemplazar, liberar_entrada);
-	list_destroy(entradas_a_reemplazar);
 
 	int posicion_a_insertar = almac_primera_posicion_libre_con_tamanio(
 			entradas_necesarias);
@@ -75,8 +70,7 @@ tablaE* obtener_siguiente_entrada_segun_algoritmo() {
 	}
 }
 
-void liberar_entrada(void* unaEntrada) {
-	tablaE* entrada = unaEntrada;
+void liberar_entrada(tablaE* entrada) {
 	remover_de_tabla(entrada->indice);
 	log_debug(logger,
 			"Se procede a liberar la entrada Nro: %d, que contiene la clave %s",

@@ -1,0 +1,32 @@
+GET a
+GET b
+GET c
+GET d
+GET e
+GET f
+GET h
+GET i
+GET a2
+SET a aaaaa
+SET b bbbbb
+SET c ccccc
+SET d ddddd
+SET e eeeee
+SET f fffff
+SET h hhhhh
+SET i iiiii
+SET a aaaaaaaaa
+SET c cccccccc
+SET e eeeeeee
+SET i iiiiii
+SET b bbbbbb
+SET a2 valorQueDeberiaOcuparComo4Entradas
+STORE a
+STORE b
+STORE c
+STORE d
+STORE e
+STORE f
+STORE h
+STORE i
+STORE a2
