@@ -228,14 +228,17 @@ t_esi *obtener_nuevo_esi_a_correr() {
 	case SJFcD:
 		prox_esi = obtener_proximo_segun_sjfcd(lista_esis_listos);
 
-		if(esi_corriendo != NULL && remaining_time(prox_esi) < remaining_time(esi_corriendo)){
+		if(esi_corriendo != NULL && remaining_time(prox_esi) > remaining_time(esi_corriendo)){
+			log_debug(logger, "El remaining time del esi elegido(%d) es: %f > el del corriendo(%d): %f",prox_esi->id,remaining_time(prox_esi), esi_corriendo->id,remaining_time(esi_corriendo) );
 			//el remaining time del actual es menor que todas las estimaciones
 			//devuelvo al esi_corriendo sin modificarle ninguna rafaga ni nada
 			prox_esi = esi_corriendo;
+			sem_post(&contador_esis);
+
 		}else{
 			//o no habia esi corriendo o el esi corriendo debe ser desalojado
-
 			if(esi_corriendo != NULL){
+				log_debug(logger, "El remaining time del esi elegido(%d) es: %f < el del corriendo(%d): %f",prox_esi->id,remaining_time(prox_esi), esi_corriendo->id,remaining_time(esi_corriendo) );
 				//se desaloja el esi que estaba corriendo
 				nuevo_esi(esi_corriendo);
 			}
@@ -334,6 +337,8 @@ void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
 	if (esi_corriendo != NULL && esi_a_bloquear->id == esi_corriendo->id) {
 		esi_corriendo->rafaga_anterior = esi_corriendo->rafaga_actual;
 		esi_corriendo->rafaga_actual = 0;
+
+		log_debug(logger, "Se bloquea el esi corriendo(%d), rafaga anterior: (%d)", esi_corriendo->id, esi_corriendo->rafaga_anterior);
 		esi_corriendo = NULL;
 	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);
