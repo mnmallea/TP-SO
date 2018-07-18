@@ -208,16 +208,15 @@ void atender_esi(int socket) {
 	esi->socket = socket;
 	if (recv(socket, &esi->id, sizeof(int), MSG_WAITALL) <= 0) {
 		log_error(logger, "Error al recibir id de esi");
+		free(esi);
 		close(socket);
 		return;
 	}
-	pthread_mutex_lock(&mutex_esi_disponibles);
-	list_add(lista_esis_disponibles, esi);
-	log_debug(logger, "Esi id:%d agregada a la lista", esi->id);
-	pthread_mutex_unlock(&mutex_esi_disponibles);
+	log_info(logger, "El esi %d se ha conectado correctamente al sistema",
+			esi->id);
 
-//	sem_post(&planif_binario); todo revisar esto (dudoso)
-	while (1) {
+	bool seguir = true;
+	while (seguir) {
 		char* clave = NULL;
 		char* valor = NULL;
 
@@ -247,35 +246,23 @@ void atender_esi(int socket) {
 			realizar_set(esi, clave, valor);
 			break;
 		case FINALIZO_ESI:
-			close(socket);
-			log_trace(logger, "Se termino de atender el ESI id: %d", esi->id);
-			pthread_mutex_unlock(&mutex_operacion);
-			return;
+			log_info(logger, "Se termino de atender el ESI id: %d", esi->id);
+			seguir = false;
+			break;
 		default:
 			log_error(logger,
 					"El esi %d ha muerto, le cortaron la garganta de aqui a aca",
 					esi->id);
-			/*
-			 * todo fijarse si aca hay que sacarlo de la lista o no
-			 */
-			close(socket);
-			pthread_mutex_unlock(&mutex_operacion);
-			return;
+			seguir = false;
+			break;
 		}
 		pthread_mutex_unlock(&mutex_operacion);
 
 		free(clave);
 		free(valor);
 	}
-}
-
-void atender_planif(int socket) {
-
-	while (1) {
-		sem_wait(&planif_binario);
-		mandar_confirmacion(socket);
-		recibir_confirmacion(socket);
-	}
+	close(socket);
+	free(esi);
 }
 
 void retardarse(long int milisegundos) {
