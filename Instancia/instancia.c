@@ -106,24 +106,22 @@ int STORE(char* clave) {
 	log_trace(logger,
 			"Se procede a ver si la clave (%s) esta en tabla de entradas",
 			clave);
-	tablaE* cv = buscarEntrada(clave);
-	if (cv == NULL) {
+	tablaE* entrada = buscarEntrada(clave);
+	if (entrada == NULL) {
 		return -1;
 	}
+	entrada->operaciones = nroOperacion;
 	log_trace(logger, "Se busca el valor de la clave (%s) en el almacenamiento",
 			clave);
-	void* carga = buscarEnALmacenamiento(cv->indice, cv->tamanio);
-	if (carga == NULL) {
-		log_trace(logger, "no se encontro el valor en el almacenamiento");
-		return -1;
-	}
 
-	cv->operaciones = nroOperacion;
-	log_trace(logger, "se aumenta el numero de operacion(%d)", nroOperacion);
-	log_trace(logger, "estoy storeando un %s", carga);
-	almacenarEnDumper(carga, clave, cv->tamanio);
-	free(carga);
 	return 0;
+}
+
+void bajar_a_disco(tablaE* entrada) {
+	void* carga = buscarEnALmacenamiento(entrada->indice, entrada->tamanio);
+	log_info(logger, "Se procede a almacenar el valor de la clave %s", entrada->clave);
+	almacenarEnDumper(carga, entrada->clave, entrada->tamanio);
+	free(carga);
 }
 //------------------------------------------------------------------------
 //https://stackoverflow.com/questions/7430248/creating-a-new-directory-in-c
@@ -181,11 +179,12 @@ int crearDumperCV(char* clave) {
 	return fd;
 }
 
+void bajar_a_disco_iterator(void* entrada){
+	bajar_a_disco(entrada);
+}
+
 void* dumpearADisco(void* sinuso) {
-	for (int i = 0; i < list_size(tabla); i++) {
-		tablaE* entrada = list_get(tabla, i);
-		STORE(entrada->clave);
-	}
+	list_iterate(tabla, bajar_a_disco_iterator);
 	return NULL;
 }
 
