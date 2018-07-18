@@ -309,6 +309,7 @@ t_esi *crear_nodo_esi(int socket) {
 	p->socket = socket;
 	p->estim_anter = configuracion.estimacion_inicial;
 	p->rafaga_anterior = configuracion.estimacion_inicial;
+	p->rafaga_actual = 0;
 	p->viene_esperando = 0;
 
 	return p;
