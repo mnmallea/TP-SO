@@ -23,6 +23,11 @@ bool mayor_response_ratio(void* esi1, void* esi2) {
 	return ((t_esi*) esi1)->response_ratio >= ((t_esi*) esi1)->response_ratio;
 }
 
+bool menor_remaining_time(void* esi1, void *esi2) {
+	return ( remaining_time( ((t_esi*) esi1) ) <= remaining_time( ((t_esi*) esi2)) );
+
+}
+
 t_esi *obtener_proximo_segun_fifo(t_list *lista_esis) {
 
 	//log_trace(logger, "Se procede a buscar al proximo esi a ejecutar segun FIFO");
@@ -38,7 +43,8 @@ void obtener_proximas_rafagas(void* _esi) {
 	double alfa = configuracion.alfa;
 	t_esi* esi = _esi;
 	log_trace(logger, "El alfa es %f", alfa);
-	esi->estim_actual = alfa * esi->estim_anter + (1 - alfa) * esi->dur_ult_raf;
+	esi->estim_actual = alfa * esi->estim_anter
+			+ (1 - alfa) * esi->rafaga_anterior;
 
 	log_info(logger, "La ESTIMACIÓN de la proxima rafaga para el ESI %d es %f",
 			esi->id, esi->estim_actual);
@@ -83,7 +89,7 @@ void obtener_rr(void* esi) {
 	double alfa = configuracion.alfa;
 
 	double estim_actual = alfa * ((t_esi*) esi)->estim_anter
-			+ (1 - alfa) * ((t_esi*) esi)->dur_ult_raf;
+			+ (1 - alfa) * ((t_esi*) esi)->rafaga_anterior;
 	((t_esi*) esi)->response_ratio = (((t_esi*) esi)->viene_esperando
 			+ estim_actual) / estim_actual;
 
@@ -117,10 +123,8 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis) {
 
 }
 
-
-
-double remaining_time_esi_corriendo(){
-	return (esi_corriendo->estim_anter - esi_corriendo->dur_ult_raf);
+double remaining_time(t_esi* esi) {
+	return (esi->estim_actual - esi->rafaga_actual);
 }
 
 t_esi *obtener_proximo_segun_sjfcd(t_list *lista_esis) {
@@ -138,29 +142,15 @@ t_esi *obtener_proximo_segun_sjfcd(t_list *lista_esis) {
 	log_trace(logger, "Creo lista");
 	list_iterate(lista_nueva, obtener_proximas_rafagas);
 	log_trace(logger, "Itera lista");
-	list_sort(lista_nueva, menor_estimacion);
+	list_sort(lista_nueva, menor_remaining_time);
 	log_trace(logger, "ordena lista");
 
 	t_esi *esi_elegido = list_get(lista_nueva, 0);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 
-	if (esi_elegido->estim_actual < remaining_time_esi_corriendo()) {
+	list_destroy(lista_nueva);
 
-		pthread_mutex_lock(&mutex_lista_esis_listos);
-		remover_esi_de_lista(lista_esis, esi_elegido->id);
-		pthread_mutex_unlock(&mutex_lista_esis_listos);
-
-		log_trace(logger, "El esi elegido(con la menor proxima rafaga) es: %d",
-				esi_elegido->id);
-
-		esi_elegido->estim_anter = esi_elegido->estim_actual;
-		list_destroy(lista_nueva);
-
-		return esi_elegido;
-	}else{
-		log_trace(logger, "La menor estimacion es el remaining time del corriendo");
-		return NULL;
-	}
+	return esi_elegido;
 
 }
 

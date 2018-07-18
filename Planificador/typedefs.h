@@ -26,7 +26,8 @@ typedef struct {
 	int socket;
 
 	//info para calcular HRRN, SJF
-	int dur_ult_raf; //Se suma uno cada vez que si soy esi corriendo finalizo una rafaga
+	int rafaga_anterior;
+	int rafaga_actual;
 	double estim_anter;
 	double estim_actual;
 
