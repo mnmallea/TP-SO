@@ -31,8 +31,9 @@ t_esi* remover_esi_de_lista(t_list*, int);
 void obtener_proximas_rafagas(void* esi);
 void obtener_rr(void* esi);
 
-double remaining_time_esi_corriendo();
+double remaining_time(t_esi* esi);
 bool menor_estimacion(void* esi1, void *esi2);
 bool mayor_response_ratio(void* esi1, void* esi2);
+bool menor_remaining_time(void* esi1, void *esi2);
 
 #endif /* ALGORITMOS_PLANIFICACION_H_ */
