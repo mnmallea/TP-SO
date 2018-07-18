@@ -7,24 +7,19 @@
 
 #ifndef INSTANCIA_H_
 #define INSTANCIA_H_
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/stat.h>
-#include <string.h>
-#include <sys/types.h>
-#include <dirent.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include "tabla_entradas.h"
-#include "almacenamiento.h"
-#include <sys/mman.h>
+
 #include <commons/collections/dictionary.h>
-#include "../syntax-commons/conexiones.h"
-#include "algoritmos.h"
+#include <commons/log.h>
+
+#include "config_instancia.h"
+
+typedef enum {
+	SET_EXITOSO, REQUIERE_COMPACTACION, SET_ERROR
+} t_resultado_set;
 
 typedef struct {
-	char*			puntoMontaje;
-	t_dictionary*	fd;
+	char* puntoMontaje;
+	t_dictionary* fd;
 } dumperEstructura;
 dumperEstructura* dumper;
 
@@ -33,14 +28,11 @@ extern config configuracion;
 void* dumpearADisco(void* sinUso);
 int crearDumperCV(char*clave);
 void iniciarDumper(char* puntoMontaje);
-void almacenarEnDumper(char*data,char*Clave,unsigned int tamanio);
+void almacenarEnDumper(char*data, char*Clave, unsigned int tamanio);
 
 //------------------------------------------------------------------
-int		operacion_set(int socketCoordinador);
-int hacer_set(char* clave,char* valor);
-int		STORE(char* clave);
-
-
-
+void operacion_set(int socketCoordinador);
+t_resultado_set hacer_set(char* clave, char* valor);
+int STORE(char* clave);
 
 #endif /* INSTANCIA_H_ */

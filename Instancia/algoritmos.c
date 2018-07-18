@@ -7,18 +7,17 @@
 
 #include "algoritmos.h"
 
-#include <commons/log.h>
-#include <stdbool.h>
 #include <stdlib.h>
 
 #include "almacenamiento.h"
+#include "cfg_almacenamiento.h"
 
 /*
  * Saca la entrada de la tabla de entradas
  * Y te limpia el bitarray
  */
 
-void ReemplazarSegunAlgoritmo(claveEntrada* cv) {
+t_resultado_set ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 	int entradas_necesarias = entradas_que_ocupa_por_tamanio(cv->tamanio);
 
 	log_debug(logger,
@@ -28,7 +27,7 @@ void ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 		log_error(logger,
 				"No hay suficientes entradas atomicas para reemplazar");
 		//aca hay que informar error al coordinador
-		return;
+		return SET_ERROR;
 	}
 
 	t_list* entradas_a_reemplazar = list_create();
@@ -38,7 +37,7 @@ void ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 		tablaE* entrada = obtener_siguiente_entrada_segun_algoritmo();
 		if (entrada == NULL) {
 			log_error(logger, "Esto no deberia pasar");
-			return;
+			return SET_ERROR;
 		}
 		list_add(entradas_a_reemplazar, entrada);
 		log_debug(logger,
@@ -55,11 +54,12 @@ void ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 	if (posicion_a_insertar < 0) {
 		log_warning(logger, "Hay fragmentación externa");
 		//Aca hay que solicitar compactacion al coordinador
-		return;
+		return REQUIERE_COMPACTACION;
 	}
 	agregarEnTabla(posicion_a_insertar, cv);
 	setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
 	log_info(logger, "Reemplazo ejecutado exitosamente!!!!");
+	return SET_EXITOSO;
 }
 
 tablaE* obtener_siguiente_entrada_segun_algoritmo() {

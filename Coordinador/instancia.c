@@ -285,6 +285,7 @@ t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia,
 		pthread_mutex_unlock(&instancia->mutex_comunicacion);
 		if (respuesta <= 0) {
 			free(*valor);
+			*valor = NULL;
 			return INSTANCIA_CAIDA;
 		}
 		return INSTANCIA_OK;
