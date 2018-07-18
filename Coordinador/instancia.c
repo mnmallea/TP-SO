@@ -75,10 +75,17 @@ t_instancia* crear_instancia(int sockfd, char* nombre, int cant_entradas) {
  */
 void liberar_instancia(t_instancia* instancia) {
 	if (instancia != NULL) {
-		list_destroy(instancia->claves_almacenadas);
+		list_destroy_and_destroy_elements(instancia->claves_almacenadas, free);
+		pthread_mutex_destroy(&instancia->mutex_comunicacion);
+		sem_destroy(&instancia->semaforo_instancia);
+		close(instancia->socket);
 		free(instancia->nombre);
 		free(instancia);
 	}
+}
+
+void instancia_destroyer(void* instancia){
+	liberar_instancia(instancia);
 }
 
 t_instancia* sacar_instancia_de_lista(char* nombre, t_list* lista) {

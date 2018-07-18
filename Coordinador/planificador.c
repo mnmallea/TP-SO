@@ -13,6 +13,7 @@
 #include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/serializador.h"
 #include "algoritmos_distribucion.h"
+#include "error.h"
 #include "instancia.h"
 
 void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {
@@ -20,10 +21,9 @@ void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
 	if (paquete_enviar_con_codigo(paquete, tipo_consulta, socket_planificador)
 			< 0) {
-		log_error(logger, "Error de comunicacion con el planificador");
 		paquete_destruir(paquete);
 		//hay que liberar varias cosas
-		exit(EXIT_FAILURE);
+		exit_error_with_msg("Error en la conexion con el planificador");
 	}
 	paquete_destruir(paquete);
 }
@@ -108,9 +108,8 @@ void informar_status_clave(char* clave) {
 	log_info(logger, "Enviando paquete de status clave al Planificador");
 
 	if(paquete_enviar_con_codigo(paquete, RESPUESTA_STATUS_CLAVE, socket_planificador)){
-		log_error(logger, "Error al enviar respuesta status clave al planificador");
 		paquete_destruir(paquete);
-		exit(EXIT_FAILURE);
+		exit_error_with_msg("Error al enviar respuesta status clave al planificador");
 	}
 
 	log_info(logger, "Paquete enviado");

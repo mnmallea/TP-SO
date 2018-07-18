@@ -12,7 +12,7 @@
 
 #include "../syntax-commons/my_socket.h"
 #include "config_coordinador.h"
-#include "instancia.h"
+#include "error.h"
 #include "log_operaciones.h"
 #include "servidor.h"
 #include "sincronizacion.h"
@@ -30,22 +30,12 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 	log_info(logger, "Escuchando en puerto: %s", configuracion.puerto);
 
 	if (pthread_create(&thread_listener, NULL,
-			(void*) esperar_nuevas_conexiones, &local_socket)) {
-		log_error(logger, "Error creando el hilo del servidor escucha\n");
-		exit(EXIT_FAILURE);
-	}
-	//esto que viene es para debugear despues borrar
-	char *a = NULL;
-	scanf("%s", a);
-	realizar_compactacion();
+			(void*) esperar_nuevas_conexiones, &local_socket))
+		exit_error_with_msg("Error creando el hilo del servidor escucha\n");
 
-	if (pthread_join(thread_listener, NULL)) {
-		log_error(logger, "Error al joinear thread del servidor escucha");
-		exit(EXIT_FAILURE);
-	}
+	if (pthread_join(thread_listener, NULL))
+		exit_error_with_msg("Error al joinear thread del servidor escucha");
 
-	destruir_log_operaciones();
-	log_destroy(logger);
-	exit(EXIT_SUCCESS);
+	morir_liberando_recursos(EXIT_SUCCESS);
 }
 

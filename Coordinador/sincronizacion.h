@@ -22,5 +22,6 @@ sem_t semaforo_compactacion;
 
 void inicializar_semaforos();
 void n_waits(sem_t* semaforo, int n);
+void destruir_semaforos();
 
 #endif /* SINCRONIZACION_H_ */
