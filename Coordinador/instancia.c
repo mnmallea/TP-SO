@@ -42,6 +42,8 @@ void remover_clave_almacenada(t_instancia* instancia, char* clave) {
 	char* clave_buscada = list_remove_by_condition(
 			instancia->claves_almacenadas, esLaClave);
 	free(clave_buscada);
+	log_debug(logger, "Se removió la clave \"%s\" de la instancia %s", clave,
+			instancia->nombre);
 }
 /*
  * Deberia decirte si la instancia almacena una clave
@@ -173,15 +175,33 @@ void instancia_agregar_a_activas(t_instancia* instancia) {
 /*
  * Thread safe
  */
+t_instancia* instancia_disponible_con_clave(char* clave) {
+	t_instancia* instancia;
+	pthread_mutex_lock(&mutex_instancias_disponibles);
+	instancia = instancia_con_clave_en_lista(clave,
+			lista_instancias_disponibles);
+	pthread_mutex_unlock(&mutex_instancias_disponibles);
+	return instancia;
+}
+
+/*
+ * Thread safe
+ */
+t_instancia* instancia_inactiva_con_clave(char* clave) {
+	t_instancia* instancia;
+	pthread_mutex_lock(&mutex_instancias_inactivas);
+	instancia = instancia_con_clave_en_lista(clave, lista_instancias_inactivas);
+	pthread_mutex_unlock(&mutex_instancias_inactivas);
+	return instancia;
+}
+
 //head. filter (tieneClave unaClave) $ lista_instancias_disponibles
-t_instancia* instancia_con_clave(char* clave) {
+t_instancia* instancia_con_clave_en_lista(char* clave, t_list* lista_instancias) {
 	bool instanciaTieneLaClave(void * unaInstancia) {
 		return tiene_clave_almacenada(unaInstancia, clave);
 	}
-	pthread_mutex_lock(&mutex_instancias_disponibles);
-	t_list* instancias_con_clave = list_filter(lista_instancias_disponibles,
+	t_list* instancias_con_clave = list_filter(lista_instancias,
 			instanciaTieneLaClave);
-	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	t_instancia* instancia = list_get(instancias_con_clave, 0);
 	list_destroy(instancias_con_clave);
 	return instancia;
@@ -205,7 +225,6 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	t_instancia* instancia = sacar_instancia_de_lista(nombre,
 			lista_instancias_inactivas);
 	pthread_mutex_unlock(&mutex_instancias_inactivas);
-
 
 	t_paquete* paquete_claves = paquete_crear();
 	int i;
