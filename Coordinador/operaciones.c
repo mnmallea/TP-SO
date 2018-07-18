@@ -90,15 +90,29 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		return;
 		break;
 	case EXITO:
-		instancia_elegida = obtener_instancia_siguiente(clave);
+		ELEGIR_INSTANCIA: instancia_elegida = instancia_con_clave(clave);
+		bool instancia_tenia_clave;
+		if (instancia_elegida != NULL) {
+			instancia_tenia_clave = true;
+			log_info(logger, "La instancia %s ya tenía la clave %s",
+					instancia_elegida->nombre, clave);
+		} else {
+			instancia_elegida = obtener_instancia_siguiente(clave);
+			instancia_tenia_clave = false;
+		}
 		log_debug(logger, "Instancia elegida: %s", instancia_elegida->nombre);
 		if (enviar_set(instancia_elegida->socket, clave, valor) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida->nombre);
-
-			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
-
+			if (instancia_tenia_clave) {
+				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+			} else {
+				log_info(logger,
+						"La instancia %s se cayó, se elegirá otra instancia ya que esta aún no tenía la clave",
+						instancia_elegida->nombre);
+				goto ELEGIR_INSTANCIA;
+			}
 			return;
 		}
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
@@ -140,9 +154,15 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			log_error(logger,
 					"[ESI %d] Error al recibir retorno de instancia %s",
 					esi->id, instancia_elegida->nombre);
-			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 			instancia_desactivar(instancia_elegida->nombre);
-
+			if (instancia_tenia_clave) {
+				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+			} else {
+				log_info(logger,
+						"La instancia %s se cayó, se elegirá otra instancia ya que esta aún no tenía la clave",
+						instancia_elegida->nombre);
+				goto ELEGIR_INSTANCIA;
+			}
 		}
 
 		break;

@@ -23,12 +23,13 @@
 /*
  * Aclaracion, esto te copia la clave que le pases
  * Por lo que si no la vas a usar mas despues le tenes que hacer vos el free
- * Ademas te disminuye el espacio restante de la instancia
+ * Si la clave ya esta, no la agrega de vuelta
  */
 void agregar_clave_almacenada(t_instancia* instancia, char* clave) {
-	char* copia_clave = string_duplicate(clave);
-	list_add(instancia->claves_almacenadas, copia_clave);
-	instancia->cant_entradas_vacias -= espacio_utilizado_por(clave);
+	if (!tiene_clave_almacenada(instancia, clave)) {
+		char* copia_clave = string_duplicate(clave);
+		list_add(instancia->claves_almacenadas, copia_clave);
+	}
 }
 /*
  * Remueve la clave almacenada de la instancia
@@ -109,8 +110,9 @@ bool esta_inactiva_instancia(char* nombre) {
 void instancia_desactivar(char* nombre_instancia) {
 	t_instancia* instancia = instancia_sacar_de_activas(nombre_instancia);
 
-	if(instancia == NULL){
-		log_warning(logger, "La instancia que se intento desactivar no estaba activa");
+	if (instancia == NULL) {
+		log_warning(logger,
+				"La instancia que se intento desactivar no estaba activa");
 		return;
 	}
 
@@ -208,7 +210,8 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	t_paquete* paquete_claves = paquete_crear();
 	int i;
 	int cantidad_claves = list_size(instancia->claves_almacenadas);
-	log_info(logger, "La instancia %s tenia %d claves:", instancia->nombre, cantidad_claves);
+	log_info(logger, "La instancia %s tenia %d claves:", instancia->nombre,
+			cantidad_claves);
 	for (i = 0; i < cantidad_claves; i++) {
 		char* clave_actual = list_get(instancia->claves_almacenadas, i);
 		paquete_agregar(paquete_claves, clave_actual, strlen(clave_actual) + 1);
