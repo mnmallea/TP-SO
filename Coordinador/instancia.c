@@ -115,7 +115,9 @@ void instancia_desactivar(char* nombre_instancia) {
 				"La instancia que se intento desactivar no estaba activa");
 		return;
 	}
-
+	close(instancia->socket);
+	pthread_mutex_destroy(&instancia->mutex_comunicacion);
+	sem_destroy(&instancia->semaforo_instancia);
 	instancia_agregar_a_inactivas(instancia);
 
 	if (pthread_equal(instancia->thread, pthread_self())) {
@@ -148,12 +150,10 @@ t_instancia* instancia_sacar_de_activas(char* nombre_instancia) {
 }
 
 /*
- * Cierra el socket y la agrega a la lista de instancias inactivas
+ * La agrega a la lista de instancias inactivas
  * thread safe
  */
 void instancia_agregar_a_inactivas(t_instancia* instancia) {
-	close(instancia->socket);
-	sem_destroy(&instancia->semaforo_instancia);
 	pthread_mutex_lock(&mutex_instancias_inactivas);
 	list_add(lista_instancias_inactivas, instancia);
 	pthread_mutex_unlock(&mutex_instancias_inactivas);
@@ -205,7 +205,7 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	t_instancia* instancia = sacar_instancia_de_lista(nombre,
 			lista_instancias_inactivas);
 	pthread_mutex_unlock(&mutex_instancias_inactivas);
-	instancia->socket = socket;
+
 
 	t_paquete* paquete_claves = paquete_crear();
 	int i;
@@ -220,6 +220,7 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	if (enviar_cod_operacion(socket, RELEVANTAR_INSTANCIA) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
+		close(socket);
 		instancia_agregar_a_inactivas(instancia);
 		paquete_destruir(paquete_claves);
 		return NULL;
@@ -227,6 +228,7 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	if (send(socket, &cantidad_claves, sizeof(cantidad_claves), 0) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
+		close(socket);
 		instancia_agregar_a_inactivas(instancia);
 		paquete_destruir(paquete_claves);
 		return NULL;
@@ -235,6 +237,7 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	if (paquete_enviar(paquete_claves, socket) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
+		close(socket);
 		instancia_agregar_a_inactivas(instancia);
 		paquete_destruir(paquete_claves);
 		return NULL;
@@ -244,7 +247,9 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 
 	log_info(logger, "La instancia %s ha sido relevantada", instancia->nombre);
 	instancia->thread = pthread_self();
+	instancia->socket = socket;
 	sem_init(&instancia->semaforo_instancia, 0, 0);
+	pthread_mutex_init(&instancia->mutex_comunicacion, NULL);
 
 	instancia_agregar_a_activas(instancia);
 	return instancia;
