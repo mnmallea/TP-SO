@@ -35,7 +35,6 @@ int crearDumperCV(char*clave);
 void iniciarDumper(char* puntoMontaje);
 void almacenarEnDumper(char*data,char*Clave,unsigned int tamanio);
 
-void obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv);
 //------------------------------------------------------------------
 int		operacion_set(int socketCoordinador);
 int hacer_set(char* clave,char* valor);

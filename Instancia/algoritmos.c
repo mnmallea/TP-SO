@@ -17,6 +17,65 @@
  * Saca la entrada de la tabla de entradas
  * Y te limpia el bitarray
  */
+
+void ReemplazarSegunAlgoritmo(claveEntrada* cv){
+	int entradas_necesarias = entradas_que_ocupa_por_tamanio(cv->tamanio);
+
+		log_debug(logger,
+				"Se necesitan %d entradas para reemplazar, hay %d entradas atómicas",
+				entradas_necesarias, cantidad_entradas_atomicas());
+		if (entradas_necesarias > cantidad_entradas_atomicas()) {
+			log_error(logger,
+					"No hay suficientes entradas atomicas para reemplazar");
+			//aca hay que informar error al coordinador
+			return;
+		}
+
+		t_list* entradas_a_reemplazar = list_create();
+
+		int i;
+		for (i = 0; i < entradas_necesarias; i++) {
+			tablaE* entrada = obtener_siguiente_entrada_segun_algoritmo();
+			if (entrada == NULL) {
+				log_error(logger, "Esto no deberia pasar");
+				return;
+			}
+			list_add(entradas_a_reemplazar, entrada);
+			log_debug(logger,
+					"Se reemplazara la entrada Nro: %d, que contenia la clave %s",
+					entrada->indice, entrada->clave);
+		}
+
+		list_iterate(entradas_a_reemplazar, liberar_entrada);
+		list_destroy(entradas_a_reemplazar);
+
+		int posicion_a_insertar = almac_primera_posicion_libre_con_tamanio(
+				entradas_necesarias);
+
+		if (posicion_a_insertar < 0) {
+			log_warning(logger, "Hay fragmentación externa");
+			//Aca hay que solicitar compactacion al coordinador
+			return;
+		}
+		agregarEnTabla(posicion_a_insertar, cv);
+		setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
+		log_info(logger, "Reemplazo ejecutado exitosamente!!!!");
+	}
+
+tablaE* obtener_siguiente_entrada_segun_algoritmo(){
+	if (configuracion.algoritmo == CIRC) {
+		return obtener_siguiente_entrada_circular();
+	} else if (configuracion.algoritmo == LRU) {
+		return obtener_siguiente_entrada_lru();
+	} else if (configuracion.algoritmo == BSU) {
+		return obtener_siguiente_entrada_bsu();
+	} else {
+		log_error(logger, "No se encontro algoritmo de reemplazo");
+		return NULL;
+	}
+}
+
+
 void liberar_entrada(void* unaEntrada) {
 	tablaE* entrada = unaEntrada;
 	remover_de_tabla(entrada->indice);
@@ -30,50 +89,6 @@ void liberar_entrada(void* unaEntrada) {
 
 int cantidad_entradas_atomicas() {
 	return list_count_satisfying(tabla, esAtomica);
-}
-
-void algoritmoCircular(claveEntrada* cv) {
-	int entradas_necesarias = entradas_que_ocupa_por_tamanio(cv->tamanio);
-
-	log_debug(logger,
-			"Se necesitan %d entradas para reemplazar, hay %d entradas atómicas",
-			entradas_necesarias, cantidad_entradas_atomicas());
-	if (entradas_necesarias > cantidad_entradas_atomicas()) {
-		log_error(logger,
-				"No hay suficientes entradas atomicas para reemplazar");
-		//aca hay que informar error al coordinador
-		return;
-	}
-
-	t_list* entradas_a_reemplazar = list_create();
-
-	int i;
-	for (i = 0; i < entradas_necesarias; i++) {
-		tablaE* entrada = obtener_siguiente_entrada_circular();
-		if (entrada == NULL) {
-			log_error(logger, "Esto no deberia pasar");
-			return;
-		}
-		list_add(entradas_a_reemplazar, entrada);
-		log_debug(logger,
-				"Se reemplazara la entrada Nro: %d, que contenia la clave %s",
-				entrada->indice, entrada->clave);
-	}
-
-	list_iterate(entradas_a_reemplazar, liberar_entrada);
-	list_destroy(entradas_a_reemplazar);
-
-	int posicion_a_insertar = almac_primera_posicion_libre_con_tamanio(
-			entradas_necesarias);
-
-	if (posicion_a_insertar < 0) {
-		log_warning(logger, "Hay fragmentación externa");
-		//Aca hay que solicitar compactacion al coordinador
-		return;
-	}
-	agregarEnTabla(posicion_a_insertar, cv);
-	setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
-	log_info(logger, "Reemplazo ejecutado exitosamente!!!!");
 }
 
 int obtener_indice_de_entrada(t_list* lista_de_tablaE, int posicion) {
@@ -135,51 +150,6 @@ tablaE* obtener_siguiente_entrada_circular() {
 	return entrada;
 }
 
-
-
-
-
-
-
-void algoritmoBSU(claveEntrada*cv){
-	int entradas_necesarias = entradas_que_ocupa_por_tamanio(cv->tamanio);
-	log_debug(logger,"Se necesitan %d entradas para reemplazar, hay %d entradas atómicas",entradas_necesarias, cantidad_entradas_atomicas());
-	if (entradas_necesarias > cantidad_entradas_atomicas()) {
-		log_error(logger,"No hay suficientes entradas atomicas para reemplazar");
-			//aca hay que informar error al coordinador
-			return;
-		}
-		t_list* entradas_a_reemplazar = list_create();
-
-		int i;
-		for (i = 0; i < entradas_necesarias; i++) {
-			tablaE* entrada = obtener_siguiente_entrada_bsu();
-			if (entrada == NULL) {
-				log_error(logger, "Esto no deberia pasar");
-				return;
-			}
-			list_add(entradas_a_reemplazar, entrada);
-			log_debug(logger,
-					"Se reemplazara la entrada Nro: %d, que contenia la clave %s",
-					entrada->indice, entrada->clave);
-		}
-
-		list_iterate(entradas_a_reemplazar, liberar_entrada);
-		list_destroy(entradas_a_reemplazar);
-
-		int posicion_a_insertar = almac_primera_posicion_libre_con_tamanio(
-				entradas_necesarias);
-
-		if (posicion_a_insertar < 0) {
-			log_warning(logger, "Hay fragmentación externa");
-			//Aca hay que solicitar compactacion al coordinador
-			return;
-		}
-		agregarEnTabla(posicion_a_insertar, cv);
-		setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
-		log_info(logger, "Reemplazo ejecutado exitosamente!!!!");
-	}
-
 tablaE* obtener_siguiente_entrada_bsu(){
 	tablaE* entrada = primera_entrada_masGrande_desde(posicion);
 		posicion = entrada->indice + 1;
@@ -219,48 +189,6 @@ bool esAtomica(void* unaEntrada) {
 	tablaE* entrada = unaEntrada;
 	return entrada->tamanio <= obtenerTamanioEntrada();
 }
-
-
-
-void algoritmoLRU(claveEntrada* cv) {
-int entradas_necesarias = entradas_que_ocupa_por_tamanio(cv->tamanio);
-	log_debug(logger,"Se necesitan %d entradas para reemplazar, hay %d entradas atómicas",entradas_necesarias, cantidad_entradas_atomicas());
-		if (entradas_necesarias > cantidad_entradas_atomicas()) {
-			log_error(logger,"No hay suficientes entradas atomicas para reemplazar");
-			//aca hay que informar error al coordinador
-			return;
-		}
-
-		t_list* entradas_a_reemplazar = list_create();
-		int i;
-		for (i = 0; i < entradas_necesarias; i++) {
-			tablaE* entrada = obtener_siguiente_entrada_lru();
-			if (entrada == NULL) {
-				log_error(logger, "Esto no deberia pasar");
-				return;
-			}
-			list_add(entradas_a_reemplazar, entrada);
-			log_debug(logger,
-					"Se reemplazara la entrada Nro: %d, que contenia la clave %s",
-					entrada->indice, entrada->clave);
-		}
-
-		list_iterate(entradas_a_reemplazar, liberar_entrada);
-		list_destroy(entradas_a_reemplazar);
-
-		int posicion_a_insertar = almac_primera_posicion_libre_con_tamanio(
-				entradas_necesarias);
-
-		if (posicion_a_insertar < 0) {
-			log_warning(logger, "Hay fragmentación externa");
-			//Aca hay que solicitar compactacion al coordinador
-			return;
-		}
-		agregarEnTabla(posicion_a_insertar, cv);
-		setEnAlmacenamiento(posicion_a_insertar, cv->valor, cv->tamanio);
-		log_info(logger, "Reemplazo ejecutado exitosamente!!!!");
-	}
-
 
 
 tablaE* obtener_siguiente_entrada_lru(){
