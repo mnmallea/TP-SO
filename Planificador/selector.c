@@ -308,7 +308,8 @@ t_esi *crear_nodo_esi(int socket) {
 	t_esi *p = malloc(sizeof(esi));
 	p->socket = socket;
 	p->estim_anter = configuracion.estimacion_inicial;
-	p->dur_ult_raf = configuracion.estimacion_inicial;
+	p->rafaga_anterior = configuracion.estimacion_inicial;
+	p->rafaga_actual = 0;
 	p->viene_esperando = 0;
 
 	return p;

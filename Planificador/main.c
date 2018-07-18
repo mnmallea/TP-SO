@@ -54,7 +54,7 @@ void configurar_claves_inicialmente_bloqueadas() {
 	t_esi *esi_trucho = malloc(sizeof(esi));
 	esi_trucho->socket = -1;
 	esi_trucho->estim_anter = -666;
-	esi_trucho->dur_ult_raf = 0;
+	esi_trucho->rafaga_anterior = 0;
 	esi_trucho->viene_esperando = 0;
 	esi_trucho->id = -1;
 
