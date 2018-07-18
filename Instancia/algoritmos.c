@@ -77,6 +77,7 @@ void liberar_entrada(tablaE* entrada) {
 			entrada->indice, entrada->clave);
 	int cant_entradas = entradas_que_ocupa(entrada);
 	almac_liberar_entradas(entrada->indice, cant_entradas);
+	sacarDelDumper(entrada->clave);
 	liberarEntrada(entrada);
 }
 
