@@ -218,12 +218,14 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
 		instancia_agregar_a_inactivas(instancia);
+		paquete_destruir(paquete_claves);
 		return NULL;
 	}
 	if (send(socket, &cantidad_claves, sizeof(cantidad_claves), 0) < 0) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
 		instancia_agregar_a_inactivas(instancia);
+		paquete_destruir(paquete_claves);
 		return NULL;
 	}
 
@@ -231,8 +233,10 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 		log_error(logger, "Error al relevantar instancia %s",
 				instancia->nombre);
 		instancia_agregar_a_inactivas(instancia);
+		paquete_destruir(paquete_claves);
 		return NULL;
 	}
+	paquete_destruir(paquete_claves);
 	//todo ver si necesitas algun tipo de confirmacion por parte de la instancia
 
 	log_info(logger, "La instancia %s ha sido relevantada", instancia->nombre);
