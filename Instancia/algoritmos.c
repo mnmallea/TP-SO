@@ -19,11 +19,11 @@
 
 t_resultado_set ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 	int entradas_necesarias = entradas_que_ocupa_por_tamanio(cv->tamanio);
-
+	int reemplazos_necesarios = entradas_necesarias - almac_entradas_disponibles();
 	log_debug(logger,
 			"Se necesitan %d entradas para reemplazar, hay %d entradas atómicas",
-			entradas_necesarias, cantidad_entradas_atomicas());
-	if (entradas_necesarias > cantidad_entradas_atomicas()) {
+			reemplazos_necesarios, cantidad_entradas_atomicas());
+	if (reemplazos_necesarios > cantidad_entradas_atomicas()) {
 		log_error(logger,
 				"No hay suficientes entradas atomicas para reemplazar");
 		//aca hay que informar error al coordinador
@@ -31,7 +31,7 @@ t_resultado_set ReemplazarSegunAlgoritmo(claveEntrada* cv) {
 	}
 
 	int i;
-	for (i = 0; i < entradas_necesarias; i++) {
+	for (i = 0; i < reemplazos_necesarios; i++) {
 		tablaE* entrada = obtener_siguiente_entrada_segun_algoritmo();
 		if (entrada == NULL) {
 			log_error(logger, "Esto no deberia pasar");
