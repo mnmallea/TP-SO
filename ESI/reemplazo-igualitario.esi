@@ -1,0 +1,27 @@
+GET a
+GET b
+GET c
+GET d
+GET e
+GET f
+GET h
+GET i
+GET a2
+SET a holaas
+SET b holaas
+SET c holaas
+SET d holaas
+SET e holaas
+SET f holaas
+SET h holaas
+SET i holaas
+SET a2 valorQueDeberiaOcuparComo4Entradas
+STORE a
+STORE b
+STORE c
+STORE d
+STORE e
+STORE f
+STORE h
+STORE i
+STORE a2
