@@ -7,18 +7,20 @@
 
 #include "servidor.h"
 
+#include <errno.h>
 #include <semaphore.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "../syntax-commons/conexiones.h"
 #include "../syntax-commons/deserializador.h"
-#include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/protocol.h"
+#include "error.h"
 #include "instancia.h"
-#include "log_operaciones.h"
 #include "operaciones.h"
 #include "planificador.h"
 #include "sincronizacion.h"
@@ -99,9 +101,7 @@ void atender_planificador(int socket) {
 				to_string_protocolo(cod_operacion));
 		switch (cod_operacion) {
 		case ERROR_CONEXION:
-			//todo aca nos morimos de una manera piola
-			log_error(logger, "Error en la conexion con el planificador");
-			exit(EXIT_FAILURE);
+			exit_error_with_msg("Error en la conexion con el planificador");
 			break; //el break mas necesario de la historia
 		case SOLICITUD_STATUS_CLAVE:
 			;
@@ -110,8 +110,7 @@ void atender_planificador(int socket) {
 					(void**) &clave);
 			if (respuesta <= 0) {
 				free(clave);
-				log_error(logger, "Error en la conexion con el planificador");
-				exit(EXIT_FAILURE);
+				exit_error_with_msg("Error en la conexion con el planificador");
 			}
 			log_info(logger, "Recuperando el status de la clave %s", clave);
 			informar_status_clave(clave);

@@ -7,12 +7,14 @@
 
 #include <commons/log.h>
 #include <semaphore.h>
+#include <stdbool.h>
 #include <stdlib.h>
 #include <sys/socket.h>
 
 #include "../syntax-commons/conexiones.h"
 #include "../syntax-commons/protocol.h"
 #include "algoritmos_distribucion.h"
+#include "error.h"
 #include "instancia.h"
 #include "log_operaciones.h"
 #include "planificador.h"
@@ -46,9 +48,7 @@ void realizar_get(t_esi* esi, char* clave) {
 		break;
 	default:
 		if (cod_op < 0) {
-			log_error(logger, "Error de conexion con el planificador");
-			//todo self.morirse()
-			exit(EXIT_FAILURE);
+			exit_error_with_msg("Error de conexion con el planificador");
 		}
 		log_error(logger, "Respuesta del planificador desconocida");
 	}
@@ -181,9 +181,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		break;
 	default:
 		if (cod_op < 0) {
-			log_error(logger, "Error de conexion con el planificador");
-			//todo self.morirse()
-			exit(EXIT_FAILURE);
+			exit_error_with_msg("Error de conexion con el planificador");
 		}
 		log_error(logger, "Respuesta del planificador desconocida");
 		//todo no se que haria en este caso
@@ -316,9 +314,7 @@ void realizar_store(t_esi* esi, char* clave) {
 		break;
 	default:
 		if (cod_op < 0) {
-			log_error(logger, "Error de conexion con el planificador");
-			//todo self.morirse()
-			exit(EXIT_FAILURE);
+			exit_error_with_msg("Error de conexion con el planificador");
 		}
 		log_error(logger, "Respuesta del planificador desconocida");
 	}

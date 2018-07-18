@@ -40,5 +40,6 @@ t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia, char* 
 t_instancia* instancia_sacar_de_activas(char* nombre_instancia);
 t_instancia* instancia_con_clave_en_lista(char* clave, t_list* lista_instancias);
 t_instancia* instancia_inactiva_con_clave(char* clave);
+void instancia_destroyer(void* instancia);
 
 #endif /* INSTANCIA_H_ */

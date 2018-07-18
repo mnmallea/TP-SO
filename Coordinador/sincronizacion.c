@@ -23,3 +23,13 @@ void n_waits(sem_t* semaforo, int n) {
 		sem_wait(semaforo);
 	}
 }
+
+void destruir_semaforos() {
+	pthread_mutex_destroy(&mutex_instancias_disponibles);
+	pthread_mutex_destroy(&mutex_instancias_inactivas);
+	pthread_mutex_destroy(&mutex_operacion);
+	sem_destroy(&contador_instancias_disponibles);
+	sem_destroy(&semaforo_binario);
+	sem_destroy(&planificador_respondio);
+	sem_destroy(&semaforo_compactacion);
+}
