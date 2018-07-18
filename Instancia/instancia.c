@@ -73,22 +73,9 @@ int hacer_set(char* clave, char* valor) {
 	} else {
 		log_info(logger,
 				"No se encontro lugar disponible, se procede a reemplazar alguna clave existente");
-		obtenerAReemplazarSegunAlgoritmo(cv);
+		ReemplazarSegunAlgoritmo(cv);
 		liberarCv(cv);
 		return 0;
-	}
-}
-
-void obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv) {
-	if (configuracion.algoritmo == CIRC) {
-		algoritmoCircular(cv);
-	} else if (configuracion.algoritmo == LRU) {
-		algoritmoLRU(cv);
-	} else if (configuracion.algoritmo == BSU) {
-		algoritmoBSU(cv);
-	} else {
-		log_error(logger, "No se encontro algoritmo de reemplazo");
-		return;
 	}
 }
 
