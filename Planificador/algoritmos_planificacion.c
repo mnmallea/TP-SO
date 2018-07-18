@@ -14,6 +14,10 @@ t_esi* remover_esi_de_lista(t_list* lista, int id) {
 	return list_remove_by_condition(lista, esElEsi);
 }
 
+double remaining_time(t_esi* esi) {
+	return (esi->estim_actual - esi->rafaga_actual);
+}
+
 bool menor_estimacion(void* esi1, void *esi2) {
 	return ((t_esi*) esi1)->estim_actual <= ((t_esi*) esi2)->estim_actual;
 
@@ -46,8 +50,8 @@ void obtener_proximas_rafagas(void* _esi) {
 	esi->estim_actual = alfa * esi->estim_anter
 			+ (1 - alfa) * esi->rafaga_anterior;
 
-	log_info(logger, "La ESTIMACIÓN de la proxima rafaga para el ESI %d es %f",
-			esi->id, esi->estim_actual);
+	log_info(logger, "La ESTIMACIÓN de la proxima rafaga para el ESI %d es %f, la estimacion anterior era %f, rafaga anterior: %d",
+			esi->id, esi->estim_actual, esi->estim_anter, esi->rafaga_anterior);
 
 }
 
@@ -123,9 +127,7 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis) {
 
 }
 
-double remaining_time(t_esi* esi) {
-	return (esi->estim_actual - esi->rafaga_actual);
-}
+
 
 t_esi *obtener_proximo_segun_sjfcd(t_list *lista_esis) {
 
