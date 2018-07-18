@@ -243,7 +243,7 @@ t_esi *obtener_nuevo_esi_a_correr() {
 				nuevo_esi(esi_corriendo);
 			}
 
-			prox_esi->estim_anter = prox_esi->estim_actual;
+			//prox_esi->estim_anter = prox_esi->estim_actual;
 			pthread_mutex_lock(&mutex_lista_esis_listos);
 			remover_esi_de_lista(lista_esis_listos,prox_esi->id);
 			pthread_mutex_unlock(&mutex_lista_esis_listos);
@@ -335,6 +335,7 @@ void bloquear_esi(char* clave, t_esi* esi_a_bloquear) {
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (esi_corriendo != NULL && esi_a_bloquear->id == esi_corriendo->id) {
+		esi_corriendo->estim_anter = esi_corriendo->estim_actual;
 		esi_corriendo->rafaga_anterior = esi_corriendo->rafaga_actual;
 		esi_corriendo->rafaga_actual = 0;
 
