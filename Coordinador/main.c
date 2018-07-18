@@ -24,7 +24,6 @@ int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de conf
 	log_trace(logger, "Coordinador correctamente configurado");
 	lista_instancias_disponibles = list_create();
 	lista_instancias_inactivas = list_create();
-	lista_esis_disponibles = list_create();
 	inicializar_semaforos();
 	int local_socket = crear_socket_escucha(configuracion.puerto, BACKLOG);
 
