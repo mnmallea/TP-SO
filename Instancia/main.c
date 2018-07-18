@@ -72,11 +72,11 @@ int main(int argc, char** argv) {
 			log_trace(logger, "Store %s", clave);
 			resultado = STORE(clave);
 			if (resultado >= 0) {
-				log_trace(logger, "STORE arrojo resultado EXITO");
+				log_info(logger, "STORE %s arrojo resultado EXITO", clave);
 				enviar_cod_operacion(socketCoordinador, EXITO);
 				mandar_mensaje(socketCoordinador, almac_entradas_disponibles());
 			} else {
-				log_trace(logger, "STORE recibio resultado ERROR");
+				log_error(logger, "STORE %s recibio resultado ERROR", clave);
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			nroOperacion++;
@@ -96,7 +96,7 @@ int main(int argc, char** argv) {
 				char* path = string_from_format("%s/%s.txt",
 						configuracion.punto_montaje, clave_recibida);
 				if ((arch = fopen(path, "r")) == NULL) {
-					log_info(logger,
+					log_warning(logger,
 							" la instancia no encuentra el archivo de la clave %s",
 							clave_recibida);
 					free(path);
@@ -106,7 +106,17 @@ int main(int argc, char** argv) {
 				char* valor = NULL;
 				size_t lenght = 0;
 				getline(&valor, &lenght, arch);
-				hacer_set(clave_recibida, valor);
+				log_debug(logger, "Valor encontrado: \"%s\"", valor);
+				SET: ;
+				int intento_set = 0;
+				t_resultado_set resultado_set = hacer_set(clave_recibida,
+						valor);
+
+				if (resultado_set == REQUIERE_COMPACTACION && intento_set <= 0){
+					compactar();
+					intento_set ++;
+					goto SET;
+				}
 				free(path);
 				free(valor);
 				fclose(arch);

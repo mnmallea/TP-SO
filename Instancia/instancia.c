@@ -119,7 +119,8 @@ int STORE(char* clave) {
 
 void bajar_a_disco(tablaE* entrada) {
 	void* carga = buscarEnALmacenamiento(entrada->indice, entrada->tamanio);
-	log_info(logger, "Se procede a almacenar el valor de la clave %s", entrada->clave);
+	log_info(logger, "Almacenando valor de la clave \"%s\"",
+			entrada->clave);
 	almacenarEnDumper(carga, entrada->clave, entrada->tamanio);
 	free(carga);
 }
@@ -151,7 +152,7 @@ void almacenarEnDumper(char* data, char* clave, unsigned int tamanio) {
 		fd = crearDumperCV(clave);
 	}
 	if (fd == -1) {
-		log_info(logger, "error al almacenar clave en dumper");
+		log_error(logger, "Error al almacenar clave \"%s\" en dumper", clave);
 		return;
 	}
 	ftruncate(fd, tamanio);
@@ -179,7 +180,7 @@ int crearDumperCV(char* clave) {
 	return fd;
 }
 
-void bajar_a_disco_iterator(void* entrada){
+void bajar_a_disco_iterator(void* entrada) {
 	bajar_a_disco(entrada);
 }
 
@@ -188,4 +189,12 @@ void* dumpearADisco(void* sinuso) {
 	return NULL;
 }
 
-// funcion dumper cada 100 segundos se prende recorre la tabla de entradas, la storea y vacia la entrada y el almacenamiento
+void sacarDelDumper(char* clave) {
+	if (!dictionary_has_key(dumper->fd, clave)) {
+		log_debug(logger, "La clave %s no estaba en el dumper", clave);
+		return;
+	}
+	int fd = (int) dictionary_remove(dumper->fd, clave);
+	log_debug(logger, "Se saco la clave %s del dumper (fd=%d)", clave, fd);
+	close(fd);
+}
