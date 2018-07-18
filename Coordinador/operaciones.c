@@ -241,6 +241,7 @@ void realizar_store(t_esi* esi, char* clave) {
 					"[ESI %d] La instancia que tiene la clave %s no esta disponible en el sistema",
 					esi->id, clave);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+			return;
 		}
 		log_debug(logger, "Instancia elegida: %s,ya que tiene la clave %s",
 				instancia_elegida->nombre, clave);

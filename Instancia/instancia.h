@@ -12,6 +12,7 @@
 #include <commons/log.h>
 
 #include "config_instancia.h"
+#include "tabla_entradas.h"
 
 typedef enum {
 	SET_EXITOSO, REQUIERE_COMPACTACION, SET_ERROR
@@ -34,5 +35,6 @@ void almacenarEnDumper(char*data, char*Clave, unsigned int tamanio);
 void operacion_set(int socketCoordinador);
 t_resultado_set hacer_set(char* clave, char* valor);
 int STORE(char* clave);
+void bajar_a_disco(tablaE* entrada);
 
 #endif /* INSTANCIA_H_ */
