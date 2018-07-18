@@ -1,14 +1,21 @@
 #include "instancia.h"
 
-#include <bits/mman-linux.h>
 #include <commons/collections/list.h>
-#include <commons/log.h>
 #include <commons/string.h>
 #include <errno.h>
+#include <fcntl.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
-#include "config_instancia.h"
+#include "../syntax-commons/conexiones.h"
+#include "algoritmos.h"
+#include "almacenamiento.h"
+#include "tabla_entradas.h"
 
-int operacion_set(int socketCoordinador) {
+void operacion_set(int socketCoordinador) {
 	log_info(logger, "inicializando OP_SET");
 	char* clave;
 	char* valor;
@@ -21,13 +28,28 @@ int operacion_set(int socketCoordinador) {
 			clave, valor);
 	int resultado;
 	resultado = hacer_set(clave, valor);
+	switch (resultado) {
+	case SET_EXITOSO:
+		log_debug(logger, "SET arrojo resultado EXITO");
+		enviar_cod_operacion(socketCoordinador, EXITO);
+		mandar_mensaje(socketCoordinador, almac_entradas_disponibles());
+		break;
+	case SET_ERROR:
+		log_debug(logger, "SET arrojo resultado ERROR");
+		enviar_cod_operacion(socketCoordinador, ERROR);
+		break;
+	case REQUIERE_COMPACTACION:
+		log_debug(logger, "SET arrojo resultado REQUIERE_COMPACTACION");
+		enviar_cod_operacion(socketCoordinador, SOLICITUD_COMPACTACION);
+		break;
+	}
 	free(clave);
 	free(valor);
 	log_trace(logger, "El resultado de la operacion set fue %d", resultado);
-	return resultado;
+
 }
 
-int hacer_set(char* clave, char* valor) {
+t_resultado_set hacer_set(char* clave, char* valor) {
 	log_trace(logger,
 			"Se procede a crear la entrada con la clave: %s y el valor %s",
 			clave, valor);
@@ -40,9 +62,12 @@ int hacer_set(char* clave, char* valor) {
 		log_info(logger,
 				"La clave %s tenia un valor asociado, se procede a reemplazarlo",
 				clave);
-		reemplazarCVEnTabla(cv);
+		int res_reemplazo = reemplazarCVEnTabla(cv);
 		liberarCv(cv);
-		return 0;
+		if (res_reemplazo < 0)
+			return SET_ERROR;
+		else
+			return SET_EXITOSO;
 	}
 	log_info(logger,
 			"La clave %s no tenia un valor asociado, se procede a encontrarle un lugar",
@@ -56,11 +81,8 @@ int hacer_set(char* clave, char* valor) {
 				entradas_que_ocuparia);
 		if (proximaEntrada < 0) {
 			log_info(logger, "Hay fragmentacion externa, se debe compactar");
-			//aca hay que solicitarle al coordinador que mande a compactar
-			compactar();
-			proximaEntrada = almac_primera_posicion_libre_con_tamanio(
-					entradas_que_ocuparia);
-//			return -1;
+			liberarCv(cv);
+			return REQUIERE_COMPACTACION;
 		}
 		log_trace(logger, "Se almacenara en la posicion %d", proximaEntrada);
 		agregarEnTabla(proximaEntrada, cv);
@@ -69,26 +91,13 @@ int hacer_set(char* clave, char* valor) {
 				clave);
 		setEnAlmacenamiento(proximaEntrada, cv->valor, cv->tamanio);
 		liberarCv(cv);
-		return 0;
+		return SET_EXITOSO;
 	} else {
 		log_info(logger,
 				"No se encontro lugar disponible, se procede a reemplazar alguna clave existente");
-		obtenerAReemplazarSegunAlgoritmo(cv);
+		t_resultado_set resultado_reemplazo = ReemplazarSegunAlgoritmo(cv);
 		liberarCv(cv);
-		return 0;
-	}
-}
-
-void obtenerAReemplazarSegunAlgoritmo(claveEntrada* cv) {
-	if (configuracion.algoritmo == CIRC) {
-		algoritmoCircular(cv);
-	} else if (configuracion.algoritmo == LRU) {
-		algoritmoLRU(cv);
-	} else if (configuracion.algoritmo == BSU) {
-		algoritmoBSU(cv);
-	} else {
-		log_error(logger, "No se encontro algoritmo de reemplazo");
-		return;
+		return resultado_reemplazo;
 	}
 }
 
@@ -97,24 +106,22 @@ int STORE(char* clave) {
 	log_trace(logger,
 			"Se procede a ver si la clave (%s) esta en tabla de entradas",
 			clave);
-	tablaE* cv = buscarEntrada(clave);
-	if (cv == NULL) {
+	tablaE* entrada = buscarEntrada(clave);
+	if (entrada == NULL) {
 		return -1;
 	}
+	entrada->operaciones = nroOperacion;
 	log_trace(logger, "Se busca el valor de la clave (%s) en el almacenamiento",
 			clave);
-	void* carga = buscarEnALmacenamiento(cv->indice, cv->tamanio);
-	if (carga == NULL) {
-		log_trace(logger, "no se encontro el valor en el almacenamiento");
-		return -1;
-	}
 
-	cv->operaciones = nroOperacion;
-	log_trace(logger, "se aumenta el numero de operacion(%d)", nroOperacion);
-	log_trace(logger, "estoy storeando un %s", carga);
-	almacenarEnDumper(carga, clave, cv->tamanio);
-	free(carga);
 	return 0;
+}
+
+void bajar_a_disco(tablaE* entrada) {
+	void* carga = buscarEnALmacenamiento(entrada->indice, entrada->tamanio);
+	log_info(logger, "Se procede a almacenar el valor de la clave %s", entrada->clave);
+	almacenarEnDumper(carga, entrada->clave, entrada->tamanio);
+	free(carga);
 }
 //------------------------------------------------------------------------
 //https://stackoverflow.com/questions/7430248/creating-a-new-directory-in-c
@@ -172,11 +179,12 @@ int crearDumperCV(char* clave) {
 	return fd;
 }
 
+void bajar_a_disco_iterator(void* entrada){
+	bajar_a_disco(entrada);
+}
+
 void* dumpearADisco(void* sinuso) {
-	for (int i = 0; i < list_size(tabla); i++) {
-		tablaE* entrada = list_get(tabla, i);
-		STORE(entrada->clave);
-	}
+	list_iterate(tabla, bajar_a_disco_iterator);
 	return NULL;
 }
 

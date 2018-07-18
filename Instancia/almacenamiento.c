@@ -79,7 +79,8 @@ tablaE* encontrar_entrada_en_posicion(int indice_almacenamiento, t_list* lista) 
  */
 
 void eliminarAlmacenamiento() {
-	free(ato->dato);
+	if (ato != NULL)
+		free(ato->dato);
 	free(ato);
 	log_info(logger, "memoria liberada");
 }
@@ -104,7 +105,6 @@ t_bitarray * crearBitArray(int cantBloques) {
 	}
 	return bitarray;
 }
-
 
 /*
  * Devuelve el indice de la primera posicion libre del almacenamiento
@@ -141,7 +141,6 @@ int almac_primera_posicion_ocupada_desde(int index_inicio) {
 	}
 	return -1;
 }
-
 
 int almac_cant_entradas_libres_desde(int index) {
 	int i;
@@ -233,11 +232,15 @@ char* obtener_valor_de_clave(char* clave) {
 	return valor;
 }
 
-void compactar(){
+void compactar() {
 	int primer0 = almac_primera_posicion_libre();
+	if (primer0 < 0) {
+		log_warning(logger, "La instancia esta llena, no se puede compactar");
+		return;
+	}
 	int primer1 = almac_primera_posicion_ocupada_desde(primer0);
 	tablaE* entrada;
-	while(primer0 >=0 && primer1 >= 0){
+	while (primer0 >= 0 && primer1 >= 0) {
 		entrada = obtener_entrada_en_posicion(primer1);
 		mover_entrada(entrada, primer0);
 		primer0 = almac_primera_posicion_libre();

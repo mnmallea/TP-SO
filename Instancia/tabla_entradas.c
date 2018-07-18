@@ -7,6 +7,10 @@
 #include "almacenamiento.h"
 #include "cfg_almacenamiento.h"
 
+void entrada_destroyer(void* entrada){
+	liberarEntrada(entrada);
+}
+
 tablaE* remover_de_tabla(int indice_almacenamiento) {
 	bool esLaMisma(void* _entrada) {
 		return indice_almacenamiento == ((tablaE*) _entrada)->indice;
@@ -30,9 +34,8 @@ tablaE* obtener_entrada_en_posicion(int indice_almacenamiento) {
 
 void crearTablaEntradas() {
 	tabla = list_create();
-	entradasLibres = obtenerEntradasTotales();
 	log_trace(logger, "se crea la tabla de entrada, con (%d) entradas",
-			entradasLibres);
+			almac_entradas_disponibles());
 
 }
 
@@ -115,16 +118,12 @@ bool quitarDeTabla(claveEntrada * claveE) {
 			log_trace(logger,
 					"se procede a eliminar la entrada (%d) de la tabla claveEntrada",
 					i);
-			removerDeLista(i, entrada);
+			list_remove(tabla, i);
 			return true;
 		}
 		i++;
 	}
 	return false;
-}
-void removerDeLista(int unaVariable, tablaE* entrada) {
-	list_remove(tabla, unaVariable);
-	entradasLibres += (entrada->tamanio / obtenerTamanioEntrada()) + 1;
 }
 
 void liberarEntrada(tablaE* entrada) {
@@ -134,8 +133,10 @@ void liberarEntrada(tablaE* entrada) {
 
 }
 void liberarCv(claveEntrada* cv) {
-	free(cv->clave);
-	free(cv->valor);
+	if (cv != NULL) {
+		free(cv->clave);
+		free(cv->valor);
+	}
 	free(cv);
 }
 
@@ -152,13 +153,17 @@ bool hayEntradasDisponibles(claveEntrada* cv) {
 	return entradas_que_ocupa <= almac_entradas_disponibles();
 }
 
-void reemplazarCVEnTabla(claveEntrada* cv) {
+/*
+ * Devuelve valor negativo si no pudo reemplazar
+ */
+int reemplazarCVEnTabla(claveEntrada* cv) {
 	tablaE* entrada = buscarEntrada(cv->clave);
 	int entradas_ocupadas = entradas_que_ocupa(entrada);
 	int entradas_que_ocuparia = entradas_que_ocupa_por_tamanio(cv->tamanio);
 	if (entradas_que_ocuparia > entradas_ocupadas) {
-		log_error(logger, "Esto no deberia pasar");
-		return;
+		log_error(logger,
+				"El nuevo valor ocuparía más entradas que el anterior, abortando operación..");
+		return -1;
 	}
 
 	almac_liberar_entradas(entrada->indice, entradas_ocupadas);
@@ -167,6 +172,7 @@ void reemplazarCVEnTabla(claveEntrada* cv) {
 	entrada->tamanio = cv->tamanio;
 
 	setEnAlmacenamiento(entrada->indice, cv->valor, cv->tamanio);
+	return 0;
 }
 
 tablaE* buscarEntrada(char* claveAPedir) {
@@ -205,7 +211,7 @@ int entradas_que_ocupa_por_tamanio(int size) {
 	return cant_entradas;
 }
 
-void mover_entrada(tablaE* entrada, int nueva_posicion){
+void mover_entrada(tablaE* entrada, int nueva_posicion) {
 	int cant_entradas = entradas_que_ocupa(entrada);
 	almac_liberar_entradas(entrada->indice, cant_entradas);
 	char* valor = obtener_valor_de_entrada(entrada);

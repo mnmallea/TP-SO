@@ -105,7 +105,7 @@ void atender_planificador(int socket) {
 			break; //el break mas necesario de la historia
 		case SOLICITUD_STATUS_CLAVE:
 			;
-			char* clave;
+			char* clave = NULL;
 			int respuesta = try_recibirPaqueteVariable(socket_planificador,
 					(void**) &clave);
 			if (respuesta <= 0) {
@@ -115,7 +115,7 @@ void atender_planificador(int socket) {
 			}
 			log_info(logger, "Recuperando el status de la clave %s", clave);
 			informar_status_clave(clave);
-			//todo implementar esto
+			free(clave);
 			break;
 		default:
 			respuesta_planificador = cod_operacion;
@@ -169,8 +169,10 @@ void atender_instancia(int sockfd) {
 	while (1) {
 		sem_wait(&instancia->semaforo_instancia);
 		if (enviar_cod_operacion(instancia->socket, INSTANCIA_COMPACTAR) < 0) {
-			log_error(logger, "La instancia % se cayo", instancia->nombre);
+			log_error(logger, "La instancia % se cayo al enviarla a compactar",
+					instancia->nombre);
 			instancia_desactivar(instancia->nombre);
+			sem_post(&semaforo_compactacion);
 			return;
 		}
 		t_protocolo cod_op = recibir_cod_operacion(instancia->socket);
@@ -186,7 +188,9 @@ void atender_instancia(int sockfd) {
 					instancia->nombre);
 			break;
 		case ERROR_CONEXION:
-			log_error(logger, "La instancia %s se cayo", instancia->nombre);
+			log_error(logger,
+					"La instancia %s se cayo durante el proceso de compactacion",
+					instancia->nombre);
 			sem_post(&semaforo_compactacion);
 			instancia_desactivar(instancia->nombre);
 			return;
