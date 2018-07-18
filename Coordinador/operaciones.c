@@ -179,8 +179,8 @@ int set_tras_compactacion(t_instancia* instancia, char* clave, char* valor) {
 		agregar_clave_almacenada(instancia, clave);
 		instancia_actualizar_entradas_libres(instancia);
 		log_debug(logger,
-				"SET %s %s exitoso tras la compactacion en instancia %s",
-				instancia->nombre);
+				"SET %s %s exitoso tras la compactacion en instancia %s", clave,
+				valor, instancia->nombre);
 		return 0;
 		break;
 	case SOLICITUD_COMPACTACION:

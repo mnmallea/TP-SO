@@ -105,7 +105,7 @@ void atender_planificador(int socket) {
 			break; //el break mas necesario de la historia
 		case SOLICITUD_STATUS_CLAVE:
 			;
-			char* clave;
+			char* clave = NULL;
 			int respuesta = try_recibirPaqueteVariable(socket_planificador,
 					(void**) &clave);
 			if (respuesta <= 0) {
@@ -115,7 +115,7 @@ void atender_planificador(int socket) {
 			}
 			log_info(logger, "Recuperando el status de la clave %s", clave);
 			informar_status_clave(clave);
-			//todo implementar esto
+			free(clave);
 			break;
 		default:
 			respuesta_planificador = cod_operacion;

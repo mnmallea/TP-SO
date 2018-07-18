@@ -8,15 +8,20 @@
 #ifndef ALGORITMOS_H_
 #define ALGORITMOS_H_
 
-#include "cfg_almacenamiento.h"
-#include "tabla_entradas.h"
 #include <commons/collections/list.h>
-#include "instancia.h"
+#include <commons/log.h>
+#include <stdbool.h>
 
+#include "config_instancia.h"
+#include "instancia.h"
+#include "tabla_entradas.h"
+
+
+extern config configuracion;
 
 int posicion;
 
-void ReemplazarSegunAlgoritmo(claveEntrada* cv);
+t_resultado_set ReemplazarSegunAlgoritmo(claveEntrada* cv);
 tablaE* obtener_siguiente_entrada_segun_algoritmo();
 
 

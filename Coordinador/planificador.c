@@ -60,7 +60,7 @@ void informar_status_clave(char* clave) {
 		log_info(logger, "La instancia %s tiene la clave %s", instancia->nombre,
 				clave);
 
-		char* valor;
+		char* valor = NULL;
 		t_status_clave estado_instancia = instancia_solicitar_valor_de_clave(
 				instancia, clave, &valor);
 
@@ -86,6 +86,7 @@ void informar_status_clave(char* clave) {
 		paquete_agregar(paquete, instancia->nombre,
 				strlen(instancia->nombre) + 1);
 		agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
+		free(valor);
 	} else {
 		log_info(logger, "Ninguna instancia tiene la clave %s", clave);
 		agregar_status_a_paquete(paquete, NO_HAY_VALOR);

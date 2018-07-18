@@ -20,6 +20,7 @@
 #include "../syntax-commons/deserializador.h"
 #include "../syntax-commons/my_socket.h"
 #include "../syntax-commons/protocol.h"
+#include "algoritmos.h"
 #include "almacenamiento.h"
 #include "cfg_almacenamiento.h"
 #include "instancia.h"
@@ -32,6 +33,7 @@ void imprimir_almacenamiento();
 
 int main(int argc, char** argv) {
 	nroOperacion = 0;
+	posicion = 0;
 	logger = log_create("instancia.log", "Instancia", true, LOG_LEVEL);
 	configuracion = configurar(argv[1]);
 	int socketCoordinador = conectarse_a_coordinador(
@@ -47,22 +49,12 @@ int main(int argc, char** argv) {
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
 	configurar_timer_dumper();
-	t_list* posiblesAReemplazar = list_create();
 	while (escucha) {
 		int resultado;
 		switch (recibir_cod_operacion(socketCoordinador)) {
 		case OP_SET:
 			log_trace(logger, "Se procede a realizar el codigo de op_set");
-			resultado = operacion_set(socketCoordinador);
-			log_trace(logger, "se obtuvo el resultado (%d)", resultado);
-			if (resultado >= 0) {
-				log_trace(logger, "SET arrojo resultado EXITO");
-				enviar_cod_operacion(socketCoordinador, EXITO);
-				mandar_mensaje(socketCoordinador, almac_entradas_disponibles());
-			} else {
-				log_trace(logger, "SET arrojo resultado ERROR");
-				enviar_cod_operacion(socketCoordinador, ERROR);
-			}
+			operacion_set(socketCoordinador);
 			nroOperacion++;
 			imprimir_almacenamiento();
 			break;
@@ -82,7 +74,7 @@ int main(int argc, char** argv) {
 			if (resultado >= 0) {
 				log_trace(logger, "STORE arrojo resultado EXITO");
 				enviar_cod_operacion(socketCoordinador, EXITO);
-				mandar_mensaje(socketCoordinador, entradasLibres);
+				mandar_mensaje(socketCoordinador, almac_entradas_disponibles());
 			} else {
 				log_trace(logger, "STORE recibio resultado ERROR");
 				enviar_cod_operacion(socketCoordinador, ERROR);
@@ -124,18 +116,19 @@ int main(int argc, char** argv) {
 			break;
 		case INSTANCIA_COMPACTAR:
 			log_info(logger, "Estoy compactando ...");
+			compactar();
 			enviar_cod_operacion(socketCoordinador, EXITO);
-			//si falla deberia contestarle ERROR
 			break;
 		case SOLICITUD_VALOR:
 			//recibo una clave voy a la tabla de entradas me fijo la posicion y voy al almacenamiento y la saco y la devuelvo
 			responder_solicitud_clave(socketCoordinador);
 			break;
 		default:
-			log_info(logger, "no se pudo interpretar el mensaje");
+			log_error(logger,
+					"No se pudo interpretar el mensaje del coordinador o este se ha desconectado");
 			eliminarAlmacenamiento();
 			//TODO	destruirTE();
-			free(posiblesAReemplazar);
+			list_destroy_and_destroy_elements(tabla, entrada_destroyer);
 			close(socketCoordinador);
 			escucha = 0;
 
@@ -164,7 +157,7 @@ void responder_solicitud_clave(int sockfd) {
 	char* valor = obtener_valor_de_clave(clave);
 	free(clave);
 
-	if(valor == NULL){
+	if (valor == NULL) {
 		log_debug(logger, "Se informa al coordinador VALOR_NO_ENCONTRADO");
 		enviar_cod_operacion(sockfd, VALOR_NO_ENCONTRADO);
 		return;
@@ -175,11 +168,11 @@ void responder_solicitud_clave(int sockfd) {
 	return;
 }
 
-void imprimir_almacenamiento(){
+void imprimir_almacenamiento() {
 	char* alm = ato->dato;
-	int i,j;
-	for(i = 0; i < obtenerEntradasTotales(); i++){
-		for(j=0; j < obtenerTamanioEntrada(); j++){
+	int i, j;
+	for (i = 0; i < obtenerEntradasTotales(); i++) {
+		for (j = 0; j < obtenerTamanioEntrada(); j++) {
 			putchar(alm[i * obtenerTamanioEntrada() + j]);
 		}
 		printf("\n");
