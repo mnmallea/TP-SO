@@ -90,7 +90,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		return;
 		break;
 	case EXITO:
-		;
+		;// Caso en que la clave la tenga una instancia previamente caida
 		t_instancia* instancia_caida_con_clave = instancia_inactiva_con_clave(
 				clave);
 		if (instancia_caida_con_clave != NULL) {
@@ -102,6 +102,8 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 			return;
 		}
+
+		// Caso en que la clave la tenga una instancia que esta disponible (hasta el momento)
 		ELEGIR_INSTANCIA: instancia_elegida = instancia_disponible_con_clave(
 				clave);
 		bool instancia_tenia_clave;
@@ -114,20 +116,27 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			instancia_tenia_clave = false;
 		}
 		log_debug(logger, "Instancia elegida: %s", instancia_elegida->nombre);
+
+		/*
+		 * Comienza la comunicación con la instancia elegida
+		 */
+		pthread_mutex_lock(&instancia_elegida->mutex_comunicacion);
 		if (enviar_set(instancia_elegida->socket, clave, valor) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida->nombre);
 			if (instancia_tenia_clave) {
 				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+				return;
 			} else {
 				log_info(logger,
 						"La instancia %s se cayó, se elegirá otra instancia ya que esta aún no tenía la clave",
 						instancia_elegida->nombre);
 				goto ELEGIR_INSTANCIA;
 			}
-			return;
+
 		}
+
 		t_protocolo respuesta_instancia = recibir_cod_operacion(
 				instancia_elegida->socket);
 
@@ -153,7 +162,11 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		case SOLICITUD_COMPACTACION:
 			log_info(logger, "La instancia %s requiere compactación",
 					instancia_elegida->nombre);
+
+			pthread_mutex_unlock(&instancia_elegida->mutex_comunicacion);
 			realizar_compactacion();
+			pthread_mutex_lock(&instancia_elegida->mutex_comunicacion);
+
 			int resultado_compactacion = set_tras_compactacion(
 					instancia_elegida, clave, valor);
 			if (resultado_compactacion) {
@@ -170,6 +183,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			instancia_desactivar(instancia_elegida->nombre);
 			if (instancia_tenia_clave) {
 				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
+				return; //no borrar esto
 			} else {
 				log_info(logger,
 						"La instancia %s se cayó, se elegirá otra instancia ya que esta aún no tenía la clave",
@@ -177,6 +191,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 				goto ELEGIR_INSTANCIA;
 			}
 		}
+		pthread_mutex_unlock(&instancia_elegida->mutex_comunicacion);
 
 		break;
 	default:
@@ -195,7 +210,6 @@ int set_tras_compactacion(t_instancia* instancia, char* clave, char* valor) {
 	if (enviar_set(instancia->socket, clave, valor) < 0) {
 		log_error(logger, "Error al enviar set a instancia %s",
 				instancia->nombre);
-		instancia_desactivar(instancia->nombre);
 		log_warning(logger, "La instancia %s se ha caido tras la compactacion",
 				instancia->nombre);
 		return -1;
@@ -246,7 +260,12 @@ void realizar_store(t_esi* esi, char* clave) {
 				esi->id);
 		break;
 	case EXITO:
-		;
+		informar_liberacion_clave(clave); //Se le informa al planificador que la clave debe ser desbloqueada
+
+		/*
+		 * Se busca a la instancia que tiene la clave en el sistema
+		 */
+
 		t_instancia* instancia_muerta = instancia_inactiva_con_clave(clave);
 		if (instancia_muerta != NULL) {
 			log_error(logger,
@@ -267,6 +286,11 @@ void realizar_store(t_esi* esi, char* clave) {
 		}
 		log_debug(logger, "Instancia elegida: %s,ya que tiene la clave \"%s\"",
 				instancia_elegida->nombre, clave);
+		/*
+		 * Comienza comunicacion con la instancia
+		 */
+
+		pthread_mutex_lock(&instancia_elegida->mutex_comunicacion);
 		if (enviar_store(instancia_elegida->socket, clave) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
@@ -303,9 +327,10 @@ void realizar_store(t_esi* esi, char* clave) {
 					esi->id, instancia_elegida->nombre);
 			instancia_desactivar(instancia_elegida->nombre);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
-
+			return; //importante
 		}
-		informar_liberacion_clave(clave);
+
+		pthread_mutex_unlock(&instancia_elegida->mutex_comunicacion);
 		break;
 	case CLAVE_NO_BLOQUEADA_EXCEPTION:		//aca la clave esta bloqueada
 	case CLAVE_NO_IDENTIFICADA_EXCEPTION:
