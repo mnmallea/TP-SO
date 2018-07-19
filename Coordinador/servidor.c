@@ -110,7 +110,8 @@ void atender_planificador(int socket) {
 					(void**) &clave);
 			if (respuesta <= 0) {
 				free(clave);
-				exit_error_with_msg("Error en la conexion con el planificador");
+				exit_error_with_msg(
+						"Error en la conexion con el planificador al recibir solicitud status clave");
 			}
 			log_info(logger, "Recuperando el status de la clave %s", clave);
 			informar_status_clave(clave);
@@ -180,7 +181,7 @@ void atender_instancia(int sockfd) {
 		if (enviar_cod_operacion(instancia->socket, INSTANCIA_COMPACTAR) < 0) {
 			log_error(logger, "La instancia % se cayo al enviarla a compactar",
 					instancia->nombre);
-			instancia_desactivar(instancia->nombre);
+			instancia_desactivar_y_post(instancia);
 			sem_post(&semaforo_compactacion);
 			return;
 		}
@@ -201,7 +202,7 @@ void atender_instancia(int sockfd) {
 					"La instancia %s se cayo durante el proceso de compactacion",
 					instancia->nombre);
 			sem_post(&semaforo_compactacion);
-			instancia_desactivar(instancia->nombre);
+			instancia_desactivar_y_post(instancia);
 			return;
 		default:
 			log_warning(logger, "Mensaje no esperado: %s", cod_op);

@@ -84,7 +84,7 @@ void liberar_instancia(t_instancia* instancia) {
 	}
 }
 
-void instancia_destroyer(void* instancia){
+void instancia_destroyer(void* instancia) {
 	liberar_instancia(instancia);
 }
 
@@ -126,8 +126,7 @@ void instancia_desactivar(char* nombre_instancia) {
 	}
 	close(instancia->socket);
 	instancia->socket = -1; //Importante!!
-	pthread_mutex_unlock(&instancia->mutex_comunicacion);
-	sem_destroy(&instancia->semaforo_instancia);
+
 	instancia_agregar_a_inactivas(instancia);
 
 	if (pthread_equal(instancia->thread, pthread_self())) {
@@ -275,9 +274,13 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	log_info(logger, "La instancia %s ha sido relevantada", instancia->nombre);
 	instancia->thread = pthread_self();
 	instancia->socket = socket;
+
+	if (sem_destroy(&instancia->semaforo_instancia))
+		log_warning(logger, "Error al destruir semaforo instancia");
 	sem_init(&instancia->semaforo_instancia, 0, 0);
 
-	pthread_mutex_destroy(&instancia->mutex_comunicacion);
+	if (pthread_mutex_destroy(&instancia->mutex_comunicacion))
+		log_error(logger, "Error al destruir mutex comunicacion instancia");
 	pthread_mutex_init(&instancia->mutex_comunicacion, NULL);
 
 	instancia_agregar_a_activas(instancia);
@@ -336,4 +339,9 @@ t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia,
 		log_warning(logger, "Mensaje no esperado de la instancia");
 		return INSTANCIA_CAIDA;
 	}
+}
+
+void instancia_desactivar_y_post(t_instancia* instancia) {
+	pthread_mutex_unlock(&instancia->mutex_comunicacion);
+	instancia_desactivar(instancia->nombre);
 }

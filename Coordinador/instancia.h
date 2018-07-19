@@ -41,5 +41,6 @@ t_instancia* instancia_sacar_de_activas(char* nombre_instancia);
 t_instancia* instancia_con_clave_en_lista(char* clave, t_list* lista_instancias);
 t_instancia* instancia_inactiva_con_clave(char* clave);
 void instancia_destroyer(void* instancia);
+void instancia_desactivar_y_post(t_instancia* instancia);
 
 #endif /* INSTANCIA_H_ */
