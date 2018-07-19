@@ -25,7 +25,7 @@ void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {
 			< 0) {
 		paquete_destruir(paquete);
 		//hay que liberar varias cosas
-		exit_error_with_msg("Error en la conexion con el planificador");
+		exit_error_with_msg("Error en la conexion con el planificador al realizar consulta de clave");
 	}
 	paquete_destruir(paquete);
 }

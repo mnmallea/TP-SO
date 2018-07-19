@@ -34,22 +34,24 @@ void realizar_get(t_esi* esi, char* clave) {
 	switch (cod_op) {
 	case BLOQUEO_ESI: //en realidad es que la clave estaba ocupada
 		log_info(logger, "[ESI %d] Clave ocupada %s", esi->id, clave);
-		send(esi->socket, &cod_op, sizeof(t_protocolo), 0);
+		enviar_cod_operacion(esi->socket, cod_op);
 		return;
 		break;
 	case EXITO:
 		log_info(logger, "[ESI %d] Get realizado exitosamente", esi->id);
-		send(esi->socket, &cod_op, sizeof(t_protocolo), 0);
+		enviar_cod_operacion(esi->socket, cod_op);
 		break;
 	case MURIO_ESI_CORRIENDO:
 		log_info(logger,
 				"El ESI %d actual ha muerto mientras intentaba realizar una operacion",
 				esi->id);
+		enviar_cod_operacion(esi->socket, ABORTA);
 		break;
 	default:
 		if (cod_op < 0) {
-			exit_error_with_msg("Error de conexion con el planificador");
+			exit_error_with_msg("Error de conexion con el planificador al realizar GET");
 		}
+		enviar_cod_operacion(esi->socket, ABORTA);
 		log_error(logger, "Respuesta del planificador desconocida");
 	}
 }
@@ -82,6 +84,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		log_info(logger,
 				"El ESI %d actual ha muerto mientras intentaba realizar una operacion",
 				esi->id);
+		enviar_cod_operacion(esi->socket, ABORTA);
 		break;
 	case CLAVE_NO_BLOQUEADA_EXCEPTION: //en realidad es que la clave estaba ocupada
 	case CLAVE_NO_IDENTIFICADA_EXCEPTION:
@@ -124,7 +127,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		if (enviar_set(instancia_elegida->socket, clave, valor) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
-			instancia_desactivar(instancia_elegida->nombre);
+			instancia_desactivar_y_post(instancia_elegida);
 			if (instancia_tenia_clave) {
 				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 				return;
@@ -171,7 +174,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 					instancia_elegida, clave, valor);
 			if (resultado_compactacion) {
 				enviar_cod_operacion(esi->socket, ABORTA);
-				instancia_desactivar(instancia_elegida->nombre);
+				instancia_desactivar_y_post(instancia_elegida);
 				return;
 			}
 			enviar_cod_operacion(esi->socket, EXITO);
@@ -180,7 +183,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 			log_error(logger,
 					"[ESI %d] Error al recibir retorno de instancia %s",
 					esi->id, instancia_elegida->nombre);
-			instancia_desactivar(instancia_elegida->nombre);
+			instancia_desactivar_y_post(instancia_elegida);
 			if (instancia_tenia_clave) {
 				enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 				return; //no borrar esto
@@ -198,6 +201,7 @@ void realizar_set(t_esi* esi, char* clave, char* valor) {
 		if (cod_op < 0) {
 			exit_error_with_msg("Error de conexion con el planificador");
 		}
+		enviar_cod_operacion(esi->socket, ABORTA);
 		log_error(logger, "Respuesta del planificador desconocida");
 		//todo no se que haria en este caso
 	}
@@ -258,6 +262,7 @@ void realizar_store(t_esi* esi, char* clave) {
 		log_info(logger,
 				"El ESI %d actual ha muerto mientras intentaba realizar una operacion",
 				esi->id);
+		enviar_cod_operacion(esi->socket, ABORTA);
 		break;
 	case EXITO:
 		informar_liberacion_clave(clave); //Se le informa al planificador que la clave debe ser desbloqueada
@@ -294,7 +299,7 @@ void realizar_store(t_esi* esi, char* clave) {
 		if (enviar_store(instancia_elegida->socket, clave) < 0) {
 			log_error(logger, "Error al enviar set a instancia %s",
 					instancia_elegida->nombre);
-			instancia_desactivar(instancia_elegida->nombre);
+			instancia_desactivar_y_post(instancia_elegida);
 			remover_clave_almacenada(instancia_elegida, clave);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 
@@ -325,7 +330,7 @@ void realizar_store(t_esi* esi, char* clave) {
 			log_error(logger,
 					"[ESI %d] Error al recibir retorno de instancia %s",
 					esi->id, instancia_elegida->nombre);
-			instancia_desactivar(instancia_elegida->nombre);
+			instancia_desactivar_y_post(instancia_elegida);
 			enviar_cod_operacion(esi->socket, INSTANCIA_CAIDA_EXCEPTION);
 			return; //importante
 		}
@@ -341,6 +346,7 @@ void realizar_store(t_esi* esi, char* clave) {
 		if (cod_op < 0) {
 			exit_error_with_msg("Error de conexion con el planificador");
 		}
+		enviar_cod_operacion(esi->socket, ABORTA);
 		log_error(logger, "Respuesta del planificador desconocida");
 	}
 }
