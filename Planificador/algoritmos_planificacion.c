@@ -89,13 +89,18 @@ t_esi *obtener_proximo_segun_sjf(t_list *lista_esis) {
 
 }
 
-void obtener_rr(void* esi) {
+void obtener_rr(void* _esi) {
 	double alfa = configuracion.alfa;
 
-	double estim_actual = alfa * ((t_esi*) esi)->estim_anter
-			+ (1 - alfa) * ((t_esi*) esi)->rafaga_anterior;
-	((t_esi*) esi)->response_ratio = (((t_esi*) esi)->viene_esperando
-			+ estim_actual) / estim_actual;
+	t_esi* esi = _esi;
+		log_trace(logger, "El alfa es %f", alfa);
+		esi->estim_actual = alfa * esi->estim_anter
+				+ (1 - alfa) * esi->rafaga_anterior;
+
+	esi->response_ratio = (esi->viene_esperando + esi->estim_actual) / esi->estim_actual;
+
+	log_info(logger, "La ESTIMACIÓN de la proxima rafaga para el ESI %d es %f, la estimacion anterior era %f, rafaga anterior: %d",
+				esi->id, esi->estim_actual, esi->estim_anter, esi->rafaga_anterior);
 
 	log_info(logger, "El response ratio para el ESI %d es %f, la estimacion es %f, esperando: %d",
 				((t_esi*) esi)->id, ((t_esi*) esi)->response_ratio, ((t_esi*) esi)->estim_actual, ((t_esi*) esi)->viene_esperando);
