@@ -16,6 +16,8 @@
 #include "error.h"
 #include "instancia.h"
 
+t_paquete* empaquetar_status_clave(char* clave);
+
 void consulta_de_clave(char* clave, t_protocolo tipo_consulta) {
 	t_paquete* paquete = paquete_crear();
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
@@ -51,19 +53,18 @@ void agregar_status_a_paquete(t_paquete* paquete, t_status_clave status) {
 	paquete_agregar_sin_tamanio(paquete, &status, sizeof(status));
 }
 
-void informar_status_clave(char* clave) {
+t_paquete* empaquetar_status_clave(char* clave) {
 	t_paquete* paquete = paquete_crear();
+	t_instancia* instancia;
 
-	t_instancia* instancia = instancia_disponible_con_clave(clave);
-
+	//Este seria el unico caso en el que te comunicas con la instancia que tiene la clave
+	instancia = instancia_disponible_con_clave(clave);
 	if (instancia != NULL) {
 		log_info(logger, "La instancia %s tiene la clave %s", instancia->nombre,
 				clave);
-
 		char* valor = NULL;
 		t_status_clave estado_instancia = instancia_solicitar_valor_de_clave(
 				instancia, clave, &valor);
-
 		switch (estado_instancia) {
 		case INSTANCIA_CAIDA:
 			log_warning(logger, "La instancia está caida");
@@ -81,35 +82,58 @@ void informar_status_clave(char* clave) {
 			;
 			// esto nunca deberia pasar
 		}
-
 		agregar_status_a_paquete(paquete, estado_instancia);
 		paquete_agregar(paquete, instancia->nombre,
 				strlen(instancia->nombre) + 1);
 		agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
 		free(valor);
-	} else {
-		log_info(logger, "Ninguna instancia tiene la clave %s", clave);
-		agregar_status_a_paquete(paquete, NO_HAY_VALOR);
-		agregar_status_a_paquete(paquete, INSTANCIA_NO_ASIGNADA);
-		instancia = simular_algoritmo(clave);
-		if (instancia != NULL) {
-			log_info(logger,
-					"Se elegiria a la instancia %s para almacenar la clave %s",
-					instancia->nombre, clave);
-			agregar_status_a_paquete(paquete, HAY_SIMULACION);
-			paquete_agregar(paquete, instancia->nombre,
-					strlen(instancia->nombre) + 1);
-		} else {
-			log_warning(logger, "No se pudo simular el algoritmo, tal vez no haya suficientes instancias disponibles");
-			agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
-		}
-
+		return paquete;
 	}
+
+	//El caso en que la instancia que tiene la clave ya esté caida
+	instancia = instancia_inactiva_con_clave(clave);
+	if (instancia != NULL) {
+		log_info(logger,
+				"La instancia %s tiene la clave \"%s\", pero no está disponible",
+				instancia->nombre, clave);
+		agregar_status_a_paquete(paquete, NO_HAY_VALOR);
+		agregar_status_a_paquete(paquete, INSTANCIA_CAIDA);
+		paquete_agregar(paquete, instancia->nombre,
+				strlen(instancia->nombre) + 1);
+		agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
+		return paquete;
+	}
+
+	//Caso en el que ninguna instancia tiene la clave y se realiza la simulacion
+	log_info(logger, "Ninguna instancia tiene la clave %s", clave);
+	agregar_status_a_paquete(paquete, NO_HAY_VALOR);
+	agregar_status_a_paquete(paquete, INSTANCIA_NO_ASIGNADA);
+	instancia = simular_algoritmo(clave);
+	if (instancia != NULL) {
+		log_info(logger,
+				"Se elegiria a la instancia %s para almacenar la clave %s",
+				instancia->nombre, clave);
+		agregar_status_a_paquete(paquete, HAY_SIMULACION);
+		paquete_agregar(paquete, instancia->nombre,
+				strlen(instancia->nombre) + 1);
+	} else {
+		log_warning(logger,
+				"No se pudo simular el algoritmo, tal vez no haya suficientes instancias disponibles");
+		agregar_status_a_paquete(paquete, NO_HAY_SIMULACION);
+	}
+
+	return paquete;
+}
+
+void informar_status_clave(char* clave) {
+	t_paquete* paquete = empaquetar_status_clave(clave);
 	log_info(logger, "Enviando paquete de status clave al Planificador");
 
-	if(paquete_enviar_con_codigo(paquete, RESPUESTA_STATUS_CLAVE, socket_planificador)){
+	if (paquete_enviar_con_codigo(paquete, RESPUESTA_STATUS_CLAVE,
+			socket_planificador)) {
 		paquete_destruir(paquete);
-		exit_error_with_msg("Error al enviar respuesta status clave al planificador");
+		exit_error_with_msg(
+				"Error al enviar respuesta status clave al planificador");
 	}
 
 	log_info(logger, "Paquete enviado");
