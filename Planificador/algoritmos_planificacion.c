@@ -97,6 +97,11 @@ void obtener_rr(void* esi) {
 	((t_esi*) esi)->response_ratio = (((t_esi*) esi)->viene_esperando
 			+ estim_actual) / estim_actual;
 
+	log_info(logger, "El response ratio para el ESI %d es %f, la estimacion es %f, esperando: %d",
+				((t_esi*) esi)->id, ((t_esi*) esi)->response_ratio, ((t_esi*) esi)->estim_actual, ((t_esi*) esi)->viene_esperando);
+
+
+
 }
 
 t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis) {
@@ -141,11 +146,11 @@ t_esi *obtener_proximo_segun_sjfcd(t_list *lista_esis) {
 	//log_trace(logger, "antes de tomar mutex");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
 	t_list *lista_nueva = list_duplicate(lista_esis);
-	log_trace(logger, "Creo lista");
+	//log_trace(logger, "Creo lista");
 	list_iterate(lista_nueva, obtener_proximas_rafagas);
-	log_trace(logger, "Itera lista");
+	//log_trace(logger, "Itera lista");
 	list_sort(lista_nueva, menor_remaining_time);
-	log_trace(logger, "ordena lista");
+	//log_trace(logger, "ordena lista");
 
 	t_esi *esi_elegido = list_get(lista_nueva, 0);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
