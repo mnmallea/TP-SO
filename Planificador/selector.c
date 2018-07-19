@@ -65,7 +65,7 @@ void listener(void) {
 
 				if (esi_corriendo != NULL && i == esi_corriendo->socket) {
 					if (nbytes <= 0) {
-						log_debug(logger, "Cerrando conexion del esi %d...", i);
+						log_debug(logger, "Cerrando conexion del esi %d...", esi_corriendo->id);
 						int morite_hdp = -1;
 						send(esi_corriendo->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
 						cerrarConexion(&esi_corriendo->socket);
