@@ -137,6 +137,8 @@ void instancia_desactivar(char* nombre_instancia) {
 				instancia->nombre);
 	}
 
+	log_info(logger, "La instancia %s se movió a instancias inactivas", nombre_instancia);
+
 }
 
 /*
@@ -146,13 +148,19 @@ void instancia_desactivar(char* nombre_instancia) {
  */
 t_instancia* instancia_sacar_de_activas(char* nombre_instancia) {
 	t_instancia * instancia;
-	pthread_mutex_lock(&mutex_instancias_disponibles);
+
 	bool esLaInstanciaQueBusco(void* una_instancia) {
 		t_instancia* inst = una_instancia;
 		return string_equals_ignore_case(inst->nombre, nombre_instancia);
 	}
+	pthread_mutex_lock(&mutex_instancias_disponibles);
 	instancia = list_remove_by_condition(lista_instancias_disponibles,
 			esLaInstanciaQueBusco);
+	if(instancia == NULL){
+		log_warning(logger, "No se puede sacar la instancia %s de activas porque no está en la lista", nombre_instancia);
+		pthread_mutex_unlock(&mutex_instancias_disponibles);
+		return NULL;
+	}
 	sem_wait(&contador_instancias_disponibles);
 	pthread_mutex_unlock(&mutex_instancias_disponibles);
 	return instancia;
