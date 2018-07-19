@@ -125,7 +125,8 @@ void instancia_desactivar(char* nombre_instancia) {
 		return;
 	}
 	close(instancia->socket);
-	pthread_mutex_destroy(&instancia->mutex_comunicacion);
+	instancia->socket = -1; //Importante!!
+	pthread_mutex_unlock(&instancia->mutex_comunicacion);
 	sem_destroy(&instancia->semaforo_instancia);
 	instancia_agregar_a_inactivas(instancia);
 
@@ -275,6 +276,8 @@ t_instancia* instancia_relevantar(char* nombre, int socket) {
 	instancia->thread = pthread_self();
 	instancia->socket = socket;
 	sem_init(&instancia->semaforo_instancia, 0, 0);
+
+	pthread_mutex_destroy(&instancia->mutex_comunicacion);
 	pthread_mutex_init(&instancia->mutex_comunicacion, NULL);
 
 	instancia_agregar_a_activas(instancia);
@@ -328,6 +331,7 @@ t_status_clave instancia_solicitar_valor_de_clave(t_instancia* instancia,
 		}
 		return INSTANCIA_OK;
 	default:
+		pthread_mutex_unlock(&instancia->mutex_comunicacion);
 		//si llegaste hasta aca es porque algo salio mal
 		log_warning(logger, "Mensaje no esperado de la instancia");
 		return INSTANCIA_CAIDA;
