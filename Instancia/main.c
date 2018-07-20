@@ -34,7 +34,13 @@ void imprimir_almacenamiento();
 int main(int argc, char** argv) {
 	nroOperacion = 0;
 	posicion = 0;
-	logger = log_create("instancia.log", "Instancia", true, LOG_LEVEL);
+	char * nombreInst;
+	char * nombreLog=malloc(sizeof(char)*25);
+
+	nombreInst=obtenerNombre(argv[1]);
+	nombreLog=strcat(strcpy(nombreLog,obtenerNombre(argv[1])),".log");
+	logger = log_create(nombreLog, nombreInst, true, LOG_LEVEL);
+
 	configuracion = configurar(argv[1]);
 	int socketCoordinador = conectarse_a_coordinador(
 			configuracion.ip_coordinador, configuracion.puerto_coordinador,
@@ -147,6 +153,8 @@ int main(int argc, char** argv) {
 
 	limpiar_configuracion();
 	log_destroy(logger);
+	free(nombreInst);
+	free(nombreLog);
 	exit(0);
 }
 
@@ -187,4 +195,25 @@ void imprimir_almacenamiento() {
 		}
 		printf("\n");
 	}
+}
+
+char *obtenerNombre(char *path){
+	char *t=malloc(sizeof(char)*20);
+	char *q,*p=path;
+	int cont = 0;
+		while(*p!='i'&&*p!='\0'){
+			p = (p+1);
+		}
+		q=p;
+		while(*q!='c'&&*q!='\0'){
+			q = (q+1);
+			cont++;
+		}
+		if(*q=='c'){
+			cont=cont-1;
+		}
+
+		strncpy(t,p,cont);
+	return t;
+
 }

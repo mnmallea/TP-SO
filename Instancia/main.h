@@ -9,7 +9,7 @@
 
 config configuracion;
 t_log *logger;
-
+char *obtenerNombre(char *path);
 
 
 #endif /* MAIN_H_ */
