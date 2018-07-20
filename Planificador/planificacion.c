@@ -201,9 +201,7 @@ void correr(t_esi* esi) {
  */
 t_esi *obtener_nuevo_esi_a_correr() {
 	t_esi* prox_esi;
-	//log_debug(logger, "Esperando el contador de esis");
 	CONTADOR: sem_wait(&contador_esis);
-	//log_debug(logger, "Pase el contador de esi a correr");
 	pthread_mutex_lock(&mutex_pausa);
 	if (planificacion_pausada) {
 		pthread_mutex_unlock(&mutex_pausa);
@@ -213,7 +211,6 @@ t_esi *obtener_nuevo_esi_a_correr() {
 
 	} else {
 		pthread_mutex_unlock(&mutex_pausa);
-		//log_debug(logger, "deslockeo mutex pausa");
 	}
 	pthread_mutex_lock(&mutex_esi_corriendo);
 
@@ -243,7 +240,6 @@ t_esi *obtener_nuevo_esi_a_correr() {
 				nuevo_esi(esi_corriendo);
 			}
 
-			//prox_esi->estim_anter = prox_esi->estim_actual;
 			pthread_mutex_lock(&mutex_lista_esis_listos);
 			remover_esi_de_lista(lista_esis_listos,prox_esi->id);
 			pthread_mutex_unlock(&mutex_lista_esis_listos);
@@ -296,7 +292,6 @@ void finalizar_esi_corriendo(t_esi* esi_a_finalizar) {
 
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	esi_corriendo = NULL;
-	//log_debug(logger, "Nullea el corriendo");
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 
 }
@@ -322,7 +317,6 @@ void finalizar_esi_sync(t_esi* esi_a_finalizar) {
 	pthread_mutex_lock(&mutex_esi_corriendo);
 	if (esi_corriendo != NULL && esi_corriendo->id == esi_a_finalizar->id) {
 		esi_corriendo = NULL;
-		//log_debug(logger, "Nullea el corriendo");
 	}
 	pthread_mutex_unlock(&mutex_esi_corriendo);
 }
@@ -431,8 +425,7 @@ void nueva_solicitud(int socket, char* clave, int id_pedido) {
 
 	//valido que la clave no se encuntre ya tomada por otro esi
 
-	pthread_mutex_lock(&mutex_esi_corriendo); //aca se queda el dl
-	log_debug(logger, "paso mutex nueva solicitud");
+	pthread_mutex_lock(&mutex_esi_corriendo);
 
 	if (esi_corriendo == NULL || esi_corriendo->id != id_pedido) {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
@@ -495,7 +488,6 @@ void liberar_recursos(t_esi* esi_a_liberar) {
 		list_iterate(lista_claves_a_desbloquear, liberar_clave);
 	}
 	list_destroy_and_destroy_elements(lista_claves_a_desbloquear, free);
-	//log_debug(logger, "Paso el cont");
 
 }
 

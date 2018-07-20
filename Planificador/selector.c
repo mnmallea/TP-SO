@@ -270,11 +270,11 @@ void atender_error(int nbytes) {
 				t_esi* esi_a_matar = remover_esi_de_bloqueados_por_id(idDelSocket);
 				if(esi_a_matar == NULL)
 					return;
-				log_debug(logger, "ESI %d removido DE BLOQUEADOSSS!!!!!!!!!!!!!", esi_a_matar->id);
+				//log_debug(logger, "ESI %d removido DE BLOQUEADOSSS!!!!!!!!!!!!!", esi_a_matar->id);
 				finalizar_esi_sync(esi_a_matar);
-				log_debug(logger, "Finalizo");
+				//log_debug(logger, "Finalizo");
 				eliminar_de_bloqueados(esi_a_matar);
-				log_debug(logger, "Elimino de bloqueados");
+				//log_debug(logger, "Elimino de bloqueados");
 			}
 
 		} else {
@@ -283,7 +283,7 @@ void atender_error(int nbytes) {
 					idDelSocket);
 		}
 	}
-	log_debug(logger, "termina de atender el error");
+	//log_debug(logger, "termina de atender el error");
 
 }
 

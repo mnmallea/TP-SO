@@ -69,15 +69,12 @@ void eliminar_de_listos(t_esi* esi_a_eliminar) {
 		return esi_a_eliminar->id == ((t_esi*) esi)->id;
 	}
 	t_esi* esi;
-	//log_debug(logger,"x Lockear");
 	pthread_mutex_lock(&mutex_lista_esis_listos);
-	//log_debug(logger,"Lockeo");
 	esi = list_remove_by_condition(lista_esis_listos, esElEsi);
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
-	//log_debug(logger,"ESI eliminado de listos");
 	if (esi == NULL) {
 		log_warning(logger,
-				"No se pusdo eliminar el esi %d de listos, ya que no está en listos",
+				"No se pudo eliminar el esi %d de listos, ya que no está en listos",
 				esi_a_eliminar->id);
 		return;
 	}
