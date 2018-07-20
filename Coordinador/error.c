@@ -20,10 +20,16 @@ void exit_error_with_msg(char* msg) {
 }
 
 void morir_liberando_recursos(int retorno) {
+	log_debug(logger, "Finalizando ..");
+	pthread_mutex_lock(&mutex_instancias_disponibles);
 	list_destroy_and_destroy_elements(lista_instancias_disponibles,
 			instancia_destroyer);
+	pthread_mutex_unlock(&mutex_instancias_disponibles);
+
+	pthread_mutex_lock(&mutex_instancias_inactivas);
 	list_destroy_and_destroy_elements(lista_instancias_inactivas,
 			instancia_destroyer);
+	pthread_mutex_unlock(&mutex_instancias_inactivas);
 	close(socket_planificador);
 	limpiar_configuracion();
 	log_info(logger, "Recursos liberados");
