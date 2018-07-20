@@ -560,7 +560,7 @@ int rye;
 void deadlock() {
 	idsDL = list_create();
 	dlID=0;
-	log_debug(logger, "Crea lista DL");
+	log_debug(logger, "Iniciando con la busqueda de deadlocks..");
 	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
 	if(list_size(idsDL)==0){
 		printf("No hay DeadLocks en el sistema\n");
@@ -574,16 +574,16 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 	//primero
 	idCandidatoDL = &((t_esi*) esiInicial)->id;
 	if (!list_any_satisfy(idsDL, esta) && *idCandidatoDL != -1) {
-		log_debug(logger, "Entra por el primer ESI (%d)", *idCandidatoDL);
+		//log_trace(logger, "Inicia por el primer ESI (%d)", *idCandidatoDL);
 		candidatoRetiene = claveIncialTomada;
-		log_debug(logger, "Toma clave clave %s", candidatoRetiene);
+		//log_trace(logger, "Retiene la clave %s", candidatoRetiene);
 		dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
 
 		if (!rye) {
-			log_debug(logger, "No cumple RYE");
+			//log_trace(logger, "No cumple RYE");
 			goto DEST;
 		}
-		log_debug(logger, "Espera clave %s", candidatoEspera);
+		//log_trace(logger, "Espera la clave %s", candidatoEspera);
 		rye = 0;
 		//sgtes
 
@@ -591,24 +591,20 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 		idCandidatoDL = &esi_q_retiene->id;
 		while (((t_esi*) esiInicial)->id != *idCandidatoDL) {
 			candidatoRetiene = candidatoEspera;
-			log_debug(logger,
-					"Encontro el ESI(%d) que retiene la clave esperada",
-					*idCandidatoDL);
+			//log_trace(logger,"El ESI(%d) retiene la clave",*idCandidatoDL);
 			if (!list_any_satisfy(idsDL, esta) && *idCandidatoDL != -1) {
-				log_debug(logger,
-						"No es esta retenida por el sistema, ni pertenece a otro deadlock");
-				log_debug(logger, "Toma clave clave %s", candidatoRetiene);
+				//log_debug(logger,"No es esta retenida por el sistema, ni pertenece a otro deadlock");
+				//log_debug(logger, "Toma clave clave %s", candidatoRetiene);
 				dictionary_iterator(dic_esis_bloqueados, buscarClaveQEspera);
 
 				if (!rye) {
 					log_debug(logger, "No cumple RYE");
 					goto DEST;
 				}
-				log_debug(logger, "Espera clave %s", candidatoEspera);
+				//log_debug(logger, "Espera clave %s", candidatoEspera);
 				rye = 0;
 			} else {
-				log_debug(logger,
-						"Esta retenida por el sistema/El esi ya pertenece a un dl\n");
+				//log_debug(logger, "Esta retenida por el sistema/El esi ya pertenece a un dl\n");
 				goto DEST;
 			}
 			esi_q_retiene = dictionary_get(dic_clave_x_esi, candidatoEspera);
