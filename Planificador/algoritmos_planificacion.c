@@ -106,6 +106,7 @@ void obtener_rr(void* _esi) {
 				((t_esi*) esi)->id, ((t_esi*) esi)->response_ratio, ((t_esi*) esi)->estim_actual, ((t_esi*) esi)->viene_esperando);
 
 
+	esi->viene_esperando = 0; //reseteo el viene esperando
 
 }
 
