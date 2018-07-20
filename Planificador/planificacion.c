@@ -553,13 +553,18 @@ int *idCandidatoDL;
 char *candidatoRetiene;
 char *candidatoEspera;
 t_esi *esi_q_retiene;
+int dlID;
 int rye;
-int primer;
+//int primer;
 
 void deadlock() {
 	idsDL = list_create();
+	dlID=0;
 	log_debug(logger, "Crea lista DL");
 	dictionary_iterator(dic_clave_x_esi, itera_por_linea);
+	if(list_size(idsDL)==0){
+		printf("No hay DeadLocks en el sistema\n");
+	}
 	list_destroy(idsDL);
 }
 
@@ -613,11 +618,13 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 		list_add_all(idsDL, listaDL);
 		//print
 		//printf header de la tabla
+		dlID++;
+		printf("\nDL #%d\n",dlID);
 		idCandidatoDL = list_get(listaDL, 0);
-		printf("El ESI (ID:%d) espera al ", *idCandidatoDL);
+		printf("El ESI (ID:%d) espera por el ", *idCandidatoDL);
 		list_remove(listaDL, 0);
 		list_iterate(listaDL, mostrarDL);
-		printf("primer ESI (ID:%d)\n", *idCandidatoDL);
+		printf("ESI (ID:%d)\n", *idCandidatoDL);
 	} else {
 		log_debug(logger,
 				"Esta retenida por el sistema/El esi ya pertenece a un dl\n");
@@ -640,5 +647,6 @@ bool esta(void *esi) {
 }
 
 void mostrarDL(void* candidato) {
-	printf("ESI (ID:%d) que espera al ", *((int*) candidato));
+	printf("ESI (ID:%d)\n", *((int*) candidato));
+	printf("El ESI (ID:%d) espera por el ", *((int*) candidato));
 }
