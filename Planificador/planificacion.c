@@ -622,8 +622,7 @@ void itera_por_linea(char *claveIncialTomada, void *esiInicial) {
 		list_iterate(listaDL, mostrarDL);
 		printf("ESI (ID:%d)\n", *idCandidatoDL);
 	} else {
-		log_debug(logger,
-				"Esta retenida por el sistema/El esi ya pertenece a un dl\n");
+		//log_debug(logger,"Esta retenida por el sistema/El esi ya pertenece a un dl\n");
 	}
 
 	DEST: list_destroy(listaDL);
@@ -633,7 +632,7 @@ void buscarClaveQEspera(char* claveQEspera, void* esisbloq) {
 	if (list_find(esisbloq, esta) != NULL && list_find(idsDL, esta) == NULL) {
 		candidatoEspera = claveQEspera;
 		list_add(listaDL, idCandidatoDL);
-		log_debug(logger, "Encuentra la clave que espera el esi");
+		//log_debug(logger, "Encuentra la clave que espera el esi");
 		rye = 1;
 	}
 }
