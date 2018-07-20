@@ -110,7 +110,8 @@ void atender_planificador(int socket) {
 					(void**) &clave);
 			if (respuesta <= 0) {
 				free(clave);
-				exit_error_with_msg("Error en la conexion con el planificador");
+				exit_error_with_msg(
+						"Error en la conexion con el planificador al recibir solicitud status clave");
 			}
 			log_info(logger, "Recuperando el status de la clave %s", clave);
 			informar_status_clave(clave);
@@ -144,7 +145,9 @@ void atender_instancia(int sockfd) {
 		return;
 	}
 
+	pthread_mutex_lock(&mutex_instancias_disponibles);
 	if (esta_activa_instancia(nombre)) {
+		pthread_mutex_unlock(&mutex_instancias_disponibles);
 		log_info(logger, "La instancia %s ha estado previamente en el sistema",
 				nombre);
 		instancia_desactivar(nombre);
@@ -152,10 +155,17 @@ void atender_instancia(int sockfd) {
 		if (instancia == NULL)
 			return;
 	} else {
+		pthread_mutex_unlock(&mutex_instancias_disponibles);
+		log_info(logger, "La instancia %s ha estado previamente en el sistema",
+				nombre);
+		pthread_mutex_lock(&mutex_instancias_inactivas);
 		if (esta_inactiva_instancia(nombre)) {
+			pthread_mutex_unlock(&mutex_instancias_inactivas);
 			if ((instancia = instancia_relevantar(nombre, sockfd)) == NULL)
 				return;
 		} else {
+			pthread_mutex_unlock(&mutex_instancias_inactivas);
+
 			instancia = crear_instancia(sockfd, nombre,
 					configuracion.cant_entradas);
 			log_info(logger, "La instancia %s ha sido agregada por primera vez",
@@ -167,10 +177,11 @@ void atender_instancia(int sockfd) {
 
 	while (1) {
 		sem_wait(&instancia->semaforo_instancia);
+		pthread_mutex_lock(&instancia->mutex_comunicacion);
 		if (enviar_cod_operacion(instancia->socket, INSTANCIA_COMPACTAR) < 0) {
 			log_error(logger, "La instancia % se cayo al enviarla a compactar",
 					instancia->nombre);
-			instancia_desactivar(instancia->nombre);
+			instancia_desactivar_y_post(instancia);
 			sem_post(&semaforo_compactacion);
 			return;
 		}
@@ -191,11 +202,12 @@ void atender_instancia(int sockfd) {
 					"La instancia %s se cayo durante el proceso de compactacion",
 					instancia->nombre);
 			sem_post(&semaforo_compactacion);
-			instancia_desactivar(instancia->nombre);
+			instancia_desactivar_y_post(instancia);
 			return;
 		default:
 			log_warning(logger, "Mensaje no esperado: %s", cod_op);
 		}
+		pthread_mutex_unlock(&instancia->mutex_comunicacion);
 		sem_post(&semaforo_compactacion);
 	}
 

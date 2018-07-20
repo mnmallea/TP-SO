@@ -38,6 +38,7 @@ void buscar_esi(char* c, void* lista_esis_bloq);
 
 t_esi* obtener_de_listos(int id_a_devolver);
 t_esi* obtener_de_bloqueados(int id_a_devolver);
+t_esi* remover_esi_de_bloqueados_por_id(int id_esi);
 
 
 #endif /* FUNCIONES_AUXILIARES_CONSOLA_H_ */

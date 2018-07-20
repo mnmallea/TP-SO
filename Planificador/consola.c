@@ -233,6 +233,8 @@ void matar_por_consola(int id) {
 		pthread_mutex_unlock(&mutex_esi_corriendo);
 		if (es_un_esi_listo(id)) {
 			t_esi* esi_a_matar = obtener_de_listos(id);
+			if (esi_a_matar == NULL)
+				return;
 			finalizar_esi_sync(esi_a_matar);
 			eliminar_de_listos(esi_a_matar);
 		} else if (es_un_esi_finalizado(id)) {
@@ -240,9 +242,11 @@ void matar_por_consola(int id) {
 					"El esi solicitado para matar(%d) ya se encontraba finalizado",
 					id);
 		} else if (es_un_esi_bloqueado(id)) {
-			t_esi* esi_a_matar = obtener_de_bloqueados(id);
+			t_esi* esi_a_matar = remover_esi_de_bloqueados_por_id(id);
+			if (esi_a_matar == NULL)
+				return;
 			finalizar_esi_sync(esi_a_matar);
-			eliminar_de_bloqueados(esi_a_matar);
+//			eliminar_de_bloqueados(esi_a_matar);
 
 		} else {
 			printf("El esi solicitado para matar(%d) no existe en el sistema",
@@ -258,13 +262,18 @@ void envia_status_clave(char* clave) {
 
 	t_paquete* paquete = paquete_crear();
 	paquete_agregar(paquete, clave, strlen(clave) + 1);
+
+	pthread_mutex_lock(&mutex_coordinador_fd);
 	if (paquete_enviar_con_codigo(paquete, SOLICITUD_STATUS_CLAVE, socketCord)
 			< 0) {
+		pthread_mutex_unlock(&mutex_coordinador_fd);
 		log_error(logger,
 				"Error enviandole el paquete de status clave al coordindor");
 		paquete_destruir(paquete);
 		exit(EXIT_FAILURE);
 	}
+	pthread_mutex_unlock(&mutex_coordinador_fd);
+
 	paquete_destruir(paquete);
 	sem_wait(&coordinador_respondio_paq);
 

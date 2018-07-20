@@ -25,6 +25,7 @@ void inicializar_semaforos() {
 	pthread_mutex_init(&mutex_esi_a_matar_por_consola, NULL);
 	pthread_mutex_init(&mutex_clave_a_bloquear, NULL);
 	pthread_mutex_init(&mutex_set_sockets, NULL);
+	pthread_mutex_init(&mutex_coordinador_fd, NULL);
 
 	sem_init(&pausa_planificacion, 0, 0);
 	sem_init(&coordinador_respondio_paq, 0, 0);

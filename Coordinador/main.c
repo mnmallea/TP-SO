@@ -18,10 +18,15 @@
 #include "sincronizacion.h"
 
 int main(int argc, char **argv) { //aca recibiriamos la ruta del archivo de configuracion como parametro
-	crear_log_operaciones();
 	logger = log_create("coordinador.log", "Coordinador", true, LOG_LEVEL);
+	if(argc != 2){
+		log_error(logger, "Cantidad incorrecta de parámetros");
+		log_destroy(logger);
+		exit(EXIT_FAILURE);
+	}
 	configurar(argv[1]);
 	log_trace(logger, "Coordinador correctamente configurado");
+	crear_log_operaciones();
 	lista_instancias_disponibles = list_create();
 	lista_instancias_inactivas = list_create();
 	inicializar_semaforos();

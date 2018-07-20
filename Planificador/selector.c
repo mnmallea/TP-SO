@@ -49,9 +49,12 @@ void listener(void) {
 		pthread_mutex_lock(&mutex_set_sockets);
 		read_fds = master;
 		pthread_mutex_unlock(&mutex_set_sockets);
+
 		if (select(fdmax + 1, &read_fds, NULL, NULL, NULL) == -1) {
+//			pthread_mutex_unlock(&mutex_set_sockets);
 			log_error(logger, "No se pudo seleccionar conexiones\n");
 		}
+//		pthread_mutex_unlock(&mutex_set_sockets);
 
 		for (i = 0; i <= fdmax; i++) {
 			if (FD_ISSET(i, &read_fds)) {
@@ -65,9 +68,11 @@ void listener(void) {
 
 				if (esi_corriendo != NULL && i == esi_corriendo->socket) {
 					if (nbytes <= 0) {
-						log_debug(logger, "Cerrando conexion del esi %d...", i);
+						log_debug(logger, "Cerrando conexion del esi %d...",
+								esi_corriendo->id);
 						int morite_hdp = -1;
-						send(esi_corriendo->socket, &morite_hdp, sizeof(morite_hdp), MSG_NOSIGNAL);
+						send(esi_corriendo->socket, &morite_hdp,
+								sizeof(morite_hdp), MSG_NOSIGNAL);
 						cerrarConexion(&esi_corriendo->socket);
 						buf = ERROR_CONEXION;
 					}
@@ -141,12 +146,17 @@ void listener(void) {
 
 									pthread_mutex_unlock(&mutex_esi_corriendo);
 
+									pthread_mutex_lock(&mutex_coordinador_fd);
 									enviar_cod_operacion(i, cod_op);
+									pthread_mutex_unlock(&mutex_coordinador_fd);
 
 								} else {
 									pthread_mutex_unlock(&mutex_esi_corriendo);
+
+									pthread_mutex_lock(&mutex_coordinador_fd);
 									enviar_cod_operacion(i,
 											MURIO_ESI_CORRIENDO);
+									pthread_mutex_unlock(&mutex_coordinador_fd);
 								}
 
 							}
@@ -181,7 +191,7 @@ void listener(void) {
 					} else {
 
 						respuesta_status_clave = recibir_status_clave();
-						sem_post(&coordinador_respondio_paq); //para que se usa???
+						sem_post(&coordinador_respondio_paq);
 
 					}
 				}
@@ -234,18 +244,33 @@ void atender_error(int nbytes) {
 	} else {
 		log_debug(logger, "Atendiendo error ESI\n");
 		int idDelSocket = encontrarIdDelSocket(i); //err
+		if (idDelSocket < 0) {
+			log_warning(logger, "No se encontro al ESI con socket %d", i);
+			int aux = i;
+			cerrarConexion(&aux);
+			return;
+		}
 		if (nbytes == 0) {
-			log_error(logger, "El ESI (ID:%d) finalizó inesperadamente\n", idESIUnico);
+			log_error(logger, "El ESI (ID:%d) finalizó inesperadamente\n",
+					idDelSocket);
 			if (es_un_esi_listo(idDelSocket)) {
 				log_debug(logger, "Entro al esi listo");
 				t_esi* esi_a_matar = obtener_de_listos(idDelSocket);
+				if (esi_a_matar == NULL)
+					return;
 				finalizar_esi_sync(esi_a_matar);
 				log_debug(logger, "Finalizo");
 				eliminar_de_listos(esi_a_matar);
 				log_debug(logger, "Elimino de listos");
 			} else if (es_un_esi_bloqueado(idDelSocket)) {
-				log_debug(logger, "Entro al esi bloqueado");
-				t_esi* esi_a_matar = obtener_de_bloqueados(idDelSocket);
+//				log_debug(logger, "Entro al esi bloqueado");
+//				t_esi* esi_a_matar = obtener_de_bloqueados(idDelSocket);
+//				if (esi_a_matar == NULL)
+//					return;
+				t_esi* esi_a_matar = remover_esi_de_bloqueados_por_id(idDelSocket);
+				if(esi_a_matar == NULL)
+					return;
+				log_debug(logger, "ESI %d removido DE BLOQUEADOSSS!!!!!!!!!!!!!", esi_a_matar->id);
 				finalizar_esi_sync(esi_a_matar);
 				log_debug(logger, "Finalizo");
 				eliminar_de_bloqueados(esi_a_matar);
@@ -254,7 +279,7 @@ void atender_error(int nbytes) {
 
 		} else {
 			log_error(logger,
-					"El mensaje recibido por el ESI (ID:%d) tiene errores\n",
+					"El mensaje recibido por el ESI (ESI_fd:%d) tiene errores\n",
 					idDelSocket);
 		}
 	}
@@ -273,7 +298,8 @@ t_status_clave recibir_enum_status_clave() {
 }
 
 respuesta_status_clave_t* recibir_status_clave() {
-	respuesta_status_clave_t* respuesta_status = calloc(1, sizeof(*respuesta_status));
+	respuesta_status_clave_t* respuesta_status = calloc(1,
+			sizeof(*respuesta_status));
 
 	t_status_clave respuesta;
 	respuesta = recibir_enum_status_clave();
@@ -316,7 +342,7 @@ t_esi *crear_nodo_esi(int socket) {
 }
 
 int encontrarIdDelSocket(int i) {
-	int id_buscado = 0;
+	int id_buscado = -1;
 	t_esi* esi_a_devolver = NULL;
 
 	bool tiene_el_socket_buscado(void* esi) {
@@ -329,7 +355,7 @@ int encontrarIdDelSocket(int i) {
 	if (esi_a_devolver != NULL)
 		id_buscado = esi_a_devolver->id;
 
-	if (id_buscado == 0) {
+	if (id_buscado < 0) {
 
 		bool tiene_el_socket_buscado(void* esi) {
 			return ((t_esi*) esi)->socket == i;
@@ -338,7 +364,8 @@ int encontrarIdDelSocket(int i) {
 		void buscar_esi(char* c, void* lista_esis_bloq) {
 			esi_a_devolver = list_find(lista_esis_bloq,
 					tiene_el_socket_buscado);
-			id_buscado = esi_a_devolver->id;
+			if (esi_a_devolver != NULL)
+				id_buscado = esi_a_devolver->id;
 
 		}
 		pthread_mutex_lock(&mutex_dic_esis_bloqueados);
@@ -351,13 +378,13 @@ int encontrarIdDelSocket(int i) {
 }
 
 void cerrarConexion(int* socket) {
-	if(*socket <= 0){
+	if (*socket <= 0) {
 		//log_warning(logger, "La conexion ya estaba finalizada");
 		return;
 	}
 	pthread_mutex_lock(&mutex_set_sockets);
-	close(*socket);
 	FD_CLR(*socket, &master);
+	close(*socket);
 	pthread_mutex_unlock(&mutex_set_sockets);
 	log_trace(logger, "----- SE CERRO UN SOCKET -----");
 	*socket = -1;

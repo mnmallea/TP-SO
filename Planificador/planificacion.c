@@ -466,7 +466,9 @@ void nueva_solicitud(int socket, char* clave, int id_pedido) {
 //			cod_op = MURIO_ESI_CORRIENDO;
 //		}
 	}
+	pthread_mutex_lock(&mutex_coordinador_fd);
 	enviar_cod_operacion(socket, cod_op);
+	pthread_mutex_unlock(&mutex_coordinador_fd);
 }
 
 void liberar_recursos(t_esi* esi_a_liberar) {
