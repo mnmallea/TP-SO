@@ -14,11 +14,17 @@
 int main(int argc, char* argv[]) {
 	FILE * fp;
 	char * line = NULL;
+	char * p;
+	char * nombreESI=malloc(sizeof(char)*30);
 
 	size_t len = 0;
 	ssize_t read;
 
-	logger = log_create("ESI.log", "ESI", true, LOG_LEVEL);
+	p=obtenerNombre(argv[1]);
+
+	nombreESI=strcat(p,".log");
+	logger = log_create(nombreESI, p, true, LOG_LEVEL);
+
 
 	if (argc != CANT_ARGUMENTOS_MAIN) {
 		log_error(logger, "Cantidad incorrecta de parametros");
@@ -135,6 +141,19 @@ int main(int argc, char* argv[]) {
 		free(line);
 
 	limpiar_configuracion();
-	exit_gracefully(1);
+	log_destroy(logger);
+	  free(nombreESI);
+	  exit(1);
 
 }
+
+char *obtenerNombre(char *path){
+	char *p;
+	p=path;
+		while(*p!='E'&&*p!='\0'){
+			p = (p+1);
+		}
+	return p;
+
+}
+
