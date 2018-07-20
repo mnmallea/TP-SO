@@ -13,7 +13,8 @@ void limpiar_respuesta_status_clave();
 
 void *menu(void *ptr) {
 
-	int opcion_seleccionada;
+	char opcion_seleccionada;
+	int opcion_int;
 	char *clave = (char*) malloc(40);
 	int id;
 	respuesta_status_clave = NULL;
@@ -32,11 +33,11 @@ void *menu(void *ptr) {
 				"\n 0: Para salir de la consola \n"
 				"Opcion n°:");
 
-		scanf("%d", &opcion_seleccionada);
-
+		scanf("%c", &opcion_seleccionada);
+		opcion_int=opcion_seleccionada-'0';
 		printf("\n");
-
-		switch (opcion_seleccionada) {
+		if(opcion_int>=0&&opcion_int<=9){
+		switch (opcion_int) {
 		case 1:
 			pausar_despausar_consola();
 			break;
@@ -88,8 +89,14 @@ void *menu(void *ptr) {
 		case 0:
 			break;
 		default:
+			printf("Opcion invalida\n");
 			break;
 
+			}
+
+		}
+		else{
+			printf("Opcion invalida\n");
 		}
 
 		getchar();
