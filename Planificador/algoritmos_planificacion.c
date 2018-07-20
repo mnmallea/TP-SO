@@ -106,8 +106,6 @@ void obtener_rr(void* _esi) {
 				((t_esi*) esi)->id, ((t_esi*) esi)->response_ratio, ((t_esi*) esi)->estim_actual, ((t_esi*) esi)->viene_esperando);
 
 
-	esi->viene_esperando = 0; //reseteo el viene esperando
-
 }
 
 t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis) {
@@ -132,6 +130,7 @@ t_esi *obtener_proximo_segun_hrrn(t_list *lista_esis) {
 	pthread_mutex_unlock(&mutex_lista_esis_listos);
 
 	esi_elegido->estim_anter = esi_elegido->estim_actual;
+	esi_elegido->viene_esperando = 0; //reseteo el viene esperando
 	list_destroy(lista_nueva);
 
 	return esi_elegido;
