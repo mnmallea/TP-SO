@@ -14,16 +14,16 @@
 int main(int argc, char* argv[]) {
 	FILE * fp;
 	char * line = NULL;
-	char * p;
-	char * nombreESI=malloc(sizeof(char)*30);
+	//char * p;
+	char * nombreESI;
 
 	size_t len = 0;
 	ssize_t read;
 
-	p=obtenerNombre(argv[1]);
-
-	nombreESI=strcat(p,".log");
-	logger = log_create(nombreESI, p, true, LOG_LEVEL);
+	nombreESI=obtenerNombre(argv[1]);
+	printf("%s\n",argv[1]);
+	nombreESI=strcat(nombreESI,".log");
+	logger = log_create(nombreESI, "ESI", true, LOG_LEVEL);
 
 
 	if (argc != CANT_ARGUMENTOS_MAIN) {
@@ -31,6 +31,7 @@ int main(int argc, char* argv[]) {
 		exit_gracefully(1);
 	}
 
+	printf("%s\n",argv[1]);
 	fp = fopen(argv[1], "r");
 	if (fp == NULL) {
 		log_error(logger, "El archivo está vacio.");
@@ -148,12 +149,13 @@ int main(int argc, char* argv[]) {
 }
 
 char *obtenerNombre(char *path){
-	char *p;
-	p=path;
+	char *t=malloc(sizeof(char)*30);
+	char *p=path;
 		while(*p!='E'&&*p!='\0'){
 			p = (p+1);
 		}
-	return p;
+		strcpy(t,p);
+	return t;
 
 }
 
