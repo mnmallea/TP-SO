@@ -190,6 +190,7 @@ void bajar_a_disco_iterator(void* entrada) {
 void* dumpearADisco(void* sinuso) {
 	while(1){
 		sleep(configuracion.intervalo_dump);
+		log_info(logger, "Se procede a realizar el DUMP..");
 		pthread_mutex_lock(&mutex_operacion);
 		list_iterate(tabla, bajar_a_disco_iterator);
 		pthread_mutex_unlock(&mutex_operacion);
