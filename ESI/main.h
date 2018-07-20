@@ -35,6 +35,7 @@ char *valor;
 
 t_protocolo key;
 
+char *obtenerNombre(char *path);
 
 config configuracion; //no le pongan otro nombre, porque despues limpiar_configuracion() se va a encargar de borrarla
 
