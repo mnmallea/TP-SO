@@ -51,10 +51,10 @@ void listener(void) {
 		pthread_mutex_unlock(&mutex_set_sockets);
 
 		if (select(fdmax + 1, &read_fds, NULL, NULL, NULL) == -1) {
-//			pthread_mutex_unlock(&mutex_set_sockets);
 			log_error(logger, "No se pudo seleccionar conexiones\n");
+			continue;
 		}
-//		pthread_mutex_unlock(&mutex_set_sockets);
+
 
 		for (i = 0; i <= fdmax; i++) {
 			if (FD_ISSET(i, &read_fds)) {

@@ -91,10 +91,14 @@ t_esi* remover_de_bloqueados_por_condicion(bool (*condicion)(t_esi*)) {
 
 	void remover_si_cumple(char* clave, void* _lista_esis) {
 		t_list* lista_esis = _lista_esis;
-		esi_removido = list_remove_by_condition(lista_esis,
+		t_esi* un_esi = list_remove_by_condition(lista_esis,
 				(bool (*)(void*)) condicion);
-		if (list_is_empty(lista_esis)) {
-			list_add(claves_a_remover, strdup(clave));
+		if (un_esi != NULL) {
+			esi_removido = un_esi;
+			log_debug(logger, "Se ha removido al esi %d del diccionario de bloqueados", esi_removido->id);
+			if (list_is_empty(lista_esis)) {
+				list_add(claves_a_remover, strdup(clave));
+			}
 		}
 	}
 	void remover_clave(void* clave) {

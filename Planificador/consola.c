@@ -242,9 +242,12 @@ void matar_por_consola(int id) {
 					"El esi solicitado para matar(%d) ya se encontraba finalizado",
 					id);
 		} else if (es_un_esi_bloqueado(id)) {
+			log_debug(logger, "El esi seleccionado se removera de bloqueados");
 			t_esi* esi_a_matar = remover_esi_de_bloqueados_por_id(id);
-			if (esi_a_matar == NULL)
+			if (esi_a_matar == NULL){
+				log_warning(logger, "No se pudo remover al esi %d de bloqueados", id);
 				return;
+			}
 			finalizar_esi_sync(esi_a_matar);
 //			eliminar_de_bloqueados(esi_a_matar);
 
