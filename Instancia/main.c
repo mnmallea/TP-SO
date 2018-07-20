@@ -9,11 +9,12 @@
 
 #include <commons/collections/list.h>
 #include <commons/string.h>
-#include <signal.h>
+#include <pthread.h>
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 
 #include "../syntax-commons/conexiones.h"
@@ -26,8 +27,6 @@
 #include "instancia.h"
 #include "tabla_entradas.h"
 
-void sigalrm_handler();
-void configurar_timer_dumper();
 void responder_solicitud_clave(int);
 void imprimir_almacenamiento();
 
@@ -54,18 +53,27 @@ int main(int argc, char** argv) {
 	crearTablaEntradas();
 	iniciarDumper(configuracion.punto_montaje);
 	int escucha = 1;
-	configurar_timer_dumper();
+
+	pthread_mutex_init(&mutex_operacion, NULL);
+	if(pthread_create(&thread_dumper, NULL, dumpearADisco, NULL)){
+		log_error(logger, "Error al crear el thread dumper");
+		exit(EXIT_FAILURE);
+	}
+
 	while (escucha) {
 		int resultado;
 		switch (recibir_cod_operacion(socketCoordinador)) {
 		case OP_SET:
+			pthread_mutex_lock(&mutex_operacion);
 			log_trace(logger, "Se procede a realizar el codigo de op_set");
 			operacion_set(socketCoordinador);
 			nroOperacion++;
 			imprimir_almacenamiento();
+			pthread_mutex_unlock(&mutex_operacion);
 			break;
 		case OP_STORE:
 			;
+			pthread_mutex_lock(&mutex_operacion);
 			char* clave;
 			resultado = recibir_operacion_unaria(socketCoordinador, &clave);
 			log_trace(logger, "Se recibio la clave (%s) del coordinador",
@@ -73,6 +81,7 @@ int main(int argc, char** argv) {
 			if (resultado < 0) {
 				log_error(logger, "Error al recibir operacion ");
 				close(socketCoordinador);
+				pthread_mutex_unlock(&mutex_operacion);
 				exit(EXIT_FAILURE);
 			}
 			log_trace(logger, "Store %s", clave);
@@ -86,8 +95,10 @@ int main(int argc, char** argv) {
 				enviar_cod_operacion(socketCoordinador, ERROR);
 			}
 			nroOperacion++;
+			pthread_mutex_unlock(&mutex_operacion);
 			break;
 		case RELEVANTAR_INSTANCIA:
+			pthread_mutex_lock(&mutex_operacion);
 			log_info(logger, "La instancia se esta relevantando.....");
 			int cantidadClaves;
 			recibirPaquete(socketCoordinador, &cantidadClaves, sizeof(int));
@@ -129,15 +140,20 @@ int main(int argc, char** argv) {
 				free(clave_recibida);
 				imprimir_almacenamiento();
 			}
+			pthread_mutex_unlock(&mutex_operacion);
 			break;
 		case INSTANCIA_COMPACTAR:
+			pthread_mutex_lock(&mutex_operacion);
 			log_info(logger, "Estoy compactando ...");
 			compactar();
 			enviar_cod_operacion(socketCoordinador, EXITO);
+			pthread_mutex_unlock(&mutex_operacion);
 			break;
 		case SOLICITUD_VALOR:
 			//recibo una clave voy a la tabla de entradas me fijo la posicion y voy al almacenamiento y la saco y la devuelvo
+			pthread_mutex_lock(&mutex_operacion);
 			responder_solicitud_clave(socketCoordinador);
+			pthread_mutex_unlock(&mutex_operacion);
 			break;
 		default:
 			log_error(logger,
@@ -156,16 +172,6 @@ int main(int argc, char** argv) {
 	free(nombreInst);
 	free(nombreLog);
 	exit(0);
-}
-
-void configurar_timer_dumper() {
-	signal(SIGALRM, sigalrm_handler);
-	alarm(configuracion.intervalo_dump);
-}
-void sigalrm_handler() {
-	log_info(logger, "Se procede a realizar el DUMP...");
-	dumpearADisco(NULL);
-	alarm(configuracion.intervalo_dump);
 }
 
 void responder_solicitud_clave(int sockfd) {

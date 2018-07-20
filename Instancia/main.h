@@ -10,6 +10,7 @@
 config configuracion;
 t_log *logger;
 char *obtenerNombre(char *path);
-
+pthread_t thread_dumper;
+pthread_mutex_t mutex_operacion;
 
 #endif /* MAIN_H_ */

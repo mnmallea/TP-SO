@@ -4,6 +4,7 @@
 #include <commons/string.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <pthread.h>
 #include <stdlib.h>
 #include <string.h>
 #include <sys/mman.h>
@@ -11,9 +12,11 @@
 #include <unistd.h>
 
 #include "../syntax-commons/conexiones.h"
+#include "../syntax-commons/my_socket.h"
+#include "../syntax-commons/protocol.h"
 #include "algoritmos.h"
 #include "almacenamiento.h"
-#include "tabla_entradas.h"
+#include "main.h"
 
 void operacion_set(int socketCoordinador) {
 	log_info(logger, "inicializando OP_SET");
@@ -185,7 +188,12 @@ void bajar_a_disco_iterator(void* entrada) {
 }
 
 void* dumpearADisco(void* sinuso) {
-	list_iterate(tabla, bajar_a_disco_iterator);
+	while(1){
+		sleep(configuracion.intervalo_dump);
+		pthread_mutex_lock(&mutex_operacion);
+		list_iterate(tabla, bajar_a_disco_iterator);
+		pthread_mutex_unlock(&mutex_operacion);
+	}
 	return NULL;
 }
 
